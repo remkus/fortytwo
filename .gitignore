@@ -1,0 +1,5 @@
+.DS_Store
+.idea/
+/content/uploads/
+/content/upgrade/
+/wp-config-local.php
