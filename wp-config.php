@@ -19,27 +19,30 @@
  * Don't edit this file directly, instead, create a wp-config-local.php file and add your database
  * settings and defines in there. This file contains the production settings
  */
+
 if ( file_exists( dirname( __FILE__ ) . '/wp-config-local.php' ) ) {
 
 	include( dirname( __FILE__ ) . '/wp-config-local.php' );
 
 	define( 'GITPRESS_DEV', true );
 
+} else {
+
+    /** The name of the database for WordPress */
+    define('DB_NAME', 'database_name_here');
+
+    /** MySQL database username */
+    define('DB_USER', 'username_here');
+
+    /** MySQL database password */
+    define('DB_PASSWORD', 'password_here');
+
+    /** MySQL hostname */
+    define('DB_HOST', 'localhost');
+
+    define( 'GITPRESS_DEV', false );
+
 }
-
-
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define('DB_NAME', 'database_name_here');
-
-/** MySQL database username */
-define('DB_USER', 'username_here');
-
-/** MySQL database password */
-define('DB_PASSWORD', 'password_here');
-
-/** MySQL hostname */
-define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -107,8 +110,8 @@ define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/content' );
 define( 'WP_CONTENT_URL', WP_HOME . '/content' );
 
 // Set path to MU Plugins.
-//define( 'WPMU_PLUGIN_DIR', dirname( __FILE__ ) . '/content/plugins-mu' );
-//define( 'WPMU_PLUGIN_URL', WP_HOME . '/content/plugins-mu' );
+//define( 'WPMU_PLUGIN_DIR', dirname( __FILE__ ) . '/content/mu-plugins' );
+//define( 'WPMU_PLUGIN_URL', WP_HOME . '/content/mu-plugins' );
 
 define( 'WP_DEFAULT_THEME', 'twentytwelve' );
 
