@@ -24,7 +24,14 @@
 @import "../../../../vendor/frameworks/bootstrap/less/scaffolding.less";
 @import "../../../../vendor/frameworks/bootstrap/less/type.less";
 @import "../../../../vendor/frameworks/bootstrap/less/code.less";
-@import "../../../../vendor/frameworks/bootstrap/less/grid.less";
+
+/*
+ * Removed the Bootstrap default grid.less
+ * @import "../../../../vendor/frameworks/bootstrap/less/grid.less";
+ * No longer needed replaced by ft-grid where I added #wrap to the current .container selector
+ *
+ */
+@import "ft-grid";
 
 @import "../../../../vendor/frameworks/bootstrap/less/tables.less";
 @import "../../../../vendor/frameworks/bootstrap/less/forms.less";
@@ -64,4 +71,7 @@
 @import "../../../../vendor/frameworks/bootstrap/less/utilities.less"; // Has to be last to override when necessary
 @import "../../../../vendor/frameworks/bootstrap/less/responsive-utilities.less";
 
+// FortyTwo specific css
 @import "ft-genesis";
+
+
