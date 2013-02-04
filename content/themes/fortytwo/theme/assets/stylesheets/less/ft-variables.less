@@ -1,3 +1,5 @@
+// Custom file for the Forty Two theme
+
 //
 // Variables
 // --------------------------------------------------
@@ -5,6 +7,42 @@
 
 // Global values
 // --------------------------------------------------
+
+
+// FortyTwo palete colors a-e
+// -------------------------
+@color-a:        #2a2a2a;
+@color-b:        #5ad7ba;
+@color-c:        #f9f9f9;
+@color-d:        #cfcfcf;
+@color-e:        #bada55;
+
+// FortyTwo palete colors shades
+// -------------------------
+@color-a-darker:        darken(@color-a, 20%);
+@color-a-dark:          darken(@color-a, 10%);
+@color-a-light:         lighten(@color-a, 10%);
+@color-a-lighter:       lighten(@color-a, 20%);
+
+@color-b-darker:        darken(@color-b, 20%);
+@color-b-dark:          darken(@color-b, 10%);
+@color-b-light:         lighten(@color-b, 10%);
+@color-b-lighter:       lighten(@color-b, 20%);
+
+@color-c-darker:        darken(@color-c, 20%);
+@color-c-dark:          darken(@color-c, 10%);
+@color-c-light:         lighten(@color-c, 10%);
+@color-c-lighter:       lighten(@color-c, 20%);
+
+@color-d-darker:        darken(@color-d, 20%);
+@color-d-dark:          darken(@color-d, 10%);
+@color-d-light:         lighten(@color-d, 10%);
+@color-d-lighter:       lighten(@color-d, 20%);
+
+@color-e-darker:        darken(@color-e, 20%);
+@color-e-dark:          darken(@color-e, 10%);
+@color-e-light:         lighten(@color-e, 10%);
+@color-e-lighter:       lighten(@color-e, 20%);
 
 
 // Grays
@@ -29,19 +67,19 @@
 // -------------------------
 
 @body-background:       #fff;
-@text-color:            @grayDark;
+@text-color:            @color-a-light;
 
 // Links
 // -------------------------
 
-@link-color:            #428bca;
-@link-color-hover:      darken(@link-color, 15%);
+@link-color:            @color-b;
+@link-color-hover:      @color-b-dark;
 
 // Typography
 // -------------------------
 
-@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-sans-serif:  'Open Sans', sans-serif;
+@font-family-serif:       'Droid Serif', serif;
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
@@ -50,7 +88,7 @@
 @font-size-small:         @font-size-base * 0.85; // ~12px
 @font-size-mini:          @font-size-base * 0.75; // ~11px
 
-@line-height-base:        20px;
+@line-height-base:        21px;
 
 @headings-font-family:    inherit; // empty to use BS default, @font-family-base
 @headings-font-weight:    500;
@@ -69,9 +107,9 @@
 // input-large at 18 + 4 = 22, so I tried to compensate on padding.
 */
 
-@border-radius-base:      4px;
-@border-radius-large:     6px;
-@border-radius-small:     3px;
+@border-radius-base:      3px;
+@border-radius-large:     4px;
+@border-radius-small:     2px;
 
 
 // Tables
@@ -88,7 +126,7 @@
 // -------------------------
 
 @btn-color:                          #fff;
-@btn-background:                     #a7a9aa;
+@btn-background:                     @color-a-lighter;
 @btn-border:                         @btn-background;
 
 @btn-background-primary:             @brand-primary;
@@ -177,9 +215,9 @@
 // @navbar-collapse-width-desktop:    @navbar-collapse-width + 1;
 
 // Basics of a navbar
-@navbar-height:                    50px;
-@navbar-text:                      #777;
-@navbar-bg:                        #eee;
+@navbar-height:                    46px;
+@navbar-text:                      @color-a-lighter;
+@navbar-bg:                        #fff;
 
 // Navbar brand label
 @navbar-brand-color:               @navbar-link-color;
@@ -300,6 +338,6 @@
 
 // Default 940px grid
 @grid-columns:              12;
-@grid-column-width:         60px;
-@grid-gutter-width:         20px;
+@grid-column-width:         70px;
+@grid-gutter-width:         30px;
 @grid-row-width:            (@grid-columns * @grid-column-width) + (@grid-gutter-width * (@grid-columns - 1));
