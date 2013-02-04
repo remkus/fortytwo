@@ -52,11 +52,6 @@ Template: genesis
 
 /* 04a - Structure ----------- */
 
-#wrap {
-	margin: 0 auto;
-	max-width: 1152px;
-}
-
 #inner {
 	clear: both;
 	overflow: hidden;
@@ -953,19 +948,13 @@ p.wp-caption-text {
 
 @media only screen and (max-width: 1024px) {
 
-	#wrap {
-		max-width: 960px;
-	}
+
 
 }
 
 /* iPads (portrait) ----------- */
 
 @media only screen and (max-width: 768px) {
-
-	#wrap {
-		padding: 0 5%;
-	}
 
 	.footer-widgets-1,
 	.footer-widgets-2,

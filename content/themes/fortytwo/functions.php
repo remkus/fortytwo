@@ -33,6 +33,9 @@ function fortytwo_load_google_fonts() {
     wp_enqueue_style( 'google-font-droid-serif', 'http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic', array(), PARENT_THEME_VERSION );
 }
 
+// Add support for structural wraps
+//add_theme_support( 'genesis-structural-wraps', array( 'header', 'nav', 'subnav', 'inner', 'footer-widgets', 'footer' ) );
+
 // Add support for 3-column footer widgets
 add_theme_support( 'genesis-footer-widgets', 4 );
 
