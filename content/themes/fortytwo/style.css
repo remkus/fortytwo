@@ -86,8 +86,7 @@ Template: genesis
 }
 
 .content-sidebar #content,
-.sidebar-content #content,
-#title-area {
+.sidebar-content #content {
 	width: 65.277777777%; /* 752px / 1152px */
 }
 
@@ -111,8 +110,7 @@ Template: genesis
 #content,
 #content-sidebar-wrap,
 #footer .gototop,
-#sidebar-alt,
-#title-area {
+#sidebar-alt {
 	float: left;
 }
 
@@ -144,34 +142,8 @@ Template: genesis
 	margin: 2.5rem 0 0.5rem;
 }
 
-.header-image #title {
-	margin: 0;
-}
-
 #description {
 	line-height: 1.25;
-}
-
-.header-full-width #title,
-.header-full-width #title a,
-.header-full-width #title-area {
-	width: 100%;
-}
-
-.header-image #title,
-.header-image #title a,
-.header-image #title-area {
-	display: block;
-	float: left;
-	min-height: 120px;
-	overflow: hidden;
-	text-indent: -9999px;
-	width: 50%;
-}
-
-.header-image #description {
-	display: block;
-	overflow: hidden;
 }
 
 /* 04d - Main Content ----------- */
@@ -964,7 +936,6 @@ p.wp-caption-text {
 	#footer .gototop,
 	#header .widget-area,
 	#inner,
-	#title-area,
 	#wrap .sidebar,
 	#wrap #content,
 	#wrap #content-sidebar-wrap,
@@ -985,8 +956,7 @@ p.wp-caption-text {
 	#footer .creds,
 	#footer .gototop,
 	#header .search-form,
-	#title,
-	#title-area {
+	#title {
 		text-align: center;
 	}
 
