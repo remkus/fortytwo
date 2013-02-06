@@ -1,0 +1,57 @@
+// Less file of randon styles which should be broken in to specific sections
+
+//
+// Top of page border
+// --------------------------------------------------
+
+body {
+  border-top: 4px solid @color-a;
+  box-shadow: inset 0 1px 0 #e8e8e8;
+}
+
+
+
+//
+// Header section
+// --------------------------------------------------
+
+header {
+  padding-top: 40px;
+}
+
+.header-full-width #title,
+.header-full-width #title a,
+.header-full-width #title-area {
+  width: 100%;
+}
+
+.header-image #title {
+  margin: 0 15px 0 0;
+  width: 212px;
+  height: 45px;
+  line-height: 45px;
+  margin-right: 15px;
+  .pull-left;
+}
+
+.header-image #title a {
+  display: block;
+  float: left;
+  overflow: hidden;
+  text-indent: -9999px;
+  line-height: 45px;
+}
+
+.header-image #description {
+  .pull-left;
+  border-left: 1px solid #ddd;
+  padding-left: 15px;
+  margin: 5px 0;
+  text-transform: uppercase;
+  width: 180px;
+  color: @color-d-darker;
+}
+
+.header-image #title a {
+  background: url( '@{ft-image-path}/logo.png' ) no-repeat;
+}
