@@ -4989,30 +4989,34 @@ body {
 header {
   padding-top: 40px;
 }
-/* line 22, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-other.less */
-.header-full-width #title,
-.header-full-width #title a,
-.header-full-width #title-area {
-  width: 100%;
-}
-/* line 28, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-other.less */
-.header-image #title {
-  margin: 0 15px 0 0;
-  width: 212px;
-  height: 45px;
-  line-height: 45px;
-  margin-right: 15px;
+/* line 21, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-other.less */
+header #title-area {
   float: left;
 }
-/* line 37, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-other.less */
+/* line 25, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-other.less */
+header .widget-area {
+  float: right;
+}
+/* line 30, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-other.less */
+#title a {
+  width: 100%;
+}
+/* line 34, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-other.less */
+.header-image #title {
+  margin: 0 15px 0 0;
+  float: left;
+}
+/* line 39, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-other.less */
 .header-image #title a {
+  background: url('../images/logo.png') no-repeat;
   display: block;
   float: left;
   overflow: hidden;
   text-indent: -9999px;
-  line-height: 45px;
+  height: 46px;
+  width: 212px;
 }
-/* line 45, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-other.less */
+/* line 49, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-other.less */
 .header-image #description {
   float: left;
   border-left: 1px solid #ddd;
@@ -5022,7 +5026,322 @@ header {
   width: 180px;
   color: #9c9c9c;
 }
-/* line 55, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-other.less */
-.header-image #title a {
-  background: url('../images/logo.png') no-repeat;
+@charset "UTF-8";
+@font-face {
+  font-family: "SSSocial";
+  src: url('../fonts/ss-social-circle.eot');
+  src: url('../fonts/ss-social-circle.eot?#iefix') format('embedded-opentype'), url('../fonts/ss-social-circle.woff') format('woff'), url('../fonts/ss-social-circle.ttf') format('truetype'), url('../fonts/ss-social-circle.svg#SSSocialCircle') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SSSocial";
+  src: url('../fonts/ss-social-regular.eot');
+  src: url('../fonts/ss-social-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/ss-social-regular.woff') format('woff'), url('../fonts/ss-social-regular.ttf') format('truetype'), url('../fonts/ss-social-regular.svg#SSSocialRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* This triggers a redraw in IE to Fix IE8's :before content rendering. */
+/* line 28, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+html:hover [class^="ss-"] {
+  -ms-zoom: 1;
+}
+/* line 32, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+#menu-socialnav {
+  font-family: "SSSocial";
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  white-space: nowrap;
+  /*-webkit-font-feature-settings: "liga"; Currently broken in Chrome >= v22. Falls back to text-rendering. Safari is unaffected. */
+
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  margin: 5px 0 5px 15px;
+}
+/* line 49, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+#menu-socialnav li {
+  height: 36px;
+  width: 32px;
+  margin: 0 0 0 10px;
+}
+/* line 55, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+#menu-socialnav a {
+  font-size: 32px;
+  font-weight: bold;
+  line-height: normal;
+  padding: 0;
+  display: inline-block;
+  width: 32px;
+  height: 36px;
+}
+/* line 64, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+#menu-socialnav a:hover {
+  text-decoration: none;
+}
+/* line 68, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-icon,
+.ss-icon.ss-social,
+.ss-icon.ss-social-circle,
+[class^="ss-"]:before,
+[class*=" ss-"]:before,
+[class^="ss-"][class*=" ss-social"]:before,
+[class*=" ss-"][class*=" ss-social"]:before,
+[class^="ss-"].right:after,
+[class*=" ss-"].right:after,
+[class^="ss-"][class*=" ss-social"].right:after,
+[class*=" ss-"][class*=" ss-social"].right:after {
+  font-family: "SSSocial";
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  white-space: nowrap;
+  /*-webkit-font-feature-settings: "liga"; Currently broken in Chrome >= v22. Falls back to text-rendering. Safari is unaffected. */
+
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+/* line 88, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-icon.ss-social-circle,
+[class^="ss-"].ss-social-circle:before,
+[class*=" ss-"].ss-social-circle:before,
+[class^="ss-"].ss-social-circle.right:after,
+[class*=" ss-"].ss-social-circle.right:after {
+  font-weight: bold;
+}
+/* line 94, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+[class^="ss-"].right:before,
+[class*=" ss-"].right:before {
+  display: none;
+  content: '';
+}
+/* line 100, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-facebook:before,
+.ss-facebook.right:after {
+  content: '';
+}
+/* line 104, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-twitter:before,
+.ss-twitter.right:after {
+  content: '';
+}
+/* line 108, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-linkedin:before,
+.ss-linkedin.right:after {
+  content: '';
+}
+/* line 112, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-googleplus:before,
+.ss-googleplus.right:after {
+  content: '';
+}
+/* line 116, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-appdotnet:before,
+.ss-appdotnet.right:after {
+  content: '';
+}
+/* line 120, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-zerply:before,
+.ss-zerply.right:after {
+  content: '';
+}
+/* line 124, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-reddit:before,
+.ss-reddit.right:after {
+  content: '';
+}
+/* line 128, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-tumblr:before,
+.ss-tumblr.right:after {
+  content: '';
+}
+/* line 132, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-wordpress:before,
+.ss-wordpress.right:after {
+  content: '';
+}
+/* line 136, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-blogger:before,
+.ss-blogger.right:after {
+  content: '';
+}
+/* line 140, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-posterous:before,
+.ss-posterous.right:after {
+  content: '';
+}
+/* line 144, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-youtube:before,
+.ss-youtube.right:after {
+  content: '';
+}
+/* line 148, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-vimeo:before,
+.ss-vimeo.right:after {
+  content: '';
+}
+/* line 152, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-flickr:before,
+.ss-flickr.right:after {
+  content: '';
+}
+/* line 156, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-instagram:before,
+.ss-instagram.right:after {
+  content: '';
+}
+/* line 160, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-fivehundredpx:before,
+.ss-fivehundredpx.right:after {
+  content: '';
+}
+/* line 164, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-pinterest:before,
+.ss-pinterest.right:after {
+  content: '';
+}
+/* line 168, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-svpply:before,
+.ss-svpply.right:after {
+  content: '';
+}
+/* line 172, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-readmill:before,
+.ss-readmill.right:after {
+  content: '';
+}
+/* line 176, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-dropbox:before,
+.ss-dropbox.right:after {
+  content: '';
+}
+/* line 180, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-pinboard:before,
+.ss-pinboard.right:after {
+  content: '';
+}
+/* line 184, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-dribbble:before,
+.ss-dribbble.right:after {
+  content: '';
+}
+/* line 188, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-behance:before,
+.ss-behance.right:after {
+  content: '';
+}
+/* line 192, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-github:before,
+.ss-github.right:after {
+  content: '';
+}
+/* line 196, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-octocat:before,
+.ss-octocat.right:after {
+  content: '';
+}
+/* line 200, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-stackoverflow:before,
+.ss-stackoverflow.right:after {
+  content: '';
+}
+/* line 204, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-paypal:before,
+.ss-paypal.right:after {
+  content: '';
+}
+/* line 208, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-kickstarter:before,
+.ss-kickstarter.right:after {
+  content: '';
+}
+/* line 212, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-foursquare:before,
+.ss-foursquare.right:after {
+  content: '';
+}
+/* line 216, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-yelp:before,
+.ss-yelp.right:after {
+  content: '';
+}
+/* line 220, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-skype:before,
+.ss-skype.right:after {
+  content: '';
+}
+/* line 224, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-rdio:before,
+.ss-rdio.right:after {
+  content: '';
+}
+/* line 228, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-spotify:before,
+.ss-spotify.right:after {
+  content: '';
+}
+/* line 232, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-lastfm:before,
+.ss-lastfm.right:after {
+  content: '';
+}
+/* line 236, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-soundcloud:before,
+.ss-soundcloud.right:after {
+  content: '';
+}
+/* line 240, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-mail:before,
+.ss-mail.right:after {
+  content: '✉';
+}
+/* line 244, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-like:before,
+.ss-like.right:after {
+  content: '👍';
+}
+/* line 248, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-rss:before,
+.ss-rss.right:after {
+  content: '';
+}
+/* line 252, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-share:before,
+.ss-share.right:after {
+  content: '';
+}
+/* line 256, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-apple:before,
+.ss-apple.right:after {
+  content: '';
+}
+/* line 260, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-microsoft:before,
+.ss-microsoft.right:after {
+  content: '';
+}
+/* line 264, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-windows:before,
+.ss-windows.right:after {
+  content: '';
+}
+/* line 268, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-android:before,
+.ss-android.right:after {
+  content: '';
+}
+/* line 272, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-social-font.less */
+.ss-blackberry:before,
+.ss-blackberry.right:after {
+  content: '';
 }

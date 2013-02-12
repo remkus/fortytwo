@@ -17,29 +17,33 @@ body {
 
 header {
   padding-top: 40px;
+
+  #title-area {
+    .pull-left;
+  }
+
+  .widget-area {
+    .pull-right;
+  }
 }
 
-.header-full-width #title,
-.header-full-width #title a,
-.header-full-width #title-area {
+#title a {
   width: 100%;
 }
 
 .header-image #title {
   margin: 0 15px 0 0;
-  width: 212px;
-  height: 45px;
-  line-height: 45px;
-  margin-right: 15px;
   .pull-left;
 }
 
 .header-image #title a {
+  background: url( '@{ft-images-path}/logo.png' ) no-repeat;
   display: block;
   float: left;
   overflow: hidden;
   text-indent: -9999px;
-  line-height: 45px;
+  height: 46px;
+  width: 212px;
 }
 
 .header-image #description {
@@ -50,8 +54,4 @@ header {
   text-transform: uppercase;
   width: 180px;
   color: @color-d-darker;
-}
-
-.header-image #title a {
-  background: url( '@{ft-image-path}/logo.png' ) no-repeat;
 }
