@@ -2,11 +2,10 @@
 /** Start the engine */
 require_once( TEMPLATEPATH . '/lib/init.php' );
 
-/** Child theme (do not remove) */
-define( 'CHILD_THEME_NAME', 'FortyTwo Theme' );
-define( 'CHILD_THEME_URL', 'http://forsitethemes.com/themes/fortytwo' );
+/** Add FortyTwo Turbos */
+require_once( CHILD_DIR . '/config/initializers/init.php' );
 
-add_theme_support( 'genesis-html5' );
+add_theme_support( 'genesis-html5' ); //TODO Decide if we need to style for when the HTML5 support is switched off
 
 // Add Viewport meta tag for mobile browsers
 add_action( 'genesis_meta', 'fortytwo_viewport_meta_tag' );

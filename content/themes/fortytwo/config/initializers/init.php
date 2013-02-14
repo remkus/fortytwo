@@ -3,13 +3,13 @@
  * FortyTwo Initializer File
  */
 
+/** Child theme (do not remove) */
+define( 'CHILD_THEME_NAME', 'FortyTwo Theme' );
+define( 'CHILD_THEME_URL', 'http://forsitethemes.com/themes/fortytwo' );
 
 /** Load Initializer Components */
-require_once( 'genassist_enqueue_scripts.php' );
-require_once( 'genassist_preferences.php' );
-require_once( 'html5.php' );
+require_once( 'ft-nav.php' );
 
-
-/** Child theme (do not remove) */
-define( 'CHILD_THEME_NAME', 'FortyTwo' );
-define( 'CHILD_THEME_URL', 'http://forsitethemes.com' );
+//require_once( 'genassist_enqueue_scripts.php' );
+//require_once( 'genassist_preferences.php' );
+//require_once( 'html5.php' );
