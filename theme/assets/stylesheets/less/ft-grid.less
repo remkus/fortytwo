@@ -1,0 +1,40 @@
+// Custom file for grid layout to make Bootstrap work with Genesis
+
+//
+// Genesis Wrap and Bootstrap Container
+// --------------------------------------------------
+
+//
+// Grid system
+// --------------------------------------------------
+
+
+// Set the container width, and override it for fixed navbars in media queries
+.wrap,
+  [id^="home"] .widget-wrap {
+  .container-fixed();
+}
+
+// Responsive: Tablets and up
+@media screen and (min-width: 768px) {
+  .wrap,
+    [id^="home"] .widget-wrap {
+    max-width: 728px;
+  }
+}
+
+// Responsive: Desktops and up
+@media screen and (min-width: 992px) {
+  .wrap,
+    [id^="home"] .widget-wrap {
+    max-width: 940px;
+  }
+}
+
+// Responsive: Large desktops and up
+@media screen and (min-width: 1200px) {
+  .wrap,
+    [id^="home"] .widget-wrap {
+    max-width: 1170px;
+  }
+}
