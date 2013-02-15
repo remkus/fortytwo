@@ -8,6 +8,7 @@ define( 'CHILD_THEME_NAME', 'FortyTwo Theme' );
 define( 'CHILD_THEME_URL', 'http://forsitethemes.com/themes/fortytwo' );
 
 /** Load Initializer Components */
+//require_once( 'ft-doctype.php' );
 require_once( 'ft-nav.php' );
 
 //require_once( 'genassist_enqueue_scripts.php' );

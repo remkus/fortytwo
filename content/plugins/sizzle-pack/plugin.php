@@ -84,16 +84,18 @@ class ForsiteExtensionPackPlugin {
 	 * Registers and enqueues admin-specific JavaScript.
 	 */	
 	public function register_admin_scripts() {
-            wp_enqueue_script( 'bootstrap', FST_PACK_URL .  'vendor/bootstrap/js/bootstrap.min.js'  );
-            wp_enqueue_script( 'jquery-quicksand', FST_PACK_URL .  'vendor/jquery.quicksand.js'  );
+        wp_enqueue_script( 'bootstrap', FST_PACK_URL .  'vendor/bootstrap/js/bootstrap.min.js'  );
+        wp_enqueue_script( 'jquery-quicksand', FST_PACK_URL .  'vendor/jquery.quicksand.js'  );
 	} 
         
-        /**
-         * Registers bootstrap js & css 
-         */
-        public function register_bootstrap() {
+    /**
+     * Registers bootstrap js & css
+     */
+    public function register_bootstrap() {
+        if ( wp_get_theme() != "FortyTwo") {
             wp_enqueue_style(  "bootstrap", FST_PACK_URL . "vendor/bootstrap/css/bootstrap.min.css", array(), '2.0.4' );
             wp_enqueue_script( "bootstrap", FST_PACK_URL . "vendor/bootstrap/js/bootstrap.min.js", array( 'jquery' ), '2.0.4' );
+        }
 	} 
         
         /**

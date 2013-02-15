@@ -7,6 +7,13 @@ require_once( CHILD_DIR . '/config/initializers/init.php' );
 
 add_theme_support( 'genesis-html5' ); //TODO Decide if we need to style for when the HTML5 support is switched off
 
+// Add custom body class to the head
+//add_filter( 'body_class', 'fortytwo_add_bootstrap_class' );
+function fortytwo_add_bootstrap_class( $classes ) {
+	$classes[] = 'bootstrap';
+	return $classes;
+}
+
 // Add Viewport meta tag for mobile browsers
 add_action( 'genesis_meta', 'fortytwo_viewport_meta_tag' );
 function fortytwo_viewport_meta_tag() {

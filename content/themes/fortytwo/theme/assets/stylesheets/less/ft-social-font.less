@@ -53,6 +53,7 @@ html:hover [class^="ss-"] {
   }
 
   a {
+    color: @color-a-light;
     font-size: 32px;
     font-weight: bold;
     line-height: normal;
@@ -61,7 +62,10 @@ html:hover [class^="ss-"] {
     width: 32px;
     height: 36px;
 
-    &:hover { text-decoration: none }
+    &:hover {
+      text-decoration: none;
+      color: @color-a-dark;
+    }
   }
 }
 
