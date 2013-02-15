@@ -38,37 +38,31 @@ function fortytwo_genesis_do_nav() {
         if (current_theme_supports( 'genesis-html5' )) {
 
             $nav_output = <<<EOD
-                  <nav class="primary navbar">
-                      <div class="navbar-inner">
-                          <div class="wrap container">
-                              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                                  <span class="icon-bar"></span>
-                                  <span class="icon-bar"></span>
-                                  <span class="icon-bar"></span>
-                              </a>
-                              <div class="nav-collapse collapse">
-                                  {$nav}
-                              </div>
-                          </div>
-                      </div>
-                  </nav>
+                <nav class="primary navbar">
+                    <div class="wrap container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </a>
+                        <div class="nav-collapse collapse">
+                          {$nav}
+                        </div>
+                    </div>
+                </nav>
 EOD;
 
         } else {
 
             $nav_output = <<<EOD
                   <div id="nav" class="navbar">
-                      <div class="navbar-inner">
-                          <div class="wrap container">
-                              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                                  <span class="icon-bar"></span>
-                                  <span class="icon-bar"></span>
-                                  <span class="icon-bar"></span>
-                              </a>
-                              <div class="nav-collapse collapse">
-                                  {$nav}
-                              </div>
-                          </div>
+                      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                      </a>
+                      <div class="nav-collapse collapse">
+                          {$nav}
                       </div>
                   </div>
 EOD;

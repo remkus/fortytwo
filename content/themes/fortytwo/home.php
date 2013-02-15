@@ -47,25 +47,25 @@ function fortytwo_home_loop_helper() {
 
 	if ( is_active_sidebar( 'home-row-1-col-1' ) || is_active_sidebar( 'home-row-1-col-2' ) || is_active_sidebar( 'home-row-1-col-3' ) || is_active_sidebar( 'home-row-1-col-4' ) ) {
 
-		echo '<div id="home">';
+		echo '<div class="container"><div class="row">';
 
-			echo '<div class="home-row-1-col-1">';
+			echo '<div class="home-row-1-col-1 span3">';
 			dynamic_sidebar( 'home-row-1-col-1' );
 			echo '</div><!-- end .home-row-1-col-1 -->';
 
-			echo '<div class="home-row-1-col-2">';
+			echo '<div class="home-row-1-col-2 span3">';
 			dynamic_sidebar( 'home-row-1-col-2' );
 			echo '</div><!-- end .home-row-1-col-2 -->';
 
-			echo '<div class="home-row-1-col-3">';
+			echo '<div class="home-row-1-col-3 span3">';
 			dynamic_sidebar( 'home-row-1-col-3' );
 			echo '</div><!-- end .home-row-1-col-3 -->';
 
-            echo '<div class="home-row-1-col-4">';
+            echo '<div class="home-row-1-col-4 span3">';
             dynamic_sidebar( 'home-row-1-col-4' );
             echo '</div><!-- end .home-row-1-col-4 -->';
 
-		echo '</div><!-- end #home -->';
+		echo '</div></div>';
 
 	}
 

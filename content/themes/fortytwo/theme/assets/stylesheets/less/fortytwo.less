@@ -10,11 +10,12 @@
  *
  */
 
-// Bootstrap less path
+// Bootstrap Namespace
 // -------------------------
 
+
 // Core variables and mixins
-@import "ft-variables"; // Modify this for custom colors, font-sizes, etc
+@import "../../../../vendor/frameworks/bootstrap/less/variables.less"; // Modify this for custom colors, font-sizes, etc
 @import "../../../../vendor/frameworks/bootstrap/less/mixins.less";
 
 // Reset
@@ -24,18 +25,12 @@
 @import "../../../../vendor/frameworks/bootstrap/less/scaffolding.less";
 @import "../../../../vendor/frameworks/bootstrap/less/type.less";
 @import "../../../../vendor/frameworks/bootstrap/less/code.less";
-
-/*
- * Removed the Bootstrap default grid.less
- * @import "../../../../vendor/frameworks/bootstrap/less/grid.less";
- * No longer needed replaced by ft-grid where I added #wrap to the current .container selector
- *
- */
-@import "ft-grid";
+@import "../../../../vendor/frameworks/bootstrap/less/grid.less";
 
 @import "../../../../vendor/frameworks/bootstrap/less/tables.less";
 @import "../../../../vendor/frameworks/bootstrap/less/forms.less";
 @import "../../../../vendor/frameworks/bootstrap/less/buttons.less";
+
 
 // Components: common
 @import "../../../../vendor/frameworks/bootstrap/less/component-animations.less";
@@ -46,7 +41,9 @@
 
 // Components: Nav
 @import "../../../../vendor/frameworks/bootstrap/less/navs.less";
+
 @import "../../../../vendor/frameworks/bootstrap/less/navbar.less";
+
 @import "../../../../vendor/frameworks/bootstrap/less/button-groups.less";
 @import "../../../../vendor/frameworks/bootstrap/less/breadcrumbs.less";
 @import "../../../../vendor/frameworks/bootstrap/less/pagination.less";
@@ -67,9 +64,16 @@
 @import "../../../../vendor/frameworks/bootstrap/less/carousel.less";
 @import "../../../../vendor/frameworks/bootstrap/less/jumbotron.less";
 
+
 // Utility classes
 @import "../../../../vendor/frameworks/bootstrap/less/utilities.less"; // Has to be last to override when necessary
 @import "../../../../vendor/frameworks/bootstrap/less/responsive-utilities.less";
+
+// Core variables and mixins
+@import "ft-variables"; // Modify this for custom colors, font-sizes, etc
+
+// FortyTwo grid less to work with Genesis
+@import "ft-grid";
 
 // FortyTwo specific css
 @import "ft-genesis";
@@ -80,3 +84,8 @@
 // FT Social Font
 @import "ft-social-font";
 
+// FT Navbar
+@import "ft-navbar";
+
+// FT Slider
+@import "ft-slider";
