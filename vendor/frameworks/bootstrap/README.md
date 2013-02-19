@@ -38,13 +38,13 @@ Documentation for [previous versions](https://github.com/twitter/bootstrap/tags)
 
 ## Compiling CSS and JavaScript
 
-Bootstrap includes a [makefile](Makefile) with convenient methods for working with the framework. Before getting started, be sure to install [the necessary local dependencies](package.json):
+Bootstrap includes a makefile with convenient methods for working with the framework. Before getting started, be sure to install the necessary local dependencies:
 
 ```
 $ npm install
 ```
 
-When completed, you'll be able to run the various make commands provided:
+Once installed, you'll be able to run the various make commands provided:
 
 #### build - `make`
 Runs the recess compiler to rebuild the `/less` files and compiles the docs. Requires recess and uglify-js.
@@ -54,8 +54,6 @@ Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/p
 
 #### watch - `make watch`
 This is a convenience method for watching just Less files and automatically building them whenever you save. Requires the Watchr gem.
-
-Should you encounter problems with installing dependencies or running the makefile commands, be sure to first uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
 
 
 

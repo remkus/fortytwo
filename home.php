@@ -49,19 +49,19 @@ function fortytwo_home_loop_helper() {
 
 		echo '<div class="container"><div class="row">';
 
-			echo '<div class="home-row-1-col-1 span3">';
+			echo '<div class="span3">';
 			dynamic_sidebar( 'home-row-1-col-1' );
 			echo '</div><!-- end .home-row-1-col-1 -->';
 
-			echo '<div class="home-row-1-col-2 span3">';
+			echo '<div class="span3">';
 			dynamic_sidebar( 'home-row-1-col-2' );
 			echo '</div><!-- end .home-row-1-col-2 -->';
 
-			echo '<div class="home-row-1-col-3 span3">';
+			echo '<div class="span3">';
 			dynamic_sidebar( 'home-row-1-col-3' );
 			echo '</div><!-- end .home-row-1-col-3 -->';
 
-            echo '<div class="home-row-1-col-4 span3">';
+            echo '<div class="span3">';
             dynamic_sidebar( 'home-row-1-col-4' );
             echo '</div><!-- end .home-row-1-col-4 -->';
 

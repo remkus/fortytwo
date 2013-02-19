@@ -12,7 +12,7 @@ title: Narrow page template
   }
 
   /* Everything but the jumbotron gets side spacing for mobile-first views */
-  .header,
+  .masthead,
   .marketing,
   .footer {
     padding-left: 15px;
@@ -20,22 +20,15 @@ title: Narrow page template
   }
 
   /* Custom page header */
-  .header {
+  .masthead {
     border-bottom: 1px solid #e5e5e5;
   }
   /* Make the masthead heading the same height as the navigation */
-  .header h3 {
+  .masthead h3 {
     margin-top: 0;
     margin-bottom: 0;
     line-height: 40px;
     padding-bottom: 19px;
-  }
-
-  /* Custom page footer */
-  .footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
   }
 
   /* Custom container */
@@ -50,7 +43,10 @@ title: Narrow page template
   /* Main marketing message and sign up button */
   .jumbotron {
     text-align: center;
-    border-bottom: 1px solid #e5e5e5;
+  }
+  .jumbotron h1 {
+    font-size: 72px;
+    line-height: 1;
   }
   .jumbotron .btn {
     font-size: 21px;
@@ -68,19 +64,15 @@ title: Narrow page template
   /* Responsive: Portrait tablets and up */
   @media screen and (min-width: 768px) {
     /* Remove the padding we set earlier */
-    .header,
+    .masthead,
     .marketing,
     .footer {
       padding-left: 0;
       padding-right: 0;
     }
     /* Space out the masthead */
-    .header {
+    .masthead {
       margin-bottom: 30px;
-    }
-    /* Remove the bottom border on the jumbotron for visual effect */
-    .jumbotron {
-      border-bottom: 0;
     }
   }
 </style>
@@ -88,7 +80,7 @@ title: Narrow page template
 
 
 <div class="container-narrow">
-  <div class="header">
+  <div class="masthead">
     <ul class="nav nav-pills pull-right">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">About</a></li>
@@ -98,7 +90,7 @@ title: Narrow page template
   </div>
 
   <div class="jumbotron">
-    <h1>Jumbotron heading</h1>
+    <h1>Super awesome marketing speak!</h1>
     <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
     <p><a class="btn btn-large btn-success" href="#">Sign up today</a></p>
   </div>
@@ -126,6 +118,8 @@ title: Narrow page template
       <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
     </div>
   </div>
+
+  <hr>
 
   <div class="footer">
     <p>&copy; Company 2013</p>

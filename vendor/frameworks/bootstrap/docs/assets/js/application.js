@@ -34,8 +34,8 @@
     })
 
     // add tipsies to grid for scaffolding
-    if ($('#grid-system').length) {
-      $('#grid-system').tooltip({
+    if ($('#gridSystem').length) {
+      $('#gridSystem').tooltip({
           selector: '.show-grid > [class*="span"]'
         , title: function () { return $(this).width() + 'px' }
       })
@@ -67,7 +67,7 @@
       })
 
     // carousel demo
-    $('.bs-docs-carousel-example').carousel()
+    $('#myCarousel').carousel()
 
     // javascript build logic
     var inputsComponent = $("#components.download input")
