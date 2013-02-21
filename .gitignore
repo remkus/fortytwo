@@ -3,3 +3,5 @@
 /content/uploads/
 /content/upgrade/
 /wp-config-local.php
+
+/.htaccess

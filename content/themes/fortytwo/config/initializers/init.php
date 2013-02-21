@@ -9,7 +9,10 @@ define( 'CHILD_THEME_URL', 'http://forsitethemes.com/themes/fortytwo' );
 
 /** Load Initializer Components */
 //require_once( 'ft-doctype.php' );
+require_once( 'ft-cleanup.php' );
+
 require_once( 'ft-nav.php' );
+require_once( 'ft-slider.php' );
 
 //require_once( 'genassist_enqueue_scripts.php' );
 //require_once( 'genassist_preferences.php' );
