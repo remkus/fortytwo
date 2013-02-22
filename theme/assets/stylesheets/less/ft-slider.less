@@ -10,6 +10,49 @@
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   height: 420px;
-
+  position: relative;
 }
 
+.flex-direction-nav {
+  li {
+    .carousel-control;
+    left: auto;
+    right: 15px;
+    top: 40%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    font-size: 60px;
+    font-weight: 100;
+    line-height: 30px;
+    color: #fff;
+    text-align: center;
+    background: #222;
+    border: 3px solid #111;
+    border-radius: 23px;
+
+    &:before {
+      content: "›";
+    }
+
+    &:first-child {
+      right: auto;
+      left: 15px;
+
+      &:before {
+        content: "‹";
+      }
+    }
+
+    .prev,
+    .next {
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+  }
+}

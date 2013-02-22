@@ -40,11 +40,11 @@ function fortytwo_genesis_do_nav() {
             $nav_output = <<<EOD
                 <nav class="primary navbar">
                     <div class="wrap container">
-                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
-                        </a>
+                        </button>
                         <div class="nav-collapse collapse">
                           {$nav}
                         </div>
@@ -56,11 +56,11 @@ EOD;
 
             $nav_output = <<<EOD
                   <div id="nav" class="navbar">
-                      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
-                      </a>
+                      </button>
                       <div class="nav-collapse collapse">
                           {$nav}
                       </div>

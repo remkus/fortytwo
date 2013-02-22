@@ -9,6 +9,15 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  */
+/*!
+ * Bootstrap v3.0.0
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world by @mdo and @fat.
+ */
 /*@padding-large-input:     10px 14px; // 44px
 // firefox hack since it doesn't accept custom line-height for inputs and automatically sets line-height as font-size + 4 px.
 // input-large at 18 + 4 = 22, so I tried to compensate on padding.
@@ -234,7 +243,7 @@ html {
 body {
   margin: 0;
   color: #444444;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   font-size: 1.4rem;
   line-height: 1.5;
@@ -1182,16 +1191,12 @@ input[type="file"] {
 
   line-height: 35px;
 }
-/* line 143, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
-select {
-  border: 1px solid #cccccc;
-}
-/* line 148, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 142, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 select[multiple],
 select[size] {
   height: auto;
 }
-/* line 154, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 148, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 select:focus,
 input[type="file"]:focus,
 input[type="radio"]:focus,
@@ -1200,7 +1205,7 @@ input[type="checkbox"]:focus {
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
-/* line 166, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 160, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .uneditable-input,
 .uneditable-textarea {
   color: #999999;
@@ -1210,12 +1215,12 @@ input[type="checkbox"]:focus {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
   cursor: not-allowed;
 }
-/* line 176, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 170, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .uneditable-input {
   overflow: hidden;
   white-space: nowrap;
 }
-/* line 182, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 176, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .uneditable-textarea {
   width: auto;
   height: auto;
@@ -1240,7 +1245,7 @@ input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
   color: #999999;
 }
-/* line 202, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 196, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .radio,
 .checkbox {
   display: block;
@@ -1248,14 +1253,14 @@ textarea::-webkit-input-placeholder {
   margin-bottom: 10.5px;
   padding-left: 20px;
 }
-/* line 208, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 202, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .radio label,
 .checkbox label {
   display: inline;
   margin-bottom: 0;
   font-weight: normal;
 }
-/* line 215, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 209, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .radio input[type="radio"],
 .radio-inline input[type="radio"],
 .checkbox input[type="checkbox"],
@@ -1263,17 +1268,17 @@ textarea::-webkit-input-placeholder {
   float: left;
   margin-left: -20px;
 }
-/* line 222, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 216, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .radio + .radio,
 .checkbox + .checkbox {
   margin-top: -5.25px;
 }
-/* line 228, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 222, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .controls > .radio:first-child,
 .controls > .checkbox:first-child {
   padding-top: 5px;
 }
-/* line 235, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 228, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .radio-inline,
 .checkbox-inline {
   display: inline-block;
@@ -1283,13 +1288,13 @@ textarea::-webkit-input-placeholder {
   vertical-align: middle;
   font-weight: normal;
 }
-/* line 244, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 237, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
   margin-top: 0;
   margin-left: 10px;
 }
-/* line 272, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 265, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 select.input-large,
 textarea.input-large,
 input[type="text"].input-large,
@@ -1311,7 +1316,7 @@ input[type="color"].input-large,
   font-size: 17.5px;
   border-radius: 4px;
 }
-/* line 277, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 270, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 select.input-small,
 textarea.input-small,
 input[type="text"].input-small,
@@ -1334,7 +1339,7 @@ input[type="color"].input-small,
   font-size: 11.9px;
   border-radius: 2px;
 }
-/* line 291, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 284, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 input[class*="span"],
 select[class*="span"],
 textarea[class*="span"],
@@ -1343,21 +1348,21 @@ textarea[class*="span"],
   margin-left: 0;
   margin-right: 0;
 }
-/* line 301, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 294, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-append input[class*="span"],
 .input-append .uneditable-input[class*="span"],
 .input-prepend input[class*="span"],
 .input-prepend .uneditable-input[class*="span"] {
   display: inline-block;
 }
-/* line 308, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 301, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 input[class*="span"],
 select[class*="span"],
 textarea[class*="span"],
 .uneditable-input[class*="span"] {
   height: 35px;
 }
-/* line 327, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 320, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 input[disabled],
 select[disabled],
 textarea[disabled],
@@ -1370,7 +1375,7 @@ fieldset[disabled] textarea {
   cursor: not-allowed;
   background-color: #eeeeee;
 }
-/* line 337, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 330, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 input[type="radio"][disabled],
 input[type="checkbox"][disabled],
 input[type="radio"][readonly],
@@ -1430,14 +1435,14 @@ fieldset[disabled] input[type="checkbox"] {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
 }
-/* line 365, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 358, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 input:focus:invalid,
 textarea:focus:invalid,
 select:focus:invalid {
   color: #b94a48;
   border-color: #ee5f5b;
 }
-/* line 370, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 363, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 input:focus:invalid:focus,
 textarea:focus:invalid:focus,
 select:focus:invalid:focus {
@@ -1445,7 +1450,7 @@ select:focus:invalid:focus {
   -webkit-box-shadow: 0 0 6px #f8b9b7;
   box-shadow: 0 0 6px #f8b9b7;
 }
-/* line 382, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 375, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .form-actions {
   padding: 20px 20px 21px;
   margin-top: 21px;
@@ -1467,38 +1472,38 @@ select:focus:invalid:focus {
 .form-actions:after {
   clear: both;
 }
-/* line 396, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 389, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .help-block,
 .help-inline {
   color: #838383;
 }
-/* line 401, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 394, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .help-block {
   display: block;
   margin-bottom: 10.5px;
 }
-/* line 406, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 399, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .help-inline {
   display: inline-block;
   vertical-align: middle;
   padding-left: 5px;
 }
-/* line 419, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 412, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group {
   display: table;
 }
-/* line 423, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 416, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group[class*="span"] {
   float: none;
   padding: 0;
 }
-/* line 428, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 421, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group input,
 .input-group select,
 .input-group .uneditable-input {
   width: 100%;
 }
-/* line 437, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 430, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-addon,
 .input-group-btn,
 .input-group input,
@@ -1507,27 +1512,27 @@ select:focus:invalid:focus {
   margin: 0;
   border-radius: 0;
 }
-/* line 444, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 437, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-addon.input-small,
 .input-group-btn.input-small,
 .input-group input.input-small,
 .input-group .uneditable-input.input-small {
   border-radius: 0;
 }
-/* line 447, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 440, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-addon.input-large,
 .input-group-btn.input-large,
 .input-group input.input-large,
 .input-group .uneditable-input.input-large {
   border-radius: 0;
 }
-/* line 452, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 445, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-addon,
 .input-group-btn {
   width: 1%;
   vertical-align: middle;
 }
-/* line 460, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 453, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-addon {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1541,126 +1546,126 @@ select:focus:invalid:focus {
   background-color: #eeeeee;
   border: 1px solid #ccc;
 }
-/* line 471, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 464, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-addon.input-small {
   padding: 2px 10px;
   font-size: 11.9px;
 }
-/* line 475, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 468, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-addon.input-large {
   padding: 11px 14px;
   font-size: 17.5px;
 }
-/* line 482, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 475, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group input:first-child,
 .input-group .uneditable-input:first-child,
 .input-group-addon:first-child {
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
 }
-/* line 486, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 479, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group input:first-child.input-small,
 .input-group .uneditable-input:first-child.input-small,
 .input-group-addon:first-child.input-small {
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
 }
-/* line 489, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 482, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group input:first-child.input-large,
 .input-group .uneditable-input:first-child.input-large,
 .input-group-addon:first-child.input-large {
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
 }
-/* line 493, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 486, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-addon:first-child {
   border-right: 0;
 }
-/* line 496, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 489, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group input:last-child,
 .input-group .uneditable-input:last-child,
 .input-group-addon:last-child {
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
 }
-/* line 500, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 493, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group input:last-child.input-small,
 .input-group .uneditable-input:last-child.input-small,
 .input-group-addon:last-child.input-small {
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
 }
-/* line 503, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 496, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group input:last-child.input-large,
 .input-group .uneditable-input:last-child.input-large,
 .input-group-addon:last-child.input-large {
   border-bottom-right-radius: 4px;
   border-top-right-radius: 4px;
 }
-/* line 507, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 500, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-addon:last-child {
   border-left: 0;
 }
-/* line 513, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 506, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-btn,
 .input-group-btn .btn {
   white-space: nowrap;
 }
-/* line 517, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 510, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-btn > .btn {
   float: left;
   border-radius: 0;
 }
-/* line 520, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 513, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-btn > .btn + .btn {
   border-left: 0;
 }
-/* line 524, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 517, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-btn.btn-group {
   display: table-cell;
 }
-/* line 529, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 522, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-btn:first-child > .btn,
 .input-group-btn.btn-group:first-child > .btn {
   border-right: 0;
 }
-/* line 533, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 526, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-btn:first-child > .btn,
 .input-group-btn.btn-group:first-child > .btn {
   border-radius: 3px 0 0 3px;
 }
-/* line 536, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 529, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-btn:first-child > .btn.btn-large,
 .input-group-btn.btn-group:first-child > .btn.btn-large {
   border-radius: 4px 0 0 4px;
 }
-/* line 539, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 532, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-btn:first-child > .btn.btn-small,
 .input-group-btn.btn-group:first-child > .btn.btn-small {
   border-radius: 2px 0 0 2px;
 }
-/* line 546, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 539, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-btn:last-child > .btn,
 .input-group-btn.btn-group:last-child > .btn:first-child {
   border-left: 0;
 }
-/* line 550, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 543, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-btn:last-child > .btn,
 .input-group-btn.btn-group:last-child > .btn {
   border-radius: 0 3px 3px 0;
 }
-/* line 553, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 546, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-btn:last-child > .btn.btn-large,
 .input-group-btn.btn-group:last-child > .btn.btn-large {
   border-radius: 0 4px 4px 0;
 }
-/* line 556, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+/* line 549, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .input-group-btn:last-child > .btn.btn-small,
 .input-group-btn.btn-group:last-child > .btn.btn-small {
   border-radius: 0 2px 2px 0;
 }
 @media screen and (min-width: 768px) {
-  /* line 573, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+  /* line 566, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
   .form-horizontal .control-group {
     position: relative;
     margin-bottom: 21px;
@@ -1679,21 +1684,21 @@ select:focus:invalid:focus {
   .form-horizontal .control-group:after {
     clear: both;
   }
-  /* line 578, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+  /* line 571, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
   .form-horizontal .control-group input,
   .form-horizontal .control-group select,
   .form-horizontal .control-group textarea,
   .form-horizontal .control-group .uneditable-input {
     margin-bottom: 0;
   }
-  /* line 587, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+  /* line 580, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
   .form-horizontal .control-group > .control-label {
     float: left;
     width: 160px;
     padding-top: 6px;
     text-align: right;
   }
-  /* line 595, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
+  /* line 588, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
   .form-horizontal .control-group > .controls {
     margin-left: 180px;
   }
@@ -2027,7 +2032,7 @@ fieldset[disabled] .btn-link:focus {
   font-weight: normal;
 }
 /* line 34, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/glyphicons.less */
-[class^="glyphicon-"]:before {
+.glyphicon:before {
   font-family: 'Glyphicons Halflings';
   font-style: normal;
   line-height: 1;
@@ -2744,8 +2749,10 @@ fieldset[disabled] .btn-link:focus {
   white-space: nowrap;
 }
 /* line 80, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
-.dropdown-menu li > a:hover,
-.dropdown-menu li > a:focus {
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-submenu:hover > a,
+.dropdown-submenu:focus > a {
   text-decoration: none;
   color: #ffffff;
   background-color: #45d2b1;
@@ -2757,7 +2764,7 @@ fieldset[disabled] .btn-link:focus {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5ad7ba', endColorstr='#ff45d2b1', GradientType=0);
 }
-/* line 89, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+/* line 91, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
@@ -2773,13 +2780,13 @@ fieldset[disabled] .btn-link:focus {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5ad7ba', endColorstr='#ff45d2b1', GradientType=0);
 }
-/* line 101, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+/* line 103, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
   color: #999999;
 }
-/* line 107, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+/* line 109, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
   text-decoration: none;
@@ -2788,35 +2795,87 @@ fieldset[disabled] .btn-link:focus {
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   cursor: default;
 }
-/* line 119, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+/* line 121, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
 .open > .dropdown-menu {
   display: block;
 }
-/* line 126, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+/* line 128, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
 .pull-right > .dropdown-menu {
   right: 0;
   left: auto;
 }
-/* line 138, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+/* line 140, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
   border-top: 0;
   border-bottom: 4px solid #000;
   content: "";
 }
-/* line 144, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+/* line 146, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
 .dropup .dropdown-menu,
 .navbar-fixed-bottom .dropdown .dropdown-menu {
   top: auto;
   bottom: 100%;
   margin-bottom: 1px;
 }
-/* line 154, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+/* line 155, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+.dropdown-submenu {
+  position: relative;
+}
+/* line 159, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-top-left-radius: 0;
+}
+/* line 166, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+/* line 171, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+.dropup .dropdown-submenu > .dropdown-menu {
+  top: auto;
+  bottom: 0;
+  margin-top: 0;
+  margin-bottom: -2px;
+  border-bottom-left-radius: 0;
+}
+/* line 180, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+.dropdown-submenu > a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+/* line 193, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+.dropdown-submenu:hover > a:after {
+  border-left-color: #ffffff;
+}
+/* line 198, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+.dropdown-submenu.pull-left {
+  float: none;
+}
+/* line 204, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+.dropdown-submenu.pull-left > .dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-top-right-radius: 0;
+}
+/* line 214, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
 .dropdown .dropdown-menu .nav-header {
   padding-left: 20px;
   padding-right: 20px;
 }
-/* line 161, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
+/* line 221, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/dropdowns.less */
 .typeahead {
   z-index: 1051;
 }
@@ -3042,6 +3101,30 @@ button.close {
   background-color: #e5e5e5;
   border-bottom: 1px solid #ffffff;
 }
+/* line 20, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
+.tabbable:before,
+.tabbable:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
+}
+/* line 25, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
+.tabbable:after {
+  clear: both;
+}
+/* line 198, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navs.less */
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
+}
+/* line 202, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navs.less */
+.tab-content > .active,
+.pill-content > .active {
+  display: block;
+}
 /*
 // Prevent IE8 from misplacing imgs
 // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
@@ -3109,30 +3192,11 @@ button.close {
   border-color: @grayLight;
 }
 
-
-
-// Tabbable tabs
-// -------------------------
-
-// Clear any floats
-.tabbable {
-  .clearfix();
-}
-
-// Show/hide tabbable areas
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
-  display: none;
-}
-.tab-content > .active,
-.pill-content > .active {
-  display: block;
-}
-
 */
 /* line 6, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar {
-  padding: 15px;
+  position: relative;
+  padding: 10px 15px;
   background-color: #ffffff;
   border-radius: 3px;
 }
@@ -3150,36 +3214,35 @@ button.close {
 .navbar:after {
   clear: both;
 }
-/* line 18, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 19, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar .nav {
   margin-top: 15px;
 }
-/* line 21, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 23, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar .nav > li > a {
   padding-top: 12.5px;
   padding-bottom: 12.5px;
   color: #777777;
   line-height: 20px;
 }
-/* line 27, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 29, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar .nav > li > a:hover,
 .navbar .nav > li > a:focus {
   color: #333333;
   background-color: transparent;
 }
-/* line 32, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 34, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:hover,
 .navbar .nav > .active > a:focus {
   color: #555555;
   background-color: #e6e6e6;
 }
-/* line 47, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 49, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-static-top {
-  position: static;
   border-radius: 0;
 }
-/* line 53, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 54, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-fixed-top,
 .navbar-fixed-bottom {
   position: fixed;
@@ -3188,51 +3251,62 @@ button.close {
   z-index: 1030;
   border-radius: 0;
 }
-/* line 61, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 62, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-fixed-top {
   top: 0;
 }
-/* line 62, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 63, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-fixed-bottom {
   bottom: 0;
 }
-/* line 71, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
-.navbar .brand {
-  display: inline-block;
+/* line 72, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+.navbar-brand {
+  display: block;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 7px 15px;
   font-size: 18px;
   font-weight: 500;
   line-height: 21px;
   color: #777777;
+  text-align: center;
 }
-/* line 78, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
-.navbar .brand:hover,
-.navbar .brand:focus {
+/* line 83, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+.navbar-brand:hover,
+.navbar-brand:focus {
   color: #5e5e5e;
   text-decoration: none;
   background-color: transparent;
 }
-/* line 87, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
-.btn-navbar {
-  float: right;
-  padding: 10px 12px;
-  background-color: #ddd;
-  border: 0;
+/* line 92, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+.navbar-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px 12px;
+  background-color: transparent;
+  border: 1px solid #ddd;
   border-radius: 4px;
 }
-/* line 95, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
-.btn-navbar .icon-bar {
+/* line 101, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+  background-color: #ddd;
+}
+/* line 107, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+.navbar-toggle .icon-bar {
   display: block;
-  width: 20px;
+  width: 22px;
   height: 2px;
   background-color: #fff;
   border-radius: 1px;
 }
-/* line 102, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
-.btn-navbar .icon-bar + .icon-bar {
-  margin-top: 3px;
+/* line 114, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+.navbar-toggle .icon-bar + .icon-bar {
+  margin-top: 4px;
 }
-/* line 108, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 120, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar .nav > .divider {
   height: 1px;
   margin: 9.5px 0;
@@ -3240,115 +3314,120 @@ button.close {
   background-color: #f2f2f2;
   border-bottom: 1px solid #ffffff;
 }
-/* line 113, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 125, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-form {
   margin-top: 6px;
   margin-bottom: 6px;
 }
-/* line 120, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 132, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar .nav > li > .dropdown-menu {
   margin-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-/* line 126, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 138, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-fixed-bottom .nav > li > .dropdown-menu {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-/* line 134, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 146, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar .nav li.dropdown > a:hover .caret,
 .navbar .nav li.dropdown > a:focus .caret {
   border-top-color: #333333;
   border-bottom-color: #333333;
 }
-/* line 141, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 153, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar .nav li.dropdown.open > .dropdown-toggle,
 .navbar .nav li.dropdown.active > .dropdown-toggle,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle {
   background-color: #e6e6e6;
   color: #555555;
 }
-/* line 147, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 159, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar .nav li.dropdown > .dropdown-toggle .caret {
   border-top-color: #777777;
   border-bottom-color: #777777;
 }
-/* line 151, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 163, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.active > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
   border-top-color: #555555;
   border-bottom-color: #555555;
 }
-/* line 160, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 172, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar .pull-right > li > .dropdown-menu,
 .navbar .nav > li > .dropdown-menu.pull-right {
   left: auto;
   right: 0;
 }
-/* line 171, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 183, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-inverse {
   background-color: #222222;
 }
-/* line 174, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
-.navbar-inverse .brand {
+/* line 186, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+.navbar-inverse .navbar-brand {
   color: #999999;
 }
-/* line 176, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
-.navbar-inverse .brand:hover,
-.navbar-inverse .brand:focus {
+/* line 188, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
   color: #808080;
   background-color: transparent;
 }
-/* line 183, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 195, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-inverse .navbar-text {
   color: #999999;
 }
-/* line 187, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 199, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-inverse .nav > li > a {
   color: #999999;
 }
-/* line 190, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 202, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-inverse .nav > li > a:hover,
 .navbar-inverse .nav > li > a:focus {
   color: #ffffff;
   background-color: transparent;
 }
-/* line 195, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 207, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-inverse .nav > .active > a,
 .navbar-inverse .nav > .active > a:hover,
 .navbar-inverse .nav > .active > a:focus {
   color: #ffffff;
   background-color: #222222;
 }
-/* line 203, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
-.navbar-inverse .btn-navbar {
-  background-color: #444;
+/* line 215, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+.navbar-inverse .navbar-toggle {
+  border-color: #333;
 }
-/* line 208, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 217, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: #333;
+}
+/* line 224, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-inverse .nav > .divider {
   background-color: #151515;
   border-bottom-color: #2f2f2f;
 }
-/* line 214, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 230, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
   background-color: #222222;
   color: #ffffff;
 }
-/* line 220, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 236, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-inverse .nav li.dropdown > a:hover .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
 }
-/* line 224, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 240, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-inverse .nav li.dropdown > .dropdown-toggle .caret {
   border-top-color: #999999;
   border-bottom-color: #999999;
 }
-/* line 228, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+/* line 244, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle .caret,
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle .caret,
 .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle .caret {
@@ -3356,19 +3435,19 @@ button.close {
   border-bottom-color: #ffffff;
 }
 @media screen and (min-width: 768px) {
-  /* line 242, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+  /* line 258, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
   .navbar {
     padding-top: 0;
     padding-bottom: 0;
   }
-  /* line 246, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
-  .navbar .brand {
+  /* line 262, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+  .navbar-brand {
     float: left;
     padding-top: 12.5px;
     padding-bottom: 12.5px;
     margin-left: -15px;
   }
-  /* line 252, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+  /* line 268, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
   .navbar .nav {
     float: left;
     margin-top: 0;
@@ -3387,15 +3466,15 @@ button.close {
   .navbar .nav:after {
     clear: both;
   }
-  /* line 257, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+  /* line 273, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
   .navbar .nav.pull-right {
     float: right;
   }
-  /* line 261, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+  /* line 277, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
   .navbar .nav > li {
     float: left;
   }
-  /* line 267, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+  /* line 283, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
   .navbar .nav > .divider {
     width: 1px;
     height: 27.599999999999998px;
@@ -3403,15 +3482,18 @@ button.close {
     border-bottom: 0;
     border-right: 1px solid #ffffff;
   }
-  /* line 275, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+  /* line 291, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
   .navbar-inverse .nav > .divider {
     border-right-color: #2f2f2f;
   }
-  /* line 280, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
-  .navbar .btn-navbar {
+  /* line 296, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+  .navbar-toggle {
+    position: relative;
+    top: auto;
+    left: auto;
     display: none;
   }
-  /* line 283, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
+  /* line 302, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
   .nav-collapse.collapse {
     height: auto !important;
     overflow: visible !important;
@@ -4304,8 +4386,60 @@ a.thumbnail:focus {
   margin-left: 0;
   list-style: none;
 }
-/* line 7, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/counters.less */
-.counter {
+/* line 7, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/labels.less */
+.label {
+  padding: .25em .6em;
+  font-size: 75%;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #999999;
+  border-radius: .25em;
+}
+/* line 22, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/labels.less */
+a.label:hover,
+a.label:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* line 34, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/labels.less */
+.label-danger {
+  background-color: #d9534f;
+}
+/* line 35, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/labels.less */
+.label-danger[href] {
+  background-color: #c9302c;
+}
+/* line 37, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/labels.less */
+.label-warning {
+  background-color: #f0ad4e;
+}
+/* line 38, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/labels.less */
+.label-warning[href] {
+  background-color: #ec971f;
+}
+/* line 40, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/labels.less */
+.label-success {
+  background-color: #5cb85c;
+}
+/* line 41, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/labels.less */
+.label-success[href] {
+  background-color: #449d44;
+}
+/* line 43, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/labels.less */
+.label-info {
+  background-color: #5bc0de;
+}
+/* line 44, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/labels.less */
+.label-info[href] {
+  background-color: #31b0d5;
+}
+/* line 7, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/badges.less */
+.badge {
   display: inline-block;
   min-width: 10px;
   padding: 3px 7px;
@@ -4319,34 +4453,34 @@ a.thumbnail:focus {
   background-color: #999999;
   border-radius: 10px;
 }
-/* line 22, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/counters.less */
-.counter:empty {
+/* line 22, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/badges.less */
+.badge:empty {
   display: none;
 }
-/* line 29, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/counters.less */
-a.counter:hover,
-a.counter:focus {
+/* line 29, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/badges.less */
+a.badge:hover,
+a.badge:focus {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
 }
-/* line 39, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/counters.less */
-.btn .counter {
+/* line 39, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/badges.less */
+.btn .badge {
   position: relative;
   top: -1px;
 }
-/* line 45, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/counters.less */
-.btn-mini .counter {
+/* line 45, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/badges.less */
+.btn-mini .badge {
   top: 0;
 }
-/* line 51, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/counters.less */
-.nav-list > .active > a > .counter,
-.nav-pills > .active > a > .counter {
+/* line 51, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/badges.less */
+.nav-list > .active > a > .badge,
+.nav-pills > .active > a > .badge {
   color: #5ad7ba;
   background-color: #fff;
 }
-/* line 56, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/counters.less */
-.nav-pills > li > a > .counter {
+/* line 56, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/badges.less */
+.nav-pills > li > a > .badge {
   margin-left: 3px;
 }
 @-webkit-keyframes progress-bar-stripes {
@@ -4530,11 +4664,9 @@ a.counter:focus {
   padding: 9px 15px;
   border-top: 1px solid #e5e5e5;
 }
-/* line 6, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 7, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel {
   position: relative;
-  margin-bottom: 21px;
-  line-height: 1;
 }
 /* line 12, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-inner {
@@ -4542,7 +4674,7 @@ a.counter:focus {
   overflow: hidden;
   width: 100%;
 }
-/* line 20, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 21, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-inner > .item {
   display: none;
   position: relative;
@@ -4551,87 +4683,91 @@ a.counter:focus {
   -o-transition: 0.6s ease-in-out left;
   transition: 0.6s ease-in-out left;
 }
-/* line 26, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 27, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
   line-height: 1;
 }
-/* line 33, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 34, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-inner > .active,
 .carousel-inner > .next,
 .carousel-inner > .prev {
   display: block;
 }
-/* line 37, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 38, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-inner > .active {
   left: 0;
 }
-/* line 41, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 42, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-inner > .next,
 .carousel-inner > .prev {
   position: absolute;
   top: 0;
   width: 100%;
 }
-/* line 48, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 49, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-inner > .next {
   left: 100%;
 }
-/* line 51, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 52, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-inner > .prev {
   left: -100%;
 }
-/* line 54, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 55, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-inner > .next.left,
 .carousel-inner > .prev.right {
   left: 0;
 }
-/* line 59, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 60, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-inner > .active.left {
   left: -100%;
 }
-/* line 62, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 63, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-inner > .active.right {
   left: 100%;
 }
-/* line 71, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 72, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-control {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
-  width: 120px;
+  width: 15%;
   opacity: 0.5;
   filter: alpha(opacity=50);
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
-/* line 87, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 92, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-control.left {
-  background-color: rgba(0, 0, 0, 0.001);
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.001));
-  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.75)), to(rgba(0, 0, 0, 0.001)));
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.001));
-  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.001));
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.001));
+  background-color: rgba(0, 0, 0, 0.0001);
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0001));
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0001));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0001));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0001));
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bf000000', endColorstr='#00000000', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
   background-color: transparent;
 }
-/* line 91, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 96, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-control.right {
   left: auto;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.75);
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.75));
-  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.001)), to(rgba(0, 0, 0, 0.75)));
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.75));
-  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.75));
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.75));
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.0001), rgba(0, 0, 0, 0.5));
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001), rgba(0, 0, 0, 0.5));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001), rgba(0, 0, 0, 0.5));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001), rgba(0, 0, 0, 0.5));
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#bf000000', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
   background-color: transparent;
 }
-/* line 99, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 104, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-control:hover,
 .carousel-control:focus {
   color: #fff;
@@ -4639,73 +4775,77 @@ a.counter:focus {
   opacity: 0.9;
   filter: alpha(opacity=90);
 }
-/* line 107, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
-.carousel-control .control {
+/* line 112, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+.carousel-control .glyphicon {
   position: absolute;
   top: 50%;
+  left: 50%;
   z-index: 5;
-  display: block;
-  margin-top: -35px;
-  margin-left: 30px;
-  font-size: 80px;
-  font-weight: 100;
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
 }
-/* line 119, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
-.carousel-control.right .control {
-  margin-left: 70px;
-}
-/* line 126, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 127, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-indicators {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  bottom: 20px;
+  left: 50%;
   z-index: 5;
-  margin: 0;
+  width: 100px;
+  margin: 0 0 0 -50px;
   list-style: none;
+  text-align: center;
 }
-/* line 134, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 137, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-indicators li {
-  display: block;
-  float: left;
-  width: 10px;
-  height: 10px;
-  margin-left: 5px;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 0;
+  margin-right: 0;
   text-indent: -999px;
-  background-color: #ccc;
-  background-color: rgba(255, 255, 255, 0.25);
+  border: 1px solid #fff;
   border-radius: 5px;
   cursor: pointer;
 }
-/* line 146, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 148, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-indicators .active {
   background-color: #fff;
 }
-/* line 155, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+/* line 156, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
 .carousel-caption {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
-  padding: 40px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  max-width: 60%;
-}
-/* line 165, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
-.carousel-caption h3,
-.carousel-caption p {
+  left: 20%;
+  right: 20%;
+  bottom: 20px;
+  display: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
   color: #fff;
-  line-height: 21px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
-/* line 170, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
-.carousel-caption h3 {
-  margin: 0 0 5px;
-}
-/* line 173, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
-.carousel-caption p {
-  margin-bottom: 0;
+@media screen and (min-width: 768px) {
+  /* line 173, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+  .carousel-control .glyphicon {
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: -15px;
+    font-size: 30px;
+  }
+  /* line 182, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+  .carousel-caption {
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: block;
+    max-width: 60%;
+    padding: 30px;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 /* line 6, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/jumbotron.less */
 .jumbotron {
@@ -5480,4 +5620,100 @@ html:hover [class^="ss-"] {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   height: 420px;
+  position: relative;
+}
+/* line 17, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-slider.less */
+.flex-direction-nav li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 15%;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  font-size: 20px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  left: auto;
+  right: 15px;
+  top: 40%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  font-size: 60px;
+  font-weight: 100;
+  line-height: 30px;
+  color: #fff;
+  text-align: center;
+  background: #222;
+  border: 3px solid #111;
+  border-radius: 23px;
+}
+/* line 92, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+.flex-direction-nav li.left {
+  background-color: rgba(0, 0, 0, 0.0001);
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0001));
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0001));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0001));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0001));
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+  background-color: transparent;
+}
+/* line 96, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+.flex-direction-nav li.right {
+  left: auto;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.0001), rgba(0, 0, 0, 0.5));
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001), rgba(0, 0, 0, 0.5));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001), rgba(0, 0, 0, 0.5));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001), rgba(0, 0, 0, 0.5));
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+  background-color: transparent;
+}
+/* line 104, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+.flex-direction-nav li:hover,
+.flex-direction-nav li:focus {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+/* line 112, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/carousel.less */
+.flex-direction-nav li .glyphicon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+/* line 34, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-slider.less */
+.flex-direction-nav li:before {
+  content: "›";
+}
+/* line 38, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-slider.less */
+.flex-direction-nav li:first-child {
+  right: auto;
+  left: 15px;
+}
+/* line 42, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-slider.less */
+.flex-direction-nav li:first-child:before {
+  content: "‹";
+}
+/* line 47, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-slider.less */
+.flex-direction-nav li .prev,
+.flex-direction-nav li .next {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
