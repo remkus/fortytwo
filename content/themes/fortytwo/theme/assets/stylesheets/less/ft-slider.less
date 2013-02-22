@@ -11,6 +11,14 @@
   border-bottom: 1px solid #ddd;
   height: 420px;
   position: relative;
+
+
+
+    .slide-excerpt,
+    .slide-image {
+      .pull-left; 
+    }
+
 }
 
 .flex-direction-nav {
@@ -18,13 +26,10 @@
     .carousel-control;
     left: auto;
     right: 15px;
-    top: 40%;
-    width: 40px;
-    height: 40px;
+    top: 50%;
+    .square(32px);
     margin-top: -20px;
-    font-size: 60px;
-    font-weight: 100;
-    line-height: 30px;
+    font-size: 45px;
     color: #fff;
     text-align: center;
     background: #222;
@@ -46,12 +51,12 @@
 
     .prev,
     .next {
-      width: 40px;
-      height: 40px;
+      .square(32px);
       overflow: hidden;
       position: absolute;
       top: 0;
       left: 0;
+      .hide-text();
     }
 
   }
