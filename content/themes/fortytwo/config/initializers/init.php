@@ -11,6 +11,8 @@ define( 'CHILD_THEME_URL', 'http://forsitethemes.com/themes/fortytwo' );
 //require_once( 'ft-doctype.php' );
 require_once( 'ft-cleanup.php' );
 
+require_once( 'ft-scripts.php' );
+
 require_once( 'ft-nav.php' );
 require_once( 'ft-slider.php' );
 
