@@ -7,33 +7,51 @@ require_once( CHILD_DIR . '/config/initializers/init.php' );
 
 add_theme_support( 'genesis-html5' ); //TODO Decide if we need to style for when the HTML5 support is switched off
 
-// Add custom body class to the head
+
 //add_filter( 'body_class', 'fortytwo_add_bootstrap_class' );
+/**
+ * Add custom body class to the head
+ * @param  variable $classes css body tags
+ * @return variable ammended $classes
+ */
 function fortytwo_add_bootstrap_class( $classes ) {
 	$classes[] = 'bootstrap';
 	return $classes;
 }
 
-// Add Viewport meta tag for mobile browsers
 add_action( 'genesis_meta', 'fortytwo_viewport_meta_tag' );
+/**
+ * Add Viewport meta tag for mobile browsers
+ * @return echo meta viewport tag
+ */
 function fortytwo_viewport_meta_tag() {
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>';
 }
 
-// Replace default style sheet
-add_filter( 'stylesheet_uri', 'custom_replace_default_style_sheet', 10, 2 );
-function custom_replace_default_style_sheet() {
+add_filter( 'stylesheet_uri', 'fortywo_replace_default_style_sheet', 10, 2 );
+/**
+ * Replace default style sheet
+ * @return constant Base FortyTwo CSS
+ */
+function fortywo_replace_default_style_sheet() {
     return CHILD_URL . '/theme/assets/stylesheets/fortytwo.css';
 }
 
-// Load custom style sheet
-add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
-function custom_load_custom_style_sheet() {
+add_action( 'wp_enqueue_scripts', 'fortytwo_load_custom_style_sheet' );
+/**
+ * Load custom style sheet for...
+ * @todo  Better explanation as to why this function is needed
+ * @return [type] [description]
+ */
+function fortytwo_load_custom_style_sheet() {
     wp_enqueue_style( 'custom-stylesheet', CHILD_URL . '/style.css', array(), PARENT_THEME_VERSION );
 }
 
-// Load Open Sans
 add_action( 'wp_enqueue_scripts', 'fortytwo_load_google_fonts' );
+/**
+ * Loading Google Fonts
+ * @return [type] [description]
+ */
 function fortytwo_load_google_fonts() {
 	wp_enqueue_style( 'google-font-open-sans', 'http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,600,300', array(), PARENT_THEME_VERSION );
     wp_enqueue_style( 'google-font-droid-serif', 'http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic', array(), PARENT_THEME_VERSION );
