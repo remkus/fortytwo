@@ -365,11 +365,6 @@ p.pages,
 05 Menus
 ---------------------------------------------------------------------------------------------------- */
 
-.genesis-nav-menu {
-	clear: both;
-	overflow: hidden;
-}
-
 #header .genesis-nav-menu {
 	float: right;
 	margin-top: 48px;
