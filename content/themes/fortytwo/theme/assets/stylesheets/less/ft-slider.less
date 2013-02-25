@@ -27,8 +27,8 @@
   .slide-image {
     .pull-left;
     min-height: 1px;
-    padding-left:  @grid-gutter-width / 2;
-    padding-right: @grid-gutter-width / 2;
+    padding-left:  @grid-gutter-width;
+    padding-right: @grid-gutter-width;
   // Proper box-model (padding doesn't add to width)
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -38,17 +38,17 @@
   .slide-excerpt {
     #grid > .core > .span(5);
 
-    h2 {
+    h2 > a {
       font-family: 'Open Sans Condensed', sans-serif;
       font-weight: 300;
       font-size: 32px;
-      background: @color-b;
-      padding: 5px 10px;
-      .box-shadow(0px 4px 6px -5px #1e1e20);
+    }
 
-      a {
-        color: #fff;
-      }
+    .more-link {
+      .btn;
+      .btn-small;
+      display: table;
+      margin-top: 1em;
     }
   }
 
