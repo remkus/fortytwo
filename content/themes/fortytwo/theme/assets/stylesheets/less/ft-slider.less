@@ -4,21 +4,57 @@
 //
 // Slider
 // --------------------------------------------------
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
 
 #home-slider {
   background: #f9f9f9;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  height: 420px;
+  max-height: 340px;
   position: relative;
+  padding: 40px 0;
 
+  .slides {
+    margin: 0;;
+  }
 
+  .slides > li {
+    .row;
+    margin: 0;
+  }
 
-    .slide-excerpt,
-    .slide-image {
-      .pull-left; 
+  .slide-excerpt,
+  .slide-image {
+    .pull-left;
+    min-height: 1px;
+    padding-left:  @grid-gutter-width / 2;
+    padding-right: @grid-gutter-width / 2;
+  // Proper box-model (padding doesn't add to width)
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .slide-excerpt {
+    #grid > .core > .span(5);
+
+    h2 {
+      font-family: 'Open Sans Condensed', sans-serif;
+      font-weight: 300;
+      font-size: 32px;
+      background: @color-b;
+      padding: 5px 10px;
+      .box-shadow(0px 4px 6px -5px #1e1e20);
+
+      a {
+        color: #fff;
+      }
     }
+  }
 
+  .slide-image {
+    #grid > .core > .span(7);
+  }
 }
 
 .flex-direction-nav {
@@ -29,7 +65,7 @@
     top: 50%;
     .square(32px);
     margin-top: -20px;
-    font-size: 45px;
+    font-size: 44px;
     color: #fff;
     text-align: center;
     background: #222;
