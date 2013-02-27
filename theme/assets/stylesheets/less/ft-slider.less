@@ -4,32 +4,89 @@
 //
 // Slider
 // --------------------------------------------------
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
 
 #home-slider {
   background: #f9f9f9;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  height: 420px;
+  max-height: 340px;
   position: relative;
+  padding: 40px 0;
+
+  .slides {
+    margin: 0;;
+  }
+
+  .slides > li {
+    .row;
+    margin: 0;
+  }
+
+  .slide-excerpt,
+  .slide-image {
+    .pull-left;
+    min-height: 1px;
+    padding-left:  @grid-gutter-width;
+    padding-right: @grid-gutter-width;
+  // Proper box-model (padding doesn't add to width)
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .slide-excerpt {
+    #grid > .core > .span(7);
+    padding-left: 0;
+
+    h2 {
+      padding-bottom: 1.2em;
+    }
+
+    h2 > a {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      letter-spacing: -.05em;
+      background: @color-b;
+      padding: 5px 10px;
+      color: #fff;
+      .box-shadow(0px 4px 6px -5px #888);
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .more-link {
+      .btn;
+      display: table;
+      margin-top: 1.5em;
+    }
+  }
+
+  .slide-image {
+    #grid > .core > .span(5);
+    padding-right: 0;
+  }
 }
 
 .flex-direction-nav {
+  margin: 0;
   li {
     .carousel-control;
+    list-style: none;
     left: auto;
     right: 15px;
-    top: 40%;
-    width: 40px;
-    height: 40px;
+    top: 50%;
+    .square(30px);
     margin-top: -20px;
-    font-size: 60px;
+    font-size: 38px;
     font-weight: 100;
-    line-height: 30px;
     color: #fff;
-    text-align: center;
     background: #222;
     border: 3px solid #111;
-    border-radius: 23px;
+    border-radius: 20px;
 
     &:before {
       content: "›";
@@ -46,12 +103,12 @@
 
     .prev,
     .next {
-      width: 40px;
-      height: 40px;
+      .square(30px);
       overflow: hidden;
       position: absolute;
       top: 0;
       left: 0;
+      .hide-text();
     }
 
   }
