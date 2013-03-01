@@ -14,6 +14,10 @@
   position: relative;
   padding: 40px 0;
 
+  li {
+    list-style: none;
+  }
+
   .slides {
     margin: 0;;
   }
@@ -40,22 +44,25 @@
     padding-left: 0;
 
     h2 {
-      padding-bottom: 1.2em;
+      display: inline-block;
+      .font-size(36);
+      font-family: 'Source Sans Pro', sans-serif;
+      margin-top: 1.6rem;
+      margin-bottom: 1.6rem;
     }
 
     h2 > a {
-      font-family: 'Source Sans Pro', sans-serif;
-      font-weight: 600;
-      font-size: 32px;
-      letter-spacing: -.05em;
-      background: @color-b;
-      padding: 5px 10px;
-      color: #fff;
-      .box-shadow(0px 4px 6px -5px #888);
+      color: @color-a-lighter;
 
       &:hover {
         text-decoration: none;
       }
+    }
+
+    p {
+      .font-size(16);
+      font-weight: 200;
+      line-height: 2.6rem;
     }
 
     .more-link {
@@ -75,7 +82,6 @@
   margin: 0;
   li {
     .carousel-control;
-    list-style: none;
     left: auto;
     right: 15px;
     top: 50%;
