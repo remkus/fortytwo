@@ -1,0 +1,41 @@
+// Custom file for FortyTwo Jumbotron
+
+//
+// Jumbotron - TODO Move the variables to the variables file
+// --------------------------------------------------
+
+@jumbotron-lead-color: @color-a-lighter;
+@jumbotron-background: transparent;
+@jumbotron-heading-color: @color-a-lighter;
+
+
+//
+// Jumbotron
+// --------------------------------------------------
+
+.jumbotron {
+  padding: 0;
+  margin: 0;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: @line-height-base * 1.5;
+  color: @jumbotron-lead-color;
+  background-color: @jumbotron-background;
+  h2 {
+    margin-top: 0;
+    line-height: 1;
+    color: @jumbotron-heading-color;
+  }
+  p {
+    line-height: 1.4;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+
+    h1 {
+      font-size: 60px;
+    }
+  }
+}
