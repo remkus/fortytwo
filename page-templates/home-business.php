@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Home Business
- * The default business layout of FortyTwo.
+ * The file handles the default business layout of FortyTwo.
  *
  * @category FortyTwo
  * @package  Templates
