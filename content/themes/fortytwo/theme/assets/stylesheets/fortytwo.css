@@ -18,10 +18,6 @@
  *
  * Designed and built with all the love in the world by @mdo and @fat.
  */
-/*@padding-large-input:     10px 14px; // 44px
-// firefox hack since it doesn't accept custom line-height for inputs and automatically sets line-height as font-size + 4 px.
-// input-large at 18 + 4 = 22, so I tried to compensate on padding.
-*/
 /*! normalize.css v2.1.0 | MIT License | git.io/normalize */
 /* line 11, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/normalize.less */
 article,
@@ -5290,10 +5286,6 @@ header .widget-area {
   width: 180px;
   color: #9c9c9c;
 }
-/* line 60, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-other.less */
-#home-notice {
-  padding: 45px 0;
-}
 @charset "UTF-8";
 @font-face {
   font-family: "SSSocial";
@@ -5891,28 +5883,43 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link:active {
   border: 0;
 }
 /* line 16, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
-.jumbotron {
+.ft-jumbotron {
   padding: 0;
   margin: 0;
-  font-size: 21px;
+  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 200;
   line-height: 31.5px;
   color: #5d5d5d;
   background-color: transparent;
 }
-/* line 24, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
-.jumbotron h2 {
-  margin-top: 0;
-  line-height: 1;
-  color: #5d5d5d;
+/* line 25, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
+.ft-jumbotron .row {
+  margin: 0;
+  border-bottom: 1px dotted #ddd;
+  padding: 45px 0;
 }
-/* line 29, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
-.jumbotron p {
-  line-height: 1.4;
+/* line 32, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
+.ft-jumbotron .ft-jumbotron-detail {
+  float: left;
+  padding-right: 40px;
+  border-right: 1px solid #ddd;
+}
+/* line 36, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
+.ft-jumbotron .ft-jumbotron-detail span {
+  font-size: 20px;
+  font-size: 2rem;
+}
+/* line 40, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
+.ft-jumbotron .ft-jumbotron-detail p {
+  margin: 0;
+}
+/* line 45, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
+.ft-jumbotron .ft-jumbotron-action {
+  float: left;
+  padding-left: 40px;
+  margin-top: 10px;
 }
 @media screen and (min-width: 768px) {
-  /* line 37, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
-  .jumbotron h1 {
-    font-size: 60px;
-  }
+  
 }

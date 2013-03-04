@@ -13,29 +13,45 @@
 // Jumbotron
 // --------------------------------------------------
 
-.jumbotron {
+.ft-jumbotron {
   padding: 0;
   margin: 0;
-  font-size: 21px;
+  .font-size(16);
   font-weight: 200;
   line-height: @line-height-base * 1.5;
   color: @jumbotron-lead-color;
   background-color: @jumbotron-background;
-  h2 {
-    margin-top: 0;
-    line-height: 1;
-    color: @jumbotron-heading-color;
+
+  .row {
+    margin: 0;
+    border-bottom: 1px dotted #ddd;
+    padding: 45px 0;
+
   }
-  p {
-    line-height: 1.4;
+
+  .ft-jumbotron-detail {
+    .pull-left;
+    padding-right: 40px;
+    border-right: 1px solid #ddd;
+    span{
+      .font-size(20);
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .ft-jumbotron-action {
+    .pull-left;
+    padding-left: 40px;
+    margin-top: 10px;
+
   }
 }
 
 @media screen and (min-width: 768px) {
-  .jumbotron {
+  .ft-jumbotron {
 
-    h1 {
-      font-size: 60px;
-    }
   }
 }
