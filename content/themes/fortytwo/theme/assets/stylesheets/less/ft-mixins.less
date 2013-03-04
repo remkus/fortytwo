@@ -11,3 +11,12 @@
   font-size: ~"@{pxValue}px";
   font-size: ~"@{remValue}rem";
 }
+
+.padding-top-bottom(@sizeValue){
+  @pxValue: @sizeValue;
+  @remValue: (@sizeValue / 10);
+  padding-top: ~"@{pxValue}px";
+  padding-top: ~"@{remValue}rem";
+  padding-bottom: ~"@{pxValue}px";
+  padding-bottom: ~"@{remValue}rem";
+}
