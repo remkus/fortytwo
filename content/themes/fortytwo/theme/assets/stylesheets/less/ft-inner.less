@@ -4,18 +4,23 @@
 // Inner
 // --------------------------------------------------
 #inner {
-  .padding-top-bottom(45);
+  .row {
+    .padding-top-bottom(45);
+    border-bottom: 1px dashed #ddd;
+  }
+
+  .widget {
+    h4 {
+      margin-top: 0;
+      .font-size(21);
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 200;
+    }
+  }
   .clear_float;
 }
 
 .ft-featured-page {
-  h3 {
-    margin-top: 0;
-    .font-size(21);
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 200;
-  }
-
   i {
     margin-right: 5px;
     .font-size(21);
