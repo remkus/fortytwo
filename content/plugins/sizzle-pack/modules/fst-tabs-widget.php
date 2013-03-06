@@ -36,7 +36,7 @@ class FST_Tabs_Widget extends WP_Widget {
         global $fstpack;
 
         /* Widget variable settings. */
-        $this->fst_widget_cssclass = 'widget_fstpack_tabs';
+        $this->fst_widget_cssclass = 'widget-ft-tabs';
         $this->fst_widget_description = __( 'This is a Forsite Themes Extension Pack bundled tabs widget.', 'fstpack' );
         $this->fst_widget_idbase = 'fstpack_tabs';
         $this->fst_widget_title = __('FST - Tabs', 'fstpack' );
@@ -78,6 +78,7 @@ class FST_Tabs_Widget extends WP_Widget {
         /* Our variables from the widget settings. */
         $title = apply_filters('widget_title', $instance['title'], $instance, $this->id_base );
         $tabs = $instance['tabs'];
+        $tabs_style = $instance['tabs_style'];
 
         /* Before widget (defined by themes). */
         echo $before_widget;
@@ -102,7 +103,7 @@ class FST_Tabs_Widget extends WP_Widget {
             $tab_links = '';
 
             // Setup the various tabs.
-            $tab_links .= '<ul class="nav nav-tabs nav-justified">' . "\n";
+            $tab_links .= '<ul class="nav nav-' . esc_attr( $tabs_style ) . '">' . "\n";
             $count = 0;
             foreach ( $tabs as $tab) {
                 $count++;
@@ -167,6 +168,7 @@ class FST_Tabs_Widget extends WP_Widget {
         $instance['title'] = strip_tags( $new_instance['title'] );
 
         /* The select box is returning a text value, so we escape it. */
+        $instance['tabs_style'] = esc_attr( $new_instance['tabs_style'] );
         $instance['image_alignment'] = esc_attr( $new_instance['image_alignment'] );
 
         /* Escape the text string and convert to an integer. */
@@ -204,6 +206,7 @@ class FST_Tabs_Widget extends WP_Widget {
             'tabs' => array_slice($this->available_tabs,0,3), /* default to selecting the first 3, to suggest that it is possible to omit having a tab */
             'limit' => 5,
             'image_dimension' => 45,
+            'tabs_style' => 'tabs',
             'image_alignment' => 'left'
         );
 
@@ -229,6 +232,14 @@ class FST_Tabs_Widget extends WP_Widget {
     <div class="genesis-widget-column genesis-widget-column-right">
 
       <div class="genesis-widget-column-box genesis-widget-column-box-top">
+        <!-- Tabs Style: Select Input -->
+        <p>
+          <label for="<?php echo $this->get_field_id( 'tabs_style' ); ?>"><?php _e( 'Tabs Style:', 'fstpack' ); ?></label>
+          <select name="<?php echo $this->get_field_name( 'tabs_style' ); ?>" class="widefat" id="<?php echo $this->get_field_id( 'tabs_style' ); ?>">
+            <option value="tabs"<?php selected( $instance['tabs_style'], 'tabs' ); ?>><?php _e( 'Tabs', 'fstpack' ); ?></option>
+            <option value="pills"<?php selected( $instance['tabs_style'], 'pills' ); ?>><?php _e( 'Pills', 'fstpack' ); ?></option>
+          </select>
+        </p>
         <!-- Widget Limit: Text Input -->
         <p>
           <label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:', 'fstpack' ); ?></label>
