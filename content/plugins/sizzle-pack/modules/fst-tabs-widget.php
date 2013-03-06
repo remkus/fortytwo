@@ -327,7 +327,7 @@ class FST_Tabs_Widget extends WP_Widget {
         global $post;
         $html = '';
 
-        $html .= '<ul class="latest">' . "\n";
+        $html .= '<ul class="latest list-unstyled">' . "\n";
         $latest = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=post_date&order=desc' );
         foreach( $latest as $post ) {
             setup_postdata($post);
@@ -358,7 +358,7 @@ class FST_Tabs_Widget extends WP_Widget {
         global $post;
         $html = '';
 
-        $html .= '<ul class="popular">' . "\n";
+        $html .= '<ul class="popular list-unstyled">' . "\n";
         $popular = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=comment_count&order=desc' );
         foreach( $popular as $post ) {
             setup_postdata($post);
@@ -391,7 +391,7 @@ class FST_Tabs_Widget extends WP_Widget {
 
         $comments = get_comments( array( 'number' => $limit, 'status' => 'approve' ) );
         if ( $comments ) {
-            $html .= '<ul class="comments">' . "\n";
+            $html .= '<ul class="comments list-unstyled">' . "\n";
             foreach( $comments as $c ) {
                 $html .= '<li>' . "\n";
                 if ( $image_dimension > 0 ) {
