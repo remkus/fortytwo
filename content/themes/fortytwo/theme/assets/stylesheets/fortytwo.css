@@ -7336,3 +7336,15 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link:active {
   padding: 0.5rem 1rem;
   font-weight: 200;
 }
+/* line 9, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-widgets.less */
+.widget_fstpack_tabs .widgettitle {
+  margin: 0;
+  line-height: 42px;
+  padding-right: 20px;
+  float: left;
+}
+/* line 16, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-widgets.less */
+.widget_fstpack_tabs .nav {
+  max-height: 42px;
+  margin-bottom: 2rem;
+}

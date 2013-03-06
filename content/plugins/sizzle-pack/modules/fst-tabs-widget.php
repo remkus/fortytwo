@@ -102,7 +102,7 @@ class FST_Tabs_Widget extends WP_Widget {
             $tab_links = '';
 
             // Setup the various tabs.
-            $tab_links .= '<ul class="nav nav-tabs">' . "\n";
+            $tab_links .= '<ul class="nav nav-tabs nav-justified">' . "\n";
             $count = 0;
             foreach ( $tabs as $tab) {
                 $count++;
