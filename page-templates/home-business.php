@@ -52,29 +52,49 @@ function fortytwo_home_slider_notice() {
 
 function fortytwo_home_loop_helper() {
 
-	if ( is_active_sidebar( 'home-row-1-col-1' ) || is_active_sidebar( 'home-row-1-col-2' ) || is_active_sidebar( 'home-row-1-col-3' ) || is_active_sidebar( 'home-row-1-col-4' ) ) {
+    echo '<div class="container">';
 
-		echo '<div class="container"><div class="row">';
+    if ( is_active_sidebar( 'home-row-1-col-1' ) || is_active_sidebar( 'home-row-1-col-2' ) || is_active_sidebar( 'home-row-1-col-3' ) || is_active_sidebar( 'home-row-1-col-4' ) ) {
 
-			echo '<div class="span3">';
-			dynamic_sidebar( 'home-row-1-col-1' );
-			echo '</div><!-- end .home-row-1-col-1 -->';
+        echo '<div class="row">';
 
-			echo '<div class="span3">';
-			dynamic_sidebar( 'home-row-1-col-2' );
-			echo '</div><!-- end .home-row-1-col-2 -->';
+            echo '<div class="span3">';
+            dynamic_sidebar( 'home-row-1-col-1' );
+            echo '</div><!-- end .home-row-1-col-1 -->';
 
-			echo '<div class="span3">';
-			dynamic_sidebar( 'home-row-1-col-3' );
-			echo '</div><!-- end .home-row-1-col-3 -->';
+            echo '<div class="span3">';
+            dynamic_sidebar( 'home-row-1-col-2' );
+            echo '</div><!-- end .home-row-1-col-2 -->';
+
+            echo '<div class="span3">';
+            dynamic_sidebar( 'home-row-1-col-3' );
+            echo '</div><!-- end .home-row-1-col-3 -->';
 
             echo '<div class="span3">';
             dynamic_sidebar( 'home-row-1-col-4' );
             echo '</div><!-- end .home-row-1-col-4 -->';
 
-		echo '</div></div>';
+        echo '</div>';
 
-	}
+    }
+
+    if ( is_active_sidebar( 'home-row-2-col-1' ) || is_active_sidebar( 'home-row-2-col-2' ) ) {
+
+        echo '<div class="row">';
+
+            echo '<div class="span6">';
+            dynamic_sidebar( 'home-row-2-col-1' );
+            echo '</div><!-- end .home-row-2-col-1 -->';
+
+            echo '<div class="span6">';
+            dynamic_sidebar( 'home-row-2-col-2' );
+            echo '</div><!-- end .home-row-2-col-2 -->';
+
+        echo '</div>';
+
+    }
+
+    echo '</div>';
 
 }
 
