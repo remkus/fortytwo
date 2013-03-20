@@ -15,8 +15,7 @@ body {
 }
 
 /*  */
-.bs-docs-body > .container,
-.bs-docs-footer .container {
+.bs-docs-footer {
   padding-left:  15px;
   padding-right: 15px;
 }
@@ -390,6 +389,8 @@ section > ul li {
   line-height: 1.25;
   text-align: center;
   -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0 -1px -1px 0;
 }
 .the-icons .glyphicon {
@@ -557,7 +558,6 @@ input.focused {
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
   border-radius: 4px;
-  box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
 }
 .highlight pre {
   padding: 0;
@@ -571,7 +571,7 @@ input.focused {
 }
 .highlight pre .lineno {
   display: inline-block;
-  width: 18px;
+  width: 22px;
   padding-right: 5px;
   margin-right: 10px;
   text-align: right;
@@ -646,6 +646,12 @@ input.focused {
 
 /* Tablets/desktops and up */
 @media screen and (min-width: 992px) {
+
+  /* Icons */
+  .the-icons li {
+    width: 12.5%;
+  }
+
   .bs-docs-sidenav {
     width: 220px;
   }

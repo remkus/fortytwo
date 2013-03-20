@@ -6,7 +6,7 @@
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created and maintained by [Mark Otto](http://twitter.com/mdo) and [Jacob Thornton](http://twitter.com/fat).
 
-To get started, checkout [http://getbootstrap.com](http://getbootstrap.com)!
+To get started, check out [http://getbootstrap.com](http://getbootstrap.com)!
 
 
 
@@ -19,6 +19,15 @@ Three quick start options are available:
 * Install with Twitter's [Bower](http://twitter.github.com/bower): `bower install bootstrap`.
 
 Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, basic template guidelines, and more.
+
+
+## Bootstrap elsewhere
+
+Beyond getting started with the Bootstrap core, there are ways to use Bootstrap in other tools and services:
+
+* [Roots WordPress theme](https://github.com/retlehs/roots) - A WordPress starter theme based on HTML5 Boilerplate & Bootstrap from Twitter.
+
+Have suggestions? Let us know with a [new issue](https://github.com/twitter/bootstrap/issues).
 
 
 
@@ -46,16 +55,16 @@ $ npm install
 
 When completed, you'll be able to run the various make commands provided:
 
-#### build - `make`
-Runs the recess compiler to rebuild the `/less` files and compiles the docs. Requires recess and uglify-js.
+#### build - `make` or `make bootstrap`
+`make` runs the Recess compiler to rebuild the `/less` files and compile the docs. `make bootstrap` creates the `/bootstrap` directory with compiled files. **Requires recess and uglify-js.**
 
 #### test - `make test`
-Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). Depends on having phantomjs installed.
+Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). **Requires phantomjs.**
 
 #### watch - `make watch`
-This is a convenience method for watching just Less files and automatically building them whenever you save. Requires the Watchr gem.
+This is a convenience method for watching just Less files and automatically building them whenever you save. **Requires the Watchr gem.**
 
-Should you encounter problems with installing dependencies or running the makefile commands, be sure to first uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
+Should you encounter problems with installing dependencies or running the makefile commands, uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
 
 
 
@@ -73,6 +82,7 @@ Keep track of development and community news.
 * Read and subscribe to the [The Official Twitter Bootstrap Blog](http://blog.getbootstrap.com).
 * Have a question that's not a feature request or bug report? [Ask on the mailing list.](http://groups.google.com/group/twitter-bootstrap)
 * Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##twitter-bootstrap` channel.
+
 
 
 
@@ -110,16 +120,4 @@ For more information on SemVer, please visit [http://semver.org/](http://semver.
 
 ## Copyright and license
 
-Copyright 2012 Twitter, Inc.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this work except in compliance with the License.
-You may obtain a copy of the License in the LICENSE file, or at:
-
-  [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Copyright 2012 Twitter, Inc under [the Apache 2.0 license](LICENSE).
