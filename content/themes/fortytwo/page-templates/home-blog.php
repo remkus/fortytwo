@@ -1,8 +1,13 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: ryanholder
- * Date: 01/03/2013
- * Time: 1:16 PM
- * To change this template use File | Settings | File Templates.
+ * Template Name: Home Blog
+ * The file handles the default blog layout of FortyTwo.
+ *
+ * @category FortyTwo
+ * @package  Templates
+ * @author   Forsite Themes
+ * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
+ * @link     http://www.forsitethemes.com/
  */
+
+genesis();
