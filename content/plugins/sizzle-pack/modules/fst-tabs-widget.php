@@ -121,7 +121,7 @@ class FST_Tabs_Widget extends WP_Widget {
                 // a method in this class called "tab_content_x". If none, a default method is used to prevent errors.
                 // Parameters: array or arguments: 1: number of posts, 2: dimensions of image
 
-                $tab_args = array( 'limit' => intval( $instance['limit'] ), 'image_dimension' => intval( $instance['image_dimension'] ) );
+                $tab_args = array( 'limit' => intval( $instance['limit'] ), 'image_dimension' => intval( $instance['image_dimension'] ), 'image_alignment' => strval( $instance['image_alignment'] ) );
 
                 if ( function_exists( 'fstpack_tabs_' . esc_attr( $tab ) ) ) {
                     $tab_content .= call_user_func_array( 'fstpack_tabs_' . esc_attr( $tab ), $tab_args );
@@ -258,17 +258,20 @@ class FST_Tabs_Widget extends WP_Widget {
             <option value="right"<?php selected( $instance['image_alignment'], 'right' ); ?>><?php _e( 'Right', 'fstpack' ); ?></option>
           </select>
         </p>
-        <p><small><?php
-            if ( function_exists( 'fst_image' ) ) {
-                _e( 'fst_image() will be used to display thumbnails.', 'fstpack' );
-            } else {
-                if ( current_theme_supports( 'post-thumbnails' ) ) {
-                    _e( 'The "featured image" will be used as thumbnails.', 'fstpack' );
-                } else {
-                    _e( 'Post thumbnails are not supported by your theme. Thumbnails will not be displayed.', 'fstpack' );
-                }
-            }
-            ?></small></p>
+
+        <p>
+          <small>
+            <?php
+
+              if (current_theme_supports('post-thumbnails')) {
+                  _e('The "featured image" will be used as thumbnails.', 'fstpack');
+              } else {
+                  _e('Post thumbnails are not supported by your theme. Thumbnails will not be displayed.', 'fstpack');
+              }
+
+            ?>
+          </small>
+        </p>
       </div>
 
     </div>
@@ -323,20 +326,22 @@ class FST_Tabs_Widget extends WP_Widget {
      * @param int $image_dimension
      * @return void
      */
-    function tab_content_latest ( $limit, $image_dimension ) {
+    function tab_content_latest ( $limit, $image_dimension, $image_alignment ) {
         global $post;
         $html = '';
 
-        $html .= '<ul class="latest list-unstyled">' . "\n";
+        $html .= '<ul class="latest">' . "\n";
         $latest = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=post_date&order=desc' );
         foreach( $latest as $post ) {
             setup_postdata($post);
             $html .= '<li>' . "\n";
             if ( $image_dimension > 0 ) {
-                $html .= $this->get_image( $image_dimension, $post );
+                $html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
             }
-            $html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a>' . "\n";
-            $html .= '<span class="meta">' . get_the_time( get_option( 'date_format' ) ) . '</span>' . "\n";
+            $html .= '<div class="media-body">' . "\n";
+            $html .= '<h4 class="media-heading"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
+            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate...' . "\n";
+            $html .= '</div>' . "\n";
             $html .= '</li>' . "\n";
         }
         $html .= '</ul>' . "\n";
@@ -354,20 +359,22 @@ class FST_Tabs_Widget extends WP_Widget {
      * @param int $image_dimension
      * @return void
      */
-    function tab_content_popular ( $limit, $image_dimension ) {
+    function tab_content_popular ( $limit, $image_dimension, $image_alignment ) {
         global $post;
         $html = '';
 
-        $html .= '<ul class="popular list-unstyled">' . "\n";
+        $html .= '<ul class="popular">' . "\n";
         $popular = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=comment_count&order=desc' );
         foreach( $popular as $post ) {
             setup_postdata($post);
             $html .= '<li>' . "\n";
             if ( $image_dimension > 0 ) {
-                $html .= $this->get_image( $image_dimension, $post );
+                $html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
             }
-            $html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a>' . "\n";
-            $html .= '<span class="meta">' . get_the_time( get_option( 'date_format' ) ) . '</span>' . "\n";
+            $html .= '<div class="media-body">' . "\n";
+            $html .= '<h4 class="media-heading"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
+            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate...' . "\n";
+            $html .= '</div>' . "\n";
             $html .= '</li>' . "\n";
         }
         $html .= '</ul>' . "\n";
@@ -391,12 +398,10 @@ class FST_Tabs_Widget extends WP_Widget {
 
         $comments = get_comments( array( 'number' => $limit, 'status' => 'approve' ) );
         if ( $comments ) {
-            $html .= '<ul class="comments list-unstyled">' . "\n";
+            $html .= '<ul class="comments">' . "\n";
             foreach( $comments as $c ) {
                 $html .= '<li>' . "\n";
-                if ( $image_dimension > 0 ) {
-                    $html .= get_avatar( $c, $image_dimension );
-                }
+                $html .= get_avatar( $c, 45 );
                 $html .= '<a title="' . esc_attr( $c->comment_author . ' ' . __( 'on', 'fstpack' ) . ' ' . get_the_title( $c->comment_post_ID ) ) . '" href="' . esc_url( get_comment_link( $c->comment_ID ) ) . '">' . esc_html( $c->comment_author ) . '</a>' . "\n";
                 $html .= '<span class="comment-content">' . stripslashes( substr( esc_html( $c->comment_content ), 0, 50 ) ) . '</span>' . "\n";
                 $html .= '</li>' . "\n";
@@ -441,14 +446,11 @@ class FST_Tabs_Widget extends WP_Widget {
      * @return string $html
      */
     function get_image ( $dimension, $post ) {
-        $html = '';
 
-        if ( function_exists( 'fst_image' ) ) {
-            $html = fst_image( 'return=true&width=' . $dimension . '&height=' . $dimension . '&class=thumbnail&single=true' );
-        } else {
-            if ( current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID ) ) {
-                $html = get_the_post_thumbnail( $post->ID, array( $dimension, $dimension ), array( 'class' => 'thumbnail' ) );
-            }
+        $html = '<img data-src="holder.js/180x112" class="thumbnail wp-post-image">';
+
+        if ( current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID ) ) {
+            $html = get_the_post_thumbnail( $post->ID, array( $dimension, $dimension ), array( 'class' => 'thumbnail' ) );
         }
 
         return $html;
