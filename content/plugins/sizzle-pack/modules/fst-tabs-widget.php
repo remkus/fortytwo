@@ -422,7 +422,7 @@ class FST_Tabs_Widget extends WP_Widget {
      * @return void
      */
     function tab_content_tags ( $limit, $image_dimension ) {
-        return wp_tag_cloud( array( 'echo' => false, 'smallest' => 12, 'largest' => 20 ) );
+        return wp_tag_cloud( array( 'echo' => false, 'smallest' => 12, 'largest' => 20, 'format' => 'list' ) );
     } // End tab_content_tags()
 
     /**

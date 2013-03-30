@@ -618,39 +618,6 @@ label {
 	margin: 0.5rem 0;
 }
 
-/* 11a - Footer Widgets ----------- */
-
-.footer-widgets {
-	border-top: 2px solid #1e1e1e;
-	clear: both;
-	line-height: 1.5;
-	overflow: hidden;
-	padding: 32px 0 16px;
-	padding: 2rem 0 1rem;
-}
-
-.footer-widgets p {
-	margin-bottom: 16px;
-	margin-bottom: 1rem;
-}
-
-.footer-widgets .widget {
-	margin-bottom: 24px;
-	margin-bottom: 1.5rem;
-}
-
-.footer-widgets .widget-area ul li {
-	list-style-type: none;
-	margin-bottom: 6px;
-	margin-bottom: 0.375rem;
-	word-wrap: break-word;
-}
-
-.footer-widgets-1 {
-	margin-right: 4.166666666%; /* 48px / 1152px */
-}
-
-
 /*
 12 Forms & Buttons
 ---------------------------------------------------------------------------------------------------- */
