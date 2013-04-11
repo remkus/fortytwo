@@ -58,19 +58,19 @@ function fortytwo_home_loop_helper() {
 
         echo '<div class="row">';
 
-            echo '<div class="span3">';
+            echo '<div class="col-span-3">';
             dynamic_sidebar( 'home-row-1-col-1' );
             echo '</div><!-- end .home-row-1-col-1 -->';
 
-            echo '<div class="span3">';
+            echo '<div class="col-span-3">';
             dynamic_sidebar( 'home-row-1-col-2' );
             echo '</div><!-- end .home-row-1-col-2 -->';
 
-            echo '<div class="span3">';
+            echo '<div class="col-span-3">';
             dynamic_sidebar( 'home-row-1-col-3' );
             echo '</div><!-- end .home-row-1-col-3 -->';
 
-            echo '<div class="span3">';
+            echo '<div class="col-span-3">';
             dynamic_sidebar( 'home-row-1-col-4' );
             echo '</div><!-- end .home-row-1-col-4 -->';
 
@@ -82,11 +82,11 @@ function fortytwo_home_loop_helper() {
 
         echo '<div class="row">';
 
-            echo '<div class="span6">';
+            echo '<div class="col-span-6">';
             dynamic_sidebar( 'home-row-2-col-1' );
             echo '</div><!-- end .home-row-2-col-1 -->';
 
-            echo '<div class="span6">';
+            echo '<div class="col-span-6">';
             dynamic_sidebar( 'home-row-2-col-2' );
             echo '</div><!-- end .home-row-2-col-2 -->';
 
