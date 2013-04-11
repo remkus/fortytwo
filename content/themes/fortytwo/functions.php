@@ -138,7 +138,7 @@ function fortytwo_footer_widgets_layout() {
         dynamic_sidebar( 'footer-' . $counter );
         $widgets = ob_get_clean();
 
-        $output .= sprintf( '<div class="footer-widgets-%d span3">%s</div>', $counter, $widgets );
+        $output .= sprintf( '<div class="footer-widgets-%d col-span-3">%s</div>', $counter, $widgets );
 
         $counter++;
     }
