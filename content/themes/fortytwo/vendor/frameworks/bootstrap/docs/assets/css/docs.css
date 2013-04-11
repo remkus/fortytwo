@@ -21,6 +21,10 @@ body {
 .bs-docs-container {
   max-width: 860px;
 }
+.bs-docs-container .row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
 
 /*  */
 .bs-docs-footer {
@@ -28,6 +32,16 @@ body {
   padding-right: 15px;
 }
 
+/* Side notes for calling out things */
+.bs-docs-sidenote {
+  margin: 20px 0;
+  padding: 15px 30px 15px 15px;
+  background-color: #fcf2f2;
+  border-left: 5px solid #df7c7b;
+}
+.bs-docs-sidenote p:last-child {
+  margin-bottom: 0;
+}
 
 
 /* Sections
@@ -55,13 +69,8 @@ section > ul li {
 
 .bs-docs-section-header {
   padding-top: 60px;
-  color: #8a8a8a;
-}
-.bs-docs-section-header h1 {
-  font-size: 80px;
-  font-size: 8rem;
-  line-height: 1;
   color: #b94a48;
+  border-bottom: 5px solid #b94a48;
 }
 
 /* Base class */
@@ -91,6 +100,8 @@ section > ul li {
 
 /* Download button */
 .bs-docs-jumbotron .btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 18px 24px;
   font-size: 21px;
   color: #b94a48; /* redeclare to override the `.jumbotron a` */
@@ -185,28 +196,48 @@ section > ul li {
   left: 0;
   bottom: 0;
   width: 240px;
-  background-color: #f5f5f5;
   overflow-y: scroll;
   text-shadow: 0 1px 0 #fff;
+  background-color: #f5f5f5;
   box-shadow: inset -1px 0 0 #e5e5e5;
 }
-.bs-docs-sidenav {
-  margin: 0 0 25px;
+
+/* Nav: first level */
+.bs-docs-sidebar > .nav {
+  margin: 0 0 25px 0;
 }
-.bs-docs-sidenav > li > a {
+.bs-docs-sidebar .nav > li > a {
+  display: block;
   color: #666;
   padding: 4px 25px;
 }
-.bs-docs-sidenav > li > a:hover {
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  text-decoration: none;
   border-right: 1px solid #d5d5d5;
 }
-.bs-docs-sidenav > .active > a,
-.bs-docs-sidenav > .active:hover > a,
-.bs-docs-sidenav > .active:focus > a {
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
   font-weight: 500;
   color: #b94a48;
   background-color: transparent;
   border-right: 1px solid #b94a48;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+  display: none;
+  margin-bottom: 5px;
+}
+.bs-docs-sidebar .nav > .active > ul {
+  display: block;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 40px;
+  font-size: 90%;
 }
 
 .bs-docs-sidenav-heading {
@@ -289,7 +320,10 @@ section > ul li {
 .bs-docs-example > textarea:last-child,
 .bs-docs-example > .table:last-child,
 .bs-docs-example > .jumbotron:last-child,
-.bs-docs-example > .alert:last-child {
+.bs-docs-example > .alert:last-child,
+.bs-docs-example > .panel:last-child,
+.bs-docs-example > .list-group:last-child,
+.bs-docs-example > .well:last-child {
   margin-bottom: 0;
 }
 
@@ -317,6 +351,10 @@ section > ul li {
   margin: 0;
 }
 
+/* List groups */
+.bs-docs-example > .list-group {
+  max-width: 400px;
+}
 
 /* Navbar examples */
 .bs-navbar-top-example,
@@ -380,7 +418,7 @@ section > ul li {
   margin-bottom: 5px;
 }
 .bs-docs-example-submenu {
-  min-height: 180px;
+  min-height: 230px;
 }
 .bs-docs-example-submenu > .pull-left + .pull-left {
   margin-left: 20px;
@@ -389,6 +427,30 @@ section > ul li {
 /* Example tabbable tabs */
 .bs-docs-example-tabs .nav-tabs {
   margin-bottom: 15px;
+}
+
+/* Tooltips */
+.bs-docs-tooltip-examples {
+  text-align: center;
+  margin: 0 0 10px;
+  list-style: none;
+}
+.bs-docs-tooltip-examples li {
+  display: inline;
+  padding: 0 10px;
+}
+
+/* Popovers */
+.bs-docs-example-popover {
+  padding-bottom: 24px;
+  background-color: #f9f9f9;
+}
+.bs-docs-example-popover .popover {
+  position: relative;
+  display: block;
+  float: left;
+  width: 260px;
+  margin: 20px;
 }
 
 
@@ -640,6 +702,32 @@ input.focused {
 
 /* Tablets and up */
 @media screen and (min-width: 768px) {
+
+  /* Back to top link */
+  .bs-docs-top {
+    float: left;
+    padding: 7px 15px;
+    font-weight: 500;
+    color: #999;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+  .bs-docs-top:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #999;
+  }
+  .bs-docs-top.affix {
+    position: fixed;
+    right:  15px;
+    bottom: 15px;
+  }
+
+  .bs-docs-section-header h1 {
+    font-size: 80px;
+    font-size: 8rem;
+    line-height: 1;
+  }
 
   /* Account for fixed navbar (which is static to start) */
   .bs-docs-docs {
