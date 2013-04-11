@@ -5,9 +5,25 @@
 // --------------------------------------------------
 
 #footer-widgets {
+  background: #424242;
+  color: #fff;
   .row {
-    .padding-top-bottom(45);
-    border-bottom: 1px dashed #ddd;
+    .box-padding(45, 0, 45, 0);
   }
   .clearfix();
+}
+
+footer {
+  background: #353535;
+  color: #fff;
+
+  .gototop {
+    .pull-left;
+    .box-padding(20, (@grid-gutter-width / 2), 10, (@grid-gutter-width / 2));
+  }
+
+  .creds {
+    .pull-right;
+    .box-padding(20, (@grid-gutter-width / 2), 10, (@grid-gutter-width / 2));
+  }
 }

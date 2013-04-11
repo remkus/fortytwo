@@ -7861,28 +7861,30 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
 /* line 25, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
 .ft-jumbotron .row {
   margin: 0;
-  border-bottom: 1px dashed #ddd;
-  padding: 45px 0;
+  padding: 45px 0px 45px 0px;
+  padding: 4.5rem 0rem 4.5rem 0rem;
 }
-/* line 32, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
+/* line 30, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
 .ft-jumbotron .ft-jumbotron-detail {
   float: left;
-  padding-right: 40px;
+  padding-left: 15px;
+  padding-right: 30px;
   border-right: 1px solid #ddd;
 }
-/* line 36, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
+/* line 35, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
 .ft-jumbotron .ft-jumbotron-detail span {
   font-size: 21px;
   font-size: 2.1rem;
 }
-/* line 40, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
+/* line 39, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
 .ft-jumbotron .ft-jumbotron-detail p {
   margin: 0;
 }
-/* line 45, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
+/* line 44, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-jumbotron.less */
 .ft-jumbotron .ft-jumbotron-action {
-  float: left;
-  padding-left: 40px;
+  float: right;
+  padding-left: 30px;
+  padding-right: 15px;
   margin-top: 10px;
 }
 @media screen and (min-width: 768px) {
@@ -7890,11 +7892,9 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
 }
 /* line 7, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-inner.less */
 #inner .row {
-  padding-top: 45px;
-  padding-top: 4.5rem;
-  padding-bottom: 45px;
-  padding-bottom: 4.5rem;
-  border-bottom: 1px dashed #ddd;
+  padding: 45px 0px 45px 0px;
+  padding: 4.5rem 0rem 4.5rem 0rem;
+  border-top: 1px dashed #ddd;
 }
 /* line 20, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
 #inner:before,
@@ -7944,13 +7944,15 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
   padding: 0.5rem 1rem;
   font-weight: 200;
 }
-/* line 8, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-footer.less */
+/* line 7, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-footer.less */
+#footer-widgets {
+  background: #424242;
+  color: #fff;
+}
+/* line 10, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-footer.less */
 #footer-widgets .row {
-  padding-top: 45px;
-  padding-top: 4.5rem;
-  padding-bottom: 45px;
-  padding-bottom: 4.5rem;
-  border-bottom: 1px dashed #ddd;
+  padding: 45px 0px 45px 0px;
+  padding: 4.5rem 0rem 4.5rem 0rem;
 }
 /* line 20, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
 #footer-widgets:before,
@@ -7979,6 +7981,23 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
 /* line 25, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
 #footer-widgets:after {
   clear: both;
+}
+/* line 16, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-footer.less */
+footer {
+  background: #353535;
+  color: #fff;
+}
+/* line 20, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-footer.less */
+footer .gototop {
+  float: left;
+  padding: 20px 15px 10px 15px;
+  padding: 2rem 1.5rem 1rem 1.5rem;
+}
+/* line 25, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-footer.less */
+footer .creds {
+  float: right;
+  padding: 20px 15px 10px 15px;
+  padding: 2rem 1.5rem 1rem 1.5rem;
 }
 /* line 9, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs .widgettitle {
@@ -8005,7 +8024,7 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
 }
 /* line 32, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs .nav-tabs > li > a {
-  padding: 0.7rem 1rem 0.9rem;
+  padding: 0.7rem 1rem 0.8rem;
 }
 /* line 36, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/theme/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs .nav-pills > li > a {
