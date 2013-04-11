@@ -24,14 +24,13 @@
 
   .row {
     margin: 0;
-    border-bottom: 1px dashed #ddd;
-    padding: 45px 0;
-
+    .box-padding(45, 0, 45, 0);
   }
 
   .ft-jumbotron-detail {
     .pull-left;
-    padding-right: 40px;
+    padding-left: (@grid-gutter-width / 2);
+    padding-right: (@grid-gutter-width);
     border-right: 1px solid #ddd;
     span{
       .font-size(21);
@@ -43,8 +42,9 @@
   }
 
   .ft-jumbotron-action {
-    .pull-left;
-    padding-left: 40px;
+    .pull-right;
+    padding-left: (@grid-gutter-width);
+    padding-right: (@grid-gutter-width / 2);
     margin-top: 10px;
 
   }
