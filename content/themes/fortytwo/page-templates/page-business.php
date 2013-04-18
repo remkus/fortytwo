@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Home Business
+ * Template Name: Business
  * The file handles the default business layout of FortyTwo.
  *
  * @category FortyTwo
