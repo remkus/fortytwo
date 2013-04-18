@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Home Shop
+ * Template Name: Shop
  * The file handles the default shop layout of FortyTwo.
  *
  * @category FortyTwo

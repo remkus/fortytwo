@@ -447,7 +447,7 @@ class FST_Tabs_Widget extends WP_Widget {
      */
     function get_image ( $dimension, $post ) {
 
-        $html = '<img data-src="holder.js/140x105" class="wp-post-image">';
+        $html = '<img data-src="holder.js/125x94" class="wp-post-image">';
 
         if ( current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID ) ) {
             $html = get_the_post_thumbnail( $post->ID, array( $dimension, $dimension ), array( 'class' => 'thumbnail' ) );
