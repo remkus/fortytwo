@@ -78,18 +78,18 @@ function genesis_update_check() {
 }
 
 /**
- * Upgrade the database to version 1904.
+ * Upgrade the database to version 2000.
  *
- * @since 1.9.0
+ * @since 2.0.0
  *
  * @uses _genesis_update_settings()
  */
-function genesis_upgrade_1904() {
+function genesis_upgrade_2000() {
 
 	/** Update Settings */
 	_genesis_update_settings( array(
-		'theme_version' => '1.9.1',
-		'db_version'    => '1904',
+		'theme_version' => '2.0.0-dev',
+		'db_version'    => '2000',
 	) );
 
 }
@@ -355,15 +355,49 @@ function genesis_upgrade() {
 
 	if ( genesis_get_option( 'db_version', null, false ) < '1901' )
 		genesis_upgrade_1901();
-		
+
 	###########################
-	# UPDATE DB TO VERSION 1904
+	# UPDATE DB TO VERSION 2000
 	###########################
 
-	if ( genesis_get_option( 'db_version', null, false ) < '1904' )
-		genesis_upgrade_1904();
+	if ( genesis_get_option( 'db_version', null, false ) < '2000' )
+		genesis_upgrade_2000();
 
 	do_action( 'genesis_upgrade' );
+
+}
+
+add_action( 'wpmu_upgrade_site', 'genesis_network_upgrade_site' );
+/**
+ * Run silent upgrade on each site in the network during a network upgrade.
+ *
+ * Update Genesis database settings for all sites in a network during network upgrade process.
+ *
+ * @since 2.0.0
+ */
+function genesis_network_upgrade_site( $blog_id ) {
+
+	switch_to_blog( $blog_id );
+	$upgrade_url = add_query_arg( array( 'action' => 'genesis-silent-upgrade' ), admin_url( 'admin-ajax.php' ) );
+	restore_current_blog();
+
+	wp_remote_get( $upgrade_url );
+
+}
+
+add_action( 'wp_ajax_no_priv_genesis-silent-upgrade', 'genesis_silent_upgrade' );
+/**
+ * Genesis settings upgrade. Silent upgrade (no redirect).
+ *
+ * Meant to be called via ajax request during network upgrade process.
+ *
+ * @since 2.0.0
+ */
+function genesis_silent_upgrade() {
+
+	remove_action( 'genesis_upgrade', 'genesis_upgrade_redirect' );
+	genesis_upgrade();
+	exit( 0 );
 
 }
 
@@ -383,8 +417,8 @@ function genesis_upgrade_redirect() {
 	if ( ! is_admin() || ! current_user_can( 'edit_theme_options' ) )
 		return;
 
-	#genesis_admin_redirect( 'genesis', array( 'upgraded', 'true' ) );
-	genesis_admin_redirect( 'genesis-upgraded' );
+	genesis_admin_redirect( 'genesis', array( 'upgraded' => 'true' ) );
+	#genesis_admin_redirect( 'genesis-upgraded' );
 	exit;
 
 }
@@ -428,7 +462,7 @@ add_filter( 'update_theme_complete_actions', 'genesis_update_action_links', 10, 
  * @param string $theme Theme name
  * @return string Removes all existing action links in favour of a single link.
  */
-function genesis_update_action_links( $actions, $theme ) {
+function genesis_update_action_links( array $actions, $theme ) {
 
 	if ( 'genesis' != $theme )
 		return $actions;
@@ -458,11 +492,10 @@ function genesis_update_nag() {
 
 	echo '<div id="update-nag">';
 	printf(
-		__( 'Genesis %s is available. <a href="%s" class="thickbox thickbox-preview">Check out what\'s new</a> or <a href="%s" onclick="return genesis_confirm(\'%s\');">update now</a>.', 'genesis' ),
+		__( 'Genesis %s is available. <a href="%s" class="thickbox thickbox-preview">Check out what\'s new</a> or <a href="%s" class="genesis-js-confirm-upgrade">update now</a>.', 'genesis' ),
 		esc_html( $genesis_update['new_version'] ),
 		esc_url( $genesis_update['changelog_url'] ),
-		wp_nonce_url( 'update.php?action=upgrade-theme&amp;theme=genesis', 'upgrade-theme_genesis' ),
-		esc_js( __( 'Upgrading Genesis will overwrite the current installed version of Genesis. Are you sure you want to upgrade?. "Cancel" to stop, "OK" to upgrade.', 'genesis' ) )
+		wp_nonce_url( 'update.php?action=upgrade-theme&amp;theme=genesis', 'upgrade-theme_genesis' )
 	);
 	echo '</div>';
 
@@ -580,7 +613,7 @@ function genesis_clear_update_transient() {
  * found under. Default is GENESIS_SETTINGS_FIELD.
  * @return null Returns null on failure.
  */
-function _genesis_vestige( $keys = array(), $setting = GENESIS_SETTINGS_FIELD ) {
+function _genesis_vestige( array $keys = array(), $setting = GENESIS_SETTINGS_FIELD ) {
 
 	/** If no $keys passed, do nothing */
 	if ( ! $keys )

@@ -47,7 +47,7 @@ class Genesis_Featured_Page extends WP_Widget {
 		);
 
 		$widget_ops = array(
-			'classname'   => 'featuredpage',
+			'classname'   => 'featured-content featuredpage',
 			'description' => __( 'Displays featured page with thumbnails', 'genesis' ),
 		);
 
@@ -57,7 +57,7 @@ class Genesis_Featured_Page extends WP_Widget {
 			'height'  => 250,
 		);
 
-		$this->WP_Widget( 'featured-page', __( 'Genesis - Featured Page', 'genesis' ), $widget_ops, $control_ops );
+		parent::__construct( 'featured-page', __( 'Genesis - Featured Page', 'genesis' ), $widget_ops, $control_ops );
 
 	}
 
@@ -69,7 +69,7 @@ class Genesis_Featured_Page extends WP_Widget {
 	 * @param array $args Display arguments including before_title, after_title, before_widget, and after_widget.
 	 * @param array $instance The settings for the particular instance of the widget
 	 */
-	function widget( $args, $instance ) {
+	function widget( array $args, array $instance ) {
 
 		extract( $args );
 
@@ -83,26 +83,34 @@ class Genesis_Featured_Page extends WP_Widget {
 			echo $before_title . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $after_title;
 
 		$featured_page = new WP_Query( array( 'page_id' => $instance['page_id'] ) );
-		if ( $featured_page->have_posts() ) : while ( $featured_page->have_posts() ) : $featured_page->the_post();
-			echo '<div class="' . implode( ' ', get_post_class() ) . '">';
 
-			if ( ! empty( $instance['show_image'] ) && $image = genesis_get_image( array( 'format' => 'html', 'size' => $instance['image_size'] ) ) )
+		if ( $featured_page->have_posts() ) : while ( $featured_page->have_posts() ) : $featured_page->the_post();
+
+			printf( genesis_markup( '<article class="%s">', '<div class="%s">', 0 ), implode( ' ', get_post_class() ) );
+
+			if ( ! empty( $instance['show_image'] ) && $image = genesis_get_image( array( 'format' => 'html', 'size' => $instance['image_size'], 'context' => 'featured-page-widget' ) ) )
 				printf( '<a href="%s" title="%s" class="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), esc_attr( $instance['image_alignment'] ), $image );
 
-			if ( ! empty( $instance['show_title'] ) )
-				printf( '<h2><a href="%s" title="%s">%s</a></h2>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_title() );
+			if ( ! empty( $instance['show_title'] ) || ! empty( $instance['show_byline'] ) )
+				genesis_markup( '<header class="entry-header">', '' );
 
-			if ( ! empty( $instance['show_byline'] ) ) {
-				echo '<p class="byline">';
-				the_time( 'F j, Y' );
-				echo ' ' . __( 'by', 'genesis' ) . ' ';
-				the_author_posts_link();
-				echo '&#x02026;';
-				comments_popup_link( __( 'Leave a Comment', 'genesis' ), __( '1 Comment', 'genesis' ), __( '% Comments', 'genesis' ) );
-				echo ' ';
-				edit_post_link( __( '(Edit)', 'genesis' ), '', '' );
-				echo '</p>';
-			}
+				if ( ! empty( $instance['show_title'] ) )
+					printf( '<h2><a href="%s" title="%s">%s</a></h2>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_title() );
+
+				if ( ! empty( $instance['show_byline'] ) ) {
+					echo '<p class="byline">';
+					the_time( 'F j, Y' );
+					echo ' ' . __( 'by', 'genesis' ) . ' ';
+					the_author_posts_link();
+					echo '&#x02026;';
+					comments_popup_link( __( 'Leave a Comment', 'genesis' ), __( '1 Comment', 'genesis' ), __( '% Comments', 'genesis' ) );
+					echo ' ';
+					edit_post_link( __( '(Edit)', 'genesis' ), '', '' );
+					echo '</p>';
+				}
+			
+			if ( ! empty( $instance['show_title'] ) || ! empty( $instance['show_byline'] ) )
+				genesis_markup( '</header>', '' );
 
 			if ( ! empty( $instance['show_content'] ) ) {
 				if ( empty( $instance['content_limit'] ) )
@@ -111,7 +119,7 @@ class Genesis_Featured_Page extends WP_Widget {
 					the_content_limit( (int) $instance['content_limit'], esc_html( $instance['more_text'] ) );
 			}
 
-			echo '</div><!--end post_class()-->' . "\n\n";
+			genesis_markup( '</article>', '</div>' );
 
 			endwhile;
 		endif;
@@ -134,7 +142,7 @@ class Genesis_Featured_Page extends WP_Widget {
 	 * @param array $old_instance Old settings for this instance
 	 * @return array Settings to save or bool false to cancel saving
 	 */
-	function update( $new_instance, $old_instance ) {
+	function update( array $new_instance, array $old_instance ) {
 
 		$new_instance['title']     = strip_tags( $new_instance['title'] );
 		$new_instance['more_text'] = strip_tags( $new_instance['more_text'] );
@@ -149,7 +157,7 @@ class Genesis_Featured_Page extends WP_Widget {
 	 *
 	 * @param array $instance Current settings
 	 */
-	function form( $instance ) {
+	function form( array $instance ) {
 
 		/** Merge with defaults */
 		$instance = wp_parse_args( (array) $instance, $this->defaults );

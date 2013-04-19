@@ -88,7 +88,7 @@ abstract class Genesis_Admin {
 	 * @param array $default_settings Optional. Field name => values for default settings. Default is empty array
 	 * @return null Returns early if page ID is not set
 	 */
-	public function create( $page_id = '', $menu_ops = array(), $page_ops = array(), $settings_field = '', $default_settings = array() ) {
+	public function create( $page_id = '', array $menu_ops = array(), array $page_ops = array(), $settings_field = '', array $default_settings = array() ) {
 
 		/** Set the properties */
 		$this->page_id          = $this->page_id          ? $this->page_id          : $page_id;
@@ -412,7 +412,7 @@ abstract class Genesis_Admin_Form extends Genesis_Admin {
 			<p class="top-buttons">
 				<?php
 				submit_button( $this->page_ops['save_button_text'], 'primary', 'submit', false );
-				submit_button( $this->page_ops['reset_button_text'], 'secondary', $this->get_field_name( 'reset' ), false, array( 'onclick' => 'return genesis_confirm(\'' . esc_js( __( 'Are you sure you want to reset?', 'genesis' ) ) . '\');' ) );
+				submit_button( $this->page_ops['reset_button_text'], 'secondary genesis-js-confirm-reset', $this->get_field_name( 'reset' ), false, array( 'id' => '' ) );
 				?>
 			</p>
 
@@ -421,7 +421,7 @@ abstract class Genesis_Admin_Form extends Genesis_Admin {
 			<div class="bottom-buttons">
 				<?php
 				submit_button( $this->page_ops['save_button_text'], 'primary', 'submit', false );
-				submit_button( $this->page_ops['reset_button_text'], 'secondary', $this->get_field_name( 'reset' ), false, array( 'onclick' => 'return genesis_confirm(\'' . esc_js( __( 'Are you sure you want to reset?', 'genesis' ) ) . '\');' ) );
+				submit_button( $this->page_ops['reset_button_text'], 'secondary genesis-js-confirm-reset', $this->get_field_name( 'reset' ), false, array( 'id' => '' ) );
 				?>
 			</div>
 		</form>
@@ -509,8 +509,6 @@ abstract class Genesis_Admin_Boxes extends Genesis_Admin {
 	 */
 	public function admin() {
 
-		global $wp_meta_boxes;
-
 		?>
 		<div class="wrap genesis-metaboxes">
 		<form method="post" action="options.php">
@@ -523,27 +521,17 @@ abstract class Genesis_Admin_Boxes extends Genesis_Admin {
 			<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 			<p class="top-buttons">
 				<?php
-				submit_button( $this->page_ops['save_button_text'], 'primary', 'submit', false );
-				submit_button( $this->page_ops['reset_button_text'], 'secondary', $this->get_field_name( 'reset' ), false, array( 'onclick' => 'return genesis_confirm(\'' . esc_js( __( 'Are you sure you want to reset?', 'genesis' ) ) . '\');' ) );
+				submit_button( $this->page_ops['save_button_text'], 'primary', 'submit', false, array( 'id' => '' ) );
+				submit_button( $this->page_ops['reset_button_text'], 'secondary genesis-js-confirm-reset', $this->get_field_name( 'reset' ), false, array( 'id' => '' ) );
 				?>
 			</p>
 
-			<div class="metabox-holder">
-				<div class="postbox-container" style="width: 99%;">
-					<?php
-					do_action( 'genesis_admin_before_metaboxes', $this->pagehook );
-					do_meta_boxes( $this->pagehook, 'main', null );
-					if ( isset( $wp_meta_boxes[$this->pagehook]['column2'] ) )
-						do_meta_boxes( $this->pagehook, 'column2', null );
-					do_action( 'genesis_admin_after_metaboxes', $this->pagehook );
-					?>
-				</div>
-			</div>
+			<?php do_action( $this->pagehook . '_settings_page_boxes', $this->pagehook ); ?>
 
 			<div class="bottom-buttons">
 				<?php
-				submit_button( $this->page_ops['save_button_text'], 'primary', 'submit', false );
-				submit_button( $this->page_ops['reset_button_text'], 'secondary', $this->get_field_name( 'reset' ), false, array( 'onclick' => 'return genesis_confirm(\'' . esc_js( __( 'Are you sure you want to reset?', 'genesis' ) ) . '\');' ) );
+				submit_button( $this->page_ops['save_button_text'], 'primary', 'submit', false, array( 'id' => '' ) );
+				submit_button( $this->page_ops['reset_button_text'], 'secondary genesis-js-confirm-reset', $this->get_field_name( 'reset' ), false, array( 'id' => '' ) );
 				?>
 			</div>
 		</form>
@@ -563,6 +551,34 @@ abstract class Genesis_Admin_Boxes extends Genesis_Admin {
 	}
 
 	/**
+	 * Echo out the do_meta_boxes() and wrapping markup.
+	 *
+	 * This method can be overwritten in a child class, to adjust the markup surrounding the metaboxes, and optionally
+	 * call do_meta_boxes() with other contexts. The overwritten method MUST contain div elements with classes of
+	 * metabox-holder and postbox-container.
+	 *
+	 * @since 2.0.0
+	 */
+	public function do_metaboxes() {
+
+		global $wp_meta_boxes;
+
+		?>
+		<div class="metabox-holder">
+			<div class="postbox-container">
+				<?php
+				do_action( 'genesis_admin_before_metaboxes', $this->pagehook );
+				do_meta_boxes( $this->pagehook, 'main', null );
+				if ( isset( $wp_meta_boxes[$this->pagehook]['column2'] ) )
+					do_meta_boxes( $this->pagehook, 'column2', null );
+				do_action( 'genesis_admin_after_metaboxes', $this->pagehook );
+				?>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
 	 * Initialize the settings page, by enqueuing scripts
 	 *
 	 * @since 1.8.0
@@ -572,6 +588,7 @@ abstract class Genesis_Admin_Boxes extends Genesis_Admin {
 		add_action( 'load-' . $this->pagehook, array( $this, 'scripts' ) );
 		add_action( 'load-' . $this->pagehook, array( $this, 'metaboxes' ) );
 		add_filter( 'screen_layout_columns', array( $this, 'layout_columns' ), 10, 2 );
+		add_action( $this->pagehook . '_settings_page_boxes', array( $this, 'do_metaboxes' ) );
 		if ( method_exists( $this, 'help' ) )
 			add_action( 'load-' . $this->pagehook, array( $this, 'help' ) );
 

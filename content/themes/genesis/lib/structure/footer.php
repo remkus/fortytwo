@@ -54,7 +54,7 @@ function genesis_footer_widget_areas() {
 		$counter++;
 	}
 
-	echo apply_filters( 'genesis_footer_widget_areas', sprintf( '<div id="footer-widgets" class="footer-widgets">%2$s%1$s%3$s</div>', $output, genesis_structural_wrap( 'footer-widgets', 'open', 0 ), genesis_structural_wrap( 'footer-widgets', 'close', 0 ) ) );
+	echo apply_filters( 'genesis_footer_widget_areas', sprintf( '<div id="footer-widgets" class="footer-widgets">%2$s%1$s%3$s</div>', $output, genesis_structural_wrap( 'footer-widgets', 'open', 0 ), genesis_structural_wrap( 'footer-widgets', 'close', 0 ) ), $footer_widgets );
 
 }
 
@@ -68,7 +68,11 @@ add_action( 'genesis_footer', 'genesis_footer_markup_open', 5 );
  */
 function genesis_footer_markup_open() {
 
-	genesis_markup( '<footer class="site-footer">', '<div id="footer" class="footer">' );
+	genesis_markup( array(
+		'html5'   => '<footer %s>',
+		'xhtml'   => '<div id="footer" class="footer">',
+		'context' => 'site-footer',
+	) );
 	genesis_structural_wrap( 'footer', 'open' );
 
 }
@@ -84,7 +88,10 @@ add_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
 function genesis_footer_markup_close() {
 
 	genesis_structural_wrap( 'footer', 'close' );
-	genesis_markup( '</footer>', '</div><!-- end #footer -->' . "\n" );
+	genesis_markup( array(
+		'html5'   => '</footer>',
+		'xhtml'   => '</div>',
+	) );
 
 }
 
@@ -117,6 +124,10 @@ function genesis_do_footer() {
 	$creds     = $creds_text ? sprintf( '<div class="creds"><p>%s</p></div>', $creds_text ) : '';
 
 	$output = $backtotop . $creds;
+	
+	//** Only use credits if HTML5
+	if ( genesis_html5() )
+		$output = '<p>' . $creds_text . '</p>';
 
 	echo apply_filters( 'genesis_footer_output', $output, $backtotop_text, $creds_text );
 

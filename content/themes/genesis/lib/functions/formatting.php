@@ -31,10 +31,10 @@ function genesis_truncate_phrase( $text, $max_characters ) {
 
 	if ( strlen( $text ) > $max_characters ) {
 		/** Truncate $text to $max_characters + 1 */
-		$text = substr( $text, 0, $max_characters + 1 );
+		$text = mb_substr( $text, 0, $max_characters + 1 );
 
 		/** Truncate to the last space in the truncated string */
-		$text = trim( substr( $text, 0, strrpos( $text, ' ' ) ) );
+		$text = trim( mb_substr( $text, 0, strrpos( $text, ' ' ) ) );
 	}
 
 	return $text;
@@ -173,43 +173,32 @@ function genesis_strip_attr( $text, $elements, $attributes, $two_passes = true )
 }
 
 /**
- * Adds links to the contents of a tweet.
+ * Sanitize multiple HTML classes in one pass.
  *
- * Takes the content of a tweet, detects @replies, #hashtags, and
- * http:// links, and links them appropriately.
+ * Accepts either an array of <code>$classes</code>, or a space separated string of classes
+ * and sanitizes them using the <code>sanitize_html_class()</code> WordPress function.
  *
- * @since 1.1.0
+ * @since 2.0.0
  *
- * @link http://www.snipe.net/2009/09/php-twitter-clickable-links/
+ * @param $classes Array|String Classes to be sanitized.
+ * @param $return_format String The return format, 'input', 'string', or 'array'.
  *
- * @param string $text A string representing the content of a tweet
- *
- * @return string Linkified tweet content
+ * @return Array|String Array or String of sanitized classes.
  */
-function genesis_tweet_linkify( $text ) {
+function genesis_sanitize_html_classes( $classes, $return_format = 'input' ) {
 
-	$text = preg_replace( "#(^|[\n ])([\w]+?://[\w]+[^ \"\n\r\t< ]*)#", '\\1<a href="\\2" target="_blank">\\2</a>', $text );
-	$text = preg_replace( "#(^|[\n ])((www|ftp)\.[^ \"\t\n\r< ]*)#", '\\1<a href="http://\\2" target="_blank">\\2</a>', $text );
-	$text = preg_replace( '/@(\w+)/', '<a href="http://www.twitter.com/\\1" target="_blank">@\\1</a>', $text );
-	$text = preg_replace( '/#(\w+)/', '<a href="http://search.twitter.com/search?q=\\1" target="_blank">#\\1</a>', $text );
+	if ( 'input' == $return_format ) {
+		$return_format = is_array( $classes ) ? 'array' : 'string';
+	}
 
-	return $text;
+	$classes = is_array( $classes ) ? $classes : explode( ' ', $classes );
 
-}
+	$sanitized_classes = array_map( 'sanitize_html_class', $classes );
 
-/**
- * Helper function for dealing with entities.
- *
- * It passes text through the g_ent filter so that entities can be converted on-the-fly.
- *
- * @since 1.5.0
- *
- * @param string $text Optional.
- * @return mixed. Returns a string by default, but might be filtered to return another type.
- */
-function g_ent( $text = '' ) {
-
-	return apply_filters( 'g_ent', $text );
+	if ( 'array' == $return_format )
+		return $sanitized_classes;
+	else
+		return implode( ' ', $sanitized_classes );
 
 }
 

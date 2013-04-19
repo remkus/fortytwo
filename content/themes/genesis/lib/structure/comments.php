@@ -11,6 +11,7 @@
  */
 
 add_action( 'genesis_after_post', 'genesis_get_comments_template' );
+add_action( 'genesis_after_entry', 'genesis_get_comments_template' );
 /**
  * Output the comments at the end of posts / pages.
  *
@@ -19,6 +20,7 @@ add_action( 'genesis_after_post', 'genesis_get_comments_template' );
  *
  * @since 1.1.0
  *
+ * @global WP_Post $post Post object. 
  * @uses genesis_get_option()
  */
 function genesis_get_comments_template() {
@@ -45,8 +47,8 @@ add_action( 'genesis_comments', 'genesis_do_comments' );
  *
  * @uses genesis_get_option()
  *
- * @global stdClass $post Post object
- * @global WP_Query $wp_query
+ * @global WP_Post $post Post object.
+ * @global WP_Query $wp_query Query object.
  * @return null Returns early if on a page with Genesis pages comments off, or a post and Genesis posts comments off.
  */
 function genesis_do_comments() {
@@ -60,30 +62,28 @@ function genesis_do_comments() {
 	if ( have_comments() && ! empty( $wp_query->comments_by_type['comment'] ) ) {
 		?>
 		<div id="comments">
-			<?php echo apply_filters( 'genesis_title_comments', __( '<h3>Comments</h3>', 'genesis' ) ); ?>
-			<ol class="comment-list">
-				<?php do_action( 'genesis_list_comments' ); ?>
-			</ol>
-			<div class="navigation">
-				<div class="alignleft"><?php previous_comments_link() ?></div>
-				<div class="alignright"><?php next_comments_link() ?></div>
-			</div>
+			<?php
+			echo apply_filters( 'genesis_title_comments', __( '<h3>Comments</h3>', 'genesis' ) );
+			echo '<ol class="comment-list">';
+				do_action( 'genesis_list_comments' );
+			echo '</ol>';
+
+			//** Comment Navigation
+			$prev_link = get_previous_comments_link( apply_filters( 'genesis_prev_comments_link_text', '' ) );
+			$next_link = get_next_comments_link( apply_filters( 'genesis_next_comments_link_text', '' ) );
+			
+			if ( $prev_link || $next_link )
+				printf( '<div class="navigation"><div class="alignleft">%s</div><div class="alignright">%s</div></div>', $prev_link, $next_link );
+			?>
 		</div><!--end #comments-->
 		<?php
 	}
 	/** No comments so far */
-	else {
-		?>
-		<div id="comments">
-			<?php
-			/** Comments are open, but there are no comments */
-			if ( 'open' == $post->comment_status )
-				echo apply_filters( 'genesis_no_comments_text', '' );
-			else /** Comments are closed */
-				echo apply_filters( 'genesis_comments_closed_text', '' );
-			?>
-		</div><!--end #comments-->
-		<?php
+	elseif ( 'open' == $post->comment_status && $no_comments_text = apply_filters( 'genesis_no_comments_text', '' ) ) { 
+		printf( '<div id="comments">%s</div><!-- end #comments -->', $no_comments_text ); 
+	}
+	elseif ( $comments_closed_text = apply_filters( 'genesis_comments_closed_text', '' ) ) {
+		printf( '<div id="comments">%s</div><!-- end #comments -->', $comments_closed_text );
 	}
 
 }
@@ -96,12 +96,11 @@ add_action( 'genesis_pings', 'genesis_do_pings' );
  *
  * @uses genesis_get_option()
  *
- * @global stdClass $post Post object
  * @global WP_Query $wp_query Query object
  * @return null Returns early if on a page with Genesis pages trackbacks off, or a post and Genesis posts trackbacks off.
  */
 function genesis_do_pings() {
-	global $post, $wp_query;
+	global $wp_query;
 
 	/** Bail if trackbacks are off for this post type */
 	if ( ( is_page() && ! genesis_get_option( 'trackbacks_pages' ) ) || ( is_single() && ! genesis_get_option( 'trackbacks_posts' ) ) )
@@ -133,13 +132,14 @@ add_action( 'genesis_list_comments', 'genesis_default_list_comments' );
  */
 function genesis_default_list_comments() {
 
-	$args = array(
-		'type'			=> 'comment',
-		'avatar_size'	=> 48,
-		'callback'		=> 'genesis_comment_callback',
+	$defaults = array(
+		'type'        => 'comment',
+		'avatar_size' => 48,
+		'format'      => 'html5', //** Not necessary, but a good example
+		'callback'    => current_theme_supports( 'genesis-html5' ) ? 'genesis_html5_comment_callback' : 'genesis_comment_callback',
 	);
 
-	$args = apply_filters( 'genesis_comment_list_args', $args );
+	$args = apply_filters( 'genesis_comment_list_args', $defaults );
 
 	wp_list_comments( $args );
 
@@ -153,16 +153,16 @@ add_action( 'genesis_list_pings', 'genesis_default_list_pings' );
  */
 function genesis_default_list_pings() {
 
-	$args = array( 'type' => 'pings', );
-
-	$args = apply_filters( 'genesis_ping_list_args', $args );
+	$args = apply_filters( 'genesis_ping_list_args', array(
+		'type' => 'pings',
+	) );
 
 	wp_list_comments( $args );
 
 }
 
 /**
- * Comment callback for {@link genesis_default_comment_list()}.
+ * Comment callback for {@link genesis_default_comment_list()} if HTML5 is not active.
  *
  * @since 1.0.0
  *
@@ -170,7 +170,7 @@ function genesis_default_list_pings() {
  * @param array $args
  * @param integer $depth
  */
-function genesis_comment_callback( $comment, $args, $depth ) {
+function genesis_comment_callback( $comment, array $args, $depth ) {
 
 	$GLOBALS['comment'] = $comment; ?>
 
@@ -180,7 +180,7 @@ function genesis_comment_callback( $comment, $args, $depth ) {
 
 		<div class="comment-header">
 			<div class="comment-author vcard">
-				<?php echo get_avatar( $comment, $size = $args['avatar_size'] ); ?>
+				<?php echo get_avatar( $comment, $args['avatar_size'] ); ?>
 				<?php printf( __( '<cite class="fn">%s</cite> <span class="says">%s:</span>', 'genesis' ), get_comment_author_link(), apply_filters( 'comment_author_says_text', __( 'says', 'genesis' ) ) ); ?>
 		 	</div><!-- end .comment-author -->
 
@@ -208,6 +208,56 @@ function genesis_comment_callback( $comment, $args, $depth ) {
 
 }
 
+/**
+ * Comment callback for {@link genesis_default_comment_list()} if HTML5 is active.
+ *
+ * @since 2.0.0
+ *
+ * @param stdClass $comment
+ * @param array $args
+ * @param integer $depth
+ */
+function genesis_html5_comment_callback( $comment, array $args, $depth ) {
+
+	$GLOBALS['comment'] = $comment; ?>
+
+	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
+	<article>
+
+		<?php do_action( 'genesis_before_comment' ); ?>
+
+		<header class="comment-header">
+			<p class="comment-author">
+				<?php echo get_avatar( $comment, $args['avatar_size'] ); ?>
+				<?php printf( __( '<cite>%s</cite> <span class="says">%s:</span>', 'genesis' ), get_comment_author_link(), apply_filters( 'comment_author_says_text', __( 'says', 'genesis' ) ) ); ?>
+		 	</p><!-- end .comment-author -->
+
+			<p class="comment-meta">
+				<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>"><?php printf( __( '%1$s at %2$s', 'genesis' ), get_comment_date(), get_comment_time() ); ?></a>
+				<?php edit_comment_link( __( '(Edit)', 'genesis' ), '' ); ?>
+			</p><!-- end .comment-meta -->
+		</header>
+
+		<div class="comment-content">
+			<?php if ( $comment->comment_approved == '0' ) : ?>
+				<p class="alert"><?php echo apply_filters( 'genesis_comment_awaiting_moderation', __( 'Your comment is awaiting moderation.', 'genesis' ) ); ?></p>
+			<?php endif; ?>
+
+			<?php comment_text(); ?>
+		</div><!-- end .comment-content -->
+
+		<div class="comment-reply">
+			<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+		</div>
+
+		<?php do_action( 'genesis_after_comment' ); ?>
+
+	</article>
+	<?php
+	//** No ending </li> tag because of comment threading
+
+}
+
 add_action( 'genesis_comment_form', 'genesis_do_comment_form' );
 /**
  * Defines the comment form, hooked to <code>genesis_comment_form()</code>
@@ -222,7 +272,7 @@ function genesis_do_comment_form() {
 	if ( ( is_page() && ! genesis_get_option( 'comments_pages' ) ) || ( is_single() && ! genesis_get_option( 'comments_posts' ) ) )
 		return;
 
-	comment_form();
+	comment_form( array( 'format' => 'html5' ) );
 
 }
 
@@ -239,7 +289,11 @@ add_filter( 'comment_form_defaults', 'genesis_comment_form_args' );
  *
  * @return array Filterable array
  */
-function genesis_comment_form_args( $defaults ) {
+function genesis_comment_form_args( array $defaults ) {
+
+	//** Use WordPress default HTML5 comment form if themes supports HTML5
+	if ( current_theme_supports( 'genesis-html5' ) )
+		return $defaults;
 
 	global $user_identity, $id;
 

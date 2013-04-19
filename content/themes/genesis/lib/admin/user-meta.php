@@ -1,36 +1,34 @@
 <?php
 /**
- * Handles the insertion of Genesis-specific user meta information, including
- * what features a user has access to, and the SEO information for that user's
- * post archive.
+ * Genesis Framework.
  *
- * @category   Genesis
- * @package    Admin
- * @subpackage User-Meta
- * @author     StudioPress
- * @license    http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link       http://www.studiopress.com/themes/genesis
+ * @package Genesis\Admin
+ * @author  StudioPress
+ * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @link    http://my.studiopress.com/themes/genesis/
  */
 
 add_filter( 'user_contactmethods', 'genesis_user_contactmethods' );
 /**
  * Filter the contact methods registered for users.
  *
+ * Currently just adds a Google+ field.
+ *
  * @since 1.9.0
  *
  * @param array $contactmethods Array of contact methods.
  */
-function genesis_user_contactmethods( $contactmethods ) {
+function genesis_user_contactmethods( array $contactmethods ) {
 
 	$contactmethods['googleplus'] = __( 'Google+', 'genesis' );
 
 	return $contactmethods;
-	
+
 }
 
 add_action( 'admin_init', 'genesis_add_user_profile_fields' );
 /**
- * Hook the User profile options.
+ * Hook in the additional user profile fields.
  *
  * @since 1.9.0
  */
@@ -44,25 +42,23 @@ function genesis_add_user_profile_fields() {
 	add_action( 'edit_user_profile', 'genesis_user_seo_fields' );
 	add_action( 'show_user_profile', 'genesis_user_layout_fields' );
 	add_action( 'edit_user_profile', 'genesis_user_layout_fields' );
-	
+
 }
 
 /**
- * Adds fields for user permissions for Genesis features to the user edit screen.
+ * Add fields for user permissions for Genesis features to the user edit screen.
  *
  * Checkbox settings are:
- * - Enable Genesis Admin Menu?
- * - Enable SEO Settings Submenu?
- * - Enable Import/Export Submenu?
  *
- * @category Genesis
- * @package Admin
- * @subpackage User-Meta
+ * * Enable Genesis Admin Menu?
+ * * Enable SEO Settings Submenu?
+ * * Enable Import/Export Submenu?
  *
  * @since 1.4.0
  *
- * @param WP_User $user User object
- * @return false Return false if current user can not edit users
+ * @param \WP_User $user User object.
+ *
+ * @return false Return false if current user can not edit users.
  */
 function genesis_user_options_fields( $user ) {
 
@@ -76,12 +72,14 @@ function genesis_user_options_fields( $user ) {
 			<tr>
 				<th scope="row" valign="top"><?php _e( 'Genesis Admin Menus', 'genesis' ); ?></th>
 				<td>
-					<input id="meta[genesis_admin_menu]" name="meta[genesis_admin_menu]" type="checkbox" value="1" <?php checked( get_the_author_meta( 'genesis_admin_menu', $user->ID ) ); ?> />
-					<label for="meta[genesis_admin_menu]"><?php _e( 'Enable Genesis Admin Menu?', 'genesis' ); ?></label><br />
-					<input id="meta[genesis_seo_settings_menu]" name="meta[genesis_seo_settings_menu]" type="checkbox" value="1" <?php checked( get_the_author_meta( 'genesis_seo_settings_menu', $user->ID ) ); ?> />
-					<label for="meta[genesis_seo_settings_menu]"><?php _e( 'Enable SEO Settings Submenu?', 'genesis' ); ?></label><br />
-					<input id="meta[genesis_import_export_menu]" name="meta[genesis_import_export_menu]" type="checkbox" value="1" <?php checked( get_the_author_meta( 'genesis_import_export_menu', $user->ID ) ); ?> />
-					<label for="meta[genesis_import_export_menu]"><?php _e( 'Enable Import/Export Submenu?', 'genesis' ); ?></label>
+					<label for="meta[genesis_admin_menu]"><input id="meta[genesis_admin_menu]" name="meta[genesis_admin_menu]" type="checkbox" value="1" <?php checked( get_the_author_meta( 'genesis_admin_menu', $user->ID ) ); ?> />
+					<?php _e( 'Enable Genesis Admin Menu?', 'genesis' ); ?></label><br />
+
+					<label for="meta[genesis_seo_settings_menu]"><input id="meta[genesis_seo_settings_menu]" name="meta[genesis_seo_settings_menu]" type="checkbox" value="1" <?php checked( get_the_author_meta( 'genesis_seo_settings_menu', $user->ID ) ); ?> />
+					<?php _e( 'Enable SEO Settings Submenu?', 'genesis' ); ?></label><br />
+
+					<label for="meta[genesis_import_export_menu]"><input id="meta[genesis_import_export_menu]" name="meta[genesis_import_export_menu]" type="checkbox" value="1" <?php checked( get_the_author_meta( 'genesis_import_export_menu', $user->ID ) ); ?> />
+					<?php _e( 'Enable Import/Export Submenu?', 'genesis' ); ?></label>
 				</td>
 			</tr>
 		</tbody>
@@ -91,24 +89,23 @@ function genesis_user_options_fields( $user ) {
 }
 
 /**
- * Adds fields for author archives contents to the user edit screen.
+ * Add fields for author archives contents to the user edit screen.
  *
  * Input / Textarea fields are:
- * - Custom Archive Headline
- * - Custom Description Text
+ *
+ * * Custom Archive Headline
+ * * Custom Description Text
  *
  * Checkbox fields are:
- * - Enable Author Box on the User's Posts?
- * - Enable Author Box on this User's Archives?
  *
- * @category Genesis
- * @package Admin
- * @subpackage User-Meta
+ * * Enable Author Box on this User's Posts?
+ * * Enable Author Box on this User's Archives?
  *
  * @since 1.6.0
  *
- * @param WP_User $user User object
- * @return false Return false if current user can not edit users
+ * @param \WP_User $user User object.
+ *
+ * @return false Return false if current user can not edit users.
  */
 function genesis_user_archive_fields( $user ) {
 
@@ -139,10 +136,11 @@ function genesis_user_archive_fields( $user ) {
 			<tr>
 				<th scope="row" valign="top"><?php _e( 'Author Box', 'genesis' ); ?></th>
 				<td>
-					<input id="meta[genesis_author_box_single]" name="meta[genesis_author_box_single]" type="checkbox" value="1" <?php checked( get_the_author_meta( 'genesis_author_box_single', $user->ID ) ); ?> />
-					<label for="meta[genesis_author_box_single]"><?php _e( 'Enable Author Box on this User\'s Posts?', 'genesis' ); ?></label><br />
-					<input id="meta[genesis_author_box_archive]" name="meta[genesis_author_box_archive]" type="checkbox" value="1" <?php checked( get_the_author_meta( 'genesis_author_box_archive', $user->ID ) ); ?> />
-					<label for="meta[genesis_author_box_archive]"><?php _e( 'Enable Author Box on this User\'s Archives?', 'genesis' ); ?></label>
+					<label for="meta[genesis_author_box_single]"><input id="meta[genesis_author_box_single]" name="meta[genesis_author_box_single]" type="checkbox" value="1" <?php checked( get_the_author_meta( 'genesis_author_box_single', $user->ID ) ); ?> />
+					<?php _e( 'Enable Author Box on this User\'s Posts?', 'genesis' ); ?></label><br />
+
+					<label for="meta[genesis_author_box_archive]"><input id="meta[genesis_author_box_archive]" name="meta[genesis_author_box_archive]" type="checkbox" value="1" <?php checked( get_the_author_meta( 'genesis_author_box_archive', $user->ID ) ); ?> />
+					<?php _e( 'Enable Author Box on this User\'s Archives?', 'genesis' ); ?></label>
 				</td>
 			</tr>
 		</tbody>
@@ -152,26 +150,25 @@ function genesis_user_archive_fields( $user ) {
 }
 
 /**
- * Adds fields for author archive SEO to the user edit screen.
+ * Add fields for author archive SEO to the user edit screen.
  *
  * Input / Textarea fields are:
- * - Custom Document Title
- * - Meta Description
- * - Meta Keywords
+ *
+ * * Custom Document Title
+ * * Meta Description
+ * * Meta Keywords
  *
  * Checkbox fields are:
- * - Apply noindex to this archive?
- * - Apply nofollow to this archive?
- * - Apply noarchive to this archive?
  *
- * @category Genesis
- * @package Admin
- * @subpackage User-Meta
+ * * Apply noindex to this archive?
+ * * Apply nofollow to this archive?
+ * * Apply noarchive to this archive?
  *
  * @since 1.4.0
  *
- * @param WP_User $user User object
- * @return false Return false if current user can not edit users
+ * @param \WP_User $user User object.
+ *
+ * @return false Return false if current user can not edit users.
  */
 function genesis_user_seo_fields( $user ) {
 
@@ -208,12 +205,14 @@ function genesis_user_seo_fields( $user ) {
 			<tr>
 				<th scope="row" valign="top"><?php _e( 'Robots Meta', 'genesis' ); ?></th>
 				<td>
-					<input id="meta[noindex]" name="meta[noindex]" id="noindex" type="checkbox" value="1" <?php checked( get_the_author_meta( 'noindex', $user->ID ) ); ?> />
-					<label for="meta[noindex]"><?php printf( __( 'Apply %s to this archive?', 'genesis' ), '<code>noindex</code>' ); ?></label><br />
-					<input id="meta[nofollow]" name="meta[nofollow]" id="nofollow" type="checkbox" value="1" <?php checked( get_the_author_meta( 'nofollow', $user->ID ) ); ?> />
-					<label for="meta[nofollow]"><?php printf( __( 'Apply %s to this archive?', 'genesis' ), '<code>nofollow</code>' ); ?></label><br />
-					<input id="meta[noarchive]" name="meta[noarchive]" id="noarchive" type="checkbox" value="1" <?php checked( get_the_author_meta( 'noarchive', $user->ID ) ); ?> />
-					<label for="meta[noarchive]"><?php printf( __( 'Apply %s to this archive?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
+					<label for="meta[noindex]"><input id="meta[noindex]" name="meta[noindex]" id="noindex" type="checkbox" value="1" <?php checked( get_the_author_meta( 'noindex', $user->ID ) ); ?> />
+					<?php printf( __( 'Apply %s to this archive?', 'genesis' ), '<code>noindex</code>' ); ?></label><br />
+
+					<label for="meta[nofollow]"><input id="meta[nofollow]" name="meta[nofollow]" id="nofollow" type="checkbox" value="1" <?php checked( get_the_author_meta( 'nofollow', $user->ID ) ); ?> />
+					<?php printf( __( 'Apply %s to this archive?', 'genesis' ), '<code>nofollow</code>' ); ?></label><br />
+
+					<label for="meta[noarchive]"><input id="meta[noarchive]" name="meta[noarchive]" id="noarchive" type="checkbox" value="1" <?php checked( get_the_author_meta( 'noarchive', $user->ID ) ); ?> />
+					<?php printf( __( 'Apply %s to this archive?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
 				</td>
 			</tr>
 		</tbody>
@@ -223,16 +222,15 @@ function genesis_user_seo_fields( $user ) {
 }
 
 /**
- * Adds author archive layout picker to the user edit screen.
- *
- * @category Genesis
- * @package Admin
- * @subpackage User-Meta
+ * Add author archive layout selector to the user edit screen.
  *
  * @since 1.4.0
  *
- * @param WP_User $user User object
- * @return false Return false if current user can not edit users
+ * @uses genesis_layout_selector() Layout selector.
+ *
+ * @param \WP_User $user User object.
+ *
+ * @return false Return false if current user can not edit users.
  */
 function genesis_user_layout_fields( $user ) {
 
@@ -269,17 +267,13 @@ function genesis_user_layout_fields( $user ) {
 add_action( 'personal_options_update',  'genesis_user_meta_save' );
 add_action( 'edit_user_profile_update', 'genesis_user_meta_save' );
 /**
- * Adds / updates user meta when user edit page is saved.
- *
- * @category Genesis
- * @package Admin
- * @subpackage User-Meta
+ * Update user meta when user edit page is saved.
  *
  * @since 1.4.0
  *
  * @param integer $user_id User ID
- * @return null Returns null if current user can not edit users, or no meta
- * fields submitted
+ *
+ * @return null Returns null if current user can not edit users, or no meta fields submitted.
  */
 function genesis_user_meta_save( $user_id ) {
 
@@ -308,8 +302,7 @@ function genesis_user_meta_save( $user_id ) {
 			'layout'                     => '',
 		)
 	);
-	
-	/** Sanitize */
+
 	$meta['headline']   = strip_tags( $meta['headline'] );
 	$meta['intro_text'] = current_user_can( 'unfiltered_html' ) ? $meta['intro_text'] : genesis_formatting_kses( $meta['intro_text'] );
 
@@ -322,72 +315,62 @@ add_filter( 'get_the_author_genesis_admin_menu',         'genesis_user_meta_defa
 add_filter( 'get_the_author_genesis_seo_settings_menu',  'genesis_user_meta_default_on', 10, 2 );
 add_filter( 'get_the_author_genesis_import_export_menu', 'genesis_user_meta_default_on', 10, 2 );
 /**
- * This filter function checks to see if user data has actually been saved,
- * or if defaults need to be forced.
+ * Check to see if user data has actually been saved, or if defaults need to be forced.
  *
- * This filter is useful for user options that need to be "on" by default, but
- * keeps us from having to push defaults into the database, which would be a
- * very expensive task.
- *
- * Yes, this function is hacky. Nathan did the best he could.
- *
- * @category Genesis
- * @package Admin
- * @subpackage User-Meta
+ * This filter is useful for user options that need to be "on" by default, but keeps us from having to push defaults
+ * into the database, which would be a very expensive task.
  *
  * @since 1.4.0
  *
- * @global bool|object $authordata User object if successful, false if not
- * @param string|boolean $value The submitted value
- * @param integer $user_id User ID
+ * @global bool|object authordata User object if successful, false if not.
+ *
+ * @param string|boolean $value   The submitted value.
+ * @param integer        $user_id User ID.
+ *
  * @return string|integer Submitted value, or 1.
  */
 function genesis_user_meta_default_on( $value, $user_id ) {
 
-	/** Get the name of the field by removing the prefix from the active filter */
+	//* Get the name of the field by removing the prefix from the active filter
 	$field = str_replace( 'get_the_author_', '', current_filter() );
 
-	/** If a real value exists, simply return it */
+	//* If a real value exists, simply return it
 	if ( $value )
 		return $value;
 
-	/** Setup user data */
+	//* Setup user data
 	if ( ! $user_id )
 		global $authordata;
 	else
 		$authordata = get_userdata( $user_id );
 
-	/** Just in case */
+	//* Just in case
 	$user_field = "user_$field";
 	if ( isset( $authordata->$user_field ) )
 		return $authordata->user_field;
 
-	/** If an empty or false value exists, return it */
+	//* If an empty or false value exists, return it
 	if ( isset( $authordata->$field ) )
 		return $value;
 
-	/** If all that fails, default to true */
+	//* If all that fails, default to true
 	return 1;
 
 }
 
 add_filter( 'get_the_author_genesis_author_box_single', 'genesis_author_box_single_default_on', 10, 2 );
 /**
- * This is a special filter function to be used to conditionally force
- * a default 1 value for each users' author box setting.
- *
- * @category Genesis
- * @package Admin
- * @subpackage User-Meta
+ * Conditionally force a default 1 value for each users' author box setting.
  *
  * @since 1.4.0
  *
- * @uses genesis_get_option() Get Genesis setting
- * @uses genesis_user_meta_default_on() Get enforced conditional
+ * @uses genesis_get_option()           Get Genesis setting.
+ * @uses genesis_user_meta_default_on() Get enforced conditional.
  *
- * @param string $value Submitted
- * @param integer $user_id User ID
- * @return string Result to return
+ * @param string  $value   Submitted value.
+ * @param integer $user_id User ID.
+ *
+ * @return string Result.
  */
 function genesis_author_box_single_default_on( $value, $user_id ) {
 

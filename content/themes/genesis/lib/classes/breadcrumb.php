@@ -167,8 +167,6 @@ class Genesis_Breadcrumb {
 	 */
 	protected function get_404_crumb() {
 
-		global $wp_query;
-
 		$crumb = $this->args['labels']['404'];
 
 		return apply_filters( 'genesis_404_crumb', $crumb, $this->args );
@@ -180,7 +178,7 @@ class Genesis_Breadcrumb {
 	 *
 	 * @since 1.5.0
 	 *
-	 * @global mixed $wp_query
+	 * @global WP_Query $wp_query Query object.
 	 * @return string HTML markup
 	 */
 	protected function get_page_crumb() {
@@ -264,7 +262,7 @@ class Genesis_Breadcrumb {
 	 *
 	 * @since 1.5.0
 	 *
-	 * @global mixed $post Current post object
+	 * @param WP_Post $post Post object.
 	 * @return string HTML markup
 	 */
 	protected function get_single_crumb() {
@@ -362,7 +360,7 @@ class Genesis_Breadcrumb {
 	 *
 	 * @since 1.9.0
 	 *
-	 * @global mixed $wp_query The page query object
+	 * @global WP_Query $wp_query Query object.
 	 * @return string HTML markup
 	 */
 	protected function get_tax_crumb() {
@@ -444,7 +442,7 @@ class Genesis_Breadcrumb {
 	 *
 	 * @since 1.9.0
 	 *
-	 * @global mixed $wp_query The page query object
+	 * @global WP_Query $wp_query Query object.
 	 * @return string HTML markup
 	 */
 	protected function get_author_crumb() {

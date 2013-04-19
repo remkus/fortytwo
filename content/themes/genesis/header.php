@@ -24,15 +24,27 @@ do_action( 'genesis_meta' );
 wp_head(); /** we need this for plugins **/
 ?>
 </head>
-<body <?php body_class(); ?>>
 <?php
+genesis_markup( array(
+	'html5'   => '<body %s>',
+	'xhtml'   => sprintf( '<body %s>', join( ' ', get_body_class() ) ),
+	'context' => 'body',
+) );
 do_action( 'genesis_before' );
-?>
-<div id="wrap">
-<?php
+
+genesis_markup( array( 
+	'html5'   => '<div %s>',
+	'xhtml'   => '<div id="wrap">',
+	'context' => 'site-container',
+) );
+
 do_action( 'genesis_before_header' );
 do_action( 'genesis_header' );
 do_action( 'genesis_after_header' );
 
-echo '<div id="inner">';
-genesis_structural_wrap( 'inner' );
+genesis_markup( array( 
+	'html5'   => '<div %s>',
+	'xhtml'   => '<div id="inner">',
+	'context' => 'site-inner',
+) );
+genesis_structural_wrap( 'site-inner' );

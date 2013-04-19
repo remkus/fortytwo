@@ -63,15 +63,26 @@ function genesis_do_nav() {
 		$args = array(
 			'theme_location' => 'primary',
 			'container'      => '',
-			'menu_class'     => genesis_get_option( 'nav_superfish' ) ? 'menu genesis-nav-menu menu-primary superfish' : 'menu genesis-nav-menu menu-primary',
+			'menu_class'     => 'menu genesis-nav-menu menu-primary',
 			'echo'           => 0,
 		);
 
 		$nav = wp_nav_menu( $args );
 
-		$pattern = genesis_markup( '<nav class="primary">%2$s%1$s%3$s</nav>', '<div id="nav">%2$s%1$s%3$s</div>', 0 );
+		$nav_markup_open = genesis_markup( array(
+			'html5'   => '<nav %s>' . genesis_structural_wrap( 'menu-primary', 'open', 0 ),
+			'xhtml'   => '<div id="nav">' . genesis_structural_wrap( 'menu-primary', 'open', 0 ),
+			'context' => 'nav-primary',
+			'echo'    => false,
+		) );
+		
+		$nav_markup_close = genesis_markup( array(
+			'html5' => genesis_structural_wrap( 'menu-primary', 'close', 0 ) . '</nav>',
+			'xhtml' => genesis_structural_wrap( 'menu-primary', 'close', 0 ) . '</div>',
+			'echo'  => false,
+		) );
 
-		$nav_output = sprintf( $pattern, $nav, genesis_structural_wrap( 'nav', 'open', 0 ), genesis_structural_wrap( 'nav', 'close', 0 ) );
+		$nav_output = $nav_markup_open . $nav . $nav_markup_close;
 
 		echo apply_filters( 'genesis_do_nav', $nav_output, $nav, $args );
 
@@ -108,15 +119,26 @@ function genesis_do_subnav() {
 		$args = array(
 			'theme_location' => 'secondary',
 			'container'      => '',
-			'menu_class'     => genesis_get_option( 'subnav_superfish' ) ? 'menu genesis-nav-menu menu-secondary superfish' : 'menu genesis-nav-menu menu-secondary',
+			'menu_class'     => 'menu genesis-nav-menu menu-secondary',
 			'echo'           => 0,
 		);
 
 		$subnav = wp_nav_menu( $args );
 
-		$pattern = genesis_markup( '<nav class="secondary">%2$s%1$s%3$s</nav>', '<div id="subnav">%2$s%1$s%3$s</div>', 0 );
+		$subnav_markup_open = genesis_markup( array(
+			'html5'   => '<nav %s>' . genesis_structural_wrap( 'menu-secondary', 'open', 0 ),
+			'xhtml'   => '<div id="subnav">' . genesis_structural_wrap( 'menu-secondary', 'open', 0 ),
+			'context' => 'nav-secondary',
+			'echo'    => false,
+		) );
+		
+		$subnav_markup_close = genesis_markup( array(
+			'html5' => genesis_structural_wrap( 'menu-secondary', 'close', 0 ) . '</nav>',
+			'xhtml' => genesis_structural_wrap( 'menu-secondary', 'close', 0 ) . '</div>',
+			'echo'  => false,
+		) );
 
-		$subnav_output = sprintf( $pattern, $subnav, genesis_structural_wrap( 'subnav', 'open', 0 ), genesis_structural_wrap( 'subnav', 'close', 0 ) );
+		$subnav_output = $subnav_markup_open . $subnav . $subnav_markup_close;
 
 		echo apply_filters( 'genesis_do_subnav', $subnav_output, $subnav, $args );
 
@@ -134,14 +156,12 @@ add_filter( 'wp_nav_menu_items', 'genesis_nav_right', 10, 2 );
  * @uses genesis_get_option() Get navigation extras settings
  *
  * @param string $menu HTML string of list items
- * @param array $args Menu arguments
+ * @param stdClass $args Menu arguments
  * @return string Amended HTML string of list items
  */
-function genesis_nav_right( $menu, $args ) {
+function genesis_nav_right( $menu, stdClass $args ) {
 
-	$args = (array) $args;
-
-	if ( ! genesis_get_option( 'nav_extras_enable' ) || 'primary' != $args['theme_location'] )
+	if ( ! genesis_get_option( 'nav_extras_enable' ) || 'primary' != $args->theme_location )
 		return $menu;
 
 	switch ( genesis_get_option( 'nav_extras' ) ) {

@@ -1,23 +1,20 @@
 <?php
 /**
- * Creates the SEO Settings page.
+ * Genesis Framework.
  *
- * @category Genesis
- * @package  Admin
- * @author   StudioPress
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link     http://www.studiopress.com/themes/genesis
+ * @package Genesis\Admin
+ * @author  StudioPress
+ * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @link    http://my.studiopress.com/themes/genesis/
  */
 
 /**
- * Registers a new admin page, providing content and corresponding menu item
- * for the SEO Settings page.
+ * Registers a new admin page, providing content and corresponding menu item for the SEO Settings page.
  *
- * Although this class was added in 1.8.0, some of the methods were originally
- * standalone functions added in previous versions of Genesis.
+ * Although this class was added in 1.8.0, some of the methods were originally standalone functions added in previous
+ * versions of Genesis.
  *
- * @category Genesis
- * @package Admin
+ * @package Genesis\Admin
  *
  * @since 1.8.0
  */
@@ -28,10 +25,8 @@ class Genesis_Admin_SEO_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.8.0
 	 *
-	 * @uses GENESIS_SEO_SETTINGS_FIELD settings field key
-	 *
-	 * @global string $_genesis_seo_settings_pagehook SEO Settings page hook,
-	 * kept for backwards compatibility, since this class now uses $this->pagehook.
+	 * @uses GENESIS_SEO_SETTINGS_FIELD Settings field key.
+	 * @uses \Genesis_Admin::create()   Create an admin menu item and settings page.
 	 */
 	function __construct() {
 
@@ -61,9 +56,10 @@ class Genesis_Admin_SEO_Settings extends Genesis_Admin_Boxes {
 			array(
 				'append_description_home'      => 1,
 				'append_site_title'            => 0,
-				'doctitle_sep'                 => g_ent( '&mdash;' ),
+				'doctitle_sep'                 => '–',
 				'doctitle_seplocation'         => 'right',
 
+				'semantic_headings'            => 1,
 				'home_h1_on'                   => 'title',
 				'home_doctitle'                => '',
 				'home_description'             => '',
@@ -102,13 +98,13 @@ class Genesis_Admin_SEO_Settings extends Genesis_Admin_Boxes {
 	}
 
 	/**
-	 * Registers each of the settings with a sanitization filter type.
+	 * Register each of the settings with a sanitization filter type.
 	 *
 	 * @since 1.7.0
 	 *
-	 * @uses genesis_add_option_filter() Assign filter to array of settings
+	 * @uses genesis_add_option_filter() Assign filter to array of settings.
 	 *
-	 * @see Genesis_Settings_Sanitizer::add_filter()
+	 * @see \Genesis_Settings_Sanitizer::add_filter() Add sanitization filters to options.
 	 */
 	public function sanitizer_filters() {
 
@@ -162,11 +158,11 @@ class Genesis_Admin_SEO_Settings extends Genesis_Admin_Boxes {
  	 *
  	 * @since 1.0.0
  	 *
- 	 * @see Genesis_Admin_SEO_Settings::doctitle_box() Callback for document title box
- 	 * @see Genesis_Admin_SEO_Settings::homepage_box() Callback for home page box
- 	 * @see Genesis_Admin_SEO_Settings::document_head_box() Callback for document head box
- 	 * @see Genesis_Admin_SEO_Settings::robots_meta_box() Callback for robots meta box
- 	 * @see Genesis_Admin_SEO_Settings::archives_box() Callback for archives box
+ 	 * @see \Genesis_Admin_SEO_Settings::doctitle_box()      Callback for document title box.
+ 	 * @see \Genesis_Admin_SEO_Settings::homepage_box()      Callback for home page box.
+ 	 * @see \Genesis_Admin_SEO_Settings::document_head_box() Callback for document head box.
+ 	 * @see \Genesis_Admin_SEO_Settings::robots_meta_box()   Callback for robots meta box.
+ 	 * @see \Genesis_Admin_SEO_Settings::archives_box()      Callback for archives box.
  	 */
 	function metaboxes() {
 
@@ -183,26 +179,27 @@ class Genesis_Admin_SEO_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_SEO_Settings::metaboxes()
+	 * @see \Genesis_Admin_SEO_Settings::metaboxes() Register meta boxes on the SEO Settings page.
 	 */
 	function doctitle_box() {
 
 		?>
-		<p><span class="description"><?php printf( __( 'The document title (%s) is the single most important element in your document source for <abbr title="Search engine optimization">SEO</abbr>. It succinctly informs search engines of what information is contained in the document. The title can, and should, be different on each page, but these options will help you control what it will look like by default.', 'genesis' ), '<code>&lt;title&gt;</code>' ); ?></span></p> 
+		<p><span class="description"><?php printf( __( 'The document title (%s) is the single most important element in your document source for <abbr title="Search engine optimization">SEO</abbr>. It succinctly informs search engines of what information is contained in the document. The title can, and should, be different on each page, but these options will help you control what it will look like by default.', 'genesis' ), '<code>&lt;title&gt;</code>' ); ?></span></p>
 
-		<p><span class="description"><?php _e( '<strong>By default</strong>, the home page document title will contain the site title, the single post and page document titles will contain the post or page title, the archive pages will contain the archive type, etc.', 'genesis' ); ?></span></p> 
+		<p><span class="description"><?php _e( '<strong>By default</strong>, the home page document title will contain the site title, the single post and page document titles will contain the post or page title, the archive pages will contain the archive type, etc.', 'genesis' ); ?></span></p>
 
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'append_description_home' ); ?>" id="<?php echo $this->get_field_id( 'append_description_home' ); ?>" value="1" <?php checked( $this->get_field_value( 'append_description_home' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'append_description_home' ); ?>"><?php printf( __( 'Add site description (tagline) to %s on home page?', 'genesis' ), '<code>&lt;title&gt;</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'append_description_home' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'append_description_home' ); ?>" id="<?php echo $this->get_field_id( 'append_description_home' ); ?>" value="1" <?php checked( $this->get_field_value( 'append_description_home' ) ); ?> />
+			<?php printf( __( 'Add site description (tagline) to %s on home page?', 'genesis' ), '<code>&lt;title&gt;</code>' ); ?></label>
 		</p>
 
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'append_site_title' ); ?>" id="<?php echo $this->get_field_id( 'append_site_title' ); ?>" value="1" <?php checked( $this->get_field_value( 'append_site_title' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'append_site_title' ); ?>"><?php printf( __( 'Add site name to %s on inner pages?', 'genesis' ), '<code>&lt;title&gt;</code>' ); ?> </label>
+			<label for="<?php echo $this->get_field_id( 'append_site_title' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'append_site_title' ); ?>" id="<?php echo $this->get_field_id( 'append_site_title' ); ?>" value="1" <?php checked( $this->get_field_value( 'append_site_title' ) ); ?> />
+			<?php printf( __( 'Add site name to %s on inner pages?', 'genesis' ), '<code>&lt;title&gt;</code>' ); ?> </label>
 		</p>
 
 		<fieldset>
@@ -233,17 +230,26 @@ class Genesis_Admin_SEO_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_SEO_Settings::metaboxes()
+	 * @see \Genesis_Admin_SEO_Settings::metaboxes() Register meta boxes on the SEO Settings page.
 	 */
 	function homepage_box() {
 
-		?>
-		<fieldset>
+		if ( current_theme_supports( 'genesis-html5' ) ) : ?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'semantic_headings' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'semantic_headings' ); ?>" id="<?php echo $this->get_field_id( 'semantic_headings' ); ?>" value="1" <?php checked( $this->get_field_value( 'semantic_headings' ) ); ?> />
+			<?php _e( 'Use semantic HTML5 page and section headings?', 'genesis' ); ?></label>
+		</p>
+		
+		<p><span class="description"><?php printf( __( 'HTML5 allows for multiple %s tags throughout the document source, provided they are the primary title for the section in which they appear. However, following this standard may have a marginal negative impact on SEO.', 'genesis' ), '<code>&lt;h1&gt;</code>' ); ?></span></p>
+
+		<?php endif; ?>
+
+		<fieldset <?php echo current_theme_supports( 'genesis-html5' ) ? 'id="genesis_seo_h1_wrap"' : '';?>>
 			<legend><?php printf( __( 'Which text would you like to be wrapped in %s tags?', 'genesis' ), '<code>&lt;h1&gt;</code>' ); ?></legend>
-			<span class="description"><?php printf( __( 'The %s tag is, arguably, the second most important <abbr title="Search engine optimization">SEO</abbr> tag in the document source. Choose wisely.', 'genesis' ), '<code>&lt;h1&gt;</code>' ); ?></span>
 
 			<p>
 				<input type="radio" name="<?php echo $this->get_field_name( 'home_h1_on' ); ?>" id="<?php echo $this->get_field_id( 'home_h1_on_title' ); ?>" value="title" <?php checked( $this->get_field_value( 'home_h1_on' ), 'title' ); ?> />
@@ -255,6 +261,7 @@ class Genesis_Admin_SEO_Settings extends Genesis_Admin_Boxes {
 				<input type="radio" name="<?php echo $this->get_field_name( 'home_h1_on' ); ?>" id="<?php echo $this->get_field_id( 'home_h1_on_neither' ); ?>" value="neither" <?php checked( $this->get_field_value( 'home_h1_on' ), 'neither' ); ?> />
 				<label for="<?php echo $this->get_field_id( 'home_h1_on_neither' ); ?>"><?php _e( 'Neither. I\'ll manually wrap my own text on the homepage', 'genesis' ); ?></label>
 			</p>
+		</fieldset>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'home_doctitle' ); ?>"><?php _e( 'Homepage Document Title:', 'genesis' ); ?></label><br />
@@ -277,14 +284,14 @@ class Genesis_Admin_SEO_Settings extends Genesis_Admin_Boxes {
 		<h4><?php _e( 'Homepage Robots Meta Tags:', 'genesis' ); ?></h4>
 
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'home_noindex' ); ?>" id="<?php echo $this->get_field_id( 'home_noindex' ); ?>" value="1" <?php checked( $this->get_field_value( 'home_noindex' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'home_noindex' ); ?>"><?php printf( __( 'Apply %s to the homepage?', 'genesis' ), '<code>noindex</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'home_noindex' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'home_noindex' ); ?>" id="<?php echo $this->get_field_id( 'home_noindex' ); ?>" value="1" <?php checked( $this->get_field_value( 'home_noindex' ) ); ?> />
+			<?php printf( __( 'Apply %s to the homepage?', 'genesis' ), '<code>noindex</code>' ); ?></label>
 			<br />
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'home_nofollow' ); ?>" id="<?php echo $this->get_field_id( 'home_nofollow' ); ?>" value="1" <?php checked( $this->get_field_value( 'home_nofollow' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'home_nofollow' ); ?>"><?php printf( __( 'Apply %s to the homepage?', 'genesis' ), '<code>nofollow</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'home_nofollow' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'home_nofollow' ); ?>" id="<?php echo $this->get_field_id( 'home_nofollow' ); ?>" value="1" <?php checked( $this->get_field_value( 'home_nofollow' ) ); ?> />
+			<?php printf( __( 'Apply %s to the homepage?', 'genesis' ), '<code>nofollow</code>' ); ?></label>
 			<br />
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'home_noarchive' ); ?>" id="<?php echo $this->get_field_id( 'home_noarchive' ); ?>" value="1" <?php checked( $this->get_field_value( 'home_noarchive' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'home_noarchive' ); ?>"><?php printf( __( 'Apply %s to the homepage?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'home_noarchive' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'home_noarchive' ); ?>" id="<?php echo $this->get_field_id( 'home_noarchive' ); ?>" value="1" <?php checked( $this->get_field_value( 'home_noarchive' ) ); ?> />
+			<?php printf( __( 'Apply %s to the homepage?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
 		</p>
 
 		<h4><?php _e( 'Homepage Author', 'genesis' ); ?></h4>
@@ -310,35 +317,36 @@ class Genesis_Admin_SEO_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.3.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_SEO_Settings::metaboxes()
+	 * @see \Genesis_Admin_SEO_Settings::metaboxes() Register meta boxes on the SEO Settings page.
 	 */
 	function document_head_box() {
 
 		?>
-		<p><span class="description"><?php printf( __( 'By default, WordPress places several tags in your document %1$s. Most of these tags are completely unnecessary, and provide no <abbr title="Search engine optimization">SEO</abbr> value whatsoever; they just make your site slower to load. Choose which tags you would like included in your document %1$s. If you do not know what something is, leave it unchecked.', 'genesis' ), '<code>&lt;head&gt;</code>' ); ?></span></p> 
+		<p><span class="description"><?php printf( __( 'By default, WordPress places several tags in your document %1$s. Most of these tags are completely unnecessary, and provide no <abbr title="Search engine optimization">SEO</abbr> value whatsoever; they just make your site slower to load. Choose which tags you would like included in your document %1$s. If you do not know what something is, leave it unchecked.', 'genesis' ), '<code>&lt;head&gt;</code>' ); ?></span></p>
 
 		<h4><?php _e( 'Relationship Link Tags:', 'genesis' ); ?></h4>
 
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'head_adjacent_posts_rel_link' ); ?>" id="<?php echo $this->get_field_id( 'head_adjacent_posts_rel_link' ); ?>" value="1" <?php checked( $this->get_field_value( 'head_adjacent_posts_rel_link' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'head_adjacent_posts_rel_link' ); ?>"><?php printf( __( 'Adjacent Posts %s link tags', 'genesis' ), '<code>rel</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'head_adjacent_posts_rel_link' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'head_adjacent_posts_rel_link' ); ?>" id="<?php echo $this->get_field_id( 'head_adjacent_posts_rel_link' ); ?>" value="1" <?php checked( $this->get_field_value( 'head_adjacent_posts_rel_link' ) ); ?> />
+			<?php printf( __( 'Adjacent Posts %s link tags', 'genesis' ), '<code>rel</code>' ); ?></label>
 		</p>
 
 		<h4><?php _e( 'Windows Live Writer Support:', 'genesis' ); ?></h4>
 
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'head_wlwmanifest_link' ); ?>" id="<?php echo $this->get_field_id( 'head_wlmanifest_link' ); ?>" value="1" <?php checked( $this->get_field_value( 'head_wlwmanifest_link' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'head_wlmanifest_link' ); ?>"><?php printf( __( 'Include Windows Live Writer Support Tag?', 'genesis' ) ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'head_wlmanifest_link' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'head_wlwmanifest_link' ); ?>" id="<?php echo $this->get_field_id( 'head_wlmanifest_link' ); ?>" value="1" <?php checked( $this->get_field_value( 'head_wlwmanifest_link' ) ); ?> />
+			<?php printf( __( 'Include Windows Live Writer Support Tag?', 'genesis' ) ); ?></label>
 		</p>
 
 		<h4><?php _e( 'Shortlink Tag:', 'genesis' ); ?></h4>
 
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'head_shortlink' ); ?>" id="<?php echo $this->get_field_id( 'head_shortlink' ); ?>" value="1" <?php checked( $this->get_field_value( 'head_shortlink' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'head_shortlink' ); ?>"><?php printf( __( 'Include Shortlink tag?', 'genesis' ) ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'head_shortlink' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'head_shortlink' ); ?>" id="<?php echo $this->get_field_id( 'head_shortlink' ); ?>" value="1" <?php checked( $this->get_field_value( 'head_shortlink' ) ); ?> />
+			<?php printf( __( 'Include Shortlink tag?', 'genesis' ) ); ?></label>
 		</p>
 		<p>
 			<span class="description"><?php _e( '<span class="genesis-admin-note">Note:</span> The shortlink tag might have some use for 3rd party service discoverability, but it has no <abbr title="Search engine optimization">SEO</abbr> value whatsoever.', 'genesis' ); ?></span>
@@ -350,15 +358,16 @@ class Genesis_Admin_SEO_Settings extends Genesis_Admin_Boxes {
 	/**
 	 * Callback for SEO Settings Robots meta box.
 	 *
-	 * Variations of some of the settings contained in this meta box were first added to
-	 * a 'Search Engine Indexing' meta box, added in 1.0.0.
+	 * Variations of some of the settings contained in this meta box were first added to a 'Search Engine Indexing' meta
+	 * box, added in 1.0.0.
 	 *
 	 * @since 1.3.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_SEO_Settings::metaboxes()
+	 * @see \Genesis_Admin_SEO_Settings::metaboxes() Register meta boxes on the SEO Settings page.
 	 */
 	function robots_meta_box() {
 
@@ -366,54 +375,54 @@ class Genesis_Admin_SEO_Settings extends Genesis_Admin_Boxes {
 		<p><span class="description"><?php _e( 'Depending on your situation, you may or may not want the following archive pages to be indexed by search engines. Only you can make that determination.', 'genesis' ); ?></span></p>
 
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'noindex_cat_archive' ); ?>" id="<?php echo $this->get_field_id( 'noindex_cat_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noindex_cat_archive' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'noindex_cat_archive' ); ?>"><?php printf( __( 'Apply %s to Category Archives?', 'genesis' ), '<code>noindex</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'noindex_cat_archive' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'noindex_cat_archive' ); ?>" id="<?php echo $this->get_field_id( 'noindex_cat_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noindex_cat_archive' ) ); ?> />
+			<?php printf( __( 'Apply %s to Category Archives?', 'genesis' ), '<code>noindex</code>' ); ?></label>
 			<br />
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'noindex_tag_archive' ); ?>" id="<?php echo $this->get_field_id( 'noindex_tag_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noindex_tag_archive' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'noindex_tag_archive' ); ?>"><?php printf( __( 'Apply %s to Tag Archives?', 'genesis' ), '<code>noindex</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'noindex_tag_archive' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'noindex_tag_archive' ); ?>" id="<?php echo $this->get_field_id( 'noindex_tag_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noindex_tag_archive' ) ); ?> />
+			<?php printf( __( 'Apply %s to Tag Archives?', 'genesis' ), '<code>noindex</code>' ); ?></label>
 			<br />
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'noindex_author_archive' ); ?>" id="<?php echo $this->get_field_id( 'noindex_author_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noindex_author_archive' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'noindex_author_archive' ); ?>"><?php printf( __( 'Apply %s to Author Archives?', 'genesis' ), '<code>noindex</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'noindex_author_archive' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'noindex_author_archive' ); ?>" id="<?php echo $this->get_field_id( 'noindex_author_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noindex_author_archive' ) ); ?> />
+			<?php printf( __( 'Apply %s to Author Archives?', 'genesis' ), '<code>noindex</code>' ); ?></label>
 			<br />
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'noindex_date_archive' ); ?>" id="<?php echo $this->get_field_id( 'noindex_date_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noindex_date_archive' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'noindex_date_archive' ); ?>"><?php printf( __( 'Apply %s to Date Archives?', 'genesis' ), '<code>noindex</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'noindex_date_archive' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'noindex_date_archive' ); ?>" id="<?php echo $this->get_field_id( 'noindex_date_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noindex_date_archive' ) ); ?> />
+			<?php printf( __( 'Apply %s to Date Archives?', 'genesis' ), '<code>noindex</code>' ); ?></label>
 			<br />
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'noindex_search_archive' ); ?>" id="<?php echo $this->get_field_id( 'noindex_search_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noindex_search_archive' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'noindex_search_archive' ); ?>"><?php printf( __( 'Apply %s to Search Archives?', 'genesis' ), '<code>noindex</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'noindex_search_archive' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'noindex_search_archive' ); ?>" id="<?php echo $this->get_field_id( 'noindex_search_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noindex_search_archive' ) ); ?> />
+			<?php printf( __( 'Apply %s to Search Archives?', 'genesis' ), '<code>noindex</code>' ); ?></label>
 		</p>
 
-		<p><span class="description"><?php printf( __( 'Some search engines will cache pages in your site (e.g. Google Cache). The %1$s tag will prevent them from doing so. Choose which archives you want %1$s applied to.', 'genesis' ), '<code>noarchive</code>' ); ?></span></p> 
+		<p><span class="description"><?php printf( __( 'Some search engines will cache pages in your site (e.g. Google Cache). The %1$s tag will prevent them from doing so. Choose which archives you want %1$s applied to.', 'genesis' ), '<code>noarchive</code>' ); ?></span></p>
 
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'noarchive' ); ?>" id="<?php echo $this->get_field_id( 'noarchive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noarchive' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'noarchive' ); ?>"><?php printf( __( 'Apply %s to Entire Site?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'noarchive' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'noarchive' ); ?>" id="<?php echo $this->get_field_id( 'noarchive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noarchive' ) ); ?> />
+			<?php printf( __( 'Apply %s to Entire Site?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
 		</p>
 
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'noarchive_cat_archive' ); ?>" id="<?php echo $this->get_field_id( 'noarchive_cat_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noarchive_cat_archive' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'noarchive_cat_archive' ); ?>"><?php printf( __( 'Apply %s to Category Archives?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'noarchive_cat_archive' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'noarchive_cat_archive' ); ?>" id="<?php echo $this->get_field_id( 'noarchive_cat_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noarchive_cat_archive' ) ); ?> />
+			<?php printf( __( 'Apply %s to Category Archives?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
 			<br />
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'noarchive_tag_archive' ); ?>" id="<?php echo $this->get_field_id( 'noarchive_tag_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noarchive_tag_archive' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'noarchive_tag_archive' ); ?>"><?php printf( __( 'Apply %s to Tag Archives?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'noarchive_tag_archive' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'noarchive_tag_archive' ); ?>" id="<?php echo $this->get_field_id( 'noarchive_tag_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noarchive_tag_archive' ) ); ?> />
+			<?php printf( __( 'Apply %s to Tag Archives?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
 			<br />
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'noarchive_author_archive' ); ?>" id="<?php echo $this->get_field_id( 'noarchive_author_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noarchive_author_archive' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'noarchive_author_archive' ); ?>"><?php printf( __( 'Apply %s to Author Archives?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'noarchive_author_archive' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'noarchive_author_archive' ); ?>" id="<?php echo $this->get_field_id( 'noarchive_author_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noarchive_author_archive' ) ); ?> />
+			<?php printf( __( 'Apply %s to Author Archives?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
 			<br />
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'noarchive_date_archive' ); ?>" id="<?php echo $this->get_field_id( 'noarchive_date_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noarchive_date_archive' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'noarchive_date_archive' ); ?>"><?php printf( __( 'Apply %s to Date Archives?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'noarchive_date_archive' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'noarchive_date_archive' ); ?>" id="<?php echo $this->get_field_id( 'noarchive_date_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noarchive_date_archive' ) ); ?> />
+			<?php printf( __( 'Apply %s to Date Archives?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
 			<br />
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'noarchive_search_archive' ); ?>" id="<?php echo $this->get_field_id( 'noarchive_search_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noarchive_search_archive' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'noarchive_search_archive' ); ?>"><?php printf( __( 'Apply %s to Search Archives?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'noarchive_search_archive' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'noarchive_search_archive' ); ?>" id="<?php echo $this->get_field_id( 'noarchive_search_archive' ); ?>" value="1" <?php checked( $this->get_field_value( 'noarchive_search_archive' ) ); ?> />
+			<?php printf( __( 'Apply %s to Search Archives?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
 		</p>
 
 		<p><span class="description"><?php printf( __( 'Occasionally, search engines use resources like the Open Directory Project and the Yahoo! Directory to find titles and descriptions for your content. Generally, you will not want them to do this. The %s and %s tags prevent them from doing so.', 'genesis' ), '<code>noodp</code>', '<code>noydir</code>' ); ?></span></p>
 
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'noodp' ); ?>" id="<?php echo $this->get_field_id( 'noodp' ); ?>" value="1" <?php checked( $this->get_field_value( 'noodp' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'noodp' ); ?>"><?php printf( __( 'Apply %s to your site?', 'genesis' ), '<code>noodp</code>' ) ?></label>
+			<label for="<?php echo $this->get_field_id( 'noodp' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'noodp' ); ?>" id="<?php echo $this->get_field_id( 'noodp' ); ?>" value="1" <?php checked( $this->get_field_value( 'noodp' ) ); ?> />
+			<?php printf( __( 'Apply %s to your site?', 'genesis' ), '<code>noodp</code>' ) ?></label>
 			<br />
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'noydir' ); ?>" id="<?php echo $this->get_field_id( 'noydir' ); ?>" value="1" <?php checked( $this->get_field_value( 'noydir' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'noydir' ); ?>"><?php printf( __( 'Apply %s to your site?', 'genesis' ), '<code>noydir</code>' ) ?></label>
+			<label for="<?php echo $this->get_field_id( 'noydir' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'noydir' ); ?>" id="<?php echo $this->get_field_id( 'noydir' ); ?>" value="1" <?php checked( $this->get_field_value( 'noydir' ) ); ?> />
+			<?php printf( __( 'Apply %s to your site?', 'genesis' ), '<code>noydir</code>' ) ?></label>
 		</p>
 		<?php
 
@@ -424,17 +433,18 @@ class Genesis_Admin_SEO_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.3.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_SEO_Settings::metaboxes()
+	 * @see \Genesis_Admin_SEO_Settings::metaboxes() Register meta boxes on the SEO Settings page.
 	 */
 	function archives_box() {
 
 		?>
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'canonical_archives' ); ?>" id="<?php echo $this->get_field_id( 'canonical_archives' ); ?>" value="1" <?php checked( $this->get_field_value( 'canonical_archives' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'canonical_archives' ); ?>"><?php printf( __( 'Canonical Paginated Archives', 'genesis' ) ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'canonical_archives' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'canonical_archives' ); ?>" id="<?php echo $this->get_field_id( 'canonical_archives' ); ?>" value="1" <?php checked( $this->get_field_value( 'canonical_archives' ) ); ?> />
+			<?php printf( __( 'Canonical Paginated Archives', 'genesis' ) ); ?></label>
 		</p>
 		<p>
 			<span class="description"><?php _e( 'This option points search engines to the first page of an archive, if viewing a paginated page. If you do not know what this means, leave it on.', 'genesis' ); ?></span>

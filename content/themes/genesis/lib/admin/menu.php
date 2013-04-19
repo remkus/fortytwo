@@ -1,50 +1,48 @@
 <?php
 /**
- * Controls the Genesis admin menu.
+ * Genesis Framework.
  *
- * @category   Genesis
- * @package    Admin
- * @subpackage Menu
- * @author     StudioPress
- * @license    http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link       http://www.studiopress.com/themes/genesis
+ * @package Genesis\Admin
+ * @author  StudioPress
+ * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @link    http://my.studiopress.com/themes/genesis/
  */
 
 add_action( 'after_setup_theme', 'genesis_add_admin_menu' );
 /**
  * Adds Genesis top-level item in admin menu.
  *
- * Calls the genesis_admin_menu hook at the end - all submenu items should be
- * attached to that hook to ensure correct ordering.
+ * Calls the genesis_admin_menu hook at the end - all submenu items should be attached to that hook to ensure
+ * correct ordering.
  *
  * @since 0.2.0
+ *
+ * @global \Genesis_Admin_Settings _genesis_admin_settings          Theme Settings page object.
+ * @global string                  _genesis_theme_settings_pagehook Old backwards-compatible pagehook.
  *
  * @return null Returns null if Genesis menu is disabled, or disabled for current user
  */
 function genesis_add_admin_menu() {
 
-	/** Do nothing, if not viewing the admin */
 	if ( ! is_admin() )
 		return;
 
 	global $_genesis_admin_settings;
 
-	/** Don't add menu item if programatically disabled */
 	if ( ! current_theme_supports( 'genesis-admin-menu' ) )
 		return;
 
-	/** Don't add menu item if disabled for current user */
+	//* Don't add menu item if disabled for current user
 	$user = wp_get_current_user();
 	if ( ! get_the_author_meta( 'genesis_admin_menu', $user->ID ) )
 		return;
 
 	$_genesis_admin_settings = new Genesis_Admin_Settings;
 
-	/** set the old global pagehook var for backward compatibility */
+	//* Set the old global pagehook var for backward compatibility
 	global $_genesis_theme_settings_pagehook;
 	$_genesis_theme_settings_pagehook = $_genesis_admin_settings->pagehook;
 
-	/** Hook here to create submenus */
 	do_action( 'genesis_admin_menu' );
 
 }
@@ -91,11 +89,32 @@ function genesis_add_admin_submenus() {
 	if ( current_theme_supports( 'genesis-import-export-menu' ) && get_the_author_meta( 'genesis_import_export_menu', $user->ID ) )
 		$_genesis_admin_import_export = new Genesis_Admin_Import_Export;
 
-	/** Add README file submenu item, if it exists */
-	if ( current_theme_supports( 'genesis-readme-menu' ) && file_exists( CHILD_DIR . '/README.txt' ) )
-		$_genesis_admin_readme = new Genesis_Admin_Readme;
-
 	/** Add the upgraded page (no menu) */
 	new Genesis_Admin_Upgraded;
 
+}
+
+add_action( 'admin_menu', 'genesis_add_cpt_archive_page', 5 );
+/**
+ * Add archive settings page to relevant custom post type registrations.
+ *
+ * An instance of Genesis_Admin_CPT_Archive_Settings is instantiated for each relevant CPT, assigned to an individual
+ * global variable.
+ *
+ * @since 2.0.0
+ *
+ * @uses \Genesis_Admin_CPT_Archive_Settings     CPT Archive Settings page class.
+ * @uses genesis_get_cpt_archive_types()         Get list of custom post types which need an archive settings page.
+ * @uses genesis_has_post_type_archive_support() Check post type has archive support.
+ */
+function genesis_add_cpt_archive_page() {
+	$post_types = genesis_get_cpt_archive_types();
+
+	foreach( $post_types as $post_type ) {
+		if ( genesis_has_post_type_archive_support( $post_type->name ) ) {
+			$admin_object_name = '_genesis_admin_cpt_archives_' . $post_type->name;
+			global ${$admin_object_name};
+			${$admin_object_name} = new Genesis_Admin_CPT_Archive_Settings( $post_type );
+		}
+	}
 }

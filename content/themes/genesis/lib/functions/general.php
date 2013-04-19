@@ -11,6 +11,21 @@
  **/
 
 /**
+ * Helper function for plugins to determine if Genesis is active and meets version requirements.
+ *
+ * @since 2.0.0
+ *
+ * @param string $version Optional. The minimum version to check against.
+ *
+ * @return boolean True if requirements met, false otherwise.
+ */
+function genesis_is_active( $version = PARENT_THEME_VERSION ) {
+
+	return version_compare( PARENT_THEME_VERSION, (string) $version, '>=' );
+
+}
+
+/**
  * Helper function to enable the author box for ALL users.
  *
  * @since 1.4.1
@@ -18,7 +33,7 @@
  * @param array $args Optional. Arguments for enabling author box. Default is
  * empty array
  */
-function genesis_enable_author_box( $args = array() ) {
+function genesis_enable_author_box( array $args = array() ) {
 
 	$args = wp_parse_args( $args, array( 'type' => 'single' ) );
 
@@ -40,7 +55,7 @@ function genesis_enable_author_box( $args = array() ) {
  * arguments (key => value). Default is an empty array
  * @return null Returns early if first argument is falsy
  */
-function genesis_admin_redirect( $page, $query_args = array() ) {
+function genesis_admin_redirect( $page, array $query_args = array() ) {
 
 	if ( ! $page )
 		return;
@@ -64,14 +79,15 @@ function genesis_admin_redirect( $page, $query_args = array() ) {
  *
  * @param string $feature The theme feature.
  * @param string $arg The theme feature argument.
- * @return mixed Returns false if theme doesn't support $feature or $arg key doesn't exist.
+ * @param string $default Fallback if value is blank or doesn't exist.
+ * @return mixed Returns $default if theme doesn't support $feature or $arg key doesn't exist.
  */
-function genesis_get_theme_support_arg( $feature, $arg ) {
+function genesis_get_theme_support_arg( $feature, $arg, $default = '' ) {
 
 	$support = get_theme_support( $feature );
 
 	if ( ! $support || ! isset( $support[0] ) || ! array_key_exists( $arg, (array) $support[0] ) )
-		return false;
+		return $default;
 
 	return $support[0][ $arg ];
 
@@ -87,7 +103,7 @@ function genesis_get_theme_support_arg( $feature, $arg ) {
  * @return boolean True if plugin exists or false if plugin constant, class or
  * function not detected.
  */
-function genesis_detect_plugin( $plugins ) {
+function genesis_detect_plugin( array $plugins ) {
 
 	/** Check for classes */
 	if ( isset( $plugins['classes'] ) ) {
@@ -146,27 +162,124 @@ function genesis_is_menu_page( $pagehook = '' ) {
 }
 
 /**
- * Helper function to output markup conditionally.
+ * Helper function to check whether we are currently viewing the site via the WordPress Customizer.
  *
- * If the child theme supports HTML5, then this function will output the $html5_tag. Otherwise,
- * it will output the xHTML tag.
+ * @since 2.0.0
  *
- * @since 1.9.0
- *
- * @param string $html5_tag Markup to output if HTML5 is supported.
- * @param string $xhtml_tag Markup to output if HTML5 is not supported.
- * @param boolean $echo Conditional to determine output or return.
+ * @global $wp_customize
+ * @return boolean Returns true if viewing page via Customizer, false otherwise.
  */
-function genesis_markup( $html5_tag = '', $xhtml_tag = '', $echo = true ) {
+function genesis_is_customizer() {
 
-	if ( ! $html5_tag || ! $xhtml_tag )
-		return;
+	global $wp_customize;
 
-	$tag = current_theme_supports( 'genesis-html5' ) ? $html5_tag : $xhtml_tag;
+	if ( isset( $wp_customize ) )
+		return true;
 
-	if ( $echo )
-		echo $tag;
-	else
-		return $tag;
+	return false;
 
+}
+
+/**
+ * Get the post_type from the global $post if supplied value is empty.
+ *
+ * @since 2.0.0
+ *
+ * @global WP_Post $post Post object.
+ *
+ * @param string $post_type_name Post type name.
+ *
+ * @return string
+ */
+function genesis_get_global_post_type_name( $post_type_name = '' ) {
+	if ( ! $post_type_name ) {
+		global $post;
+		$post_type_name = $post->post_type;
+	}
+	return $post_type_name;
+}
+
+/**
+ * Get list of custom post types which need an archive settings page.
+ *
+ * * Archive settings pages are added for CPTs that:
+ *
+ * * are public,
+ * * are set to show the UI,
+ * * have an archive enabled,
+ * * support "genesis-cpt-archive-settings".
+ *
+ * This last item means that if you're using an archive template and don't want
+ * Genesis interfering with it with these archive settings, then don't add the
+ * support.
+ *
+ * The results are held in a static variable, since they won't change over the course of a request.
+ *
+ * @since 2.0.0
+ *
+ * @return array
+ */
+function genesis_get_cpt_archive_types() {
+	static $genesis_cpt_archive_types;
+	if ( $genesis_cpt_archive_types )
+		return $genesis_cpt_archive_types;
+
+	$args = apply_filters(
+		'genesis_cpt_archives_args',
+		array(
+			'public'       => true,
+			'show_ui'      => true,
+			'show_in_menu' => true,
+			'has_archive'  => true,
+			'_builtin'     => false,
+		)
+	);
+
+	$genesis_cpt_archive_types = get_post_types( $args, 'objects' );
+
+	return $genesis_cpt_archive_types;
+}
+
+/**
+ * Get list of custom post type names which need archive settings pages.
+ *
+ * @since 2.0.0
+ *
+ * @uses genesis_get_cpt_archive_types()
+ *
+ * @return array
+ */
+function genesis_get_cpt_archive_types_names() {
+	foreach ( genesis_get_cpt_archive_types() as $post_type )
+		$post_type_names[] = $post_type->name;
+
+	return $post_type_names;
+}
+
+/**
+ * Check if a post type should potentially support an archive setting page.
+ *
+ * @since 2.0.0
+ *
+ * @uses genesis_get_global_post_type_name()
+ * @uses genesis_get_cpt_archive_types_names()
+ *
+ * @param string $post_type_name Post type name.
+ *
+ * @return bool
+ */
+function genesis_has_post_type_archive_support( $post_type_name = '' ) {
+	$post_type_name = genesis_get_global_post_type_name( $post_type_name );
+
+	return in_array( $post_type_name, genesis_get_cpt_archive_types_names() ) &&
+		post_type_supports( $post_type_name, 'genesis-cpt-archives-settings' );
+}
+
+/**
+ * Helper function to determine if HTML5 is activated by the child theme.
+ *
+ * @since 2.0.0
+ */
+function genesis_html5() {
+	return current_theme_supports( 'genesis-html5' );
 }

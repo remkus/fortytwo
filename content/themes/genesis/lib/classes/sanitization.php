@@ -65,7 +65,7 @@ class Genesis_Settings_Sanitizer {
 	 * @param array $suboption Optional. Suboption key
 	 * @return boolean Returns true when complete
 	 */
-	function add_filter( $filter, $option, $suboption = null ) {
+	function add_filter( $filter, $option, array $suboption = null ) {
 
 		if ( is_array( $suboption ) ) {
 			foreach ( $suboption as $so ) {
@@ -121,6 +121,7 @@ class Genesis_Settings_Sanitizer {
 		$default_filters = array(
 			'one_zero'                 => array( $this, 'one_zero'                 ),
 			'no_html'                  => array( $this, 'no_html'                  ),
+			'absint'                   => array( $this, 'absint'                   ),
 			'safe_html'                => array( $this, 'safe_html'                ),
 			'requires_unfiltered_html' => array( $this, 'requires_unfiltered_html' ),
 			'url'                      => array( $this, 'url'                      ),
@@ -179,6 +180,20 @@ class Genesis_Settings_Sanitizer {
 	function one_zero( $new_value ) {
 
 		return (int) (bool) $new_value;
+
+	}
+	
+	/**
+	 * Returns a positive integer value.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param mixed $new_value Should ideally be a positive integer.
+	 * @return integer Positive integer.
+	 */
+	function absint( $new_value ) {
+
+		return absint( $new_value );
 
 	}
 
@@ -275,7 +290,7 @@ function genesis_add_option_filter( $filter, $option, $suboption = null ) {
 
 }
 
-add_action( 'init', 'genesis_settings_sanitizer_init' );
+add_action( 'admin_init', 'genesis_settings_sanitizer_init' );
 /**
  * Instantiate the Sanitizer.
  *

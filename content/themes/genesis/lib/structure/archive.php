@@ -25,7 +25,7 @@ add_action( 'genesis_before_loop', 'genesis_do_taxonomy_title_description', 15 )
  *
  * @since 1.3.0
  *
- * @global WP_Query $wp_query
+ * @global WP_Query $wp_query Query object.
  * @return null Returns null if not the correct achive page, not page 1, or no
  * term meta is set.
  */
@@ -52,7 +52,7 @@ function genesis_do_taxonomy_title_description() {
 		$intro_text = apply_filters( 'genesis_term_intro_text_output', $term->meta['intro_text'] );
 
 	if ( $headline || $intro_text )
-		printf( '<div class="taxonomy-description">%s</div>', $headline . $intro_text );
+		printf( '<div class="archive-description taxonomy-description">%s</div>', $headline . $intro_text );
 
 }
 
@@ -87,7 +87,7 @@ function genesis_do_author_title_description() {
 	$intro_text = $intro_text ? apply_filters( 'genesis_author_intro_text_output', $intro_text ) : '';
 
 	if ( $headline || $intro_text )
-		printf( '<div class="author-description">%s</div>', $headline . $intro_text );
+		printf( '<div class="archive-description author-description">%s</div>', $headline . $intro_text );
 
 }
 
@@ -113,4 +113,38 @@ function genesis_do_author_box_archive() {
 	if ( get_the_author_meta( 'genesis_author_box_archive', get_query_var( 'author' ) ) )
 		genesis_author_box( 'archive' );
 
+}
+
+add_filter( 'genesis_cpt_archive_intro_text_output', 'wpautop' );
+add_action( 'genesis_before_loop', 'genesis_do_cpt_archive_title_description' );
+/**
+ * Add custom headline and description to relevant custom post type archive pages.
+ *
+ * If we're not on a post type archive page, or not on page 1, then nothing extra
+ * is displayed.
+ *
+ * If there's a custom headline to display, it is marked up as a level 1 heading.
+ * If there's a description (intro text) to display, it is run through wpautop()
+ * before being added to a div.
+ *
+ * @since 2.0.0
+ *
+ * @return null Returns null if not on relevant post type archive.
+ */
+function genesis_do_cpt_archive_title_description() {
+
+	if ( ! is_post_type_archive() || ! genesis_has_post_type_archive_support() )
+		return;
+
+	if ( get_query_var( 'paged' ) >= 2 )
+		return;
+
+	$headline   = genesis_get_cpt_option( 'headline' );
+	$intro_text = genesis_get_cpt_option( 'intro_text' );
+
+	$headline   = $headline ? sprintf( '<h1 class="archive-title">%s</h1>', $headline ) : '';
+	$intro_text = $intro_text ? apply_filters( 'genesis_cpt_archive_intro_text_output', $intro_text ) : '';
+
+	if ( $headline || $intro_text )
+		printf( '<div class="archive-description cpt-archive-description">%s</div>', $headline . $intro_text );
 }

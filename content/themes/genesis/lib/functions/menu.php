@@ -34,36 +34,6 @@ function genesis_nav_menu_supported( $menu ) {
 }
 
 /**
- * Determines if the superfish script is enabled.
- *
- * @since 1.9.0
- *
- * @return boolean
- */
-function genesis_superfish_enabled() {
-
-	/** Short circuit option */
-	$pre = apply_filters( 'genesis_superfish_enabled', null );
-	if ( null !== $pre )
-		return $pre;
-
-	/** If primary menu is active, and if the superfish setting is checked */
-	if ( genesis_nav_menu_supported( 'primary' ) && genesis_get_option( 'nav_superfish' ) )
-		return true;
-
-	/** If secondary menu is active, and if the superfish setting is checked */
-	if ( genesis_nav_menu_supported( 'secondary' ) && genesis_get_option( 'subnav_superfish' ) )
-		return true;
-
-	/** If a custom menu widget is in use on the site */
-	if ( is_active_widget( 0, 0, 'nav_menu' ) )
-		return true;
-
-	return false;
-
-}
-
-/**
  * Echoes or returns a pages or categories menu.
  *
  * Now only used for backwards-compatibility (genesis_vestige).
@@ -98,7 +68,7 @@ function genesis_superfish_enabled() {
  * @param array $args Menu arguments
  * @return string HTML for menu (unless genesis_pre_nav returns something truthy)
  */
-function genesis_nav( $args = array() ) {
+function genesis_nav( array $args = array() ) {
 
 	if ( isset( $args['context'] ) )
 		_deprecated_argument( __FUNCTION__, '1.2', __( 'The argument, "context", has been replaced with "theme_location" in the $args array.', 'genesis' ) );

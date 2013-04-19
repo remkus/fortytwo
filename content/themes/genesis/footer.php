@@ -17,17 +17,17 @@
  * @link     http://www.studiopress.com/themes/genesis
  */
 
-genesis_structural_wrap( 'inner', '</div><!-- end .wrap -->' );
-echo '</div><!-- end #inner -->';
+genesis_structural_wrap( 'site-inner', 'close' );
+echo '</div>'; //** end .site-inner or #inner
 
 do_action( 'genesis_before_footer' );
 do_action( 'genesis_footer' );
 do_action( 'genesis_after_footer' );
-?>
-</div><!-- end #wrap -->
-<?php
-	wp_footer(); // we need this for plugins
-	do_action( 'genesis_after' );
+
+echo '</div>'; //** end .site-container or #wrap
+
+do_action( 'genesis_after' );
+wp_footer(); /** we need this for plugins */
 ?>
 </body>
 </html>
