@@ -11,7 +11,7 @@
 // ==ClosureCompiler==
 // @compilation_level ADVANCED_OPTIMIZATIONS
 // @output_file_name admin.js
-// @externs_url http://closure-compiler.googlecode.com/svn/trunk/contrib/externs/jquery-1.7.js
+// @externs_url http://closure-compiler.googlecode.com/svn/trunk/contrib/externs/jquery-1.8.js
 // ==/ClosureCompiler==
 // http://closure-compiler.appspot.com/home
 
@@ -27,6 +27,8 @@
  */
 window['genesis'] = {
 
+	settingsChanged: false,
+
 	/**
 	 * Inserts a category checklist toggle button and binds the behaviour.
 	 *
@@ -38,7 +40,7 @@ window['genesis'] = {
 		'use strict';
 
 		// Insert toggle button into DOM wherever there is a category checklist
-		jQuery('<p><span id="genesis-category-checklist-toggle" class="button">' + genesisL10n.category_checklist_toggle + '</span></p>').insertBefore('ul.categorychecklist');
+		jQuery('<p><span id="genesis-category-checklist-toggle" class="button">' + genesisL10n['categoryChecklistToggle'] + '</span></p>').insertBefore('ul.categorychecklist');
 
 		// Bind the behaviour to click
 		jQuery(document).on('click.genesis.genesis_category_checklist_toggle', '#genesis-category-checklist-toggle', genesis.category_checklist_toggle);
@@ -129,13 +131,15 @@ window['genesis'] = {
 		    $show_selector = jQuery(event.data.show_selector),
 		    check_value = event.data.check_value;
 
-		// Compare if a check_value is an  array, and one of them matches the value of the selected option
-		// OR the check_value is null, but the checkbox is marked
+		// Compare if a check_value is an array, and one of them matches the value of the selected option
+		// OR the check_value is _unchecked, but the checkbox is not marked
+		// OR the check_value is _checked, but the checkbox is marked
 		// OR it's a string, and that matches the value of the selected option.
 		if (
 			(jQuery.isArray(check_value) && jQuery.inArray($selector.val(), check_value) > -1) ||
-				(check_value === null && $selector.is(':checked')) ||
-				(check_value !== null && $selector.val() === check_value)
+				(check_value === '_unchecked' && $selector.is(':not(:checked)')) ||
+				(check_value === '_checked' && $selector.is(':checked')) ||
+				(check_value !== '_unchecked' && check_value !== '_checked' && $selector.val() === check_value)
 		) {
 			jQuery($show_selector).slideDown('fast');
 		} else {
@@ -202,8 +206,73 @@ window['genesis'] = {
 	confirm: function (text) {
 		'use strict';
 
-		return confirm(text) ? true : false;
+		return confirm(text);
 
+	},
+
+	/**
+	 * Have all form fields in Genesis metaboxes set a dirty flag when changed.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @function
+	 */
+	attachUnsavedChangesListener: function () {
+		'use strict';
+
+		jQuery('div.genesis-metaboxes :input').change(function(){
+			genesis.registerChange();
+		});
+		window.onbeforeunload = function(){
+			if ( genesis.settingsChanged )
+				return genesisL10n['saveAlert'];
+		};
+		jQuery('div.genesis-metaboxes input[type="submit"]').click(function(){
+			window.onbeforeunload = null;
+		});
+	},
+
+	/**
+	 * Set a flag, to indicate form fields have changed.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @function
+	 */
+	registerChange: function () {
+		'use strict';
+
+		genesis.settingsChanged = true;
+	},
+
+	/**
+	 * Ask user to confirm that a new version of Genesis should now be installed.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @function
+	 *
+	 * @return {Boolean} True if upgrade should occur, false if not.
+	 */
+	confirmUpgrade: function () {
+		'use strict';
+
+		return confirm(genesisL10n['confirmUpgrade']);
+	},
+
+	/**
+	 * Ask user to confirm that settings should now be reset.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @function
+	 *
+	 * @return {Boolean} True if reset should occur, false if not.
+	 */
+	confirmReset: function () {
+		'use strict';
+
+		return confirm(genesisL10n['confirmReset']);
 	},
 
 	/**
@@ -230,11 +299,20 @@ window['genesis'] = {
 		// Initialise settings that can toggle the display of other settings
 		genesis.toggle_settings_init();
 
+		// Initialise form field changing flag.
+		genesis.attachUnsavedChangesListener();
+
 		// Bind character counters
 		jQuery('#genesis_title, #genesis_description').on('keyup.genesis.genesis_character_count', genesis.update_character_count);
 
 		// Bind layout highlighter behaviour
 		jQuery('.genesis-layout-selector').on('change.genesis.genesis_layout_selector', 'input[type="radio"]', genesis.layout_highlighter);
+
+		// Bind upgrade confirmation
+		jQuery('.genesis-js-confirm-upgrade').on('click.genesis.genesis_confirm_upgrade', genesis.confirmUpgrade);
+
+		// Bind reset confirmation
+		jQuery('.genesis-js-confirm-reset').on('click.genesis.genesis_confirm_reset', genesis.confirmReset);
 
 	}
 

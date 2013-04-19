@@ -1,20 +1,17 @@
 <?php
 /**
- * Displays new features after upgrade.
+ * Genesis Framework.
  *
- * @category Genesis
- * @package  Admin
- * @author   StudioPress
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link     http://www.studiopress.com/themes/genesis
+ * @package Genesis\Admin
+ * @author  StudioPress
+ * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @link    http://my.studiopress.com/themes/genesis/
  */
 
 /**
- * Registers a new admin page, providing content and corresponding menu item
- * for the "What's new" page.
+ * Registers a new admin page, providing content and corresponding menu item for the "What's new" page.
  *
- * @category Genesis
- * @package Admin
+ * @package Genesis\Admin
  *
  * @since 1.9.0
  */
@@ -23,9 +20,10 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 	/**
 	 * Create the page.
 	 *
-	 * @uses Genesis_Admin::create() Register the admin page
+	 * @uses PARENT_THEME_BRANCH      Genesis Framework branch.
+	 * @uses \Genesis_Admin::create() Register the admin page.
 	 *
-	 * @since 1.8.0
+	 * @since 1.9.0
 	 */
 	function __construct() {
 
@@ -44,13 +42,9 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 	}
 
 	/**
-	 * Callback for displaying the Genesis Readme admin page.
+	 * Callback for displaying the What's New admin page.
 	 *
-	 * Checks if the file contents are readable, and echoes out HTML.
-	 *
-	 * @since 1.3.0
-	 *
-	 * @uses CHILD_DIR
+	 * @since 1.9.0
 	 */
 	public function admin() {
 
@@ -60,7 +54,7 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 		<img src="<?php echo get_template_directory_uri() . '/lib/admin/images/whats-new.png'; ?>" class="alignright whats-new" />
 
 		<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-		
+
 
 		<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! Using Genesis %s will give you more options than you\'ve ever had and your website will continue to purr like a kitten.', 'genesis' ), PARENT_THEME_BRANCH ); ?></div>
 
@@ -77,11 +71,11 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 				<img src="http://www.studiopress.com/images/whats-new/google-author.png" class="full-width-image" />
 				<h4><?php _e( 'Deprecating Widgets', 'genesis' ); ?></h4>
 				<p><?php _e( 'Genesis has always included some useful widgets to help you build your sites faster and easier. But lately, we realized that some of these widgets should really be plugins, so authors can push out updates more frequently, and you get more up to date code. So, the  "eNews & Updates" and "Latest Tweets" widgets are being ported to plugins, and will eventually be removed from Genesis.', 'genesis' ); ?></p>
-				
+
 				<h4><?php _e( 'Genesis Category/Page Menu Widgets Removed', 'genesis' ); ?></h4>
 				<p><?php _e( 'We deprecated the Category and Page menu widgets a few releases ago, and as of this release, we\'ve completely removed them from the framework. If you were still using either of these widgets, you will notice that your menu is no longer showing.', 'genesis' ); ?></p>
 				<p><?php printf( __( 'You will need to build a <a href="%s">custom menu</a> and add the custom menu widget to the Header Right widget area.', 'genesis' ), admin_url( 'nav-menus.php' ) ); ?></p>
-				
+
 				<h4><?php _e( 'Other Geeky Stuff', 'genesis' ); ?></h4>
 				<p><?php _e( 'We also fixed a lot of little bugs, improved some things, and generally made the framework a more solid foundation for you to use. We hope you enjoy this latest release!', 'genesis' ); ?></p>
 				</div>
@@ -99,9 +93,9 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 		</div>
 
 		<div class="project-leads">
-			
+
 			<h3><?php _e( 'Project Leads', 'genesis' ); ?></h3>
-			
+
 			<ul class="wp-people-group " id="wp-people-group-project-leaders">
 			<li class="wp-person" id="wp-person-nathan">
 				<a href="http://twitter.com/nathanrice"><img src="http://0.gravatar.com/avatar/fdbd4b13e3bcccb8b48cc18f846efb7f?s=60" class="gravatar" alt="Nathan Rice" /></a>
@@ -119,13 +113,13 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 				<span class="title"><?php _e( 'Lead Developer', 'genesis' ); ?></span>
 			</li>
 			</ul>
-		
+
 		</div>
-		
+
 		<div class="contributers">
-			
+
 			<h3><?php _e( 'Contributors', 'genesis' ); ?></h3>
-			
+
 			<ul class="wp-people-group " id="wp-people-group-project-leaders">
 			<li class="wp-person" id="wp-person-jared">
 				<a href="http://twitter.com/jaredatch"><img src="http://0.gravatar.com/avatar/e341eca9e1a85dcae7127044301b4363?s=60" class="gravatar" alt="Jared Atchison" /></a>
@@ -178,7 +172,7 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 				<span class="title"><?php _e( 'Contributor', 'genesis' ); ?></span>
 			</li>
 			</ul>
-		
+
 		</div>
 
 		<div class="return-to-dashboard">

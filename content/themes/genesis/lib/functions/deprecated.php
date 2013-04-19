@@ -12,6 +12,62 @@
  */
 
 /**
+ * Deprecated. Adds links to the contents of a tweet.
+ *
+ * Takes the content of a tweet, detects @replies, #hashtags, and
+ * http:// links, and links them appropriately.
+ *
+ * @since 1.1.0
+ * @deprecated 2.0.0
+ *
+ * @link http://www.snipe.net/2009/09/php-twitter-clickable-links/
+ *
+ * @param string $text A string representing the content of a tweet
+ *
+ * @return string Linkified tweet content
+ */
+function genesis_tweet_linkify( $text ) {
+
+	_deprecated_function( __FUNCTION__, '2.0.0' );
+
+	$text = preg_replace( "#(^|[\n ])([\w]+?://[\w]+[^ \"\n\r\t< ]*)#", '\\1<a href="\\2" target="_blank">\\2</a>', $text );
+	$text = preg_replace( "#(^|[\n ])((www|ftp)\.[^ \"\t\n\r< ]*)#", '\\1<a href="http://\\2" target="_blank">\\2</a>', $text );
+	$text = preg_replace( '/@(\w+)/', '<a href="http://www.twitter.com/\\1" target="_blank">@\\1</a>', $text );
+	$text = preg_replace( '/#(\w+)/', '<a href="http://search.twitter.com/search?q=\\1" target="_blank">#\\1</a>', $text );
+
+	return $text;
+
+}
+
+/**
+ * Deprecated. Provides a callback function for the custom header admin page.
+ *
+ * @since 1.6.0
+ * @deprecated 2.0.0
+ */
+function genesis_custom_header_admin_style() {
+
+	_deprecated_function( __FUNCTION__, '2.0.0' );
+
+}
+
+/**
+ * Deprecated. Determines if the superfish script is enabled.
+ *
+ * @since 1.9.0
+ * @deprecated 2.0.0
+ *
+ * @return boolean
+ */
+function genesis_superfish_enabled() {
+
+	_deprecated_function( __FUNCTION__, '2.0.0', __( 'genesis_superfish_enabled filter', 'genesis' ) );
+
+	return apply_filters( 'genesis_superfish_enabled', false );
+
+}
+
+/**
  * Deprecated. Filters the attributes array in the wp_get_attachment_image function.
  *
  * For some reason, the wp_get_attachment_image() function uses the caption
@@ -23,7 +79,7 @@
  * @param array    $attr       Associative array of image attributes and values.
  * @param stdClass $attachment Attachment (Post) object.
  */
-function genesis_filter_attachment_image_attributes( $attr, $attachment ) {
+function genesis_filter_attachment_image_attributes( array $attr, $attachment ) {
 
 	_deprecated_function( __FUNCTION__, '1.8.0' );
 
@@ -38,7 +94,7 @@ function genesis_filter_attachment_image_attributes( $attr, $attachment ) {
  * @param string $name     Input name (will be an array) of checkboxes.
  * @param array  $selected Optional. Array of checked inputs. Default is empty array.
  */
-function genesis_page_checklist( $name, $selected = array() ) {
+function genesis_page_checklist( $name, array $selected = array() ) {
 
 	_deprecated_function( __FUNCTION__, '1.8.0' );
 
@@ -53,7 +109,7 @@ function genesis_page_checklist( $name, $selected = array() ) {
  * @param string $name     Input name (will be an array) of checkboxes.
  * @param array  $selected Optional. Array of checked inputs. Default is empty array.
  */
-function genesis_category_checklist( $name, $selected = array() ) {
+function genesis_category_checklist( $name, array $selected = array() ) {
 
 	_deprecated_function( __FUNCTION__, '1.8.0' );
 
@@ -972,7 +1028,7 @@ function genesis_add_image_size( $name, $width = 0, $height = 0, $crop = false )
  *
  * @return array Empty array.
  */
-function genesis_add_intermediate_sizes( $sizes ) {
+function genesis_add_intermediate_sizes( array $sizes ) {
 
 	_deprecated_function( __FUNCTION__, '1.2.0' );
 
@@ -992,5 +1048,36 @@ function genesis_comment() {
 	_deprecated_function( __FUNCTION__, '1.2.0', "do_action( 'genesis_after_comment' )" );
 
 	do_action( 'genesis_after_comment' );
+
+}
+
+/**
+ * Deprecated. Helper function for dealing with entities.
+ *
+ * It passes text through the g_ent filter so that entities can be converted on-the-fly.
+ *
+ * @since 1.5.0
+ *
+ * @param string $text Optional.
+ * @return mixed. Returns a string by default, but might be filtered to return another type.
+ */
+function g_ent( $text = '' ) {
+
+	_deprecated_function( __FUNCTION__, '2.0.0', __( 'decimal or hexidecimal entities', 'genesis' ) );
+
+	return apply_filters( 'g_ent', $text );
+
+}
+
+/**
+ * Deprecated. Remove the Genesis theme files from the Theme Editor,
+ * except when Genesis is the current theme.
+ *
+ * @since 1.4.0
+ *
+ */
+function genesis_theme_files_to_edit() {
+
+	_deprecated_function( __FUNCTION__, '2.0.0' );
 
 }

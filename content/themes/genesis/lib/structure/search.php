@@ -24,19 +24,17 @@ function genesis_search_form() {
 
 	$button_text = apply_filters( 'genesis_search_button_text', esc_attr__( 'Search', 'genesis' ) );
 
-	$onfocus = " onfocus=\"if (this.value == '$search_text') {this.value = '';}\"";
-	$onblur  = " onblur=\"if (this.value == '') {this.value = '$search_text';}\"";
+	$onfocus = "onfocus=\"if (this.value == '$search_text') {this.value = '';}\"";
+	$onblur  = "onblur=\"if (this.value == '') {this.value = '$search_text';}\"";
 	
 	/** Empty label, by default. Filterable. */
 	$label = apply_filters( 'genesis_search_form_label', '' );
 
-	$form = '
-		<form method="get" class="searchform search-form" action="' . home_url() . '/" >
-			' . $label . '
-			<input type="text" value="' . esc_attr( $search_text ) . '" name="s" class="s search-input"' . $onfocus . $onblur . ' />
-			<input type="submit" class="searchsubmit search-submit" value="' . esc_attr( $button_text ) . '" />
-		</form>
-	';
+	$xhtml_form = sprintf( '<form method="get" class="searchform search-form" action="%s" role="search" >%s<input type="text" value="%s" name="s" class="s search-input" %s %s /><input type="submit" class="searchsubmit search-submit" value="%s" /></form>', home_url( '/' ), $label, esc_attr( $search_text ), $onfocus, $onblur, esc_attr( $button_text ) );
+
+	$html5_form = sprintf( '<form method="get" class="search-form" action="%s" role="search">%s<input type="search" name="s" placeholder="%s" results="5" /><input type="submit" value="%s" /></form>', home_url( '/' ), $label, $search_text, esc_attr( $button_text ) );
+
+	$form = genesis_html5() ? $html5_form : $xhtml_form;
 
 	return apply_filters( 'genesis_search_form', $form, $search_text, $button_text, $label );
 

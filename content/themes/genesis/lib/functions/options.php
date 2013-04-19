@@ -40,7 +40,7 @@ function genesis_get_option( $key, $setting = null, $use_cache = true ) {
 	$setting = $setting ? $setting : GENESIS_SETTINGS_FIELD;
 
 	/** If we need to bypass the cache */
-	if ( ! $use_cache ) {
+	if ( ! $use_cache || genesis_is_customizer() ) {
 		$options = get_option( $setting );
 
 		if ( ! is_array( $options ) || ! array_key_exists( $key, $options ) )
@@ -140,6 +140,42 @@ function genesis_seo_option( $key, $use_cache = true ) {
 }
 
 /**
+ * Return a CPT Archive setting value from the options table.
+ *
+ * @since 2.0.0
+ *
+ * @uses genesis_get_global_post_type_name()
+ * @uses genesis_get_option()
+ * @uses GENESIS_CPT_ARCHIVE_SETTINGS_FIELD_PREFIX
+ *
+ * @param string $key            Option name.
+ * @param string $post_type_name Post type name.
+ * @param bool   $use_cache      Optional. Whether to use the Genesis cache value or not. Defaults to true.
+ *
+ * @return mixed The option value.
+ */
+function genesis_get_cpt_option( $key, $post_type_name = '', $use_cache = true ) {
+	$post_type_name = genesis_get_global_post_type_name( $post_type_name );
+
+	return genesis_get_option( $key, GENESIS_CPT_ARCHIVE_SETTINGS_FIELD_PREFIX . $post_type_name, $use_cache );
+}
+
+/**
+ * Echo a CPT Archive option from the options table.
+ *
+ * @since 2.0.0
+ *
+ * @uses genesis_get_cpt_option()
+ *
+ * @param string $key            Option name.
+ * @param string $post_type_name Post type name.
+ * @param bool   $use_cache      Optional. Whether to use the Genesis cache value or not. Defaults to true.
+ */
+function genesis_cpt_option( $key, $post_type_name, $use_cache = true ) {
+	echo genesis_get_cpt_option( $key, $post_type_name, $use_cache );
+}
+
+/**
  * Echo data from a post/page custom field.
  *
  * Echo only the first value of custom field.
@@ -149,10 +185,11 @@ function genesis_seo_option( $key, $use_cache = true ) {
  * @uses genesis_get_custom_field()
  *
  * @param string $field Custom field key.
+ * @param string $output_pattern (s)printf compatible output pattern.
  */
-function genesis_custom_field( $field ) {
+function genesis_custom_field( $field, $output_pattern = '%s' ) {
 
-	echo genesis_get_custom_field( $field );
+	printf( $output_pattern, genesis_get_custom_field( $field ) );
 
 }
 
@@ -164,8 +201,8 @@ function genesis_custom_field( $field ) {
  *
  * @since 0.1.3
  *
- * @global integer $id Post ID.
  * @global stdClass $post Post object.
+ * @global integer $id Post ID.
  * @param string $field Custom field key.
  * @return string|boolean Return value or false on failure.
  */
@@ -180,11 +217,11 @@ function genesis_get_custom_field( $field ) {
 
 	$custom_field = get_post_meta( $post_id, $field, true );
 
+	//** Return custom field, slashes stripped, sanitized if string
 	if ( $custom_field )
-		/** Sanitize and return the value of the custom field */
-		return stripslashes( wp_kses_decode_entities( $custom_field ) );
+		return is_array( $custom_field ) ? stripslashes_deep( $custom_field ) : stripslashes( wp_kses_decode_entities( $custom_field ) );
 
-	/** Return false if custom field is empty */
+	//** Return false if custom field is empty
 	return false;
 
 }
@@ -213,7 +250,7 @@ function genesis_get_custom_field( $field ) {
  *               ajax or future post, false if update or delete failed, and true
  *               on success.
  */
-function genesis_save_custom_fields( $data, $nonce_action, $nonce_name, $post, $post_id ) {
+function genesis_save_custom_fields( array $data, $nonce_action, $nonce_name, $post, $post_id ) {
 
 	/**	Verify the nonce */
 	if ( ! isset( $_POST[ $nonce_name ] ) || ! wp_verify_nonce( $_POST[ $nonce_name ], $nonce_action ) )
@@ -231,8 +268,8 @@ function genesis_save_custom_fields( $data, $nonce_action, $nonce_name, $post, $
 	if ( 'revision' == $post->post_type )
 		return;
 
-	/**	Check the user allowed to edit the post or page */
-	if ( ( 'page' == $post->post_type && ! current_user_can( 'edit_page' ) ) || ! current_user_can( 'edit_post' ) )
+	/**	Check that the user is allowed to edit the post */
+	if ( ! current_user_can( 'edit_post', $post->ID ) )
 		return;
 
 	/** Cycle through $data, insert value or delete field */
@@ -260,12 +297,16 @@ add_filter( 'get_term', 'genesis_get_term_filter', 10, 2 );
  */
 function genesis_get_term_filter( $term, $taxonomy ) {
 
+	//** Do nothing, if $term is not object
+	if ( ! is_object( $term ) )
+		return $term;
+
 	$db = get_option( 'genesis-term-meta' );
 	$term_meta = isset( $db[$term->term_id] ) ? $db[$term->term_id] : array();
 
 	$term->meta = wp_parse_args( $term_meta, apply_filters( 'genesis_term_meta_defaults', array(
 		'headline'            => '',
-		'intro_text'          => '', 
+		'intro_text'          => '',
 		'display_title'       => 0, /** vestigial */
 		'display_description' => 0, /** vestigial */
 		'doctitle'            => '',
@@ -286,6 +327,25 @@ function genesis_get_term_filter( $term, $taxonomy ) {
 
 	return $term;
 
+}
+
+add_filter( 'get_terms', 'genesis_get_terms_filter', 10, 2 );
+/**
+ * Add Genesis' term-meta data to functions that return
+ * multiple terms.
+ *
+ * @since 2.0.0
+ *
+ * @param array $terms Database row objects.
+ * @param string $taxonomy Taxonomy name that $terms are part of.
+ * @return array $terms Database row objects.
+ */
+function genesis_get_terms_filter( array $terms, $taxonomy ) {
+
+	foreach( $terms as $term )
+		$term = genesis_get_term_filter( $term, $taxonomy );
+		
+	return $terms;
 }
 
 /**

@@ -1,30 +1,23 @@
 <?php
 /**
- * Outputs the Genesis-specific in-post option boxes.
+ * Genesis Framework.
  *
- * It also handles saving the user input from those boxes, when a post or page
- * gets published or updated.
- *
- * @category   Genesis
- * @package    Admin
- * @subpackage Inpost-metaboxes
- * @author     StudioPress
- * @license    http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link       http://www.studiopress.com/themes/genesis
+ * @package Genesis\Admin
+ * @author  StudioPress
+ * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @link    http://my.studiopress.com/themes/genesis/
  */
 
 add_action( 'admin_menu', 'genesis_add_inpost_seo_box' );
 /**
- * Register a new meta box to the post / page edit screen, so that the user can
- * set SEO options on a per-post or per-page basis.
+ * Register a new meta box to the post or page edit screen, so that the user can set SEO options on a per-post or
+ * per-page basis.
  *
- * @category Genesis
- * @package Admin
- * @subpackage Inpost-Metaboxes
+ * If the post type does not support genesis-seo, then the SEO meta box will not be added.
  *
  * @since 0.1.3
  *
- * @see genesis_inpost_seo_box() Generates the content in the meta box
+ * @see genesis_inpost_seo_box() Generates the content in the meta box.
  */
 function genesis_add_inpost_seo_box() {
 
@@ -38,13 +31,9 @@ function genesis_add_inpost_seo_box() {
 /**
  * Callback for in-post SEO meta box.
  *
- * Echoes out HTML.
- *
- * @category Genesis
- * @package Admin
- * @subpackage Inpost-Metaboxes
- *
  * @since 0.1.3
+ *
+ * @uses genesis_get_custom_field() Get custom field value.
  */
 function genesis_inpost_seo_box() {
 
@@ -71,20 +60,15 @@ function genesis_inpost_seo_box() {
 	<p><b><?php _e( 'Robots Meta Settings', 'genesis' ); ?></b></p>
 
 	<p>
-		<input type="checkbox" name="genesis_seo[_genesis_noindex]" id="genesis_noindex" value="1" <?php checked( genesis_get_custom_field( '_genesis_noindex' ) ); ?> />
-		<label for="genesis_noindex"><?php printf( __( 'Apply %s to this post/page', 'genesis' ), '<code>noindex</code>' ); ?> <a href="http://yoast.com/articles/robots-meta-tags/" target="_blank">[?]</a></label><br />
+		<label for="genesis_noindex"><input type="checkbox" name="genesis_seo[_genesis_noindex]" id="genesis_noindex" value="1" <?php checked( genesis_get_custom_field( '_genesis_noindex' ) ); ?> />
+		<?php printf( __( 'Apply %s to this post/page', 'genesis' ), '<code>noindex</code>' ); ?> <a href="http://yoast.com/articles/robots-meta-tags/" target="_blank">[?]</a></label><br />
 
-		<input type="checkbox" name="genesis_seo[_genesis_nofollow]" id="genesis_nofollow" value="1" <?php checked( genesis_get_custom_field( '_genesis_nofollow' ) ); ?> />
-		<label for="genesis_nofollow"><?php printf( __( 'Apply %s to this post/page', 'genesis' ), '<code>nofollow</code>' ); ?> <a href="http://yoast.com/articles/robots-meta-tags/" target="_blank">[?]</a></label><br />
+		<label for="genesis_nofollow"><input type="checkbox" name="genesis_seo[_genesis_nofollow]" id="genesis_nofollow" value="1" <?php checked( genesis_get_custom_field( '_genesis_nofollow' ) ); ?> />
+		<?php printf( __( 'Apply %s to this post/page', 'genesis' ), '<code>nofollow</code>' ); ?> <a href="http://yoast.com/articles/robots-meta-tags/" target="_blank">[?]</a></label><br />
 
-		<input type="checkbox" name="genesis_seo[_genesis_noarchive]" id="genesis_noarchive" value="1" <?php checked( genesis_get_custom_field( '_genesis_noarchive' ) ); ?> />
-		<label for="genesis_nofollow"><?php printf( __( 'Apply %s to this post/page', 'genesis' ), '<code>noarchive</code>' ); ?> <a href="http://yoast.com/articles/robots-meta-tags/" target="_blank">[?]</a></label>
+		<label for="genesis_nofollow"><input type="checkbox" name="genesis_seo[_genesis_noarchive]" id="genesis_noarchive" value="1" <?php checked( genesis_get_custom_field( '_genesis_noarchive' ) ); ?> />
+		<?php printf( __( 'Apply %s to this post/page', 'genesis' ), '<code>noarchive</code>' ); ?> <a href="http://yoast.com/articles/robots-meta-tags/" target="_blank">[?]</a></label>
 	</p>
-
-	<br />
-
-	<p><label for="genesis_scripts"><b><?php _e( 'Custom Tracking/Conversion Code', 'genesis' ); ?></b></label></p>
-	<p><textarea class="large-text" rows="4" cols="4" name="genesis_seo[_genesis_scripts]" id="genesis_scripts"><?php echo esc_textarea( genesis_get_custom_field( '_genesis_scripts' ) ); ?></textarea></p>
 	<?php
 
 }
@@ -93,27 +77,24 @@ add_action( 'save_post', 'genesis_inpost_seo_save', 1, 2 );
 /**
  * Save the SEO settings when we save a post or page.
  *
- * Some values get sanitized, the rest are pulled from identically named subkeys
- * in the $_POST['genesis_seo'] array.
+ * Some values get sanitized, the rest are pulled from identically named subkeys in the $_POST['genesis_seo'] array.
  *
  * @since 0.1.3
  *
- * @uses genesis_save_custom_field() Perform checks and saves post meta / custom
- *                                   field data to a post or page.
+ * @uses genesis_save_custom_fields() Perform checks and saves post meta / custom field data to a post or page.
  *
  * @param integer  $post_id Post ID.
  * @param stdClass $post    Post object.
  *
- * @return mixed Returns post id if permissions incorrect, null if doing autosave,
- *               ajax or future post, false if update or delete failed, and true
- *               on success.
+ * @return mixed Returns post id if permissions incorrect, null if doing autosave, ajax or future post, false if update
+ *               or delete failed, and true on success.
  */
 function genesis_inpost_seo_save( $post_id, $post ) {
 
 	if ( ! isset( $_POST['genesis_seo'] ) )
 		return;
 
-	/** Merge user submitted options with fallback defaults */
+	//* Merge user submitted options with fallback defaults
 	$data = wp_parse_args( $_POST['genesis_seo'], array(
 		'_genesis_title'         => '',
 		'_genesis_description'   => '',
@@ -123,27 +104,96 @@ function genesis_inpost_seo_save( $post_id, $post ) {
 		'_genesis_noindex'       => 0,
 		'_genesis_nofollow'      => 0,
 		'_genesis_noarchive'     => 0,
-		'_genesis_scripts'       => '',
 	) );
 
-	/** Sanitize the title, description, and tags */
-	foreach ( (array) $data as $key => $value )
+	//* Sanitize the title, description, and tags
+	foreach ( (array) $data as $key => $value ) {
 		if ( in_array( $key, array( '_genesis_title', '_genesis_description', '_genesis_keywords' ) ) )
-			$data[ $key ] = esc_html( strip_tags( $value ) );
+			$data[ $key ] = strip_tags( $value );
+	}
 
-	/** Save custom field data */
 	genesis_save_custom_fields( $data, 'genesis_inpost_seo_save', 'genesis_inpost_seo_nonce', $post, $post_id );
+
+}
+
+add_action( 'admin_menu', 'genesis_add_inpost_scripts_box' );
+/**
+ * Register a new meta box to the post or page edit screen, so that the user can apply scripts on a per-post or
+ * per-page basis.
+ *
+ * The scripts field was previously part of the SEO meta box, and was therefore hidden when an SEO plugin was active.
+ *
+ * @since 2.0.0
+ *
+ * @see genesis_inpost_scripts_box() Generates the content in the meta box.
+ */
+function genesis_add_inpost_scripts_box() {
+
+	//* If user doesn't have unfiltered html capability, don't show this box
+	if ( ! current_user_can( 'unfiltered_html' ) )
+		return;
+
+	foreach ( (array) get_post_types( array( 'public' => true ) ) as $type ) {
+		if ( post_type_supports( $type, 'genesis-scripts' ) )
+			add_meta_box( 'genesis_inpost_scripts_box', __( 'Scripts', 'genesis' ), 'genesis_inpost_scripts_box', $type, 'normal', 'low' );
+	}
+
+}
+
+/**
+ * Callback for in-post Scripts meta box.
+ *
+ * @since 2.0.0
+ *
+ * @uses genesis_get_custom_field() Get custom field value.
+ */
+function genesis_inpost_scripts_box() {
+
+	wp_nonce_field( 'genesis_inpost_scripts_save', 'genesis_inpost_scripts_nonce' );
+	?>
+
+	<p><label for="genesis_scripts" class="screen-reader-text"><b><?php _e( 'Page-specific Scripts', 'genesis' ); ?></b></label></p>
+	<p><textarea class="large-text" rows="4" cols="4" name="genesis_seo[_genesis_scripts]" id="genesis_scripts"><?php echo esc_textarea( genesis_get_custom_field( '_genesis_scripts' ) ); ?></textarea></p>
+	<p><?php printf( __( 'Suitable for custom tracking, conversion or other page-specific script. Must include %s tags.', 'genesis' ), '<code>script</code>' ); ?></p>
+	<?php
+
+}
+
+add_action( 'save_post', 'genesis_inpost_scripts_save', 1, 2 );
+/**
+ * Save the Scripts settings when we save a post or page.
+ *
+ * @since 2.0.0
+ *
+ * @uses genesis_save_custom_fields() Perform checks and saves post meta / custom field data to a post or page.
+ *
+ * @param integer  $post_id Post ID.
+ * @param stdClass $post    Post object.
+ *
+ * @return null Returns null if no value POSTed.
+ */
+function genesis_inpost_scripts_save( $post_id, $post ) {
+
+	if ( ! isset( $_POST['genesis_seo'] ) )
+		return;
+
+	 //* If user doesn't have unfiltered html capability, don't try to save
+	if ( ! current_user_can( 'unfiltered_html' ) )
+		return;
+
+	//* Merge user submitted options with fallback defaults
+	$data = wp_parse_args( $_POST['genesis_seo'], array(
+		'_genesis_scripts' => '',
+	) );
+
+	genesis_save_custom_fields( $data, 'genesis_inpost_scripts_save', 'genesis_inpost_scripts_nonce', $post, $post_id );
 
 }
 
 add_action( 'admin_menu', 'genesis_add_inpost_layout_box' );
 /**
- * Register a new meta box to the post / page edit screen, so that the user can
- * set layout options on a per-post or per-page basis.
- *
- * @category Genesis
- * @package Admin
- * @subpackage Inpost-Metaboxes
+ * Register a new meta box to the post or page edit screen, so that the user can set layout options on a per-post or
+ * per-page basis.
  *
  * @since 0.2.2
  *
@@ -166,13 +216,10 @@ function genesis_add_inpost_layout_box() {
 /**
  * Callback for in-post layout meta box.
  *
- * Echoes out HTML.
- *
- * @category Genesis
- * @package Admin
- * @subpackage Inpost-Metaboxes
- *
  * @since 0.2.2
+ *
+ * @uses genesis_get_custom_field() Get custom field value.
+ * @uses genesis_layout_selector()  Layout selector.
  */
 function genesis_inpost_layout_box() {
 
@@ -182,7 +229,7 @@ function genesis_inpost_layout_box() {
 
 	?>
 	<div class="genesis-layout-selector">
-		<p><input type="radio" name="genesis_layout[_genesis_layout]" id="default-layout" value="" <?php checked( $layout, '' ); ?> /> <label class="default" for="default-layout"><?php printf( __( 'Default Layout set in <a href="%s">Theme Settings</a>', 'genesis' ), menu_page_url( 'genesis', 0 ) ); ?></label></p>
+		<p><input type="radio" name="genesis_layout[_genesis_layout]" class="default-layout" id="default-layout" value="" <?php checked( $layout, '' ); ?> /> <label class="default" for="default-layout"><?php printf( __( 'Default Layout set in <a href="%s">Theme Settings</a>', 'genesis' ), menu_page_url( 'genesis', 0 ) ); ?></label></p>
 
 		<p><?php genesis_layout_selector( array( 'name' => 'genesis_layout[_genesis_layout]', 'selected' => $layout, 'type' => 'site' ) ); ?></p>
 	</div>
@@ -190,10 +237,10 @@ function genesis_inpost_layout_box() {
 	<br class="clear" />
 
 	<p><label for="genesis_custom_body_class"><b><?php _e( 'Custom Body Class', 'genesis' ); ?></b></label></p>
-	<p><input class="large-text" type="text" name="genesis_layout[_genesis_custom_body_class]" id="genesis_custom_body_class" value="<?php echo esc_attr( sanitize_html_class( genesis_get_custom_field( '_genesis_custom_body_class' ) ) ); ?>" /></p>
+	<p><input class="large-text" type="text" name="genesis_layout[_genesis_custom_body_class]" id="genesis_custom_body_class" value="<?php echo esc_attr( genesis_get_custom_field( '_genesis_custom_body_class' ) ); ?>" /></p>
 
 	<p><label for="genesis_custom_post_class"><b><?php _e( 'Custom Post Class', 'genesis' ); ?></b></label></p>
-	<p><input class="large-text" type="text" name="genesis_layout[_genesis_custom_post_class]" id="genesis_custom_post_class" value="<?php echo esc_attr( sanitize_html_class( genesis_get_custom_field( '_genesis_custom_post_class' ) ) ); ?>" /></p>
+	<p><input class="large-text" type="text" name="genesis_layout[_genesis_custom_post_class]" id="genesis_custom_post_class" value="<?php echo esc_attr( genesis_get_custom_field( '_genesis_custom_post_class' ) ); ?>" /></p>
 	<?php
 
 }
@@ -207,17 +254,14 @@ add_action( 'save_post', 'genesis_inpost_layout_save', 1, 2 );
  *
  * @since 0.2.2
  *
- * @uses genesis_save_custom_field() Perform checks and saves post meta / custom
- *                                   field data to a post or page.
+ * @uses genesis_save_custom_fields() Perform checks and saves post meta / custom field data to a post or page.
  *
  * @param integer  $post_id Post ID.
  * @param stdClass $post    Post object.
  *
- * @return mixed Returns post id if permissions incorrect, null if doing autosave,
- *               ajax or future post, false if update or delete failed, and true
- *               on success.
+ * @return mixed Returns post id if permissions incorrect, null if doing autosave, ajax or future post, false if update
+ *               or delete failed, and true on success.
  *
- * @todo Sanitize classes
  */
 function genesis_inpost_layout_save( $post_id, $post ) {
 
@@ -229,6 +273,8 @@ function genesis_inpost_layout_save( $post_id, $post ) {
 		'_genesis_custom_body_class' => '',
 		'_genesis_post_class'        => '',
 	) );
+
+	$data = array_map( 'genesis_sanitize_html_classes', $data );
 
 	genesis_save_custom_fields( $data, 'genesis_inpost_layout_save', 'genesis_inpost_layout_nonce', $post, $post_id );
 

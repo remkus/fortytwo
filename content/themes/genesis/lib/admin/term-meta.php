@@ -1,27 +1,20 @@
 <?php
 /**
- * Handles the creation and saving of term settings.
+ * Genesis Framework.
  *
- * @category   Genesis
- * @package    Admin
- * @subpackage Term-Meta
- * @author     StudioPress
- * @license    http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link       http://www.studiopress.com/themes/genesis
+ * @package Genesis\Admin
+ * @author  StudioPress
+ * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @link    http://my.studiopress.com/themes/genesis/
  */
 
 add_action( 'admin_init', 'genesis_add_taxonomy_archive_options' );
 /**
- * Loop through the custom taxonomies and add the archive options to each
- * custom taxonomy edit screen.
- *
- * @category Genesis
- * @package Admin
- * @subpackage Term-Meta
+ * Add the archive options to each custom taxonomy edit screen.
  *
  * @since 1.6.0
  *
- * @see genesis_taxonomy_archive_options() Add Disyplay title / description checkboxes
+ * @see genesis_taxonomy_archive_options() Callback for headline and introduction fields.
  */
 function genesis_add_taxonomy_archive_options() {
 
@@ -31,22 +24,16 @@ function genesis_add_taxonomy_archive_options() {
 }
 
 /**
- * Add new fields for display on archives.
+ * Echo headline and introduction fields on the taxonomy term edit form.
  *
- * Displays on the category / tag edit forms.
- * The variables $tag and $taxonomy are passed via the hook so that we can use
- * them.
- *
- * @category Genesis
- * @package Admin
- * @subpackage Term-Meta
+ * If populated, the values saved in these fields may display on taxonomy archives.
  *
  * @since 1.6.0
  *
- * @see genesis_add_taxonomy_archive_options() Callback caller
+ * @see genesis_add_taxonomy_archive_options() Callback caller.
  *
- * @param string $tag Name of the term
- * @param string $taxonomy Name of the taxnomy
+ * @param \stdClass $tag      Term object.
+ * @param string    $taxonomy Name of the taxonomy.
  */
 function genesis_taxonomy_archive_options( $tag, $taxonomy ) {
 
@@ -77,16 +64,11 @@ function genesis_taxonomy_archive_options( $tag, $taxonomy ) {
 
 add_action( 'admin_init', 'genesis_add_taxonomy_seo_options' );
 /**
- * Loop through the custom taxonomies and add the SEO options to each custom
- * taxonomy edit screen.
- *
- * @category Genesis
- * @package Admin
- * @subpackage Term-Meta
+ * Add the SEO options to each custom taxonomy edit screen.
  *
  * @since 1.3.0
  *
- * @see genesis_taxonomy_seo_options() Adds SEO fields
+ * @see genesis_taxonomy_seo_options() Callback for SEO fields.
  */
 function genesis_add_taxonomy_seo_options() {
 
@@ -96,25 +78,19 @@ function genesis_add_taxonomy_seo_options() {
 }
 
 /**
- * Display title, description, keywords and robots meta SEO fields.
+ * Echo title, description, keywords and robots meta SEO fields on the taxonomy term edit form.
  *
- * The variables $tag and $taxonomy are passed via the hook so that we can use
- * them.
- *
- * @category Genesis
- * @package Admin
- * @subpackage Term-Meta
+ * If populated, the values saved in these fields may be used on taxonomy archives.
  *
  * @since 1.2.0
  *
- * @see genesis_add-taxonomy_seo_options() Callback caller
+ * @see genesis_add-taxonomy_seo_options() Callback caller.
  *
- * @param string $tag Name of the term
- * @param string $taxonomy Name of the taxonomy
+ * @param \stdClass $tag      Term object.
+ * @param string    $taxonomy Name of the taxonomy.
  */
 function genesis_taxonomy_seo_options( $tag, $taxonomy ) {
 
-	$tax = get_taxonomy( $taxonomy );
 	?>
 	<h3><?php _e( 'Theme SEO Settings', 'genesis' ); ?></h3>
 	<table class="form-table">
@@ -144,12 +120,14 @@ function genesis_taxonomy_seo_options( $tag, $taxonomy ) {
 			<tr>
 				<th scope="row" valign="top"><?php _e( 'Robots Meta', 'genesis' ); ?></th>
 				<td>
-					<input name="meta[noindex]" id="meta[noindex]" type="checkbox" value="1" <?php checked( $tag->meta['noindex'] ); ?> />
-					<label for="meta[noindex]"><?php printf( __( 'Apply %s to this archive?', 'genesis' ), '<code>noindex</code>' ); ?></label><br />
-					<input name="meta[nofollow]" id="meta[nofollow]" type="checkbox" value="1" <?php checked( $tag->meta['nofollow'] ); ?> />
-					<label for="meta[nofollow]"><?php printf( __( 'Apply %s to this archive?', 'genesis' ), '<code>nofollow</code>' ); ?></label><br />
-					<input name="meta[noarchive]" id="meta[noarchive]" type="checkbox" value="1" <?php checked( $tag->meta['noarchive'] ); ?> />
-					<label for="meta[noarchive]"><?php printf( __( 'Apply %s to this archive?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
+					<label for="meta[noindex]"><input name="meta[noindex]" id="meta[noindex]" type="checkbox" value="1" <?php checked( $tag->meta['noindex'] ); ?> />
+					<?php printf( __( 'Apply %s to this archive?', 'genesis' ), '<code>noindex</code>' ); ?></label><br />
+
+					<label for="meta[nofollow]"><input name="meta[nofollow]" id="meta[nofollow]" type="checkbox" value="1" <?php checked( $tag->meta['nofollow'] ); ?> />
+					<?php printf( __( 'Apply %s to this archive?', 'genesis' ), '<code>nofollow</code>' ); ?></label><br />
+
+					<label for="meta[noarchive]"><input name="meta[noarchive]" id="meta[noarchive]" type="checkbox" value="1" <?php checked( $tag->meta['noarchive'] ); ?> />
+					<?php printf( __( 'Apply %s to this archive?', 'genesis' ), '<code>noarchive</code>' ); ?></label>
 				</td>
 			</tr>
 		</tbody>
@@ -160,16 +138,11 @@ function genesis_taxonomy_seo_options( $tag, $taxonomy ) {
 
 add_action( 'admin_init', 'genesis_add_taxonomy_layout_options' );
 /**
- * Loop through the custom taxonomies and add the layout options to each custom
- * taxonomy edit screen.
- *
- * @category Genesis
- * @package Admin
- * @subpackage Term-Meta
+ * Add the layout options to each custom taxonomy edit screen.
  *
  * @since 1.4.0
  *
- * @see genesis_taxonomy_layout_options() Add layout picker
+ * @see genesis_taxonomy_layout_options() Callback for layout selector.
  */
 function genesis_add_taxonomy_layout_options() {
 
@@ -179,25 +152,19 @@ function genesis_add_taxonomy_layout_options() {
 }
 
 /**
- * Display layout picker.
- *
- * The variables $tag and $taxonomy are passed via the hook so that we can use
- * them.
- *
- * @category Genesis
- * @package Admin
- * @subpackage Term-Meta
+ * Echo the layout options on the taxonomy term edit form.
  *
  * @since 1.4.0
  *
- * @see genesis_add_taxonomy_layout_options() Callback caller
+ * @uses genesis_layout_selector() Layout selector.
  *
- * @param string $tag
- * @param string $taxonomy
+ * @see genesis_add_taxonomy_layout_options() Callback caller.
+ *
+ * @param \stdClass $tag      Term object.
+ * @param string    $taxonomy Name of the taxonomy.
  */
 function genesis_taxonomy_layout_options( $tag, $taxonomy ) {
 
-	$tax = get_taxonomy( $taxonomy );
 	?>
 	<h3><?php _e( 'Layout Settings', 'genesis' ); ?></h3>
 	<table class="form-table">
@@ -207,7 +174,7 @@ function genesis_taxonomy_layout_options( $tag, $taxonomy ) {
 				<td>
 					<div class="genesis-layout-selector">
 						<p>
-							<input type="radio" name="meta[layout]" id="default-layout" value="" <?php checked( $tag->meta['layout'], '' ); ?> />
+							<input type="radio" class="default-layout" name="meta[layout]" id="default-layout" value="" <?php checked( $tag->meta['layout'], '' ); ?> />
 							<label for="default-layout" class="default"><?php printf( __( 'Default Layout set in <a href="%s">Theme Settings</a>', 'genesis' ), menu_page_url( 'genesis', 0 ) ); ?></label>
 						</p>
 
@@ -227,14 +194,12 @@ add_action( 'edit_term', 'genesis_term_meta_save', 10, 2 );
  *
  * Fires when a user edits and saves a term.
  *
- * @category Genesis
- * @package Admin
- * @subpackage Term-Meta
- *
  * @since 1.2.0
  *
- * @param integer $term_id
- * @param integer $tt_id
+ * @uses genesis_formatting_kses() Genesis whitelist for wp_kses.
+ *
+ * @param integer $term_id Term ID.
+ * @param integer $tt_id   Term Taxonomy ID.
  */
 function genesis_term_meta_save( $term_id, $tt_id ) {
 
@@ -258,14 +223,10 @@ add_action( 'delete_term', 'genesis_term_meta_delete', 10, 2 );
  *
  * Fires when a user deletes a term.
  *
- * @category Genesis
- * @package Admin
- * @subpackage Term-Meta
- *
  * @since 1.2.0
  *
- * @param integer $term_id
- * @param integer $tt_id
+ * @param integer $term_id Term ID.
+ * @param integer $tt_id   Taxonomy Term ID.
  */
 function genesis_term_meta_delete( $term_id, $tt_id ) {
 

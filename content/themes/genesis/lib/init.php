@@ -41,15 +41,22 @@ function genesis_theme_support() {
 	add_theme_support( 'genesis-auto-updates' );
 	add_theme_support( 'genesis-breadcrumbs' );
 
-	/** Maybe add support for Genesis menus */
+	//** Maybe add support for Genesis menus
 	if ( ! current_theme_supports( 'genesis-menus' ) )
 		add_theme_support( 'genesis-menus', array(
 			'primary'   => __( 'Primary Navigation Menu', 'genesis' ),
 			'secondary' => __( 'Secondary Navigation Menu', 'genesis' ),
 		) );
 
+	//** Maybe add support for structural wraps
 	if ( ! current_theme_supports( 'genesis-structural-wraps' ) )
-		add_theme_support( 'genesis-structural-wraps', array( 'header', 'nav', 'subnav', 'footer-widgets', 'footer' ) );
+		add_theme_support( 'genesis-structural-wraps', array( 'header', 'menu-primary', 'menu-secondary', 'site-inner', 'footer-widgets', 'footer' ) );
+
+	//** Turn on HTML5 & Responsive Viewport if Genesis is active
+	if ( ! is_child_theme() ) {
+		add_theme_support( 'genesis-html5' );
+		add_theme_support( 'genesis-responsive-viewport' );
+	}
 
 }
 
@@ -61,8 +68,8 @@ add_action( 'genesis_init', 'genesis_post_type_support' );
  */
 function genesis_post_type_support() {
 
-	add_post_type_support( 'post', array( 'genesis-seo', 'genesis-layouts' ) );
-	add_post_type_support( 'page', array( 'genesis-seo', 'genesis-layouts' ) );
+	add_post_type_support( 'post', array( 'genesis-seo', 'genesis-scripts', 'genesis-layouts' ) );
+	add_post_type_support( 'page', array( 'genesis-seo', 'genesis-scripts', 'genesis-layouts' ) );
 
 }
 
@@ -76,11 +83,11 @@ function genesis_constants() {
 
 	/** Define Theme Info Constants */
 	define( 'PARENT_THEME_NAME', 'Genesis' );
-	define( 'PARENT_THEME_VERSION', '1.9.1' );
-	define( 'PARENT_THEME_BRANCH', '1.9' );
-	define( 'PARENT_DB_VERSION', '1904' );
-	define( 'PARENT_THEME_RELEASE_DATE', date_i18n( 'F j, Y', '1357682400' ) );
-	#define( 'PARENT_THEME_RELEASE_DATE', 'TBD' );
+	define( 'PARENT_THEME_VERSION', '2.0.0-dev' );
+	define( 'PARENT_THEME_BRANCH', '2.0' );
+	define( 'PARENT_DB_VERSION', '2000' );
+	#define( 'PARENT_THEME_RELEASE_DATE', date_i18n( 'F j, Y', '1357538400' ) );
+	define( 'PARENT_THEME_RELEASE_DATE', 'TBD' );
 
 	/** Define Directory Location Constants */
 	define( 'PARENT_DIR', get_template_directory() );
@@ -121,6 +128,7 @@ function genesis_constants() {
 	/** Define Settings Field Constants (for DB storage) */
 	define( 'GENESIS_SETTINGS_FIELD', apply_filters( 'genesis_settings_field', 'genesis-settings' ) );
 	define( 'GENESIS_SEO_SETTINGS_FIELD', apply_filters( 'genesis_seo_settings_field', 'genesis-seo-settings' ) );
+	define( 'GENESIS_CPT_ARCHIVE_SETTINGS_FIELD_PREFIX', apply_filters( 'genesis_cpt_archive_settings_field_prefix', 'genesis-cpt-archive-settings-' ) );
 
 }
 
@@ -160,6 +168,7 @@ function genesis_load_framework() {
 	require_once( GENESIS_FUNCTIONS_DIR . '/general.php' );
 	require_once( GENESIS_FUNCTIONS_DIR . '/options.php' );
 	require_once( GENESIS_FUNCTIONS_DIR . '/image.php' );
+	require_once( GENESIS_FUNCTIONS_DIR . '/markup.php' );
 	require_once( GENESIS_FUNCTIONS_DIR . '/menu.php' );
 	require_once( GENESIS_FUNCTIONS_DIR . '/layout.php' );
 	require_once( GENESIS_FUNCTIONS_DIR . '/formatting.php' );
@@ -186,12 +195,11 @@ function genesis_load_framework() {
 
 	/** Load Admin */
 	if ( is_admin() ) :
-	require_once( GENESIS_ADMIN_DIR . '/editor.php' );
 	require_once( GENESIS_ADMIN_DIR . '/menu.php' );
 	require_once( GENESIS_ADMIN_DIR . '/theme-settings.php' );
 	require_once( GENESIS_ADMIN_DIR . '/seo-settings.php' );
+	require_once( GENESIS_ADMIN_DIR . '/cpt-archive-settings.php' ); 
 	require_once( GENESIS_ADMIN_DIR . '/import-export.php' );
-	require_once( GENESIS_ADMIN_DIR . '/readme-menu.php' );
 	require_once( GENESIS_ADMIN_DIR . '/inpost-metaboxes.php' );
 	require_once( GENESIS_ADMIN_DIR . '/whats-new.php' );
 	endif;
@@ -209,7 +217,6 @@ function genesis_load_framework() {
 
 	/** Load Tools */
 	require_once( GENESIS_TOOLS_DIR . '/custom-field-redirect.php' );
-	require_if_theme_supports( 'post-templates', GENESIS_TOOLS_DIR . '/post-templates.php' );
 
 	global $_genesis_formatting_allowedtags;
 	$_genesis_formatting_allowedtags = genesis_formatting_allowedtags();

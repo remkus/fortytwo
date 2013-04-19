@@ -55,6 +55,71 @@ function genesis_do_loop() {
  * content output like title, content, post information and comments.
  *
  * The action hooks called are:
+ *   genesis_before_entry,
+ *   genesis_entry_header,
+ *   genesis_before_entry_content,
+ *   genesis_entry_content
+ *   genesis_after_entry_content
+ *   genesis_entry_footer,
+ *   genesis_after_endwhile,
+ *   genesis_loop_else (only if no posts were found).
+ *
+ * @since 1.1.0
+ *
+ * @global integer $loop_counter Increments on each loop pass
+ */
+function genesis_standard_loop() {
+
+	//** Use old loop hook structure if < HTML5
+	if ( ! genesis_html5() ) {
+		genesis_legacy_loop();
+		return;
+	}
+
+	global $loop_counter;
+
+	$loop_counter = 0;
+
+	if ( have_posts() ) : while ( have_posts() ) : the_post();
+
+		do_action( 'genesis_before_entry' );
+	
+		printf( '<article %s>', genesis_attr( 'entry' ) );
+	
+			do_action( 'genesis_entry_header' );
+		
+			do_action( 'genesis_before_entry_content' );
+			echo '<div class="entry-content">';
+				do_action( 'genesis_entry_content' );
+			echo '</div>'; //** end .entry-content
+			do_action( 'genesis_after_entry_content' );
+			
+			do_action( 'genesis_entry_footer' );
+	
+		echo '</article>';
+	
+		do_action( 'genesis_after_entry' );
+		$loop_counter++;
+
+	endwhile; /** end of one post **/
+		do_action( 'genesis_after_endwhile' );
+
+	else : /** if no posts exist **/
+		do_action( 'genesis_loop_else' );
+	endif; /** end loop **/
+
+}
+
+/**
+ * This loop is called by genesis_standard_loop() if the child theme does not support HTML5.
+ *
+ * It is a standard loop, and is meant to be executed, without
+ * modification, in most circumstances where content needs to be displayed.
+ *
+ * It outputs basic wrapping HTML, but uses hooks to do most of its
+ * content output like title, content, post information and comments.
+ *
+ * The action hooks called are:
  *   genesis_before_post,
  *   genesis_before_post_title,
  *   genesis_post_title,
@@ -66,45 +131,44 @@ function genesis_do_loop() {
  *   genesis_after_endwhile,
  *   genesis_loop_else (only if no posts were found).
  *
- * @since 1.1.0
+ * @since 2.0.0
  *
  * @global integer $loop_counter Increments on each loop pass
  */
-function genesis_standard_loop() {
-
+function genesis_legacy_loop() {
+	
 	global $loop_counter;
 
 	$loop_counter = 0;
 
 	if ( have_posts() ) : while ( have_posts() ) : the_post();
 
-	do_action( 'genesis_before_post' );
-	?>
-	<div <?php post_class(); ?>>
-
-		<?php do_action( 'genesis_before_post_title' ); ?>
-		<?php do_action( 'genesis_post_title' ); ?>
-		<?php do_action( 'genesis_after_post_title' ); ?>
-
-		<?php do_action( 'genesis_before_post_content' ); ?>
-		<div class="entry-content">
-			<?php do_action( 'genesis_post_content' ); ?>
-		</div><!-- end .entry-content -->
-		<?php do_action( 'genesis_after_post_content' ); ?>
-
-	</div><!-- end .postclass -->
-	<?php
-
-	do_action( 'genesis_after_post' );
-	$loop_counter++;
+		do_action( 'genesis_before_post' );
+	
+		printf( '<div class="%s">', join( ' ', get_post_class() ) );
+	
+			do_action( 'genesis_before_post_title' );
+			do_action( 'genesis_post_title' );
+			do_action( 'genesis_after_post_title' );
+		
+			do_action( 'genesis_before_post_content' );
+			echo '<div class="entry-content">';
+				do_action( 'genesis_post_content' );
+			echo '</div>'; //** end .entry-content
+			do_action( 'genesis_after_post_content' );
+	
+		echo '</div>'; //** end .entry
+	
+		do_action( 'genesis_after_post' );
+		$loop_counter++;
 
 	endwhile; /** end of one post **/
-	do_action( 'genesis_after_endwhile' );
+		do_action( 'genesis_after_endwhile' );
 
 	else : /** if no posts exist **/
-	do_action( 'genesis_loop_else' );
+		do_action( 'genesis_loop_else' );
 	endif; /** end loop **/
-
+	
 }
 
 /**
@@ -131,7 +195,7 @@ function genesis_standard_loop() {
  *
  * @param array $args Loop configuration.
  */
-function genesis_custom_loop( $args = array() ) {
+function genesis_custom_loop( array $args = array() ) {
 
 	global $wp_query, $more;
 
@@ -160,7 +224,6 @@ function genesis_custom_loop( $args = array() ) {
  *
  * @since 1.5.0
  *
- * @uses g_ent() Pass entities through filter
  * @uses genesis_custom_loop() Do custom loop
  * @uses genesis_standard_loop() Do standard loop
  * @uses genesis_reset_loop() Restores all default post loop output by rehooking all default functions
@@ -170,7 +233,7 @@ function genesis_custom_loop( $args = array() ) {
  * @param array $args Associative array for grid loop configuration
  * @return null Returns early if posts_per_page is fewer than features
  */
-function genesis_grid_loop( $args = array() ) {
+function genesis_grid_loop( array $args = array() ) {
 
 	/** Global vars */
 	global $_genesis_loop_args;
@@ -213,6 +276,7 @@ function genesis_grid_loop( $args = array() ) {
 	remove_action( 'genesis_before_post_title', 'genesis_do_post_format_image' );
 	remove_action( 'genesis_post_content', 'genesis_do_post_image' );
 	remove_action( 'genesis_post_content', 'genesis_do_post_content' );
+	remove_action( 'genesis_post_content', 'genesis_do_post_content_nav' );
 
 	/** Custom loop output */
 	add_filter( 'post_class', 'genesis_grid_loop_post_class' );
@@ -239,7 +303,7 @@ function genesis_grid_loop( $args = array() ) {
  * @param array $classes Existing post classes
  * @return array Amended post classes
  */
-function genesis_grid_loop_post_class( $classes ) {
+function genesis_grid_loop_post_class( array $classes ) {
 
 	global $_genesis_loop_args, $loop_counter;
 
@@ -281,7 +345,7 @@ function genesis_grid_loop_content() {
 
 	if ( in_array( 'genesis-feature', get_post_class() ) ) {
 		if ( $_genesis_loop_args['feature_image_size'] )
-			printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), genesis_get_image( array( 'size' => $_genesis_loop_args['feature_image_size'], 'attr' => array( 'class' => esc_attr( $_genesis_loop_args['feature_image_class'] ) ) ) ) );
+			printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), genesis_get_image( array( 'size' => $_genesis_loop_args['feature_image_size'], 'context' => 'grid-loop', 'attr' => array( 'class' => esc_attr( $_genesis_loop_args['feature_image_class'] ) ) ) ) );
 
 		if ( $_genesis_loop_args['feature_content_limit'] )
 			the_content_limit( (int) $_genesis_loop_args['feature_content_limit'], esc_html( $_genesis_loop_args['more'] ) );
@@ -290,7 +354,7 @@ function genesis_grid_loop_content() {
 	}
 	else {
 		if ( $_genesis_loop_args['grid_image_size'] )
-			printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), genesis_get_image( array( 'size' => $_genesis_loop_args['grid_image_size'], 'attr' => array( 'class' => esc_attr( $_genesis_loop_args['grid_image_class'] ) ) ) ) );
+			printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), genesis_get_image( array( 'size' => $_genesis_loop_args['grid_image_size'], 'context' => 'grid-loop', 'attr' => array( 'class' => esc_attr( $_genesis_loop_args['grid_image_class'] ) ) ) ) );
 
 		if ( $_genesis_loop_args['grid_content_limit'] ) {
 			the_content_limit( (int) $_genesis_loop_args['grid_content_limit'], esc_html( $_genesis_loop_args['more'] ) );
@@ -299,5 +363,24 @@ function genesis_grid_loop_content() {
 			printf( '<a href="%s" class="more-link">%s</a>', get_permalink(), esc_html( $_genesis_loop_args['more'] ) );
 		}
 	}
+
+}
+
+add_action( 'genesis_after_post', 'genesis_add_id_to_global_exclude' );
+/**
+ * Modify the global $_genesis_displayed_ids each time a loop iterates.
+ *
+ * Keep track of what posts have been shown on any given page by adding each ID to a global array,
+ * which can be used any time by other loops to prevent posts from being displayed twice on a page.
+ *
+ * @since 2.0.0
+ *
+ * @global $_genesis_displayed_ids Array of displayed post IDs
+ */
+function genesis_add_id_to_global_exclude() {
+
+	global $_genesis_displayed_ids;
+
+	$_genesis_displayed_ids[] = get_the_ID();
 
 }

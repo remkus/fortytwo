@@ -24,10 +24,26 @@ function genesis_load_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 
 	/** If superfish is enabled  */
-	if ( genesis_superfish_enabled() ) {
-		wp_enqueue_script( 'superfish', GENESIS_JS_URL . '/menu/superfish.js', array( 'jquery' ), '1.4.8', true );
-		wp_enqueue_script( 'superfish-args', GENESIS_JS_URL . '/menu/superfish.args.js', array( 'superfish' ), PARENT_THEME_VERSION, true );
+	if ( apply_filters( 'genesis_superfish_enabled', false ) ) {
+		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+		wp_enqueue_script( 'superfish', GENESIS_JS_URL . "/menu/superfish$suffix.js", array( 'jquery' ), '1.4.8', true );
+		wp_enqueue_script( 'superfish-args', apply_filters( 'genesis_superfish_args_uri', GENESIS_JS_URL . "/menu/superfish.args$suffix.js" ), array( 'superfish' ), PARENT_THEME_VERSION, true );
 	}
+
+}
+
+add_action( 'wp_head', 'genesis_html5_ie_fix' );
+/**
+ * Load the html5 shiv for IE8 and below. Can't enqueue (with conditionals).
+ *
+ * @since 2.0.0
+ */
+function genesis_html5_ie_fix() {
+
+	if ( ! current_theme_supports( 'genesis-html5' ) )
+		return;
+
+	echo '<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->' . "\n";
 
 }
 
@@ -45,7 +61,7 @@ add_action( 'admin_enqueue_scripts', 'genesis_load_admin_scripts' );
  * @uses genesis_update_check()
  * @uses genesis_seo_disabled()
  *
- * @global stdClass $post Post object
+ * @global WP_Post $post Post object.
  *
  * @param string $hook_suffix Admin page identifier.
  */
@@ -80,22 +96,30 @@ function genesis_load_admin_scripts( $hook_suffix ) {
  */
 function genesis_load_admin_js() {
 
-	wp_enqueue_script( 'genesis_admin_js', GENESIS_JS_URL . '/admin.js', array( 'jquery' ), PARENT_THEME_VERSION, true );
+	$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+	wp_enqueue_script( 'genesis_admin_js', GENESIS_JS_URL . "/admin$suffix.js", array( 'jquery' ), PARENT_THEME_VERSION, true );
+
 	$strings = array(
-		'category_checklist_toggle' => __( 'Select / Deselect All', 'genesis' )
+		'categoryChecklistToggle' => __( 'Select / Deselect All', 'genesis' ),
+		'saveAlert'               => __('The changes you made will be lost if you navigate away from this page.', 'genesis'),
+		'confirmUpgrade'          => __( 'Updating Genesis will overwrite the current installed version of Genesis. Are you sure you want to update?. "Cancel" to stop, "OK" to update.', 'genesis' ),
+		'confirmReset'            => __( 'Are you sure you want to reset?', 'genesis' ),
 	);
+
 	wp_localize_script( 'genesis_admin_js', 'genesisL10n', $strings );
 
 	$toggles = array(
-		'update'                    => array( '#genesis-settings\\[update\\]', '#genesis_update_notification_setting', null ),
-		'nav'                       => array( '#genesis-settings\\[nav\\]', '#genesis_nav_settings', null ),
-		'subnav'                    => array( '#genesis-settings\\[subnav\\]', '#genesis_subnav_settings', null ),
-		'content_archive_thumbnail' => array( '#genesis-settings\\[content_archive_thumbnail\\]', '#genesis_image_size', null ),
-		'nav_extras_enable'         => array( '#genesis-settings\\[nav_extras_enable\\]', '#genesis_nav_extras_settings', null ),
+		// Checkboxes - when checked, show extra settings
+		'update'                    => array( '#genesis-settings\\[update\\]', '#genesis_update_notification_setting', '_checked' ),
+		'content_archive_thumbnail' => array( '#genesis-settings\\[content_archive_thumbnail\\]', '#genesis_image_size', '_checked' ),
+		// Checkboxed - when unchecked, show extra settings
+		'semantic_headings'         => array( '#genesis-seo-settings\\[semantic_headings\\]', '#genesis_seo_h1_wrap', '_unchecked' ),
 		// Select toggles
 		'nav_extras'                => array( '#genesis-settings\\[nav_extras\\]', '#genesis_nav_extras_twitter', 'twitter' ),
 		'content_archive'           => array( '#genesis-settings\\[content_archive\\]', '#genesis_content_limit_setting', 'full' ),
+
 	);
+
 	wp_localize_script( 'genesis_admin_js', 'genesis_toggles', apply_filters( 'genesis_toggles', $toggles ) );
 
 }

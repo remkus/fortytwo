@@ -1,25 +1,20 @@
 <?php
 /**
- * Creates the Theme Settings page.
+ * Genesis Framework.
  *
- * Also contains functions used across all aspects of admin.
- *
- * @category Genesis
- * @package  Admin
- * @author   StudioPress
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link     http://www.studiopress.com/themes/genesis
+ * @package Genesis\Admin
+ * @author  StudioPress
+ * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @link    http://my.studiopress.com/themes/genesis/
  */
 
 /**
- * Registers a new admin page, providing content and corresponding menu item
- * for the Theme Settings page.
+ * Registers a new admin page, providing content and corresponding menu item for the Theme Settings page.
  *
- * Although this class was added in 1.8.0, some of the methods were originally
- * standalone functions added in previous versions of Genesis.
+ * Although this class was added in 1.8.0, some of the methods were originally* standalone functions added in previous
+ * versions of Genesis.
  *
- * @category Genesis
- * @package Admin
+ * @package Genesis\Admin
  *
  * @since 1.8.0
  */
@@ -30,11 +25,12 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.8.0
 	 *
-	 * @uses GENESIS_SETTINGS_FIELD settings field key
-	 * @uses genesis_get_default_layout() Get default layout
-	 *
-	 * @global string $_genesis_theme_settings_pagehook Theme Settings page hook,
-	 * kept for backwards compatibility, since this class now uses $this->pagehook.
+	 * @uses GENESIS_ADMIN_IMAGES_URL     URL for admin images.
+	 * @uses GENESIS_SETTINGS_FIELD       Settings field key.
+	 * @uses PARENT_DB_VERSION            Genesis database version.
+	 * @uses PARENT_THEME_VERSION         Genesis framework version.
+	 * @uses genesis_get_default_layout() Get default layout.
+	 * @uses \Genesis_Admin::create()     Create an admin menu item and settings page.
 	 */
 	function __construct() {
 
@@ -51,10 +47,10 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 					'page_title' => 'Theme Settings',
 					'menu_title' => 'Genesis',
 					'capability' => 'edit_theme_options',
-					'icon_url'   => PARENT_URL . '/images/favicon.png',
+					'icon_url'   => GENESIS_ADMIN_IMAGES_URL . '/genesis-menu.png',
 					'position'   => '58.996',
 				),
-				'first_submenu' => array( /** Do not use without 'main_menu' */
+				'first_submenu' => array( //* Do not use without 'main_menu'
 					'page_title' => __( 'Theme Settings', 'genesis' ),
 					'menu_title' => __( 'Theme Settings', 'genesis' ),
 					'capability' => 'edit_theme_options',
@@ -83,14 +79,10 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 				'blog_title'                => 'text',
 				'header_right'              => 0,
 				'site_layout'               => genesis_get_default_layout(),
-				'nav'                       => 1,
-				'nav_superfish'             => 1,
 				'nav_extras_enable'         => 0,
 				'nav_extras'                => 'date',
 				'nav_extras_twitter_id'     => '',
 				'nav_extras_twitter_text'   => __( 'Follow me on Twitter', 'genesis' ),
-				'subnav'                    => 0,
-				'subnav_superfish'          => 1,
 				'feed_uri'                  => '',
 				'comments_feed_uri'         => '',
 				'redirect_feeds'            => 0,
@@ -126,13 +118,13 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	}
 
 	/**
-	 * Registers each of the settings with a sanitization filter type.
+	 * Register each of the settings with a sanitization filter type.
 	 *
 	 * @since 1.7.0
 	 *
-	 * @uses genesis_add_option_filter() Assign filter to array of settings
+	 * @uses genesis_add_option_filter() Assign filter to array of settings.
 	 *
-	 * @see Genesis_Settings_Sanitizer::add_filter()
+	 * @see \Genesis_Settings_Sanitizer::add_filter() Add sanitization filters to options.
 	 */
 	public function sanitizer_filters() {
 
@@ -140,34 +132,63 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 			'one_zero',
 			$this->settings_field,
 			array(
-				'show_info',
-				'update',
-				'update_email',
-				'redirect_feed',
-				'redirect_comments_feed',
-				'nav',
-				'nav_superfish',
-				'nav_extras_enable',
-				'subnav',
-				'subnav_superfish',
+				'breadcrumb_front_page',
 				'breadcrumb_home',
 				'breadcrumb_single',
-				'breadcrumb_page',
+				'breadcrumb_posts_page',
 				'breadcrumb_archive',
 				'breadcrumb_404',
 				'breadcrumb_attachment',
 				'comments_posts',
 				'comments_pages',
+				'content_archive_thumbnail',
+				'nav',
+				'nav_superfish',
+				'nav_extras_enable',
+				'redirect_feed',
+				'redirect_comments_feed',
+				'show_info',
+				'subnav',
+				'subnav_superfish',
 				'trackbacks_posts',
 				'trackbacks_pages',
-				'content_archive_thumbnail',
+				'update',
+				'update_email',
 			)
 		);
 
 		genesis_add_option_filter(
 			'no_html',
 			$this->settings_field,
-			array( 'style_selection', )
+			array(
+				'blog_cat_exclude',
+				'blog_title',
+				'content_archive',
+				'nav_extras',
+				'nav_extras_twitter_id',
+				'posts_nav',
+				'site_layout',
+				'style_selection',
+				'theme_version',
+			)
+		);
+
+		genesis_add_option_filter(
+			'absint',
+			$this->settings_field,
+			array(
+				'blog_cat',
+				'blog_cat_num',
+				'db_version',
+			)
+		);
+
+		genesis_add_option_filter(
+			'safe_html',
+			$this->settings_field,
+			array(
+				'nav_extras_twitter_text',
+			)
 		);
 
 		genesis_add_option_filter(
@@ -193,29 +214,27 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	/**
  	 * Register meta boxes on the Theme Settings page.
  	 *
- 	 * Some of the meta box additions are dependent on certain theme support or user
- 	 * capabilities.
+ 	 * Some of the meta box additions are dependent on certain theme support or user capabilities.
  	 *
- 	 * The 'genesis_theme_settings_metaboxes' action hook is called at the end of
- 	 * this function.
+ 	 * The 'genesis_theme_settings_metaboxes' action hook is called at the end of this function.
  	 *
  	 * @since 1.0.0
  	 *
- 	 * @see Genesis_Admin_Settings::info_box() Callback for Information box
- 	 * @see Genesis_Admin_Settings::style_box() Callback for Color Style box (if supported)
- 	 * @see Genesis_Admin_Settings::feeds_box() Callback for Custom Feeds box
- 	 * @see Genesis_Admin_Settings::layout_box() Callback for Default Layout box
- 	 * @see Genesis_Admin_Settings::header_box() Callback for Header Settings box (if no custom header support)
-	 * @see Genesis_Admin_Settings::nav_box() Callback for Navigation Settings box
- 	 * @see Genesis_Admin_Settings::breadcrumb_box() Callback for Breadcrumbs box
- 	 * @see Genesis_Admin_Settings::comments_box() Callback for Comments and Trackbacks box
- 	 * @see Genesis_Admin_Settings::post_archives_box() Callback for Content Archives box
- 	 * @see Genesis_Admin_Settings::blogpage_box() Callback for Blog Page box
- 	 * @see Genesis_Admin_Settings::scripts_box() Callback for Header and Footer box (if user has unfiltered_html capability)
+ 	 * @see \Genesis_Admin_Settings::info_box()          Callback for Information box.
+ 	 * @see \Genesis_Admin_Settings::style_box()         Callback for Color Style box (if supported).
+ 	 * @see \Genesis_Admin_Settings::feeds_box()         Callback for Custom Feeds box.
+ 	 * @see \Genesis_Admin_Settings::layout_box()        Callback for Default Layout box.
+ 	 * @see \Genesis_Admin_Settings::header_box()        Callback for Header box (if no custom header support).
+	 * @see \Genesis_Admin_Settings::nav_box()           Callback for Navigation box.
+ 	 * @see \Genesis_Admin_Settings::breadcrumb_box()    Callback for Breadcrumbs box.
+ 	 * @see \Genesis_Admin_Settings::comments_box()      Callback for Comments and Trackbacks box.
+ 	 * @see \Genesis_Admin_Settings::post_archives_box() Callback for Content Archives box.
+ 	 * @see \Genesis_Admin_Settings::blogpage_box()      Callback for Blog Page box.
+ 	 * @see \Genesis_Admin_Settings::scripts_box()       Callback for Header and Footer Scripts box (if user has
+ 	 *                                                   unfiltered_html capability).
  	 */
 	function metaboxes() {
 
-		/** Hidden form fields */
 		add_action( 'genesis_admin_before_metaboxes', array( $this, 'hidden_fields' ) );
 
 		add_meta_box( 'genesis-theme-settings-version', __( 'Information', 'genesis' ), array( $this, 'info_box' ), $this->pagehook, 'main', 'high' );
@@ -247,15 +266,16 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	}
 
 	/**
-	 * Outputs hidden form fields before the metaboxes.
+	 * Echo hidden form fields before the metaboxes.
 	 *
 	 * @since 1.8.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @param string $pagehook
-	 * @return null
+	 * @param string $pagehook Page hook.
+	 *
+	 * @return null Returns early if not on the right page.
 	 */
 	function hidden_fields( $pagehook ) {
 
@@ -270,13 +290,16 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	/**
 	 * Callback for Theme Settings Information meta box.
 	 *
+	 * If genesis-auto-updates is not supported, some of the fields will not display.
+	 *
 	 * @since 1.0.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
-	 * @uses PARENT_THEME_RELEASE_DATE
+	 * @uses PARENT_THEME_RELEASE_DATE         Date of current release of Genesis Framework.
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_Settings::metaboxes()
+	 * @see \Genesis_Admin_Settings::metaboxes() Register meta boxes on the Theme Settings page.
 	 */
 	function info_box() {
 
@@ -284,21 +307,22 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 		<p><strong><?php _e( 'Version:', 'genesis' ); ?></strong> <?php echo $this->get_field_value( 'theme_version' ); ?> &#x000B7; <strong><?php _e( 'Released:', 'genesis' ); ?></strong> <?php echo PARENT_THEME_RELEASE_DATE; ?></p>
 
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'show_info' ); ?>" id="<?php echo $this->get_field_id( 'show_info' ); ?>" value="1"<?php checked( $this->get_field_value( 'show_info' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'show_info' ); ?>"><?php _e( 'Display Theme Information in your document source', 'genesis' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'show_info' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'show_info' ); ?>" id="<?php echo $this->get_field_id( 'show_info' ); ?>" value="1"<?php checked( $this->get_field_value( 'show_info' ) ); ?> />
+			<?php _e( 'Display Theme Information in your document source', 'genesis' ); ?></label>
 		</p>
 
 		<?php if ( current_theme_supports( 'genesis-auto-updates' ) ) : ?>
 		<p><span class="description"><?php sprintf( __( 'This can be helpful for diagnosing problems with your theme when seeking assistance in the <a href="%s" target="_blank">support forums</a>.', 'genesis' ), 'http://www.studiopress.com/support/' ); ?></span></p>
 
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'update' ); ?>" id="<?php echo $this->get_field_id( 'update' ); ?>" value="1"<?php checked( $this->get_field_value( 'update' ) ) . disabled( is_super_admin(), 0 ); ?> />
-			<label for="<?php echo $this->get_field_id( 'update' ); ?>"><?php _e( 'Enable Automatic Updates', 'genesis' ); ?></label></p>
+			<label for="<?php echo $this->get_field_id( 'update' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'update' ); ?>" id="<?php echo $this->get_field_id( 'update' ); ?>" value="1"<?php checked( $this->get_field_value( 'update' ) ) . disabled( is_super_admin(), 0 ); ?> />
+			<?php _e( 'Enable Automatic Updates', 'genesis' ); ?></label>
+		</p>
 
 		<div id="genesis_update_notification_setting">
 			<p>
-				<input type="checkbox" name="<?php echo $this->get_field_name( 'update_email' ); ?>" id="<?php echo $this->get_field_id( 'update_email' ); ?>" value="1"<?php checked( $this->get_field_value( 'update_email' ) ) . disabled( is_super_admin(), 0 ); ?> />
-				<label for="<?php echo $this->get_field_id( 'update_email' ); ?>"><?php _e( 'Notify', 'genesis' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'update_email' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'update_email' ); ?>" id="<?php echo $this->get_field_id( 'update_email' ); ?>" value="1"<?php checked( $this->get_field_value( 'update_email' ) ) . disabled( is_super_admin(), 0 ); ?> />
+				<?php _e( 'Notify', 'genesis' ); ?></label>
 				<input type="text" name="<?php echo $this->get_field_name( 'update_email_address' ); ?>" id="<?php echo $this->get_field_id( 'update_email_address' ); ?>" value="<?php echo esc_attr( $this->get_field_value( 'update_email_address' ) ); ?>" size="30"<?php disabled( 0, is_super_admin() ); ?> />
 				<label for="<?php echo $this->get_field_id( 'update_email_address' ); ?>"><?php _e( 'when updates are available', 'genesis' ); ?></label>
 			</p>
@@ -313,12 +337,33 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	/**
 	 * Callback for Theme Settings Color Style meta box.
 	 *
+	 * The style selector can be enabled and populated by adding an associated array of style => title when initiating
+	 * support for genesis-style-selector in the child theme functions.php file.
+	 *
+	 * <code>
+	 * $color_styles = array(
+	 *     'childtheme-red'   => __( 'Red', 'childthemedomain' ),
+	 *     'childtheme-green' => __( 'Green', 'childthemedomain' ),
+	 *     'childtheme-blue'  => __( 'Blue', 'childthemedomain' ),
+	 * );
+	 * add_theme_support( 'genesis-style-selector', $color_styles );
+	 * </code>
+	 *
+	 * When selected, the style will be added as a body class which can be used within style.css to target elements
+	 * when using a specific style.
+	 *
+	 * <code>
+	 * h1 { background: #000; }
+	 * .childtheme-red h1 { background: #0ff; }
+	 * </code>
+	 *
 	 * @since 1.8.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_Settings::metaboxes()
+	 * @see \Genesis_Admin_Settings::metaboxes() Register meta boxes on the Theme Settings page.
 	 */
 	function style_box() {
 
@@ -348,16 +393,16 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	/**
 	 * Callback for Theme Settings Default Layout meta box.
 	 *
-	 * A version of a site layout setting has been in Genesis since at least 0.2.0,
-	 * but it was moved to its own meta box in 1.7.0.
+	 * A version of a site layout setting has been in Genesis since at least 0.2.0, but it was moved to its own meta box
+	 * in 1.7.0.
 	 *
 	 * @since 1.7.0
 	 *
-	 * @uses genesis_layout_selector() Outputs form elements for layout picker
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses genesis_layout_selector()         Outputs form elements for layout selector.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_Settings::metaboxes()
+	 * @see \Genesis_Admin_Settings::metaboxes() Register meta boxes on the Theme Settings page.
 	 */
 	function layout_box() {
 
@@ -378,10 +423,10 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.7.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_Settings::metaboxes()
+	 * @see \Genesis_Admin_Settings::metaboxes() Register meta boxes on the Theme Settings page.
 	 */
 	function header_box() {
 		?>
@@ -400,37 +445,26 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	/**
 	 * Callback for Theme Settings Navigation Settings meta box.
 	 *
-	 * @category Genesis
-	 * @package Admin
-	 * @subpackage Theme-Settings
-	 *
 	 * @since 1.0.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses genesis_nav_menu_supported()      Determine if a child theme supports a particular Genesis nav menu.
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_Settings::metaboxes()
+	 * @see \Genesis_Admin_Settings::metaboxes() Register meta boxes on the Theme Settings page.
 	 */
 	function nav_box() {
 
-		?>
-		
-		<p><span class="description"><?php printf( __( 'In order to use the navigation menus, you must build a <a href="%s">custom menu</a>, then assign it to the proper Menu Location.', 'genesis' ), admin_url( 'nav-menus.php' ) ); ?></span></p>
-		
-		<hr class="div" />
-		
-		<?php if ( genesis_nav_menu_supported( 'primary' ) ) : ?>
+		if ( genesis_nav_menu_supported( 'primary' ) ) : ?>
+
 		<h4><?php _e( 'Primary Navigation', 'genesis' ); ?></h4>
 
-		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'nav_superfish' ); ?>" id="<?php echo $this->get_field_id( 'nav_superfish' ); ?>" value="1"<?php checked( $this->get_field_value( 'nav_superfish' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'nav_superfish' ); ?>"><?php _e( 'Enable Fancy Dropdowns?', 'genesis' ); ?></label>
-		</p>
+		<?php if ( ! has_nav_menu( 'primary' ) ) : ?>
 
-		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'nav_extras_enable' ); ?>" id="<?php echo $this->get_field_id( 'nav_extras_enable' ); ?>" value="1"<?php checked( $this->get_field_value( 'nav_extras_enable' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'nav_extras_enable' ); ?>"><?php _e( 'Enable Extras on Right Side?', 'genesis' ); ?></label>
-		</p>
+		<p><span class="description"><?php printf( __( 'In order to view the %1$s navigation menu settings, you must build a <a href="%2$s">custom menu</a>, then assign it to the %1$s Menu Location.', 'genesis' ), 'Primary', admin_url( 'nav-menus.php' ) ); ?></span></p>
+
+		<?php else : ?>
 
 		<div id="genesis_nav_extras_settings">
 			<p>
@@ -453,21 +487,9 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 				</p>
 			</div>
 		</div>
-
-		<hr class="div" />
-		<?php endif; ?>
-
-		<?php if ( genesis_nav_menu_supported( 'secondary' ) ) : ?>
-		<h4><?php _e( 'Secondary Navigation', 'genesis' ); ?></h4>
-
-		<p>
-			<input type = "checkbox" name="<?php echo $this->get_field_name( 'subnav_superfish' ); ?>" id="<?php echo $this->get_field_id( 'subnav_superfish' ); ?>" value="1"<?php checked( $this->get_field_value( 'subnav_superfish' ) ); ?> />
-			<label for  = "<?php echo $this->get_field_id( 'subnav_superfish' ); ?>"><?php _e( 'Enable Fancy Dropdowns?', 'genesis' ); ?></label>
-		</p>
-		
 		<?php
 		endif;
-
+		endif;
 	}
 
 	/**
@@ -475,10 +497,11 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.3.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_Settings::metaboxes()
+	 * @see \Genesis_Admin_Settings::metaboxes() Register meta boxes on the Theme Settings page.
 	 */
 	function feeds_box() {
 
@@ -487,16 +510,16 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 			<label for="<?php echo $this->get_field_id( 'feed_uri' ); ?>"><?php _e( 'Enter your custom feed URI:', 'genesis' ); ?></label><br />
 			<input type="text" name="<?php echo $this->get_field_name( 'feed_uri' ); ?>" id="<?php echo $this->get_field_id( 'feed_uri' ); ?>" value="<?php echo esc_attr( $this->get_field_value( 'feed_uri' ) ); ?>" size="50" />
 
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'redirect_feed' ); ?>" id="<?php echo $this->get_field_id( 'redirect_feed' ); ?>" value="1"<?php checked( $this->get_field_value( 'redirect_feed' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'redirect_feed' ); ?>"><?php _e( 'Redirect Feed?', 'genesis' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'redirect_feed' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'redirect_feed' ); ?>" id="<?php echo $this->get_field_id( 'redirect_feed' ); ?>" value="1"<?php checked( $this->get_field_value( 'redirect_feed' ) ); ?> />
+			<?php _e( 'Redirect Feed?', 'genesis' ); ?></label>
 		</p>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'comments_feed_uri' ); ?>"><?php _e( 'Enter your custom comments feed URI:', 'genesis' ); ?></label><br />
 			<input type="text" name="<?php echo $this->get_field_name( 'comments_feed_uri' ); ?>" id="<?php echo $this->get_field_id( 'comments_feed_uri' ); ?>" value="<?php echo esc_attr( $this->get_field_value( 'comments_feed_uri' ) ); ?>" size="50" />
 
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'redirect_comments_feed' ); ?>" id="<?php echo $this->get_field_id( 'redirect_comments_feed' ); ?>" value="1"<?php checked( $this->get_field_value( 'redirect_comments__feed' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'redirect_comments_feed' ); ?>"><?php _e( 'Redirect Feed?', 'genesis' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'redirect_comments_feed' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'redirect_comments_feed' ); ?>" id="<?php echo $this->get_field_id( 'redirect_comments_feed' ); ?>" value="1"<?php checked( $this->get_field_value( 'redirect_comments__feed' ) ); ?> />
+			<?php _e( 'Redirect Feed?', 'genesis' ); ?></label>
 		</p>
 
 		<p><span class="description"><?php printf( __( 'If your custom feed(s) are not handled by Feedburner, we do not recommend that you use the redirect options.', 'genesis' ) ); ?></span></p>
@@ -509,30 +532,31 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_Settings::metaboxes()
+	 * @see \Genesis_Admin_Settings::metaboxes() Register meta boxes on the Theme Settings page.
 	 */
 	function comments_box() {
 
 		?>
 		<p>
 			<?php _e( 'Enable Comments', 'genesis' ); ?>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'comments_posts' ); ?>" id="<?php echo $this->get_field_id( 'comments_posts' ); ?>" value="1"<?php checked( $this->get_field_value( 'comments_posts' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'comments_posts' ); ?>" title="Enable comments on posts"><?php _e( 'on posts?', 'genesis' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'comments_posts' ); ?>" title="Enable comments on posts"><input type="checkbox" name="<?php echo $this->get_field_name( 'comments_posts' ); ?>" id="<?php echo $this->get_field_id( 'comments_posts' ); ?>" value="1"<?php checked( $this->get_field_value( 'comments_posts' ) ); ?> />
+			<?php _e( 'on posts?', 'genesis' ); ?></label>
 
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'comments_pages' ); ?>" id="<?php echo $this->get_field_id( 'comments_pages' ); ?>" value="1"<?php checked( $this->get_field_value( 'comments_pages' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'comments_pages' ); ?>" title="Enable comments on pages"><?php _e( 'on pages?', 'genesis' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'comments_pages' ); ?>" title="Enable comments on pages"><input type="checkbox" name="<?php echo $this->get_field_name( 'comments_pages' ); ?>" id="<?php echo $this->get_field_id( 'comments_pages' ); ?>" value="1"<?php checked( $this->get_field_value( 'comments_pages' ) ); ?> />
+			<?php _e( 'on pages?', 'genesis' ); ?></label>
 		</p>
 
 		<p>
 			<?php _e( 'Enable Trackbacks', 'genesis' ); ?>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'trackbacks_posts' ); ?>" id="<?php echo $this->get_field_id( 'trackbacks_posts' ); ?>" value="1"<?php checked( $this->get_field_value( 'trackbacks_posts' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'trackbacks_posts' ); ?>" title="Enable trackbacks on posts"><?php _e( 'on posts?', 'genesis' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'trackbacks_posts' ); ?>" title="Enable trackbacks on posts"><input type="checkbox" name="<?php echo $this->get_field_name( 'trackbacks_posts' ); ?>" id="<?php echo $this->get_field_id( 'trackbacks_posts' ); ?>" value="1"<?php checked( $this->get_field_value( 'trackbacks_posts' ) ); ?> />
+			<?php _e( 'on posts?', 'genesis' ); ?></label>
 
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'trackbacks_pages' ); ?>" id="<?php echo $this->get_field_id( 'trackbacks_pages' ); ?>" value="1"<?php checked( $this->get_field_value( 'trackbacks_pages' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'trackbacks_pages' ); ?>" title="Enable trackbacks on pages"><?php _e( 'on pages?', 'genesis' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'trackbacks_pages' ); ?>" title="Enable trackbacks on pages"><input type="checkbox" name="<?php echo $this->get_field_name( 'trackbacks_pages' ); ?>" id="<?php echo $this->get_field_id( 'trackbacks_pages' ); ?>" value="1"<?php checked( $this->get_field_value( 'trackbacks_pages' ) ); ?> />
+			<?php _e( 'on pages?', 'genesis' ); ?></label>
 		</p>
 
 		<p><span class="description"><?php _e( 'Comments and Trackbacks can also be disabled on a per post/page basis when creating/editing posts/pages.', 'genesis' ); ?></span></p>
@@ -545,10 +569,11 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.3.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_Settings::metaboxes()
+	 * @see \Genesis_Admin_Settings::metaboxes() Register meta boxes on the Theme Settings page.
 	 */
 	function breadcrumb_box() {
 
@@ -556,30 +581,30 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 		<h4><?php _e( 'Enable on:', 'genesis' ); ?></h4>
 		<p>
 			<?php if ( 'page' == get_option( 'show_on_front' ) ) : ?>
-				<input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_front_page' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_front_page' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_front_page' ) ); ?> />
-				<label for="<?php echo $this->get_field_id( 'breadcrumb_front_page' ); ?>"><?php _e( 'Front Page', 'genesis' ); ?></label>
-				
-				<input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_posts_page' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_posts_page' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_posts_page' ) ); ?> />
-				<label for="<?php echo $this->get_field_id( 'breadcrumb_posts_page' ); ?>"><?php _e( 'Posts Page', 'genesis' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'breadcrumb_front_page' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_front_page' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_front_page' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_front_page' ) ); ?> />
+				<?php _e( 'Front Page', 'genesis' ); ?></label>
+
+				<label for="<?php echo $this->get_field_id( 'breadcrumb_posts_page' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_posts_page' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_posts_page' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_posts_page' ) ); ?> />
+				<?php _e( 'Posts Page', 'genesis' ); ?></label>
 			<?php else : ?>
-				<input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_home' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_home' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_home' ) ); ?> />
-				<label for="<?php echo $this->get_field_id( 'breadcrumb_home' ); ?>"><?php _e( 'Homepage', 'genesis' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'breadcrumb_home' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_home' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_home' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_home' ) ); ?> />
+				<?php _e( 'Homepage', 'genesis' ); ?></label>
 			<?php endif; ?>
 
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_single' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_single' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_single' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'breadcrumb_single' ); ?>"><?php _e( 'Posts', 'genesis' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'breadcrumb_single' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_single' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_single' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_single' ) ); ?> />
+			<?php _e( 'Posts', 'genesis' ); ?></label>
 
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_page' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_page' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_page' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'breadcrumb_page' ); ?>"><?php _e( 'Pages', 'genesis' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'breadcrumb_page' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_page' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_page' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_page' ) ); ?> />
+			<?php _e( 'Pages', 'genesis' ); ?></label>
 
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_archive' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_archive' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_archive' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'breadcrumb_archive' ); ?>"><?php _e( 'Archives', 'genesis' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'breadcrumb_archive' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_archive' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_archive' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_archive' ) ); ?> />
+			<?php _e( 'Archives', 'genesis' ); ?></label>
 
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_404' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_404' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_404' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'breadcrumb_404' ); ?>"><?php _e( '404 Page', 'genesis' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'breadcrumb_404' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_404' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_404' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_404' ) ); ?> />
+			<?php _e( '404 Page', 'genesis' ); ?></label>
 
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_attachment' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_attachment' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_attachment' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'breadcrumb_attachment' ); ?>"><?php _e( 'Attachment Page', 'genesis' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'breadcrumb_attachment' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'breadcrumb_attachment' ); ?>" id="<?php echo $this->get_field_id( 'breadcrumb_attachment' ); ?>" value="1"<?php checked( $this->get_field_value( 'breadcrumb_attachment' ) ); ?> />
+			<?php _e( 'Attachment Page', 'genesis' ); ?></label>
 		</p>
 
 		<p><span class="description"><?php _e( 'Breadcrumbs are a great way of letting your visitors find out where they are on your site with just a glance. You can enable/disable them on certain areas of your site.', 'genesis' ); ?></span></p>
@@ -592,11 +617,12 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
-	 * @uses genesis_get_images_sizes() Retrieves list of registered image sizes
+	 * @uses genesis_get_images_sizes()        Retrieve list of registered image sizes.
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_Settings::metaboxes()
+	 * @see \Genesis_Admin_Settings::metaboxes() Register meta boxes on the Theme Settings page.
 	 */
 	function post_archives_box() {
 
@@ -629,8 +655,8 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 		</div>
 
 		<p>
-			<input type="checkbox" name="<?php echo $this->get_field_name( 'content_archive_thumbnail' ); ?>" id="<?php echo $this->get_field_id( 'content_archive_thumbnail' ); ?>" value="1"<?php checked( $this->get_field_value( 'content_archive_thumbnail' ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'content_archive_thumbnail' ); ?>"><?php _e( 'Include the Featured Image?', 'genesis' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'content_archive_thumbnail' ); ?>"><input type="checkbox" name="<?php echo $this->get_field_name( 'content_archive_thumbnail' ); ?>" id="<?php echo $this->get_field_id( 'content_archive_thumbnail' ); ?>" value="1"<?php checked( $this->get_field_value( 'content_archive_thumbnail' ) ); ?> />
+			<?php _e( 'Include the Featured Image?', 'genesis' ); ?></label>
 		</p>
 
 		<p id="genesis_image_size">
@@ -663,18 +689,19 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_Settings::metaboxes()
+	 * @see \Genesis_Admin_Settings::metaboxes() Register meta boxes on the Theme Settings page.
 	 */
 	function blogpage_box() {
 
 		?>
 		<p><span class="description"><?php _e( 'These settings apply to any page given the "Blog" page template, not the homepage or post archive pages.', 'genesis' ); ?></span></p>
-		
+
 		<hr class="div" />
-		
+
 		<p>
 			<label for="<?php echo $this->get_field_id( 'blog_cat' ); ?>"><?php _e( 'Display which category:', 'genesis' ); ?></label>
 			<?php wp_dropdown_categories( array( 'selected' => $this->get_field_value( 'blog_cat' ), 'name' => $this->get_field_name( 'blog_cat' ), 'orderby' => 'Name', 'hierarchical' => 1, 'show_option_all' => __( 'All Categories', 'genesis' ), 'hide_empty' => '0' ) ); ?>
@@ -700,10 +727,11 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @uses Genesis_Admin::get_field_name() Construct full field name
-	 * @uses Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field
+	 * @uses \Genesis_Admin::get_field_id()    Construct field ID.
+	 * @uses \Genesis_Admin::get_field_name()  Construct field name.
+	 * @uses \Genesis_Admin::get_field_value() Retrieve value of key under $this->settings_field.
 	 *
-	 * @see Genesis_Admin_Settings::metaboxes()
+	 * @see \Genesis_Admin_Settings::metaboxes() Register meta boxes on the Theme Settings page.
 	 */
 	function scripts_box() {
 

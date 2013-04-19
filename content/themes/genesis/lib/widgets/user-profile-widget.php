@@ -54,7 +54,7 @@ class Genesis_User_Profile_Widget extends WP_Widget {
 			'height'  => 250,
 		);
 
-		$this->WP_Widget( 'user-profile', __( 'Genesis - User Profile', 'genesis' ), $widget_ops, $control_ops );
+		parent::__construct( 'user-profile', __( 'Genesis - User Profile', 'genesis' ), $widget_ops, $control_ops );
 
 	}
 
@@ -64,11 +64,11 @@ class Genesis_User_Profile_Widget extends WP_Widget {
 	 * @param array $args Display arguments including before_title, after_title, before_widget, and after_widget.
 	 * @param array $instance The settings for the particular instance of the widget
 	 */
-	function widget( $args, $instance ) {
+	function widget( array $args, array $instance ) {
 
 		extract( $args );
 
-		/** Merge with defaults */
+		//** Merge with defaults
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
 		echo $before_widget;
@@ -87,17 +87,21 @@ class Genesis_User_Profile_Widget extends WP_Widget {
 				$text .= '</span>';
 
 			if ( $instance['author_info'] == 'text' )
-				$text .= $instance['bio_text']; // We run KSES on update
+				$text .= $instance['bio_text']; //** We run KSES on update
 			else
 				$text .= get_the_author_meta( 'description', $instance['user'] );
 
 			$text .= $instance['page'] ? sprintf( ' <a class="pagelink" href="%s">%s</a>', get_page_link( $instance['page'] ), $instance['page_link_text'] ) : '';
 
-			$text .= $instance['posts_link'] ? sprintf( '<div class="posts_link posts-link"><a href="%s">%s</a></div>', get_author_posts_url( $instance['user'] ), __( 'View My Blog Posts', 'genesis' ) ) : '';
-
+			//** Echo $text
 			echo wpautop( $text );
 
+			//** If posts link option checked, add posts link to output
+			if ( $instance['posts_link'] )
+				printf( '<div class="posts_link posts-link"><a href="%s">%s</a></div>', get_author_posts_url( $instance['user'] ), __( 'View My Blog Posts', 'genesis' ) );
+
 		echo $after_widget;
+
 	}
 
 	/**
@@ -111,7 +115,7 @@ class Genesis_User_Profile_Widget extends WP_Widget {
 	 * @param array $old_instance Old settings for this instance
 	 * @return array Settings to save or bool false to cancel saving
 	 */
-	function update( $new_instance, $old_instance ) {
+	function update( array $new_instance, array $old_instance ) {
 
 		$new_instance['title']          = strip_tags( $new_instance['title'] );
 		$new_instance['bio_text']       = current_user_can( 'unfiltered_html' ) ? $new_instance['bio_text'] : genesis_formatting_kses( $new_instance['bio_text'] );
@@ -126,7 +130,7 @@ class Genesis_User_Profile_Widget extends WP_Widget {
 	 *
 	 * @param array $instance Current settings
 	 */
-	function form( $instance ) {
+	function form( array $instance ) {
 
 		/** Merge with defaults */
 		$instance = wp_parse_args( (array) $instance, $this->defaults );

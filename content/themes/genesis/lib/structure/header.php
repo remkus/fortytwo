@@ -26,13 +26,19 @@ add_action( 'genesis_doctype', 'genesis_do_doctype' );
  */
 function genesis_do_doctype() {
 
-	if ( current_theme_supports( 'genesis-html5' ) )
+	if ( genesis_html5() )
 		genesis_html5_doctype();
 	else
 		genesis_xhtml_doctype();
 
 }
 
+/**
+ * XHTML 1.0 Transitional DocType Markup
+ *
+ * @since 2.0.0
+ *
+ */
 function genesis_xhtml_doctype() {
 
 	?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -43,6 +49,12 @@ function genesis_xhtml_doctype() {
 
 }
 
+/**
+ * HTML5 DocType Markup
+ *
+ * @since 2.0.0
+ *
+ */
 function genesis_html5_doctype() {
 
 	?><!DOCTYPE html>
@@ -50,97 +62,6 @@ function genesis_html5_doctype() {
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <?php
-
-}
-
-add_action( 'get_header', 'genesis_doc_head_control' );
-/**
- * Remove unnecessary code that WordPress puts in the <head>
- *
- * @since 1.3.0
- *
- * @uses genesis_get_option() Get theme setting value
- * @uses genesis_get_seo_option() Get SEO setting value
- */
-function genesis_doc_head_control() {
-
-	remove_action( 'wp_head', 'wp_generator' );
-
-	if ( ! genesis_get_seo_option( 'head_adjacent_posts_rel_link' ) )
-		remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
-
-	if ( ! genesis_get_seo_option( 'head_wlwmanifest_link' ) )
-		remove_action( 'wp_head', 'wlwmanifest_link' );
-
-	if ( ! genesis_get_seo_option( 'head_shortlink' ) )
-		remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
-
-	if ( is_single() && ! genesis_get_option( 'comments_posts' ) )
-		remove_action( 'wp_head', 'feed_links_extra', 3 );
-
-	if ( is_page() && ! genesis_get_option( 'comments_pages' ) )
-		remove_action( 'wp_head', 'feed_links_extra', 3 );
-
-}
-
-add_action( 'genesis_site_title', 'genesis_seo_site_title' );
-/**
- * Echo the site title into the header.
- *
- * Depending on the SEO option set by the user, this will either be wrapped in
- * h1 or p tags.
- *
- * Applies the genesis_seo_title filter before echoing.
- *
- * @since 1.1.0
- *
- * @uses genesis_get_seo_option() Get SEO setting value
- */
-function genesis_seo_site_title() {
-
-	/** Set what goes inside the wrapping tags */
-	$inside = sprintf( '<a href="%s" title="%s">%s</a>', trailingslashit( home_url() ), esc_attr( get_bloginfo( 'name' ) ), get_bloginfo( 'name' ) );
-
-	/** Determine which wrapping tags to use */
-	$wrap = is_home() && 'title' == genesis_get_seo_option( 'home_h1_on' ) ? 'h1' : 'p';
-
-	/** A little fallback, in case an SEO plugin is active */
-	$wrap = is_home() && ! genesis_get_seo_option( 'home_h1_on' ) ? 'h1' : $wrap;
-
-	/** Build the Title */
-	$title = sprintf( '<%s id="title">%s</%s>', $wrap, $inside, $wrap );
-
-	/** Echo (filtered) */
-	echo apply_filters( 'genesis_seo_title', $title, $inside, $wrap );
-
-}
-
-add_action( 'genesis_site_description', 'genesis_seo_site_description' );
-/**
- * Echo the site description into the header.
- *
- * Depending on the SEO option set by the user, this will either be wrapped in
- * h1 or p tags.
- *
- * Applies the genesis_seo_description filter before echoing.
- *
- * @since 1.1.0
- *
- * @uses genesis_get_seo_option() Get SEO setting value
- */
-function genesis_seo_site_description() {
-
-	/** Set what goes inside the wrapping tags */
-	$inside = esc_html( get_bloginfo( 'description' ) );
-
-	/** Determine which wrapping tags to use */
-	$wrap = is_home() && 'description' == genesis_get_seo_option( 'home_h1_on' ) ? 'h1' : 'p';
-
-	/* Build the description */
-	$description = $inside ? sprintf( '<%s id="description">%s</%s>', $wrap, $inside, $wrap ) : '';
-
-	/** Echo (filtered) */
-	echo apply_filters( 'genesis_seo_description', $description, $inside, $wrap );
 
 }
 
@@ -174,9 +95,9 @@ add_filter( 'wp_title', 'genesis_default_title', 10, 3 );
  * @uses genesis_get_seo_option() Get SEO setting value
  * @uses genesis_get_custom_field() Get custom field value
  *
- * @global WP_Query $wp_query
+ * @global WP_Query $wp_query Query object.
  * @param string $title Existing page title
- * @param string $sep Separator character(s). Default is <code>g_ent( '&mdash;' )</code> if not set
+ * @param string $sep Separator character(s). Default is <code>&#x02014;</code> if not set
  * @param string $seplocation Separator location - "left" or "right". Default is "right" if not set
  * @return string Page title
  */
@@ -187,7 +108,7 @@ function genesis_default_title( $title, $sep, $seplocation ) {
 	if ( is_feed() )
 		return trim( $title );
 
-	$sep = genesis_get_seo_option( 'doctitle_sep' ) ? genesis_get_seo_option( 'doctitle_sep' ) : g_ent( '&mdash;' );
+	$sep = genesis_get_seo_option( 'doctitle_sep' ) ? genesis_get_seo_option( 'doctitle_sep' ) : '&#x02014;';
 	$seplocation = genesis_get_seo_option( 'doctitle_seplocation' ) ? genesis_get_seo_option( 'doctitle_seplocation' ) : 'right';
 
 	/**	If viewing the home page */
@@ -243,6 +164,10 @@ function genesis_default_title( $title, $sep, $seplocation ) {
 		$title      = $user_title ? $user_title : $title;
 	}
 
+	if ( is_post_type_archive() && genesis_has_post_type_archive_support() ) {
+		$title = genesis_get_cpt_option( 'doctitle' );
+	}
+
 	/**	If we don't want site name appended, or if we're on the home page */
 	if ( ! genesis_get_seo_option( 'append_site_title' ) || is_front_page() )
 		return esc_html( trim( $title ) );
@@ -253,16 +178,33 @@ function genesis_default_title( $title, $sep, $seplocation ) {
 
 }
 
-#add_action( 'wp_head', 'genesis_responsive_viewport' );
+add_action( 'get_header', 'genesis_doc_head_control' );
 /**
- * Checks to see if the child theme supports Genesis responsive CSS viewport tag. If so, it echos it.
+ * Remove unnecessary code that WordPress puts in the <head>
  *
- * @since 1.9.0
+ * @since 1.3.0
+ *
+ * @uses genesis_get_option() Get theme setting value
+ * @uses genesis_get_seo_option() Get SEO setting value
  */
-function genesis_responsive_viewport() {
+function genesis_doc_head_control() {
 
-	if ( $viewport = genesis_get_theme_support_arg( 'genesis-responsive', 'viewport' ) )
-		echo $viewport;
+	remove_action( 'wp_head', 'wp_generator' );
+
+	if ( ! genesis_get_seo_option( 'head_adjacent_posts_rel_link' ) )
+		remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+
+	if ( ! genesis_get_seo_option( 'head_wlwmanifest_link' ) )
+		remove_action( 'wp_head', 'wlwmanifest_link' );
+
+	if ( ! genesis_get_seo_option( 'head_shortlink' ) )
+		remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
+
+	if ( is_single() && ! genesis_get_option( 'comments_posts' ) )
+		remove_action( 'wp_head', 'feed_links_extra', 3 );
+
+	if ( is_page() && ! genesis_get_option( 'comments_pages' ) )
+		remove_action( 'wp_head', 'feed_links_extra', 3 );
 
 }
 
@@ -278,11 +220,11 @@ add_action( 'genesis_meta', 'genesis_seo_meta_description' );
  * @uses genesis_get_custom_field() Get custom field value
  *
  * @global WP_Query $wp_query Query object
- * @global stdClass $post Post object
+ * @global WP_Post $post Post object.
  */
 function genesis_seo_meta_description() {
 
-	global $wp_query, $post;
+	global $wp_query;
 
 	$description = '';
 
@@ -331,6 +273,10 @@ function genesis_seo_meta_description() {
 		$description = $user_description ? $user_description : '';
 	}
 
+	if ( is_post_type_archive() && genesis_has_post_type_archive_support() ) {
+		$description = genesis_get_cpt_option( 'description' ) ? genesis_get_cpt_option( 'description' ) : '';
+	}
+
 	/** Add the description if one exists */
 	if ( $description )
 		echo '<meta name="description" content="' . esc_attr( $description ) . '" />' . "\n";
@@ -349,11 +295,11 @@ add_action( 'genesis_meta', 'genesis_seo_meta_keywords' );
  * @uses genesis_get_custom_field() Get custom field value
  *
  * @global WP_Query $wp_query Query object
- * @global stdClass $post Post object
+ * @global WP_Post $post Post object.
  */
 function genesis_seo_meta_keywords() {
 
-	global $wp_query, $post;
+	global $wp_query;
 
 	$keywords = '';
 
@@ -397,6 +343,10 @@ function genesis_seo_meta_keywords() {
 		$keywords = $user_keywords ? $user_keywords : '';
 	}
 
+	if ( is_post_type_archive() && genesis_has_post_type_archive_support() ) {
+		$keywords = genesis_get_cpt_option( 'keywords' ) ? genesis_get_cpt_option( 'keywords' ) : '';
+	}
+
 	/** Add the keywords if they exist */
 	if ( $keywords )
 		echo '<meta name="keywords" content="' . esc_attr( $keywords ) . '" />' . "\n";
@@ -414,12 +364,12 @@ add_action( 'genesis_meta', 'genesis_robots_meta' );
  * @uses genesis_get_custom_field() Get custom field value
  *
  * @global WP_Query $wp_query Query object
- * @global stdClass $post Post object
+ * @global WP_Post $post Post object.
  * @return null Returns early if blog is not public
  */
 function genesis_robots_meta() {
 
-	global $wp_query, $post;
+	global $wp_query;
 
 	/*
 	 * If the blog is private, then following logic is unnecessary as WP will
@@ -486,6 +436,16 @@ function genesis_robots_meta() {
 		$meta['noindex'] = $paged > 1 && ! genesis_get_seo_option( 'canonical_archives' ) ? 'noindex' : $meta['noindex'];
 	}
 
+	if ( is_post_type_archive() && genesis_has_post_type_archive_support() ) {
+		$meta['noindex']   = genesis_get_cpt_option( 'noindex' ) ? 'noindex' : $meta['noindex'];
+		$meta['nofollow']  = genesis_get_cpt_option( 'nofollow' ) ? 'nofollow' : $meta['nofollow'];
+		$meta['noarchive'] = genesis_get_cpt_option( 'noarchive' ) ? 'noarchive' : $meta['noarchive'];
+
+		/** noindex paged archives, if canonical archives is off */
+		$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+		$meta['noindex'] = $paged > 1 && ! genesis_get_seo_option( 'canonical_archives' ) ? 'noindex' : $meta['noindex'];
+	}
+
 	if ( is_author() ) {
 		$meta['noindex']   = get_the_author_meta( 'noindex', (int) get_query_var( 'author' ) ) ? 'noindex' : $meta['noindex'];
 		$meta['nofollow']  = get_the_author_meta( 'nofollow', (int) get_query_var( 'author' ) ) ? 'nofollow' : $meta['nofollow'];
@@ -524,6 +484,21 @@ function genesis_robots_meta() {
 
 }
 
+add_action( 'genesis_meta', 'genesis_responsive_viewport' );
+/**
+ * Checks to see if the child theme supports Genesis responsive CSS viewport tag. If so, it echos it.
+ *
+ * @since 1.9.0
+ */
+function genesis_responsive_viewport() {
+
+	if ( ! current_theme_supports( 'genesis-responsive-viewport' ) )
+		return;
+
+	echo '<meta name="viewport" content="width=device-width, initial-scale=1" />' . "\n";
+
+}
+
 add_action( 'genesis_meta', 'genesis_show_theme_info_in_head' );
 /**
  * Show Parent and Child information in the document head if specified by the user.
@@ -556,118 +531,12 @@ function genesis_show_theme_info_in_head() {
 	global $wp_version;
 
 	/** Show Child Info */
-	$child_info = version_compare( $wp_version, '3.4', '>=' ) ? wp_get_theme() : get_theme_data( CHILD_DIR . '/style.css' );
+	$child_info = wp_get_theme();
 	echo '<meta name="wp_theme" content="' . esc_attr( $child_info['Name'] ) . ' ' . esc_attr( $child_info['Version'] ) . '" />' . "\n";
 
 }
 
-add_action( 'wp_head', 'genesis_do_meta_pingback' );
-/**
- * Adds the pingback meta tag to the head so that other sites can know how to
- * send a pingback to our site.
- *
- * @since 1.3.0
- */
-function genesis_do_meta_pingback() {
-
-	if ( 'open' == get_option( 'default_ping_status' ) )
-		echo '<link rel="pingback" href="' . get_bloginfo( 'pingback_url' ) . '" />' . "\n";
-
-}
-
-add_action( 'wp_head', 'genesis_canonical', 5 );
-/**
- * Echo custom canonical link tag.
- *
- * Remove the default WordPress canonical tag, and use our custom
- * one. Gives us more flexibility and effectiveness.
- *
- * @since 0.1.3
- *
- * @uses genesis_get_seo_option() Get SEO setting value
- * @uses genesis_get_custom_field() Get custom field value
- *
- * @global WP_Query $wp_query
- * @return null Returns null on failure to determine queried object
- */
-function genesis_canonical() {
-
-	/** Remove the WordPress canonical */
-	remove_action( 'wp_head', 'rel_canonical' );
-
-	global $wp_query;
-
-	$canonical = '';
-
-	if ( is_front_page() )
-		$canonical = trailingslashit( home_url() );
-
-	if ( is_singular() ) {
-		if ( ! $id = $wp_query->get_queried_object_id() )
-			return;
-
-		$cf = genesis_get_custom_field( '_genesis_canonical_uri' );
-
-		$canonical = $cf ? $cf : get_permalink( $id );
-	}
-
-	if ( is_category() || is_tag() || is_tax() ) {
-		if ( !$id = $wp_query->get_queried_object_id() )
-			return;
-
-		$taxonomy = $wp_query->queried_object->taxonomy;
-
-		$canonical = genesis_get_seo_option( 'canonical_archives' ) ? get_term_link( (int) $id, $taxonomy ) : 0;
-	}
-
-	if ( is_author() ) {
-		if ( ! $id = $wp_query->get_queried_object_id() )
-			return;
-
-		$canonical = genesis_get_seo_option( 'canonical_archives' ) ? get_author_posts_url( $id ) : 0;
-	}
-
-	if ( $canonical )
-		printf( '<link rel="canonical" href="%s" />' . "\n", esc_url( apply_filters( 'genesis_canonical', $canonical ) ) );
-
-}
-
-add_action( 'wp_head', 'genesis_rel_author' );
-/**
- * Echo custom rel="author" link tag.
- *
- * If the appropriate information has been entered, either for the homepage author,
- * or for an individual post/page author, echo a custom rel="author" link.
- *
- * @since 1.9.0
- *
- * @uses genesis_get_seo_option()
- *
- * @global $post
- * @return null Returns null on failure
- */
-function genesis_rel_author() {
-
-	if ( is_front_page() && $gplus_url = get_user_option( 'googleplus', genesis_get_seo_option( 'home_author' ) ) ) {
-		printf( '<link rel="author" href="%s" />' . "\n", esc_url( $gplus_url ) );
-		return;
-	}
-
-	global $post;
-
-	if ( is_singular() && isset( $post->post_author ) && $gplus_url = get_user_option( 'googleplus', $post->post_author ) ) {
-		printf( '<link rel="author" href="%s" />' . "\n", esc_url( $gplus_url ) );
-		return;
-	}
-
-	if ( is_author() && get_query_var( 'author' ) && $gplus_url = get_user_option( 'googleplus', get_query_var( 'author' ) ) ) {
-		printf( '<link rel="author" href="%s" />' . "\n", esc_url( $gplus_url ) );
-		return;
-	}
-
-}
-
-add_action( 'genesis_meta', 'genesis_load_favicon' );
+add_action( 'wp_head', 'genesis_load_favicon' );
 /**
  * Echo favicon link if one is found.
  *
@@ -703,6 +572,112 @@ function genesis_load_favicon() {
 
 	if ( $favicon )
 		echo '<link rel="Shortcut Icon" href="' . esc_url( $favicon ) . '" type="image/x-icon" />' . "\n";
+
+}
+
+add_action( 'wp_head', 'genesis_do_meta_pingback' );
+/**
+ * Adds the pingback meta tag to the head so that other sites can know how to
+ * send a pingback to our site.
+ *
+ * @since 1.3.0
+ */
+function genesis_do_meta_pingback() {
+
+	if ( 'open' == get_option( 'default_ping_status' ) )
+		echo '<link rel="pingback" href="' . get_bloginfo( 'pingback_url' ) . '" />' . "\n";
+
+}
+
+add_action( 'wp_head', 'genesis_canonical', 5 );
+/**
+ * Echo custom canonical link tag.
+ *
+ * Remove the default WordPress canonical tag, and use our custom
+ * one. Gives us more flexibility and effectiveness.
+ *
+ * @since 0.1.3
+ *
+ * @uses genesis_get_seo_option() Get SEO setting value
+ * @uses genesis_get_custom_field() Get custom field value
+ *
+ * @global WP_Query $wp_query Query object.
+ * @return null Returns null on failure to determine queried object
+ */
+function genesis_canonical() {
+
+	/** Remove the WordPress canonical */
+	remove_action( 'wp_head', 'rel_canonical' );
+
+	global $wp_query;
+
+	$canonical = '';
+
+	if ( is_front_page() )
+		$canonical = trailingslashit( home_url() );
+
+	if ( is_singular() ) {
+		if ( ! $id = $wp_query->get_queried_object_id() )
+			return;
+
+		$cf = genesis_get_custom_field( '_genesis_canonical_uri' );
+
+		$canonical = $cf ? $cf : get_permalink( $id );
+	}
+
+	if ( is_category() || is_tag() || is_tax() ) {
+		if ( ! $id = $wp_query->get_queried_object_id() )
+			return;
+
+		$taxonomy = $wp_query->queried_object->taxonomy;
+
+		$canonical = genesis_get_seo_option( 'canonical_archives' ) ? get_term_link( (int) $id, $taxonomy ) : 0;
+	}
+
+	if ( is_author() ) {
+		if ( ! $id = $wp_query->get_queried_object_id() )
+			return;
+
+		$canonical = genesis_get_seo_option( 'canonical_archives' ) ? get_author_posts_url( $id ) : 0;
+	}
+
+	if ( $canonical )
+		printf( '<link rel="canonical" href="%s" />' . "\n", esc_url( apply_filters( 'genesis_canonical', $canonical ) ) );
+
+}
+
+add_action( 'wp_head', 'genesis_rel_author' );
+/**
+ * Echo custom rel="author" link tag.
+ *
+ * If the appropriate information has been entered, either for the homepage author,
+ * or for an individual post/page author, echo a custom rel="author" link.
+ *
+ * @since 1.9.0
+ *
+ * @uses genesis_get_seo_option()
+ *
+ * @global WP_Post $post Post object.
+ * @return null Returns null on failure
+ */
+function genesis_rel_author() {
+
+	if ( is_front_page() && $gplus_url = get_user_option( 'googleplus', genesis_get_seo_option( 'home_author' ) ) ) {
+		printf( '<link rel="author" href="%s" />' . "\n", esc_url( $gplus_url ) );
+		return;
+	}
+
+	global $post;
+
+	if ( is_singular() && isset( $post->post_author ) && $gplus_url = get_user_option( 'googleplus', $post->post_author ) ) {
+		printf( '<link rel="author" href="%s" />' . "\n", esc_url( $gplus_url ) );
+		return;
+	}
+
+	if ( is_author() && get_query_var( 'author' ) && $gplus_url = get_user_option( 'googleplus', get_query_var( 'author' ) ) ) {
+		printf( '<link rel="author" href="%s" />' . "\n", esc_url( $gplus_url ) );
+		return;
+	}
 
 }
 
@@ -787,12 +762,14 @@ function genesis_custom_header() {
 		'width'               => $args['width'],
 		'height'              => $args['height'],
 		'random-default'      => false,
+		'header-selector'     => genesis_html5() ? '.site-header' : '#header',
 		'wp-head-callback'    => $args['header_callback'],
 		'admin-head-callback' => $args['admin_header_callback'],
 	) );
 
 }
 
+add_action( 'wp_head', 'genesis_custom_header_style' );
 /**
  * Custom header callback.
  *
@@ -803,38 +780,37 @@ function genesis_custom_header() {
  */
 function genesis_custom_header_style() {
 
-	/** If no options set, don't waste the output. Do nothing. */
-	if ( HEADER_TEXTCOLOR == get_header_textcolor() && HEADER_IMAGE == get_header_image() )
+	//** Do nothing if custom header not supported
+	if ( ! current_theme_supports( 'custom-header' ) )
 		return;
 
-	/** Header image CSS */
-	$output = sprintf( '#header { background: url(%s) no-repeat; }', esc_url( get_header_image() ) );
+	//** Do nothing if user specifies their own callback
+	if ( get_theme_support( 'custom-header', 'wp-head-callback' ) )
+		return;
 
-	/** Header text color CSS, if showing text */
-	if ( 'blank' != get_header_textcolor() )
-		$output .= sprintf( '#title a, #title a:hover, #description { color: #%s; }', esc_html( get_header_textcolor() ) );
+	$output = '';
 
-	printf( '<style type="text/css">%s</style>', $output );
+	$header_image = get_header_image();
+	$text_color   = get_header_textcolor();
 
-}
+	//** If no options set, don't waste the output. Do nothing.
+	if ( empty( $header_image ) && ! display_header_text() && $text_color == get_theme_support( 'custom-header', 'default-text-color' ) )
+		return;
 
-/**
- * Custom header admin callback.
- *
- * It outputs special CSS to the admin document head, modifying the look of the
- * header area based on user input.
- *
- * Will probably need to be overridden in the child theme with a custom callback.
- *
- * @since 1.6.0
- */
-function genesis_custom_header_admin_style() {
+	$header_selector = get_theme_support( 'custom-header', 'header-selector', genesis_html5() ? '.site-header' : '#header' );
+	$title_selector  = genesis_html5() ? '.site-title' : '#title';
+	$desc_selector   = genesis_html5() ? '.site-description' : '#description';
 
-	$headimg = sprintf( '.appearance_page_custom-header #headimg { background: url(%s) no-repeat; min-height: %spx; }', get_header_image(), HEADER_IMAGE_HEIGHT );
-	$h1      = sprintf( '#headimg h1, #headimg h1 a { color: #%s; font-size: 24px; font-weight: normal; line-height: 30px; margin: 20px 0 0; text-decoration: none; }', esc_html( get_header_textcolor() ) );
-	$desc    = sprintf( '#headimg #desc { color: #%s; font-size: 12px; font-style: italic; line-height: 1; margin: 0; }', esc_html( get_header_textcolor() ) );
+	//** Header image CSS, if exists
+	if ( $header_image )
+		$output .= sprintf( '%s { background: url(%s) no-repeat; }', $header_selector, esc_url( $header_image ) );
 
-	printf( '<style type="text/css">%1$s %2$s %3$s</style>', $headimg, $h1, $desc );
+	//** Header text color CSS, if showing text
+	if ( display_header_text() && $text_color != get_theme_support( 'custom-header', 'default-text-color' ) )
+		$output .= sprintf( '%2$s a, %2$s a:hover, %3$s { color: #%s; }', esc_html( $text_color ), esc_html( $title_selector ), esc_html( $desc_selector ) );
+
+	if ( $output )
+		printf( '<style type="text/css">%s</style>' . "\n", $output );
 
 }
 
@@ -848,7 +824,12 @@ add_action( 'genesis_header', 'genesis_header_markup_open', 5 );
  */
 function genesis_header_markup_open() {
 
-	genesis_markup( '<header class="site-header">', '<div id="header">' );
+	genesis_markup( array(
+		'html5'   => '<header %s>',
+		'xhtml'   => '<div id="header">',
+		'context' => 'site-header',
+	) );
+
 	genesis_structural_wrap( 'header' );
 
 }
@@ -864,7 +845,10 @@ add_action( 'genesis_header', 'genesis_header_markup_close', 15 );
 function genesis_header_markup_close() {
 
 	genesis_structural_wrap( 'header', 'close' );
-	genesis_markup( '</header>', '</div><!--end #header-->' );
+	genesis_markup( array(
+		'html5' => '</header>',
+		'xhtml' => '</div>',
+	) );
 
 }
 
@@ -880,19 +864,115 @@ add_action( 'genesis_header', 'genesis_do_header' );
  */
 function genesis_do_header() {
 
-	echo '<div id="title-area">';
+	$title_area_wrap = is_front_page() && genesis_get_seo_option( 'semantic_headings' ) ? 'hgroup' : 'div';
+
+	genesis_markup( array(
+		'html5'   => '<' . $title_area_wrap . ' %s>',
+		'xhtml'   => '<div id="title-area">',
+		'context' => 'title-area',
+	) );
 	do_action( 'genesis_site_title' );
 	do_action( 'genesis_site_description' );
-	echo '</div><!-- end #title-area -->';
+	genesis_markup( array(
+		'html5' => '</' . $title_area_wrap . '>',
+		'xhtml' => '</div>',
+	) );
 
 	if ( is_active_sidebar( 'header-right' ) || has_action( 'genesis_header_right' ) ) {
-		echo '<div class="widget-area">';
-		do_action( 'genesis_header_right' );
-		add_filter( 'wp_nav_menu_args', 'genesis_header_menu_args' );
-		dynamic_sidebar( 'header-right' );
-		remove_filter( 'wp_nav_menu_args', 'genesis_header_menu_args' );
-		echo '</div><!-- end .widget-area -->';
+		genesis_markup( array(
+			'html5' => '<aside class="widget-area">',
+			'xhtml' => '<div class="widget-area">',
+		) );
+
+			do_action( 'genesis_header_right' );
+			add_filter( 'wp_nav_menu_args', 'genesis_header_menu_args' );
+			dynamic_sidebar( 'header-right' );
+			remove_filter( 'wp_nav_menu_args', 'genesis_header_menu_args' );
+
+		genesis_markup( array(
+			'html5' => '</aside>',
+			'xhtml' => '</div>',
+		) );
 	}
+
+}
+
+add_action( 'genesis_site_title', 'genesis_seo_site_title' );
+/**
+ * Echo the site title into the header.
+ *
+ * Depending on the SEO option set by the user, this will either be wrapped in
+ * h1 or p tags.
+ *
+ * Applies the genesis_seo_title filter before echoing.
+ *
+ * @since 1.1.0
+ *
+ * @uses genesis_get_seo_option() Get SEO setting value
+ */
+function genesis_seo_site_title() {
+
+	//* Set what goes inside the wrapping tags
+	$inside = sprintf( '<a href="%s" title="%s">%s</a>', trailingslashit( home_url() ), esc_attr( get_bloginfo( 'name' ) ), get_bloginfo( 'name' ) );
+
+	//* Determine which wrapping tags to use
+	$wrap = is_home() && 'title' == genesis_get_seo_option( 'home_h1_on' ) ? 'h1' : 'p';
+
+	//* A little fallback, in case an SEO plugin is active
+	$wrap = is_home() && ! genesis_get_seo_option( 'home_h1_on' ) ? 'h1' : $wrap;
+	
+	//* And finally, $wrap in H1 if HTML5 & semantic headings enabled
+	$wrap = genesis_html5() && genesis_get_seo_option( 'semantic_headings' ) ? 'h1' : $wrap;
+
+	//* Build the Title	
+	$title = genesis_markup( array(
+		'html5'   => "<{$wrap} %s>{$inside}</{$wrap}>",
+		'xhtml'   => sprintf( '<%s id="title">%s</%s>', $wrap, $inside, $wrap ),
+		'context' => 'site-title',
+		'echo'    => false,
+	) );
+
+	//* Echo (filtered)
+	echo apply_filters( 'genesis_seo_title', $title, $inside, $wrap );
+
+}
+
+add_action( 'genesis_site_description', 'genesis_seo_site_description' );
+/**
+ * Echo the site description into the header.
+ *
+ * Depending on the SEO option set by the user, this will either be wrapped in
+ * h1 or p tags.
+ *
+ * Applies the genesis_seo_description filter before echoing.
+ *
+ * @since 1.1.0
+ *
+ * @uses genesis_get_seo_option() Get SEO setting value
+ */
+function genesis_seo_site_description() {
+
+	//* Set what goes inside the wrapping tags
+	$inside = esc_html( get_bloginfo( 'description' ) );
+
+	//* Determine which wrapping tags to use
+	$wrap = is_home() && 'description' == genesis_get_seo_option( 'home_h1_on' ) ? 'h1' : 'p';
+	
+	//* And finally, $wrap in H2 if HTML5 & semantic headings enabled
+	$wrap = genesis_html5() && genesis_get_seo_option( 'semantic_headings' ) ? 'h2' : $wrap;
+
+	//* Build the description
+	$description = genesis_markup( array(
+		'html5'   => "<{$wrap} %s>{$inside}</{$wrap}>",
+		'xhtml'   => sprintf( '<%s id="description">%s</%s>', $wrap, $inside, $wrap ),
+		'context' => 'site-description',
+		'echo'    => false,
+	) );
+
+	//* Output (filtered)
+	$output = $inside ? apply_filters( 'genesis_seo_description', $description, $inside, $wrap ) : '';
+
+	echo $output;
 
 }
 
@@ -906,7 +986,7 @@ function genesis_do_header() {
  */
 function genesis_header_menu_args( $args ) {
 
-	#$args['container'] = 'div'; //lets us change this to 'nav' when Genesis supports HTML5 could be removed for 1.9
+	$args['container'] = genesis_html5() ? 'nav' : 'div';
 	$args['menu_class'] .= ' genesis-nav-menu';
 
 	return $args;

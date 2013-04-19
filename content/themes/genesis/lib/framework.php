@@ -30,19 +30,28 @@ function genesis() {
 	get_header();
 
 	do_action( 'genesis_before_content_sidebar_wrap' );
-	?>
-	<div id="content-sidebar-wrap">
-		<?php do_action( 'genesis_before_content' ); ?>
-		<div id="content" class="hfeed">
-			<?php
-				do_action( 'genesis_before_loop' );
-				do_action( 'genesis_loop' );
-				do_action( 'genesis_after_loop' );
-			?>
-		</div><!-- end #content -->
-		<?php do_action( 'genesis_after_content' ); ?>
-	</div><!-- end #content-sidebar-wrap -->
-	<?php
+	genesis_markup( array( 
+		'html5'   => '<div %s>',
+		'xhtml'   => '<div id="content-sidebar-wrap">',
+		'context' => 'content-sidebar-wrap',
+	) );
+	
+		do_action( 'genesis_before_content' );
+		genesis_markup( array( 
+			'html5'   => '<main %s>',
+			'xhtml'   => '<div id="content" class="hfeed">',
+			'context' => 'content',
+		) );
+			do_action( 'genesis_before_loop' );
+			do_action( 'genesis_loop' );
+			do_action( 'genesis_after_loop' );
+		genesis_markup( array( 
+			'html5' => '</main>', //* end .content
+			'xhtml' => '</div>', //* end #content
+		) );
+		do_action( 'genesis_after_content' );
+	
+	echo '</div>'; //* end .content-sidebar-wrap or #content-sidebar-wrap
 	do_action( 'genesis_after_content_sidebar_wrap' );
 
 	get_footer();

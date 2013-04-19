@@ -56,12 +56,12 @@ add_filter( 'body_class', 'genesis_custom_body_class', 15 );
  * @param array $classes Existing classes
  * @return array Amended classes
  */
-function genesis_custom_body_class( $classes ) {
+function genesis_custom_body_class( array $classes ) {
 
 	$new_class = is_singular() ? genesis_get_custom_field( '_genesis_custom_body_class' ) : null;
 
 	if ( $new_class )
-		$classes[] = esc_attr( sanitize_html_class( $new_class ) );
+		$classes[] = esc_attr( $new_class );
 
 	return $classes;
 
@@ -81,22 +81,14 @@ add_filter( 'body_class', 'genesis_header_body_classes' );
  * @param array $classes Existing classes
  * @return array Amended classes
  */
-function genesis_header_body_classes( $classes ) {
+function genesis_header_body_classes( array $classes ) {
 
 	if ( current_theme_supports( 'custom-header' ) ) {
 		if ( get_theme_support( 'custom-header', 'default-text-color' ) != get_header_textcolor() || get_theme_support( 'custom-header', 'default-image' ) != get_header_image() )
 			$classes[] = 'custom-header';
 	}
 
-	if ( 'image' == genesis_get_option( 'blog_title' ) || 'blank' == get_header_textcolor() )
-		$classes[] = 'header-image';
-
-	if ( ! is_active_sidebar( 'header-right' ) && ! has_action( 'genesis_header_right' ) )
-		$classes[] = 'header-full-width';
-
-	return $classes;
-
-	if ( 'image' == genesis_get_option( 'blog_title' ) || 'blank' == get_header_textcolor() )
+	if ( 'image' == genesis_get_option( 'blog_title' ) || ( get_header_image() && ! display_header_text() ) )
 		$classes[] = 'header-image';
 
 	if ( ! is_active_sidebar( 'header-right' ) && ! has_action( 'genesis_header_right' ) )
@@ -120,7 +112,7 @@ add_filter( 'body_class', 'genesis_layout_body_classes' );
  * @param array $classes Existing classes
  * @return array Amended classes
  */
-function genesis_layout_body_classes( $classes ) {
+function genesis_layout_body_classes( array $classes ) {
 
 	$site_layout = genesis_site_layout();
 
@@ -145,12 +137,41 @@ add_filter( 'body_class', 'genesis_style_selector_body_classes' );
  * @param array $classes Existing classes
  * @return array Amended classes
  */
-function genesis_style_selector_body_classes( $classes ) {
+function genesis_style_selector_body_classes( array $classes ) {
 
 	$current = genesis_get_option( 'style_selection' );
 
 	if ( $current )
 		$classes[] = esc_attr( sanitize_html_class( $current ) );
+
+	return $classes;
+
+}
+
+add_filter( 'body_class', 'genesis_cpt_archive_body_class', 15 );
+/**
+ * Adds a custom class to the custom post type archive body classes.
+ *
+ * It accepts a value from the archive settings page.
+ *
+ * @since 2.0.0
+ *
+ * @uses genesis_has_post_type_archive_support()
+ * @uses genesis_get_cpt_option() Get CPT Archive setting.
+ *
+ * @param array $classes Existing classes.
+ *
+ * @return array Amended classes.
+ */
+function genesis_cpt_archive_body_class( array $classes ) {
+
+	if ( ! is_post_type_archive() || ! genesis_has_post_type_archive_support() )
+		return $classes;
+
+	$new_class = genesis_get_cpt_option( 'body_class' );
+
+	if ( $new_class )
+		$classes[] = esc_attr( sanitize_html_class( $new_class ) );
 
 	return $classes;
 
