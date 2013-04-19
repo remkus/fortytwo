@@ -1,7 +1,7 @@
 <?php
 /**
- * Template Name: Home Blog
- * The file handles the default blog layout of FortyTwo.
+ * Template Name: Magazine
+ * The file handles the default magazine page layout for FortyTwo.
  *
  * @category FortyTwo
  * @package  Templates
