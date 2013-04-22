@@ -5,7 +5,7 @@
 Plugin Name:  Developer
 Plugin URI:   http://wordpress.org/extend/plugins/developer/
 Description:  The first stop for every WordPress developer
-Version:      1.1.2
+Version:      1.2
 Author:       Automattic
 Author URI:   http://automattic.com
 License:      GPLv2 or later
@@ -24,7 +24,7 @@ class Automattic_Developer {
 	public $settings               = array();
 	public $default_settings       = array();
 
-	const VERSION                  = '1.1.2';
+	const VERSION                  = '1.1.6';
 	const OPTION                   = 'a8c_developer';
 	const PAGE_SLUG                = 'a8c_developer';
 
@@ -81,6 +81,11 @@ class Automattic_Developer {
 				'name'         => esc_html__( 'Debug Bar Cron', 'a8c-developer' ),
 				'active'       => function_exists( 'zt_add_debug_bar_cron_panel' ),
 			),
+			'debug-bar-extender' => array(
+				'project_type' => 'all',
+				'name'         => esc_html__( 'Debug Bar Extender', 'a8c-developer' ),
+				'active'       => class_exists( 'Debug_Bar_Extender' ),
+			),
 			'rewrite-rules-inspector' => array(
 				'project_type' 	=> 'all',
 				'name' 		=> esc_html__( 'Rewrite Rules Inspector', 'a8c-developer' ),
@@ -91,18 +96,21 @@ class Automattic_Developer {
 				'name'         => esc_html__( 'Log Deprecated Notices', 'a8c-developer' ),
 				'active'       => class_exists( 'Deprecated_Log' ),
 			),
+			'log-viewer' => array(
+				'project_type' => 'all',
+				'name'         => esc_html__( 'Log Viewer', 'a8c-developer' ),
+				'active'       => class_exists( 'ciLogViewer' ),
+			),
 			'vip-scanner' => array(
 				'project_type' => 'wpcom-vip',
 				'name'         => esc_html__( 'VIP Scanner', 'a8c-developer' ),
 				'active'       => class_exists( 'VIP_Scanner' ),
 			),
-			/*
 			'jetpack' => array(
 				'project_type' => 'wpcom-vip',
 				'name'         => esc_html__( 'Jetpack', 'a8c-developer' ),
 				'active'       => class_exists( 'Jetpack' ),
 			),
-			/**/
 			'grunion-contact-form' => array(
 				'project_type' => 'wpcom-vip',
 				'name'         => esc_html__( 'Grunion Contact Form', 'a8c-developer' ),
@@ -155,6 +163,7 @@ class Automattic_Developer {
 				'project_type' => 'wporg-theme',
 				'name'         => esc_html__( 'Theme Test Drive', 'a8c-developer' ),
 				'active'       => function_exists( 'TTD_filters' ),
+				'filename'     => 'themedrive.php',
 			),
 			'theme-check' => array(
 				'project_type' => 'wporg-theme',
@@ -164,8 +173,18 @@ class Automattic_Developer {
 		);
 
 		$this->recommended_constants = array(
-			'WP_DEBUG'    => __( 'Enables <a href="http://codex.wordpress.org/Debugging_in_WordPress" target="_blank">debug mode</a> which helps identify and resolve issues', 'a8c-developer' ),
-			'SAVEQUERIES' => esc_html__( 'Logs database queries to an array so you can review them. The Debug Bar plugin will list out database queries if you set this constant.', 'a8c-developer' ),
+			'WP_DEBUG'    => array(
+				'project_type'	=> 'all',
+				'description' 	=> __( 'Enables <a href="http://codex.wordpress.org/Debugging_in_WordPress" target="_blank">debug mode</a> which helps identify and resolve issues', 'a8c-developer' )
+			),
+			'SAVEQUERIES' => array(
+				'project_type'	=> 'all',
+				'description'	=> esc_html__( 'Logs database queries to an array so you can review them. The Debug Bar plugin will list out database queries if you set this constant.', 'a8c-developer' )
+			),
+			'JETPACK_DEV_DEBUG'	=> array(
+				'project_type'	=> 'wpcom-vip',
+				'description'	=> __( 'Enables <a href="http://jetpack.me/2013/03/28/jetpack-dev-mode-release/">Development Mode</a> in Jetpack for testing features without a connection to WordPress.com.', 'a8c-developer' )
+			)
 		);
 
 		register_setting( self::OPTION, self::OPTION, array( $this, 'settings_validate' ) );
@@ -291,10 +310,9 @@ class Automattic_Developer {
 
 				$to_install_or_enable = 0;
 
-				foreach ( $this->recommended_plugins as $plugin_slug => $plugin_details ) {
-					if ( 'all' != $plugin_details['project_type'] && $plugin_details['project_type'] != $this->settings['project_type'] )
-						continue;
+				$recommended_plugins = $this->get_recommended_plugins();
 
+				foreach ( $recommended_plugins as $plugin_slug => $plugin_details ) {
 					if ( ! $plugin_details['active'] ) {
 						$to_install_or_enable++;
 					}
@@ -308,24 +326,44 @@ class Automattic_Developer {
 
 				echo '<p>' . esc_html__( 'We recommend that you also install and activate the following plugins:', 'a8c-developer' ) . '</p>';
 
-				echo '<ul>';
+				echo '<table class="recommended-plugins">';
 
-					foreach ( $this->recommended_plugins as $plugin_slug => $plugin_details ) {
-						if ( 'all' != $plugin_details['project_type'] && $plugin_details['project_type'] != $this->settings['project_type'] )
-							continue;
-
+					foreach ( $recommended_plugins as $plugin_slug => $plugin_details ) {
 						if ( $plugin_details['active'] )
 							continue;
 
+						echo '<tr>';
+
+						$details = $this->get_plugin_details( $plugin_slug );
+
+						if ( is_wp_error( $details ) )
+							$details = array();
+
+						$plugin_details = array_merge( (array) $details, array( 'slug' => $plugin_slug ), $plugin_details );
+
+						echo '<td><strong>' . $plugin_details['name'] . '</strong></td>';
+
+						echo '<td>';
+
 						if ( $this->is_recommended_plugin_installed( $plugin_slug ) ) {
 							$path = $this->get_path_for_recommended_plugin( $plugin_slug );
-							echo '<li>' . $plugin_details['name'] . ' <button type="button" class="a8c-developer-button-activate" data-path="' . esc_attr( $path ) . '" data-nonce="' . wp_create_nonce( 'a8c_developer_activate_plugin_' . $path ) . '">' . esc_html__( 'Activate', 'a8c-developer' ) . '</button></li>';
+
+							echo '<button type="button" class="a8c-developer-button-activate" data-path="' . esc_attr( $path ) . '" data-nonce="' . wp_create_nonce( 'a8c_developer_activate_plugin_' . $path ) . '">' . esc_html__( 'Activate', 'a8c-developer' ) . '</button>';
 						} else {
-							echo '<li>' . $plugin_details['name'] . ' <button type="button" class="a8c-developer-button-install" data-pluginslug="' . esc_attr( $plugin_slug ) . '" data-nonce="' . wp_create_nonce( 'a8c_developer_install_plugin_' . $plugin_slug ) . '">' . esc_html__( 'Install', 'a8c-developer' ) . '</button></li>';
+							echo '<button type="button" class="a8c-developer-button-install" data-pluginslug="' . esc_attr( $plugin_slug ) . '" data-nonce="' . wp_create_nonce( 'a8c_developer_install_plugin_' . $plugin_slug ) . '">' . esc_html__( 'Install', 'a8c-developer' ) . '</button>';
 						}
+
+						if ( ! empty( $plugin_details['short_description'] ) )
+								echo '<br /><span class="description">' . esc_html__( $plugin_details['short_description'] ) . '</span>';
+
+						echo '</td>';
+
+						echo '</tr>';
 					}
 
-				echo '</ul>';
+				echo '<tr><td colspan="2"><button type="button" class="button button-primary a8c-developer-button-close">' . esc_html__( 'Get Developing!', 'a8c-developer' ) . '</button></td></tr>';
+
+				echo '</table>';
 
 				echo '<script type="text/javascript">a8c_developer_bind_events();</script>';
 
@@ -345,7 +383,7 @@ class Automattic_Developer {
 				$api = plugins_api( 'plugin_information', array( 'slug' => $_POST['plugin_slug'], 'fields' => array( 'sections' => false ) ) );
 
 				if ( is_wp_error( $api ) )
-					die( sprintf( __( 'ERROR: Error fetching plugin information: %s', 'a8c-developer' ), $api->get_error_message( $api ) ) );
+					die( sprintf( __( 'ERROR: Error fetching plugin information: %s', 'a8c-developer' ), $api->get_error_message() ) );
 
 				$upgrader = new Plugin_Upgrader( new Automattic_Developer_Empty_Upgrader_Skin( array(
 					'nonce'  => 'install-plugin_' . $_POST['plugin_slug'],
@@ -356,12 +394,12 @@ class Automattic_Developer {
 				$install_result = $upgrader->install( $api->download_link );
 
 				if ( ! $install_result || is_wp_error( $install_result ) )
-					die( sprintf( __( 'ERROR: Failed to install plugin: %s', 'a8c-developer' ), $install_result->get_error_message( $install_result ) ) );
+					die( sprintf( __( 'ERROR: Failed to install plugin: %s', 'a8c-developer' ), $install_result->get_error_message() ) );
 
 				$activate_result = activate_plugin( $this->get_path_for_recommended_plugin( $_POST['plugin_slug'] ) );
 
 				if ( is_wp_error( $activate_result ) )
-					die( sprintf( __( 'ERROR: Failed to activate plugin: %s', 'a8c-developer' ), $activate_result->get_error_message( $activate_result ) ) );
+					die( sprintf( __( 'ERROR: Failed to activate plugin: %s', 'a8c-developer' ), $activate_result->get_error_message() ) );
 
 				exit( '1' );
 
@@ -377,7 +415,7 @@ class Automattic_Developer {
 				$activate_result = activate_plugin( $_POST['path'] );
 
 				if ( is_wp_error( $activate_result ) )
-					die( sprintf( __( 'ERROR: Failed to activate plugin: %s', 'a8c-developer' ), $activate_result->get_error_message( $activate_result ) ) );
+					die( sprintf( __( 'ERROR: Failed to activate plugin: %s', 'a8c-developer' ), $activate_result->get_error_message() ) );
 
 				exit( '1' );
 		}
@@ -402,20 +440,39 @@ class Automattic_Developer {
 
 		// Plugins
 		add_settings_section( 'a8c_developer_plugins', esc_html__( 'Plugins', 'a8c-developer' ), array( $this, 'settings_section_plugins' ), self::PAGE_SLUG . '_status' );
-		foreach ( $this->recommended_plugins as $plugin_slug => $plugin_details ) {
-			if ( 'all' != $plugin_details['project_type'] && $plugin_details['project_type'] != $this->settings['project_type'] )
-				continue;
 
-			$plugin_details = array_merge( array( 'slug' => $plugin_slug ), $plugin_details );
-			add_settings_field( 'a8c_developer_plugin_' . $plugin_slug, $plugin_details['name'], array( $this, 'settings_field_plugin' ), self::PAGE_SLUG . '_status', 'a8c_developer_plugins', $plugin_details );
+		wp_enqueue_script( 'plugin-install' );
+
+		add_thickbox();
+
+		$recommended_plugins = $this->get_recommended_plugins();
+
+		foreach ( $recommended_plugins as $plugin_slug => $plugin_details ) {
+			$details = $this->get_plugin_details( $plugin_slug );
+
+			if ( is_wp_error( $details ) )
+				$details = array();
+
+			$plugin_details = array_merge( (array) $details, array( 'slug' => $plugin_slug ), $plugin_details );
+
+			$label = '<strong>' . esc_html( $plugin_details['name'] ) . '</strong>';
+
+			$label .= '<br /><a href="' . self_admin_url( 'plugin-install.php?tab=plugin-information&amp;plugin=' . $plugin_slug .
+								'&amp;TB_iframe=true&amp;width=600&amp;height=550' ) . '" class="thickbox" title="' .
+								esc_attr( sprintf( __( 'More information about %s' ), $plugin_details['name'] ) ) . '">' . __( 'Details' ) . '</a>';
+
+			add_settings_field( 'a8c_developer_plugin_' . $plugin_slug, $label, array( $this, 'settings_field_plugin' ), self::PAGE_SLUG . '_status', 'a8c_developer_plugins', $plugin_details );
 		}
 
 		// Constants
 		add_settings_section( 'a8c_developer_constants', esc_html__( 'Constants', 'a8c-developer' ), array( $this, 'settings_section_constants' ), self::PAGE_SLUG . '_status' );
-		foreach ( $this->recommended_constants as $constant => $description ) {
+		
+		$recommended_constants = $this->get_recommended_constants();
+
+		foreach ( $recommended_constants as $constant => $constant_details ) {
 			add_settings_field( 'a8c_developer_constant_' . $constant, $constant, array( $this, 'settings_field_constant' ), self::PAGE_SLUG . '_status', 'a8c_developer_constants', array(
 				'constant'    => $constant,
-				'description' => $description,
+				'description' => $constant_details['description'],
 			) );
 		}
 
@@ -433,7 +490,7 @@ class Automattic_Developer {
 		add_settings_field( 'a8c_developer_setting_codex', esc_html__( 'Codex', 'a8c-developer' ), array( $this, 'settings_field_setting_resource_codex' ), self::PAGE_SLUG . '_status', 'a8c_developer_resources' );
 
 		if ( 'wpcom-vip' == $this->settings['project_type'] )
-			add_settings_field( 'a8c_developer_setting_vip_lobby', esc_html__( 'VIP Lobby', 'a8c-developer' ), array( $this, 'settings_field_setting_resource_vip_lobby' ), self::PAGE_SLUG . '_status', 'a8c_developer_resources' );
+			add_settings_field( 'a8c_developer_setting_vip_docs', esc_html__( 'VIP Docs', 'a8c-developer' ), array( $this, 'settings_field_setting_resource_vip_docs' ), self::PAGE_SLUG . '_status', 'a8c_developer_resources' );
 
 		if ( in_array( $this->settings['project_type'], array( 'wporg-theme', 'wpcom-vip' ) ) )
 			add_settings_field( 'a8c_developer_setting_starter_themes', esc_html__( 'Starter Themes', 'a8c-developer' ), array( $this, 'settings_field_setting_resource_starter_themes' ), self::PAGE_SLUG . '_status', 'a8c_developer_resources' );
@@ -503,18 +560,21 @@ class Automattic_Developer {
 			// Needs to be activated
 			if ( current_user_can('activate_plugins') ) {
 				$path = $this->get_path_for_recommended_plugin( $args['slug'] );
-				echo '<a class="a8c-developer-notactive a8c-developer-button-activate" href="' . esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $path ), 'activate-plugin_' . $path ) ) . '" data-path="' . esc_attr( $path ) . '" data-nonce="' . wp_create_nonce( 'a8c_developer_activate_plugin_' . $path ) . '" title="' . esc_attr__( 'Click here to activate', 'a8c-developer' ) . '">' . esc_html__( 'INACTIVE', 'a8c-developer' ) . '</a>';
+				echo '<a class="a8c-developer-notactive a8c-developer-button-activate" href="' . esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $path ), 'activate-plugin_' . $path ) ) . '" data-path="' . esc_attr( $path ) . '" data-nonce="' . wp_create_nonce( 'a8c_developer_activate_plugin_' . $path ) . '" title="' . esc_attr__( 'Click here to activate', 'a8c-developer' ) . '">' . esc_html__( 'INACTIVE', 'a8c-developer' ) . ' - <em>' . esc_html__( 'Click to Activate', 'a8c-developer' ) . '</em></a>';
 			} else {
 				echo '<span class="a8c-developer-notactive">' . esc_html__( 'INACTIVE', 'a8c-developer' ) . '</span>';
 			}
 		} else {
 			// Needs to be installed
 			if ( current_user_can('install_plugins') ) {
-				echo '<a class="a8c-developer-notactive a8c-developer-button-install" href="' . esc_url( wp_nonce_url( admin_url( 'update.php?action=install-plugin&plugin=' . $args['slug'] ), 'install-plugin_' . $args['slug'] ) ) . '" data-pluginslug="' . esc_attr( $args['slug'] ) . '" data-nonce="' . wp_create_nonce( 'a8c_developer_install_plugin_' . $args['slug'] ) . '" title="' . esc_attr__( 'Click here to install', 'a8c-developer' ) . '">' . esc_html__( 'NOT INSTALLED', 'a8c-developer' ) . '</a>';
+				echo '<a class="a8c-developer-notactive a8c-developer-button-install" href="' . esc_url( wp_nonce_url( admin_url( 'update.php?action=install-plugin&plugin=' . $args['slug'] ), 'install-plugin_' . $args['slug'] ) ) . '" data-pluginslug="' . esc_attr( $args['slug'] ) . '" data-nonce="' . wp_create_nonce( 'a8c_developer_install_plugin_' . $args['slug'] ) . '" title="' . esc_attr__( 'Click here to install', 'a8c-developer' ) . '">' . esc_html__( 'NOT INSTALLED', 'a8c-developer' ) . ' - <em>' . esc_html__( 'Click to Install', 'a8c-developer' ) . '</em></a>';
 			} else {
 				echo '<span class="a8c-developer-notactive">' . esc_html__( 'NOT INSTALLED', 'a8c-developer' ) . '</span>';
 			}
 		}
+
+		if ( ! empty( $args['short_description'] ) )
+			echo '<br /><span class="description">' . $args['short_description']  . '</span>';
 	}
 
 	public function settings_section_constants() {
@@ -559,7 +619,7 @@ class Automattic_Developer {
 		if ( file_exists( WP_CONTENT_DIR . '/themes/vip' ) && file_exists( WP_CONTENT_DIR . '/themes/vip/plugins' ) ) {
 			echo '<span class="a8c-developer-active">' . esc_html__( 'ENABLED', 'a8c-developer' ) . '</span>';
 		} else {
-			echo '<a href="http://lobby.vip.wordpress.com/getting-started/development-environment/#plugins-and-helper-functions" class="a8c-developer-notactive">' . esc_html__( 'DISABLED', 'a8c-developer' ) . '</a>';
+			echo '<a href="http://vip.wordpress.com/documentation/development-environment/#plugins-and-helper-functions" class="a8c-developer-notactive">' . esc_html__( 'DISABLED', 'a8c-developer' ) . '</a>';
 		}
 	}
 
@@ -569,8 +629,8 @@ class Automattic_Developer {
 		_e( "The <a href='http://codex.wordpress.org/Developer_Documentation'>Developer Documentation section</a> of the Codex offers guidelines and references for anyone wishing to modify, extend, or contribute to WordPress.", 'a8c-developer' );
 	}
 
-	public function settings_field_setting_resource_vip_lobby() {
-		_e( "The <a href='http://lobby.vip.wordpress.com'>VIP Lobby</a> is a technical documentation resource for developing sites on WordPress.com including best practices and helpful tips to help you code better, faster, and stronger.", 'a8c-developer' );
+	public function settings_field_setting_resource_vip_docs() {
+		_e( "The <a href='http://vip.wordpress.com/documentation/'>VIP Documentation</a> is a technical resource for developing sites on WordPress.com including best practices and helpful tips to help you code better, faster, and stronger.", 'a8c-developer' );
 	}
 
 	public function settings_field_setting_resource_starter_themes() {
@@ -617,6 +677,146 @@ class Automattic_Developer {
 
 		if ( $this->is_recommended_plugin_active( $slug ) || file_exists( WP_PLUGIN_DIR . '/' . $this->get_path_for_recommended_plugin( $slug ) ) )
 			return true;
+
+		return false;
+	}
+
+	/**
+	 * Retrieve plugin information for a given $slug
+	 *
+	 * Note that this does not use plugins_api(), as the .org api does not return
+	 * short descriptions in POST requests (that api endpoint is different from this one)
+	 *
+	 * @param string $slug The plugin slug
+	 * @return object The response object containing plugin details
+	 */
+	public function get_plugin_details( $slug ){
+		$cache_key = 'a8c_developer_plugin_details_' . $slug;
+
+		if ( false === ( $details = get_transient( $cache_key ) ) ) {
+			$request = wp_remote_get( 'http://api.wordpress.org/plugins/info/1.0/' . esc_url( $slug ), array( 'timeout' => 15 ) );
+		
+			if ( is_wp_error( $request ) ) {
+				$details = new WP_Error('a8c_developer_plugins_api_failed', __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="http://wordpress.org/support/">support forums</a>.' ), $request->get_error_message() );
+			} else {
+				$details = maybe_unserialize( wp_remote_retrieve_body( $request ) );
+
+				if ( ! is_object( $details ) && ! is_array( $details ) )
+					$details = new WP_Error('a8c_developer_plugins_api_failed', __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="http://wordpress.org/support/">support forums</a>.' ), wp_remote_retrieve_body( $request ) );
+				else
+					set_transient( $cache_key, $details, WEEK_IN_SECONDS );
+			}
+		}
+
+		return $details;
+	}
+
+	/**
+	 * Return an array of all plugins recommended for the current project type
+	 *
+	 * Only returns plugins that have been recommended for the project type defined
+	 * in $this->settings['project_type']
+	 * 
+	 * @return array An array of plugins recommended for the current project type
+	 */
+	public function get_recommended_plugins() {
+		return $this->get_recommended_plugins_by_type( $this->settings['project_type'] );
+	}
+
+	/**
+	 * Return an array of all plugins recommended for the given project type
+	 * 
+	 * @param  string $type The project type to return plugins for
+	 * @return array An associative array of plugins for the project type
+	 */
+	public function get_recommended_plugins_by_type( $type ) {
+		$plugins_by_type = array();
+
+		foreach( $this->recommended_plugins as $plugin_slug => $plugin_details ) {
+			if ( ! $this->plugin_is_recommended_for_project_type( $plugin_slug, $type ) )
+				continue;
+
+			$plugins_by_type[ $plugin_slug ] = $plugin_details;
+		}
+
+		return $plugins_by_type;
+	}
+
+	/**
+	 * Should the given plugin be recommended for the given project type?
+	 *
+	 * Determines whether or not a given $plugin_slug is recommended for a given $project_type
+	 * by checking the project types defined for it
+	 * 
+	 * @param  string $plugin_slug The plugin slug to check
+	 * @param  string $project_type The project type to check the plugin against
+	 * @return bool Boolean indicating if the plugin is recommended for the project type
+	 */
+	public function plugin_is_recommended_for_project_type( $plugin_slug, $project_type = null ) {
+		if ( null == $project_type )
+			$project_type = $this->settings['project_type'];
+
+		$plugin_details = $this->recommended_plugins[ $plugin_slug ];
+
+		if ( 'all' === $plugin_details['project_type'] ||
+			$plugin_details['project_type'] === $project_type ||
+			( is_array( $plugin_details['project_type'] ) && in_array( $project_type, $plugin_details['project_type'] ) ) )
+				return true;
+
+		return false;
+	}
+
+	/**
+	 * Return an array of all constants recommended for the current project type
+	 *
+	 * Only returns constants that have been recommended for the project type defined
+	 * in $this->settings['project_type']
+	 * 
+	 * @return array An array of constants recommended for the current project type
+	 */
+	public function get_recommended_constants() {
+		return $this->get_recommended_constants_by_type( $this->settings['project_type'] );
+	}
+
+	/**
+	 * Return an array of all constants recommended for the given project type
+	 * 
+	 * @param  string $type The project type to return constants for
+	 * @return array An associative array of constants for the project type
+	 */
+	public function get_recommended_constants_by_type( $type ) {
+		$constants_by_type = array();
+
+		foreach( $this->recommended_constants as $constant => $constant_details ) {
+			if ( ! $this->constant_is_recommended_for_project_type( $constant, $type ) )
+				continue;
+
+			$constants_by_type[ $constant ] = $constant_details;
+		}
+
+		return $constants_by_type;
+	}
+
+	/**
+	 * Should the given constant be recommended for the given project type?
+	 *
+	 * Determines whether or not a given $constant is recommended for a given $project_type
+	 * by checking the project types defined for it
+	 * 
+	 * @param  string $constant The constant to check
+	 * @param  string $project_type The project type to check the constant against
+	 * @return bool Boolean indicating if the constant is recommended for the project type
+	 */
+	public function constant_is_recommended_for_project_type( $constant, $project_type = null ) {
+		if ( null == $project_type )
+			$project_type = $this->settings['project_type'];
+
+		$constant_details = $this->recommended_constants[ $constant ];
+
+		if ( 'all' === $constant_details['project_type'] ||
+			$constant_details['project_type'] === $project_type ||
+			( is_array( $constant_details['project_type'] ) && in_array( $project_type, $constant_details['project_type'] ) ) )
+				return true;
 
 		return false;
 	}

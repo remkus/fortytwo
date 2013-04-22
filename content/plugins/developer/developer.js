@@ -5,7 +5,7 @@ function a8c_developer_lightbox() {
 				inline: true,
 				href: href,
 				title: a8c_developer_i18n.lightbox_title,
-				innerWidth: 500,
+				innerWidth: 650,
 				maxHeight: '100%',
 				transition: transition
 			});
@@ -60,15 +60,30 @@ function a8c_developer_bind_events() {
 			} )
 				.success( function( result ) {
 					if ( '1' === result ) {
-						$(button).html( a8c_developer_i18n.installed );
+						$( button )
+							.html( a8c_developer_i18n.installed )
+							.nextAll( '.a8c-developer-action-result' )
+							.remove();
+
 						$(button).unbind('click').prop('disabled', true);
 					} else {
 						alert( result );
-						$(button).html( a8c_developer_i18n.error );
+
+						$( button )
+							.html( a8c_developer_i18n.ERROR )
+							.nextAll( '.a8c-developer-action-result' )
+							.remove();
+
+						$( button ).after( '<span class="a8c-developer-action-result error">' + result + '</span>' );
 					}
 				})
-				.error( function() {
-					$(button).html( a8c_developer_i18n.error );
+				.error( function( response ) {
+					$( button )
+						.html( a8c_developer_i18n.ERROR )
+						.nextAll( '.a8c-developer-action-result' )
+						.remove();
+
+					$( button ).after( '<span class="a8c-developer-action-result error">' + response.statusText + ': ' + response.responseText + '</span>' );
 				})
 			;
 		});
@@ -85,17 +100,36 @@ function a8c_developer_bind_events() {
 			} )
 				.success( function( result ) {
 					if ( '1' === result ) {
-						$(button).html( a8c_developer_i18n.activated );
+						$( button )
+							.html( a8c_developer_i18n.activated )
+							.nextAll( '.a8c-developer-action-result' )
+							.remove();
+
 						$(button).unbind('click').prop('disabled', true);
 					} else {
 						alert( result );
-						$(button).html( a8c_developer_i18n.error );
+
+						$( button )
+							.html( a8c_developer_i18n.ERROR )
+							.nextAll( '.a8c-developer-action-result' )
+							.remove();
+
+						$( button ).after( '<span class="a8c-developer-action-result error">' + result + '</span>' );
 					}
 				})
-				.error( function() {
-					$(button).html( a8c_developer_i18n.error );
+				.error( function( response ) {
+					$( button )
+						.html( a8c_developer_i18n.ERROR )
+						.nextAll( '.a8c-developer-action-result' )
+						.remove();
+
+					$( button ).after( '<span class="a8c-developer-action-result error">' + response.statusText + ': ' + response.responseText + '</span>' );
 				})
 			;
+		});
+
+		$( '.a8c-developer-button-close' ).on( 'click', function() {
+			$.colorbox.close();
 		});
 	})(jQuery);
 }
@@ -114,13 +148,27 @@ function a8c_developer_bind_settings_events() {
 			} )
 				.success( function( result ) {
 					if ( '1' == result ) {
-						$(button).html( a8c_developer_i18n.INSTALLED );
+						$( button )
+							.nextAll( '.a8c-developer-action-result' )
+							.remove();
+
+						$( button ).replaceWith( "<span class='a8c-developer-active'>" + a8c_developer_i18n.ACTIVE + "</span>" );
 					} else {
-						$(button).html( a8c_developer_i18n.ERROR );
+						$( button )
+							.html( a8c_developer_i18n.ERROR )
+							.nextAll( '.a8c-developer-action-result' )
+							.remove();
+
+						$( button ).after( '<span class="a8c-developer-action-result error">' + result + '</span>' );
 					}
 				})
-				.error( function() {
-					$(button).html( a8c_developer_i18n.ERROR );
+				.error( function( response ) {
+					$( button )
+						.html( a8c_developer_i18n.ERROR )
+						.nextAll( '.a8c-developer-action-result' )
+						.remove();
+
+					$( button ).after( '<span class="a8c-developer-action-result error">' + response.statusText + ': ' + response.responseText + '</span>' );
 				})
 			;
 
@@ -139,13 +187,28 @@ function a8c_developer_bind_settings_events() {
 			} )
 				.success( function( result ) {
 					if ( '1' == result ) {
-						$(button).replaceWith("<span class='a8c-developer-active'>" + a8c_developer_i18n.ACTIVE + "</span>");
+						$( button )
+							.nextAll( '.a8c-developer-action-result' )
+							.remove();
+
+						$( button ).replaceWith( "<span class='a8c-developer-active'>" + a8c_developer_i18n.ACTIVE + "</span>" );
 					} else {
-						$(button).html( a8c_developer_i18n.ERROR );
+						$( button )
+							.html( a8c_developer_i18n.ERROR )
+							.nextAll( '.a8c-developer-action-result' )
+							.remove();
+
+						$( button ).after( '<span class="a8c-developer-action-result error">' + result + '</span>' );
 					}
 				})
-				.error( function() {
-					$(button).html( a8c_developer_i18n.ERROR );
+				.error( function( response ) {
+					$( button )
+						.html( a8c_developer_i18n.ERROR )
+						.nextAll( '.a8c-developer-action-result' )
+						.remove();
+
+					$( button ).after( '<span class="a8c-developer-action-result error">' + response.statusText + ': ' + response.responseText + '</span>' );
+					
 				})
 			;
 
