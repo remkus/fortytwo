@@ -1,9 +1,9 @@
 === Developer ===
-Contributors: automattic, batmoo, Viper007Bond, nbachiyski, tott, danielbachhuber, betzster, nprasath002
+Contributors: automattic, batmoo, Viper007Bond, nbachiyski, tott, danielbachhuber, betzster, nprasath002, nickdaugherty
 Tags: developer, development, local
 Requires at least: 3.4
-Tested up to: 3.5.1
-Stable tag: 1.1.2
+Tested up to: 3.6
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,22 @@ Because you haven't asked one yet.
 4. The plugin's settings page (Tools > Developer) will check to make sure your environment is correctly configured, including plugins, constants, and other settings.
 
 == Changelog ==
+
+= 1.1.6 (2013-04-08) =
+* Made purpose of activate/install links on Settings page more obvious
+* Added link to full plugin details on Settings page (opens in Thickbox)
+
+= 1.1.5 (2013-04-05) =
+* Added ability to define multiple project types for plugins
+* Added ability to define project types for constants
+* Added Jetpack to recommended plugins and constants
+
+= 1.1.4 (2013-04-03) =
+* Added plugin descriptions to installation and settings pages
+
+= 1.1.3 (2013-04-02) =
+* Added improved error reporting
+* Added [Log Viewer](http://wordpress.org/extend/plugins/log-viewer/) to recommended plugins. Props to @rockaut for the suggestion
 
 = 1.1.2 (2013-01-29) =
 * French localization. Props [fxbenard](https://github.com/fxbenard)
