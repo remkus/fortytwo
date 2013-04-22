@@ -6,7 +6,7 @@
 	Author: StudioPress
 	Author URI: http://www.studiopress.com
 
-	Version: 0.9.0
+	Version: 0.9.2
 
 	License: GNU General Public License v2.0 (or later)
 	License URI: http://www.opensource.org/licenses/gpl-license.php
@@ -21,6 +21,7 @@
  */
 
 define( 'GENESIS_RESPONSIVE_SLIDER_SETTINGS_FIELD', 'genesis_responsive_slider_settings' );
+define( 'GENESIS_RESPONSIVE_SLIDER_VERSION', '0.9.2' );
 
 add_action( 'after_setup_theme', 'GenesisResponsiveSliderInit', 15 );
 /**
@@ -63,6 +64,7 @@ function genesis_responsive_slider_sanitization() {
 			'slideshow_title_show',
 			'slideshow_loop',
 			'slideshow_hide_mobile',
+			'slideshow_no_link',
 			'slideshow_pager'
 		) );
 	genesis_add_option_filter( 'no_html', GENESIS_RESPONSIVE_SLIDER_SETTINGS_FIELD,
@@ -95,7 +97,7 @@ function genesis_responsive_slider_sanitization() {
 function genesis_responsive_slider_scripts() {
 
 	/** easySlider JavaScript code */
-	wp_enqueue_script( 'flexslider', WP_PLUGIN_URL . '/genesis-responsive-slider/js/jquery.flexslider.js', array( 'jquery' ), '0.9.5', TRUE );
+	wp_enqueue_script( 'flexslider', plugins_url('js/jquery.flexslider.js', __FILE__), array( 'jquery' ), GENESIS_RESPONSIVE_SLIDER_VERSION, TRUE );
 
 }
 
@@ -105,7 +107,7 @@ function genesis_responsive_slider_scripts() {
 function genesis_responsive_slider_styles() {
 
 	/** standard slideshow styles */
-	wp_register_style( 'slider_styles', WP_PLUGIN_URL . '/genesis-responsive-slider/style.css' );
+	wp_register_style( 'slider_styles', plugins_url('style.css', __FILE__), array(), GENESIS_RESPONSIVE_SLIDER_VERSION );
 	wp_enqueue_style( 'slider_styles' );
 
 }
@@ -304,6 +306,7 @@ class genesis_responsive_sliderWidget extends WP_Widget {
 							$show_type = genesis_get_responsive_slider_option( 'slideshow_excerpt_content' );
 							$show_limit = genesis_get_responsive_slider_option( 'slideshow_excerpt_content_limit' );
 							$more_text = genesis_get_responsive_slider_option( 'slideshow_more_text' );
+							$no_image_link = genesis_get_responsive_slider_option( 'slideshow_no_link' );
 						} 
 						while ( $slider_posts->have_posts() ) : $slider_posts->the_post();
 					?>
@@ -333,7 +336,18 @@ class genesis_responsive_sliderWidget extends WP_Widget {
 					<?php } ?>
 
 						<div class="slide-image">
-							<a href="<?php the_permalink() ?>" rel="bookmark"><img src="<?php genesis_image( "format=url&size=slider" ); ?>" /></a>
+					<?php
+						if ( $no_image_link ) {
+					?>
+							<img src="<?php genesis_image( 'format=url&size=slider' ); ?>" alt="<?php the_title(); ?>" />
+					<?php
+						} else {
+					?>
+							<a href="<?php the_permalink() ?>" rel="bookmark"><img src="<?php genesis_image( 'format=url&size=slider' ); ?>" alt="<?php the_title(); ?>" /></a>
+					<?php
+
+						} // $no_image_link
+					?>
 						</div><!-- end .slide-image -->
 
 					</li>
