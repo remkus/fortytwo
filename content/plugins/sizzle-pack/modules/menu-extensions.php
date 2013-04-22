@@ -10,20 +10,20 @@
  * @link       http://forsitethemes.com
  */
 
-define('FST_MENU_EXTENSIONS_DIR', FST_PACK_DIR . '/modules/fst-menu-extensions');
-require_once FST_MENU_EXTENSIONS_DIR . '/hookable-walker-nav-menu-edit.php';
+define('SZZL_MENU_EXTENSIONS_DIR', SZZL_PACK_DIR . '/modules/menu-extensions');
+require_once SZZL_MENU_EXTENSIONS_DIR . '/hookable-walker-nav-menu-edit.php';
 
 /**
  * ForSite Themes Menu Extensions class.
  * 
  * @kudos (twitter: @soulseekah) - http://codeseekah.com/2012/03/01/custom-post-type-archives-in-wordpress-menus-2/
  */
-class FST_Menu_Extensions {
+class SZZL_Menu_Extensions {
 
     /**
      * Constructs the class 
      */
-    function FST_Menu_Extensions() {
+    function SZZL_Menu_Extensions() {
         
         $this->register_menu_widget_areas();
         
@@ -45,7 +45,7 @@ class FST_Menu_Extensions {
      * Finds all the menu-extension-widget-areas, and ensures they are registered
      */
     function register_menu_widget_areas() {
-        delete_option( 'FST_Menu_Extensions' ); //clear out unused options
+        delete_option( 'SZZL_Menu_Extensions' ); //clear out unused options
         
         $all_menus = wp_get_nav_menus();
         
@@ -60,7 +60,7 @@ class FST_Menu_Extensions {
                  register_sidebar(array(
                     'name'          => $menu_item->title,
                     'id'            => "fst-menu-extension-widget-{$menu_item->ID}",
-                    'description'   => __( 'FST Menu Extension widget area' ),
+                    'description'   => __( 'SZZL Menu Extension widget area' ),
                     'before_widget' => '<div id="%1$s" class="widget %2$s">',
                     'after_widget'  => "</div>\n",
                  ) );
@@ -74,7 +74,7 @@ class FST_Menu_Extensions {
      * left side panel in the menu editor
      */
     function inject_menu_extensions_meta_box() {
-        add_meta_box( 'fst-menu-extensions', __( 'FST Menu Extensions', 'default' ), 
+        add_meta_box( 'fst-menu-extensions', __( 'SZZL Menu Extensions', 'default' ), 
             array( &$this, 'wp_nav_menu_extensions_meta_box' ), 'nav-menus', 'side', 'high' );
     }
 
@@ -215,10 +215,10 @@ class FST_Menu_Extensions {
             echo "<div class='description-wide'>";
             switch ( $item->object ) {
                 case 'header':
-                    require FST_MENU_EXTENSIONS_DIR . '/views/menu_item_editbox_header.php';
+                    require SZZL_MENU_EXTENSIONS_DIR . '/views/menu_item_editbox_header.php';
                     break;
                 case 'divider':
-                    require FST_MENU_EXTENSIONS_DIR . '/views/menu_item_editbox_divider.php';
+                    require SZZL_MENU_EXTENSIONS_DIR . '/views/menu_item_editbox_divider.php';
                     break;
                 case 'widget':
                     $sidebars_widgets = wp_get_sidebars_widgets();
@@ -229,7 +229,7 @@ class FST_Menu_Extensions {
                             $w = $wp_registered_widgets[$widget];
                             $widget_descriptions[] = array( 'name' => $w['name'] );
                         }
-                        require FST_MENU_EXTENSIONS_DIR . '/views/menu_item_editbox_widget_area.php';
+                        require SZZL_MENU_EXTENSIONS_DIR . '/views/menu_item_editbox_widget_area.php';
                     }
                     break;
             }

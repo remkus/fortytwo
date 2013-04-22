@@ -1,5 +1,5 @@
 <?php
-require_once FST_PACK_DIR . '/modules/slideshow-widget/slider-datasource.php';
+require_once SZZL_PACK_DIR . '/modules/slideshow-widget/slider-datasource.php';
 
 /**
  * Grabs a list of posts to display in the slider based on 

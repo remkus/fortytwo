@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Forsite Extension Pack
+Plugin Name: Sizzle Pack
 Plugin URI: http://github.com/...
-Description: Forsite extension pack for WordPress
+Description: WordPress Extensions to add sizzle to your themes
 Author: Forsite Themes
 Version: 0.6
 Author URI: http://forsitethemes.com/
 
 License: GPLv2 ->
 
-  Copyright 2012 Forsite Themes (team@forsitethemes.com)
+  Copyright 2012-2013 Forsite Themes (team@forsitethemes.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2, as 
@@ -27,7 +27,7 @@ License: GPLv2 ->
 */
 
 /**
- * All modules requires Bootstrap >=2.0.4 to be available the page.
+ * All modules require Bootstrap >=2.0.4 to be available the page.
  * 
  * If you want to override the version of bootstrap this widget loads, simply 
  * wp_enqueue_styles( 'bootstrap' ... ) and wp_enqueue_scripts( 'bootstrap' ... ) 
@@ -40,121 +40,170 @@ License: GPLv2 ->
  * @link       http://forsitethemes.com
  */
 
-define( 'FST_PACK_DIR', dirname( __FILE__ ) );
-define( 'FST_PACK_URL', plugin_dir_url( __FILE__ ));
-define( 'FST_PACK_VERSION', "0.7");
+define( 'SZZL_PACK_DIR', dirname( __FILE__ ) );
+define( 'SZZL_PACK_URL', plugin_dir_url( __FILE__ ));
+define( 'SZZL_PACK_VERSION', "0.8");
+define( 'SZZL_MODULE_OPTION', "szzl_modules");
 
-require_once FST_PACK_DIR . '/modules/contact-widget.php';
-require_once FST_PACK_DIR . '/modules/slideshow-widget.php';
-require_once FST_PACK_DIR . '/modules/audio-slideshow-widget.php';
-require_once FST_PACK_DIR . '/modules/fst-tabs-widget.php';
-require_once FST_PACK_DIR . '/modules/fst-menu-extensions.php';
+require_once SZZL_PACK_DIR . '/modules/contact-widget.php';
+require_once SZZL_PACK_DIR . '/modules/slideshow-widget.php';
+require_once SZZL_PACK_DIR . '/modules/audio-slideshow-widget.php';
+require_once SZZL_PACK_DIR . '/modules/tabs-widget.php';
+require_once SZZL_PACK_DIR . '/modules/menu-extensions.php';
 
-class ForsiteExtensionPackPlugin {
+class SizzlePackPlugin {
 
-        var $data = array();
-	var $version = FST_PACK_VERSION;
+  var $version = SZZL_PACK_VERSION;
+  /**
+  * Details of modules that are available. 
+  * The values below are considered the defaults, and are overridden by what is stored 
+  * in the szzl_modules setting
+  */
+  var $modules = array(
+    "SZZL_Slideshow_Widget" => array(
+      "id"=> "SZZL_Slideshow_Widget", 
+      "type" => "widget",
+      "name" => "Slideshow Widget", 
+      "thumbnail" => 'modules/slideshow-widget/images/thumbnail.gif',
+      "description" => "A slideshow widget based on ImpressJs, and your widget backend of choice",
+      "tags" => array("popular","widget"),
+      "enabled" => false
+    ),
+    "SZZL_Tabs_Widget" => array(
+      "id"=> "SZZL_Tabs_Widget", 
+      "type" => "widget",
+      "name" => "Tabs Widget", 
+      "thumbnail" =>  'modules/tabs-widget/images/thumbnail.gif',
+      "description" => "Allows grouping of other widgets into tabs",
+      "tags" => array("popular","widget"),
+      "enabled" => false
+    ),
+    "SZZL_Contact_Widget" => array(
+      "id"=> "SZZL_Contact_Widget", 
+      "type" => "widget",
+      "name" => "Contact Widget", 
+      "thumbnail" => 'modules/contact-widget/images/thumbnail.gif',
+      "description" => "a Schema.org compliant contact widget",
+      "tags" => array("widget"),
+      "enabled" => false
+    ),
+    "SZZL_Menu_Extensions" => array(
+      "id"=> "SZZL_Menu_Extensions", 
+      "type" => "plugin",
+      "name" => "Menu Extensions", 
+      "thumbnail" => 'modules/contact-widget/images/thumbnail.gif',
+      "description" => "Add custom menu types including Nav header, Nav Divider and Nav Widget Area",
+      "tags" => array("popular","plugin"),
+      "enabled" => false
+    )
+  );
         
 	/**
 	 * Initializes the plugin by setting localization, filters, and administration functions.
 	 */
 	function __construct() {
-            load_plugin_textdomain( 'fstpack', false, FST_PACK_DIR . '/assets/languages' );
-            
-            // Register admin styles and scripts
-            add_action( 'admin_print_styles',    array( &$this, 'register_admin_styles' ) );
-            add_action( 'admin_enqueue_scripts', array( &$this, 'register_admin_scripts' ) );
-            
-            // Enqueue bootstrap (if it isn't registered already)
-            add_action( 'wp_enqueue_scripts', array( &$this, 'register_bootstrap' ), 999 );
+    load_plugin_textdomain( 'szzl', false, SZZL_PACK_DIR . '/assets/languages' );
+    
+    // Register admin styles and scripts
+    add_action( 'admin_print_styles',    array( &$this, 'register_admin_styles' ) );
+    add_action( 'admin_enqueue_scripts', array( &$this, 'register_admin_scripts' ) );
+    
+    // Enqueue bootstrap (if it isn't registered already)
+    add_action( 'wp_enqueue_scripts', array( &$this, 'register_bootstrap' ), 999 );
 
-            add_action( 'widgets_init', array( &$this, 'action_init_modules' ) );
-            add_action( "admin_init"  , array( &$this, 'action_init_options' ) );    
-	    add_action( "admin_menu"  , array( &$this, 'action_register_custom_menu_page' ) );
+    add_action( 'widgets_init', array( &$this, 'action_init_modules' ) );   
+    add_action( "admin_menu"  , array( &$this, 'action_register_custom_menu_page' ) );
+    add_action( 'wp_ajax_save_module', array( $this, 'action_save_module' ) );
 	}
         
 	/**
 	 * Registers and enqueues admin-specific styles.
 	 */
 	public function register_admin_styles() {
-            wp_enqueue_style( 'bootstrap-wpadmin', FST_PACK_URL . 'vendor/bootstrap/css/bootstrap-wpadmin.min.css' );
+      wp_enqueue_style( 'bootstrap-wpadmin', SZZL_PACK_URL . 'vendor/bootstrap/css/bootstrap-wpadmin.min.css' );
 	} 
 
 	/**
 	 * Registers and enqueues admin-specific JavaScript.
 	 */	
 	public function register_admin_scripts() {
-        wp_enqueue_script( 'bootstrap', FST_PACK_URL .  'vendor/bootstrap/js/bootstrap.min.js'  );
-        wp_enqueue_script( 'jquery-quicksand', FST_PACK_URL .  'vendor/jquery.quicksand.js'  );
+      wp_enqueue_script( 'backbone' );
+      wp_enqueue_script( 'bootstrap', SZZL_PACK_URL .  'vendor/bootstrap/js/bootstrap.min.js'  );
 	} 
         
-    /**
-     * Registers bootstrap js & css
-     */
-    public function register_bootstrap() {
-        if ( wp_get_theme() != "FortyTwo") {
-            wp_enqueue_style(  "bootstrap", FST_PACK_URL . "vendor/bootstrap/css/bootstrap.min.css", array(), '2.0.4' );
-            wp_enqueue_script( "bootstrap", FST_PACK_URL . "vendor/bootstrap/js/bootstrap.min.js", array( 'jquery' ), '2.0.4' );
-        }
+  /**
+   * Registers bootstrap js & css (if it isn't registered already)
+   */
+  public function register_bootstrap() {
+    if ( wp_get_theme() != "FortyTwo") {
+        wp_enqueue_style(  "bootstrap", SZZL_PACK_URL . "vendor/bootstrap/css/bootstrap.min.css", array(), '2.0.4' );
+        wp_enqueue_script( "bootstrap", SZZL_PACK_URL . "vendor/bootstrap/js/bootstrap.min.js", array( 'jquery' ), '2.0.4' );
+    }
 	} 
         
-        /**
+  /**
 	 * Initialises active modules 
 	 */
-        function action_init_modules() {
-            $this->data = get_option('fst_modules_enabled', $this->data);
-            if (isset($this->data['widgets'])) {
-                if ($this->data['widgets']['FST_Contact_Widget']['enabled'] ) {
-                    register_widget( 'FST_Contact_Widget' );
-                }
-                if ($this->data['widgets']['FST_Slideshow_Widget']['enabled'] ) {
-                    register_widget( 'FST_Slideshow_Widget' );
-                }
-                if ($this->data['widgets']['FST_Tabs_Widget']['enabled'] ) {
-                    register_widget( 'FST_Tabs_Widget' );
-                }
-                if ($this->data['plugins']['FST_Menu_Extensions']['enabled'] ) {
-                    $this->FST_Menu_Extensions = new FST_Menu_Extensions();
-                }
-            }
-        }
+  function action_init_modules() {
+    //Override the module defaults with whatever is saved in options
+    $saved_modules = get_option(SZZL_MODULE_OPTION);
+    if (is_array($saved_modules)) { $this->modules = array_merge($this->modules, $saved_modules); }
 
-        /**
-         * Create / load saved plugin options 
-         */
-        function action_init_options() {
-            register_setting( 'fst', 'fst_modules_enabled' );
-            $defaults['widgets'] = array();
-            $defaults['widgets']['FST_Slideshow_Widget'] = array('enabled'=>false);
-            $defaults['widgets']['FST_Contact_Widget'] = array('enabled'=>false);
-            $defaults['widgets']['FST_Tabs_Widget'] = array('enabled'=>false);
+    foreach($this->modules as $module) {
+      if ( $module['enabled'] ) {
+        switch ( $module['type'] ) {
+          case 'widget' :
+            register_widget( $module['id'] );
+            break;
+          case 'plugin' :
+             $this->$module['id'] = new $module['id'](); //i.e., if $module['id'] == "myPluginClass", then $this->myPluginClass = new myPluginClass()
+            break;
+        }        
+      }
+    }
+  }
 
-            $defaults['plugins']['FST_Menu_Extensions'] = array('enabled'=>false);
-	    
-	    $this->data = $defaults;
+  function action_save_module() {
+    $updated_module = json_decode( file_get_contents( "php://input" ) );
+ 
+    // Ensure that this user has the correct permissions
+    //TODO
+ 
+    foreach ($this->modules as &$module) { //Assign $module by reference so we can modify it inside the loop - http://php.net/manual/en/control-structures.foreach.php
+      if ($module['id'] === $updated_module->id) {
+        $module['enabled'] = $updated_module->enabled;
+        $saved_module = $module;
+      }
+    }
 
-            $current_options = get_option('fst_modules_enabled');
-	    if (is_array($current_options)) { $this->data = array_merge($defaults, get_option('fst_modules_enabled')); }
-            
-	    update_option('fst_modules_enabled,', $this->data);
-        }
+    $update = update_option(SZZL_MODULE_OPTION, $this->modules);
+ 
+    // If update was successful, return the model in JSON format
+    if ( $update ) {
+        echo json_encode( $saved_module );
+    } else {
+        echo 0;
+    }
+    die();
+    
+  }
 
-        /**
-         * Register a top level menu item named "Forsite"
-         */
+  /**
+   * Register a top level menu item named "Forsite"
+   */
 	function action_register_custom_menu_page() {
-            add_menu_page( 'Forsite', 'Forsite', 'administrator', 'display_forsite_admin_page',
-                    array( &$this, 'display_forsite_admin_page' ), FST_PACK_URL . 'assets/images/icon.png', 3 );
+    add_menu_page( 'Sizzle Pack', 'Sizzle Pack', 'administrator', 'display_sizzle_pack_admin_page',
+            array( &$this, 'display_admin_page' ), SZZL_PACK_URL . 'assets/images/icon.png', 3 );
 
 	}
 
-        /**
-         * Render the main admin page - linked to top level menu item above 
-         */
-	function display_forsite_admin_page() {
-            include( FST_PACK_DIR . '/views/forsite_admin_page.php' );
+  /**
+   * Render the main admin page - linked to top level menu item above 
+   */
+	function display_admin_page() {
+      include( SZZL_PACK_DIR . '/views/admin_page.php' );
 	}
 }
 
 //fire her up, baby!
-new ForsiteExtensionPackPlugin();
+new SizzlePackPlugin();
