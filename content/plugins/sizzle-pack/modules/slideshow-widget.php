@@ -7,7 +7,7 @@
  * @license GPL v2
  */
 
-require_once FST_PACK_DIR . '/modules/slideshow-widget/genesis-responsive-slider-datasource.php';
+require_once SZZL_PACK_DIR . '/modules/slideshow-widget/genesis-responsive-slider-datasource.php';
 
 /**
  * ForSite Themes Slideshow widget class.
@@ -16,7 +16,7 @@ require_once FST_PACK_DIR . '/modules/slideshow-widget/genesis-responsive-slider
  * @subpackage Widgets
  * @since 0.1cd www
  */
-class FST_Slideshow_Widget extends WP_Widget {
+class SZZL_Slideshow_Widget extends WP_Widget {
 
 	/* Properties */
 	var $library_url;
@@ -29,8 +29,8 @@ class FST_Slideshow_Widget extends WP_Widget {
 	/**
 	 * Constructor. Set the default widget options and create widget.
 	 */
-	function FST_Slideshow_Widget() {
-		$this->library_url = FST_PACK_URL."modules/slideshow-widget/";
+	function SZZL_Slideshow_Widget() {
+		$this->library_url = SZZL_PACK_URL."modules/slideshow-widget/";
 		$this->enqueue_styles();
 		$this->enqueue_scripts();
 
@@ -38,10 +38,10 @@ class FST_Slideshow_Widget extends WP_Widget {
 		$this->slider_datasource = new Genesis_Responsive_Slider_Datasource();
 
 		$widget_ops = array (
-			'classname' => 'fst-slideshow-widget',
-			'description' => __( 'Forsite Themes Extension Pack slideshow widget', 'fst_slideshow' )
+			'classname' => 'szzl-slideshow-widget',
+			'description' => __( 'Forsite Themes Extension Pack slideshow widget', 'SZZL_slideshow' )
                 );
-		$this->WP_Widget( 'fstslideshow-widget', __( 'FST - Slideshow', 'fst_slideshow' ), $widget_ops );
+		$this->WP_Widget( 'fstslideshow-widget', __( 'SZZL - Slideshow', 'SZZL_slideshow' ), $widget_ops );
 	}
 
 	/**
@@ -49,18 +49,18 @@ class FST_Slideshow_Widget extends WP_Widget {
 	 */
 	function enqueue_styles() {
 		global $wp_styles;
-		wp_enqueue_style( "FST_Slideshow_Widget_style", $this->library_url . 'css/style.css', array(), $this->version );
-		wp_enqueue_style( 'FST_Slideshow_Widget_style_ie', $this->library_url . 'css/style_ie.css', array( "FST_Slideshow_Widget_style" ), $this->version );
-		$wp_styles->add_data( 'FST_Slideshow_Widget_style_ie', 'conditional', 'lte IE 9' ); //ie stylesheet should be wrapped in <!--[if lt IE 9]>
+		wp_enqueue_style( "SZZL_Slideshow_Widget_style", $this->library_url . 'css/style.css', array(), $this->version );
+		wp_enqueue_style( 'SZZL_Slideshow_Widget_style_ie', $this->library_url . 'css/style_ie.css', array( "SZZL_Slideshow_Widget_style" ), $this->version );
+		$wp_styles->add_data( 'SZZL_Slideshow_Widget_style_ie', 'conditional', 'lte IE 9' ); //ie stylesheet should be wrapped in <!--[if lt IE 9]>
 	}
 
 	/**
 	 * Enqueue the scripts required for the widget.
 	 */
 	function enqueue_scripts() {
-		wp_enqueue_script( "FST_Slideshow_Widget_jmpress", $this->library_url . 'js/jmpress.min.js', array( 'jquery' ), $this->version );
-		wp_enqueue_script( "FST_Slideshow_Widget_jmslideshow", $this->library_url . 'js/jquery.jmslideshow.js', array( 'FST_Slideshow_Widget_jmpress' ), $this->version );
-		wp_enqueue_script( "FST_Slideshow_Widget_modernizr", $this->library_url . 'js/modernizr.custom.48780.js', array( 'FST_Slideshow_Widget_jmslideshow' ), $this->version );
+		wp_enqueue_script( "SZZL_Slideshow_Widget_jmpress", $this->library_url . 'js/jmpress.min.js', array( 'jquery' ), $this->version );
+		wp_enqueue_script( "SZZL_Slideshow_Widget_jmslideshow", $this->library_url . 'js/jquery.jmslideshow.js', array( 'SZZL_Slideshow_Widget_jmpress' ), $this->version );
+		wp_enqueue_script( "SZZL_Slideshow_Widget_modernizr", $this->library_url . 'js/modernizr.custom.48780.js', array( 'SZZL_Slideshow_Widget_jmslideshow' ), $this->version );
 	}
 
 	/**

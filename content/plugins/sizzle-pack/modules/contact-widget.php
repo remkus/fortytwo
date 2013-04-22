@@ -12,18 +12,18 @@
  * @subpackage Widgets
  * @since 0.1
  */
-class FST_Contact_Widget extends WP_Widget {
+class SZZL_Contact_Widget extends WP_Widget {
 
 	/**
 	 * Constructor. Set the default widget options and create widget.
 	 */
-	function FST_Contact_Widget() {
+	function SZZL_Contact_Widget() {
 		$widget_ops = array( 
-			'classname' 	=> 'fst-contact-widget', 
-			'description' 	=> __( 'A Schema.org compliant Contact widget', 'fst_contact' )
+			'classname' 	=> 'szzl-contact-widget', 
+			'description' 	=> __( 'A Schema.org compliant Contact widget', 'SZZL_contact' )
                 );
 			
-		$this->WP_Widget( 'fstcontact-widget', __('FST - Contact', 'fst_contact'), $widget_ops );
+		$this->WP_Widget( 'fstcontact-widget', __('SZZL - Contact', 'SZZL_contact'), $widget_ops );
 	}
 
 	/**
@@ -129,37 +129,37 @@ class FST_Contact_Widget extends WP_Widget {
 
 	?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'name' ); ?>"><?php _e( 'Company Name', 'fst_contact' ); ?>:</label><br />
+		<label for="<?php echo $this->get_field_id( 'name' ); ?>"><?php _e( 'Company Name', 'SZZL_contact' ); ?>:</label><br />
 		<input type="text" id="<?php echo $this->get_field_id( 'name' ); ?>" name="<?php echo $this->get_field_name( 'name' ); ?>" value="<?php echo esc_attr( $instance['name'] ); ?>" class="widefat" />
 		</p>
 		
 		<p>
-		<label for="<?php echo $this->get_field_id( 'address' ); ?>"><?php _e( 'Address', 'fst_contact' ); ?>:</label><br />
+		<label for="<?php echo $this->get_field_id( 'address' ); ?>"><?php _e( 'Address', 'SZZL_contact' ); ?>:</label><br />
 		<input type="text" id="<?php echo $this->get_field_id( 'address' ); ?>" name="<?php echo $this->get_field_name( 'address' ); ?>" value="<?php echo esc_attr( $instance['address'] ); ?>" class="widefat" />
 		</p>
 		
 		<p>
-		<label for="<?php echo $this->get_field_id( 'pc' ); ?>"><?php _e( 'Postal Code', 'fst_contact' ); ?>:</label><br />
+		<label for="<?php echo $this->get_field_id( 'pc' ); ?>"><?php _e( 'Postal Code', 'SZZL_contact' ); ?>:</label><br />
 		<input type="text" id="<?php echo $this->get_field_id( 'pc' ); ?>" name="<?php echo $this->get_field_name( 'pc' ); ?>" value="<?php echo esc_attr( $instance['pc'] ); ?>" class="widefat" />
 		</p>
 		
 		<p>
-		<label for="<?php echo $this->get_field_id( 'city' ); ?>"><?php _e( 'City, Country', 'fst_contact' ); ?>:</label><br />
+		<label for="<?php echo $this->get_field_id( 'city' ); ?>"><?php _e( 'City, Country', 'SZZL_contact' ); ?>:</label><br />
 		<input type="text" id="<?php echo $this->get_field_id( 'city' ); ?>" name="<?php echo $this->get_field_name( 'city' ); ?>" value="<?php echo esc_attr( $instance['city'] ); ?>" class="widefat" />
 		</p>
 
 		<p>
-		<label for="<?php echo $this->get_field_id( 'phone' ); ?>"><?php _e( 'Phone', 'fst_contact' ); ?>:</label>
+		<label for="<?php echo $this->get_field_id( 'phone' ); ?>"><?php _e( 'Phone', 'SZZL_contact' ); ?>:</label>
 		<input type="text" id="<?php echo $this->get_field_id( 'phone' ); ?>" name="<?php echo $this->get_field_name( 'phone' ); ?>" value="<?php echo esc_attr( $instance['phone'] ); ?>" class="widefat" />
 		</p>
 		
 		<p>
-		<label for="<?php echo $this->get_field_id( 'email' ); ?>"><?php _e( 'Email', 'fst_contact' ); ?>:</label>
+		<label for="<?php echo $this->get_field_id( 'email' ); ?>"><?php _e( 'Email', 'SZZL_contact' ); ?>:</label>
 		<input type="text" id="<?php echo $this->get_field_id( 'email' ); ?>" name="<?php echo $this->get_field_name( 'email' ); ?>" value="<?php echo esc_attr( $instance['email'] ); ?>" class="widefat" />
 		</p>
 		
 		<p>
-		<label for="<?php echo $this->get_field_id( 'fax' ); ?>"><?php _e( 'Fax', 'fst_contact' ); ?>:</label>
+		<label for="<?php echo $this->get_field_id( 'fax' ); ?>"><?php _e( 'Fax', 'SZZL_contact' ); ?>:</label>
 		<input type="text" id="<?php echo $this->get_field_id( 'fax' ); ?>" name="<?php echo $this->get_field_name( 'fax' ); ?>" value="<?php echo esc_attr( $instance['fax'] ); ?>" class="widefat" />
 		</p>
 

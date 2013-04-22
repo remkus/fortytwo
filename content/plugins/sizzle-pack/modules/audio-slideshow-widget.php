@@ -7,7 +7,7 @@
  * @license GPL v2
  */
 
-require_once FST_PACK_DIR . '/modules/slideshow-widget/genesis-responsive-slider-datasource.php';
+require_once SZZL_PACK_DIR . '/modules/slideshow-widget/genesis-responsive-slider-datasource.php';
 
 /**
  * ForSite Themes Audio Slideshow widget class.
@@ -16,7 +16,7 @@ require_once FST_PACK_DIR . '/modules/slideshow-widget/genesis-responsive-slider
  * @subpackage Widgets
  * @since 0.1
  */
-class FST_Audio_Slideshow_Widget extends WP_Widget {
+class SZZL_Audio_Slideshow_Widget extends WP_Widget {
 
 	/* Properties */
 	var $library_url;
@@ -29,8 +29,8 @@ class FST_Audio_Slideshow_Widget extends WP_Widget {
 	/**
 	 * Constructor. Set the default widget options and create widget.
 	 */
-	function FST_Audio_Slideshow_Widget() {
-		$this->library_url = FST_PACK_URL."widgets/audio-slideshow-widget/";
+	function SZZL_Audio_Slideshow_Widget() {
+		$this->library_url = SZZL_PACK_URL."widgets/audio-slideshow-widget/";
 		$this->enqueue_styles();
 		$this->enqueue_scripts();
 
@@ -38,26 +38,26 @@ class FST_Audio_Slideshow_Widget extends WP_Widget {
 		$this->slider_datasource = new Genesis_Responsive_Slider_Datasource();
 
 		$widget_ops = array(
-			'classname' => 'fst-audio-slideshow-widget',
-			'description' => __( 'Forsite Themes Extension Pack Audio slideshow widget', 'fst_slideshow' ) 
+			'classname' => 'szzl-audio-slideshow-widget',
+			'description' => __( 'Forsite Themes Extension Pack Audio slideshow widget', 'SZZL_slideshow' ) 
                 );
 
-		$this->WP_Widget( 'fst-audio-slideshow-widget', __( 'FST - Audio Slideshow', 'fst_audio_slideshow' ), $widget_ops );
+		$this->WP_Widget( 'szzl-audio-slideshow-widget', __( 'SZZL - Audio Slideshow', 'SZZL_audio_slideshow' ), $widget_ops );
 	}
 
 	/**
 	 * Enqueue the styles required for the widget.
 	 */
 	function enqueue_styles() {
-		wp_enqueue_style( "FST_Audio_Slideshow_Widget_style", $this->library_url . 'css/style.css', array(), $this->version );
+		wp_enqueue_style( "SZZL_Audio_Slideshow_Widget_style", $this->library_url . 'css/style.css', array(), $this->version );
 	}
 
 	/**
 	 * Enqueue the scripts required for the widget.
 	 */
 	function enqueue_scripts() {
-		wp_enqueue_script( "FST_Audio_Slideshow_Widget_jplayer", $this->library_url . 'jplayer/jquery.jplayer.js', array( 'jquery' ), $this->version );
-		wp_enqueue_script( "FST_Audio_Slideshow_Widget_audioslideshow", $this->library_url . 'js/jquery.audioslideshow.js', array( 'FST_Audio_Slideshow_Widget_jplayer' ), $this->version );
+		wp_enqueue_script( "SZZL_Audio_Slideshow_Widget_jplayer", $this->library_url . 'jplayer/jquery.jplayer.js', array( 'jquery' ), $this->version );
+		wp_enqueue_script( "SZZL_Audio_Slideshow_Widget_audioslideshow", $this->library_url . 'js/jquery.audioslideshow.js', array( 'SZZL_Audio_Slideshow_Widget_jplayer' ), $this->version );
 	}
 
 	/**

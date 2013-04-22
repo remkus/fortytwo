@@ -7,7 +7,7 @@ require_once( ABSPATH . 'wp-admin/includes/nav-menu.php' ); // Load all the nav 
 class Hookable_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 
    /**
-    * Extend Walker_Nav_Menu_Edit to include fst-menu-extension options
+    * Extend Walker_Nav_Menu_Edit to include szzl-menu-extension options
     * @see Walker_Nav_Menu_Edit::start_el()
     * @since 3.0.0
     *

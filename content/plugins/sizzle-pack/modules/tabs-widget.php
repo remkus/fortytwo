@@ -14,7 +14,7 @@
  * @since 0.1
  */
 
-class FST_Tabs_Widget extends WP_Widget {
+class SZZL_Tabs_Widget extends WP_Widget {
 
     /* Variable Declarations */
     var $fst_widget_cssclass;
@@ -29,7 +29,7 @@ class FST_Tabs_Widget extends WP_Widget {
      * __construct function.
      *
      * @access public
-     * @uses FSTPack
+     * @uses SZZLPack
      * @return void
      */
     function __construct () {
@@ -39,10 +39,10 @@ class FST_Tabs_Widget extends WP_Widget {
         $this->fst_widget_cssclass = 'widget-ft-tabs';
         $this->fst_widget_description = __( 'This is a Forsite Themes Extension Pack bundled tabs widget.', 'fstpack' );
         $this->fst_widget_idbase = 'fstpack_tabs';
-        $this->fst_widget_title = __('FST - Tabs', 'fstpack' );
+        $this->fst_widget_title = __('SZZL - Tabs', 'fstpack' );
 
-        /* Setup the assets URL in relation to FSTPack. */
-        $this->assets_url = FST_PACK_URL . "/modules/fst-tabs-widget/";
+        /* Setup the assets URL in relation to SZZLPack. */
+        $this->assets_url = SZZL_PACK_URL . "/modules/tabs-widget/";
 
         $this->available_tabs = array('latest', 'popular', "comments", "tags" );
         // Allow child themes/plugins to filter here.
@@ -301,7 +301,7 @@ class FST_Tabs_Widget extends WP_Widget {
      * @return void
      */
     function enqueue_styles () {
-        wp_register_style( $this->fst_widget_idbase, $this->assets_url . 'css/style.css', array( 'bootstrap' ), FST_PACK_VERSION );
+        wp_register_style( $this->fst_widget_idbase, $this->assets_url . 'css/style.css', array( 'bootstrap' ), SZZL_PACK_VERSION );
         wp_enqueue_style( $this->fst_widget_idbase );
     } // End enqueue_styles()
 
@@ -313,7 +313,7 @@ class FST_Tabs_Widget extends WP_Widget {
      * @return void
      */
     function enqueue_scripts () {
-        wp_register_script( $this->fst_widget_idbase, $this->assets_url . 'js/functions.js', array( 'bootstrap' ), FST_PACK_VERSION );
+        wp_register_script( $this->fst_widget_idbase, $this->assets_url . 'js/functions.js', array( 'bootstrap' ), SZZL_PACK_VERSION );
         wp_enqueue_script( $this->fst_widget_idbase );
     } // End enqueue_styles()
 
