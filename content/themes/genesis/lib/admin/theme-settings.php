@@ -79,8 +79,7 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 				'blog_title'                => 'text',
 				'header_right'              => 0,
 				'site_layout'               => genesis_get_default_layout(),
-				'nav_extras_enable'         => 0,
-				'nav_extras'                => 'date',
+				'nav_extras'                => '',
 				'nav_extras_twitter_id'     => '',
 				'nav_extras_twitter_text'   => __( 'Follow me on Twitter', 'genesis' ),
 				'feed_uri'                  => '',
@@ -458,7 +457,7 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 
 		if ( genesis_nav_menu_supported( 'primary' ) ) : ?>
 
-		<h4><?php _e( 'Primary Navigation', 'genesis' ); ?></h4>
+		<h4><?php _e( 'Primary Navigation Extras', 'genesis' ); ?></h4>
 
 		<?php if ( ! has_nav_menu( 'primary' ) ) : ?>
 
@@ -470,6 +469,7 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 			<p>
 				<label for="<?php echo $this->get_field_id( 'nav_extras' ); ?>"><?php _e( 'Display the following:', 'genesis' ); ?></label>
 				<select name="<?php echo $this->get_field_name( 'nav_extras' ); ?>" id="<?php echo $this->get_field_id( 'nav_extras' ); ?>">
+					<option value=""><?php _e( 'None', 'genesis' ) ?></option>
 					<option value="date"<?php selected( $this->get_field_value( 'nav_extras' ), 'date' ); ?>><?php _e( 'Today\'s date', 'genesis' ); ?></option>
 					<option value="rss"<?php selected( $this->get_field_value( 'nav_extras' ), 'rss' ); ?>><?php _e( 'RSS feed links', 'genesis' ); ?></option>
 					<option value="search"<?php selected( $this->get_field_value( 'nav_extras' ), 'search' ); ?>><?php _e( 'Search form', 'genesis' ); ?></option>

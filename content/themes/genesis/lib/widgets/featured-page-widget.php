@@ -86,9 +86,20 @@ class Genesis_Featured_Page extends WP_Widget {
 
 		if ( $featured_page->have_posts() ) : while ( $featured_page->have_posts() ) : $featured_page->the_post();
 
-			printf( genesis_markup( '<article class="%s">', '<div class="%s">', 0 ), implode( ' ', get_post_class() ) );
+			genesis_markup( array(
+				'html5'   => '<article %s>',
+				'xhtml'   => sprintf( '<div class="%s">', implode( ' ', get_post_class() ) ),
+				'context' => 'entry',
+			) );
 
-			if ( ! empty( $instance['show_image'] ) && $image = genesis_get_image( array( 'format' => 'html', 'size' => $instance['image_size'], 'context' => 'featured-page-widget' ) ) )
+			$image = genesis_get_image( array(
+				'format'  => 'html',
+				'size'    => $instance['image_size'],
+				'context' => 'featured-page-widget',
+				'attr'    => genesis_attr( 'entry-image-widget', array( 'output' => 'array' ) ),
+			) );
+
+			if ( $instance['show_image'] && $image )
 				printf( '<a href="%s" title="%s" class="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), esc_attr( $instance['image_alignment'] ), $image );
 
 			if ( ! empty( $instance['show_title'] ) || ! empty( $instance['show_byline'] ) )

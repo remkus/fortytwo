@@ -48,6 +48,7 @@ function genesis_post_date_shortcode( $atts ) {
 		'html5'   => '<time %s>' . $atts['before'] . $atts['label'] . $display . $atts['after'] . '</time>',
 		'xhtml'   => sprintf( $pattern, $atts['before'], $atts['after'], $atts['label'], $display, get_the_time( 'c' ) ),
 		'context' => 'entry-time',
+		'echo'    => false,
 	) );
 
 	return apply_filters( 'genesis_post_date_shortcode', $output, $atts );
@@ -87,6 +88,7 @@ function genesis_post_time_shortcode( $atts ) {
 		'html5'   => '<time %s>' . $atts['before'] . $atts['label'] . get_the_time( $atts['format'] ) . $atts['after'] . '</time>',
 		'xhtml'   => sprintf( $pattern, $atts['before'], $atts['after'], $atts['label'], $display, get_the_time( 'c' ) ),
 		'context' => 'entry-time',
+		'echo'    => false,
 	) );
 
 	return apply_filters( 'genesis_post_time_shortcode', $output, $atts );
@@ -119,9 +121,10 @@ function genesis_post_author_shortcode( $atts ) {
 	$author = get_the_author();
 	
 	$output = genesis_markup( array(
-		'html5'   => '<address %s>' . $atts['before'] . esc_html( $author ) . $atts['after'] . '</address>', 
+		'html5'   => '<span %s>' . $atts['before'] . esc_html( $author ) . $atts['after'] . '</span>', 
 		'xhtml'   => sprintf( '<span class="author vcard">%2$s<span class="fn">%1$s</span>%3$s</span>', esc_html( $author ), $atts['before'], $atts['after'] ),
 		'context' => 'entry-author',
+		'echo'    => false,
 	) );
 
 	return apply_filters( 'genesis_post_author_shortcode', $output, $atts );
@@ -158,9 +161,10 @@ function genesis_post_author_link_shortcode( $atts ) {
 		$author = '<a href="' . esc_url( $url ) . '" title="' . esc_attr( sprintf( __( 'Visit %s&#x02019;s website', 'genesis' ), $author ) ) . '" rel="author external">' . esc_html( $author ) . '</a>';
 
 	$output = genesis_markup( array(
-		'html5'   => '<address %s>' . $atts['before'] . $author . $atts['after'] . '</address>', 
+		'html5'   => '<span %s>' . $atts['before'] . $author . $atts['after'] . '</span>', 
 		'xhtml'   => sprintf( '<span class="author vcard">%2$s<span class="fn">%1$s</span>%3$s</span>', esc_html( $author ), $atts['before'], $atts['after'] ),
 		'context' => 'entry-author',
+		'echo'    => false,
 	) );
 
 	return apply_filters( 'genesis_post_author_link_shortcode', $output, $atts );
@@ -195,9 +199,10 @@ function genesis_post_author_posts_link_shortcode( $atts ) {
 	$link   = sprintf( '<a href="%s" title="%s" rel="author">%s</a>', esc_url( $url ), esc_attr( $author ), esc_html( $author ) );
 
 	$output = genesis_markup( array(
-		'html5'   => '<address %s>' . $atts['before'] . $link . $atts['after'] . '</address>', 
+		'html5'   => '<span %s>' . $atts['before'] . $link . $atts['after'] . '</span>', 
 		'xhtml'   => sprintf( '<span class="author vcard">%2$s<span class="fn">%1$s</span>%3$s</span>', $link, $atts['before'], $atts['after'] ),
 		'context' => 'entry-author',
+		'echo'    => false,
 	) );
 
 	return apply_filters( 'genesis_post_author_posts_link_shortcode', $output, $atts );
@@ -249,6 +254,7 @@ function genesis_post_comments_shortcode( $atts ) {
 	$output = genesis_markup( array(
 		'html5' => '<span class="entry-comments">' . $atts['before'] . $comments . $atts['after'] . '</span>',
 		'xhtml' => '<span class="post-comments">' . $atts['before'] . $comments . $atts['after'] . '</span>',
+		'echo'  => false,
 	) );
 
 	return apply_filters( 'genesis_post_comments_shortcode', $output, $atts );
@@ -290,6 +296,7 @@ function genesis_post_tags_shortcode( $atts ) {
 		'html5'   => '<span %s>' . $tags . '</span>',
 		'xhtml'   => '<span class="tags">' . $tags . '</span>',
 		'context' => 'entry-tags',
+		'echo'    => false,
 	) );
 
 	return apply_filters( 'genesis_post_tags_shortcode', $output, $atts );
@@ -327,6 +334,7 @@ function genesis_post_categories_shortcode( $atts ) {
 		'html5'   => '<span %s>' . $atts['before'] . $cats . $atts['after'] . '</span>',
 		'xhtml'   => '<span class="categories">' . $atts['before'] . $cats . $atts['after'] . '</span>',
 		'context' => 'entry-categories',
+		'echo'    => false,
 	) );
 
 	return apply_filters( 'genesis_post_categories_shortcode', $output, $atts );
@@ -377,6 +385,7 @@ function genesis_post_terms_shortcode( $atts ) {
 		'html5'   => '<span %s>' . $terms . '</span>',
 		'xhtml'   => '<span class="terms">' . $terms . '</span>',
 		'context' => 'entry-terms',
+		'echo'    => false,
 	) );
 
 	return apply_filters( 'genesis_post_terms_shortcode', $output, $terms, $atts );

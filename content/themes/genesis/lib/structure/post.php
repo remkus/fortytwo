@@ -181,12 +181,22 @@ function genesis_do_post_title() {
 	if ( 0 == strlen( $title ) )
 		return;
 
-	if ( is_singular() )
-		$title = sprintf( '<h1 class="entry-title">%s</h1>', $title );
-	elseif ( apply_filters( 'genesis_link_post_title', true ) )
-		$title = sprintf( '<h2 class="entry-title"><a href="%s" title="%s" rel="bookmark">%s</a></h2>', get_permalink(), the_title_attribute( 'echo=0' ), apply_filters( 'genesis_post_title_text', $title ) );
-	else
-		$title = sprintf( '<h2 class="entry-title">%s</h2>', $title );
+	//* Link it, if necessary
+	if ( ! is_singular() && apply_filters( 'genesis_link_post_title', true ) )
+		$title = sprintf( '<a href="%s" title="%s" rel="bookmark">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), $title );
+
+	//* Wrap in H1 on singular pages
+	$wrap = is_singular() ? 'h1' : 'h2';
+
+	//* Also, if HTML5 with semantic headings, wrap in H1
+	$wrap = genesis_html5() && genesis_get_seo_option( 'semantic_headings' ) ? 'h1' : $wrap;
+
+	$title = genesis_markup( array(
+		'html5'   => "<{$wrap} %s>{$title}</$wrap>",
+		'xhtml'   => sprintf( '<%s class="entry-title">%s</%s>', $wrap, $title, $wrap ),
+		'context' => 'entry-title',
+		'echo'    => false,
+	) );
 
 	echo apply_filters( 'genesis_post_title_output', "$title \n" );
 
@@ -211,9 +221,14 @@ add_action( 'genesis_post_content', 'genesis_do_post_image' );
 function genesis_do_post_image() {
 
 	if ( ! is_singular() && genesis_get_option( 'content_archive_thumbnail' ) ) {
-		$img = genesis_get_image( array( 'format' => 'html', 'size' => genesis_get_option( 'image_size' ), 'context' => 'post-image', 'attr' => array( 'class' => 'alignleft post-image' ) ) );
+		$img = genesis_get_image( array( 
+			'format'  => 'html',
+			'size'    => genesis_get_option( 'image_size' ),
+			'context' => 'archive',
+			'attr'    => genesis_attr( 'entry-image', array( 'output' => 'array' ) ),
+		) );
 
-		if( ! empty( $img ) )
+		if ( ! empty( $img ) )
 			printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), $img );
 	}
 
@@ -456,7 +471,7 @@ function genesis_author_box( $context = '', $echo = true ) {
 	$description   = wpautop( get_the_author_meta( 'description' ) );
 
 	/** The author box markup, contextual */
-	$pattern = $context == 'single' ? '<div class="author-box"><div>%s %s<br />%s</div></div>' : '<div class="author-box">%s<h1>%s</h1><div>%s</div></div>';
+	$pattern = 'single' == $context ? '<div class="author-box"><div>%s %s<br />%s</div></div>' : '<div class="author-box">%s<h1>%s</h1><div>%s</div></div>';
 
 	$output = apply_filters( 'genesis_author_box', sprintf( $pattern, $gravatar, $title, $description ), $context, $pattern, $gravatar, $title, $description );
 

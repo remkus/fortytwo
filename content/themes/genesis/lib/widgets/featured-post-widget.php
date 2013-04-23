@@ -116,9 +116,20 @@ class Genesis_Featured_Post extends WP_Widget {
 
 			$_genesis_displayed_ids[] = get_the_ID();
 
-			printf( genesis_markup( '<article class="%s">', '<div class="%s">', 0 ), implode( ' ', get_post_class() ) );
+			genesis_markup( array(
+				'html5'   => '<article %s>',
+				'xhtml'   => sprintf( '<div class="%s">', implode( ' ', get_post_class() ) ),
+				'context' => 'entry',
+			) );
 
-			if ( ! empty( $instance['show_image'] ) && $image = genesis_get_image( array( 'format' => 'html', 'size' => $instance['image_size'], 'context' => 'featured-post-widget' ) ) )
+			$image = genesis_get_image( array(
+				'format'  => 'html',
+				'size'    => $instance['image_size'],
+				'context' => 'featured-post-widget',
+				'attr'    => genesis_attr( 'entry-image-widget', array( 'output' => 'array' ) ),
+			) );
+
+			if ( $instance['show_image'] && $image )
 				printf( '<a href="%s" title="%s" class="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), esc_attr( $instance['image_alignment'] ), $image );
 
 			if ( ! empty( $instance['show_gravatar'] ) ) {
@@ -127,18 +138,17 @@ class Genesis_Featured_Post extends WP_Widget {
 				echo '</span>';
 			}
 
-			
-			if ( ! empty( $instance['show_title'] ) || ! empty( $instance['show_byline'] ) )
-				genesis_markup( '<header class="entry-header">', '' );
+			if ( $instance['show_title'] && $instance['show_byline'] )
+				echo genesis_html5() ? '<header class="entry-header">' : '';
 			
 				if ( ! empty( $instance['show_title'] ) )
-					printf( '<h2><a href="%s" title="%s">%s</a></h2>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_title() );
+					printf( '<h2 class="entry-title"><a href="%s" title="%s">%s</a></h2>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_title() );
 
 				if ( ! empty( $instance['show_byline'] ) && ! empty( $instance['post_info'] ) )
 					printf( genesis_markup( '<p class="entry-meta">%s</p>', '<p class="byline post-info">%s</p>', 0 ), do_shortcode( $instance['post_info'] ) );
 			
-			if ( ! empty( $instance['show_title'] ) || ! empty( $instance['show_byline'] ) )
-				genesis_markup( '</header>', '' );
+			if ( $instance['show_title'] && $instance['show_byline'] )
+				echo genesis_html5() ? '</header>' : '';
 
 			if ( ! empty( $instance['show_content'] ) ) {
 				if ( 'excerpt' == $instance['show_content'] )
@@ -149,7 +159,10 @@ class Genesis_Featured_Post extends WP_Widget {
 					the_content( esc_html( $instance['more_text'] ) );
 			}
 
-			genesis_markup( '</article>', '</div>' );
+			genesis_markup( array(
+				'html5' => '</article>',
+				'xhtml' => '</div>',
+			) );
 
 		endwhile; endif;
 
