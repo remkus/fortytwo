@@ -1,6 +1,8 @@
 (function ($) {
 	"use strict";
 	$(function () {
-		// Place your public-facing JavaScript here
+        $('.flexslider').flexslider({
+            animation: "slide"
+        });
 	});
 }(jQuery));

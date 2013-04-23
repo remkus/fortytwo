@@ -75,7 +75,8 @@ class FT_Responsive_Slider {
 	 * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
 	 */
 	public function activate( $network_wide ) {
-		// TODO:	Define activation functionality here
+        if( ! function_exists( 'genesis_get_option' ) )
+     		return;
 	} // end activate
 
 	/**
@@ -113,8 +114,7 @@ class FT_Responsive_Slider {
 	 */
 	public function register_admin_styles() {
 
-		// TODO:	Change 'plugin-name' to the name of your plugin
-		wp_enqueue_style( 'plugin-name-admin-styles', plugins_url( 'plugin-name/css/admin.css' ) );
+        // wp_enqueue_style( 'ft-responsive-slider-admin-styles', plugins_url( 'ft-responsive-slider/css/admin.css' ) );
 
 	} // end register_admin_styles
 
@@ -123,8 +123,7 @@ class FT_Responsive_Slider {
 	 */
 	public function register_admin_scripts() {
 
-		// TODO:	Change 'plugin-name' to the name of your plugin
-		wp_enqueue_script( 'plugin-name-admin-script', plugins_url( 'plugin-name/js/admin.js' ), array('jquery') );
+        // wp_enqueue_script( 'ft-responsive-slider-admin-script', plugins_url( 'ft-responsive-slider/js/admin.js' ), array('jquery') );
 
 	} // end register_admin_scripts
 
@@ -133,8 +132,7 @@ class FT_Responsive_Slider {
 	 */
 	public function register_plugin_styles() {
 
-		// TODO:	Change 'plugin-name' to the name of your plugin
-		wp_enqueue_style( 'plugin-name-plugin-styles', plugins_url( 'plugin-name/css/display.css' ) );
+		wp_enqueue_style( 'ft-responsive-slider-styles', plugins_url( 'ft-responsive-slider/css/display.css' ) );
 
 	} // end register_plugin_styles
 
@@ -143,8 +141,8 @@ class FT_Responsive_Slider {
 	 */
 	public function register_plugin_scripts() {
 
-		// TODO:	Change 'plugin-name' to the name of your plugin
-		wp_enqueue_script( 'plugin-name-plugin-script', plugins_url( 'plugin-name/js/display.js' ), array('jquery') );
+        wp_enqueue_script( 'ft-responsive-slider-flexslider', plugins_url( 'ft-responsive-slider/js/jquery.flexslider-min.js' ), array('jquery') );
+        wp_enqueue_script( 'ft-responsive-slider-script', plugins_url( 'ft-responsive-slider/js/display.js' ), array('jquery', 'ft-responsive-slider-flexslider') );
 
 	} // end register_plugin_scripts
 
@@ -178,5 +176,4 @@ class FT_Responsive_Slider {
 
 } // end class
 
-// TODO:	Update the instantiation call of your plugin to the name given at the class definition
-$plugin_name = new PluginName();
+$plugin_name = new FT_Responsive_Slider();
