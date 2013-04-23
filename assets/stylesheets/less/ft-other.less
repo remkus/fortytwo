@@ -23,40 +23,43 @@ body {
 header {
   padding-top: 40px;
 
-  #title-area {
+  .title-area {
     .pull-left;
+    padding-left: (@grid-gutter-width / 2);
+  }
+
+
+  .site-title {
+    margin: 0 15px 0 0;
+    .pull-left;
+
+    a {
+      background: url( '@{ft-images-path}/logo.png' ) no-repeat;
+      display: block;
+      float: left;
+      overflow: hidden;
+      text-indent: -9999px;
+      height: 46px;
+      width: 212px;
+    }
+  }
+
+  .site-description {
+    .pull-left;
+    border-left: 1px solid #ddd;
+    padding-left: 15px;
+    margin: 5px 0;
+    text-transform: uppercase;
+    width: 180px;
+    color: @color-d-darker;
   }
 
   .widget-area {
     .pull-right;
+    padding-right: (@grid-gutter-width / 2);
   }
 }
 
 #title a {
   width: 100%;
-}
-
-.header-image #title {
-  margin: 0 15px 0 0;
-  .pull-left;
-}
-
-.header-image #title a {
-  background: url( '@{ft-images-path}/logo.png' ) no-repeat;
-  display: block;
-  float: left;
-  overflow: hidden;
-  text-indent: -9999px;
-  height: 46px;
-  width: 212px;
-}
-
-.header-image #description {
-  .pull-left;
-  border-left: 1px solid #ddd;
-  padding-left: 15px;
-  margin: 5px 0;
-  text-transform: uppercase;
-  width: 180px;
-  color: @color-d-darker;
 }
