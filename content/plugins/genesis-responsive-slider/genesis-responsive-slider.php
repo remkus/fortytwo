@@ -97,7 +97,7 @@ function genesis_responsive_slider_sanitization() {
 function genesis_responsive_slider_scripts() {
 
 	/** easySlider JavaScript code */
-	wp_enqueue_script( 'flexslider', plugins_url('js/jquery.flexslider-min', __FILE__), array( 'jquery' ), GENESIS_RESPONSIVE_SLIDER_VERSION, TRUE );
+	wp_enqueue_script( 'flexslider', plugins_url('js/jquery.flexslider-min.js', __FILE__), array( 'jquery' ), GENESIS_RESPONSIVE_SLIDER_VERSION, TRUE );
 
 }
 
