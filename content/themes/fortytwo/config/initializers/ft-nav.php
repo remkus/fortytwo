@@ -18,44 +18,42 @@ add_action( 'genesis_after_header', 'fortytwo_genesis_do_nav' );
 
 function fortytwo_genesis_do_nav() {
 
-	/** Do nothing if menu not supported */
-	if ( ! genesis_nav_menu_supported( 'primary' ) )
-		return;
+    /** Do nothing if menu not supported */
+    if ( ! genesis_nav_menu_supported( 'primary' ) )
+        return;
 
-	/** If menu is assigned to theme location, output */
-	if ( has_nav_menu( 'primary' ) ) {
+    /** If menu is assigned to theme location, output */
+    if ( has_nav_menu( 'primary' ) ) {
 
-		$args = array(
-			'theme_location' => 'primary',
-			'container'      => '',
-			'menu_class'     => 'menu genesis-nav-menu menu-primary nav',
-			'echo'           => 0,
+        $args = array(
+            'theme_location' => 'primary',
+            'container'      => '',
+            'menu_class'     => 'menu genesis-nav-menu menu-primary nav',
+            'echo'           => 0,
             'walker'         => new FortyTwo_Walker_Nav_Menu()
-		);
-		// load the navigation arguments
-		$nav = wp_nav_menu( $args );
+        );
+        // load the navigation arguments
+        $nav = wp_nav_menu( $args );
 
-
-
-            $nav_output = <<<EOD
-                <nav class="nav-primary navbar">
-                    <div class="wrap container">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                        </button>
-                        <div class="nav-collapse navbar-responsive-collapse collapse">
-                          {$nav}
-                        </div>
+        $nav_output = <<<EOD
+            <nav class="nav-primary navbar">
+                <div class="wrap container">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <div class="nav-collapse navbar-responsive-collapse collapse">
+                      {$nav}
                     </div>
-                </nav>
+                </div>
+            </nav>
 EOD;
 
         // re-applying the default filters
-		echo apply_filters( 'genesis_do_nav', $nav_output, $nav, $args );
+        echo apply_filters( 'genesis_do_nav', $nav_output, $nav, $args );
 
-	}
+    }
 
 }
 
@@ -64,47 +62,63 @@ EOD;
  */
 class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 
-	// replacing the class with our version
-	function start_lvl( &$output, $depth ) {
-		$indent = str_repeat( "\t", $depth );
-		$output .= "\n$indent<ul class=\"dropdown-menu\">\n";
-	}
+    // replacing the class with our version
+    function start_lvl( &$output, $depth ) {
 
-	// building the HTML output
-	function start_el( &$output, $item, $depth, $args ) {
-		global $wp_query;
+        // depth dependent classes
+        $indent = ( $depth > 0  ? str_repeat( "\t", $depth ) : '' ); // code indent
+        $classes = array(
+            'dropdown-menu'
+            );
+        $class_names = implode( ' ', $classes );
+
+        // build html
+        $output .= "\n" . $indent . '<ul class="' . $class_names . '">' . "\n";
+    }
+
+    // building the HTML output
+    function start_el( &$output, $item, $depth, $args ) {
+        global $wp_query;
+
         $indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
+
+        $classes = empty( $item->classes ) ? array() : (array) $item->classes;
 
         // depth dependent classes
         $depth_classes = array(
-            ( $depth == 0 ? 'main-menu-item' : '' ),
-            ( $depth >=1 ? 'dropdown-submenu' : '' ),
-            'menu-item-depth-' . $depth
+            ( $depth >= 1 && $args->has_children ? 'dropdown-submenu' : 'dropdown' )
         );
         $depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
 
         // passed classes
         $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+
+        if ( $custom_classes = get_post_meta($item->ID, '_menu_item_classes', true ) ) {
+            foreach ( $custom_classes as $custom_class ) {
+                $classes[] = $custom_class;
+            }
+        }
+
         $class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
 
         // build html
-        $output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . '">';
+        $output .= $indent . '<li id="nav-menu-item-'. sanitize_title( $item->title ) . '" class="' . $depth_class_names . ' ' . $class_names . '">';
 
-		$attributes = !empty($item->attr_title) ? ' title="' . esc_attr( $item->attr_title ) . '"' : '';
-		$attributes .=!empty($item->target) ? ' target="' . esc_attr( $item->target ) . '"' : '';
-		$attributes .=!empty($item->xfn) ? ' rel="' . esc_attr( $item->xfn ) . '"' : '';
-		$attributes .=!empty($item->url) ? ' href="' . esc_attr( $item->url ) . '"' : '';
-		$attributes .= ( $args->has_children ) ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
+        $attributes = !empty($item->attr_title) ? ' title="' . esc_attr( $item->attr_title ) . '"' : '';
+        $attributes .=!empty($item->target) ? ' target="' . esc_attr( $item->target ) . '"' : '';
+        $attributes .=!empty($item->xfn) ? ' rel="' . esc_attr( $item->xfn ) . '"' : '';
+        $attributes .=!empty($item->url) ? ' href="' . esc_attr( $item->url ) . '"' : '';
+        $attributes .= ( $args->has_children ) ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
 
-		$item_output = $args->before;
-		$item_output .= '<a' . $attributes . '>';
-		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-		$item_output .= ( $args->has_children ) ? ' <b class="caret"></b>' : '';
-		$item_output .= '</a>';
-		$item_output .= $args->after;
+        $item_output = $args->before;
+        $item_output .= '<a' . $attributes . '>';
+        $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+        $item_output .= ( $args->has_children ) ? ' <b class="caret"></b>' : '';
+        $item_output .= '</a>';
+        $item_output .= $args->after;
 
-		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-	}
+        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+    }
 
 	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 		if ( !$element ) {
