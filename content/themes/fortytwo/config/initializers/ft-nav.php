@@ -28,46 +28,29 @@ function fortytwo_genesis_do_nav() {
 		$args = array(
 			'theme_location' => 'primary',
 			'container'      => '',
-			'menu_class'     => 'menu menu-primary nav',
+			'menu_class'     => 'menu genesis-nav-menu menu-primary nav',
 			'echo'           => 0,
             'walker'         => new FortyTwo_Walker_Nav_Menu()
 		);
 		// load the navigation arguments
 		$nav = wp_nav_menu( $args );
 
-        if (current_theme_supports( 'genesis-html5' )) {
+
 
             $nav_output = <<<EOD
-                <nav class="primary navbar">
+                <nav class="nav-primary navbar">
                     <div class="wrap container">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
                         </button>
-                        <div class="nav-collapse collapse">
+                        <div class="nav-collapse navbar-responsive-collapse collapse">
                           {$nav}
                         </div>
                     </div>
                 </nav>
 EOD;
-
-        } else {
-
-            $nav_output = <<<EOD
-                  <div id="nav" class="navbar">
-                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                      </button>
-                      <div class="nav-collapse collapse">
-                          {$nav}
-                      </div>
-                  </div>
-EOD;
-
-        }
 
         // re-applying the default filters
 		echo apply_filters( 'genesis_do_nav', $nav_output, $nav, $args );
@@ -81,11 +64,6 @@ EOD;
  */
 class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 
-	// check for the currrent css class
-	function check_current( $classes ) {
-		return preg_match( '/(current[-_])|active|dropdown/', $classes );
-	}
-
 	// replacing the class with our version
 	function start_lvl( &$output, $depth ) {
 		$indent = str_repeat( "\t", $depth );
@@ -95,33 +73,22 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 	// building the HTML output
 	function start_el( &$output, $item, $depth, $args ) {
 		global $wp_query;
-		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+        $indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
 
-		$slug = sanitize_title( $item->title );
-		$id = 'menu-' . $slug;
+        // depth dependent classes
+        $depth_classes = array(
+            ( $depth == 0 ? 'main-menu-item' : '' ),
+            ( $depth >=1 ? 'dropdown-submenu' : '' ),
+            'menu-item-depth-' . $depth
+        );
+        $depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
 
-		$li_attributes = '';
-		$class_names = $value = '';
+        // passed classes
+        $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+        $class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
 
-		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-
-		if ($args->has_children) {
-			$classes[] = 'dropdown';
-			$li_attributes .= ' data-dropdown="dropdown"';
-		}
-
-		$classes = array_filter( $classes, array( &$this, 'check_current' ) );
-
-		if ( $custom_classes = get_post_meta($item->ID, '_menu_item_classes', true ) ) {
-			foreach ( $custom_classes as $custom_class ) {
-				$classes[] = $custom_class;
-			}
-		}
-
-		$class_names = join(' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-		$class_names = $class_names ? ' class="' . $id . ' ' . esc_attr( $class_names ) . '"' : ' class="' . $id . '"';
-
-		$output .= $indent . '<li' . $class_names . $li_attributes . '>';
+        // build html
+        $output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . '">';
 
 		$attributes = !empty($item->attr_title) ? ' title="' . esc_attr( $item->attr_title ) . '"' : '';
 		$attributes .=!empty($item->target) ? ' target="' . esc_attr( $item->target ) . '"' : '';
