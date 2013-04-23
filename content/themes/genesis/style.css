@@ -1096,7 +1096,7 @@ Content Area
 	margin-bottom: 2.4rem;
 }
 
-.entry-meta .post-comments::before {
+.entry-meta .entry-comments::before {
 	content: "—";
 	margin: 0 6px 0 2px;
 	margin: 0 0.6rem 0 0.2rem;
@@ -1110,8 +1110,8 @@ Content Area
 	padding: 3.2rem 4rem 0.8rem;
 }
 
-.entry-meta .categories,
-.entry-meta .tags {
+.entry-meta .entry-categories,
+.entry-meta .entry-tags {
 	display: block;
 }
 

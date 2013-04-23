@@ -13,13 +13,11 @@
  * Helper function to output markup conditionally.
  *
  * If the child theme supports HTML5, then this function will output the $html5_tag. Otherwise,
- * it will output the xHTML tag.
+ * it will output the $xhtml_tag.
  *
  * @since 1.9.0
  *
- * @param string $html5_tag Markup to output if HTML5 is supported.
- * @param string $xhtml_tag Markup to output if HTML5 is not supported.
- * @param boolean $echo Conditional to determine output or return.
+ * @param array $args Array of arguments.
  */
 function genesis_markup( array $args = array() ) {
 
@@ -33,12 +31,12 @@ function genesis_markup( array $args = array() ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	//* Short circuit filter
-	$pre = apply_filters( 'genesis_markup', false, $args );
+	$pre = apply_filters( 'genesis_markup_' . $args['context'], false, $args );
 	if ( false !== $pre )
 		return $pre;
 
 	if ( ! $args['html5'] || ! $args['xhtml'] )
-		return;
+		return '';
 
 	//* If HTML5, return HTML5 tag. Maybe add attributes. Else XHTML.
 	if ( genesis_html5() ) {
@@ -49,7 +47,7 @@ function genesis_markup( array $args = array() ) {
 	}
 
 	//* Contextual filter
-	$tag = $args['context'] ? apply_filters( 'genesis_markup_' . $args['context'], $tag ) : $tag;
+	$tag = $args['context'] ? apply_filters( 'genesis_markup_' . $args['context'] . '_output', $tag ) : $tag;
 
 	if ( $args['echo'] )
 		echo $tag;
@@ -58,15 +56,33 @@ function genesis_markup( array $args = array() ) {
 
 }
 
-function genesis_attr( $context, $echo = false ) {
+/**
+ * Outputs contextual attributes on markup tags.
+ *
+ * This function accepts a `$context` parameter, which uses a filter to received attributes to be output.
+ * It's used in `genesis_markup()` but can also be used directly within a tag.
+ *
+ * @since 2.0.0
+ *
+ * @param string $context The context, used to build filter to pull attributes.
+ * @param boolean $echo Conditional to determine output or return.
+ * @param array $attributes optional Manually pass attributes to merge and output.
+ */
+function genesis_attr( $context, $args = array() ) {
 
-	//* Use context as class by default
-	$attributes = array(
-		'class' => esc_attr( $context ),
+	$defaults = array(
+		'attributes' => array( 'class' => esc_attr( $context ) ),
+		'output'     => 'string',
 	);
 
+	$args = wp_parse_args( $args, $defaults );
+
 	//* Contextual filter
-	$attributes = apply_filters( 'genesis_attr_' . $context, $attributes );
+	$attributes = apply_filters( 'genesis_attr_' . $context, $args['attributes'] );
+
+	//* If output is array, return (ignore echo)
+	if ( 'array' == $args['output'] )
+		return $attributes;
 
 	$output = '';
 
@@ -85,11 +101,8 @@ function genesis_attr( $context, $echo = false ) {
 
 	$output = apply_filters( 'genesis_attr_' . $context . '_output', $output, $attributes );
 
-	//* Echo or return attribute string
-	if ( $echo )
-		echo trim( $output );
-	else
-		return trim( $output );
+	//* Return
+	return trim( $output );
 
 }
 
@@ -104,10 +117,6 @@ function genesis_attributes_body( $attributes ) {
 		'itemscope' => 'itemscope',
 		'itemtype'  => 'http://schema.org/WebPage',
 	);
-
-	//* Search results pages
-	if ( is_search() )
-		$attributes['itemtype'] = 'http://schema.org/SearchResultsPage';
 
 	return $attributes;
 
@@ -127,18 +136,77 @@ function genesis_attributes_header( $attributes ) {
 
 }
 
+add_filter( 'genesis_attr_site-title', 'genesis_attributes_site_title' );
+/**
+ * 
+ */
+function genesis_attributes_site_title( $attributes ) {
+
+	$attributes['itemprop'] = 'headline';
+
+	return $attributes;
+
+}
+
+add_filter( 'genesis_attr_site-description', 'genesis_attributes_site_description' );
+/**
+ * 
+ */
+function genesis_attributes_site_description( $attributes ) {
+
+	$attributes['itemprop'] = 'description';
+
+	return $attributes;
+
+}
+
+add_filter( 'genesis_attr_nav-primary', 'genesis_attributes_nav_primary' );
+/**
+ * 
+ */
+function genesis_attributes_nav_primary( $attributes ) {
+
+	$attributes['role']      = 'navigation';
+	$attributes['itemscope'] = 'itemscope';
+	$attributes['itemtype']  = 'http://schema.org/SiteNavigationElement';
+
+	return $attributes;
+
+}
+
+add_filter( 'genesis_attr_nav-secondary', 'genesis_attributes_nav_secondary' );
+/**
+ * 
+ */
+function genesis_attributes_nav_secondary( $attributes ) {
+
+	$attributes['role']      = 'navigation';
+	$attributes['itemscope'] = 'itemscope';
+	$attributes['itemtype']  = 'http://schema.org/SiteNavigationElement';
+
+	return $attributes;
+
+}
+
 add_filter( 'genesis_attr_content', 'genesis_attributes_content' );
 /**
  * 
  */
 function genesis_attributes_content( $attributes ) {
 
-	$attributes['role'] = 'main';
+	$attributes['role']     = 'main';
+	$attributes['itemprop'] = 'mainContentOfPage';
 
 	//** Blog microdata
 	if ( is_singular( 'post' ) || is_archive() || is_home() || is_page_template( 'page_blog.php' ) ) {
 		$attributes['itemscope'] = 'itemscope';
 		$attributes['itemtype']  = 'http://schema.org/Blog';
+	}
+
+	//* Search results pages
+	if ( is_search() ) {
+		$attributes['itemscope'] = 'itemscope';
+		$attributes['itemtype'] = 'http://schema.org/SearchResultsPage';
 	}
 
 	return $attributes;
@@ -185,14 +253,80 @@ function genesis_attributes_entry( $attributes ) {
 
 }
 
+add_filter( 'genesis_attr_entry-image', 'genesis_attributes_entry_image' );
+/**
+ * 
+ */
+function genesis_attributes_entry_image( $attributes ) {
+
+	$attributes['class']    = 'alignleft post-image entry-image';
+	$attributes['itemprop'] = 'image';
+
+	return $attributes;
+
+}
+
+add_filter( 'genesis_attr_entry-image-widget', 'genesis_attributes_entry_image_widget' );
+/**
+ * 
+ */
+function genesis_attributes_entry_image_widget( $attributes ) {
+
+	global $post;
+
+	$attributes['class']    = 'alignleft post-image entry-image attachment-' . $post->post_type;
+	$attributes['itemprop'] = 'image';
+
+	return $attributes;
+
+}
+
+add_filter( 'genesis_attr_entry-time', 'genesis_attributes_entry_time' );
+/**
+ * 
+ */
+function genesis_attributes_entry_time( $attributes ) {
+
+	$attributes['itemprop'] = 'datePublished';
+
+	return $attributes;
+
+}
+
+add_filter( 'genesis_attr_entry-title', 'genesis_attributes_entry_title' );
+/**
+ * 
+ */
+function genesis_attributes_entry_title( $attributes ) {
+
+	$attributes['itemprop'] = 'headline';
+
+	return $attributes;
+
+}
+
+add_filter( 'genesis_attr_entry-content', 'genesis_attributes_entry_content' );
+/**
+ * 
+ */
+function genesis_attributes_entry_content( $attributes ) {
+
+	$attributes['itemprop'] = 'text';
+
+	return $attributes;
+
+}
+
 add_filter( 'genesis_attr_sidebar-primary', 'genesis_attributes_sidebar_primary' );
 /**
  * 
  */
 function genesis_attributes_sidebar_primary( $attributes ) {
 
-	$attributes['class'] = 'sidebar sidebar-primary widget-area';
-	$attributes['role']  = 'complimentary';
+	$attributes['class']     = 'sidebar sidebar-primary widget-area';
+	$attributes['role']      = 'complimentary';
+	$attributes['itemscope'] = 'itemscope';
+	$attributes['itemtype']  = 'http://schema.org/WPSideBar';
 
 	return $attributes;
 
@@ -204,8 +338,10 @@ add_filter( 'genesis_attr_sidebar-secondary', 'genesis_attributes_sidebar_second
  */
 function genesis_attributes_sidebar_secondary( $attributes ) {
 
-	$attributes['class'] = 'sidebar sidebar-secondary widget-area';
-	$attributes['role']  = 'complimentary';
+	$attributes['class']     = 'sidebar sidebar-secondary widget-area';
+	$attributes['role']      = 'complimentary';
+	$attributes['itemscope'] = 'itemscope';
+	$attributes['itemtype']  = 'http://schema.org/WPSideBar';
 
 	return $attributes;
 
@@ -217,7 +353,9 @@ add_filter( 'genesis_attr_site-footer', 'genesis_attributes_site_footer' );
  */
 function genesis_attributes_site_footer( $attributes ) {
 
-	$attributes['role']  = 'contentinfo';
+	$attributes['role']      = 'contentinfo';
+	$attributes['itemscope'] = 'itemscope';
+	$attributes['itemtype']  = 'http://schema.org/WPFooter';
 
 	return $attributes;
 

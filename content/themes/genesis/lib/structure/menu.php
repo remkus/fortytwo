@@ -161,7 +161,7 @@ add_filter( 'wp_nav_menu_items', 'genesis_nav_right', 10, 2 );
  */
 function genesis_nav_right( $menu, stdClass $args ) {
 
-	if ( ! genesis_get_option( 'nav_extras_enable' ) || 'primary' != $args->theme_location )
+	if ( ! genesis_get_option( 'nav_extras' ) || 'primary' != $args->theme_location )
 		return $menu;
 
 	switch ( genesis_get_option( 'nav_extras' ) ) {

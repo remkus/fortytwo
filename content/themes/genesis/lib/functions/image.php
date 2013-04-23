@@ -57,10 +57,10 @@ function genesis_get_image_id( $index = 0 ) {
  * @uses genesis_get_image_id()
  *
  * @global WP_Post $post Post object.
- * @param array $args Optional. Image query arguments. Default is empty array
+ * @param array|string $args Optional. Image query arguments. Default is empty array
  * @return string|boolean Returns img element HTML, URL of image, or false
  */
-function genesis_get_image( array $args = array() ) {
+function genesis_get_image( $args = array() ) {
 
 	global $post;
 
@@ -138,10 +138,10 @@ function genesis_get_image( array $args = array() ) {
  *
  * @uses genesis_get_image()
  *
- * @param array $args Optional. Image query arguments. Default is empty array
+ * @param array|string $args Optional. Image query arguments. Default is empty array
  * @return false Returns false if URL is empty
  */
-function genesis_image( array $args = array() ) {
+function genesis_image( $args = array() ) {
 
 	$image = genesis_get_image( $args );
 
