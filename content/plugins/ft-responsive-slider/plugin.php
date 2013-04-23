@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: TODO
-Plugin URI: TODO
-Description: TODO
+Plugin Name: FortyTwo Responsive Slider
+Plugin URI:
+Description: Responsive slider using FlexSlider
 Version: 1.0
-Author: TODO
-Author URI: TODO
-Author Email: TODO
-License:
+Author: Forsite Themes
+Author URI: http://forsitethemes.com/
 
-  Copyright 2013 TODO (email@domain.com)
+License: GPLv2 ->
+
+  Copyright 2013 Forsite Themes (team@forsitethemes.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2, as
@@ -26,8 +26,7 @@ License:
 
 */
 
-// TODO: rename this class to a proper name for your plugin
-class PluginName {
+class FT_Responsive_Slider {
 
 	/*--------------------------------------------*
 	 * Constructor
@@ -102,8 +101,7 @@ class PluginName {
 	 */
 	public function plugin_textdomain() {
 
-		// TODO: replace "plugin-name-locale" with a unique value for your plugin
-		$domain = 'plugin-name-locale';
+		$domain = 'ft-responsive-slider-locale';
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
         load_textdomain( $domain, WP_LANG_DIR.'/'.$domain.'/'.$domain.'-'.$locale.'.mo' );
         load_plugin_textdomain( $domain, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
