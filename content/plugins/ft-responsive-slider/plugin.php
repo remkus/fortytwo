@@ -1,203 +1,184 @@
 <?php
 /*
-Plugin Name: FortyTwo Featured Page Widget
-Plugin URI: http://forsitethemes.com
-Description: FortyTwo Featured Page Widget
+Plugin Name: TODO
+Plugin URI: TODO
+Description: TODO
 Version: 1.0
-Author: Forsite Themes
-Author URI: http://forsitethemes.com
-Author Email: mail@forsitethemes.com
-Text Domain: ft-featured-page-locale
-Domain Path: /lang/
-Network: false
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Author: TODO
+Author URI: TODO
+Author Email: TODO
+License:
 
-Copyright 2013 mail@forsitethemes.com
+  Copyright 2013 TODO (email@domain.com)
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as 
-published by the Free Software Foundation.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License, version 2, as
+  published by the Free Software Foundation.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
 */
 
-class FT_Featured_Page extends WP_Widget {
+// TODO: rename this class to a proper name for your plugin
+class PluginName {
 
-	/*--------------------------------------------------*/
-	/* Constructor
-	/*--------------------------------------------------*/
-	
+	/*--------------------------------------------*
+	 * Constructor
+	 *--------------------------------------------*/
+
 	/**
-	 * Specifies the classname and description, instantiates the widget, 
-	 * loads localization files, and includes necessary stylesheets and JavaScript.
+	 * Initializes the plugin by setting localization, filters, and administration functions.
 	 */
-	public function __construct() {
-	
-		// load plugin text domain
-		add_action( 'init', array( $this, 'widget_textdomain' ) );
-		
-		// Hooks fired when the Widget is activated and deactivated
-		register_activation_hook( __FILE__, array( $this, 'activate' ) );
-		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
+	function __construct() {
 
-		parent::__construct(
-			'widget-ft-featured-page',
-			__( 'FortyTwo - Featured Page', 'ft-featured-page-locale' ),
-			array(
-				'classname'		=>	'ft-featured-page',
-				'description'	=>	__( 'Featured Page widget for the FortyTwo Theme.', 'ft-featured-page-locale' )
-			)
-		);
-		
+		// Load plugin text domain
+		add_action( 'init', array( $this, 'plugin_textdomain' ) );
+
 		// Register admin styles and scripts
 		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
-	
+
 		// Register site styles and scripts
-        //add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_styles' ) );
-        //add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_scripts' ) );
-		
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_plugin_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_plugin_scripts' ) );
+
+		// Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
+		register_activation_hook( __FILE__, array( $this, 'activate' ) );
+		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
+		register_uninstall_hook( __FILE__, array( $this, 'uninstall' ) );
+
+	    /*
+	     * TODO:
+	     * Define the custom functionality for your plugin. The first parameter of the
+	     * add_action/add_filter calls are the hooks into which your code should fire.
+	     *
+	     * The second parameter is the function name located within this class. See the stubs
+	     * later in the file.
+	     *
+	     * For more information:
+	     * http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
+	     */
+	    add_action( 'TODO', array( $this, 'action_method_name' ) );
+	    add_filter( 'TODO', array( $this, 'filter_method_name' ) );
+
 	} // end constructor
 
-	/*--------------------------------------------------*/
-	/* Widget API Functions
-	/*--------------------------------------------------*/
-	
-	/**
-	 * Outputs the content of the widget.
-	 *
-	 * @param	array	args		The array of form elements
-	 * @param	array	instance	The current instance of the widget
-	 */
-	public function widget( $args, $instance ) {
-	
-		extract( $args, EXTR_SKIP );
-		
-		echo $before_widget;
-    
-		// TODO:	Here is where you manipulate your widget's values based on their input fields
-    
-		include( plugin_dir_path( __FILE__ ) . '/views/widget.php' );
-		
-		echo $after_widget;
-		
-	} // end widget
-	
-	/**
-	 * Processes the widget's options to be saved.
-	 *
-	 * @param	array	new_instance	The previous instance of values before the update.
-	 * @param	array	old_instance	The new instance of values to be generated via the update.
-	 */
-	public function update( $new_instance, $old_instance ) {
-	
-		$instance = $old_instance;
-		
-		// TODO:	Here is where you update your widget's old values with the new, incoming values
-    
-		return $instance;
-		
-	} // end widget
-	
-	/**
-	 * Generates the administration form for the widget.
-	 *
-	 * @param	array	instance	The array of keys and values for the widget.
-	 */
-	public function form( $instance ) {
-	
-    	// TODO:	Define default values for your variables
-		$instance = wp_parse_args(
-			(array) $instance
-		);
-	
-		// TODO:	Store the values of the widget in their own variable
-		
-		// Display the admin form
-		include( plugin_dir_path(__FILE__) . '/views/admin.php' );	
-		
-	} // end form
-
-	/*--------------------------------------------------*/
-	/* Public Functions
-	/*--------------------------------------------------*/
-	
-	/**
-	 * Loads the Widget's text domain for localization and translation.
-	 */
-	public function widget_textdomain() {
-	
-		// TODO be sure to change 'widget-name' to the name of *your* plugin
-		load_plugin_textdomain( 'ft-featured-page-locale', false, plugin_dir_path( __FILE__ ) . '/lang/' );
-		
-	} // end widget_textdomain
-	
 	/**
 	 * Fired when the plugin is activated.
 	 *
-	 * @param		boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog.
+	 * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
 	 */
 	public function activate( $network_wide ) {
-		// TODO define activation functionality here
+		// TODO:	Define activation functionality here
 	} // end activate
-	
+
 	/**
 	 * Fired when the plugin is deactivated.
 	 *
-	 * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog 
+	 * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
 	 */
 	public function deactivate( $network_wide ) {
-		// TODO define deactivation functionality here		
+		// TODO:	Define deactivation functionality here
 	} // end deactivate
-	
+
+	/**
+	 * Fired when the plugin is uninstalled.
+	 *
+	 * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
+	 */
+	public function uninstall( $network_wide ) {
+		// TODO:	Define uninstall functionality here
+	} // end uninstall
+
+	/**
+	 * Loads the plugin text domain for translation
+	 */
+	public function plugin_textdomain() {
+
+		// TODO: replace "plugin-name-locale" with a unique value for your plugin
+		$domain = 'plugin-name-locale';
+		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
+        load_textdomain( $domain, WP_LANG_DIR.'/'.$domain.'/'.$domain.'-'.$locale.'.mo' );
+        load_plugin_textdomain( $domain, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+
+	} // end plugin_textdomain
+
 	/**
 	 * Registers and enqueues admin-specific styles.
 	 */
 	public function register_admin_styles() {
-	
-		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'ft-featured-page-admin-styles', plugins_url( 'ft-featured-page/css/admin.css' ) );
-	
+
+		// TODO:	Change 'plugin-name' to the name of your plugin
+		wp_enqueue_style( 'plugin-name-admin-styles', plugins_url( 'plugin-name/css/admin.css' ) );
+
 	} // end register_admin_styles
 
 	/**
 	 * Registers and enqueues admin-specific JavaScript.
-	 */	
+	 */
 	public function register_admin_scripts() {
-	
-		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'ft-featured-page-admin-script', plugins_url( 'ft-featured-page/js/admin.js' ) );
-		
+
+		// TODO:	Change 'plugin-name' to the name of your plugin
+		wp_enqueue_script( 'plugin-name-admin-script', plugins_url( 'plugin-name/js/admin.js' ), array('jquery') );
+
 	} // end register_admin_scripts
-	
+
 	/**
-	 * Registers and enqueues widget-specific styles.
+	 * Registers and enqueues plugin-specific styles.
 	 */
-	public function register_widget_styles() {
-	
-		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'ft-featured-page-widget-styles', plugins_url( 'ft-featured-page/css/widget.css' ) );
-		
-	} // end register_widget_styles
-	
+	public function register_plugin_styles() {
+
+		// TODO:	Change 'plugin-name' to the name of your plugin
+		wp_enqueue_style( 'plugin-name-plugin-styles', plugins_url( 'plugin-name/css/display.css' ) );
+
+	} // end register_plugin_styles
+
 	/**
-	 * Registers and enqueues widget-specific scripts.
+	 * Registers and enqueues plugin-specific scripts.
 	 */
-	public function register_widget_scripts() {
-	
-		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'ft-featured-page-script', plugins_url( 'ft-featured-page/js/widget.js' ) );
-		
-	} // end register_widget_scripts
-	
+	public function register_plugin_scripts() {
+
+		// TODO:	Change 'plugin-name' to the name of your plugin
+		wp_enqueue_script( 'plugin-name-plugin-script', plugins_url( 'plugin-name/js/display.js' ), array('jquery') );
+
+	} // end register_plugin_scripts
+
+	/*--------------------------------------------*
+	 * Core Functions
+	 *---------------------------------------------*/
+
+	/**
+ 	 * NOTE:  Actions are points in the execution of a page or process
+	 *        lifecycle that WordPress fires.
+	 *
+	 *		  WordPress Actions: http://codex.wordpress.org/Plugin_API#Actions
+	 *		  Action Reference:  http://codex.wordpress.org/Plugin_API/Action_Reference
+	 *
+	 */
+	function action_method_name() {
+    	// TODO:	Define your action method here
+	} // end action_method_name
+
+	/**
+	 * NOTE:  Filters are points of execution in which WordPress modifies data
+	 *        before saving it or sending it to the browser.
+	 *
+	 *		  WordPress Filters: http://codex.wordpress.org/Plugin_API#Filters
+	 *		  Filter Reference:  http://codex.wordpress.org/Plugin_API/Filter_Reference
+	 *
+	 */
+	function filter_method_name() {
+	    // TODO:	Define your filter method here
+	} // end filter_method_name
+
 } // end class
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Featured_Page");' ) );
+// TODO:	Update the instantiation call of your plugin to the name given at the class definition
+$plugin_name = new PluginName();
