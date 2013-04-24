@@ -36,15 +36,19 @@ function fortytwo_genesis_do_nav() {
         $nav = wp_nav_menu( $args );
 
         $nav_output = <<<EOD
-            <nav class="nav-primary navbar">
-                <div class="wrap container">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                    <div class="nav-collapse navbar-responsive-collapse collapse">
-                      {$nav}
+            <nav class="nav-primary">
+                <div class="wrap">
+                    <div class="navbar">
+                        <div class="container">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                            </button>
+                            <div class="nav-collapse navbar-responsive-collapse collapse">
+                              {$nav}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>
