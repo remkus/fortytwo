@@ -5,16 +5,12 @@ require_once( TEMPLATEPATH . '/lib/init.php' );
 /** Add FortyTwo Turbos */
 require_once( CHILD_DIR . '/config/initializers/init.php' );
 
-add_theme_support( 'genesis-html5' ); //TODO Decide if we need to style for when the HTML5 support is switched off
-
-add_action( 'genesis_meta', 'fortytwo_viewport_meta_tag' );
 /**
- * Add Viewport meta tag for mobile browsers
- * @return echo meta viewport tag
+ * Activates FortyTwo theme features.
  */
-function fortytwo_viewport_meta_tag() {
-	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>';
-}
+add_theme_support( 'genesis-html5' );
+add_theme_support( 'genesis-responsive-viewport' );
+
 
 add_filter( 'stylesheet_uri', 'fortywo_replace_default_style_sheet', 10, 2 );
 /**
