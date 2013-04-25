@@ -335,13 +335,13 @@ class SZZL_Tabs_Widget extends WP_Widget {
         $last_post = end( $latest );
         foreach( $latest as $post ) {
             setup_postdata($post);
-            $html .= '<li>' . "\n";
+            $html .= '<li class="media">' . "\n";
             if ( $image_dimension > 0 ) {
                 $html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
             }
             $html .= '<div class="media-body">' . "\n";
             $html .= '<h4 class="media-heading"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
-            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate...' . "\n";
+            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
             $html .= '</div>' . "\n";
             $html .= '</li>' . "\n";
             if ( $post != $last_post ) {
@@ -372,16 +372,15 @@ class SZZL_Tabs_Widget extends WP_Widget {
         $last_popular = end( $popular );
         foreach( $popular as $post ) {
             setup_postdata($post);
-            $html .= '<li>' . "\n";
+            $html .= '<li class="media">' . "\n";
             if ( $image_dimension > 0 ) {
                 $html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
             }
             $html .= '<div class="media-body">' . "\n";
             $html .= '<h4 class="media-heading"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
-            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate...' . "\n";
+            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
             $html .= '</div>' . "\n";
-            $html .= '</li>' . "\n";
-            if ( $post != $last_popular ) {
+            $html .= '</li>' . "\n";            if ( $post != $last_popular ) {
                 $html .= '<hr />' . "\n";
             }
         }
@@ -459,10 +458,10 @@ class SZZL_Tabs_Widget extends WP_Widget {
      */
     function get_image ( $dimension, $post ) {
 
-        $html = '<img data-src="holder.js/125x94" class="wp-post-image">';
+        $html = '<img data-src="holder.js/94x94" class="media-object">';
 
         if ( current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID ) ) {
-            $html = get_the_post_thumbnail( $post->ID, array( $dimension, $dimension ), array( 'class' => 'thumbnail' ) );
+            $html = get_the_post_thumbnail( $post->ID, array( $dimension, $dimension ), array( 'class' => 'media-object' ) );
         }
 
         return $html;
