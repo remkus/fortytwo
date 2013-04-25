@@ -4,36 +4,25 @@
 // FortyTwo Tabbed Widget
 // --------------------------------------------------
 
+.widget {
+  hr {
+    border-top: 1px dashed @hr-border;
+    border-bottom: 1px dashed #fff;
+    border-bottom: 1px dashed rgba(255,255,255,.5);
+  }
+}
 .widget-ft-tabs {
 
-  .widgettitle {
-    padding-right: 20px;
-    .pull-left;
-    max-height: 38px;
+  .nav {
     margin-bottom: 2rem;
-  }
-
-  ul[class*="nav-"] {
-
-  }
-
-  ul[class*="nav-"] > li {
-    float: none;
-    display: table-cell;
-    width: 1%;
-    text-align: center;
-  }
-
-  ul[class*="nav-"] > li > a {
-    margin-right: 5px;
-  }
-
-  .nav-tabs > li > a {
-    padding: 0.7rem 1rem 0.8rem;
+    > li > a {
+      padding: 0.5rem 1rem;
+      text-transform: capitalize;
+    }
   }
 
   .nav-pills > li > a {
-    padding: 0.5rem 1rem;
+      border-radius: 3px;
   }
 
   div[class*="tab-pane-"] > ul {
@@ -71,9 +60,6 @@
     }
   }
 
-  #tab-pane-comments {
-
-  }
 }
 
 //
@@ -81,23 +67,7 @@
 // --------------------------------------------------
 
 .ft-testimonials {
-
-
-  .testimonial-content > ul {
-    .list-unstyled;
-
-    li {
-      .media;
-    }
+  blockquote > p {
+    .font-size(14);
   }
-
-  a.pull-left .wp-post-image,
-  .avatar {
-    margin-right: 10px;
-  }
-
-  a.pull-right .wp-post-image {
-    margin-left: 10px;
-  }
-
 }

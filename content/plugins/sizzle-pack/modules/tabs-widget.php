@@ -332,6 +332,7 @@ class SZZL_Tabs_Widget extends WP_Widget {
 
         $html .= '<ul class="latest">' . "\n";
         $latest = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=post_date&order=desc' );
+        $last_post = end( $latest );
         foreach( $latest as $post ) {
             setup_postdata($post);
             $html .= '<li>' . "\n";
@@ -343,6 +344,9 @@ class SZZL_Tabs_Widget extends WP_Widget {
             $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate...' . "\n";
             $html .= '</div>' . "\n";
             $html .= '</li>' . "\n";
+            if ( $post != $last_post ) {
+                $html .= '<hr />' . "\n";
+            }
         }
         $html .= '</ul>' . "\n";
         wp_reset_query();
@@ -365,6 +369,7 @@ class SZZL_Tabs_Widget extends WP_Widget {
 
         $html .= '<ul class="popular">' . "\n";
         $popular = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=comment_count&order=desc' );
+        $last_popular = end( $popular );
         foreach( $popular as $post ) {
             setup_postdata($post);
             $html .= '<li>' . "\n";
@@ -376,6 +381,9 @@ class SZZL_Tabs_Widget extends WP_Widget {
             $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate...' . "\n";
             $html .= '</div>' . "\n";
             $html .= '</li>' . "\n";
+            if ( $post != $last_popular ) {
+                $html .= '<hr />' . "\n";
+            }
         }
         $html .= '</ul>' . "\n";
         wp_reset_query();
@@ -397,6 +405,7 @@ class SZZL_Tabs_Widget extends WP_Widget {
         $html = '';
 
         $comments = get_comments( array( 'number' => $limit, 'status' => 'approve' ) );
+        $last_comments = end( $comments );
         if ( $comments ) {
             $html .= '<ul class="comments">' . "\n";
             foreach( $comments as $c ) {
@@ -405,6 +414,9 @@ class SZZL_Tabs_Widget extends WP_Widget {
                 $html .= '<a title="' . esc_attr( $c->comment_author . ' ' . __( 'on', 'fstpack' ) . ' ' . get_the_title( $c->comment_post_ID ) ) . '" href="' . esc_url( get_comment_link( $c->comment_ID ) ) . '">' . esc_html( $c->comment_author ) . '</a>' . "\n";
                 $html .= '<span class="comment-content">' . stripslashes( substr( esc_html( $c->comment_content ), 0, 50 ) ) . '</span>' . "\n";
                 $html .= '</li>' . "\n";
+                if ( $c != $last_comments ) {
+                    $html .= '<hr />' . "\n";
+                }
             }
             $html .= '</ul>' . "\n";
         }

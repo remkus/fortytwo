@@ -28,10 +28,7 @@
   }
 
   .ft-jumbotron-detail {
-    .pull-left;
-    padding-left: (@grid-gutter-width / 2);
-    padding-right: (@grid-gutter-width);
-    border-right: 1px solid #ddd;
+    .make-column(10);
     span{
       .font-size(21);
     }
@@ -42,11 +39,8 @@
   }
 
   .ft-jumbotron-action {
-    .pull-right;
-    padding-left: (@grid-gutter-width);
-    padding-right: (@grid-gutter-width / 2);
+    .make-column(2);
     margin-top: 10px;
-
   }
 }
 
