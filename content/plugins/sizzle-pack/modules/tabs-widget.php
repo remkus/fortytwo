@@ -78,7 +78,6 @@ class SZZL_Tabs_Widget extends WP_Widget {
         /* Our variables from the widget settings. */
         $title = apply_filters('widget_title', $instance['title'], $instance, $this->id_base );
         $tabs = $instance['tabs'];
-        $tabs_style = $instance['tabs_style'];
 
         /* Before widget (defined by themes). */
         echo $before_widget;
@@ -102,8 +101,13 @@ class SZZL_Tabs_Widget extends WP_Widget {
             $tab_content = '';
             $tab_links = '';
 
+
             // Setup the various tabs.
-            $tab_links .= '<ul class="nav nav-' . esc_attr( $tabs_style ) . '">' . "\n";
+            $tab_links .= '<ul class="nav nav-pills">' . "\n";
+            $tab_links .= '<li class="dropdown active">' . "\n";
+            $tab_links .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown"></a>' . "\n";
+            $tab_links .= '<ul class="dropdown-menu">' . "\n";
+
             $count = 0;
             foreach ( $tabs as $tab) {
                 $count++;
@@ -136,7 +140,8 @@ class SZZL_Tabs_Widget extends WP_Widget {
                 $tab_content .= '</div><!--/.tab-pane-->' . "\n";
             }
             $tab_links .= '</ul>' . "\n";
-
+            $tab_links .= '</li>' . "\n";
+            $tab_links .= '</ul>' . "\n";
 
             $html .= $tab_links;
             $html .= '<div class="tab-content image-align-' . $instance['image_alignment'] . '">' . "\n" . $tab_content . '</div><!--/.tab-content-->' . "\n";
@@ -232,14 +237,6 @@ class SZZL_Tabs_Widget extends WP_Widget {
     <div class="genesis-widget-column genesis-widget-column-right">
 
       <div class="genesis-widget-column-box genesis-widget-column-box-top">
-        <!-- Tabs Style: Select Input -->
-        <p>
-          <label for="<?php echo $this->get_field_id( 'tabs_style' ); ?>"><?php _e( 'Tabs Style:', 'fstpack' ); ?></label>
-          <select name="<?php echo $this->get_field_name( 'tabs_style' ); ?>" class="widefat" id="<?php echo $this->get_field_id( 'tabs_style' ); ?>">
-            <option value="tabs"<?php selected( $instance['tabs_style'], 'tabs' ); ?>><?php _e( 'Tabs', 'fstpack' ); ?></option>
-            <option value="pills"<?php selected( $instance['tabs_style'], 'pills' ); ?>><?php _e( 'Pills', 'fstpack' ); ?></option>
-          </select>
-        </p>
         <!-- Widget Limit: Text Input -->
         <p>
           <label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:', 'fstpack' ); ?></label>
