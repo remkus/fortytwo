@@ -169,7 +169,8 @@ function genesis_responsive_slider_flexslider_params() {
 					directionNav: ' . $directionnav . ',
 					controlNav: ' . $controlnav . ',
 					animationDuration: ' . $duration . ',
-					slideshowSpeed: ' . $timer . '
+					slideshowSpeed: ' . $timer . ',
+					useCSS: false
 			    });
 			  });';
 

@@ -6,28 +6,28 @@
 // --------------------------------------------------
 .nav-primary {
   border-top: 1px solid #ddd;
+
+  .nav > li {
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: transparent;
+    margin-top: -1px;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.current_page_item,
+    &.open {
+      border-top-color: #333;
+    }
+
+    > a {
+      text-transform: uppercase;
+    }
+
+  }
 }
 
 .navbar {
   border-radius: 0;
-}
-
-.nav > li {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: transparent;
-  margin-top: -1px;
-
-  &:hover,
-  &:focus,
-  &:active,
-  &.current_page_item,
-  &.open {
-    border-top-color: #333;
-  }
-
-}
-
-.nav > li > a {
-  text-transform: uppercase;
 }
