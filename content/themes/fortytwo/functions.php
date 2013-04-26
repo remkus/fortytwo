@@ -130,3 +130,22 @@ function fortytwo_footer_widgets_layout() {
     echo sprintf( '<div id="footer-widgets"><div class="container"><div class="row">%1$s</div></div></div>', $output );
 
 }
+
+/** Customize the default footer */
+remove_action( 'genesis_footer', 'genesis_do_footer' );
+
+add_action( 'genesis_footer', 'fortytwo_custom_footer' );
+
+function fortytwo_custom_footer() {
+
+    $footer_output = <<<EOD
+        <div class="row">
+            <div class="col-span-12">
+                <span>&copy; Copyright 2012 <a href="http://mydomain.com/">My Domain</a> &middot; All Rights Reserved &middot; Powered by <a href="http://wordpress.org/">WordPress</a> &middot; <a href="http://mydomain.com/wp-admin">Admin</a></span>
+            </div>
+        </div>
+EOD;
+
+    echo($footer_output);
+
+}

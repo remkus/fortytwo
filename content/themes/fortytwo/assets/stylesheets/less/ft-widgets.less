@@ -11,18 +11,29 @@
     border-bottom: 1px dashed rgba(255,255,255,.5);
   }
 }
-.widget-ft-tabs {
 
-  .nav {
-    margin-bottom: 2rem;
-    > li > a {
-      padding: 0.5rem 1rem;
-      text-transform: capitalize;
-    }
+.widget-ft-tabs {
+  .widgettitle {
+    .pull-left;
+    margin-right: 20px;
+    max-height: 38px;
+  }
+
+  .nav > li > a {
+    padding: 0.5rem 1rem;
+    text-transform: capitalize;
+  }
+
+  ul[class*="nav-"] > li {
+    float: none;
+    display: table-cell;
+    text-align: center;
   }
 
   .nav-pills > li > a {
-      border-radius: 3px;
+    border-radius: 3px;
+    padding: 4px 10px;
+    margin-right: 5px;
   }
 
   div[class*="tab-pane-"] > ul {
