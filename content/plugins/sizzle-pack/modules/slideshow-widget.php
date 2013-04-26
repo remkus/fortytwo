@@ -40,7 +40,7 @@ class SZZL_Slideshow_Widget extends WP_Widget {
 		$widget_ops = array (
 			'classname' => 'szzl-slideshow-widget',
 			'description' => __( 'Forsite Themes Extension Pack slideshow widget', 'SZZL_slideshow' )
-                );
+		);
 		$this->WP_Widget( 'fstslideshow-widget', __( 'SZZL - Slideshow', 'SZZL_slideshow' ), $widget_ops );
 	}
 

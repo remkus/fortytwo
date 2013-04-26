@@ -39,8 +39,8 @@ class SZZL_Audio_Slideshow_Widget extends WP_Widget {
 
 		$widget_ops = array(
 			'classname' => 'szzl-audio-slideshow-widget',
-			'description' => __( 'Forsite Themes Extension Pack Audio slideshow widget', 'SZZL_slideshow' ) 
-                );
+			'description' => __( 'Forsite Themes Extension Pack Audio slideshow widget', 'SZZL_slideshow' )
+		);
 
 		$this->WP_Widget( 'szzl-audio-slideshow-widget', __( 'SZZL - Audio Slideshow', 'SZZL_audio_slideshow' ), $widget_ops );
 	}
@@ -105,7 +105,7 @@ class SZZL_Audio_Slideshow_Widget extends WP_Widget {
             </div>
             <div class="audio-control-interface">
                 <div class="play-pause-container">
-                        <a href="javascript:;" class="audio-play" tabindex="1">Play</a>
+                   	<a href="javascript:;" class="audio-play" tabindex="1">Play</a>
                         <a href="javascript:;" class="audio-pause" tabindex="1">Pause</a>
                 </div>
                 <div class="time-container">
