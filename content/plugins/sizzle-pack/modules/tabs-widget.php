@@ -332,17 +332,21 @@ class SZZL_Tabs_Widget extends WP_Widget {
 
         $html .= '<ul class="latest">' . "\n";
         $latest = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=post_date&order=desc' );
-        foreach ( $latest as $post ) {
-            setup_postdata( $post );
-            $html .= '<li>' . "\n";
+        $last_post = end( $latest );
+        foreach( $latest as $post ) {
+            setup_postdata($post);
+            $html .= '<li class="media">' . "\n";
             if ( $image_dimension > 0 ) {
                 $html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
             }
             $html .= '<div class="media-body">' . "\n";
             $html .= '<h4 class="media-heading"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
-            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate...' . "\n";
+            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
             $html .= '</div>' . "\n";
             $html .= '</li>' . "\n";
+            if ( $post != $last_post ) {
+                $html .= '<hr />' . "\n";
+            }
         }
         $html .= '</ul>' . "\n";
         wp_reset_query();
@@ -365,17 +369,20 @@ class SZZL_Tabs_Widget extends WP_Widget {
 
         $html .= '<ul class="popular">' . "\n";
         $popular = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=comment_count&order=desc' );
-        foreach ( $popular as $post ) {
-            setup_postdata( $post );
-            $html .= '<li>' . "\n";
+        $last_popular = end( $popular );
+        foreach( $popular as $post ) {
+            setup_postdata($post);
+            $html .= '<li class="media">' . "\n";
             if ( $image_dimension > 0 ) {
                 $html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
             }
             $html .= '<div class="media-body">' . "\n";
             $html .= '<h4 class="media-heading"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
-            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate...' . "\n";
+            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
             $html .= '</div>' . "\n";
-            $html .= '</li>' . "\n";
+            $html .= '</li>' . "\n";            if ( $post != $last_popular ) {
+                $html .= '<hr />' . "\n";
+            }
         }
         $html .= '</ul>' . "\n";
         wp_reset_query();
@@ -397,6 +404,7 @@ class SZZL_Tabs_Widget extends WP_Widget {
         $html = '';
 
         $comments = get_comments( array( 'number' => $limit, 'status' => 'approve' ) );
+        $last_comments = end( $comments );
         if ( $comments ) {
             $html .= '<ul class="comments">' . "\n";
             foreach ( $comments as $c ) {
@@ -405,6 +413,9 @@ class SZZL_Tabs_Widget extends WP_Widget {
                 $html .= '<a title="' . esc_attr( $c->comment_author . ' ' . __( 'on', 'fstpack' ) . ' ' . get_the_title( $c->comment_post_ID ) ) . '" href="' . esc_url( get_comment_link( $c->comment_ID ) ) . '">' . esc_html( $c->comment_author ) . '</a>' . "\n";
                 $html .= '<span class="comment-content">' . stripslashes( substr( esc_html( $c->comment_content ), 0, 50 ) ) . '</span>' . "\n";
                 $html .= '</li>' . "\n";
+                if ( $c != $last_comments ) {
+                    $html .= '<hr />' . "\n";
+                }
             }
             $html .= '</ul>' . "\n";
         }
@@ -447,10 +458,10 @@ class SZZL_Tabs_Widget extends WP_Widget {
      */
     function get_image( $dimension, $post ) {
 
-        $html = '<img data-src="holder.js/125x94" class="wp-post-image">';
+        $html = '<img data-src="holder.js/94x94" class="media-object">';
 
         if ( current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID ) ) {
-            $html = get_the_post_thumbnail( $post->ID, array( $dimension, $dimension ), array( 'class' => 'thumbnail' ) );
+            $html = get_the_post_thumbnail( $post->ID, array( $dimension, $dimension ), array( 'class' => 'media-object' ) );
         }
 
         return $html;
