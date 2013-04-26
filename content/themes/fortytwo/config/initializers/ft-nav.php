@@ -117,7 +117,7 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
         $item_output = $args->before;
         $item_output .= '<a' . $attributes . '>';
         $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-        $item_output .= ( $args->has_children ) ? ' <b class="caret"></b>' : '';
+        $item_output .= ( $depth == 0 && $args->has_children ) ? ' <b class="caret"></b>' : '';
         $item_output .= '</a>';
         $item_output .= $args->after;
 

@@ -7297,9 +7297,9 @@ header .site-description {
   float: left;
   border-left: 1px solid #ddd;
   padding-left: 15px;
-  margin: 5px 0;
+  margin: 0;
   text-transform: uppercase;
-  width: 180px;
+  width: 190px;
   color: #9c9c9c;
 }
 /* line 57, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-other.less */
@@ -7779,7 +7779,7 @@ html:hover [class^="ss-"] {
   font-size: 36px;
   font-size: 3.6rem;
   font-family: 'Source Sans Pro', sans-serif;
-  margin-top: 1.6rem;
+  margin-top: 0;
   margin-bottom: 1.6rem;
 }
 /* line 56, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-slider.less */
@@ -8176,18 +8176,8 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
 footer {
   background: #353535;
   color: #fff;
-}
-/* line 20, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-footer.less */
-footer .gototop {
-  float: left;
-  padding: 20px 15px 10px 15px;
-  padding: 2rem 1.5rem 1rem 1.5rem;
-}
-/* line 25, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-footer.less */
-footer .creds {
-  float: right;
-  padding: 20px 15px 10px 15px;
-  padding: 2rem 1.5rem 1rem 1.5rem;
+  padding: 20px 0px 20px 0px;
+  padding: 2rem 0rem 2rem 0rem;
 }
 /* line 8, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .widget hr {
@@ -8196,44 +8186,54 @@ footer .creds {
   border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
 }
 /* line 16, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
-.widget-ft-tabs .nav {
-  margin-bottom: 2rem;
+.widget-ft-tabs .widgettitle {
+  float: left;
+  margin-right: 20px;
+  max-height: 38px;
 }
-/* line 18, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+/* line 22, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs .nav > li > a {
   padding: 0.5rem 1rem;
   text-transform: capitalize;
 }
-/* line 24, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+/* line 27, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+.widget-ft-tabs ul[class*="nav-"] > li {
+  float: none;
+  display: table-cell;
+  text-align: center;
+}
+/* line 33, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs .nav-pills > li > a {
   border-radius: 3px;
+  padding: 4px 10px;
+  margin-right: 5px;
 }
-/* line 28, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+/* line 39, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs div[class*="tab-pane-"] > ul {
   margin-left: 0;
   list-style: none;
 }
-/* line 32, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+/* line 43, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs a.pull-left .wp-post-image,
 .widget-ft-tabs .avatar {
   margin-right: 10px;
 }
-/* line 37, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+/* line 48, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs a.pull-right .wp-post-image {
   margin-left: 10px;
 }
-/* line 42, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+/* line 53, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs .tab-pane .media-heading {
   font-size: 18px;
   font-size: 1.8rem;
 }
-/* line 48, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+/* line 59, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs #tab-pane-tags .wp-tag-cloud > li {
   display: inline-block;
   margin-bottom: 10px;
   margin-right: 5px;
 }
-/* line 58, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+/* line 69, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs #tab-pane-latest li,
 .widget-ft-tabs #tab-pane-popular li,
 .widget-ft-tabs #tab-pane-comments li {
@@ -8241,16 +8241,16 @@ footer .creds {
   zoom: 1;
   margin-top: 15px;
 }
-/* line 63, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+/* line 74, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs .media-object {
   border: 1px solid #e3e3e3;
 }
-/* line 74, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+/* line 85, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .ft-testimonials blockquote {
   background: #f9f9f9;
   border-left: 5px solid #dddddd;
 }
-/* line 77, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+/* line 88, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .ft-testimonials blockquote > p {
   font-size: 14px;
   font-size: 1.4rem;

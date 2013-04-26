@@ -1,0 +1,165 @@
+diff --git a/content/plugins/sizzle-pack/modules/tabs-widget.php b/content/plugins/sizzle-pack/modules/tabs-widget.php
+index 011fd48b4d64efd43eda49664600b903499aa4e3..ac08dc6823e84280eb25d60968e895aef215e341 100755
+--- a/content/plugins/sizzle-pack/modules/tabs-widget.php
++++ b/content/plugins/sizzle-pack/modules/tabs-widget.php
+@@ -78,7 +78,6 @@ class SZZL_Tabs_Widget extends WP_Widget {
+         /* Our variables from the widget settings. */
+         $title = apply_filters('widget_title', $instance['title'], $instance, $this->id_base );
+         $tabs = $instance['tabs'];
+-        $tabs_style = $instance['tabs_style'];
+ 
+         /* Before widget (defined by themes). */
+         echo $before_widget;
+@@ -102,8 +101,13 @@ class SZZL_Tabs_Widget extends WP_Widget {
+             $tab_content = '';
+             $tab_links = '';
+ 
++
+             // Setup the various tabs.
+-            $tab_links .= '<ul class="nav nav-' . esc_attr( $tabs_style ) . '">' . "\n";
++            $tab_links .= '<ul class="nav nav-pills">' . "\n";
++            $tab_links .= '<li class="dropdown active">' . "\n";
++            $tab_links .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown"></a>' . "\n";
++            $tab_links .= '<ul class="dropdown-menu">' . "\n";
++
+             $count = 0;
+             foreach ( $tabs as $tab) {
+                 $count++;
+@@ -136,7 +140,8 @@ class SZZL_Tabs_Widget extends WP_Widget {
+                 $tab_content .= '</div><!--/.tab-pane-->' . "\n";
+             }
+             $tab_links .= '</ul>' . "\n";
+-
++            $tab_links .= '</li>' . "\n";
++            $tab_links .= '</ul>' . "\n";
+ 
+             $html .= $tab_links;
+             $html .= '<div class="tab-content image-align-' . $instance['image_alignment'] . '">' . "\n" . $tab_content . '</div><!--/.tab-content-->' . "\n";
+@@ -232,14 +237,6 @@ class SZZL_Tabs_Widget extends WP_Widget {
+     <div class="genesis-widget-column genesis-widget-column-right">
+ 
+       <div class="genesis-widget-column-box genesis-widget-column-box-top">
+-        <!-- Tabs Style: Select Input -->
+-        <p>
+-          <label for="<?php echo $this->get_field_id( 'tabs_style' ); ?>"><?php _e( 'Tabs Style:', 'fstpack' ); ?></label>
+-          <select name="<?php echo $this->get_field_name( 'tabs_style' ); ?>" class="widefat" id="<?php echo $this->get_field_id( 'tabs_style' ); ?>">
+-            <option value="tabs"<?php selected( $instance['tabs_style'], 'tabs' ); ?>><?php _e( 'Tabs', 'fstpack' ); ?></option>
+-            <option value="pills"<?php selected( $instance['tabs_style'], 'pills' ); ?>><?php _e( 'Pills', 'fstpack' ); ?></option>
+-          </select>
+-        </p>
+         <!-- Widget Limit: Text Input -->
+         <p>
+           <label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:', 'fstpack' ); ?></label>
+diff --git a/content/plugins/sizzle-pack/modules/tabs-widget/js/functions.js b/content/plugins/sizzle-pack/modules/tabs-widget/js/functions.js
+index 2ca6fc6985eb0c79f9f57cdfb4f81c639cc1530b..2eaa78e5fe238f81c7df74efa5ab334dbbfafdd1 100644
+--- a/content/plugins/sizzle-pack/modules/tabs-widget/js/functions.js
++++ b/content/plugins/sizzle-pack/modules/tabs-widget/js/functions.js
+@@ -1,3 +1,8 @@
+ jQuery(function ($) {
+-    $('.widget_fstpack_tabs a:first').tab('show');
++
++    $('.widget-ft-tabs .nav > .dropdown > a').html($('.widget-ft-tabs .nav .dropdown-menu > li.active').text() + ' <b class="caret"></b>');
++
++    $('.widget-ft-tabs .nav .dropdown-menu > li > a').on('click', function(){
++        $('.widget-ft-tabs .nav > .dropdown > a').html($(this).text() + ' <b class="caret"></b>');
++    });
+ })
+diff --git a/content/themes/fortytwo/assets/stylesheets/fortytwo.css b/content/themes/fortytwo/assets/stylesheets/fortytwo.css
+index 6e3eb4c568cfae5522d5c62687cb29c687ab6a42..f672ac330f6b78bf5c22f967cd33c1ccf4dfa603 100644
+--- a/content/themes/fortytwo/assets/stylesheets/fortytwo.css
++++ b/content/themes/fortytwo/assets/stylesheets/fortytwo.css
+@@ -8196,44 +8196,49 @@ footer .creds {
+   border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
+ }
+ /* line 16, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
++.widget-ft-tabs .widgettitle {
++  float: left;
++  margin-right: 20px;
++}
++/* line 21, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+ .widget-ft-tabs .nav {
+   margin-bottom: 2rem;
+ }
+-/* line 18, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
++/* line 23, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+ .widget-ft-tabs .nav > li > a {
+   padding: 0.5rem 1rem;
+   text-transform: capitalize;
+ }
+-/* line 24, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
++/* line 29, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+ .widget-ft-tabs .nav-pills > li > a {
+   border-radius: 3px;
+ }
+-/* line 28, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
++/* line 33, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+ .widget-ft-tabs div[class*="tab-pane-"] > ul {
+   margin-left: 0;
+   list-style: none;
+ }
+-/* line 32, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
++/* line 37, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+ .widget-ft-tabs a.pull-left .wp-post-image,
+ .widget-ft-tabs .avatar {
+   margin-right: 10px;
+ }
+-/* line 37, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
++/* line 42, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+ .widget-ft-tabs a.pull-right .wp-post-image {
+   margin-left: 10px;
+ }
+-/* line 42, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
++/* line 47, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+ .widget-ft-tabs .tab-pane .media-heading {
+   font-size: 18px;
+   font-size: 1.8rem;
+ }
+-/* line 48, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
++/* line 53, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+ .widget-ft-tabs #tab-pane-tags .wp-tag-cloud > li {
+   display: inline-block;
+   margin-bottom: 10px;
+   margin-right: 5px;
+ }
+-/* line 58, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
++/* line 63, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+ .widget-ft-tabs #tab-pane-latest li,
+ .widget-ft-tabs #tab-pane-popular li,
+ .widget-ft-tabs #tab-pane-comments li {
+@@ -8241,16 +8246,16 @@ footer .creds {
+   zoom: 1;
+   margin-top: 15px;
+ }
+-/* line 63, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
++/* line 68, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+ .widget-ft-tabs .media-object {
+   border: 1px solid #e3e3e3;
+ }
+-/* line 74, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
++/* line 79, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+ .ft-testimonials blockquote {
+   background: #f9f9f9;
+   border-left: 5px solid #dddddd;
+ }
+-/* line 77, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
++/* line 82, /Users/ryanholder/Dropbox/rw.Dev/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
+ .ft-testimonials blockquote > p {
+   font-size: 14px;
+   font-size: 1.4rem;
+diff --git a/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less b/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less
+index 115f1141a0fca0970c08937afe2bf6c2be821f7c..be088d87e0e129a9fbe5fef4e34e9ea15c812920 100644
+--- a/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less
++++ b/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less
+@@ -11,7 +11,12 @@
+     border-bottom: 1px dashed rgba(255,255,255,.5);
+   }
+ }
++
+ .widget-ft-tabs {
++  .widgettitle {
++    .pull-left;
++    margin-right: 20px;
++  }
+ 
+   .nav {
+     margin-bottom: 2rem;
