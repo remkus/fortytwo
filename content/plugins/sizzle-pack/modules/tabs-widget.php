@@ -32,19 +32,19 @@ class SZZL_Tabs_Widget extends WP_Widget {
      * @uses SZZLPack
      * @return void
      */
-    function __construct () {
+    function __construct() {
         global $fstpack;
 
         /* Widget variable settings. */
         $this->fst_widget_cssclass = 'widget-ft-tabs';
         $this->fst_widget_description = __( 'This is a Forsite Themes Extension Pack bundled tabs widget.', 'fstpack' );
         $this->fst_widget_idbase = 'fstpack_tabs';
-        $this->fst_widget_title = __('SZZL - Tabs', 'fstpack' );
+        $this->fst_widget_title = __( 'SZZL - Tabs', 'fstpack' );
 
         /* Setup the assets URL in relation to SZZLPack. */
         $this->assets_url = SZZL_PACK_URL . "/modules/tabs-widget/";
 
-        $this->available_tabs = array('latest', 'popular', "comments", "tags" );
+        $this->available_tabs = array( 'latest', 'popular', "comments", "tags" );
         // Allow child themes/plugins to filter here.
         $this->available_tabs = apply_filters( 'fstpack_available_tabs', $this->available_tabs );
 
@@ -66,8 +66,8 @@ class SZZL_Tabs_Widget extends WP_Widget {
      * widget function.
      *
      * @access public
-     * @param array $args
-     * @param array $instance
+     * @param array   $args
+     * @param array   $instance
      * @return void
      */
     function widget( $args, $instance ) {
@@ -76,7 +76,7 @@ class SZZL_Tabs_Widget extends WP_Widget {
         extract( $args, EXTR_SKIP );
 
         /* Our variables from the widget settings. */
-        $title = apply_filters('widget_title', $instance['title'], $instance, $this->id_base );
+        $title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
         $tabs = $instance['tabs'];
         $tabs_style = $instance['tabs_style'];
 
@@ -105,7 +105,7 @@ class SZZL_Tabs_Widget extends WP_Widget {
             // Setup the various tabs.
             $tab_links .= '<ul class="nav nav-' . esc_attr( $tabs_style ) . '">' . "\n";
             $count = 0;
-            foreach ( $tabs as $tab) {
+            foreach ( $tabs as $tab ) {
                 $count++;
                 $class = '';
 
@@ -113,7 +113,7 @@ class SZZL_Tabs_Widget extends WP_Widget {
                 if ( $count == count( $tabs ) ) { $class = ' last'; }
 
                 $tab_links .= '<li class="tab-heading-' . esc_attr( $tab ) . $class . '"><a href="#tab-pane-' .
-                    esc_attr( $tab ) . '" data-toggle="tab">' . __($tab, 'fstpack') . '</a></li>' . "\n";
+                    esc_attr( $tab ) . '" data-toggle="tab">' . __( $tab, 'fstpack' ) . '</a></li>' . "\n";
 
                 $tab_content .= '<div id="tab-pane-' . esc_attr( $tab ) . '" class="tab-pane tab-pane-' . esc_attr( $tab ) . $class . '">' . "\n";
 
@@ -157,11 +157,11 @@ class SZZL_Tabs_Widget extends WP_Widget {
      * update function.
      *
      * @access public
-     * @param array $new_instance
-     * @param array $old_instance
+     * @param array   $new_instance
+     * @param array   $old_instance
      * @return array $instance
      */
-    function update ( $new_instance, $old_instance ) {
+    function update( $new_instance, $old_instance ) {
         $instance = $old_instance;
 
         /* Strip tags for title and name to remove HTML (important for text inputs). */
@@ -177,9 +177,9 @@ class SZZL_Tabs_Widget extends WP_Widget {
 
         /* Convert multiple tab_$position fields into tabs array */
         $instance['tabs'] = array();
-        for ($i = 0; $i < count($this->available_tabs); $i++) {
+        for ( $i = 0; $i < count( $this->available_tabs ); $i++ ) {
             $tab_value = $new_instance["tab_$i"];
-            if ($tab_value != 'none') {
+            if ( $tab_value != 'none' ) {
                 $instance['tabs'][] = $tab_value;
             }
         }
@@ -194,26 +194,26 @@ class SZZL_Tabs_Widget extends WP_Widget {
      * form function.
      *
      * @access public
-     * @param array $instance
+     * @param array   $instance
      * @return void
      */
-    function form ( $instance ) {
+    function form( $instance ) {
 
         /* Set up some default widget settings. */
         /* Make sure all keys are added here, even with empty string values. */
         $defaults = array(
-            'title' => __( 'Tabs', 'fstpack' ),
-            'tabs' => array_slice($this->available_tabs,0,3), /* default to selecting the first 3, to suggest that it is possible to omit having a tab */
-            'limit' => 5,
-            'image_dimension' => 45,
-            'tabs_style' => 'tabs',
-            'image_alignment' => 'left'
+            'title'             => __( 'Tabs', 'fstpack' ),
+            'tabs'              => array_slice( $this->available_tabs, 0, 3 ), /* default to selecting the first 3, to suggest that it is possible to omit having a tab */
+            'limit'             => 5,
+            'image_dimension'   => 45,
+            'tabs_style'        => 'tabs',
+            'image_alignment'   => 'left'
         );
 
         // Allow child themes/plugins to filter here.
         $defaults = apply_filters( $this->fst_widget_idbase . '_widget_defaults', $defaults, $this );
         $instance = wp_parse_args( (array) $instance, $defaults );
-        ?>
+?>
     <!-- Widget Title: Text Input -->
     <p>
       <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title (optional):', 'fstpack' ); ?></label>
@@ -222,10 +222,10 @@ class SZZL_Tabs_Widget extends WP_Widget {
     <div class="genesis-widget-column">
       <div class="genesis-widget-column-box genesis-widget-column-box-top">
         <p><span class="description">Choose up to 4 tabs to display</span></p>
-        <p><?php $this->render_tabs_dropdown($this->available_tabs, $instance['tabs'], 0) ?></p>
-        <p><?php $this->render_tabs_dropdown($this->available_tabs, $instance['tabs'], 1) ?></p>
-        <p><?php $this->render_tabs_dropdown($this->available_tabs, $instance['tabs'], 2) ?></p>
-        <p><?php $this->render_tabs_dropdown($this->available_tabs, $instance['tabs'], 3) ?></p>
+        <p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 0 ) ?></p>
+        <p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 1 ) ?></p>
+        <p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 2 ) ?></p>
+        <p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 3 ) ?></p>
       </div>
     </div>
 
@@ -263,13 +263,13 @@ class SZZL_Tabs_Widget extends WP_Widget {
           <small>
             <?php
 
-              if (current_theme_supports('post-thumbnails')) {
-                  _e('The "featured image" will be used as thumbnails.', 'fstpack');
-              } else {
-                  _e('Post thumbnails are not supported by your theme. Thumbnails will not be displayed.', 'fstpack');
-              }
+        if ( current_theme_supports( 'post-thumbnails' ) ) {
+            _e( 'The "featured image" will be used as thumbnails.', 'fstpack' );
+        } else {
+            _e( 'Post thumbnails are not supported by your theme. Thumbnails will not be displayed.', 'fstpack' );
+        }
 
-            ?>
+?>
           </small>
         </p>
       </div>
@@ -285,10 +285,10 @@ class SZZL_Tabs_Widget extends WP_Widget {
     /**
      * Renders a tabs selection dropdown box
      */
-    private function render_tabs_dropdown($available_tabs, $selected_tabs, $position) {
+    private function render_tabs_dropdown( $available_tabs, $selected_tabs, $position ) {
         echo "<p><select name='{$this->get_field_name( "tab_$position" )}' class='widefat' id='{$this->get_field_id( "tab_$position" )}'>";
         echo '<option value="none">' . __( ' - None selected - ', 'fstpack' ) . '</option>';
-        foreach($available_tabs as $available_tab) {
+        foreach ( $available_tabs as $available_tab ) {
             echo '<option value="' . $available_tab . '"' . selected( $available_tab, $selected_tabs[$position], false ) . '>' . __( $available_tab, 'fstpack' ) . "</option>";
         }
         echo "</select></p>";
@@ -300,7 +300,7 @@ class SZZL_Tabs_Widget extends WP_Widget {
      * @since 1.0.0
      * @return void
      */
-    function enqueue_styles () {
+    function enqueue_styles() {
         wp_register_style( $this->fst_widget_idbase, $this->assets_url . 'css/style.css', array( 'bootstrap' ), SZZL_PACK_VERSION );
         wp_enqueue_style( $this->fst_widget_idbase );
     } // End enqueue_styles()
@@ -312,7 +312,7 @@ class SZZL_Tabs_Widget extends WP_Widget {
      * @since 1.0.0
      * @return void
      */
-    function enqueue_scripts () {
+    function enqueue_scripts() {
         wp_register_script( $this->fst_widget_idbase, $this->assets_url . 'js/functions.js', array( 'bootstrap' ), SZZL_PACK_VERSION );
         wp_enqueue_script( $this->fst_widget_idbase );
     } // End enqueue_styles()
@@ -322,31 +322,27 @@ class SZZL_Tabs_Widget extends WP_Widget {
      *
      * @access public
      * @since 1.0.0
-     * @param int $limit
-     * @param int $image_dimension
+     * @param int     $limit
+     * @param int     $image_dimension
      * @return void
      */
-    function tab_content_latest ( $limit, $image_dimension, $image_alignment ) {
+    function tab_content_latest( $limit, $image_dimension, $image_alignment ) {
         global $post;
         $html = '';
 
         $html .= '<ul class="latest">' . "\n";
         $latest = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=post_date&order=desc' );
-        $last_post = end( $latest );
-        foreach( $latest as $post ) {
-            setup_postdata($post);
-            $html .= '<li class="media">' . "\n";
+        foreach ( $latest as $post ) {
+            setup_postdata( $post );
+            $html .= '<li>' . "\n";
             if ( $image_dimension > 0 ) {
                 $html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
             }
             $html .= '<div class="media-body">' . "\n";
             $html .= '<h4 class="media-heading"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
-            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
+            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate...' . "\n";
             $html .= '</div>' . "\n";
             $html .= '</li>' . "\n";
-            if ( $post != $last_post ) {
-                $html .= '<hr />' . "\n";
-            }
         }
         $html .= '</ul>' . "\n";
         wp_reset_query();
@@ -359,30 +355,27 @@ class SZZL_Tabs_Widget extends WP_Widget {
      *
      * @access public
      * @since 1.0.0
-     * @param int $limit
-     * @param int $image_dimension
+     * @param int     $limit
+     * @param int     $image_dimension
      * @return void
      */
-    function tab_content_popular ( $limit, $image_dimension, $image_alignment ) {
+    function tab_content_popular( $limit, $image_dimension, $image_alignment ) {
         global $post;
         $html = '';
 
         $html .= '<ul class="popular">' . "\n";
         $popular = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=comment_count&order=desc' );
-        $last_popular = end( $popular );
-        foreach( $popular as $post ) {
-            setup_postdata($post);
-            $html .= '<li class="media">' . "\n";
+        foreach ( $popular as $post ) {
+            setup_postdata( $post );
+            $html .= '<li>' . "\n";
             if ( $image_dimension > 0 ) {
                 $html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
             }
             $html .= '<div class="media-body">' . "\n";
             $html .= '<h4 class="media-heading"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
-            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
+            $html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate...' . "\n";
             $html .= '</div>' . "\n";
-            $html .= '</li>' . "\n";            if ( $post != $last_popular ) {
-                $html .= '<hr />' . "\n";
-            }
+            $html .= '</li>' . "\n";
         }
         $html .= '</ul>' . "\n";
         wp_reset_query();
@@ -395,27 +388,23 @@ class SZZL_Tabs_Widget extends WP_Widget {
      *
      * @access public
      * @since 1.0.0
-     * @param int $limit
-     * @param int $image_dimension
+     * @param int     $limit
+     * @param int     $image_dimension
      * @return void
      */
-    function tab_content_comments ( $limit, $image_dimension ) {
+    function tab_content_comments( $limit, $image_dimension ) {
         global $wpdb;
         $html = '';
 
         $comments = get_comments( array( 'number' => $limit, 'status' => 'approve' ) );
-        $last_comments = end( $comments );
         if ( $comments ) {
             $html .= '<ul class="comments">' . "\n";
-            foreach( $comments as $c ) {
+            foreach ( $comments as $c ) {
                 $html .= '<li>' . "\n";
                 $html .= get_avatar( $c, 45 );
                 $html .= '<a title="' . esc_attr( $c->comment_author . ' ' . __( 'on', 'fstpack' ) . ' ' . get_the_title( $c->comment_post_ID ) ) . '" href="' . esc_url( get_comment_link( $c->comment_ID ) ) . '">' . esc_html( $c->comment_author ) . '</a>' . "\n";
                 $html .= '<span class="comment-content">' . stripslashes( substr( esc_html( $c->comment_content ), 0, 50 ) ) . '</span>' . "\n";
                 $html .= '</li>' . "\n";
-                if ( $c != $last_comments ) {
-                    $html .= '<hr />' . "\n";
-                }
             }
             $html .= '</ul>' . "\n";
         }
@@ -428,11 +417,11 @@ class SZZL_Tabs_Widget extends WP_Widget {
      *
      * @access public
      * @since 1.0.0
-     * @param int $limit
-     * @param int $image_dimension
+     * @param int     $limit
+     * @param int     $image_dimension
      * @return void
      */
-    function tab_content_tags ( $limit, $image_dimension ) {
+    function tab_content_tags( $limit, $image_dimension ) {
         return wp_tag_cloud( array( 'echo' => false, 'smallest' => 12, 'largest' => 20, 'format' => 'list' ) );
     } // End tab_content_tags()
 
@@ -441,10 +430,10 @@ class SZZL_Tabs_Widget extends WP_Widget {
      *
      * @access public
      * @since 1.0.0
-     * @param string $token (default: '')
+     * @param string  $token (default: '')
      * @return void
      */
-    function tab_content_default ( $token = '' ) {
+    function tab_content_default( $token = '' ) {
         // Silence is golden.
     } // End tab_content_default()
 
@@ -452,16 +441,16 @@ class SZZL_Tabs_Widget extends WP_Widget {
      * get_image function.
      *
      * @access public
-     * @param int $dimension
-     * @param object $post
+     * @param int     $dimension
+     * @param object  $post
      * @return string $html
      */
-    function get_image ( $dimension, $post ) {
+    function get_image( $dimension, $post ) {
 
-        $html = '<img data-src="holder.js/94x94" class="media-object">';
+        $html = '<img data-src="holder.js/125x94" class="wp-post-image">';
 
         if ( current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID ) ) {
-            $html = get_the_post_thumbnail( $post->ID, array( $dimension, $dimension ), array( 'class' => 'media-object' ) );
+            $html = get_the_post_thumbnail( $post->ID, array( $dimension, $dimension ), array( 'class' => 'thumbnail' ) );
         }
 
         return $html;
