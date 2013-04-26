@@ -82,11 +82,11 @@ function fortytwo_home_loop_helper() {
 
         echo '<div class="row">';
 
-            echo '<div class="col-span-6">';
+            echo '<div class="col-span-7">';
             dynamic_sidebar( 'home-row-2-col-1' );
             echo '</div><!-- end .home-row-2-col-1 -->';
 
-            echo '<div class="col-span-6">';
+            echo '<div class="col-span-5">';
             dynamic_sidebar( 'home-row-2-col-2' );
             echo '</div><!-- end .home-row-2-col-2 -->';
 

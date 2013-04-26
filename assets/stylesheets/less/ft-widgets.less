@@ -4,36 +4,36 @@
 // FortyTwo Tabbed Widget
 // --------------------------------------------------
 
-.widget-ft-tabs {
+.widget {
+  hr {
+    border-top: 1px dashed @hr-border;
+    border-bottom: 1px dashed #fff;
+    border-bottom: 1px dashed rgba(255,255,255,.5);
+  }
+}
 
+.widget-ft-tabs {
   .widgettitle {
-    padding-right: 20px;
     .pull-left;
+    margin-right: 20px;
     max-height: 38px;
-    margin-bottom: 2rem;
   }
 
-  ul[class*="nav-"] {
-
+  .nav > li > a {
+    padding: 0.5rem 1rem;
+    text-transform: capitalize;
   }
 
   ul[class*="nav-"] > li {
     float: none;
     display: table-cell;
-    width: 1%;
     text-align: center;
   }
 
-  ul[class*="nav-"] > li > a {
-    margin-right: 5px;
-  }
-
-  .nav-tabs > li > a {
-    padding: 0.7rem 1rem 0.8rem;
-  }
-
   .nav-pills > li > a {
-    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    padding: 4px 10px;
+    margin-right: 5px;
   }
 
   div[class*="tab-pane-"] > ul {
@@ -71,9 +71,10 @@
     }
   }
 
-  #tab-pane-comments {
-
+  .media-object {
+    border: 1px solid #e3e3e3;
   }
+
 }
 
 //
@@ -81,23 +82,13 @@
 // --------------------------------------------------
 
 .ft-testimonials {
-
-
-  .testimonial-content > ul {
-    .list-unstyled;
-
-    li {
-      .media;
+  blockquote {
+    background: #f9f9f9;
+    border-left: 5px solid #dddddd;
+    > p {
+      .font-size(14);
+      font-weight: normal;
+      line-height: inherit;
     }
   }
-
-  a.pull-left .wp-post-image,
-  .avatar {
-    margin-right: 10px;
-  }
-
-  a.pull-right .wp-post-image {
-    margin-left: 10px;
-  }
-
 }

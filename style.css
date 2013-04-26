@@ -499,26 +499,6 @@ textarea {
 	width: 100%;
 }
 
-button,
-input[type="button"],
-input[type="submit"],
-.btn {
-	background-color: #1e1e1e;
-	border: none;
-	box-shadow: none;
-	cursor: pointer;
-	padding: 16px 24px;
-	padding: 1rem 1.5rem;
-	width: auto;
-}
-
-button:hover,
-input:hover[type="button"],
-input:hover[type="submit"],
-.btn:hover {
-	background-color: #ff2a00;
-}
-
 .enews input[type="submit"],
 .search-form input[type="submit"] {
 	border: 0;

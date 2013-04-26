@@ -4,19 +4,30 @@
 //
 // Navbar
 // --------------------------------------------------
+.nav-primary {
+  border-top: 1px solid #ddd;
 
-.navbar {
+  .nav > li {
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: transparent;
+    margin-top: -1px;
 
-  .wrap,
-  .container {
-    border-top: 1px solid #ddd;
+    &:hover,
+    &:focus,
+    &:active,
+    &.current_page_item,
+    &.open {
+      border-top-color: #333;
+    }
+
+    > a {
+      text-transform: uppercase;
+    }
+
   }
-
-  margin: 40px 0 0;
-  padding: 0;
-
 }
 
-.nav > li > a {
-  text-transform: uppercase;
+.navbar {
+  border-radius: 0;
 }

@@ -36,15 +36,19 @@ function fortytwo_genesis_do_nav() {
         $nav = wp_nav_menu( $args );
 
         $nav_output = <<<EOD
-            <nav class="nav-primary navbar">
-                <div class="wrap container">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                    <div class="nav-collapse navbar-responsive-collapse collapse">
-                      {$nav}
+            <nav class="nav-primary">
+                <div class="wrap">
+                    <div class="navbar">
+                        <div class="container">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                            </button>
+                            <div class="nav-collapse navbar-responsive-collapse collapse">
+                              {$nav}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -113,7 +117,7 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
         $item_output = $args->before;
         $item_output .= '<a' . $attributes . '>';
         $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-        $item_output .= ( $args->has_children ) ? ' <b class="caret"></b>' : '';
+        $item_output .= ( $depth == 0 && $args->has_children ) ? ' <b class="caret"></b>' : '';
         $item_output .= '</a>';
         $item_output .= $args->after;
 

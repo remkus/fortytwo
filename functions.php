@@ -5,16 +5,12 @@ require_once( TEMPLATEPATH . '/lib/init.php' );
 /** Add FortyTwo Turbos */
 require_once( CHILD_DIR . '/config/initializers/init.php' );
 
-add_theme_support( 'genesis-html5' ); //TODO Decide if we need to style for when the HTML5 support is switched off
-
-add_action( 'genesis_meta', 'fortytwo_viewport_meta_tag' );
 /**
- * Add Viewport meta tag for mobile browsers
- * @return echo meta viewport tag
+ * Activates FortyTwo theme features.
  */
-function fortytwo_viewport_meta_tag() {
-	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>';
-}
+add_theme_support( 'genesis-html5' );
+add_theme_support( 'genesis-responsive-viewport' );
+
 
 add_filter( 'stylesheet_uri', 'fortywo_replace_default_style_sheet', 10, 2 );
 /**
@@ -132,5 +128,24 @@ function fortytwo_footer_widgets_layout() {
     }
 
     echo sprintf( '<div id="footer-widgets"><div class="container"><div class="row">%1$s</div></div></div>', $output );
+
+}
+
+/** Customize the default footer */
+remove_action( 'genesis_footer', 'genesis_do_footer' );
+
+add_action( 'genesis_footer', 'fortytwo_custom_footer' );
+
+function fortytwo_custom_footer() {
+
+    $footer_output = <<<EOD
+        <div class="row">
+            <div class="col-span-12">
+                <span>&copy; Copyright 2012 <a href="http://mydomain.com/">My Domain</a> &middot; All Rights Reserved &middot; Powered by <a href="http://wordpress.org/">WordPress</a> &middot; <a href="http://mydomain.com/wp-admin">Admin</a></span>
+            </div>
+        </div>
+EOD;
+
+    echo($footer_output);
 
 }

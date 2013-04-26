@@ -13,12 +13,16 @@
   position: relative;
   padding: 40px 0;
 
+  .flexslider {
+    .make-row();
+  }
+
   li {
     list-style: none;
   }
 
   .slides {
-    margin: 0;;
+    margin: 0;
   }
 
   .slides > li {
@@ -39,14 +43,13 @@
   }
 
   .slide-excerpt {
-    .generate-grid-columns > .col-span-(7);
-    padding-left: 0;
+    .make-column(7);
 
     h2 {
       display: inline-block;
       .font-size(36);
       font-family: 'Source Sans Pro', sans-serif;
-      margin-top: 1.6rem;
+      margin-top: 0;
       margin-bottom: 1.6rem;
     }
 
@@ -72,8 +75,7 @@
   }
 
   .slide-image {
-    .generate-grid-columns > .col-span-(5);
-    padding-right: 0;
+    .make-column(5);
   }
 }
 
