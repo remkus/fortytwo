@@ -83,9 +83,9 @@ function genesis_constants() {
 
 	/** Define Theme Info Constants */
 	define( 'PARENT_THEME_NAME', 'Genesis' );
-	define( 'PARENT_THEME_VERSION', '2.0.0-dev' );
+	define( 'PARENT_THEME_VERSION', '2.0.0-beta1' );
 	define( 'PARENT_THEME_BRANCH', '2.0' );
-	define( 'PARENT_DB_VERSION', '2000' );
+	define( 'PARENT_DB_VERSION', '2001' );
 	#define( 'PARENT_THEME_RELEASE_DATE', date_i18n( 'F j, Y', '1357538400' ) );
 	define( 'PARENT_THEME_RELEASE_DATE', 'TBD' );
 

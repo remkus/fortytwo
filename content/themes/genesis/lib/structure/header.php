@@ -97,7 +97,7 @@ add_filter( 'wp_title', 'genesis_default_title', 10, 3 );
  *
  * @global WP_Query $wp_query Query object.
  * @param string $title Existing page title
- * @param string $sep Separator character(s). Default is <code>&#x02014;</code> if not set
+ * @param string $sep Separator character(s). Default is <code>–</code> if not set
  * @param string $seplocation Separator location - "left" or "right". Default is "right" if not set
  * @return string Page title
  */
@@ -108,7 +108,7 @@ function genesis_default_title( $title, $sep, $seplocation ) {
 	if ( is_feed() )
 		return trim( $title );
 
-	$sep = genesis_get_seo_option( 'doctitle_sep' ) ? genesis_get_seo_option( 'doctitle_sep' ) : '&#x02014;';
+	$sep = genesis_get_seo_option( 'doctitle_sep' ) ? genesis_get_seo_option( 'doctitle_sep' ) : '–';
 	$seplocation = genesis_get_seo_option( 'doctitle_seplocation' ) ? genesis_get_seo_option( 'doctitle_seplocation' ) : 'right';
 
 	/**	If viewing the home page */
@@ -785,7 +785,7 @@ function genesis_custom_header_style() {
 		return;
 
 	//** Do nothing if user specifies their own callback
-	if ( get_theme_support( 'custom-header', 'wp-head-callback' ) )
+	if ( 'genesis_custom_header_style' != get_theme_support( 'custom-header', 'wp-head-callback' ) )
 		return;
 
 	$output = '';
@@ -864,19 +864,14 @@ add_action( 'genesis_header', 'genesis_do_header' );
  */
 function genesis_do_header() {
 
-	$title_area_wrap = is_front_page() && genesis_get_seo_option( 'semantic_headings' ) ? 'hgroup' : 'div';
-
 	genesis_markup( array(
-		'html5'   => '<' . $title_area_wrap . ' %s>',
+		'html5'   => '<div %s>',
 		'xhtml'   => '<div id="title-area">',
 		'context' => 'title-area',
 	) );
 	do_action( 'genesis_site_title' );
 	do_action( 'genesis_site_description' );
-	genesis_markup( array(
-		'html5' => '</' . $title_area_wrap . '>',
-		'xhtml' => '</div>',
-	) );
+	echo '</div>';
 
 	if ( is_active_sidebar( 'header-right' ) || has_action( 'genesis_header_right' ) ) {
 		genesis_markup( array(
@@ -986,7 +981,7 @@ function genesis_seo_site_description() {
  */
 function genesis_header_menu_args( $args ) {
 
-	$args['container'] = genesis_html5() ? 'nav' : 'div';
+	$args['container']   = genesis_html5() ? 'nav' : 'div';
 	$args['menu_class'] .= ' genesis-nav-menu';
 
 	return $args;

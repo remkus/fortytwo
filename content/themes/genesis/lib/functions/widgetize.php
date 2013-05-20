@@ -148,7 +148,7 @@ function genesis_register_footer_widget_areas() {
  * @param array $args Arguments
  * @return boolean False if $args['show_inactive'] set to false and sidebar is not currently being used. True otherwise.
  */
-function genesis_widget_area( $id, array $args = array() ) {
+function genesis_widget_area( $id, $args = array() ) {
 
 	if ( ! $id )
 		return false;
@@ -156,8 +156,8 @@ function genesis_widget_area( $id, array $args = array() ) {
 	$args = wp_parse_args(
 		$args,
 		array(
-			'before'              => genesis_markup( '<aside class="widget-area">', '<div class="widget-area">', 0 ),
-			'after'               => genesis_markup( '</aside>', '</div>' ),
+			'before'              => genesis_html5() ? '<aside class="widget-area">' : '<div class="widget-area">',
+			'after'               => genesis_html5() ? '</aside>' : '</div>',
 			'default'             => '',
 			'show_inactive'       => 0,
 			'before_sidebar_hook' => 'genesis_before_' . $id . '_widget_area',

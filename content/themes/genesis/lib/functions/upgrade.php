@@ -78,18 +78,19 @@ function genesis_update_check() {
 }
 
 /**
- * Upgrade the database to version 2000.
+ * Upgrade the database to version 2001.
  *
  * @since 2.0.0
  *
  * @uses _genesis_update_settings()
  */
-function genesis_upgrade_2000() {
+function genesis_upgrade_2001() {
 
 	/** Update Settings */
 	_genesis_update_settings( array(
-		'theme_version' => '2.0.0-dev',
-		'db_version'    => '2000',
+		'nav_extras'    => genesis_get_option( 'nav_extras_enable', null, false ) ? genesis_get_option( 'nav_extras', null, false ) : '',
+		'theme_version' => '2.0.0-beta1',
+		'db_version'    => '2001',
 	) );
 
 }
@@ -360,8 +361,8 @@ function genesis_upgrade() {
 	# UPDATE DB TO VERSION 2000
 	###########################
 
-	if ( genesis_get_option( 'db_version', null, false ) < '2000' )
-		genesis_upgrade_2000();
+	if ( genesis_get_option( 'db_version', null, false ) < '2001' )
+		genesis_upgrade_2001();
 
 	do_action( 'genesis_upgrade' );
 

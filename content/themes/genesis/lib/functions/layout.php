@@ -90,7 +90,7 @@ function genesis_create_initial_layouts() {
  * @return boolean|array Returns false if ID is missing or is already set.
  * Returns merged $args otherwise
  */
-function genesis_register_layout( $id = '', array $args = array() ) {
+function genesis_register_layout( $id = '', $args = array() ) {
 
 	global $_genesis_layouts;
 
@@ -387,7 +387,7 @@ function genesis_site_layout( $use_cache = true ) {
  * @param array $args Optional. Function arguments. Default is empty array
  * @return string HTML markup of labels, images and radio inputs for layout selector
  */
-function genesis_layout_selector( array $args = array() ) {
+function genesis_layout_selector( $args = array() ) {
 
 	/** Enqueue the Javascript */
 	genesis_load_admin_js();
@@ -445,19 +445,17 @@ function genesis_structural_wrap( $context = '', $output = 'open', $echo = true 
 
 	$wraps = get_theme_support( 'genesis-structural-wraps' );
 
-	//** If an old key has been "enabled" via theme support, map to new key
-	if ( in_array( array( 'nav', 'subnav', 'inner' ), $wraps[0] ) ) {
+	//* Map of old $contexts to new $contexts
+	$map = array(
+		'nav'    => 'menu-primary',
+		'subnav' => 'menu-secondary',
+		'inner'  => 'site-inner',
+	);
 
-		//** Map of old $contexts to new $contexts
-		$map = array(
-			'nav'    => 'menu-primary',
-			'subnav' => 'menu-secondary',
-			'inner'  => 'site-inner',
-		);
-
-		//** Mapping old to new
-		$wraps[0] = str_replace( array_keys( $map ), array_values( $map ), (array) $wraps[0] );
-
+	//* Make the swap, if necessary
+	if ( $swap = array_search( $context, $map ) ) {
+		if ( in_array( $swap, $wraps[0] ) )
+			$wraps[0] = str_replace( $swap, $map[ $swap ], $wraps[0] );
 	}
 
 	if ( ! in_array( $context, (array) $wraps[0] ) )

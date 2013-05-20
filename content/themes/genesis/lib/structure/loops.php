@@ -76,10 +76,6 @@ function genesis_standard_loop() {
 		return;
 	}
 
-	global $loop_counter;
-
-	$loop_counter = 0;
-
 	if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 		do_action( 'genesis_before_entry' );
@@ -99,7 +95,6 @@ function genesis_standard_loop() {
 		echo '</article>';
 	
 		do_action( 'genesis_after_entry' );
-		$loop_counter++;
 
 	endwhile; /** end of one post **/
 		do_action( 'genesis_after_endwhile' );
@@ -195,7 +190,7 @@ function genesis_legacy_loop() {
  *
  * @param array $args Loop configuration.
  */
-function genesis_custom_loop( array $args = array() ) {
+function genesis_custom_loop( $args = array() ) {
 
 	global $wp_query, $more;
 
@@ -233,7 +228,7 @@ function genesis_custom_loop( array $args = array() ) {
  * @param array $args Associative array for grid loop configuration
  * @return null Returns early if posts_per_page is fewer than features
  */
-function genesis_grid_loop( array $args = array() ) {
+function genesis_grid_loop( $args = array() ) {
 
 	/** Global vars */
 	global $_genesis_loop_args;
@@ -247,10 +242,10 @@ function genesis_grid_loop( array $args = array() ) {
 				'features'				=> 2,
 				'features_on_all'		=> false,
 				'feature_image_size'	=> 0,
-				'feature_image_class'	=> 'alignleft post-image',
+				'feature_image_class'	=> 'alignleft',
 				'feature_content_limit'	=> 0,
 				'grid_image_size'		=> 'thumbnail',
-				'grid_image_class'		=> 'alignleft post-image',
+				'grid_image_class'		=> 'alignleft',
 				'grid_content_limit'	=> 0,
 				'more'					=> __( 'Read more', 'genesis' ) . '&#x02026;',
 			)
@@ -277,10 +272,17 @@ function genesis_grid_loop( array $args = array() ) {
 	remove_action( 'genesis_post_content', 'genesis_do_post_image' );
 	remove_action( 'genesis_post_content', 'genesis_do_post_content' );
 	remove_action( 'genesis_post_content', 'genesis_do_post_content_nav' );
+	remove_action( 'genesis_entry_header', 'genesis_do_post_format_image', 5 );
+	remove_action( 'genesis_entry_content', 'genesis_do_post_image' );
+	remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
+	remove_action( 'genesis_entry_content', 'genesis_do_post_permalink' );
+	remove_action( 'genesis_entry_content', 'genesis_do_post_content_nav' );
+	
 
 	/** Custom loop output */
 	add_filter( 'post_class', 'genesis_grid_loop_post_class' );
 	add_action( 'genesis_post_content', 'genesis_grid_loop_content' );
+	add_action( 'genesis_entry_content', 'genesis_grid_loop_content' );
 
 	/** The loop */
 	genesis_standard_loop();
@@ -289,6 +291,7 @@ function genesis_grid_loop( array $args = array() ) {
 	genesis_reset_loops();
 	remove_filter( 'post_class', 'genesis_grid_loop_post_class' );
 	remove_action( 'genesis_post_content', 'genesis_grid_loop_content' );
+	remove_action( 'genesis_entry_content', 'genesis_grid_loop_content' );
 
 }
 
@@ -344,17 +347,45 @@ function genesis_grid_loop_content() {
 	global $_genesis_loop_args;
 
 	if ( in_array( 'genesis-feature', get_post_class() ) ) {
-		if ( $_genesis_loop_args['feature_image_size'] )
-			printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), genesis_get_image( array( 'size' => $_genesis_loop_args['feature_image_size'], 'context' => 'grid-loop', 'attr' => array( 'class' => esc_attr( $_genesis_loop_args['feature_image_class'] ) ) ) ) );
+
+		if ( $_genesis_loop_args['feature_image_size'] ) {
+
+			$image = genesis_get_image( array( 
+				'size'    => $_genesis_loop_args['feature_image_size'],
+				'context' => 'grid-loop',
+				'attr'    => genesis_attr( 'entry-image-grid-loop', array(
+					'attributes'  => array( 'class' => $_genesis_loop_args['feature_image_class'] ),
+					'output'      => 'array',
+				) ),
+			) );
+
+			printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), $image );
+
+		}
 
 		if ( $_genesis_loop_args['feature_content_limit'] )
 			the_content_limit( (int) $_genesis_loop_args['feature_content_limit'], esc_html( $_genesis_loop_args['more'] ) );
 		else
 			the_content( esc_html( $_genesis_loop_args['more'] ) );
+
 	}
+
 	else {
-		if ( $_genesis_loop_args['grid_image_size'] )
-			printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), genesis_get_image( array( 'size' => $_genesis_loop_args['grid_image_size'], 'context' => 'grid-loop', 'attr' => array( 'class' => esc_attr( $_genesis_loop_args['grid_image_class'] ) ) ) ) );
+
+		if ( $_genesis_loop_args['grid_image_size'] ) {
+
+			$image = genesis_get_image( array( 
+				'size'    => $_genesis_loop_args['grid_image_size'],
+				'context' => 'grid-loop',
+				'attr'    => genesis_attr( 'entry-image', array(
+					'attributes'  => array( 'class' => $_genesis_loop_args['grid_image_class'] ),
+					'output'      => 'array',
+				) ),
+			) );
+
+			printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), $image );
+
+		}
 
 		if ( $_genesis_loop_args['grid_content_limit'] ) {
 			the_content_limit( (int) $_genesis_loop_args['grid_content_limit'], esc_html( $_genesis_loop_args['more'] ) );
@@ -362,11 +393,13 @@ function genesis_grid_loop_content() {
 			the_excerpt();
 			printf( '<a href="%s" class="more-link">%s</a>', get_permalink(), esc_html( $_genesis_loop_args['more'] ) );
 		}
+
 	}
 
 }
 
 add_action( 'genesis_after_post', 'genesis_add_id_to_global_exclude' );
+add_action( 'genesis_after_entry', 'genesis_add_id_to_global_exclude' );
 /**
  * Modify the global $_genesis_displayed_ids each time a loop iterates.
  *

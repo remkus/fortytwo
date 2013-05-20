@@ -27,7 +27,7 @@ wp_head(); /** we need this for plugins **/
 <?php
 genesis_markup( array(
 	'html5'   => '<body %s>',
-	'xhtml'   => sprintf( '<body %s>', join( ' ', get_body_class() ) ),
+	'xhtml'   => sprintf( '<body class="%s">', implode( ' ', get_body_class() ) ),
 	'context' => 'body',
 ) );
 do_action( 'genesis_before' );
