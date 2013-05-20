@@ -933,8 +933,13 @@ Site Navigation
 }
 
 .genesis-nav-menu a:hover,
-.genesis-nav-menu .current-menu-item > a {
+.genesis-nav-menu .current-menu-item > a,
+.genesis-nav-menu .sub-menu .current-menu-item > a:hover {
 	color: #333;
+}
+
+.genesis-nav-menu .sub-menu .current-menu-item > a {
+	color: #999;
 }
 
 .genesis-nav-menu > .menu-item > a {
@@ -1120,7 +1125,7 @@ Content Area
 }
 
 .entry-meta .entry-comments::before {
-	content: "\U+2014";
+	content: "\2014";
 	margin: 0 6px 0 2px;
 	margin: 0 0.6rem 0 0.2rem;
 }
@@ -1389,9 +1394,6 @@ Site Footer
 Media Queries
 ---------------------------------------------------------------------------------------------------- */
 
-/* Desktops, laptops and iPads (landscape)
---------------------------------------------- */
-
 @media only screen and (max-width: 1139px) {
 
 	.wrap {
@@ -1424,9 +1426,6 @@ Media Queries
 	}
 
 }
-
-/* iPads (portrait)
---------------------------------------------- */
 
 @media only screen and (max-width: 1023px) {
 
@@ -1523,9 +1522,6 @@ Media Queries
 	}
 
 }
-
-/* iPhones (portrait and landscape)
---------------------------------------------- */
 
 @media only screen and (max-width: 767px) {
 

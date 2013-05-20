@@ -52,10 +52,11 @@ function genesis_theme_support() {
 	if ( ! current_theme_supports( 'genesis-structural-wraps' ) )
 		add_theme_support( 'genesis-structural-wraps', array( 'header', 'menu-primary', 'menu-secondary', 'site-inner', 'footer-widgets', 'footer' ) );
 
-	//** Turn on HTML5 & Responsive Viewport if Genesis is active
+	//** Turn on HTML5, responsive viewport & footer widgets if Genesis is active
 	if ( ! is_child_theme() ) {
 		add_theme_support( 'genesis-html5' );
 		add_theme_support( 'genesis-responsive-viewport' );
+		add_theme_support( 'genesis-footer-widgets', 3 );
 	}
 
 }
