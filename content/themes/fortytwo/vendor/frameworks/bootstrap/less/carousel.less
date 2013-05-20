@@ -128,7 +128,7 @@
   position: absolute;
   bottom: 20px;
   left: 50%;
-  z-index: 5;
+  z-index: 15;
   width: 100px;
   margin: 0 0 0 -50px;
   list-style: none;
@@ -170,8 +170,8 @@
 }
 
 
-// Scale up controls for >768px
-@media screen and (min-width: 768px) {
+// Scale up controls for tablets and up
+@media screen and (min-width: @screen-tablet) {
 
   // Scale up the controls a smidge
   .carousel-control .glyphicon {
