@@ -19,7 +19,7 @@
  *
  * @param array $args Array of arguments.
  */
-function genesis_markup( array $args = array() ) {
+function genesis_markup( $args = array() ) {
 
 	$defaults = array(
 		'html5'   => '',
@@ -281,6 +281,18 @@ function genesis_attributes_entry_image_widget( $attributes ) {
 
 }
 
+add_filter( 'genesis_attr_entry-image-grid-loop', 'genesis_attributes_entry_image_grid_loop' );
+/**
+ * 
+ */
+function genesis_attributes_entry_image_grid_loop( $attributes ) {
+
+	$attributes['itemprop'] = 'image';
+
+	return $attributes;
+
+}
+
 add_filter( 'genesis_attr_entry-time', 'genesis_attributes_entry_time' );
 /**
  * 
@@ -288,6 +300,7 @@ add_filter( 'genesis_attr_entry-time', 'genesis_attributes_entry_time' );
 function genesis_attributes_entry_time( $attributes ) {
 
 	$attributes['itemprop'] = 'datePublished';
+	$attributes['datetime'] = get_the_time( 'c' );
 
 	return $attributes;
 
@@ -317,6 +330,61 @@ function genesis_attributes_entry_content( $attributes ) {
 
 }
 
+add_filter( 'genesis_attr_entry-comments', 'genesis_attributes_entry_comments' );
+/**
+ * 
+ */
+function genesis_attributes_entry_comments( $attributes ) {
+
+	$attributes['id'] = 'comments';
+
+	return $attributes;
+
+}
+
+add_filter( 'genesis_attr_comment', 'genesis_attributes_comment' );
+/**
+ * 
+ */
+function genesis_attributes_comment( $attributes ) {
+
+	$attributes['class']     = '';
+	$attributes['itemprop']  = 'comment';
+	$attributes['itemscope'] = 'itemscope';
+	$attributes['itemtype']  = 'http://schema.org/UserComments';
+
+	return $attributes;
+
+}
+
+add_filter( 'genesis_attr_comment-author', 'genesis_attributes_comment_author' );
+/**
+ * 
+ */
+function genesis_attributes_comment_author( $attributes ) {
+
+	$attributes['itemprop']  = 'creator';
+	$attributes['itemscope'] = 'itemscope';
+	$attributes['itemtype']  = 'http://schema.org/Person';
+
+	return $attributes;
+
+}
+
+add_filter( 'genesis_attr_author-box', 'genesis_attributes_author_box' );
+/**
+ * 
+ */
+function genesis_attributes_author_box( $attributes ) {
+
+	$attributes['itemprop']  = 'author';
+	$attributes['itemscope'] = 'itemscope';
+	$attributes['itemtype']  = 'http://schema.org/Person';
+
+	return $attributes;
+
+}
+
 add_filter( 'genesis_attr_sidebar-primary', 'genesis_attributes_sidebar_primary' );
 /**
  * 
@@ -324,7 +392,7 @@ add_filter( 'genesis_attr_sidebar-primary', 'genesis_attributes_sidebar_primary'
 function genesis_attributes_sidebar_primary( $attributes ) {
 
 	$attributes['class']     = 'sidebar sidebar-primary widget-area';
-	$attributes['role']      = 'complimentary';
+	$attributes['role']      = 'complementary';
 	$attributes['itemscope'] = 'itemscope';
 	$attributes['itemtype']  = 'http://schema.org/WPSideBar';
 
@@ -339,7 +407,7 @@ add_filter( 'genesis_attr_sidebar-secondary', 'genesis_attributes_sidebar_second
 function genesis_attributes_sidebar_secondary( $attributes ) {
 
 	$attributes['class']     = 'sidebar sidebar-secondary widget-area';
-	$attributes['role']      = 'complimentary';
+	$attributes['role']      = 'complementary';
 	$attributes['itemscope'] = 'itemscope';
 	$attributes['itemtype']  = 'http://schema.org/WPSideBar';
 

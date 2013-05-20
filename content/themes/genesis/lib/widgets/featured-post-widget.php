@@ -145,7 +145,7 @@ class Genesis_Featured_Post extends WP_Widget {
 					printf( '<h2 class="entry-title"><a href="%s" title="%s">%s</a></h2>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_title() );
 
 				if ( ! empty( $instance['show_byline'] ) && ! empty( $instance['post_info'] ) )
-					printf( genesis_markup( '<p class="entry-meta">%s</p>', '<p class="byline post-info">%s</p>', 0 ), do_shortcode( $instance['post_info'] ) );
+					printf( genesis_html5() ? '<p class="entry-meta">%s</p>' : '<p class="byline post-info">%s</p>', do_shortcode( $instance['post_info'] ) );
 			
 			if ( $instance['show_title'] && $instance['show_byline'] )
 				echo genesis_html5() ? '</header>' : '';

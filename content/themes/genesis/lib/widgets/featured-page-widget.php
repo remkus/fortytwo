@@ -103,13 +103,13 @@ class Genesis_Featured_Page extends WP_Widget {
 				printf( '<a href="%s" title="%s" class="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), esc_attr( $instance['image_alignment'] ), $image );
 
 			if ( ! empty( $instance['show_title'] ) || ! empty( $instance['show_byline'] ) )
-				genesis_markup( '<header class="entry-header">', '' );
+				echo genesis_html5() ? '<header class="entry-header">' : '';
 
 				if ( ! empty( $instance['show_title'] ) )
-					printf( '<h2><a href="%s" title="%s">%s</a></h2>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_title() );
+					printf( '<h2 class="entry-title"><a href="%s" title="%s">%s</a></h2>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_title() );
 
 				if ( ! empty( $instance['show_byline'] ) ) {
-					echo '<p class="byline">';
+					echo genesis_html5() ? '<p class="entry-meta">' : '<p class="byline">';
 					the_time( 'F j, Y' );
 					echo ' ' . __( 'by', 'genesis' ) . ' ';
 					the_author_posts_link();
@@ -121,7 +121,8 @@ class Genesis_Featured_Page extends WP_Widget {
 				}
 			
 			if ( ! empty( $instance['show_title'] ) || ! empty( $instance['show_byline'] ) )
-				genesis_markup( '</header>', '' );
+				echo genesis_html5() ? '</header>' : '';
+				
 
 			if ( ! empty( $instance['show_content'] ) ) {
 				if ( empty( $instance['content_limit'] ) )
@@ -130,7 +131,10 @@ class Genesis_Featured_Page extends WP_Widget {
 					the_content_limit( (int) $instance['content_limit'], esc_html( $instance['more_text'] ) );
 			}
 
-			genesis_markup( '</article>', '</div>' );
+			genesis_markup( array(
+				'html5' => '</article>',
+				'xhtml' => '</div>',
+			) );
 
 			endwhile;
 		endif;

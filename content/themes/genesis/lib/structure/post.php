@@ -123,20 +123,18 @@ add_action( 'genesis_before_post_title', 'genesis_do_post_format_image' );
  */
 function genesis_do_post_format_image() {
 
-	global $post;
-
-	/** Do nothing if post formats aren't supported */
+	//* Do nothing if post formats aren't supported
 	if ( ! current_theme_supports( 'post-formats' ) || ! current_theme_supports( 'genesis-post-format-images' ) )
 		return;
 
-	/** Get post format */
-	$post_format = get_post_format( $post );
+	//* Get post format
+	$post_format = get_post_format();
 
-	/** If post format is set, look for post format image */
+	//* If post format is set, look for post format image
 	if ( $post_format && file_exists( sprintf( '%s/images/post-formats/%s.png', CHILD_DIR, $post_format ) ) )
 		printf( '<a href="%s" title="%s" rel="bookmark"><img src="%s" class="post-format-image" alt="%s" /></a>', get_permalink(), the_title_attribute( 'echo=0' ), sprintf( '%s/images/post-formats/%s.png', CHILD_URL, $post_format ), $post_format );
 
-	/** Else, look for the default post format image */
+	//* Else, look for the default post format image
 	elseif ( file_exists( sprintf( '%s/images/post-formats/default.png', CHILD_DIR ) ) )
 		printf( '<a href="%s" title="%s" rel="bookmark"><img src="%s/images/post-formats/default.png" class="post-format-image" alt="%s" /></a>', get_permalink(), the_title_attribute( 'echo=0' ), CHILD_URL, 'post' );
 
@@ -208,7 +206,7 @@ add_action( 'genesis_post_content', 'genesis_do_post_image' );
  * Echo the post image on archive pages.
  *
  * If this an archive page and the option is set to show thumbnail, then it
- * gets the image size as per the theme setting, wraps it in the post  permalink
+ * gets the image size as per the theme setting, wraps it in the post permalink
  * and echoes it.
  *
  * @since 1.1.0
@@ -467,11 +465,26 @@ function genesis_author_box( $context = '', $echo = true ) {
 	$authordata    = is_object( $authordata ) ? $authordata : get_userdata( get_query_var( 'author' ) );
 	$gravatar_size = apply_filters( 'genesis_author_box_gravatar_size', 70, $context );
 	$gravatar      = get_avatar( get_the_author_meta( 'email' ), $gravatar_size );
-	$title         = apply_filters( 'genesis_author_box_title', sprintf( '<strong>%s %s</strong>', __( 'About', 'genesis' ), get_the_author() ), $context );
 	$description   = wpautop( get_the_author_meta( 'description' ) );
 
-	/** The author box markup, contextual */
-	$pattern = 'single' == $context ? '<div class="author-box"><div>%s %s<br />%s</div></div>' : '<div class="author-box">%s<h1>%s</h1><div>%s</div></div>';
+	//* The author box markup, contextual
+	if ( genesis_html5() ) {
+
+		$title = apply_filters( 'genesis_author_box_title', sprintf( '%s <span class="itemprop="name">%s</span>', __( 'About', 'genesis' ), get_the_author() ), $context );
+
+		$pattern  = sprintf( '<section %s>', genesis_attr( 'author-box' ) );
+		$pattern .= '%s<h1 class="author-box-title">%s</h1>';
+		$pattern .= '<div class="author-box-content" itemprop="description">%s</div>';
+		$pattern .= '</section>';
+
+	}
+	else {
+
+		$title = apply_filters( 'genesis_author_box_title', sprintf( '<strong>%s %s</strong>', __( 'About', 'genesis' ), get_the_author() ), $context );
+
+		$pattern = 'single' == $context ? '<div class="author-box"><div>%s %s<br />%s</div></div>' : '<div class="author-box">%s<h1>%s</h1><div>%s</div></div>';
+
+	}
 
 	$output = apply_filters( 'genesis_author_box', sprintf( $pattern, $gravatar, $title, $description ), $context, $pattern, $gravatar, $title, $description );
 

@@ -32,22 +32,11 @@ class Genesis_Breadcrumb {
 	protected $args = array();
 
 	/**
-	 * Cache get_option call.
-	 *
-	 * @since 1.5.0
-	 *
-	 * @var string Holds value of get_option( 'show_on_front' );
-	 */
-	protected $on_front;
-
-	/**
 	 * Constructor. Set up cacheable values and settings.
 	 *
 	 * @since 1.5.0
 	 */
 	public function __construct() {
-	
-		$this->on_front = get_option( 'show_on_front' );
 
 		/** Default arguments */
 		$this->args = array(
@@ -58,7 +47,6 @@ class Genesis_Breadcrumb {
 			'suffix'                  => '</div>',
 			'heirarchial_attachments' => true,
 			'heirarchial_categories'  => true,
-			'display'                 => true,
 			'labels' => array(
 				'prefix'    => __( 'You are here: ', 'genesis' ),
 				'author'    => __( 'Archives for ', 'genesis' ),
@@ -82,7 +70,7 @@ class Genesis_Breadcrumb {
 	 * @param array $args Breadcrumb arguments
 	 * @return string HTML markup
 	 */
-	public function get_output( array $args = array() ) {
+	public function get_output( $args = array() ) {
 
 		/** Merge and filter user and default arguments */
 		$this->args = apply_filters( 'genesis_breadcrumb_args', wp_parse_args( $args, $this->args ) );
@@ -99,9 +87,88 @@ class Genesis_Breadcrumb {
 	 * @param array $args Breadcrumb arguments
 	 * @return string HTML markup
 	 */
-	public function output( array $args = array() ) {
+	public function output( $args = array() ) {
 
 		echo $this->get_output( $args );
+
+	}
+
+	/**
+	 * Return the correct crumbs for this query, combined together.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @return string HTML markup
+	 */
+	protected function build_crumbs() {
+
+		$crumbs[] = $this->get_home_crumb();
+
+		if ( is_home() )
+			$crumbs[] = $this->get_blog_crumb();
+		elseif ( is_search() )
+			$crumbs[] = $this->get_search_crumb();
+		elseif ( is_404() )
+			$crumbs[] = $this->get_404_crumb();
+		elseif ( is_page() )
+			$crumbs[] = $this->get_page_crumb();
+		elseif ( is_archive() )
+			$crumbs[] = $this->get_archive_crumb();
+		elseif ( is_singular() )
+			$crumbs[] = $this->get_single_crumb();
+
+		return join( $this->args['sep'], array_filter( array_unique( $crumbs ) ) );
+
+	}
+
+	/**
+	 * Return archive breadcrumb.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @return string HTML markup
+	 */
+	protected function get_archive_crumb() {
+
+		if ( is_category() )
+			$crumb = $this->get_category_crumb();
+		elseif ( is_tag() )
+			$crumb = $this->get_tag_crumb();
+		elseif ( is_tax() )
+			$crumb = $this->get_tax_crumb();
+		elseif ( is_year() )
+			$crumb = $this->get_year_crumb();
+		elseif ( is_month() )
+			$crumb = $this->get_month_crumb();
+		elseif ( is_day() )
+			$crumb = $this->get_day_crumb();
+		elseif ( is_author() )
+			$crumb = $this->get_author_crumb();
+		elseif ( is_post_type_archive() )
+			$crumb = $this->get_post_type_crumb();
+
+		return apply_filters( 'genesis_archive_crumb', $crumb, $this->args );
+
+	}
+
+	/**
+	 * Get single breadcrumb, including any parent crumbs.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @return string HTML markup
+	 */
+	protected function get_single_crumb() {
+
+		if ( is_attachment() ) {
+			$crumb = $this->get_attachment_crumb();
+		} elseif ( is_singular( 'post' ) ) {
+			$crumb = $this->get_post_crumb();
+		} else {
+			$crumb = $this->get_cpt_crumb();
+		}
+
+		return apply_filters( 'genesis_single_crumb', $crumb, $this->args );
 
 	}
 
@@ -116,7 +183,7 @@ class Genesis_Breadcrumb {
 	 */
 	protected function get_home_crumb() {
 
-		$url   = 'page' == $this->on_front ? get_permalink( get_option( 'page_on_front' ) ) : trailingslashit( home_url() );
+		$url   = $this->page_shown_on_front() ? get_permalink( get_option( 'page_on_front' ) ) : trailingslashit( home_url() );
 		$crumb = ( is_home() && is_front_page() ) ? $this->args['home'] : $this->get_breadcrumb_link( $url, sprintf( __( 'View %s', 'genesis' ), $this->args['home'] ), $this->args['home'] );
 
 		return apply_filters( 'genesis_home_crumb', $crumb, $this->args );
@@ -136,7 +203,7 @@ class Genesis_Breadcrumb {
 	protected function get_blog_crumb() {
 
 		$crumb = $this->get_home_crumb();
-		if ( 'page' == $this->on_front )
+		if ( $this->page_shown_on_front() )
 			$crumb = get_the_title( get_option( 'page_for_posts' ) );
 
 		return apply_filters( 'genesis_blog_crumb', $crumb, $this->args );
@@ -185,7 +252,7 @@ class Genesis_Breadcrumb {
 
 		global $wp_query;
 
-		if ( 'page' == $this->on_front && is_front_page() ) {
+		if ( $this->page_shown_on_front() && is_front_page() ) {
 			/** Don't do anything - we're on the front page and we've already dealt with that elsewhere */
 			$crumb = $this->get_home_crumb();
 		} else {
@@ -228,105 +295,104 @@ class Genesis_Breadcrumb {
 	}
 
 	/**
-	 * Return archive breadcrumb.
+	 * Get breadcrumb for single attachment, including any parent crumbs.
 	 *
-	 * @since 1.5.0
+	 * @since 2.0.0
 	 *
-	 * @return string HTML markup
+	 * @global WP_Post post Post object.
+	 *
+	 * @return string HTML markup.
 	 */
-	protected function get_archive_crumb() {
+	protected function get_attachment_crumb() {
 
-		if ( is_category() )
-			$crumb = $this->get_category_crumb();
-		elseif ( is_tag() )
-			$crumb = $this->get_tag_crumb();
-		elseif ( is_tax() )
-			$crumb = $this->get_tax_crumb();
-		elseif ( is_year() )
-			$crumb = $this->get_year_crumb();
-		elseif ( is_month() )
-			$crumb = $this->get_month_crumb();
-		elseif ( is_day() )
-			$crumb = $this->get_day_crumb();
-		elseif ( is_author() )
-			$crumb = $this->get_author_crumb();
-		elseif ( is_post_type_archive() )
-			$crumb = $this->get_post_type_crumb();
+		global $post;
 
-		return apply_filters( 'genesis_archive_crumb', $crumb, $this->args );
+		$crumb = '';
+		if ( $this->args['heirarchial_attachments'] ) {
+			//* If showing attachment parent
+			$attachment_parent = get_post( $post->post_parent );
+			$crumb = $this->get_breadcrumb_link(
+				get_permalink( $post->post_parent ),
+				sprintf( __( 'View %s', 'genesis' ), $attachment_parent->post_title ),
+				$attachment_parent->post_title,
+				$this->args['sep']
+			);
+		}
+		$crumb .= single_post_title( '', false );
+
+		return $crumb;
 
 	}
 
 	/**
-	 * Get single breadcrumb, including any parent crumbs.
+	 * Get breadcrumb for single post, including any parent (category) crumbs.
 	 *
-	 * @since 1.5.0
+	 * @since 2.0.0
 	 *
-	 * @param WP_Post $post Post object.
-	 * @return string HTML markup
+	 * @global WP_Post post Post object.
+	 *
+	 * @return string HTML markup.
 	 */
-	protected function get_single_crumb() {
+	protected function get_post_crumb() {
 
 		global $post;
 
-		if ( is_attachment() ) {
-			$crumb = '';
-			if ( $this->args['heirarchial_attachments'] ) {
-				/** If showing attachment parent */
-				$attachment_parent = get_post( $post->post_parent );
-				$crumb = $this->get_breadcrumb_link(
-					get_permalink( $post->post_parent ),
-					sprintf( __( 'View %s', 'genesis' ), $attachment_parent->post_title ),
-					$attachment_parent->post_title,
-					$this->args['sep']
-				);
-			}
-			$crumb .= single_post_title( '', false );
-		} elseif ( is_singular( 'post' ) ) {
-			$categories = get_the_category( $post->ID );
+		$categories = get_the_category( $post->ID );
 
-			if ( 1 == count( $categories ) ) {
-				/** If in single category, show it, and any parent categories */
-				$crumb = $this->get_term_parents( $categories[0]->cat_ID, 'category', true ) . $this->args['sep'];
-			}
-			if ( count( $categories ) > 1 ) {
-				if ( ! $this->args['heirarchial_categories'] ) {
-					/** Don't show parent categories (unless the post happen to be explicitly in them) */
-					foreach ( $categories as $category ) {
-						$crumbs[] = $this->get_breadcrumb_link(
-							get_category_link( $category->term_id ),
-							sprintf( __( 'View all posts in %s', 'genesis' ), $category->name ),
-							$category->name
-						);
-					}
-					$crumb = join( $this->args['list_sep'], $crumbs ) . $this->args['sep'];
+		if ( 1 == count( $categories ) ) {
+			/** If in single category, show it, and any parent categories */
+			$crumb = $this->get_term_parents( $categories[0]->cat_ID, 'category', true ) . $this->args['sep'];
+		}
+		if ( count( $categories ) > 1 ) {
+			if ( ! $this->args['heirarchial_categories'] ) {
+				//* Don't show parent categories (unless the post happen to be explicitly in them)
+				foreach ( $categories as $category ) {
+					$crumbs[] = $this->get_breadcrumb_link(
+						get_category_link( $category->term_id ),
+						sprintf( __( 'View all posts in %s', 'genesis' ), $category->name ),
+						$category->name
+					);
+				}
+				$crumb = join( $this->args['list_sep'], $crumbs ) . $this->args['sep'];
+			} else {
+				/** Show parent categories - see if one is marked as primary and try to use that */
+				$primary_category_id = get_post_meta( $post->ID, '_category_permalink', true ); /** Support for sCategory Permalink plugin */
+				if ( $primary_category_id ) {
+					$crumb = $this->get_term_parents( $primary_category_id, 'category', true ) . $this->args['sep'];
 				} else {
-					/** Show parent categories - see if one is marked as primary and try to use that */
-					$primary_category_id = get_post_meta( $post->ID, '_category_permalink', true ); /** Support for sCategory Permalink plugin */
-					if ( $primary_category_id ) {
-						$crumb = $this->get_term_parents( $primary_category_id, 'category', true ) . $this->args['sep'];
-					} else {
-						$crumb = $this->get_term_parents( $categories[0]->cat_ID, 'category', true ) . $this->args['sep'];
-					}
+					$crumb = $this->get_term_parents( $categories[0]->cat_ID, 'category', true ) . $this->args['sep'];
 				}
 			}
-			$crumb .= single_post_title( '', false );
-		} else {
-			$post_type = get_query_var( 'post_type' );
-			$post_type_object = get_post_type_object( $post_type );
-
-			if ( $cpt_archive_link = get_post_type_archive_link( $post_type ) )
-				$crumb = $this->get_breadcrumb_link( $cpt_archive_link, sprintf( __( 'View all %s', 'genesis' ), $post_type_object->labels->name ), $post_type_object->labels->name );
-			else
-				$crumb = $post_type_object->labels->name;
-
-			$crumb .= $this->args['sep'] . single_post_title( '', false );
 		}
+		$crumb .= single_post_title( '', false );
 
-		return apply_filters( 'genesis_single_crumb', $crumb, $this->args );
+		return $crumb;
 
 	}
-	
+
+	/**
+	 * Get breadcrumb for single custom post type entry, including any parent (CPT name) crumbs.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return string HTML markup.
+	 */
+	protected function get_cpt_crumb() {
+
+		$post_type = get_query_var( 'post_type' );
+		$post_type_object = get_post_type_object( $post_type );
+
+		if ( $cpt_archive_link = get_post_type_archive_link( $post_type ) )
+			$crumb = $this->get_breadcrumb_link( $cpt_archive_link, sprintf( __( 'View all %s', 'genesis' ), $post_type_object->labels->name ), $post_type_object->labels->name );
+		else
+			$crumb = $post_type_object->labels->name;
+
+		$crumb .= $this->args['sep'] . single_post_title( '', false );
+
+		return $crumb;
+
+	}
+
 	/**
 	 * Return the category archive crumb.
 	 *
@@ -340,7 +406,7 @@ class Genesis_Breadcrumb {
 		return apply_filters( 'genesis_category_crumb', $crumb, $this->args );
 
 	}
-	
+
 	/**
 	 * Return the tag archive crumb.
 	 *
@@ -354,7 +420,7 @@ class Genesis_Breadcrumb {
 		return apply_filters( 'genesis_tag_crumb', $crumb, $this->args );
 
 	}
-	
+
 	/**
 	 * Return the taxonomy archive crumb.
 	 *
@@ -366,13 +432,13 @@ class Genesis_Breadcrumb {
 	protected function get_tax_crumb() {
 
 		global $wp_query;
-		
+
 		$term  = $wp_query->get_queried_object();
 		$crumb = $this->args['labels']['tax'] . $this->get_term_parents( $term->term_id, $term->taxonomy );
 		return apply_filters( 'genesis_tax_crumb', $crumb, $this->args );
 
 	}
-	
+
 	/**
 	 * Return the year archive crumb.
 	 *
@@ -386,7 +452,7 @@ class Genesis_Breadcrumb {
 		return apply_filters( 'genesis_year_crumb', $crumb, $this->args );
 
 	}
-	
+
 	/**
 	 * Return the month archive crumb.
 	 *
@@ -406,7 +472,7 @@ class Genesis_Breadcrumb {
 		return apply_filters( 'genesis_month_crumb', $crumb, $this->args );
 
 	}
-	
+
 	/**
 	 * Return the day archive crumb.
 	 *
@@ -419,7 +485,7 @@ class Genesis_Breadcrumb {
 	protected function get_day_crumb() {
 
 		global $wp_locale;
-		
+
 		$crumb  = $this->get_breadcrumb_link(
 			get_year_link( get_query_var( 'year' ) ),
 			sprintf( __( 'View archives for %s', 'genesis' ), get_query_var( 'year' ) ),
@@ -432,11 +498,11 @@ class Genesis_Breadcrumb {
 			$wp_locale->get_month( get_query_var( 'monthnum' ) ),
 			$this->args['sep']
 		);
-		$crumb .= $this->args['labels']['date'] . get_query_var( 'day' ) . date( 'S', mktime( 0, 0, 0, 1, get_query_var( 'day' ) ) ); 
+		$crumb .= $this->args['labels']['date'] . get_query_var( 'day' ) . date( 'S', mktime( 0, 0, 0, 1, get_query_var( 'day' ) ) );
 		return apply_filters( 'genesis_day_crumb', $crumb, $this->args );
 
 	}
-	
+
 	/**
 	 * Return the author archive crumb.
 	 *
@@ -448,12 +514,12 @@ class Genesis_Breadcrumb {
 	protected function get_author_crumb() {
 
 		global $wp_query;
-		
+
 		$crumb = $this->args['labels']['author'] . esc_html( $wp_query->queried_object->display_name );
 		return apply_filters( 'genesis_author_crumb', $crumb, $this->args );
 
 	}
-	
+
 	/**
 	 * Return the post type archive crumb.
 	 *
@@ -465,34 +531,6 @@ class Genesis_Breadcrumb {
 
 		$crumb = $this->args['labels']['post_type'] . esc_html( post_type_archive_title( '', false ) );
 		return apply_filters( 'genesis_post_type_crumb', $crumb, $this->args );
-
-	}
-
-	/**
-	 * Return the correct crumbs for this query, combined together.
-	 *
-	 * @since 1.5.0
-	 *
-	 * @return string HTML markup
-	 */
-	protected function build_crumbs() {
-
-		$crumbs[] = $this->get_home_crumb();
-
-		if ( is_home() )
-			$crumbs[] = $this->get_blog_crumb();
-		elseif ( is_search() )
-			$crumbs[] = $this->get_search_crumb();
-		elseif ( is_404() )
-			$crumbs[] = $this->get_404_crumb();
-		elseif ( is_page() )
-			$crumbs[] = $this->get_page_crumb();
-		elseif ( is_archive() )
-			$crumbs[] = $this->get_archive_crumb();
-		elseif ( is_singular() )
-			$crumbs[] = $this->get_single_crumb();
-
-		return join( $this->args['sep'], array_filter( array_unique( $crumbs ) ) );
 
 	}
 
@@ -551,6 +589,15 @@ class Genesis_Breadcrumb {
 
 	}
 
+	/**
+	 * Determine if static page is shown on front page.
+	 *
+	 * @return bool True if page is shown on front, false otherwise.
+	 */
+	private function page_shown_on_front() {
+		return 'page' == get_option( 'show_on_front' );
+	}
+
 }
 
 /**
@@ -564,7 +611,7 @@ class Genesis_Breadcrumb {
  * @global Genesis_Breadcrumb $_genesis_breadcrumb
  * @param array $args Breadcrumb arguments
  */
-function genesis_breadcrumb( array $args = array() ) {
+function genesis_breadcrumb( $args = array() ) {
 
 	global $_genesis_breadcrumb;
 
@@ -602,7 +649,7 @@ function genesis_do_breadcrumbs() {
 		return;
 
 	if ( function_exists( 'bcn_display' ) ) {
-		echo '<div class="breadcrumb">';
+		echo '<div class="breadcrumb" itemprop="breadcrumb">';
 		bcn_display();
 		echo '</div>';
 	}

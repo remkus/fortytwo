@@ -4,11 +4,11 @@
 	Description: The industry standard in design frameworks for WordPress. Please do not modify this stylesheet, as it might get overridden in updates.
 	Author: StudioPress
 	Author URI: http://www.studiopress.com/
-	Version: 2.0-dev
+	Version: 2.0.0-beta1
 	Tags: black, orange, white, one-column, two-columns, three-columns, fixed-width, custom-menu, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 
 	License: GPL-2.0+
-	License URI: http://www.opensource.org/licenses/gpl-license.php 
+	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 
@@ -18,7 +18,7 @@
 	Copy the contents of this file to the child theme. Do not use @import, as the CSS included with Genesis might change in the future.
 
 */
- 
+
 /* Table of Contents
 
 	- Imports
@@ -83,7 +83,7 @@ HTML5 Reset
    Link: http://necolas.github.com/normalize.css/
 --------------------------------------------- */
 
-article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+article,aside,details,figcaption,figure,footer,header,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
 
 
 /* Box Sizing
@@ -114,7 +114,6 @@ figure:before, figure:after,
 footer:before, footer:after,
 form:before, form:after,
 header:before, header:after,
-hgroup:before, hgroup:after,
 hr:before, hr:after,
 main:before, main:after,
 output:before, output:after,
@@ -143,7 +142,6 @@ figure:after,
 footer:after,
 form:after,
 header:after,
-hgroup:after,
 hr:after,
 main:after,
 output:after,
@@ -169,6 +167,7 @@ html {
 }
 
 body {
+	background: #fff;
 	color: #666;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 16px;
@@ -231,7 +230,7 @@ blockquote {
 }
 
 blockquote::before {
-	content: "“";
+	content: "\201C";
 	display: block;
 	font-size: 30px;
 	font-size: 3rem;
@@ -239,6 +238,15 @@ blockquote::before {
 	left: -20px;
 	position: relative;
 	top: -10px;
+}
+
+pre {
+	background: #333;
+	color: #ccc;
+	overflow: scroll;
+	padding: 0 2rem;
+	padding: 0 20px;
+	white-space: pre;
 }
 
 cite {
@@ -629,8 +637,26 @@ img.alignright,
 	background: #fff;
 	margin-bottom: 40px;
 	margin-bottom: 4rem;
+}
+
+.archive-description {
+	margin-bottom: 4rem;
+	padding: 40px 40px 24px;
+	padding: 4rem 4rem 2.4rem;
+}
+
+.author-box {
 	padding: 40px;
 	padding: 4rem;
+}
+
+.author-box-title {
+	color: #333;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	font-size: 1.6rem;
+	margin-bottom: 4px;
+	margin-bottom: 0.4rem;
 }
 
 .author-box a {
@@ -644,15 +670,6 @@ img.alignright,
 .author-box .avatar {
 	margin-right: 24px;
 	margin-right: 2.4rem;
-}
-
-.author-box h1 {
-	color: #666;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: 16px;
-	font-size: 1.6rem;
-	margin-bottom: 4px;
-	margin-bottom: 0.4rem;
 }
 
 /* Headings
@@ -678,8 +695,8 @@ img.alignright,
 	font-size: 1.4rem;
 	letter-spacing: 1px;
 	letter-spacing: 0.1rem;
-	margin-bottom: 2.4rem;
 	margin-bottom: 24px;
+	margin-bottom: 2.4rem;
 	text-transform: uppercase;
 }
 
@@ -806,7 +823,7 @@ Site Header
 
 .title-area {
 	font-family: 'Lato', sans-serif;
-	font-weight: bold;
+	font-weight: 700;
 	float: left;
 	padding: 16px 0;
 	padding: 1.6rem 0;
@@ -972,7 +989,9 @@ Site Navigation
 }
 
 .genesis-nav-menu > .right {
+	display: inline-block;
 	float: right;
+	list-style-type: none;
 	padding: 28px 0;
 	padding: 2.8rem 0;
 	text-transform: uppercase;
@@ -991,6 +1010,10 @@ Site Navigation
 .genesis-nav-menu > .search {
 	padding: 14px 0 0;
 	padding: 1.4rem 0 0;
+}
+
+.genesis-nav-menu .search-form {
+	width: 100%;
 }
 
 /* Site Header Navigation
@@ -1097,7 +1120,7 @@ Content Area
 }
 
 .entry-meta .entry-comments::before {
-	content: "—";
+	content: "\U+2014";
 	margin: 0 6px 0 2px;
 	margin: 0 0.6rem 0 0.2rem;
 }
@@ -1125,11 +1148,15 @@ Content Area
 	margin: 4rem 0;
 }
 
+.entry .navigation a {
+	border-bottom: 1px solid #ddd;
+}
+
 .navigation li {
 	display: inline;
 }
 
-.navigation a {
+.navigation li a {
 	background: #333;
 	border-radius: 3px;
 	color: #fff;
@@ -1140,7 +1167,7 @@ Content Area
 	padding: 0.8rem 1.2rem;
 }
 
-.navigation a:hover,
+.navigation li a:hover,
 .navigation li.active a {
 	background: #f15123;
 }
@@ -1197,10 +1224,10 @@ Content Area
 	margin-right: -3.2rem;
 }
 
-.comment {
+li.comment {
 	background: #f5f5f5;
-	border: 2px solid #fff; 
-	border-right: none; 
+	border: 2px solid #fff;
+	border-right: none;
 }
 
 .comment .avatar {
@@ -1426,6 +1453,7 @@ Media Queries
 		padding-right: 5%;
 	}
 
+	.archive-description,
 	.author-box,
 	.entry,
 	.entry-footer .entry-meta,
@@ -1448,13 +1476,15 @@ Media Queries
 
 	.genesis-nav-menu,
 	.site-description,
-	.site-header hgroup,
+	.site-header .title-area,
 	.site-header .search-form,
 	.site-title {
 		text-align: center;
 	}
 
-	.genesis-nav-menu a {
+	.genesis-nav-menu a,
+	.genesis-nav-menu > .first > a,
+	.genesis-nav-menu > .last > a {
 		padding: 20px 16px;
 		padding: 2rem 1.6rem;
 	}

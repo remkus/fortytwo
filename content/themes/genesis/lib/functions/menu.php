@@ -68,7 +68,7 @@ function genesis_nav_menu_supported( $menu ) {
  * @param array $args Menu arguments
  * @return string HTML for menu (unless genesis_pre_nav returns something truthy)
  */
-function genesis_nav( array $args = array() ) {
+function genesis_nav( $args = array() ) {
 
 	if ( isset( $args['context'] ) )
 		_deprecated_argument( __FUNCTION__, '1.2', __( 'The argument, "context", has been replaced with "theme_location" in the $args array.', 'genesis' ) );

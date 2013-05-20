@@ -33,7 +33,7 @@ function genesis_is_active( $version = PARENT_THEME_VERSION ) {
  * @param array $args Optional. Arguments for enabling author box. Default is
  * empty array
  */
-function genesis_enable_author_box( array $args = array() ) {
+function genesis_enable_author_box( $args = array() ) {
 
 	$args = wp_parse_args( $args, array( 'type' => 'single' ) );
 
@@ -282,4 +282,24 @@ function genesis_has_post_type_archive_support( $post_type_name = '' ) {
  */
 function genesis_html5() {
 	return current_theme_supports( 'genesis-html5' );
+}
+
+/**
+ * Helper function to built links to install plugins.
+ *
+ * @since 2.0.0
+ */
+function genesis_plugin_install_link( $plugin_slug = '', $text = '' ) {
+
+	if ( is_main_site() ) {
+		$url = network_admin_url( 'plugin-install.php?tab=plugin-information&plugin=' . $plugin_slug . '&TB_iframe=true&width=600&height=550' );
+	}
+	else {
+		$url = admin_url( 'plugin-install.php?tab=plugin-information&plugin=' . $plugin_slug . '&TB_iframe=true&width=600&height=550' );
+	}
+
+	$title_text = sprintf( __( 'Install %s', 'genesis' ), $text );
+
+	return sprintf( '<a href="%s" class="thickbox" title="%s">%s</a>', esc_url( $url ), esc_attr( $title_text ), esc_html( $text ) );
+
 }

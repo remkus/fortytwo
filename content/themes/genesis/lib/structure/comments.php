@@ -60,9 +60,13 @@ function genesis_do_comments() {
 		return;
 
 	if ( have_comments() && ! empty( $wp_query->comments_by_type['comment'] ) ) {
-		?>
-		<div id="comments">
-			<?php
+
+		genesis_markup( array(
+			'html5'   => '<div %s>',
+			'xhtml'   => '<div id="comments">',
+			'context' => 'entry-comments',
+		) );
+
 			echo apply_filters( 'genesis_title_comments', __( '<h3>Comments</h3>', 'genesis' ) );
 			echo '<ol class="comment-list">';
 				do_action( 'genesis_list_comments' );
@@ -71,19 +75,27 @@ function genesis_do_comments() {
 			//** Comment Navigation
 			$prev_link = get_previous_comments_link( apply_filters( 'genesis_prev_comments_link_text', '' ) );
 			$next_link = get_next_comments_link( apply_filters( 'genesis_next_comments_link_text', '' ) );
-			
+		
 			if ( $prev_link || $next_link )
 				printf( '<div class="navigation"><div class="alignleft">%s</div><div class="alignright">%s</div></div>', $prev_link, $next_link );
-			?>
-		</div><!--end #comments-->
-		<?php
+
+		echo '</div>';
+
 	}
 	/** No comments so far */
 	elseif ( 'open' == $post->comment_status && $no_comments_text = apply_filters( 'genesis_no_comments_text', '' ) ) { 
-		printf( '<div id="comments">%s</div><!-- end #comments -->', $no_comments_text ); 
+		genesis_markup( array(
+			'html5'   => '<div %s>' . $no_comments_text . '</div>',
+			'xhtml'   => '<div id="comments">' . $no_comments_text . '</div>',
+			'context' => 'entry-comments',
+		) );
 	}
 	elseif ( $comments_closed_text = apply_filters( 'genesis_comments_closed_text', '' ) ) {
-		printf( '<div id="comments">%s</div><!-- end #comments -->', $comments_closed_text );
+		genesis_markup( array(
+			'html5'   => '<div %s>' . $comments_closed_text . '</div>',
+			'xhtml'   => '<div id="comments">' . $comments_closed_text . '</div>',
+			'context' => 'entry-comments',
+		) );
 	}
 
 }
@@ -222,33 +234,51 @@ function genesis_html5_comment_callback( $comment, array $args, $depth ) {
 	$GLOBALS['comment'] = $comment; ?>
 
 	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-	<article>
+	<article <?php echo genesis_attr( 'comment' ); ?>>
 
 		<?php do_action( 'genesis_before_comment' ); ?>
 
 		<header class="comment-header">
-			<p class="comment-author">
-				<?php echo get_avatar( $comment, $args['avatar_size'] ); ?>
-				<?php printf( __( '<cite>%s</cite> <span class="says">%s:</span>', 'genesis' ), get_comment_author_link(), apply_filters( 'comment_author_says_text', __( 'says', 'genesis' ) ) ); ?>
-		 	</p><!-- end .comment-author -->
+			<p <?php echo genesis_attr( 'comment-author' ); ?>>
+				<?php
+				echo get_avatar( $comment, $args['avatar_size'] );
+
+				$author = get_comment_author();
+				$url    = get_comment_author_url();
+
+				if ( ! empty( $url ) && 'http://' != $url ) {
+					$author = sprintf( '<a href="%s" rel="external nofollow" itemprop="url">%s</a>', esc_url( $url ), $author );
+				}
+
+				printf( '<span itemprop="name">%s</span> <span class="says">%s</span>', $author, apply_filters( 'comment_author_says_text', __( 'says', 'genesis' ) ) );
+				?>
+		 	</p>
 
 			<p class="comment-meta">
-				<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>"><?php printf( __( '%1$s at %2$s', 'genesis' ), get_comment_date(), get_comment_time() ); ?></a>
-				<?php edit_comment_link( __( '(Edit)', 'genesis' ), '' ); ?>
-			</p><!-- end .comment-meta -->
+				<?php
+				$pattern = '<time itemprop="commentTime" datetime="%s"><a href="%s" itemprop="url">%s %s %s</a></time>';
+				printf( $pattern, esc_attr( get_comment_time( 'c' ) ), esc_url( get_comment_link( $comment->comment_ID ) ), esc_html( get_comment_date() ), __( 'at', 'genesis' ), esc_html( get_comment_time() ) );
+
+				edit_comment_link( __( '(Edit)', 'genesis' ), ' ' );
+				?>
+			</p>
 		</header>
 
-		<div class="comment-content">
+		<div class="comment-content" itemprop="commentText">
 			<?php if ( $comment->comment_approved == '0' ) : ?>
 				<p class="alert"><?php echo apply_filters( 'genesis_comment_awaiting_moderation', __( 'Your comment is awaiting moderation.', 'genesis' ) ); ?></p>
 			<?php endif; ?>
 
 			<?php comment_text(); ?>
-		</div><!-- end .comment-content -->
-
-		<div class="comment-reply">
-			<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 		</div>
+
+		<?php
+		comment_reply_link( array_merge( $args, array(
+			'depth'  => $depth,
+			'before' => '<div class="comment-reply">',
+			'after'  => '</div>',
+		) ) );
+		?>
 
 		<?php do_action( 'genesis_after_comment' ); ?>
 
@@ -278,7 +308,9 @@ function genesis_do_comment_form() {
 
 add_filter( 'comment_form_defaults', 'genesis_comment_form_args' );
 /**
- * Filters the default comment form arguments, used by <code>comment_form()</code>
+ * Filters the default comment form arguments, used by <code>comment_form()</code>.
+ * 
+ * Applies only to pre-HTML5 child themes.
  *
  * @since 1.8.0
  *
@@ -305,33 +337,33 @@ function genesis_comment_form_args( array $defaults ) {
 	          '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" tabindex="1"' . $aria_req . ' />' .
 	          '<label for="author">' . __( 'Name', 'genesis' ) . '</label> ' .
 	          ( $req ? '<span class="required">*</span>' : '' ) .
-	          '</p><!-- #form-section-author .form-section -->';
+	          '</p>';
 
 	$email = '<p class="comment-form-email">' .
 	         '<input id="email" name="email" type="text" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" tabindex="2"' . $aria_req . ' />' .
 	         '<label for="email">' . __( 'Email', 'genesis' ) . '</label> ' .
 	         ( $req ? '<span class="required">*</span>' : '' ) .
-	         '</p><!-- #form-section-email .form-section -->';
+	         '</p>';
 
 	$url = '<p class="comment-form-url">' .
 	       '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" tabindex="3" />' .
 	       '<label for="url">' . __( 'Website', 'genesis' ) . '</label>' .
-	       '</p><!-- #form-section-url .form-section -->';
+	       '</p>';
 
 	$comment_field = '<p class="comment-form-comment">' .
 	                 '<textarea id="comment" name="comment" cols="45" rows="8" tabindex="4" aria-required="true"></textarea>' .
-	                 '</p><!-- #form-section-comment .form-section -->';
+	                 '</p>';
 
 	$args = array(
+		'comment_field'        => $comment_field,
+		'title_reply'          => __( 'Speak Your Mind', 'genesis' ),
+		'comment_notes_before' => '',
+		'comment_notes_after'  => '',
 		'fields'               => array(
 			'author' => $author,
 			'email'  => $email,
 			'url'    => $url,
 		),
-		'comment_field'        => $comment_field,
-		'title_reply'          => __( 'Speak Your Mind', 'genesis' ),
-		'comment_notes_before' => '',
-		'comment_notes_after'  => '',
 	);
 
 	/** Merge $args with $defaults */
