@@ -6939,6 +6939,7 @@ h6,
 .wp-caption,
 #footer p {
   font-size: 14px;
+  font-size: 1.4rem;
 }
 /* 03d - Font Miscellaneous ----------- */
 /* line 129, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-genesis.less */
@@ -7525,18 +7526,11 @@ html:hover [class^="ss-"] {
 /* line 48, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-slider.less */
 #home-slider .slide-excerpt h2 {
   display: inline-block;
-  font-weight: 500;
-  line-height: 1.1;
-  font-size: 38px;
+  font-size: 36px;
+  font-size: 3.6rem;
   font-family: 'Source Sans Pro', sans-serif;
   margin-top: 0;
   margin-bottom: 1.6rem;
-}
-/* line 59, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/type.less */
-#home-slider .slide-excerpt h2 small {
-  font-weight: normal;
-  line-height: 1;
-  color: #999999;
 }
 /* line 56, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-slider.less */
 #home-slider .slide-excerpt h2 > a {
@@ -7548,17 +7542,10 @@ html:hover [class^="ss-"] {
 }
 /* line 64, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-slider.less */
 #home-slider .slide-excerpt p {
-  font-weight: 500;
-  line-height: 1.1;
-  font-size: 18px;
+  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 200;
   line-height: 2.6rem;
-}
-/* line 59, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/type.less */
-#home-slider .slide-excerpt p small {
-  font-weight: normal;
-  line-height: 1;
-  color: #999999;
 }
 /* line 70, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-slider.less */
 #home-slider .slide-excerpt .more-link {
@@ -7804,19 +7791,12 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link {
 .ft-jumbotron {
   padding: 0;
   margin: 0;
-  font-weight: 500;
-  line-height: 1.1;
-  font-size: 18px;
+  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 200;
   line-height: 31.5px;
   color: #5d5d5d;
   background-color: transparent;
-}
-/* line 59, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/type.less */
-.ft-jumbotron small {
-  font-weight: normal;
-  line-height: 1;
-  color: #999999;
 }
 /* line 25, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-jumbotron.less */
 .ft-jumbotron .row {
@@ -7841,15 +7821,8 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link {
 }
 /* line 32, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-jumbotron.less */
 .ft-jumbotron .ft-jumbotron-detail span {
-  font-weight: 500;
-  line-height: 1.1;
-  font-size: 24px;
-}
-/* line 59, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/type.less */
-.ft-jumbotron .ft-jumbotron-detail span small {
-  font-weight: normal;
-  line-height: 1;
-  color: #999999;
+  font-size: 21px;
+  font-size: 2.1rem;
 }
 /* line 36, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-jumbotron.less */
 .ft-jumbotron .ft-jumbotron-detail p {
@@ -7911,17 +7884,10 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link {
 /* line 15, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-inner.less */
 .widget h4 {
   margin-top: 0;
-  font-weight: 500;
-  line-height: 1.1;
   font-size: 24px;
+  font-size: 2.4rem;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
-}
-/* line 59, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/type.less */
-.widget h4 small {
-  font-weight: normal;
-  line-height: 1;
-  color: #999999;
 }
 /* line 22, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-inner.less */
 .widget .widgettitle {
@@ -7931,15 +7897,8 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link {
 /* line 29, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-inner.less */
 .ft-featured-page i {
   margin-right: 5px;
-  font-weight: 500;
-  line-height: 1.1;
-  font-size: 18px;
-}
-/* line 59, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/type.less */
-.ft-featured-page i small {
-  font-weight: normal;
-  line-height: 1;
-  color: #999999;
+  font-size: 21px;
+  font-size: 2.1rem;
 }
 /* line 34, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-inner.less */
 .ft-featured-page .btn {
@@ -8035,15 +7994,8 @@ footer {
 }
 /* line 53, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs .tab-pane .media-heading {
-  font-weight: 500;
-  line-height: 1.1;
   font-size: 18px;
-}
-/* line 59, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/type.less */
-.widget-ft-tabs .tab-pane .media-heading small {
-  font-weight: normal;
-  line-height: 1;
-  color: #999999;
+  font-size: 1.8rem;
 }
 /* line 59, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .widget-ft-tabs #tab-pane-tags .wp-tag-cloud > li {
@@ -8071,6 +8023,7 @@ footer {
 /* line 88, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-widgets.less */
 .ft-testimonials blockquote > p {
   font-size: 14px;
+  font-size: 1.4rem;
   font-weight: normal;
   line-height: inherit;
 }

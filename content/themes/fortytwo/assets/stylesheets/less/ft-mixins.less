@@ -4,6 +4,15 @@
 // Mixins
 // --------------------------------------------------
 
+// Generate rem font-sizes with pixel fallbacks
+// By default uses `@font-size-base` with an initial value of 14 (1.4rem or 14px)
+.font-size(@font-size: @font-size-base) {
+  @rem-size: (@font-size / 10);
+  font-size: ~"@{font-size}px";
+  font-size: ~"@{rem-size}rem";
+}
+
+
 .box-padding(@top: 0; @right: 0; @bottom: 0; @left: 0) {
   padding: unit(@top, px) unit(@right, px) unit(@bottom, px) unit(@left, px);
   padding: unit((@top /10), rem) unit((@right /10), rem) unit((@bottom /10), rem) unit((@left /10), rem);
