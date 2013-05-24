@@ -1,0 +1,117 @@
+// Custom file for grid layout to make Bootstrap work with Genesis
+
+//
+// Genesis Wrap and Bootstrap Container
+// --------------------------------------------------
+
+//
+// Grid system
+// --------------------------------------------------
+
+/*
+Structure and Layout
+---------------------------------------------------------------------------------------------------- */
+
+/* Site Containers
+--------------------------------------------- */
+
+.site-inner {
+  overflow: hidden;
+}
+
+/* Column Widths and Positions
+--------------------------------------------- */
+
+/* Wrapping div for .content and .sidebar-primary */
+
+.content-sidebar-sidebar .content-sidebar-wrap {
+  float: left;
+}
+
+.sidebar-content-sidebar .content-sidebar-wrap,
+.sidebar-sidebar-content .content-sidebar-wrap {
+  float: right;
+}
+
+.content {
+  float: right;
+  .generate-grid-columns > .col-span-(8);
+}
+
+.content-sidebar .content,
+.content-sidebar-sidebar .content,
+.sidebar-content-sidebar .content {
+  float: left;
+}
+
+.content-sidebar-sidebar .content,
+.sidebar-content-sidebar .content,
+.sidebar-sidebar-content .content {
+  width: 520px;
+}
+
+.full-width-content .content {
+  width: 100%;
+}
+
+/* Primary Sidebar */
+
+.sidebar-primary {
+  float: right;
+  width: 360px;
+}
+
+.sidebar-content .sidebar-primary,
+.sidebar-sidebar-content .sidebar-primary {
+  float: left;
+}
+
+/* Secondary Sidebar */
+
+.sidebar-secondary {
+  float: left;
+  width: 180px;
+}
+
+.content-sidebar-sidebar .sidebar-secondary {
+  float: right;
+}
+// Set the container width, and override it for fixed navbars in media queries
+.wrap,
+#content-sidebar-wrap,
+[id^="home"] .widget-wrap {
+  .container-fixed();
+}
+
+// Responsive: Tablets and up
+@media screen and (min-width: 768px) {
+  .wrap,
+  .content-sidebar-sidebar .content-sidebar-wrap,
+  .sidebar-content-sidebar .content-sidebar-wrap,
+  .sidebar-sidebar-content .content-sidebar-wrap,
+  [id^="home"] .widget-wrap {
+    max-width: 728px;
+  }
+}
+
+// Responsive: Desktops and up
+@media screen and (min-width: 992px) {
+  .wrap,
+  .content-sidebar-sidebar .content-sidebar-wrap,
+  .sidebar-content-sidebar .content-sidebar-wrap,
+  .sidebar-sidebar-content .content-sidebar-wrap,
+  [id^="home"] .widget-wrap {
+    max-width: 940px;
+  }
+}
+
+// Responsive: Large desktops and up
+@media screen and (min-width: 1200px) {
+  .wrap,
+  .content-sidebar-sidebar .content-sidebar-wrap,
+  .sidebar-content-sidebar .content-sidebar-wrap,
+  .sidebar-sidebar-content .content-sidebar-wrap,
+  [id^="home"] .widget-wrap {
+    max-width: 1170px;
+  }
+}

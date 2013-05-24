@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 /**
  * HTML5 markup being applied instead of default Genesis
  *
  * @category   Genesis
- * @package    Markup
+ * @package    Initializers
  * @subpackage HTML5
  * @author     Forsite Themes
  * @license    http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
@@ -14,24 +14,24 @@ remove_action( 'genesis_doctype', 'genesis_do_doctype' );
 add_action( 'genesis_doctype', 'fortytwo_html5_doctype' );
 /**
  * Changes the HTML doc type to HTML5.
- * 
+ *
  * @uses language_attributes() Detects languages attributes
  * @uses bloginfo() Display site constants
  * @author Remkus de Vries
  */
 function fortytwo_html5_doctype() {
 	?>
-<!DOCTYPE html>
-<html <?php language_attributes('xhtml'); ?>>
-<head>
-<meta http-equiv="Content-Type" content="<?php bloginfo( 'html_type' ); ?>; charset=<?php bloginfo( 'charset' ); ?>" />
-<?php
+	<!DOCTYPE html>
+	<html <?php language_attributes('xhtml'); ?>>
+	<head>
+	<meta http-equiv="Content-Type" content="<?php bloginfo( 'html_type' ); ?>; charset=<?php bloginfo( 'charset' ); ?>" />
+	<?php
 }
 
 add_action( 'wp_head','fortytwo_html5_forIE' );
 /**
  * Help bloody IE perform somewhat decent with HTML5.
- * 
+ *
  * @uses get_stylesheet_directory_uri() Returns the stylesheet directory
  */
 function fortytwo_html5_forIE() {
@@ -42,11 +42,11 @@ function fortytwo_html5_forIE() {
 	<?php
 }
 
-remove_action( 'genesis_loop', 'genesis_do_loop' ); 
-add_action( 'genesis_loop', 'fortytwo_html5_genesis_standard_loop' ); 
+remove_action( 'genesis_loop', 'genesis_do_loop' );
+add_action( 'genesis_loop', 'fortytwo_html5_genesis_standard_loop' );
 /**
  * Modified Genesis loop to accomodate HMTL5 markup.
- * 
+ *
  * It outputs basic wrapping HTML, but uses hooks to do most of its
  * content output like title, content, post information and comments.
  *
@@ -77,8 +77,8 @@ function fortytwo_html5_genesis_standard_loop() {
 
 	do_action( 'genesis_before_post' );
 	?>
-	<article <?php post_class(); ?>> 
-		
+	<article <?php post_class(); ?>>
+
 		<header>
 			<?php do_action( 'genesis_before_post_title' ); ?>
 			<?php do_action( 'genesis_post_title' ); ?>
@@ -86,15 +86,15 @@ function fortytwo_html5_genesis_standard_loop() {
 
 			<?php do_action( 'genesis_before_post_content' ); ?>
 		</header>
-		
+
 		<div class="entry-content">
 			<?php do_action( 'genesis_post_content' ); ?>
 		</div><!-- end .entry-content -->
-		
+
 		<footer>
 			<?php do_action( 'genesis_after_post_content' ); ?>
 		</footer>
-		
+
 	</article><!-- end .postclass -->
 	<?php
 
@@ -120,17 +120,17 @@ add_action( 'genesis_before_post_content', 'fortytwo_post_info' );
  * @since 1.0.0
  */
 function fortytwo_post_info() {
-	
+
 	if ( is_page() )
-	
-	// don't do post-info on pages. Evah.	
-	return;  
-	
+
+	// don't do post-info on pages. Evah.
+	return;
+
 	?>
 	<div class="post-info">
 		<span class="date published time">
 			<time class="entry-date" itemprop="startDate" datetime="<?php echo get_the_date( 'c' ); ?>" pubdate><?php echo get_the_date(); ?></time>
-		</span> By 
+		</span> By
 		<span class="author vcard">
 			<a class="fn n" href="<?php echo get_the_author_url( get_the_author_meta( 'ID' ) ); ?>" title="View <?php echo get_the_author(); ?>'s Profile" rel="author me"><?php the_author_meta( 'display_name' ); ?></a>
 		</span>
@@ -139,7 +139,7 @@ function fortytwo_post_info() {
 		$published = get_the_date( 'F j, Y' );
 		$modified = the_modified_date( 'F j, Y', '', '', FALSE );
 		$published_compare = get_the_date( 'Y-m-d' );
-		$modified_compare = the_modified_date( 'Y-m-d', '', '', FALSE ); 
+		$modified_compare = the_modified_date( 'Y-m-d', '', '', FALSE );
 			if ( $published_compare < $modified_compare ) {
 				echo '<span class="updated"><em>&middot; (Updated: ' . $modified . ')</em></span>';
 			} ?>
