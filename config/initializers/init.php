@@ -9,18 +9,15 @@ define( 'CHILD_THEME_URL', 'http://forsitethemes.com/themes/fortytwo' );
 define( 'CHILD_THEME_VERSION', filemtime( get_stylesheet_directory() . '/style.css' ) );
 
 /** Load Initializer Components */
-//require_once( 'ft-doctype.php' );
 require_once( 'ft-cleanup.php' );
 
 require_once( 'ft-scripts.php' );
 
 require_once( 'ft-nav.php' );
+
+require_once( 'ft-page-title.php' );
+
 require_once( 'ft-slider.php' );
-
-//require_once( 'genassist_enqueue_scripts.php' );
-//require_once( 'genassist_preferences.php' );
-//require_once( 'html5.php' );
-
 
 /** Activate modules **/
 
