@@ -20,3 +20,10 @@ require_once( 'ft-slider.php' );
 //require_once( 'genassist_enqueue_scripts.php' );
 //require_once( 'genassist_preferences.php' );
 //require_once( 'html5.php' );
+
+/** Activate modules **/
+require_once( CHILD_DIR . '/modules/genesis-responsive-slider/genesis-responsive-slider.php' );
+require_once( CHILD_DIR . '/modules/ft-featured-page/plugin.php' );
+require_once( CHILD_DIR . '/modules/ft-jumbotron/plugin.php' );
+require_once( CHILD_DIR . '/modules/ft-responsive-slider/plugin.php' );
+require_once( CHILD_DIR . '/modules/ft-testimonials/plugin.php' );
