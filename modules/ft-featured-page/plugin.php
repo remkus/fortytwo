@@ -164,7 +164,7 @@ class FT_Featured_Page extends WP_Widget {
 	public function register_admin_styles() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'ft-featured-page-admin-styles', plugins_url( 'ft-featured-page/css/admin.css' ) );
+		wp_enqueue_style( 'ft-featured-page-admin-styles', modules_url( 'ft-featured-page/css/admin.css' ) );
 	
 	} // end register_admin_styles
 
@@ -174,7 +174,7 @@ class FT_Featured_Page extends WP_Widget {
 	public function register_admin_scripts() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'ft-featured-page-admin-script', plugins_url( 'ft-featured-page/js/admin.js' ) );
+		wp_enqueue_script( 'ft-featured-page-admin-script', modules_url( 'ft-featured-page/js/admin.js' ) );
 		
 	} // end register_admin_scripts
 	
@@ -184,7 +184,7 @@ class FT_Featured_Page extends WP_Widget {
 	public function register_widget_styles() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'ft-featured-page-widget-styles', plugins_url( 'ft-featured-page/css/widget.css' ) );
+		wp_enqueue_style( 'ft-featured-page-widget-styles', modules_url( 'ft-featured-page/css/widget.css' ) );
 		
 	} // end register_widget_styles
 	
@@ -194,7 +194,7 @@ class FT_Featured_Page extends WP_Widget {
 	public function register_widget_scripts() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'ft-featured-page-script', plugins_url( 'ft-featured-page/js/widget.js' ) );
+		wp_enqueue_script( 'ft-featured-page-script', modules_url( 'ft-featured-page/js/widget.js' ) );
 		
 	} // end register_widget_scripts
 	

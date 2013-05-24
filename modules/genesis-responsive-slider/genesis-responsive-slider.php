@@ -97,7 +97,7 @@ function genesis_responsive_slider_sanitization() {
 function genesis_responsive_slider_scripts() {
 
 	/** easySlider JavaScript code */
-	wp_enqueue_script( 'flexslider', plugins_url('js/jquery.flexslider-min.js', __FILE__), array( 'jquery' ), GENESIS_RESPONSIVE_SLIDER_VERSION, TRUE );
+	wp_enqueue_script( 'flexslider', modules_url('genesis-responsive-slider/js/jquery.flexslider-min.js', __FILE__), array( 'jquery' ), GENESIS_RESPONSIVE_SLIDER_VERSION, TRUE );
 
 }
 
@@ -107,7 +107,7 @@ function genesis_responsive_slider_scripts() {
 function genesis_responsive_slider_styles() {
 
 	/** standard slideshow styles */
-	wp_register_style( 'slider_styles', plugins_url('style.css', __FILE__), array(), GENESIS_RESPONSIVE_SLIDER_VERSION );
+	wp_register_style( 'slider_styles', modules_url('genesis-responsive-slider/style.css', __FILE__), array(), GENESIS_RESPONSIVE_SLIDER_VERSION );
 	wp_enqueue_style( 'slider_styles' );
 
 }

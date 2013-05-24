@@ -164,7 +164,7 @@ class FT_Testimonials extends WP_Widget {
 	public function register_admin_styles() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'ft-testimonials-admin-styles', plugins_url( 'ft-testimonials/css/admin.css' ) );
+		wp_enqueue_style( 'ft-testimonials-admin-styles', modules_url( 'ft-testimonials/css/admin.css' ) );
 	
 	} // end register_admin_styles
 
@@ -174,7 +174,7 @@ class FT_Testimonials extends WP_Widget {
 	public function register_admin_scripts() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'ft-testimonials-admin-script', plugins_url( 'ft-testimonials/js/admin.js' ) );
+		wp_enqueue_script( 'ft-testimonials-admin-script', modules_url( 'ft-testimonials/js/admin.js' ) );
 		
 	} // end register_admin_scripts
 	
@@ -184,7 +184,7 @@ class FT_Testimonials extends WP_Widget {
 	public function register_widget_styles() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'ft-testimonials-widget-styles', plugins_url( 'ft-testimonials/css/widget.css' ) );
+		wp_enqueue_style( 'ft-testimonials-widget-styles', modules_url( 'ft-testimonials/css/widget.css' ) );
 		
 	} // end register_widget_styles
 	
@@ -194,7 +194,7 @@ class FT_Testimonials extends WP_Widget {
 	public function register_widget_scripts() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'ft-testimonials-script', plugins_url( 'ft-testimonials/js/widget.js' ) );
+		wp_enqueue_script( 'ft-testimonials-script', modules_url( 'ft-testimonials/js/widget.js' ) );
 		
 	} // end register_widget_scripts
 	

@@ -102,7 +102,7 @@ function genesis_responsive_slider_settings_scripts() {
 	wp_enqueue_script( 'common' );
 	wp_enqueue_script( 'wp-lists' );
 	wp_enqueue_script( 'postbox' );
-	wp_enqueue_script( 'genesis_responsive_slider_admin_scripts', plugins_url( 'js/admin.js', __FILE__ ), array( 'jquery' ), GENESIS_RESPONSIVE_SLIDER_VERSION, TRUE );
+	wp_enqueue_script( 'genesis_responsive_slider_admin_scripts', modules_url( 'js/admin.js', __FILE__ ), array( 'jquery' ), GENESIS_RESPONSIVE_SLIDER_VERSION, TRUE );
 }
 
 /*

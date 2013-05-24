@@ -164,7 +164,7 @@ class FT_Responsive_Slider extends WP_Widget {
 	public function register_admin_styles() {
 
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'widget-name-admin-styles', plugins_url( 'widget-name/css/admin.css' ) );
+		wp_enqueue_style( 'widget-name-admin-styles', modules_url( 'widget-name/css/admin.css' ) );
 
 	} // end register_admin_styles
 
@@ -174,7 +174,7 @@ class FT_Responsive_Slider extends WP_Widget {
 	public function register_admin_scripts() {
 
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'widget-name-admin-script', plugins_url( 'widget-name/js/admin.js' ), array('jquery') );
+		wp_enqueue_script( 'widget-name-admin-script', modules_url( 'widget-name/js/admin.js' ), array('jquery') );
 
 	} // end register_admin_scripts
 
@@ -184,7 +184,7 @@ class FT_Responsive_Slider extends WP_Widget {
 	public function register_widget_styles() {
 
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'widget-name-widget-styles', plugins_url( 'widget-name/css/widget.css' ) );
+		wp_enqueue_style( 'widget-name-widget-styles', modules_url( 'widget-name/css/widget.css' ) );
 
 	} // end register_widget_styles
 
@@ -194,7 +194,7 @@ class FT_Responsive_Slider extends WP_Widget {
 	public function register_widget_scripts() {
 
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'widget-name-script', plugins_url( 'widget-name/js/widget.js' ), array('jquery') );
+		wp_enqueue_script( 'widget-name-script', modules_url( 'widget-name/js/widget.js' ), array('jquery') );
 
 	} // end register_widget_scripts
 
