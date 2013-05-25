@@ -5,8 +5,8 @@
  * @category Genesis
  * @package  Widgets
  * @author   StudioPress
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link     http://www.studiopress.com/themes/genesis
+ * @license  GPL-2.0+
+ * @link     http://my.studiopress.com/themes/genesis
  */
 
 /**
@@ -64,7 +64,7 @@ class Genesis_User_Profile_Widget extends WP_Widget {
 	 * @param array $args Display arguments including before_title, after_title, before_widget, and after_widget.
 	 * @param array $instance The settings for the particular instance of the widget
 	 */
-	function widget( array $args, array $instance ) {
+	function widget( $args, $instance ) {
 
 		extract( $args );
 
@@ -115,7 +115,7 @@ class Genesis_User_Profile_Widget extends WP_Widget {
 	 * @param array $old_instance Old settings for this instance
 	 * @return array Settings to save or bool false to cancel saving
 	 */
-	function update( array $new_instance, array $old_instance ) {
+	function update( $new_instance, $old_instance ) {
 
 		$new_instance['title']          = strip_tags( $new_instance['title'] );
 		$new_instance['bio_text']       = current_user_can( 'unfiltered_html' ) ? $new_instance['bio_text'] : genesis_formatting_kses( $new_instance['bio_text'] );
@@ -130,7 +130,7 @@ class Genesis_User_Profile_Widget extends WP_Widget {
 	 *
 	 * @param array $instance Current settings
 	 */
-	function form( array $instance ) {
+	function form( $instance ) {
 
 		/** Merge with defaults */
 		$instance = wp_parse_args( (array) $instance, $this->defaults );

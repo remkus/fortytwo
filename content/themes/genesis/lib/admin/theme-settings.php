@@ -4,7 +4,7 @@
  *
  * @package Genesis\Admin
  * @author  StudioPress
- * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @license GPL-2.0+
  * @link    http://my.studiopress.com/themes/genesis/
  */
 
@@ -206,6 +206,163 @@ class Genesis_Admin_Settings extends Genesis_Admin_Boxes {
 				'feed_uri',
 				'comments_feed_uri',
 			)
+		);
+
+	}
+
+	function help() {
+
+		$screen = get_current_screen();
+		
+		$theme_settings_help =
+			'<h3>' . __( 'Theme Settings' , 'genesis' ) . '</h3>' .		
+			'<p>'  . __( 'Your Theme Settings provides control over how the theme works. You will be able to control a lot of common and even advanced features from this menu. Some child themes may add additional menu items to this list, including the ability to select different color schemes or set theme specific features such as a slider. Each of the boxes can be collapsed by clicking the box header and expanded by doing the same. They can also be dragged into any order you desire or even hidden by clicking on "Screen Options" in the top right of the screen and "unchecking" the boxes you do not want to see. Below you\'ll find the items common to every child theme...' , 'genesis' ) . '</p>';
+		
+		$information_help =
+			'<h3>' . __( 'Information' , 'genesis' ) . '</h3>' .		
+			'<p>'  . __( 'The information box allows you to see the current Genesis theme information and display if desired.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'Normally, this should be unchecked. You can also set to enable automatic updates.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'This does not mean the updates happen automatically without your permission; it will just notify you that an update is available. You must select it to perform the update.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'If you provide an email address and select to notify that email address when the update is available, your site will email you when the update can be performed.No, updates only affect files being updated.' , 'genesis' ) . '</p>';
+		
+		$feeds_help =
+			'<h3>' . __( 'Custom Feeds' , 'genesis' ) . '</h3>' .		
+			'<p>'  . __( 'If you use Feedburner to handle your rss feed(s) you can use this function to set your site\'s native feed to redirect to your Feedburner feed.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'By filling in the feed links calling for the main site feed, it will display as a link to Feedburner.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'By checking the "Redirect Feed" box, all traffic to default feed links will be redirected to the Feedburner link instead.' , 'genesis' ) . '</p>';
+		
+		$layout_help =
+			'<h3>' . __( 'Default Layout' , 'genesis' ) . '</h3>' .		
+			'<p>'  . __( 'This lets you select the default layout for your entire site. On most of the child themes you\'ll see these options:' , 'genesis' ) . '</p>' .
+			'<ul>' . 
+				'<li>' . __( 'Content Sidebar' , 'genesis' ) . '</li>' .
+				'<li>' . __( 'Sidebar Content' , 'genesis' ) . '</li>' .
+				'<li>' . __( 'Sidebar Content Sidebar' , 'genesis' ) . '</li>' .
+				'<li>' . __( 'Content Sidebar Sidebar' , 'genesis' ) . '</li>' .
+				'<li>' . __( 'Sidebar Sidebar Content' , 'genesis' ) . '</li>' .
+				'<li>' . __( 'Full Width Content' , 'genesis' ) . '</li>' .
+			'</ul>' . 
+			'<p>'  . __( 'These options can be extended or limited by the child theme.
+			Additionally, many of the child themes do not allow different layouts on the home page as they have been designed for a specific home page layout.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'This layout can also be overridden in the post/page/term layout options on each post/page/term.' , 'genesis' ) . '</p>';
+		
+		$navigation_help =
+			'<h3>' . __( 'Navigation Settings' , 'genesis' ) . '</h3>' .		
+			'<p>'  . __( 'The navigation settings let you select which navigation menus to enable (these are the menus that guide a user through the site).' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'In a default install the Primary Navigation appears directly after the header and the Secondary Navigation appears below the Primary Navigation. In some child themes this is changed.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'The most common change is to move the Primary Navigation to above the header. ' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'Each theme also has a navigation built into the Header Right, which can be activated by putting a Custom Nav Menu Widget into the Header Right Sidebar.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'The "Fancy Dropdowns" option enables a small JavaScript (enhanced code) to run that animates the dropdowns and also displays arrows when sub menus are present.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'In addition to selecting to include the menu, you must also create a custom menu (Click "Menus" under the "Appearance" tab) and assign it to the Primary or Secondary menu position. If you are using the Header Right you do not need to assign a position, instead you will select the menu to use in the widget.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'To create a drop down menu with the custom menu, you need to add all of the menu items. The drop down menu items can be dragged under and slightly right of the parent menu item. This will "nest" the menu item.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'To add a home link to your menu, create a custom link with the URL as your site URL and Label it "Home" or whatever you wish the menu to say. ' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'You can also click the arrow beside each menu item and change the Label. This allows you to have good, SEO friendly page titles, and also simple menu friendly labels for that page.' , 'genesis' ) . '</p>';
+		
+		$breadcrumbs_help =
+			'<h3>' . __( 'Breadcrumbs' , 'genesis' ) . '</h3>' .		
+			'<p>'  . __( 'This box lets you define where the "Breadcrumbs" display. The Breadcrumb is the navigation tool that displays where a visitor is on the site at any given moment.' , 'genesis' ) . '</p>';
+		
+		$comments_help =
+			'<h3>' . __( 'Comments and Trackbacks' , 'genesis' ) . '</h3>' .		
+			'<p>'  . __( 'This allows a site wide decision on whether comments and trackbacks (notifications when someone links to your page) are enabled for posts and pages.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'If you enable comments or trackbacks here, it can be disabled on an individual post or page. If you disable here, they cannot be enabled on an individual post or page.' , 'genesis' ) . '</p>';
+		
+		$archives_help =
+			'<h3>' . __( 'Content Archives' , 'genesis' ) . '</h3>' .		
+			'<p>'  . __( 'In the Genesis Theme Settings you may change the site wide Content Archives options to control what displays in the site\'s Archives.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'Archives include any pages using the blog template, category pages, tag pages, date archive, author archives, and the latest posts if there is no custom home page.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'The first option allows you to display the post content or the post excerpt. The Display post content setting will display the entire post including HTML code up to the <!--more--> tag if used (this is HTML for the comment tag that is not displayed in the browser).' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'It may also be coupled with the second field "Limit content to [___] characters" to limit the content to a specific number of letters or spaces. This will strip any HTML, but allows for more precise and easily changed lengths than the excerpt.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'The Display post excerpt setting will display the first 55 words of the post after also stripping any included HTML or the manual/custom excerpt added in the post edit screen.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'The \'Include post image?\' setting allows you to show a thumbnail of the first attached image or currently set featured image.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'This option should not be used with the post content unless the content is limited to avoid duplicate images.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'The \'Image Size\' list is populated by the available image sizes defined in the theme.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'Post Navigation Technique allows you to select one of three navigation methods.' , 'genesis' ) . '</p>';
+		
+		$blog_help =
+			'<h3>' . __( 'Blog Page' , 'genesis' ) . '</h3>' .		
+			'<p>'  . __( 'This works with the Blog Template, which is a page template that shows your latest posts. It\'s what people see when they land on your homepage.
+			In the General Settings you can select a specific category to display from the drop down menu, and exclude categories by ID, or even select how many posts you\'d like to display on this page.
+			There are some special features of the Blog Template that allow you to specify which category to show on each page using the template, which is helpful if you have a "News" category (or something else) that you want to display separately.
+			You can find more on this feature in the ' , 'genesis' ) . '<a href="http://www.studiopress.com/tutorials/genesis/add-post-category-page" target="_blank">' . __( 'How to Add a Post Category Page tutorial.' , 'genesis' ) . '</a></p>';
+		
+		$scripts_help =
+			'<h3>' . __( 'Header and Footer Scripts' , 'genesis' ) . '</h3>' .		
+			'<p>'  . __( 'This provides you with two fields that will output to the <head></head> of your site and just before the </body>. These will appear on every page of the site and are a great way to add analytic code and other scripts. You cannot use PHP in these fields. If you need to use PHP then you should look into the Genesis Simple Hooks plugin.' , 'genesis' ) . '</p>';
+		
+		$home_help =
+			'<h3>' . __( 'How Home Pages Work' , 'genesis' ) . '</h3>' .
+			'<p>'  . __( 'Most Genesis child themes include a custom home page.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'To use this type of home page, make sure your latest posts are set to show on the front page. You can setup a page with the Blog page template to show a blog style list of your latest posts on another page.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'This home page is typically setup via widgets in the sidebars for the home page. This can be accessed via the Widgets menu item under Appearance.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'Child themes that include this type of home page typically include additional theme-specific tutorials which can be accessed via a sticky post at the top of that child theme support forum.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'If your theme uses a custom home page and you want to show the latest posts in a blog format, do not use the blog template. Instead, you need to rename the home.php file to home-old.php instead.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'Another common home page is the "blog" type home page, which is common to most of the free child themes. This shows your latest posts and requires no additional setup.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'The third type of home page is the new dynamic home page. This is common on the newest child themes. It will show your latest posts in a blog type listing unless you put widgets into the home page sidebars.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'This setup is preferred because it makes it easier to show a blog on the front page (no need to rename the home.php file) and does not have the confusion of no content on the home page when the theme is initially installed.' , 'genesis' ) . '</p>';
+		
+		$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-theme-settings',
+			'title'   => __( 'Theme Settings' , 'genesis' ),
+			'content' => $theme_settings_help,
+		) );
+		$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-information',
+			'title'   => __( 'Information' , 'genesis' ),
+			'content' => $information_help,
+		) );
+		$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-feeds',
+			'title'   => __( 'Custom Feeds' , 'genesis' ),
+			'content' => $feeds_help,
+		) );
+		$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-layout',
+			'title'   => __( 'Default Layout' , 'genesis' ),
+			'content' => $layout_help,
+		) );
+		$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-navigation',
+			'title'   => __( 'Navigation Settings' , 'genesis' ),
+			'content' => $navigation_help,
+		) );
+		$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-breadcrumbs',
+			'title'   => __( 'Breadcrumbs' , 'genesis' ),
+			'content' => $breadcrumbs_help,
+		) );
+		$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-comments',
+			'title'   => __( 'Comments and Trackbacks' , 'genesis' ),
+			'content' => $comments_help,
+		) );
+		$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-archives',
+			'title'   => __( 'Content Archives' , 'genesis' ),
+			'content' => $archives_help,
+		) );
+	$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-blog',
+			'title'   => __( 'Blog Page' , 'genesis' ),
+			'content' => $blog_help,
+		) );
+		$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-scripts',
+			'title'   => __( 'Header and Footer Scripts' , 'genesis' ),
+			'content' => $scripts_help,
+		) );
+		$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-home',
+			'title'   => __( 'Home Pages' , 'genesis' ),
+			'content' => $home_help,
+		) );
+
+		//* Add help sidebar
+		$screen->set_help_sidebar(
+			'<p><strong>' . __( 'For more information:', 'genesis' ) . '</strong></p>' .
+			'<p><a href="http://my.studiopress.com/help/" target="_blank" title="' . __( 'Get Support', 'genesis' ) . '">' . __( 'Get Support', 'genesis' ) . '</a></p>' .
+			'<p><a href="http://my.studiopress.com/snippets/" target="_blank" title="' . __( 'Genesis Snippets', 'genesis' ) . '">' . __( 'Genesis Snippets', 'genesis' ) . '</a></p>' .
+			'<p><a href="http://my.studiopress.com/tutorials/" target="_blank" title="' . __( 'Genesis Tutorials', 'genesis' ) . '">' . __( 'Genesis Tutorials', 'genesis' ) . '</a></p>'
 		);
 
 	}

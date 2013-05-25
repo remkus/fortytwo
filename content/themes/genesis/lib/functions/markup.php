@@ -5,8 +5,8 @@
  * @category Genesis
  * @package  Admin
  * @author   StudioPress
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link     http://www.studiopress.com/themes/genesis
+ * @license  GPL-2.0+
+ * @link     http://my.studiopress.com/themes/genesis
  **/
 
 /**
@@ -274,7 +274,7 @@ function genesis_attributes_entry_image_widget( $attributes ) {
 
 	global $post;
 
-	$attributes['class']    = 'alignleft post-image entry-image attachment-' . $post->post_type;
+	$attributes['class']    = 'post-image entry-image attachment-' . $post->post_type;
 	$attributes['itemprop'] = 'image';
 
 	return $attributes;

@@ -8,8 +8,8 @@
  * @category Genesis
  * @package  Shortcodes
  * @author   StudioPress
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link     http://www.studiopress.com/themes/genesis
+ * @license  GPL-2.0+
+ * @link     http://my.studiopress.com/themes/genesis
  */
 
 add_shortcode( 'footer_backtotop', 'genesis_footer_backtotop_shortcode' );
@@ -144,7 +144,7 @@ function genesis_footer_genesis_link_shortcode( $atts ) {
 	$defaults = array(
 		'after'  => '',
 		'before' => '',
-		'url'    => 'http://www.studiopress.com/themes/genesis',
+		'url'    => 'http://my.studiopress.com/themes/genesis',
 	);
 	$atts = shortcode_atts( $defaults, $atts, 'footer_genesis_link' );
 

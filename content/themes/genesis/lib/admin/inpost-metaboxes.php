@@ -4,7 +4,7 @@
  *
  * @package Genesis\Admin
  * @author  StudioPress
- * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @license GPL-2.0+
  * @link    http://my.studiopress.com/themes/genesis/
  */
 
@@ -247,10 +247,9 @@ function genesis_inpost_layout_box() {
 
 add_action( 'save_post', 'genesis_inpost_layout_save', 1, 2 );
 /**
- * Saves the layout options when we save a post / page.
+ * Save the layout options when we save a post or page.
  *
- * Since there's no sanitizing of data, the values are pulled from identically
- * named keys in $_POST.
+ * Since there's no sanitizing of data, the values are pulled from identically named keys in $_POST.
  *
  * @since 0.2.2
  *

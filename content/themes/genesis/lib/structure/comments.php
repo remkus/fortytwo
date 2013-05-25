@@ -6,8 +6,8 @@
  * @package    Structure
  * @subpackage Comments
  * @author     StudioPress
- * @license    http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link       http://www.studiopress.com/themes/genesis
+ * @license    GPL-2.0+
+ * @link       http://my.studiopress.com/themes/genesis
  */
 
 add_action( 'genesis_after_post', 'genesis_get_comments_template' );
@@ -315,7 +315,6 @@ add_filter( 'comment_form_defaults', 'genesis_comment_form_args' );
  * @since 1.8.0
  *
  * @global string $user_identity Display name of the user
- * @global integer $id Post ID to generate the form for
  *
  * @param array $defaults Comment form defaults
  *
@@ -327,7 +326,7 @@ function genesis_comment_form_args( array $defaults ) {
 	if ( current_theme_supports( 'genesis-html5' ) )
 		return $defaults;
 
-	global $user_identity, $id;
+	global $user_identity;
 
 	$commenter = wp_get_current_commenter();
 	$req       = get_option( 'require_name_email' );
@@ -370,6 +369,6 @@ function genesis_comment_form_args( array $defaults ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	/** Return filterable array of $args, along with other optional variables */
-	return apply_filters( 'genesis_comment_form_args', $args, $user_identity, $id, $commenter, $req, $aria_req );
+	return apply_filters( 'genesis_comment_form_args', $args, $user_identity, get_the_ID(), $commenter, $req, $aria_req );
 
 }

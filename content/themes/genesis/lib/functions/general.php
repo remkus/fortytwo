@@ -6,8 +6,8 @@
  * @category Genesis
  * @package  Admin
  * @author   StudioPress
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link     http://www.studiopress.com/themes/genesis
+ * @license  GPL-2.0+
+ * @link     http://my.studiopress.com/themes/genesis
  **/
 
 /**
@@ -301,5 +301,77 @@ function genesis_plugin_install_link( $plugin_slug = '', $text = '' ) {
 	$title_text = sprintf( __( 'Install %s', 'genesis' ), $text );
 
 	return sprintf( '<a href="%s" class="thickbox" title="%s">%s</a>', esc_url( $url ), esc_attr( $title_text ), esc_html( $text ) );
+
+}
+
+/**
+ * An array of Genesis contributors for the current development cycle.
+ * 
+ * @since 2.0.0
+ */
+function genesis_contributors() {
+
+	return array(
+		array(
+			'name'     => 'Jared Atchison',
+			'url'      => 'http://twitter.com/jaredatch',
+			'gravatar' => 'http://0.gravatar.com/avatar/e341eca9e1a85dcae7127044301b4363?s=60',
+		),
+		array(
+			'name'     => 'Chris Cochran',
+			'url'      => 'http://twitter.com/tweetsfromchris',
+			'gravatar' => 'http://0.gravatar.com/avatar/aa0bea067ea6bfb854387d73f595aa1c?s=60',
+		),
+		array(
+			'name'     => 'Nick Croft',
+			'url'      => 'http://twitter.com/nick_thegeek',
+			'gravatar' => 'http://0.gravatar.com/avatar/3241d4eab93215b5487e162b87569e42?s=60',
+		),
+		array(
+			'name'     => 'David Decker',
+			'url'      => 'http://twitter.com/deckerweb',
+			'gravatar' => 'http://0.gravatar.com/avatar/28d02f8d09fc32fccc0282efdc23a4e5?s=60',
+		),
+		array(
+			'name'     => 'Bill Erickson',
+			'url'      => 'http://twitter.com/billerickson',
+			'gravatar' => 'http://0.gravatar.com/avatar/ae510affa31e5b946623bda4ff969b67?s=60',
+		),
+		array(
+			'name'     => 'Thomas Griffin',
+			'url'      => 'http://twitter.com/jthomasgriffin',
+			'gravatar' => 'http://0.gravatar.com/avatar/fe4225114bfd1f8993c6d20d32227537?s=60',
+		),
+		array(
+			'name'     => 'Gary Jones',
+			'url'      => 'http://twitter.com/garyj',
+			'gravatar' => 'http://0.gravatar.com/avatar/e70d4086e89c2e1e081870865be68485?s=60',
+		),
+		array(
+			'name'     => 'Andrew Norcross',
+			'url'      => 'http://twitter.com/norcross',
+			'gravatar' => 'http://0.gravatar.com/avatar/26ab8f9b2c86b10e7968b882403b3bf8?s=60',
+		),
+		array(
+			'name'     => 'Greg Rickaby',
+			'url'      => 'http://twitter.com/GregRickaby',
+			'gravatar' => 'http://0.gravatar.com/avatar/28af3e39c0a1fe4c31367c7e9a8bcac3?s=60',
+		),
+		array(
+			'name'     => 'Rafal Tomal',
+			'url'      => 'http://twitter.com/rafaltomal',
+			'gravatar' => 'http://0.gravatar.com/avatar/c9f7b936cd19bd5aba8831ddea21f05d?s=60',
+		),
+		array(
+			'name'     => 'Travis Smith',
+			'url'      => 'http://twitter.com/wp_smith',
+			'gravatar' => 'http://0.gravatar.com/avatar/7e673cdf99e6d7448f3cbaf1424c999c?s=60',
+		),
+		array(
+			'name'     => 'Ade Walker',
+			'url'      => 'http://www.studiograsshopper.ch/',
+			'gravatar' => 'http://0.gravatar.com/avatar/0256aea37448743404a04ff8f254989b?s=60',
+		),
+	);
 
 }

@@ -5,8 +5,8 @@
  * @category Genesis
  * @package  Widgets
  * @author   StudioPress
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link     http://www.studiopress.com/themes/genesis
+ * @license  GPL-2.0+
+ * @link     http://my.studiopress.com/themes/genesis
  */
 
 /**
@@ -82,7 +82,7 @@ class Genesis_Featured_Post extends WP_Widget {
 	 * @param array $args Display arguments including before_title, after_title, before_widget, and after_widget.
 	 * @param array $instance The settings for the particular instance of the widget
 	 */
-	function widget( array $args, array $instance ) {
+	function widget( $args, $instance ) {
 
 		global $_genesis_displayed_ids;
 
@@ -105,7 +105,7 @@ class Genesis_Featured_Post extends WP_Widget {
 			'orderby'   => $instance['orderby'],
 			'order'     => $instance['order'],
 		);
-		
+
 		/** Exclude displayed IDs from this loop? */
 		if ( $instance['exclude_displayed'] )
 			$query_args['post__not_in'] = (array) $_genesis_displayed_ids;
@@ -140,23 +140,29 @@ class Genesis_Featured_Post extends WP_Widget {
 
 			if ( $instance['show_title'] && $instance['show_byline'] )
 				echo genesis_html5() ? '<header class="entry-header">' : '';
-			
+
 				if ( ! empty( $instance['show_title'] ) )
 					printf( '<h2 class="entry-title"><a href="%s" title="%s">%s</a></h2>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_title() );
 
 				if ( ! empty( $instance['show_byline'] ) && ! empty( $instance['post_info'] ) )
 					printf( genesis_html5() ? '<p class="entry-meta">%s</p>' : '<p class="byline post-info">%s</p>', do_shortcode( $instance['post_info'] ) );
-			
+
 			if ( $instance['show_title'] && $instance['show_byline'] )
 				echo genesis_html5() ? '</header>' : '';
 
 			if ( ! empty( $instance['show_content'] ) ) {
+
+				echo genesis_html5() ? '<div class="entry-content">' : '';
+
 				if ( 'excerpt' == $instance['show_content'] )
 					the_excerpt();
 				elseif ( 'content-limit' == $instance['show_content'] )
 					the_content_limit( (int) $instance['content_limit'], esc_html( $instance['more_text'] ) );
 				else
 					the_content( esc_html( $instance['more_text'] ) );
+
+				echo genesis_html5() ? '</div>' : '';
+
 			}
 
 			genesis_markup( array(
@@ -220,7 +226,7 @@ class Genesis_Featured_Post extends WP_Widget {
 	 * @param array $old_instance Old settings for this instance
 	 * @return array Settings to save or bool false to cancel saving
 	 */
-	function update( array $new_instance, array $old_instance ) {
+	function update( $new_instance, $old_instance ) {
 
 		$new_instance['title']     = strip_tags( $new_instance['title'] );
 		$new_instance['more_text'] = strip_tags( $new_instance['more_text'] );
@@ -236,7 +242,7 @@ class Genesis_Featured_Post extends WP_Widget {
 	 *
 	 * @param array $instance Current settings
 	 */
-	function form( array $instance ) {
+	function form( $instance ) {
 
 		/** Merge with defaults */
 		$instance = wp_parse_args( (array) $instance, $this->defaults );

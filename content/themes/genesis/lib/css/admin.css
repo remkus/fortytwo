@@ -1,3 +1,5 @@
+@import url(//fonts.googleapis.com/css?family=Lato:700);
+
 /* A dividing horizontal rule ----------- */
 
 hr.div {
@@ -14,6 +16,17 @@ hr.div {
 	height: 16px;
 	width: 16px;
 }
+
+.admin-color-mp6 #adminmenu .toplevel_page_genesis .wp-menu-image img {
+	display: none;
+}
+
+.admin-color-mp6 #adminmenu .toplevel_page_genesis .wp-menu-image:before {
+	content: 'G';
+	font-family: 'Lato', sans-serif !important;
+	font-weight: 700;
+}
+
 
 /* Genesis Upgraded ----------- */
 
@@ -41,8 +54,11 @@ hr.div {
 /* Genesis metabox styles ----------- */
 
 .genesis-metaboxes {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	padding-bottom: 20px;
-	width: 650px;
+	width: 690px;
 }
 
 .genesis-metaboxes h2 {
@@ -67,11 +83,15 @@ hr.div {
 
 .genesis-metaboxes .metabox-holder {
 	clear: both;
-	overflow: hidden;
 }
 
 .genesis-metaboxes .inside {
+	overflow: hidden;
 	padding: 0 10px;
+}
+
+.postbox .inside > p:last-child {
+	margin: 1em 0 !important;
 }
 
 .genesis-metaboxes fieldset {
