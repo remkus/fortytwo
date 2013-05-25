@@ -4,15 +4,15 @@
  *
  * @package Genesis\Admin
  * @author  StudioPress
- * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @license GPL-2.0+
  * @link    http://my.studiopress.com/themes/genesis/
  */
 
 add_action( 'after_setup_theme', 'genesis_add_admin_menu' );
 /**
- * Adds Genesis top-level item in admin menu.
+ * Add Genesis top-level item in admin menu.
  *
- * Calls the genesis_admin_menu hook at the end - all submenu items should be attached to that hook to ensure
+ * Calls the `genesis_admin_menu hook` at the end - all submenu items should be attached to that hook to ensure
  * correct ordering.
  *
  * @since 0.2.0
@@ -49,7 +49,7 @@ function genesis_add_admin_menu() {
 
 add_action( 'genesis_admin_menu', 'genesis_add_admin_submenus' );
 /**
- * Adds submenu items under Genesis item in admin menu.
+ * Add submenu items under Genesis item in admin menu.
  *
  * @since 0.2.0
  *
@@ -60,6 +60,7 @@ add_action( 'genesis_admin_menu', 'genesis_add_admin_submenus' );
  * @global string $_genesis_admin_seo_settings
  * @global string $_genesis_admin_import_export
  * @global string $_genesis_admin_readme
+ *
  * @return null Returns null if Genesis menu is disabled
  */
 function genesis_add_admin_submenus() {
@@ -98,7 +99,7 @@ add_action( 'admin_menu', 'genesis_add_cpt_archive_page', 5 );
 /**
  * Add archive settings page to relevant custom post type registrations.
  *
- * An instance of Genesis_Admin_CPT_Archive_Settings is instantiated for each relevant CPT, assigned to an individual
+ * An instance of `Genesis_Admin_CPT_Archive_Settings` is instantiated for each relevant CPT, assigned to an individual
  * global variable.
  *
  * @since 2.0.0

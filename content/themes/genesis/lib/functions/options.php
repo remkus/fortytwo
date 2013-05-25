@@ -6,8 +6,8 @@
  * @category Genesis
  * @package  Options
  * @author   StudioPress
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link     http://www.studiopress.com/themes/genesis
+ * @license  GPL-2.0+
+ * @link     http://my.studiopress.com/themes/genesis
  */
 
 /**
@@ -155,9 +155,11 @@ function genesis_seo_option( $key, $use_cache = true ) {
  * @return mixed The option value.
  */
 function genesis_get_cpt_option( $key, $post_type_name = '', $use_cache = true ) {
+
 	$post_type_name = genesis_get_global_post_type_name( $post_type_name );
 
 	return genesis_get_option( $key, GENESIS_CPT_ARCHIVE_SETTINGS_FIELD_PREFIX . $post_type_name, $use_cache );
+
 }
 
 /**
@@ -172,7 +174,9 @@ function genesis_get_cpt_option( $key, $post_type_name = '', $use_cache = true )
  * @param bool   $use_cache      Optional. Whether to use the Genesis cache value or not. Defaults to true.
  */
 function genesis_cpt_option( $key, $post_type_name, $use_cache = true ) {
+
 	echo genesis_get_cpt_option( $key, $post_type_name, $use_cache );
+
 }
 
 /**
@@ -201,28 +205,21 @@ function genesis_custom_field( $field, $output_pattern = '%s' ) {
  *
  * @since 0.1.3
  *
- * @global stdClass $post Post object.
- * @global integer $id Post ID.
  * @param string $field Custom field key.
  * @return string|boolean Return value or false on failure.
  */
 function genesis_get_custom_field( $field ) {
 
-	global $id, $post;
+	if ( null === get_the_ID() )
+		return '';
 
-	if ( null === $id && null === $post )
-		return false;
+	$custom_field = get_post_meta( get_the_ID(), $field, true );
 
-	$post_id = null === $id ? $post->ID : $id;
+	if ( ! $custom_field )
+		return '';
 
-	$custom_field = get_post_meta( $post_id, $field, true );
-
-	//** Return custom field, slashes stripped, sanitized if string
-	if ( $custom_field )
-		return is_array( $custom_field ) ? stripslashes_deep( $custom_field ) : stripslashes( wp_kses_decode_entities( $custom_field ) );
-
-	//** Return false if custom field is empty
-	return false;
+	//* Return custom field, slashes stripped, sanitized if string
+	return is_array( $custom_field ) ? stripslashes_deep( $custom_field ) : stripslashes( wp_kses_decode_entities( $custom_field ) );
 
 }
 

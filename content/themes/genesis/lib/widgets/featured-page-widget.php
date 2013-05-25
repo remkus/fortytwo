@@ -5,8 +5,8 @@
  * @category Genesis
  * @package  Widgets
  * @author   StudioPress
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link     http://www.studiopress.com/themes/genesis
+ * @license  GPL-2.0+
+ * @link     http://my.studiopress.com/themes/genesis
  */
 
 /**
@@ -40,7 +40,6 @@ class Genesis_Featured_Page extends WP_Widget {
 			'image_alignment' => '',
 			'image_size'      => '',
 			'show_title'      => 0,
-			'show_byline'     => 0,
 			'show_content'    => 0,
 			'content_limit'   => '',
 			'more_text'       => '',
@@ -69,7 +68,7 @@ class Genesis_Featured_Page extends WP_Widget {
 	 * @param array $args Display arguments including before_title, after_title, before_widget, and after_widget.
 	 * @param array $instance The settings for the particular instance of the widget
 	 */
-	function widget( array $args, array $instance ) {
+	function widget( $args, $instance ) {
 
 		extract( $args );
 
@@ -102,33 +101,27 @@ class Genesis_Featured_Page extends WP_Widget {
 			if ( $instance['show_image'] && $image )
 				printf( '<a href="%s" title="%s" class="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), esc_attr( $instance['image_alignment'] ), $image );
 
-			if ( ! empty( $instance['show_title'] ) || ! empty( $instance['show_byline'] ) )
+			if ( ! empty( $instance['show_title'] ) )
 				echo genesis_html5() ? '<header class="entry-header">' : '';
 
 				if ( ! empty( $instance['show_title'] ) )
 					printf( '<h2 class="entry-title"><a href="%s" title="%s">%s</a></h2>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_title() );
 
-				if ( ! empty( $instance['show_byline'] ) ) {
-					echo genesis_html5() ? '<p class="entry-meta">' : '<p class="byline">';
-					the_time( 'F j, Y' );
-					echo ' ' . __( 'by', 'genesis' ) . ' ';
-					the_author_posts_link();
-					echo '&#x02026;';
-					comments_popup_link( __( 'Leave a Comment', 'genesis' ), __( '1 Comment', 'genesis' ), __( '% Comments', 'genesis' ) );
-					echo ' ';
-					edit_post_link( __( '(Edit)', 'genesis' ), '', '' );
-					echo '</p>';
-				}
-			
-			if ( ! empty( $instance['show_title'] ) || ! empty( $instance['show_byline'] ) )
+			if ( ! empty( $instance['show_title'] ) )
 				echo genesis_html5() ? '</header>' : '';
-				
+
 
 			if ( ! empty( $instance['show_content'] ) ) {
+
+				echo genesis_html5() ? '<div class="entry-content">' : '';
+
 				if ( empty( $instance['content_limit'] ) )
 					the_content( $instance['more_text'] );
 				else
 					the_content_limit( (int) $instance['content_limit'], esc_html( $instance['more_text'] ) );
+
+				echo genesis_html5() ? '</div>' : '';
+
 			}
 
 			genesis_markup( array(
@@ -157,7 +150,7 @@ class Genesis_Featured_Page extends WP_Widget {
 	 * @param array $old_instance Old settings for this instance
 	 * @return array Settings to save or bool false to cancel saving
 	 */
-	function update( array $new_instance, array $old_instance ) {
+	function update( $new_instance, $old_instance ) {
 
 		$new_instance['title']     = strip_tags( $new_instance['title'] );
 		$new_instance['more_text'] = strip_tags( $new_instance['more_text'] );
@@ -172,7 +165,7 @@ class Genesis_Featured_Page extends WP_Widget {
 	 *
 	 * @param array $instance Current settings
 	 */
-	function form( array $instance ) {
+	function form( $instance ) {
 
 		/** Merge with defaults */
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
@@ -221,11 +214,6 @@ class Genesis_Featured_Page extends WP_Widget {
 		<p>
 			<input id="<?php echo $this->get_field_id( 'show_title' ); ?>" type="checkbox" name="<?php echo $this->get_field_name( 'show_title' ); ?>" value="1"<?php checked( $instance['show_title'] ); ?> />
 			<label for="<?php echo $this->get_field_id( 'show_title' ); ?>"><?php _e( 'Show Page Title', 'genesis' ); ?></label>
-		</p>
-
-		<p>
-			<input id="<?php echo $this->get_field_id( 'show_byline' ); ?>" type="checkbox" name="<?php echo $this->get_field_name( 'show_byline' ); ?>" value="1"<?php checked( $instance['show_byline'] ); ?> />
-			<label for="<?php echo $this->get_field_id( 'show_byline' ); ?>"><?php _e( 'Show Page Byline', 'genesis' ); ?></label>
 		</p>
 
 		<p>

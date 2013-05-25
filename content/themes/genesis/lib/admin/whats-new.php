@@ -4,7 +4,7 @@
  *
  * @package Genesis\Admin
  * @author  StudioPress
- * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @license GPL-2.0+
  * @link    http://my.studiopress.com/themes/genesis/
  */
 
@@ -68,13 +68,13 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 
 				<h4><?php _e( 'Microdata', 'genesis' ); ?></h4>
 				<p><?php printf( __( 'If you are using a theme with HTML5 enabled, Genesis will also output your markup using Microdata. Not sure what that is? We don\'t blame you. Take a look at <a href="%s" target="_blank">this explanation</a>. Still confused? Don\'t worry. That\'s why you\'re using a framework. We did all the research and modified the markup to serve search engines the Microdata they\'re looking for, so you don\'t have to. It\'s good to be a Genesis user.', 'genesis' ), 'http://html5doctor.com/microdata/' ); ?></p>
-				
+
 				<h4><?php _e( 'A Brand New Design', 'genesis' ); ?></h4>
 				<p><?php _e( 'Genesis is sporting a fresh new look. And we\'ve taken advantage of the new HTML5 markup, as well as some snazzy CSS3. We think you\'re gonna love this.', 'genesis' ); ?></p>
-				
+
 				<h4><?php _e( 'Removing Features', 'genesis' ); ?></h4>
 				<p><?php _e( 'We like to keep Genesis as lightweight as possible for you. After all, nobody wants to use software with dead weight. So we\'ve removed the Latest Tweets widget, eNews widget, the "post templates" feature, and the "fancy dropdowns" setting. But fear not! If you want those features back, click below to install the handy plugins we created for you.', 'genesis' ); ?></p>
-				
+
 				<p>
 					<ul>
 						<li><?php echo genesis_plugin_install_link( 'genesis-latest-tweets', __( 'Genesis Latest Tweets Widget', 'genesis' ) ); ?></li>
@@ -86,7 +86,7 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 
 				<h4><?php _e( 'Boring, but important', 'genesis' ); ?></h4>
 				<p><?php _e( 'We\'re always improving things. Call it a sickness, but we like to make things work really, really well. Here\'s a list of the technical changes in this latest release.', 'genesis' ); ?></p>
-				
+
 				<p>
 					<ul>
 						<li><?php _e( 'Better named loop hooks for HTML5.', 'genesis' ); ?></li>
@@ -100,7 +100,7 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 						<li><?php _e( 'Entries without titles now display a permalink after the post content.', 'genesis' ); ?></li>
 					</ul>
 				<p>
-				
+
 				</div>
 		</div>
 
@@ -128,74 +128,13 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 
 		</div>
 
-		<div class="contributers">
+		<div class="contributors">
 
 			<h3><?php _e( 'Contributors', 'genesis' ); ?></h3>
 
 			<ul class="wp-people-group" id="wp-people-group-contributing-developers">
 			<?php
-			$contributors = array(
-				array(
-					'name'     => 'Jared Atchison',
-					'url'      => 'http://twitter.com/jaredatch',
-					'gravatar' => 'http://0.gravatar.com/avatar/e341eca9e1a85dcae7127044301b4363?s=60',
-				),
-				array(
-					'name'     => 'Chris Cochran',
-					'url'      => 'http://twitter.com/tweetsfromchris',
-					'gravatar' => 'http://0.gravatar.com/avatar/aa0bea067ea6bfb854387d73f595aa1c?s=60',
-				),
-				array(
-					'name'     => 'Nick Croft',
-					'url'      => 'http://twitter.com/nick_thegeek',
-					'gravatar' => 'http://0.gravatar.com/avatar/3241d4eab93215b5487e162b87569e42?s=60',
-				),
-				array(
-					'name'     => 'David Decker',
-					'url'      => 'http://twitter.com/deckerweb',
-					'gravatar' => 'http://0.gravatar.com/avatar/28d02f8d09fc32fccc0282efdc23a4e5?s=60',
-				),
-				array(
-					'name'     => 'Bill Erickson',
-					'url'      => 'http://twitter.com/billerickson',
-					'gravatar' => 'http://0.gravatar.com/avatar/ae510affa31e5b946623bda4ff969b67?s=60',
-				),
-				array(
-					'name'     => 'Thomas Griffin',
-					'url'      => 'http://twitter.com/jthomasgriffin',
-					'gravatar' => 'http://0.gravatar.com/avatar/fe4225114bfd1f8993c6d20d32227537?s=60',
-				),
-				array(
-					'name'     => 'Gary Jones',
-					'url'      => 'http://twitter.com/garyj',
-					'gravatar' => 'http://0.gravatar.com/avatar/e70d4086e89c2e1e081870865be68485?s=60',
-				),
-				array(
-					'name'     => 'Andrew Norcross',
-					'url'      => 'http://twitter.com/norcross',
-					'gravatar' => 'http://0.gravatar.com/avatar/26ab8f9b2c86b10e7968b882403b3bf8?s=60',
-				),
-				array(
-					'name'     => 'Greg Rickaby',
-					'url'      => 'http://twitter.com/GregRickaby',
-					'gravatar' => 'http://0.gravatar.com/avatar/28af3e39c0a1fe4c31367c7e9a8bcac3?s=60',
-				),
-				array(
-					'name'     => 'Rafal Tomal',
-					'url'      => 'http://twitter.com/rafaltomal',
-					'gravatar' => 'http://0.gravatar.com/avatar/c9f7b936cd19bd5aba8831ddea21f05d?s=60',
-				),
-				array(
-					'name'     => 'Travis Smith',
-					'url'      => 'http://twitter.com/wp_smith',
-					'gravatar' => 'http://0.gravatar.com/avatar/7e673cdf99e6d7448f3cbaf1424c999c?s=60',
-				),
-				array(
-					'name'     => 'Ade Walker',
-					'url'      => 'http://www.studiograsshopper.ch/',
-					'gravatar' => 'http://www.gravatar.com/avatar/0256aea37448743404a04ff8f254989b?s=60',
-				),
-			);
+			$contributors = genesis_contributors();
 
 			shuffle( $contributors );
 

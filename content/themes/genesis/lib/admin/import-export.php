@@ -4,7 +4,7 @@
  *
  * @package Genesis\Admin
  * @author  StudioPress
- * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @license GPL-2.0+
  * @link    http://my.studiopress.com/themes/genesis/
  */
 
@@ -49,6 +49,50 @@ class Genesis_Admin_Import_Export extends Genesis_Admin_Basic {
 		add_action( 'admin_init', array( $this, 'export' ) );
 		add_action( 'admin_init', array( $this, 'import' ) );
 
+	}
+
+	function help() {
+
+		$screen = get_current_screen();
+		
+		$general_settings_help =
+			'<h3>' . __( 'Import/Export' , 'genesis' ) . '</h3>' .
+			'<p>'  . __( 'This allows you to import or export Genesis Settings.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'This is specific to Genesis settings and does not includes posts, pages, or images, which is what the built-in WordPress import/export menu does.' , 'genesis' ) . '</p>' .
+			'<p>'  . __( 'It also does not include other settings for plugins, widgets, or post/page/term/user specific settings.' , 'genesis' ) . '</p>';
+		
+		$import_settings_help =
+			'<h3>' . __( 'Import' , 'genesis' ) . '</h3>' .
+			'<p>'  . __( 'You can import a file you\'ve previously exported. The file name will start with ' , 'genesis' ) . '<code>' . __( 'genesis-' , 'genesis' ) .'</code>' . __( 'followed by one or more strings indicating which settings it contains, finally followed by the date and time it was exported.</p><p>Once you upload an import file, it will automatically overwrite your existing settings.' , 'genesis' ) . '<strong>' . __( 'This cannot be undone' , 'genesis' ) . '</strong>.</p>';
+			
+		$export_settings_help =
+			'<h3>' . __( 'Export' , 'genesis' ) . '</h3>' .
+			'<p>'  . __( 'You can export your Genesis-related settings to back them up, or copy them to another site. Child themes and plugins may add their own checkboxes to the list. The settings are exported in ' , 'genesis' ) . '<abbr title="' . __( 'JavaScript Object Notation' , 'genesis' ) . '">' . __( 'JSON' , 'genesis' ) . '</abbr>' . __( ' format.' , 'genesis' ) . '</p>';
+		
+		$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-general-settings',
+			'title'   => __( 'Import/Export' , 'genesis' ),
+			'content' => $general_settings_help,
+		) );
+		$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-import',
+			'title'   => __( 'Import' , 'genesis' ),
+			'content' => $import_settings_help,
+		) );
+		$screen->add_help_tab( array(
+			'id'      => $this->pagehook . '-export',
+			'title'   => __( 'Export' , 'genesis' ),
+			'content' => $export_settings_help,
+		) );
+	
+		//* Add help sidebar
+		$screen->set_help_sidebar(
+			'<p><strong>' . __( 'For more information:', 'genesis' ) . '</strong></p>' .
+			'<p><a href="http://my.studiopress.com/help/" target="_blank" title="' . __( 'Get Support', 'genesis' ) . '">' . __( 'Get Support', 'genesis' ) . '</a></p>' .
+			'<p><a href="http://my.studiopress.com/snippets/" target="_blank" title="' . __( 'Genesis Snippets', 'genesis' ) . '">' . __( 'Genesis Snippets', 'genesis' ) . '</a></p>' .
+			'<p><a href="http://my.studiopress.com/tutorials/" target="_blank" title="' . __( 'Genesis Tutorials', 'genesis' ) . '">' . __( 'Genesis Tutorials', 'genesis' ) . '</a></p>'
+		);
+				
 	}
 
 	/**

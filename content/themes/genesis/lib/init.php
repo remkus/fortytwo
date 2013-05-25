@@ -14,12 +14,30 @@
  * @category Genesis
  * @package  Framework
  * @author   StudioPress
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link     http://www.studiopress.com/themes/genesis
+ * @license  GPL-2.0+
+ * @link     http://my.studiopress.com/themes/genesis
  */
 
 /** Run the genesis_pre Hook */
 do_action( 'genesis_pre' );
+
+add_action( 'genesis_init', 'genesis_i18n' );
+/**
+ * Load the Genesis textdomain for internationalization.
+ *
+ * @since 1.9.0
+ *
+ * @uses load_theme_textdomain()
+ *
+ */
+function genesis_i18n() {
+
+	if ( ! defined( 'GENESIS_LANGUAGES_DIR' ) )
+		define( 'GENESIS_LANGUAGES_DIR', get_template_directory() . '/lib/languages' );
+
+	load_theme_textdomain( 'genesis', GENESIS_LANGUAGES_DIR );
+
+}
 
 add_action( 'genesis_init', 'genesis_theme_support' );
 /**
@@ -103,8 +121,6 @@ function genesis_constants() {
 	define( 'GENESIS_FUNCTIONS_DIR', GENESIS_LIB_DIR . '/functions' );
 	define( 'GENESIS_SHORTCODES_DIR', GENESIS_LIB_DIR . '/shortcodes' );
 	define( 'GENESIS_STRUCTURE_DIR', GENESIS_LIB_DIR . '/structure' );
-	if ( ! defined( 'GENESIS_LANGUAGES_DIR' ) ) /** So we can define with a child theme */
-		define( 'GENESIS_LANGUAGES_DIR', GENESIS_LIB_DIR . '/languages' );
 	define( 'GENESIS_TOOLS_DIR', GENESIS_LIB_DIR . '/tools' );
 	define( 'GENESIS_WIDGETS_DIR', GENESIS_LIB_DIR . '/widgets' );
 
@@ -121,9 +137,6 @@ function genesis_constants() {
 	define( 'GENESIS_FUNCTIONS_URL', GENESIS_LIB_URL . '/functions' );
 	define( 'GENESIS_SHORTCODES_URL', GENESIS_LIB_URL . '/shortcodes' );
 	define( 'GENESIS_STRUCTURE_URL', GENESIS_LIB_URL . '/structure' );
-	if ( ! defined( 'GENESIS_LANGUAGES_URL' ) ) /** So we can predefine to child theme */
-		define( 'GENESIS_LANGUAGES_URL', GENESIS_LIB_URL . '/languages' );
-	define( 'GENESIS_TOOLS_URL', GENESIS_LIB_URL . '/tools' );
 	define( 'GENESIS_WIDGETS_URL', GENESIS_LIB_URL . '/widgets' );
 
 	/** Define Settings Field Constants (for DB storage) */
@@ -199,7 +212,7 @@ function genesis_load_framework() {
 	require_once( GENESIS_ADMIN_DIR . '/menu.php' );
 	require_once( GENESIS_ADMIN_DIR . '/theme-settings.php' );
 	require_once( GENESIS_ADMIN_DIR . '/seo-settings.php' );
-	require_once( GENESIS_ADMIN_DIR . '/cpt-archive-settings.php' ); 
+	require_once( GENESIS_ADMIN_DIR . '/cpt-archive-settings.php' );
 	require_once( GENESIS_ADMIN_DIR . '/import-export.php' );
 	require_once( GENESIS_ADMIN_DIR . '/inpost-metaboxes.php' );
 	require_once( GENESIS_ADMIN_DIR . '/whats-new.php' );
@@ -216,26 +229,8 @@ function genesis_load_framework() {
 	/** Load Widgets */
 	require_once( GENESIS_WIDGETS_DIR . '/widgets.php' );
 
-	/** Load Tools */
-	require_once( GENESIS_TOOLS_DIR . '/custom-field-redirect.php' );
-
 	global $_genesis_formatting_allowedtags;
 	$_genesis_formatting_allowedtags = genesis_formatting_allowedtags();
-
-}
-
-add_action( 'genesis_init', 'genesis_i18n' );
-/**
- * Load the Genesis textdomain for internationalization.
- *
- * @since 1.9.0
- *
- * @uses load_theme_textdomain()
- *
- */
-function genesis_i18n() {
-
-	load_theme_textdomain( 'genesis', GENESIS_LANGUAGES_DIR );
 
 }
 

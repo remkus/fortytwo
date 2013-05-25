@@ -6,8 +6,8 @@
  * @package    Structure
  * @subpackage Layout
  * @author     StudioPress
- * @license    http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link       http://www.studiopress.com/themes/genesis
+ * @license    GPL-2.0+
+ * @link       http://my.studiopress.com/themes/genesis
  */
 
 add_filter( 'content_width', 'genesis_content_width', 10, 3 );

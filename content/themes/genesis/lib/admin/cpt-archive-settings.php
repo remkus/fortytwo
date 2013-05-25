@@ -4,16 +4,17 @@
  *
  * @package Genesis\Admin
  * @author  StudioPress
- * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @license GPL-2.0+
  * @link    http://my.studiopress.com/themes/genesis/
  */
 
 /**
- * Registers a new admin page, providing content and corresponding menu item for the CPT Archive Settings page.
+ * Register a new admin page, providing content and corresponding menu item for the CPT Archive Settings page.
  *
  * @package Genesis\Admin
  */
 class Genesis_Admin_CPT_Archive_Settings extends Genesis_Admin_Boxes {
+
 	/**
 	 * Post type object.
 	 *

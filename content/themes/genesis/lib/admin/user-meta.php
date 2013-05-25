@@ -4,7 +4,7 @@
  *
  * @package Genesis\Admin
  * @author  StudioPress
- * @license http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @license GPL-2.0+
  * @link    http://my.studiopress.com/themes/genesis/
  */
 

@@ -5,8 +5,8 @@
  * @category Genesis
  * @package  Admin
  * @author   StudioPress
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link     http://www.studiopress.com/themes/genesis
+ * @license  GPL-2.0+
+ * @link     http://my.studiopress.com/themes/genesis
  */
 
 /**
@@ -618,7 +618,12 @@ abstract class Genesis_Admin_Basic extends Genesis_Admin {
 	 *
 	 * @since 1.8.0
 	 */
-	public function settings_init() {}
+	public function settings_init() {
+
+		if ( method_exists( $this, 'help' ) )
+			add_action( 'load-' . $this->pagehook, array( $this, 'help' ) );
+
+	}
 
 }
 

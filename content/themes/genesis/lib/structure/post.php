@@ -6,8 +6,8 @@
  * @package    Structure
  * @subpackage Post
  * @author     StudioPress
- * @license    http://www.opensource.org/licenses/gpl-license.php GPL-2.0+
- * @link       http://www.studiopress.com/themes/genesis
+ * @license    GPL-2.0+
+ * @link       http://my.studiopress.com/themes/genesis
  */
 
 /**
@@ -470,7 +470,7 @@ function genesis_author_box( $context = '', $echo = true ) {
 	//* The author box markup, contextual
 	if ( genesis_html5() ) {
 
-		$title = apply_filters( 'genesis_author_box_title', sprintf( '%s <span class="itemprop="name">%s</span>', __( 'About', 'genesis' ), get_the_author() ), $context );
+		$title = apply_filters( 'genesis_author_box_title', sprintf( '%s <span itemprop="name">%s</span>', __( 'About', 'genesis' ), get_the_author() ), $context );
 
 		$pattern  = sprintf( '<section %s>', genesis_attr( 'author-box' ) );
 		$pattern .= '%s<h1 class="author-box-title">%s</h1>';
