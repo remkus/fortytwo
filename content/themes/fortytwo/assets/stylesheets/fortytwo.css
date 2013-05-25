@@ -7387,28 +7387,35 @@ html:hover [class^="ss-"] {
 .nav-primary {
   border-top: 1px solid #ddd;
 }
-/* line 10, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
-.nav-primary .nav > li {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: transparent;
-  margin-top: -1px;
+/* line 11, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
+.dropdown-menu {
+  border-radius: 0;
+  margin-top: 0px;
 }
 /* line 16, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
-.nav-primary .nav > li:hover,
-.nav-primary .nav > li:focus,
-.nav-primary .nav > li:active,
-.nav-primary .nav > li.current_page_item,
-.nav-primary .nav > li.open {
-  border-top-color: #333;
-}
-/* line 24, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
-.nav-primary .nav > li > a {
-  text-transform: uppercase;
-}
-/* line 31, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
 .navbar {
   border-radius: 0;
+  margin-bottom: 0;
+}
+/* line 22, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
+.menu-primary > li > a {
+  text-transform: uppercase;
+  margin-top: -1px;
+  border-width: 2px 0 2px 0;
+  border-style: solid;
+  border-color: transparent;
+}
+/* line 29, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
+.menu-primary > li > a:hover,
+.menu-primary > li > a:focus,
+.menu-primary > li > a:active {
+  border-color: #333 transparent transparent transparent;
+}
+/* line 36, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
+.menu-primary > .current-menu-item a,
+.menu-primary > .open a {
+  color: #5ad7ba;
+  border-color: #333 transparent transparent transparent;
 }
 /* line 8, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-slider.less */
 #home-slider {
