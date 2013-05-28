@@ -7410,8 +7410,9 @@ html:hover [class^="ss-"] {
 .menu-primary > li > a:focus,
 .menu-primary > li > a:active {
   border-color: #333 transparent transparent transparent;
+  background-color: transparent;
 }
-/* line 36, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
+/* line 37, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
 .menu-primary > .current-menu-item a,
 .menu-primary > .open a {
   color: #5ad7ba;
