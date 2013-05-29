@@ -140,7 +140,7 @@ function fortytwo_custom_footer() {
 
     $footer_output = <<<EOD
         <div class="row">
-            <div class="col-span-12">
+            <div class="col col-lg-12">
                 <span>&copy; Copyright 2012 <a href="http://mydomain.com/">My Domain</a> &middot; All Rights Reserved &middot; Powered by <a href="http://wordpress.org/">WordPress</a> &middot; <a href="http://mydomain.com/wp-admin">Admin</a></span>
             </div>
         </div>

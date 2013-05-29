@@ -6693,22 +6693,6 @@ Structure and Layout
 .sidebar-sidebar-content .content-sidebar-wrap {
   float: right;
 }
-/* line 36, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-grid.less */
-.content {
-  float: right;
-  position: relative;
-  float: left;
-  width: 100%;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 768px) {
-  /* line 426, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
-  .content {
-    width: 66.66666666666666%;
-  }
-}
 /* line 41, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-grid.less */
 .content-sidebar .content,
 .content-sidebar-sidebar .content,
