@@ -149,3 +149,10 @@ EOD;
     echo($footer_output);
 
 }
+
+
+/**
+ * TODO below snippets to be moved out of functions.php at a later stage
+ */
+remove_action( 'genesis_after_content_sidebar_wrap', 'genesis_get_sidebar_alt' );
+add_action( 'genesis_after_content', 'genesis_get_sidebar_alt' );
