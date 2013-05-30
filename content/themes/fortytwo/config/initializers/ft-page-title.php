@@ -13,11 +13,13 @@ add_action( 'genesis_after_header', 'fortytwo_insert_page_title' );
 function fortytwo_insert_page_title() {
     if ( !is_front_page() ) {
         $ft_page_title = <<<EOD
-            <id class="page-title">
-                <section class="page-title-full">
-                    <h2>Page Title</h2>
-                </section>
-            </id>
+            <div class="page-title">
+                <div class="wrap">
+                    <section class="page-title-full">
+                        <h2>Page Title</h2>
+                    </section>
+                </div>
+            </div>
 EOD;
         echo $ft_page_title;
     }
