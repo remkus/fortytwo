@@ -4,18 +4,89 @@
 // Content Sidebar
 // --------------------------------------------------
 
-.content-sidebar {
+.content-sidebar-wrap {
+  .make-row;
+}
 
-  #content-sidebar-wrap {
-    .make-row;
+.full-width-content {
+
+  .content {
+    .make-column(12);
   }
 
-  #content {
+}
+
+.content-sidebar,
+.sidebar-content {
+
+  .content {
     .make-column(9);
   }
 
-  #sidebar {
+  .sidebar-primary {
     .make-column(3);
+  }
+
+}
+
+.content-sidebar-sidebar,
+.sidebar-content-sidebar,
+.sidebar-sidebar-content {
+
+  .content {
+    .make-column(7);
+  }
+
+  .sidebar-primary {
+    .make-column(3);
+  }
+
+  .sidebar-secondary {
+    .make-column(2);
+  }
+
+}
+
+.sidebar-content {
+
+  .content {
+    .make-column-push(3)
+  }
+
+  .sidebar-primary {
+    .make-column-pull(9);
+  }
+
+}
+
+.sidebar-sidebar-content {
+
+  .content {
+    .make-column-push(5)
+  }
+
+  .sidebar-primary {
+    .make-column-pull(5);
+  }
+
+  .sidebar-secondary {
+    .make-column-pull(10);
+  }
+
+}
+
+.sidebar-content-sidebar {
+
+  .content {
+    .make-column-push(2)
+  }
+
+  .sidebar-primary {
+    .make-column-push(2);
+  }
+
+  .sidebar-secondary {
+    .make-column-pull(10);
   }
 
 }
