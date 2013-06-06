@@ -3,18 +3,18 @@ jQuery(document).ready(function($) {
 	
 
 	// Array: selector of toggle element, selector of element to show/hide, checkable value for select || null
-	var genesis_responsive_slider_toggles = [
-		['#genesis_responsive_slider_settings\\[post_type\\]', '#genesis-slider-taxonomy', 'page']
+	var ft_responsive_slider_toggles = [
+		['#ft_responsive_slider_settings\\[post_type\\]', '#ft-slider-taxonomy', 'page']
 	];
 
-	$.each( genesis_responsive_slider_toggles, function( k, v ) {
+	$.each( ft_responsive_slider_toggles, function( k, v ) {
 		$( v[0] ).live( 'change', function() {
-			genesis_responsive_slider_toggle_settings( v[0], v[1], v[2] );
+			ft_responsive_slider_toggle_settings( v[0], v[1], v[2] );
 		});
-		genesis_responsive_slider_toggle_settings( v[0], v[1], v[2] ); // Check when page loads too.
+		ft_responsive_slider_toggle_settings( v[0], v[1], v[2] ); // Check when page loads too.
 	});
 
-	function genesis_responsive_slider_toggle_settings( selector, show_selector, check_value ) {
+	function ft_responsive_slider_toggle_settings( selector, show_selector, check_value ) {
 		if (
 			( check_value === null && $( selector ).is( ':checked' ) ) ||
 			( check_value !== null && $( selector ).val() !== check_value )
@@ -25,10 +25,10 @@ jQuery(document).ready(function($) {
 		}
 	}
 
-	function genesis_responsive_slider_checklist_toggle() {
-		$('<p><span id="genesis-category-checklist-toggle" class="button">' + genesis.category_checklist_toggle + '</span></p>').insertBefore('ul.categorychecklist');
+	function ft_responsive_slider_checklist_toggle() {
+		$('<p><span id="ft-category-checklist-toggle" class="button">' + ft.category_checklist_toggle + '</span></p>').insertBefore('ul.categorychecklist');
 
-		$('#genesis-category-checklist-toggle').live('click.genesis', function (event) {
+		$('#ft-category-checklist-toggle').live('click.ft', function (event) {
 			var $this = $(this),
 				checkboxes = $this.parent().next().find(':checkbox');
 
@@ -41,9 +41,9 @@ jQuery(document).ready(function($) {
 			}
 		});
 	}
-	genesis_responsive_slider_checklist_toggle();
+	ft_responsive_slider_checklist_toggle();
 	
-	$('.genesis-layout-selector input[type="radio"]').change(function() {
+	$('.ft-layout-selector input[type="radio"]').change(function() {
 	    var tmp=$(this).attr('name');
 	    $('input[name="'+tmp+'"]').parent("label").removeClass("selected");
 	    $(this).parent("label").toggleClass("selected", this.selected);      

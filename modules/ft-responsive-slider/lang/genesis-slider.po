@@ -29,11 +29,11 @@ msgid "Slider Settings"
 msgstr ""
 
 #: admin.php:111
-msgid "Genesis Slider Settings"
+msgid "FT Slider Settings"
 msgstr ""
 
 #: admin.php:149 plugin.php:202
-msgid "Genesis - Slider"
+msgid "FT - Slider"
 msgstr ""
 
 #: admin.php:150 admin.php:161

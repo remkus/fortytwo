@@ -1,7 +1,7 @@
-=== Genesis Responsive Slider ===
+=== FT Responsive Slider ===
 Contributors: nathanrice, studiopress, wpmuguru
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5553118
-Tags: slider, slideshow, responsive, genesis, genesiswp, studiopress
+Tags: slider, slideshow, responsive, ft, ftwp, studiopress
 Requires at least: 3.2
 Tested up to: 3.4.1
 Stable tag: 0.9.2
@@ -16,22 +16,22 @@ It includes options for the maximum dimensions of your slideshow, allows you to 
 
 The slideshow is also responsive and will automatically adjust for the screen it is being displayed on.
 
-Note: This plugin only supports Genesis child themes.
+Note: This plugin only supports FT child themes.
 
 == Installation ==
 
-1. Upload the entire `genesis-responsive-slider` folder to the `/wp-content/plugins/` directory
-1. DO NOT change the name of the `genesis-responsive-slider` folder
+1. Upload the entire `ft-responsive-slider` folder to the `/wp-content/plugins/` directory
+1. DO NOT change the name of the `ft-responsive-slider` folder
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Navigate to the `Genesis > Slider Settings` menu
+1. Navigate to the `FT > Slider Settings` menu
 1. Configure the slider
-1. In the "Widgets" screen, drag the "Genesis Responsive Slider" widget to the widget area of your choice
+1. In the "Widgets" screen, drag the "FT Responsive Slider" widget to the widget area of your choice
 
 == Child Theme Integration ==
 
 To adjust the slider defaults for a child theme use a filter simiar to the following:
 
-`add_filter( 'genesis_responsive_slider_settings_defaults', 'my_child_theme_responsive_slider_defaults' );
+`add_filter( 'ft_responsive_slider_settings_defaults', 'my_child_theme_responsive_slider_defaults' );
 
 function my_child_theme_responsive_slider_defaults( $defaults ) {
 	$defaults = array(

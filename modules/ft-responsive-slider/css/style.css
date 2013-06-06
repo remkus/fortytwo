@@ -1,7 +1,7 @@
-/* Genesis Slider
+/* FT Slider
 ------------------------------------------------------------ */
 
-#genesis-responsive-slider {
+#ft-responsive-slider {
 	background-color: #fff;
 	border: 10px solid #eee;
 	margin: 0 auto;
@@ -9,7 +9,7 @@
 	position: relative;
 }
 
-.genesis-responsive-slider-wrap {
+.ft-responsive-slider-wrap {
 	clear: both;
 	display: block;
 	float: left;
