@@ -122,7 +122,7 @@ function fortytwo_footer_widgets_layout() {
         dynamic_sidebar( 'footer-' . $counter );
         $widgets = ob_get_clean();
 
-        $output .= sprintf( '<div class="footer-widgets-%d col-span-3">%s</div>', $counter, $widgets );
+        $output .= sprintf( '<div class="footer-widgets-%d col col-lg-3">%s</div>', $counter, $widgets );
 
         $counter++;
     }
@@ -140,7 +140,7 @@ function fortytwo_custom_footer() {
 
     $footer_output = <<<EOD
         <div class="row">
-            <div class="col-span-12">
+            <div class="col col-lg-12">
                 <span>&copy; Copyright 2012 <a href="http://mydomain.com/">My Domain</a> &middot; All Rights Reserved &middot; Powered by <a href="http://wordpress.org/">WordPress</a> &middot; <a href="http://mydomain.com/wp-admin">Admin</a></span>
             </div>
         </div>
@@ -149,3 +149,10 @@ EOD;
     echo($footer_output);
 
 }
+
+
+/**
+ * TODO below snippets to be moved out of functions.php at a later stage
+ */
+remove_action( 'genesis_after_content_sidebar_wrap', 'genesis_get_sidebar_alt' );
+add_action( 'genesis_after_content', 'genesis_get_sidebar_alt' );

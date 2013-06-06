@@ -92,7 +92,7 @@
 @font-size-small:         @font-size-base * 0.85; // ~12px
 @font-size-mini:          @font-size-base * 0.75; // ~11px
 
-@line-height-base:        21px;
+@line-height-base:        1.428571429; // 20/14
 
 @headings-font-family:    inherit; // empty to use BS default, @font-family-base
 @headings-font-weight:    500;
@@ -337,11 +337,12 @@
 
 
 
-// GRID
+// Grid system
 // --------------------------------------------------
 
-// Default 940px grid
+// Number of columns in the grid system
 @grid-columns:              12;
-@grid-column-width:         70px;
+// Padding, to be divided by two and applied to the left and right of all columns
 @grid-gutter-width:         30px;
-@grid-row-width:            (@grid-columns * @grid-column-width) + (@grid-gutter-width * (@grid-columns - 1));
+// Point at which the navbar stops collapsing
+@grid-float-breakpoint:     @screen-tablet;

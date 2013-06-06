@@ -36,7 +36,7 @@ function fortytwo_genesis_do_nav() {
         $nav = wp_nav_menu( $args );
 
         $nav_output = <<<EOD
-            <nav class="nav-primary">
+            <nav class="nav-primary" role="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
                 <div class="wrap">
                     <div class="navbar">
                         <div class="container">
