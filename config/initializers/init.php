@@ -19,14 +19,14 @@ require_once( 'ft-page-title.php' );
 
 require_once( 'ft-slider.php' );
 
+require_once( 'ft-page-blog.php');
+
 /** Activate modules **/
 
 //TODO:  Move this somewhere sensible
 function modules_url($file) {
 	return CHILD_URL . '/modules/' . $file;
 }
-
-require_once('ft-page-blog.php');
 
 require_once( CHILD_DIR . '/modules/ft-responsive-slider/plugin.php' );
 require_once( CHILD_DIR . '/modules/ft-featured-page/plugin.php' );
