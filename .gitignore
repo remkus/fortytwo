@@ -1,1 +1,2 @@
-dev_environment/
+.build/
+stackato.yml
