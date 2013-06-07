@@ -347,7 +347,7 @@ function ft_responsive_slider_options_box() {
 			<h4><?php _e( 'Content Settings', 'ft-responsive-slider' ); ?></h4>
 
 				<p>
-					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_no_link]" id="<?php echo FT_SLIDER_SETTINGS_FIELD; ?>[slideshow_title_show]" value="1" <?php checked(1, ft_get_responsive_slider_option('slideshow_no_link')); ?> /> <label for="<?php echo FT_SLIDER_SETTINGS_FIELD; ?>[slideshow_no_link]"><?php _e( 'Do not link Slider image to Post/Page.', 'ft-slider' ); ?></label>
+					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_no_link]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_no_link]" value="1" <?php checked(1, ft_get_responsive_slider_option('slideshow_no_link')); ?> /> <label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_no_link]"><?php _e( 'Do not link Slider image to Post/Page.', 'ft-responsive-slider' ); ?></label>
 				</p>
 
 				<p>
