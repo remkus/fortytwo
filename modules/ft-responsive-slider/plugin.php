@@ -93,7 +93,7 @@ function ft_responsive_slider_sanitization() {
 function ft_responsive_slider_scripts() {
 
 	/** easySlider JavaScript code */
-	wp_enqueue_script( 'flexslider', modules_url('ft-responsive-slider/js/jquery.flexslider.js'), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, TRUE );
+	wp_enqueue_script( 'flexslider', modules_url('ft-responsive-slider/js/jquery.flexslider-min.js'), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, TRUE );
 
 }
 
@@ -165,7 +165,8 @@ function ft_responsive_slider_flexslider_params() {
 					directionNav: ' . $directionnav . ',
 					controlNav: ' . $controlnav . ',
 					animationDuration: ' . $duration . ',
-					slideshowSpeed: ' . $timer . '
+					slideshowSpeed: ' . $timer . ',
+                    useCSS: false
 			    });
 			  });';
 
