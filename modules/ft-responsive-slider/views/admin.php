@@ -89,7 +89,7 @@ function ft_responsive_slider_settings_init() {
 	global $_ft_responsive_slider_settings_pagehook;
 
 	// Add "Design Settings" submenu
-	$_ft_responsive_slider_settings_pagehook = add_submenu_page( 'ft', __( 'Slider Settings', 'ft-responsive-slider' ), __( 'Slider Settings', 'ft-responsive-slider' ), 'manage_options', 'ft_responsive_slider', 'ft_responsive_slider_settings_admin' );
+	$_ft_responsive_slider_settings_pagehook = add_submenu_page( 'genesis', __( 'Slider Settings', 'ft-responsive-slider' ), __( 'Slider Settings', 'ft-responsive-slider' ), 'manage_options', 'ft_responsive_slider', 'ft_responsive_slider_settings_admin' );
 
 	add_action( 'load-' . $_ft_responsive_slider_settings_pagehook, 'ft_responsive_slider_settings_scripts' );
 	add_action( 'load-' . $_ft_responsive_slider_settings_pagehook, 'ft_responsive_slider_settings_boxes' );
@@ -376,7 +376,7 @@ function ft_responsive_slider_options_box() {
 			
 				<p>
 					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_content_limit]"><?php _e( 'Limit content to', 'ft-responsive-slider' ); ?></label>
-					<input type="text" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_content_limit]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_content_limit]" value="<?php echo esc_attr( ft_option( 'slideshow_excerpt_content_limit', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD ) ); ?>" size="3" />
+					<input type="text" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_content_limit]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_content_limit]" value="<?php echo esc_attr( genesis_option( 'slideshow_excerpt_content_limit', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD ) ); ?>" size="3" />
 					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_content_limit]"><?php _e( 'characters', 'ft-responsive-slider' ); ?></label>
 				</p>
 		
