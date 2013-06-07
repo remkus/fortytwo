@@ -3,6 +3,10 @@
  * FortyTwo Insert Page Title: Adds the page title to all pages
  */
 
+//* Reposition the breadcrumbs
+remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
+
+//add_action( 'genesis_after_header', 'genesis_do_breadcrumbs' ); //TODO bring in modified breadcrumbs
 
 add_action( 'genesis_after_header', 'fortytwo_insert_page_title' );
 /**
@@ -15,9 +19,19 @@ function fortytwo_insert_page_title() {
         $ft_page_title = <<<EOD
             <div class="page-title">
                 <div class="wrap">
-                    <section class="page-title-full">
-                        <h2>Page Title</h2>
-                    </section>
+                    <div class="row">
+                        <div class="col col-lg-6">
+                            <h2>Page Title</h2>
+                        </div>
+                        <div class="col col-lg-6">
+                            <ul class="breadcrumb">
+                                <li><a href="#">Home</a> <span class="divider">/</span></li>
+                                <li><a href="#">Library</a> <span class="divider">/</span></li>
+                                <li class="active">Data</li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 EOD;

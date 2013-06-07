@@ -18,3 +18,5 @@ require_once( 'ft-nav.php' );
 require_once( 'ft-page-title.php' );
 
 require_once( 'ft-slider.php' );
+
+require_once('ft-page-blog.php');

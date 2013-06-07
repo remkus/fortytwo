@@ -7914,7 +7914,7 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
   clear: both;
 }
 /* line 16, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-footer.less */
-footer {
+.site-footer {
   background: #353535;
   color: #fff;
   padding: 20px 0px 20px 0px;
