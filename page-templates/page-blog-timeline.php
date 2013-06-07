@@ -1,7 +1,7 @@
 <?php
 /**
- * Template Name: Blog B
- * The file handles the default blog layout of FortyTwo.
+ * Template Name: Blog Timeline
+ * The file handles the timeline blog layout of FortyTwo.
  *
  * @category FortyTwo
  * @package  Templates
@@ -10,8 +10,3 @@
  * @link     http://www.forsitethemes.com/
  */
 
-
-/**
- * Remove the standard loop
- */
-echo "test";

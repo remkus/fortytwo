@@ -11,6 +11,12 @@ require_once( CHILD_DIR . '/config/initializers/init.php' );
 add_theme_support( 'genesis-html5' );
 add_theme_support( 'genesis-responsive-viewport' );
 
+// Add support for post format images
+//add_theme_support( 'genesis-post-format-images' );
+
+// Add support for post formats
+add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) ); //TODO add post format support using font icons
+
 
 add_filter( 'stylesheet_uri', 'fortywo_replace_default_style_sheet', 10, 2 );
 /**
