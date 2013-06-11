@@ -47,13 +47,13 @@ function FTResponsiveSliderInit() {
 
 }
 
-add_action( 'ft_settings_sanitizer_init', 'ft_responsive_slider_sanitization' );
+add_action( 'genesis_settings_sanitizer_init', 'ft_responsive_slider_sanitization' );
 /**
  * Add settings to Genesis sanitization
  *
  */
 function ft_responsive_slider_sanitization() {
-	ft_add_option_filter( 'one_zero', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD,
+	genesis_add_option_filter( 'one_zero', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD,
 		array(
 			'slideshow_arrows',
 			'slideshow_excerpt_show',
@@ -63,7 +63,7 @@ function ft_responsive_slider_sanitization() {
 			'slideshow_no_link',
 			'slideshow_pager'
 		) );
-	ft_add_option_filter( 'no_html', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD,
+	genesis_add_option_filter( 'no_html', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD,
 		array(
 			'post_type',
 			'posts_term',
@@ -124,7 +124,7 @@ function ft_responsive_slider_head() {
 		$display = ( ft_get_responsive_slider_option( 'posts_num' ) >= 2 && ft_get_responsive_slider_option( 'slideshow_arrows' ) ) ? 'top: ' . $slideNavTop . 'px' : 'display: none';
 		
 		$hide_mobile = ft_get_responsive_slider_option( 'slideshow_hide_mobile' );
-		$slideshow_pager = ft_get_responsive_slider_option( 'slideshow_pager' );
+		$slideshow_pager = ft_get_responsive_slider_option( 'slideshow_pager' ) ;
 
 		echo '
 		<style type="text/css">
@@ -166,7 +166,7 @@ function ft_responsive_slider_flexslider_params() {
 					controlNav: ' . $controlnav . ',
 					animationDuration: ' . $duration . ',
 					slideshowSpeed: ' . $timer . ',
-                    useCSS: false
+          useCSS: false
 			    });
 			  });';
 
