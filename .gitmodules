@@ -1,0 +1,3 @@
+[submodule "vendor/wpthumb"]
+	path = vendor/wpthumb
+	url = git@github.com:forsitethemes/WPThumb.git
