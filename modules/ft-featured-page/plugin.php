@@ -49,7 +49,7 @@ class FT_Featured_Page extends WP_Widget {
 		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
 		parent::__construct(
-			'widget-ft-featured-page',
+			'ft-featured-page',
 			__( 'FortyTwo - Featured Page', 'ft-featured-page-locale' ),
 			array(
 				'classname'		=>	'ft-featured-page',
@@ -83,26 +83,38 @@ class FT_Featured_Page extends WP_Widget {
 		
 		echo $before_widget;
     
-		// TODO:	Here is where you manipulate your widget's values based on their input fields
-    
+    foreach (array('title', 'content', 'button_text', 'button_link' ) as $field_name) {
+			$$field_name = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
+		}
+		if ( empty( $title ) ) $title  = "The title";
+		if ( empty( $content ) ) $content  = "And purely one near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill
+    yikes considering far above. Physically less snickered much and and while";
+		if ( empty( $button_text ) ) $button_text  = "Click me!";
+		if ( empty( $button_link ) ) $button_link  = "#";
+		
 		include( dirname( __FILE__ )  . '/views/widget.php' );
 		
 		echo $after_widget;
 		
 	} // end widget
 	
+	public function echo_field_id($field) {
+		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
+	}
+
 	/**
 	 * Processes the widget's options to be saved.
 	 *
-	 * @param	array	new_instance	The previous instance of values before the update.
-	 * @param	array	old_instance	The new instance of values to be generated via the update.
+	 * @param	array	old_instance	The previous instance of values before the update.
+	 * @param	array	new_instance	The new instance of values to be generated via the update.
 	 */
 	public function update( $new_instance, $old_instance ) {
-	
-		$instance = $old_instance;
 		
-		// TODO:	Here is where you update your widget's old values with the new, incoming values
-    
+		$instance = array();
+		foreach (array('title', 'content', 'button_text', 'button_link' ) as $field_name) {
+			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
+		}
+
 		return $instance;
 		
 	} // end widget
@@ -119,7 +131,10 @@ class FT_Featured_Page extends WP_Widget {
 			(array) $instance
 		);
 	
-		// TODO:	Store the values of the widget in their own variable
+		// Set $template_var to instance[$template_var]
+		foreach (array('title', 'content', 'button_text', 'button_link' ) as $field_name) {
+			$$field_name = $instance[ $field_name ];
+		}
 		
 		// Display the admin form
 		include( dirname (__FILE__) . '/views/admin.php' );	
