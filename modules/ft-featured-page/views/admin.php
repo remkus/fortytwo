@@ -1,19 +1,25 @@
-<!-- This file is used to markup the administration form of the widget. -->
+<?php // This file is used to markup the administration form of the widget. ?>
 <div class="ft-featured-page-admin">
-<form>
 <table>
 	<tr>
 		<td><i class="icon-camera-retro icon-2x"></i></i></td>
-		<td><input name="title" class="span2" type="text" placeholder="Title"></td>
+		<td>
+			<input class="span2" type="text" placeholder="<?php _e( 'Title' ); ?>"  
+			         <?php $this->echo_field_id("title") ?>  value="<?php echo esc_attr( $title ); ?>">
+		</td>
   </tr>
-	<tr><td colspan="2"><textarea name="content" rows="5" placeholder="Enter descriptive content here"></textarea></td></tr>
+	<tr><td colspan="2">
+		  <textarea rows="5" placeholder="<?php _e( 'Enter descriptive content here' ); ?>"	<?php $this->echo_field_id("content") ?>
+		  	><?php echo esc_textarea( $content ); ?></textarea>
+  </td></tr>
 	<tr>
 		<td valign="middle">Button</td>
 		<td>
-			<input name="button_text" type="text" placeholder="Text"><br />
-		  <input name="button_link" type="text" placeholder="Link">
+			<input type="text" placeholder="<?php _e( 'Text' ); ?>"
+					   <?php $this->echo_field_id("button_text") ?> value="<?php echo esc_attr( $button_text ); ?>"><br />
+		  <input type="text" placeholder="<?php _e( 'Link' ); ?>"
+		  		   <?php $this->echo_field_id("button_link") ?> value="<?php echo esc_attr( $button_link ); ?>">
 		</td>
 	</tr>
 </table>
-</form>
 </div>
