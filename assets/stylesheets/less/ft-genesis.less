@@ -64,7 +64,7 @@ h4.widgettitle a,
 .navigation li a:hover,
 .navigation li.active a,
 .navigation li.disabled {
-  color: #fff;
+  color: @body-background;
 }
 
 /* 03c - Font Size ----------- */
@@ -176,8 +176,7 @@ h6,
   background: @color-d;
 }
 
-.colbdark {
-  background: @color-d-dark;
+.colbdark {background: @color-d-dark;
 }
 
 .colbdarker {
@@ -189,5 +188,20 @@ h6,
 }
 
 .colblighter {
-  background: @color-d-lighter;
+    background: @color-d-lighter;
+}
+
+.author-box,
+.sticky,
+.taxonomy-description {
+    background-color: @color-d;
+    margin-bottom: 48px;
+    margin-bottom: 3rem;
+    overflow: hidden;
+    padding: 32px;
+    padding: 2rem;
+}
+
+.comment {
+    background-color: @color-d;
 }
