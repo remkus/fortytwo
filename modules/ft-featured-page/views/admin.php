@@ -2,8 +2,8 @@
 <div class="ft-featured-page-admin">
 <table>
 	<tr>
-		<td>
-				<div id="<?php echo $this->get_field_id("icon-list")?>">
+		<td class="<?php echo $this->get_field_id("the-icon")?>">
+				<div >
 					<i class="icon-camera-retro icon-2x"></i>
 				</div>
 		</td>
@@ -34,7 +34,7 @@
 		var iconCollection = new window.FT_Featured_Page_Admin_App.IconCollection( window.getFontAwesomeIcons() );
 		var iconList = new window.FT_Featured_Page_Admin_App.Views.FilterByNameList({
 			collection: iconCollection, 
-			el: '#<?php echo $this->get_field_id("icon-list")?>'
+			el: '.<?php echo $this->get_field_id("the-icon")?>'
 		});
 	});
 }(jQuery));
