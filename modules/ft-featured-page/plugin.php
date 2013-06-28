@@ -178,7 +178,6 @@ class FT_Featured_Page extends WP_Widget {
 	 */
 	public function register_admin_styles() {
 	
-		// TODO:	Change 'widget-name' to the name of your plugin
 		wp_enqueue_style( 'ft-featured-page-admin-styles', modules_url( 'ft-featured-page/css/admin.css' ) );
 	
 	} // end register_admin_styles
@@ -188,8 +187,9 @@ class FT_Featured_Page extends WP_Widget {
 	 */	
 	public function register_admin_scripts() {
 	
-		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'ft-featured-page-admin-script', modules_url( 'ft-featured-page/js/admin.js' ) );
+	  wp_enqueue_script( 'backbone' );
+		wp_enqueue_script( 'ft-featured-page-admin-app-script', modules_url( 'ft-featured-page/js/admin_app.js' ), array( 'backbone' ) );
+		wp_enqueue_script( 'ft-featured-page-admin-script', modules_url( 'ft-featured-page/js/admin.js' ),  array( 'ft-featured-page-admin-app-script' ) );
 		
 	} // end register_admin_scripts
 	

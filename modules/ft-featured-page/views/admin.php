@@ -2,7 +2,11 @@
 <div class="ft-featured-page-admin">
 <table>
 	<tr>
-		<td><i class="icon-camera-retro icon-2x"></i></i></td>
+		<td>
+				<div id="<?php echo $this->get_field_id("icon-list")?>">
+					<i class="icon-camera-retro icon-2x"></i>
+				</div>
+		</td>
 		<td>
 			<input class="span2" type="text" placeholder="<?php _e( 'Title' ); ?>"  
 			         <?php $this->echo_field_id("title") ?>  value="<?php echo esc_attr( $title ); ?>">
@@ -23,3 +27,15 @@
 	</tr>
 </table>
 </div>
+<script>
+(function ($) {
+	"use strict";
+	$(document).ready(function () {
+		var iconCollection = new window.FT_Featured_Page_Admin_App.IconCollection( window.getFontAwesomeIcons() );
+		var iconList = new window.FT_Featured_Page_Admin_App.Views.FilterByNameList({
+			collection: iconCollection, 
+			el: '#<?php echo $this->get_field_id("icon-list")?>'
+		});
+	});
+}(jQuery));
+</script>
