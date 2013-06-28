@@ -11,6 +11,7 @@
 .dropdown-menu {
   border-radius: 0;
   margin-top: 1px;
+  margin-left: -1px;
   border-width: 0 1px 1px 1px;
 }
 
@@ -24,19 +25,29 @@
 }
 
 .menu-primary {
-  > li > a {
-    text-transform: uppercase;
-    margin-top: -1px;
-    border-width: 2px 0 2px 0;
-    border-style: solid;
-    border-color: transparent;
 
-    &:hover,
-    &:focus,
-    &:active {
-      border-color: #424242 transparent transparent transparent;
-      background-color: transparent;
+  > li {
+
+    border-right: 1px solid #ddd;
+
+    &:first-child { border-left: 1px solid #ddd; }
+
+    > a {
+      padding: 10px 20px;
+      text-transform: uppercase;
+      margin: -1px -1px 0;
+      border-width: 2px 0 2px 0;
+      border-style: solid;
+      border-color: transparent;
+
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: #424242 transparent transparent transparent;
+        background-color: transparent;
+      }
     }
+
   }
 
   > .current-menu-parent a,

@@ -22,13 +22,14 @@ function fortytwo_insert_page_title() {
                     <div class="row">
                         <div class="col col-lg-6">
                             <h2>Page Title</h2>
-                        </div>
-                        <div class="col col-lg-6">
                             <ul class="breadcrumb">
-                                <li><a href="#">Home</a> <span class="divider">/</span></li>
-                                <li><a href="#">Library</a> <span class="divider">/</span></li>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Library</a></li>
                                 <li class="active">Data</li>
                             </ul>
+                        </div>
+                        <div class="col col-lg-6">
+
                         </div>
                     </div>
 
