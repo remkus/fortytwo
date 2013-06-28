@@ -18,18 +18,26 @@
 	    }  
 	});
   AdminApp.Views.FilterByNameList = Backbone.View.extend({
+  	template :_.template(' \
+<div class="the-icon-selector-wrapper"> \
+    <i class="the-selected-icon icon-camera-retro icon-2x"></i> \
+    <div class="the-icon-selector-dropdown"> \
+    	<input id="the-icon-filter" placeholder="Search for icons" /> \
+    	<div class="the-icon-list"></div> \
+    </div> \
+</div> '),  
     initialize:function () {
-  		$(this.el).html('');
+    	this.$el.html( this.template() );
       this.collection.each( this.addIcon, this );
     },
     addIcon:function ( model ) {
     	var iconView = new AdminApp.Views.FilterByIcon({ model: model });
-      this.$el.append( iconView.render().el );
+      this.$el.find('.the-icon-list').append( iconView.render().el );
     }
   });
   AdminApp.Views.FilterByIcon = Backbone.View.extend({
     tagName:'i',
-    className: 'icon-2x',
+    className: 'icon-large',
     events : {
         'click' : 'selectIcon'
     },
@@ -40,6 +48,7 @@
     },
     render:function () {
     		this.$el.addClass(this.model.get('css'));
+    		this.$el.append('&nbsp;');
         return this;
     }
   });
@@ -58,7 +67,6 @@
 			"icon-star-empty",
 			"icon-user",
 			"icon-film",
-			"icon-th-large",
 			"icon-th",
 			"icon-th-list",
 			"icon-ok",
