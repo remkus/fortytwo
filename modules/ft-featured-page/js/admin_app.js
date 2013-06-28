@@ -11,8 +11,9 @@
   	  model:AdminApp.Icon, 
 	    byName: function(name) {
 	      console.log('filtering IconCollection by',name);
+	      var pattern = new RegExp(name,"gi");
 	      var filteredIconCollection = this.filter( function(icon) {
-	        return _.contains(icon.get("name"),name);
+	        return pattern.test(icon.get("name"));
 	      });
 	      return new AdminApp.IconCollection(filteredIconCollection);
 	    }  
@@ -22,22 +23,37 @@
 <div class="the-icon-selector-wrapper"> \
     <i class="the-selected-icon icon-camera-retro icon-2x"></i> \
     <div class="the-icon-selector-dropdown"> \
-    	<input id="the-icon-filter" placeholder="Search for icons" /> \
+    	<input id="the-icon-filter" placeholder="Filter icons by name" /> \
     	<div class="the-icon-list"></div> \
     </div> \
 </div> '),  
     initialize:function () {
     	this.$el.html( this.template() );
-      this.collection.each( this.addIcon, this );
+    	this.renderIconList(this.collection);
+    },
+    renderIconList: function(icons) {
+			this.$el.find('.the-icon-list').empty();
+			icons.each( this.addIcon, this );
     },
     addIcon:function ( model ) {
     	var iconView = new AdminApp.Views.FilterByIcon({ model: model });
       this.$el.find('.the-icon-list').append( iconView.render().el );
+    },
+    events : {
+        'keyup :input' : 'filterIconList'
+    },
+    filterIconList: function (e) {
+    	var searchQuery = e.currentTarget.value;
+    	if (searchQuery.length > 2) {
+    		this.renderIconList(this.collection.byName(searchQuery));
+    	} else {
+    		this.renderIconList(this.collection);
+    	}
     }
   });
   AdminApp.Views.FilterByIcon = Backbone.View.extend({
-    tagName:'i',
-    className: 'icon-large',
+    tagName:'span',
+    template: _.template('<i class="<%= css %> icon-large" title="<%= name %>">&nbsp;</i>'),  
     events : {
         'click' : 'selectIcon'
     },
@@ -47,8 +63,7 @@
         //window.Workspace.navigate("tagged/" + this.options.tag, { trigger: true });
     },
     render:function () {
-    		this.$el.addClass(this.model.get('css'));
-    		this.$el.append('&nbsp;');
+    		this.$el.html(this.template(this.model.toJSON()));
         return this;
     }
   });
@@ -386,7 +401,7 @@
 		];
 		//Convert from an array of strings to an array of backbone iconModels
 		var iconModels = _.map(iconClasses, function(iconClass){ 
-			return { name: iconClass, css: iconClass }; 
+			return { name: iconClass.replace("icon-",""), css: iconClass }; 
 		});
 		return iconModels;
 	}
