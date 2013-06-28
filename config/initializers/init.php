@@ -32,3 +32,6 @@ require_once( CHILD_DIR . '/modules/ft-responsive-slider/plugin.php' );
 require_once( CHILD_DIR . '/modules/ft-featured-page/plugin.php' );
 require_once( CHILD_DIR . '/modules/ft-jumbotron/plugin.php' );
 require_once( CHILD_DIR . '/modules/ft-testimonials/plugin.php' );
+
+//Require once to include WPThumb
+require_once( CHILD_DIR . '/vendor/wpthumb/wpthumb.php' );

@@ -1,0 +1,143 @@
+// Blog Page Layouts
+
+.entry-time,
+.entry-author,
+.entry-comments-link,
+.entry-categories {
+  .label;
+  background-color: #f9f9f9;
+  color: @color-d-dark;
+  a {
+    color: @color-d-dark;
+  }
+}
+
+.content {
+
+  article {
+    .clearfix();
+
+    img {
+      .media-object;
+      border-radius: 2px;
+    }
+
+    .entry-title {
+      .media-heading;
+    }
+  }
+
+  hr {
+    border-top: 1px dashed @hr-border;
+    border-bottom: 1px dashed #fff;
+    border-bottom: 1px dashed rgba(255,255,255,.5);
+    margin: 25px 0;
+  }
+
+  .navigation {
+
+    margin: 50px 0;
+    list-style: none;
+    text-align: center;
+    .clearfix();
+
+    > div {
+      display: inline;
+      > a,
+      > span {
+        display: inline-block;
+        padding: 5px 14px;
+        background-color: @pagination-bg;
+        border: 1px solid @pagination-border;
+        border-radius: 15px;
+      }
+
+      > a:hover,
+      > a:focus {
+        text-decoration: none;
+        background-color: @pagination-active-bg;
+      }
+    }
+
+    .alignright {
+      > a,
+      > span {
+        float: right;
+      }
+    }
+
+    .alignleft {
+      > a,
+      > span {
+        float: left;
+      }
+    }
+
+    .disabled {
+      > a,
+      > a:hover,
+      > a:focus,
+      > span {
+        color: @gray-light;
+        background-color: @pagination-bg;
+        cursor: default;
+      }
+    }
+
+    > ul {
+      margin: @line-height-computed 0;
+      border-radius: @border-radius-base;
+
+      > li {
+        display: inline; // Remove list-style and block-level defaults
+      }
+
+      > li > a,
+      > li > span {
+        float: left; // Collapse white-space
+        padding: 4px 12px;
+        line-height: @line-height-base;
+        text-decoration: none;
+        background-color: @pagination-bg;
+        border: 1px solid @pagination-border;
+        border-left-width: 0;
+      }
+
+      > li > a:hover,
+      > li > a:focus,
+      > .active > a,
+      > .active > span {
+        background-color: @pagination-active-bg;
+      }
+
+      > .active > a,
+      > .active > span {
+        color: @gray-light;
+        cursor: default;
+      }
+
+      > .disabled > span,
+      > .disabled > a,
+      > .disabled > a:hover,
+      > .disabled > a:focus {
+        color: @gray-light;
+        background-color: @pagination-bg;
+        cursor: default;
+      }
+
+      > li:first-child > a,
+      > li:first-child > span {
+        border-left-width: 1px;
+        .border-left-radius(@border-radius-base);
+      }
+
+      > li:last-child > a,
+      > li:last-child > span {
+        .border-right-radius(@border-radius-base);
+      }
+    }
+
+  }
+
+}
+
