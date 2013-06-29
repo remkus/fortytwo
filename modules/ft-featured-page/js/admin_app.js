@@ -9,6 +9,21 @@
   });
   AdminApp.IconCollection = Backbone.Collection.extend({
   	  model:AdminApp.Icon, 
+  	  _selected: null,
+  	  getSelected: function() {
+  	  	if (_.isNull(this._selected)) { this._selected = this.models[0]; } 
+  	  	return this._selected;
+  	  },
+  	  setSelected: function(iconModel) {
+  	  	this._selected = iconModel;
+  	  	console.log('change:selectedIcon=', this._selected.toJSON());
+  	  	this.trigger('change:selectedIcon', this._selected);
+  	  },
+  	  setSelectedByCss: function(iconCss) {
+  	  	this.setSelected(this.find(function(icon) { 
+  	  		return icon.get('css') == iconCss; })
+  	  	);
+  	  },
 	    byName: function(name) {
 	      console.log('filtering IconCollection by',name);
 	      var pattern = new RegExp(name,"gi");
@@ -18,10 +33,10 @@
 	      return new AdminApp.IconCollection(filteredIconCollection);
 	    }  
 	});
-  AdminApp.Views.FilterByNameList = Backbone.View.extend({
+  AdminApp.Views.IconListView = Backbone.View.extend({
   	template :_.template(' \
 <div class="the-icon-selector-wrapper"> \
-    <i class="the-selected-icon icon-camera-retro icon-2x"></i> \
+    <i class="the-selected-icon"></i> \
     <div class="the-icon-selector-dropdown"> \
     	<input id="the-icon-filter" placeholder="Filter icons by name" /> \
     	<div class="the-icon-list"></div> \
@@ -29,14 +44,21 @@
 </div> '),  
     initialize:function () {
     	this.$el.html( this.template() );
+    	this.collection.on('change:selectedIcon',this.updateSelectedIcon, this);
+    	this.collection.setSelectedByCss(this.options.selectedIconCss);
     	this.renderIconList(this.collection);
+    },
+    updateSelectedIcon: function(selectedIcon) {
+    	var elIcon = this.$el.find('.the-selected-icon');
+    	elIcon.removeClass();
+    	elIcon.addClass('the-selected-icon icon-2x ' + selectedIcon.get('css'));
     },
     renderIconList: function(icons) {
 			this.$el.find('.the-icon-list').empty();
 			icons.each( this.addIcon, this );
     },
     addIcon:function ( model ) {
-    	var iconView = new AdminApp.Views.FilterByIcon({ model: model });
+    	var iconView = new AdminApp.Views.IconView({ model: model });
       this.$el.find('.the-icon-list').append( iconView.render().el );
     },
     events : {
@@ -51,16 +73,15 @@
     	}
     }
   });
-  AdminApp.Views.FilterByIcon = Backbone.View.extend({
+  AdminApp.Views.IconView = Backbone.View.extend({
     tagName:'span',
-    template: _.template('<i class="<%= css %> icon-large" title="<%= name %>">&nbsp;</i>'),  
+    template: _.template('<i class="<%= css %> icon-2x" title="<%= name %>">&nbsp;</i>'),  
     events : {
         'click' : 'selectIcon'
     },
     selectIcon : function( e ) {
         e.preventDefault();
-        console.log(this.model.get('name'));
-        //window.Workspace.navigate("tagged/" + this.options.tag, { trigger: true });
+        this.model.collection.setSelected(this.model);
     },
     render:function () {
     		this.$el.html(this.template(this.model.toJSON()));

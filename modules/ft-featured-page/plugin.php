@@ -83,10 +83,11 @@ class FT_Featured_Page extends WP_Widget {
 		
 		echo $before_widget;
     
-    foreach (array('title', 'content', 'button_text', 'button_link' ) as $field_name) {
+    foreach (array('title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name) {
 			$$field_name = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
 		}
 		if ( empty( $title ) ) $title  = "The title";
+		if ( empty( $icon ) ) $icon  = "icon-star";
 		if ( empty( $content ) ) $content  = "And purely one near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill
     yikes considering far above. Physically less snickered much and and while";
 		if ( empty( $button_text ) ) $button_text  = "Click me!";
@@ -111,7 +112,7 @@ class FT_Featured_Page extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		
 		$instance = array();
-		foreach (array('title', 'content', 'button_text', 'button_link' ) as $field_name) {
+		foreach (array('title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name) {
 			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
 		}
 
@@ -132,7 +133,7 @@ class FT_Featured_Page extends WP_Widget {
 		);
 	
 		// Set $template_var to instance[$template_var]
-		foreach (array('title', 'content', 'button_text', 'button_link' ) as $field_name) {
+		foreach (array('title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name) {
 			$$field_name = $instance[ $field_name ];
 		}
 		

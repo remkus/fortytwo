@@ -1,8 +1,9 @@
 <?php // This file is used to markup the administration form of the widget. ?>
 <div class="ft-featured-page-admin">
+<input type="hidden" <?php $this->echo_field_id("icon") ?> value="<?php echo esc_attr( $icon ); ?>">
 <table>
 	<tr>
-		<td class="<?php echo $this->get_field_id("the-icon")?>">
+		<td class="<?php echo $this->get_field_id("the-icon-selector")?>">
 				<div >
 					<i class="icon-camera-retro icon-2x"></i>
 				</div>
@@ -32,9 +33,13 @@
 	"use strict";
 	$(document).ready(function () {
 		var iconCollection = new window.FT_Featured_Page_Admin_App.IconCollection( window.getFontAwesomeIcons() );
-		var iconList = new window.FT_Featured_Page_Admin_App.Views.FilterByNameList({
+		iconCollection.on('change:selectedIcon', function(selectedIcon) {
+			$('#<?php echo $this->get_field_id( "icon" )?>').val(selectedIcon.get('css'));
+		});
+		var iconList = new window.FT_Featured_Page_Admin_App.Views.IconListView({
 			collection: iconCollection, 
-			el: '.<?php echo $this->get_field_id("the-icon")?>'
+			selectedIconCss: '<?php echo $icon; ?>'||'icon-star',
+			el: '.<?php echo $this->get_field_id("the-icon-selector")?>'
 		});
 	});
 }(jQuery));
