@@ -32,11 +32,11 @@
 (function ($) {
 	"use strict";
 	$(document).ready(function () {
-		var iconCollection = new window.FT_Featured_Page_Admin_App.IconCollection( window.getFontAwesomeIcons() );
+		var iconCollection = new window.FontAwesomeIconSelectorApp.IconCollection();
 		iconCollection.on('change:selectedIcon', function(selectedIcon) {
 			$('#<?php echo $this->get_field_id( "icon" )?>').val(selectedIcon.get('css'));
 		});
-		var iconList = new window.FT_Featured_Page_Admin_App.Views.IconListView({
+		var iconList = new window.FontAwesomeIconSelectorApp.Views.IconListView({
 			collection: iconCollection, 
 			selectedIconCss: '<?php echo $icon; ?>'||'icon-star',
 			el: '.<?php echo $this->get_field_id("the-icon-selector")?>'

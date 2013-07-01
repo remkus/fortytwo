@@ -10,13 +10,18 @@
   AdminApp.IconCollection = Backbone.Collection.extend({
   	  model:AdminApp.Icon, 
   	  _selected: null,
+  	  initialize: function(models, options) {
+  	  	if ( _.isUndefined(models) ) {
+  	  			this.reset(AdminApp.getFontAwesomeIcons(), _.extend({silent: true}, options));
+  	  	}
+  	  },
   	  getSelected: function() {
   	  	if (_.isNull(this._selected)) { this._selected = this.models[0]; } 
   	  	return this._selected;
   	  },
   	  setSelected: function(iconModel) {
   	  	this._selected = iconModel;
-  	  	console.log('change:selectedIcon=', this._selected.toJSON());
+  	  	console.log('change:selectedIcon=', this._selected.get('css'));
   	  	this.trigger('change:selectedIcon', this._selected);
   	  },
   	  setSelectedByCss: function(iconCss) {
@@ -94,10 +99,8 @@
     }
   });
 
-  window.FT_Featured_Page_Admin_App = AdminApp;
-
   //TODO:  Generate this list dynamically from loaded CSS
-  window.getFontAwesomeIcons = function() {
+  AdminApp.getFontAwesomeIcons = function() {
   	var iconClasses = [
 			"icon-glass",
 			"icon-music",
@@ -431,4 +434,6 @@
 		});
 		return iconModels;
 	}
+
+	window.FontAwesomeIconSelectorApp = AdminApp;
 }(jQuery));
