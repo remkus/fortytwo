@@ -7556,30 +7556,33 @@ html:hover [class^="ss-"] {
   margin-bottom: 0;
 }
 /* line 29, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
+.menu-primary .dropdown-menu {
+  min-width: 180px;
+}
+/* line 33, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
 .menu-primary > li {
   border-right: 1px solid #ddd;
 }
-/* line 33, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
+/* line 37, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
 .menu-primary > li:first-child {
   border-left: 1px solid #ddd;
 }
-/* line 35, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
+/* line 39, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
 .menu-primary > li > a {
   padding: 10px 20px;
-  text-transform: uppercase;
   margin: -1px -1px 0;
   border-width: 2px 0 2px 0;
   border-style: solid;
   border-color: transparent;
 }
-/* line 43, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
+/* line 46, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
 .menu-primary > li > a:hover,
 .menu-primary > li > a:focus,
 .menu-primary > li > a:active {
   border-color: #424242 transparent transparent transparent;
   background-color: transparent;
 }
-/* line 53, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
+/* line 56, /Users/ryanholder/Sites/GitPress/gitpress-launch/content/themes/fortytwo/assets/stylesheets/less/ft-navbar.less */
 .menu-primary > .current-menu-parent a,
 .menu-primary > .current-menu-item a,
 .menu-primary > .open a {
