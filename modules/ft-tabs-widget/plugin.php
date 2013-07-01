@@ -42,7 +42,7 @@ class FT_Tabs_Widget extends WP_Widget {
         $this->fst_widget_title = __( 'FT - Tabs', 'fstpack' );
 
         /* Setup the assets URL in relation to FTPack. */
-        $this->assets_url = FT_PACK_URL . "/modules/tabs-widget/";
+        $this->assets_url = modules_url("ft-tabs-widget/");
 
         $this->available_tabs = array( 'latest', 'popular', "comments", "tags" );
         // Allow child themes/plugins to filter here.
@@ -83,70 +83,7 @@ class FT_Tabs_Widget extends WP_Widget {
         /* Before widget (defined by themes). */
         echo $before_widget;
 
-        /* Display the widget title if one was input (before and after defined by themes). */
-        if ( $title ) {
-
-            echo $before_title . $title . $after_title;
-
-        } // End IF Statement
-
-        /* Widget content. */
-
-        // Add actions for plugins/themes to hook onto.
-        do_action( $this->fst_widget_cssclass . '_top' );
-
-        // Load widget content here.
-        $html = '';
-
-        if ( count( $tabs ) > 0 ) {
-            $tab_content = '';
-            $tab_links = '';
-
-            // Setup the various tabs.
-            $tab_links .= '<ul class="nav nav-' . esc_attr( $tabs_style ) . '">' . "\n";
-            $count = 0;
-            foreach ( $tabs as $tab ) {
-                $count++;
-                $class = '';
-
-                if ( $count == 1 ) { $class = ' first active'; }
-                if ( $count == count( $tabs ) ) { $class = ' last'; }
-
-                $tab_links .= '<li class="tab-heading-' . esc_attr( $tab ) . $class . '"><a href="#tab-pane-' .
-                    esc_attr( $tab ) . '" data-toggle="tab">' . __( $tab, 'fstpack' ) . '</a></li>' . "\n";
-
-                $tab_content .= '<div id="tab-pane-' . esc_attr( $tab ) . '" class="tab-pane tab-pane-' . esc_attr( $tab ) . $class . '">' . "\n";
-
-                // Tab functions check for functions of the convention "fstpack_tabs_x" or, if non exists,
-                // a method in this class called "tab_content_x". If none, a default method is used to prevent errors.
-                // Parameters: array or arguments: 1: number of posts, 2: dimensions of image
-
-                $tab_args = array( 'limit' => intval( $instance['limit'] ), 'image_dimension' => intval( $instance['image_dimension'] ), 'image_alignment' => strval( $instance['image_alignment'] ) );
-
-                if ( function_exists( 'fstpack_tabs_' . esc_attr( $tab ) ) ) {
-                    $tab_content .= call_user_func_array( 'fstpack_tabs_' . esc_attr( $tab ), $tab_args );
-                } else {
-                    if ( method_exists( $this, 'tab_content_' . esc_attr( $tab ) ) ) {
-                        $tab_content .= call_user_func_array( array( $this, 'tab_content_' . esc_attr( $tab ) ), $tab_args );
-                    } else {
-                        $tab_content .= $this->tab_content_default( $tab );
-                    }
-                }
-
-                $tab_content .= '</div><!--/.tab-pane-->' . "\n";
-            }
-            $tab_links .= '</ul>' . "\n";
-
-
-            $html .= $tab_links;
-            $html .= '<div class="tab-content image-align-' . $instance['image_alignment'] . '">' . "\n" . $tab_content . '</div><!--/.tab-content-->' . "\n";
-
-        }
-
-        echo $html; // If using the $html variable to store the output, you need this. ;)
-
-        // Add actions for plugins/themes to hook onto.
-        do_action( $this->fst_widget_cssclass . '_bottom' );
+        include( dirname( __FILE__ ) . '/views/widget.php' );
 
         /* After widget (defined by themes). */
         echo $after_widget;
@@ -213,72 +150,9 @@ class FT_Tabs_Widget extends WP_Widget {
         // Allow child themes/plugins to filter here.
         $defaults = apply_filters( $this->fst_widget_idbase . '_widget_defaults', $defaults, $this );
         $instance = wp_parse_args( (array) $instance, $defaults );
-?>
-    <!-- Widget Title: Text Input -->
-    <p>
-      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title (optional):', 'fstpack' ); ?></label>
-      <input type="text" name="<?php echo $this->get_field_name( 'title' ); ?>"  value="<?php echo $instance['title']; ?>" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" />
-    </p>
-    <div class="genesis-widget-column">
-      <div class="genesis-widget-column-box genesis-widget-column-box-top">
-        <p><span class="description">Choose up to 4 tabs to display</span></p>
-        <p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 0 ) ?></p>
-        <p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 1 ) ?></p>
-        <p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 2 ) ?></p>
-        <p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 3 ) ?></p>
-      </div>
-    </div>
+        $available_tabs = $this->available_tabs;
 
-    <div class="genesis-widget-column genesis-widget-column-right">
-
-      <div class="genesis-widget-column-box genesis-widget-column-box-top">
-        <!-- Tabs Style: Select Input -->
-        <p>
-          <label for="<?php echo $this->get_field_id( 'tabs_style' ); ?>"><?php _e( 'Tabs Style:', 'fstpack' ); ?></label>
-          <select name="<?php echo $this->get_field_name( 'tabs_style' ); ?>" class="widefat" id="<?php echo $this->get_field_id( 'tabs_style' ); ?>">
-            <option value="tabs"<?php selected( $instance['tabs_style'], 'tabs' ); ?>><?php _e( 'Tabs', 'fstpack' ); ?></option>
-            <option value="pills"<?php selected( $instance['tabs_style'], 'pills' ); ?>><?php _e( 'Pills', 'fstpack' ); ?></option>
-          </select>
-        </p>
-        <!-- Widget Limit: Text Input -->
-        <p>
-          <label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:', 'fstpack' ); ?></label>
-          <input type="text" name="<?php echo $this->get_field_name( 'limit' ); ?>"  value="<?php echo $instance['limit']; ?>" class="widefat" id="<?php echo $this->get_field_id( 'limit' ); ?>" />
-        </p>
-        <!-- Widget Image Dimension: Text Input -->
-        <p>
-          <label for="<?php echo $this->get_field_id( 'image_dimension' ); ?>"><?php _e( 'Image Dimension:', 'fstpack' ); ?></label>
-          <input type="text" name="<?php echo $this->get_field_name( 'image_dimension' ); ?>"  value="<?php echo $instance['image_dimension']; ?>" class="widefat" id="<?php echo $this->get_field_id( 'image_dimension' ); ?>" />
-        </p>
-        <!-- Widget Image Alignment: Select Input -->
-        <p>
-          <label for="<?php echo $this->get_field_id( 'image_alignment' ); ?>"><?php _e( 'Image Alignment:', 'fstpack' ); ?></label>
-          <select name="<?php echo $this->get_field_name( 'image_alignment' ); ?>" class="widefat" id="<?php echo $this->get_field_id( 'image_alignment' ); ?>">
-            <option value="left"<?php selected( $instance['image_alignment'], 'left' ); ?>><?php _e( 'Left', 'fstpack' ); ?></option>
-            <option value="right"<?php selected( $instance['image_alignment'], 'right' ); ?>><?php _e( 'Right', 'fstpack' ); ?></option>
-          </select>
-        </p>
-
-        <p>
-          <small>
-            <?php
-
-        if ( current_theme_supports( 'post-thumbnails' ) ) {
-            _e( 'The "featured image" will be used as thumbnails.', 'fstpack' );
-        } else {
-            _e( 'Post thumbnails are not supported by your theme. Thumbnails will not be displayed.', 'fstpack' );
-        }
-
-?>
-          </small>
-        </p>
-      </div>
-
-    </div>
-    <?php
-
-        // Allow child themes/plugins to act here.
-        do_action( $this->fst_widget_idbase . '_widget_settings', $instance, $this );
+        include( dirname( __FILE__ ) . '/views/admin.php' );
 
     } // End form()
 
@@ -301,7 +175,7 @@ class FT_Tabs_Widget extends WP_Widget {
      * @return void
      */
     function enqueue_styles() {
-        wp_register_style( $this->fst_widget_idbase, $this->assets_url . 'css/style.css', array( 'bootstrap' ), FT_PACK_VERSION );
+        wp_register_style( $this->fst_widget_idbase, $this->assets_url . 'css/style.css', array( 'bootstrap' ));
         wp_enqueue_style( $this->fst_widget_idbase );
     } // End enqueue_styles()
 
@@ -313,7 +187,7 @@ class FT_Tabs_Widget extends WP_Widget {
      * @return void
      */
     function enqueue_scripts() {
-        wp_register_script( $this->fst_widget_idbase, $this->assets_url . 'js/functions.js', array( 'bootstrap' ), FT_PACK_VERSION );
+        wp_register_script( $this->fst_widget_idbase, $this->assets_url . 'js/functions.js', array( 'bootstrap' ) );
         wp_enqueue_script( $this->fst_widget_idbase );
     } // End enqueue_styles()
 
