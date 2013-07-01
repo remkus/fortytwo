@@ -52,6 +52,7 @@
     	var elIcon = this.$el.find('.the-selected-icon');
     	elIcon.removeClass();
     	elIcon.addClass('the-selected-icon icon-2x ' + selectedIcon.get('css'));
+    	this.toggleDropDown();
     },
     renderIconList: function(icons) {
 			this.$el.find('.the-icon-list').empty();
@@ -62,7 +63,8 @@
       this.$el.find('.the-icon-list').append( iconView.render().el );
     },
     events : {
-        'keyup :input' : 'filterIconList'
+        'keyup :input' : 'filterIconList',
+        'click .the-selected-icon': 'toggleDropDown'
     },
     filterIconList: function (e) {
     	var searchQuery = e.currentTarget.value;
@@ -71,6 +73,9 @@
     	} else {
     		this.renderIconList(this.collection);
     	}
+    },
+    toggleDropDown: function(e) {
+    	this.$el.find('.the-icon-selector-dropdown').toggleClass('is-visible');
     }
   });
   AdminApp.Views.IconView = Backbone.View.extend({
