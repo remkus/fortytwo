@@ -151,7 +151,6 @@ class FT_Featured_Page extends WP_Widget {
 	 */
 	public function widget_textdomain() {
 	
-		// TODO be sure to change 'widget-name' to the name of *your* plugin
 		load_plugin_textdomain( 'ft-featured-page-locale', false, dirname( __FILE__ ) . '/lang/' );
 		
 	} // end widget_textdomain
@@ -180,7 +179,8 @@ class FT_Featured_Page extends WP_Widget {
 	public function register_admin_styles() {
 	
 		wp_enqueue_style( 'ft-featured-page-admin-styles', modules_url( 'ft-featured-page/css/admin.css' ) );
-	
+		wp_enqueue_style( 'fontawesome_icon_selector_app', modules_url( 'ft-featured-page/css/fontawesome_icon_selector_app.css' ) );
+			
 	} // end register_admin_styles
 
 	/**
@@ -189,8 +189,8 @@ class FT_Featured_Page extends WP_Widget {
 	public function register_admin_scripts() {
 	
 	  wp_enqueue_script( 'backbone' );
-		wp_enqueue_script( 'ft-featured-page-admin-app-script', modules_url( 'ft-featured-page/js/admin_app.js' ), array( 'backbone' ) );
-		wp_enqueue_script( 'ft-featured-page-admin-script', modules_url( 'ft-featured-page/js/admin.js' ),  array( 'ft-featured-page-admin-app-script' ) );
+		wp_enqueue_script( 'fontawesome_icon_selector_app', modules_url( 'ft-featured-page/js/fontawesome_icon_selector_app.js' ), array( 'backbone' ) );
+		wp_enqueue_script( 'ft-featured-page-admin-script', modules_url( 'ft-featured-page/js/admin.js' ),  array( 'fontawesome_icon_selector_app' ) );
 		
 	} // end register_admin_scripts
 	
