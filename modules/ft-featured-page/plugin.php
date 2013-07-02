@@ -126,12 +126,19 @@ class FT_Featured_Page extends WP_Widget {
 	 * @param	array	instance	The array of keys and values for the widget.
 	 */
 	public function form( $instance ) {
-	
-    	// TODO:	Define default values for your variables
+
+    	// Default values for variables
 		$instance = wp_parse_args(
-			(array) $instance
+			(array) $instance,
+            array(
+                'title' => '',
+                'icon' => '',
+                'content' => '',
+                'button_text' => '',
+                'button_link' => ''
+            )
 		);
-	
+
 		// Set $template_var to instance[$template_var]
 		foreach (array('title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name) {
 			$$field_name = $instance[ $field_name ];
