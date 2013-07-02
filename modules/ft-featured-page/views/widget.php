@@ -1,7 +1,6 @@
 <!-- This file is used to markup the public-facing widget. -->
 <div class="post-x page type-page status-publish hentry entry">
-  <h4><i class="icon-beaker"></i> Services</h4>
-  <p>And purely one near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill
-    yikes considering far above. Physically less snickered much and and while</p>
-  <a class="btn" href="#">Our Services</a>
+  <?php echo $before_title ?><i class="<?php echo esc_html($icon) ?>"></i> <?php echo esc_html($title) ?><?php echo $after_title ?>
+  <p><?php echo esc_html($content); ?></p>
+  <a class="btn" href="<?php echo esc_url($button_link) ?>"><?php echo esc_html($button_text) ?></a>
 </div>

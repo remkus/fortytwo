@@ -1,1 +1,4 @@
 /* This stylesheet is used to style the admin option form of the widget. */
+.ft-featured-page-admin textarea {
+	width:100%;
+}
