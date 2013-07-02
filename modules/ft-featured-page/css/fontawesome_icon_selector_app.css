@@ -1,0 +1,34 @@
+/* This stylesheet is used to style the admin option form of the widget. */
+@import url('../../../vendor/frameworks/font-awesome-more/css/font-awesome.min.css');
+
+.the-icon-selector-wrapper .the-icon-selector-dropdown {
+	position:absolute;
+	right:260px;
+	width:250px;
+	height:300px;
+	border: 1px solid black;
+	background-color: white;
+	padding: 5px;
+	visibility: hidden;
+}
+
+.the-icon-selector-wrapper .is-visible {
+	visibility: visible;
+}
+
+
+.the-icon-selector-wrapper .the-icon-selector-dropdown .the-icon-list {
+	margin-top: 5px;
+	padding: 5px;
+	position:absolute;
+	overflow-y: scroll;
+	width:91%;
+	height:80%;
+}
+
+
+.the-icon-selector-wrapper .the-icon-selector-dropdown INPUT {
+	width: 95%;
+}
+
+
