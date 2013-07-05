@@ -1,12 +1,17 @@
 // Custom file for FortyTwo Content Layouts
 
 //
-// Content Sidebar
+// Files specific mixins
 // --------------------------------------------------
+.height-adjust() {
+  padding-top: 40px;
+  margin-bottom: -9999px;
+  padding-bottom: 9999px;
+}
 
 .content-sidebar-wrap {
   .make-row;
-  padding-bottom: 45px;
+  padding-bottom: 40px;
   min-height: 100%;
   overflow: hidden;
 }
@@ -14,6 +19,7 @@
 .full-width-content {
   .content {
     .make-column(12);
+    .height-adjust();
   }
 }
 
@@ -21,16 +27,12 @@
 .sidebar-content {
   .content {
     .make-column(9);
-    padding-top: 45px;
-    margin-bottom: -9999px;
-    padding-bottom: 9999px;
+    .height-adjust();
   }
 
   .sidebar-primary {
     .make-column(3);
-    padding-top: 45px;
-    margin-bottom: -9999px;
-    padding-bottom: 9999px;
+    .height-adjust();
   }
 }
 
@@ -39,14 +41,17 @@
 .sidebar-content-sidebar {
   .content {
     .make-column(7);
+    .height-adjust();
   }
 
   .sidebar-primary {
     .make-column(3);
+    .height-adjust();
   }
 
   .sidebar-secondary {
     .make-column(2);
+    .height-adjust();
   }
 }
 
@@ -59,64 +64,85 @@
   .sidebar-primary {
     padding-right: 15px;
     padding-left: 30px;
-    border-left: 1px solid #dddddd;
+    border-left: 1px solid #ddd;
   }
 }
 
 .sidebar-content {
-  .sidebar-primary {
-    .make-column-pull(9);
-    padding-right: 30px;
-    padding-left: 15px;
-    border-right: 1px solid #dddddd;
-  }
-
   .content {
     .make-column-push(3);
     padding-right: 15px;
     padding-left: 30px;
   }
+
+  .sidebar-primary {
+    .make-column-pull(9);
+    padding-right: 30px;
+    padding-left: 15px;
+    border-right: 1px solid #ddd;
+  }
 }
 
 .content-sidebar-sidebar {
   .content {
-    .box-padding(45, 30, 45, 15);
+    padding-right: 30px;
+    padding-left: 15px;
   }
 
   .sidebar-primary {
-    .box-padding(45, 30, 45, 30);
+    padding-right: 30px;
+    padding-left: 30px;
+    border-left: 1px solid #ddd;
   }
 
   .sidebar-secondary {
-    .box-padding(45, 15, 45, 30);
+    padding-right: 15px;
+    padding-left: 30px;
+    border-left: 1px solid #ddd;
   }
 }
 
 
 .sidebar-sidebar-content {
   .content {
-    .make-column-push(5)
+    .make-column-push(5);
+    padding-right: 15px;
+    padding-left: 30px;
   }
 
   .sidebar-primary {
     .make-column-pull(5);
+    padding-right: 30px;
+    padding-left: 30px;
+    border-right: 1px solid #ddd;
   }
 
   .sidebar-secondary {
     .make-column-pull(10);
+    padding-right: 30px;
+    padding-left: 15px;
+    border-right: 1px solid #ddd;
   }
 }
 
 .sidebar-content-sidebar {
   .content {
-    .make-column-push(2)
+    .make-column-push(2);
+    padding-right: 30px;
+    padding-left: 30px;
   }
 
   .sidebar-primary {
     .make-column-push(2);
+    padding-right: 15px;
+    padding-left: 30px;
+    border-left: 1px solid #ddd;
   }
 
   .sidebar-secondary {
     .make-column-pull(10);
+    padding-right: 30px;
+    padding-left: 15px;
+    border-right: 1px solid #ddd;
   }
 }

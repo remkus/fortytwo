@@ -8227,9 +8227,9 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
   font-weight: normal;
   line-height: inherit;
 }
-/* line 7, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+/* line 12, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
 .content-sidebar-wrap {
-  padding-bottom: 45px;
+  padding-bottom: 40px;
   min-height: 100%;
   overflow: hidden;
 }
@@ -8266,7 +8266,7 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
   margin-left: -15px;
   margin-right: -15px;
 }
-/* line 15, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
 .full-width-content .content {
   position: relative;
   float: left;
@@ -8274,6 +8274,9 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 40px;
+  margin-bottom: -9999px;
+  padding-bottom: 9999px;
 }
 @media (min-width: 768px) {
   /* line 426, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
@@ -8281,7 +8284,7 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
     width: 100%;
   }
 }
-/* line 22, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+/* line 28, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
 .content-sidebar .content,
 .sidebar-content .content {
   position: relative;
@@ -8290,7 +8293,7 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 45px;
+  padding-top: 40px;
   margin-bottom: -9999px;
   padding-bottom: 9999px;
 }
@@ -8301,7 +8304,7 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
     width: 75%;
   }
 }
-/* line 29, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+/* line 33, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
 .content-sidebar .sidebar-primary,
 .sidebar-content .sidebar-primary {
   position: relative;
@@ -8310,7 +8313,7 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 45px;
+  padding-top: 40px;
   margin-bottom: -9999px;
   padding-bottom: 9999px;
 }
@@ -8321,7 +8324,7 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
     width: 25%;
   }
 }
-/* line 40, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+/* line 42, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
 .content-sidebar-sidebar .content,
 .sidebar-sidebar-content .content,
 .sidebar-content-sidebar .content {
@@ -8331,6 +8334,9 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 40px;
+  margin-bottom: -9999px;
+  padding-bottom: 9999px;
 }
 @media (min-width: 768px) {
   /* line 426, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
@@ -8340,7 +8346,7 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
     width: 58.333333333333336%;
   }
 }
-/* line 44, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+/* line 47, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
 .content-sidebar-sidebar .sidebar-primary,
 .sidebar-sidebar-content .sidebar-primary,
 .sidebar-content-sidebar .sidebar-primary {
@@ -8350,6 +8356,9 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 40px;
+  margin-bottom: -9999px;
+  padding-bottom: 9999px;
 }
 @media (min-width: 768px) {
   /* line 426, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
@@ -8359,7 +8368,7 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
     width: 25%;
   }
 }
-/* line 48, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+/* line 52, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
 .content-sidebar-sidebar .sidebar-secondary,
 .sidebar-sidebar-content .sidebar-secondary,
 .sidebar-content-sidebar .sidebar-secondary {
@@ -8369,6 +8378,9 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 40px;
+  margin-bottom: -9999px;
+  padding-bottom: 9999px;
 }
 @media (min-width: 768px) {
   /* line 426, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
@@ -8378,30 +8390,18 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
     width: 16.666666666666664%;
   }
 }
-/* line 54, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+/* line 59, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
 .content-sidebar .content {
   padding-right: 30px;
   padding-left: 15px;
 }
-/* line 59, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+/* line 64, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
 .content-sidebar .sidebar-primary {
   padding-right: 15px;
   padding-left: 30px;
-  border-left: 1px solid #dddddd;
+  border-left: 1px solid #ddd;
 }
-/* line 67, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
-.sidebar-content .sidebar-primary {
-  padding-right: 30px;
-  padding-left: 15px;
-  border-right: 1px solid #dddddd;
-}
-@media (min-width: 768px) {
-  /* line 442, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
-  .sidebar-content .sidebar-primary {
-    right: 75%;
-  }
-}
-/* line 74, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+/* line 72, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
 .sidebar-content .content {
   padding-right: 15px;
   padding-left: 30px;
@@ -8412,20 +8412,39 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
     left: 25%;
   }
 }
-/* line 82, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+/* line 78, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+.sidebar-content .sidebar-primary {
+  padding-right: 30px;
+  padding-left: 15px;
+  border-right: 1px solid #ddd;
+}
+@media (min-width: 768px) {
+  /* line 442, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
+  .sidebar-content .sidebar-primary {
+    right: 75%;
+  }
+}
+/* line 87, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
 .content-sidebar-sidebar .content {
-  padding: 45px 30px 45px 15px;
-  padding: 4.5rem 3rem 4.5rem 1.5rem;
+  padding-right: 30px;
+  padding-left: 15px;
 }
-/* line 86, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+/* line 92, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
 .content-sidebar-sidebar .sidebar-primary {
-  padding: 45px 30px 45px 30px;
-  padding: 4.5rem 3rem 4.5rem 3rem;
+  padding-right: 30px;
+  padding-left: 30px;
+  border-left: 1px solid #ddd;
 }
-/* line 90, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+/* line 98, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
 .content-sidebar-sidebar .sidebar-secondary {
-  padding: 45px 15px 45px 30px;
-  padding: 4.5rem 1.5rem 4.5rem 3rem;
+  padding-right: 15px;
+  padding-left: 30px;
+  border-left: 1px solid #ddd;
+}
+/* line 107, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+.sidebar-sidebar-content .content {
+  padding-right: 15px;
+  padding-left: 30px;
 }
 @media (min-width: 768px) {
   /* line 437, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
@@ -8433,11 +8452,23 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
     left: 41.66666666666667%;
   }
 }
+/* line 113, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+.sidebar-sidebar-content .sidebar-primary {
+  padding-right: 30px;
+  padding-left: 30px;
+  border-right: 1px solid #ddd;
+}
 @media (min-width: 768px) {
   /* line 442, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
   .sidebar-sidebar-content .sidebar-primary {
     right: 41.66666666666667%;
   }
+}
+/* line 120, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+.sidebar-sidebar-content .sidebar-secondary {
+  padding-right: 30px;
+  padding-left: 15px;
+  border-right: 1px solid #ddd;
 }
 @media (min-width: 768px) {
   /* line 442, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
@@ -8445,17 +8476,34 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
     right: 83.33333333333334%;
   }
 }
+/* line 129, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+.sidebar-content-sidebar .content {
+  padding-right: 30px;
+  padding-left: 30px;
+}
 @media (min-width: 768px) {
   /* line 437, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
   .sidebar-content-sidebar .content {
     left: 16.666666666666664%;
   }
 }
+/* line 135, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+.sidebar-content-sidebar .sidebar-primary {
+  padding-right: 15px;
+  padding-left: 30px;
+  border-left: 1px solid #ddd;
+}
 @media (min-width: 768px) {
   /* line 437, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
   .sidebar-content-sidebar .sidebar-primary {
     left: 16.666666666666664%;
   }
+}
+/* line 142, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/stylesheets/less/ft-layouts.less */
+.sidebar-content-sidebar .sidebar-secondary {
+  padding-right: 30px;
+  padding-left: 15px;
+  border-right: 1px solid #ddd;
 }
 @media (min-width: 768px) {
   /* line 442, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
