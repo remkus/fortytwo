@@ -1,15 +1,25 @@
 <?php
 /*
-  Based on:
-
-	Plugin Name: Genesis Responsive Slider
 	Description: A responsive featured slider for the Genesis Framework.
-	Author: StudioPress
+	Author: Forsite Themes
+	Based on: Genesis Responsive Slider by StudioPress
+	Author URI: http://forsitethemes.com
+	Author Email: mail@forsitethemes.com
+	License: GPLv2 or later
+	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-	Version: 0.9.2
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License, version 2, as 
+	published by the Free Software Foundation.
 
-	License: GNU General Public License v2.0 (or later)
-	License URI: http://www.opensource.org/licenses/gpl-license.php
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 /**
