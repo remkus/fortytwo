@@ -1,15 +1,9 @@
 <?php
 /*
-Plugin Name: FortyTwo Testimonials Widget
-Plugin URI: http://forsitethemes.com
 Description: FortyTwo Testimonials Widget
-Version: 1.0
 Author: Forsite Themes
 Author URI: http://forsitethemes.com
 Author Email: mail@forsitethemes.com
-Text Domain: ft-testimonials-locale
-Domain Path: /lang/
-Network: false
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,7 +133,6 @@ class FT_Testimonials extends WP_Widget {
 	 */
 	public function widget_textdomain() {
 	
-		// TODO be sure to change 'widget-name' to the name of *your* plugin
 		load_plugin_textdomain( 'ft-testimonials-locale', false, plugin_dir_path( __FILE__ ) . '/lang/' );
 		
 	} // end widget_textdomain
@@ -177,7 +170,6 @@ class FT_Testimonials extends WP_Widget {
 	 */	
 	public function register_admin_scripts() {
 	
-		// TODO:	Change 'widget-name' to the name of your plugin
 		wp_enqueue_script( 'ft-testimonials-admin-script', $this->url( '/js/admin.js' ) );
 		
 	} // end register_admin_scripts
@@ -187,7 +179,6 @@ class FT_Testimonials extends WP_Widget {
 	 */
 	public function register_widget_styles() {
 	
-		// TODO:	Change 'widget-name' to the name of your plugin
 		wp_enqueue_style( 'ft-testimonials-widget-styles', $this->url( '/css/widget.css' ) );
 		
 	} // end register_widget_styles
@@ -197,7 +188,6 @@ class FT_Testimonials extends WP_Widget {
 	 */
 	public function register_widget_scripts() {
 	
-		// TODO:	Change 'widget-name' to the name of your plugin
 		wp_enqueue_script( 'ft-testimonials-script', $this->url( '/js/widget.js' ) );
 		
 	} // end register_widget_scripts

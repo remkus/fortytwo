@@ -1,15 +1,10 @@
 <?php
 /*
-Plugin Name: FortyTwo Featured Page Widget
-Plugin URI: http://forsitethemes.com
+
 Description: FortyTwo Featured Page Widget
-Version: 1.0
 Author: Forsite Themes
 Author URI: http://forsitethemes.com
 Author Email: mail@forsitethemes.com
-Text Domain: ft-featured-page-locale
-Domain Path: /lang/
-Network: false
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -191,7 +186,7 @@ class FT_Featured_Page extends WP_Widget {
 	
 		wp_enqueue_style( 'ft-featured-page-admin-styles', $this->url( '/css/admin.css' ) );
 		wp_enqueue_style( 'font-awesome-more', FORTYTWO_URL . '/vendor/frameworks/font-awesome-more/css/font-awesome.min.css' );
-		wp_enqueue_style( 'fontawesome_icon_selector_app', $this->url( '/css/fontawesome_icon_selector_app.css' ), 'font-awesome-more' );
+		wp_enqueue_style( 'fontawesome_icon_selector_app', $this->url( '/css/fontawesome_icon_selector_app.css' ), array( 'font-awesome-more' ) );
 			
 	} // end register_admin_styles
 
@@ -211,7 +206,6 @@ class FT_Featured_Page extends WP_Widget {
 	 */
 	public function register_widget_styles() {
 	
-		// TODO:	Change 'widget-name' to the name of your plugin
 		wp_enqueue_style( 'ft-featured-page-widget-styles', $this->url( '/css/widget.css' ) );
 		
 	} // end register_widget_styles
@@ -221,7 +215,6 @@ class FT_Featured_Page extends WP_Widget {
 	 */
 	public function register_widget_scripts() {
 	
-		// TODO:	Change 'widget-name' to the name of your plugin
 		wp_enqueue_script( 'ft-featured-page-script', $this->url( '/js/widget.js' ) );
 		
 	} // end register_widget_scripts
