@@ -1,6 +1,4 @@
 /* This stylesheet is used to style the admin option form of the widget. */
-@import url('../../../vendor/frameworks/font-awesome-more/css/font-awesome.min.css');
-
 .the-icon-selector-wrapper .the-icon-selector-dropdown {
 	position:absolute;
 	right:260px;

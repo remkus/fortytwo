@@ -23,6 +23,10 @@
 define( 'FT_RESPONSIVE_SLIDER_SETTINGS_FIELD', 'ft_responsive_slider_settings' );
 define( 'FT_RESPONSIVE_SLIDER_VERSION', '0.9.2' );
 
+function ft_responsive_slider_url($file) {
+  return FORTYTWO_WIDGETS_URL.'/ft-responsive-slider'.$file;
+}
+
 add_action( 'after_setup_theme', 'FTResponsiveSliderInit', 15 );
 /**
  * Loads required files and adds image via Genesis Init Hook
@@ -93,7 +97,7 @@ function ft_responsive_slider_sanitization() {
 function ft_responsive_slider_scripts() {
 
 	/** easySlider JavaScript code */
-	wp_enqueue_script( 'flexslider', modules_url('ft-responsive-slider/js/jquery.flexslider-min.js'), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, TRUE );
+	wp_enqueue_script( 'flexslider', ft_responsive_slider_url('/js/jquery.flexslider-min.js'), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, TRUE );
 
 }
 
@@ -103,7 +107,7 @@ function ft_responsive_slider_scripts() {
 function ft_responsive_slider_styles() {
 
 	/** standard slideshow styles */
-	wp_register_style( 'slider_styles', modules_url('ft-responsive-slider/css/style.css'), array(), FT_RESPONSIVE_SLIDER_VERSION );
+	wp_register_style( 'slider_styles', ft_responsive_slider_url('/css/style.css'), array(), FT_RESPONSIVE_SLIDER_VERSION );
 	wp_enqueue_style( 'slider_styles' );
 
 }

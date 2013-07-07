@@ -103,6 +103,10 @@ class FT_Featured_Page extends WP_Widget {
 		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
 	}
 
+	private function url($file) {
+		return FORTYTWO_WIDGETS_URL.'/ft-featured-page'.$file;
+	}
+
 	/**
 	 * Processes the widget's options to be saved.
 	 *
@@ -185,8 +189,9 @@ class FT_Featured_Page extends WP_Widget {
 	 */
 	public function register_admin_styles() {
 	
-		wp_enqueue_style( 'ft-featured-page-admin-styles', modules_url( 'ft-featured-page/css/admin.css' ) );
-		wp_enqueue_style( 'fontawesome_icon_selector_app', modules_url( 'ft-featured-page/css/fontawesome_icon_selector_app.css' ) );
+		wp_enqueue_style( 'ft-featured-page-admin-styles', $this->url( '/css/admin.css' ) );
+		wp_enqueue_style( 'font-awesome-more', FORTYTWO_URL . '/vendor/frameworks/font-awesome-more/css/font-awesome.min.css' );
+		wp_enqueue_style( 'fontawesome_icon_selector_app', $this->url( '/css/fontawesome_icon_selector_app.css' ), 'font-awesome-more' );
 			
 	} // end register_admin_styles
 
@@ -196,8 +201,8 @@ class FT_Featured_Page extends WP_Widget {
 	public function register_admin_scripts() {
 	
 	  wp_enqueue_script( 'backbone' );
-		wp_enqueue_script( 'fontawesome_icon_selector_app', modules_url( 'ft-featured-page/js/fontawesome_icon_selector_app.js' ), array( 'backbone' ) );
-		wp_enqueue_script( 'ft-featured-page-admin-script', modules_url( 'ft-featured-page/js/admin.js' ),  array( 'fontawesome_icon_selector_app' ) );
+		wp_enqueue_script( 'fontawesome_icon_selector_app', $this->url( '/js/fontawesome_icon_selector_app.js' ), array( 'backbone' ) );
+		wp_enqueue_script( 'ft-featured-page-admin-script', $this->url( '/js/admin.js' ),  array( 'fontawesome_icon_selector_app' ) );
 		
 	} // end register_admin_scripts
 	
@@ -207,7 +212,7 @@ class FT_Featured_Page extends WP_Widget {
 	public function register_widget_styles() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'ft-featured-page-widget-styles', modules_url( 'ft-featured-page/css/widget.css' ) );
+		wp_enqueue_style( 'ft-featured-page-widget-styles', $this->url( '/css/widget.css' ) );
 		
 	} // end register_widget_styles
 	
@@ -217,7 +222,7 @@ class FT_Featured_Page extends WP_Widget {
 	public function register_widget_scripts() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'ft-featured-page-script', modules_url( 'ft-featured-page/js/widget.js' ) );
+		wp_enqueue_script( 'ft-featured-page-script', $this->url( '/js/widget.js' ) );
 		
 	} // end register_widget_scripts
 	

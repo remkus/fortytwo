@@ -29,18 +29,12 @@ require_once( 'ft-slider.php' );
 
 require_once( 'ft-page-blog.php');
 
-/** Activate modules **/
-
-//TODO:  Move this somewhere sensible
-function modules_url($file) {
-	return CHILD_URL . '/modules/' . $file;
-}
-
-require_once( CHILD_DIR . '/modules/ft-responsive-slider/plugin.php' );
-require_once( CHILD_DIR . '/modules/ft-featured-page/plugin.php' );
-require_once( CHILD_DIR . '/modules/ft-jumbotron/plugin.php' );
-require_once( CHILD_DIR . '/modules/ft-testimonials/plugin.php' );
-require_once( CHILD_DIR . '/modules/ft-tabs-widget/plugin.php' );
+//Require all theme widgets
+require_once( FORTYTWO_WIDGETS_DIR . '/ft-responsive-slider/plugin.php' );
+require_once( FORTYTWO_WIDGETS_DIR . '/ft-featured-page/plugin.php' );
+require_once( FORTYTWO_WIDGETS_DIR . '/ft-jumbotron/plugin.php' );
+require_once( FORTYTWO_WIDGETS_DIR . '/ft-testimonials/plugin.php' );
+require_once( FORTYTWO_WIDGETS_DIR . '/ft-tabs-widget/plugin.php' );
 
 //Require once to include WPThumb
 require_once( CHILD_DIR . '/vendor/wpthumb/wpthumb.php' );
