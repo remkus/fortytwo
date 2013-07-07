@@ -44,7 +44,7 @@ function FTResponsiveSliderInit() {
 	add_action( 'widgets_init', 'ft_responsive_sliderRegister' );
 	
 	/** Include Admin file */
-	if ( is_admin() ) require_once( dirname( __FILE__ ) . '/views/admin.php' );
+	if ( is_admin() ) require_once( dirname( __FILE__ ) . '/views/form.php' );
 
 	/** Add new image size */
 	add_image_size( 'slider', ( int ) ft_get_responsive_slider_option( 'slideshow_width' ), ( int ) ft_get_responsive_slider_option( 'slideshow_height' ), TRUE );
