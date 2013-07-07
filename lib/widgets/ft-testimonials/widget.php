@@ -38,10 +38,6 @@ class FT_Testimonials extends WP_Widget {
 		// load plugin text domain
 		add_action( 'init', array( $this, 'widget_textdomain' ) );
 		
-		// Hooks fired when the Widget is activated and deactivated
-		register_activation_hook( __FILE__, array( $this, 'activate' ) );
-		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
-
 		parent::__construct(
 			'widget-ft-testimonials',
 			__( 'FortyTwo - Testimonials', 'ft-testimonials-locale' ),
@@ -136,24 +132,6 @@ class FT_Testimonials extends WP_Widget {
 		load_plugin_textdomain( 'ft-testimonials-locale', false, plugin_dir_path( __FILE__ ) . '/lang/' );
 		
 	} // end widget_textdomain
-	
-	/**
-	 * Fired when the plugin is activated.
-	 *
-	 * @param		boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog.
-	 */
-	public function activate( $network_wide ) {
-		// TODO define activation functionality here
-	} // end activate
-	
-	/**
-	 * Fired when the plugin is deactivated.
-	 *
-	 * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog 
-	 */
-	public function deactivate( $network_wide ) {
-		// TODO define deactivation functionality here		
-	} // end deactivate
 	
 	/**
 	 * Registers and enqueues admin-specific styles.
