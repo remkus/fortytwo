@@ -8,6 +8,14 @@ define( 'CHILD_THEME_NAME', 'FortyTwo Theme' );
 define( 'CHILD_THEME_URL', 'http://forsitethemes.com/themes/fortytwo' );
 define( 'CHILD_THEME_VERSION', filemtime( get_stylesheet_directory() . '/style.css' ) );
 
+define( 'FORTYTWO_DIR', CHILD_DIR );
+define( 'FORTYTWO_URL', CHILD_URL );
+
+define( 'FORTYTWO_LIB_DIR', CHILD_DIR . '/lib' );
+define( 'FORTYTWO_LIB_URL', CHILD_URL . '/lib' );
+define( 'FORTYTWO_WIDGETS_DIR', FORTYTWO_LIB_DIR . '/widgets' );
+define( 'FORTYTWO_WIDGETS_URL', FORTYTWO_LIB_URL . '/widgets' );
+
 /** Load Initializer Components */
 require_once( 'ft-cleanup.php' );
 
