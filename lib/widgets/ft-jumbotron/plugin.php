@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name: FortyTwo Testimonials Widget
+Plugin Name: FortyTwo Jumbotron Widget
 Plugin URI: http://forsitethemes.com
-Description: FortyTwo Testimonials Widget
+Description: FortyTwo Jumbotron Widget
 Version: 1.0
 Author: Forsite Themes
 Author URI: http://forsitethemes.com
 Author Email: mail@forsitethemes.com
-Text Domain: ft-testimonials-locale
+Text Domain: ft-jumbotron-locale
 Domain Path: /lang/
 Network: false
 License: GPLv2 or later
@@ -29,7 +29,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-class FT_Testimonials extends WP_Widget {
+class FT_Jumbotron extends WP_Widget {
 
 	/*--------------------------------------------------*/
 	/* Constructor
@@ -49,11 +49,11 @@ class FT_Testimonials extends WP_Widget {
 		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
 		parent::__construct(
-			'widget-ft-testimonials',
-			__( 'FortyTwo - Testimonials', 'ft-testimonials-locale' ),
+			'widget-ft-jumbotron',
+			__( 'FortyTwo - Jumbotron', 'ft-jumbotron-locale' ),
 			array(
-				'classname'		=>	'ft-testimonials',
-				'description'	=>	__( 'Testimonials widget for the FortyTwo Theme.', 'ft-testimonials-locale' )
+				'classname'		=>	'ft-jumbotron',
+				'description'	=>	__( 'Jumbotron widget for the FortyTwo Theme.', 'ft-jumbotron-locale' )
 			)
 		);
 		
@@ -66,6 +66,10 @@ class FT_Testimonials extends WP_Widget {
         //add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_scripts' ) );
 		
 	} // end constructor
+
+	private function url($file) {
+		return FORTYTWO_WIDGETS_URL.'/ft-jumbotron'.$file;
+	}
 
 	/*--------------------------------------------------*/
 	/* Widget API Functions
@@ -136,7 +140,7 @@ class FT_Testimonials extends WP_Widget {
 	public function widget_textdomain() {
 	
 		// TODO be sure to change 'widget-name' to the name of *your* plugin
-		load_plugin_textdomain( 'ft-testimonials-locale', false, plugin_dir_path( __FILE__ ) . '/lang/' );
+		load_plugin_textdomain( 'ft-jumbotron-locale', false, plugin_dir_path( __FILE__ ) . '/lang/' );
 		
 	} // end widget_textdomain
 	
@@ -164,7 +168,7 @@ class FT_Testimonials extends WP_Widget {
 	public function register_admin_styles() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'ft-testimonials-admin-styles', modules_url( 'ft-testimonials/css/admin.css' ) );
+		wp_enqueue_style( 'ft-jumbotron-admin-styles', $this->url( '/css/admin.css' ) );
 	
 	} // end register_admin_styles
 
@@ -174,7 +178,7 @@ class FT_Testimonials extends WP_Widget {
 	public function register_admin_scripts() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'ft-testimonials-admin-script', modules_url( 'ft-testimonials/js/admin.js' ) );
+		wp_enqueue_script( 'ft-jumbotron-admin-script', $this->url( '/js/admin.js' ) );
 		
 	} // end register_admin_scripts
 	
@@ -184,7 +188,7 @@ class FT_Testimonials extends WP_Widget {
 	public function register_widget_styles() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'ft-testimonials-widget-styles', modules_url( 'ft-testimonials/css/widget.css' ) );
+		wp_enqueue_style( 'ft-jumbotron-widget-styles', $this->url( '/css/widget.css' ) );
 		
 	} // end register_widget_styles
 	
@@ -194,10 +198,10 @@ class FT_Testimonials extends WP_Widget {
 	public function register_widget_scripts() {
 	
 		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'ft-testimonials-script', modules_url( 'ft-testimonials/js/widget.js' ) );
+		wp_enqueue_script( 'ft-jumbotron-script', modules_url( 'ft-jumbotron/js/widget.js' ) );
 		
 	} // end register_widget_scripts
 	
 } // end class
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Testimonials");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("FT_Jumbotron");' ) );

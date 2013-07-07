@@ -22,7 +22,6 @@ class FT_Tabs_Widget extends WP_Widget {
     var $fst_widget_idbase;
     var $fst_widget_title;
 
-    var $assets_url;
     var $available_tabs;
 
     /**
@@ -41,9 +40,6 @@ class FT_Tabs_Widget extends WP_Widget {
         $this->fst_widget_idbase = 'fstpack_tabs';
         $this->fst_widget_title = __( 'FT - Tabs', 'fstpack' );
 
-        /* Setup the assets URL in relation to FTPack. */
-        $this->assets_url = modules_url("ft-tabs-widget/");
-
         $this->available_tabs = array( 'latest', 'popular', "comments", "tags" );
         // Allow child themes/plugins to filter here.
         $this->available_tabs = apply_filters( 'fstpack_available_tabs', $this->available_tabs );
@@ -61,6 +57,10 @@ class FT_Tabs_Widget extends WP_Widget {
         add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_styles' ) );
         add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
     } // End Constructor
+
+    private function url($file) {
+        return FORTYTWO_WIDGETS_URL.'/ft-tabs-widget'.$file;
+    }
 
     /**
      * widget function.
@@ -175,7 +175,7 @@ class FT_Tabs_Widget extends WP_Widget {
      * @return void
      */
     function enqueue_styles() {
-        wp_register_style( $this->fst_widget_idbase, $this->assets_url . 'css/style.css', array( 'bootstrap' ));
+        wp_register_style( $this->fst_widget_idbase, $this->url( '/css/style.css' ), array( 'bootstrap' ));
         wp_enqueue_style( $this->fst_widget_idbase );
     } // End enqueue_styles()
 
@@ -187,7 +187,7 @@ class FT_Tabs_Widget extends WP_Widget {
      * @return void
      */
     function enqueue_scripts() {
-        wp_register_script( $this->fst_widget_idbase, $this->assets_url . 'js/functions.js', array( 'bootstrap' ) );
+        wp_register_script( $this->fst_widget_idbase, $this->url( '/js/functions.js' ), array( 'bootstrap' ) );
         wp_enqueue_script( $this->fst_widget_idbase );
     } // End enqueue_styles()
 
