@@ -152,7 +152,7 @@ class FT_Tabs_Widget extends WP_Widget {
         $instance = wp_parse_args( (array) $instance, $defaults );
         $available_tabs = $this->available_tabs;
 
-        include( dirname( __FILE__ ) . '/views/admin.php' );
+        include( dirname( __FILE__ ) . '/views/form.php' );
 
     } // End form()
 

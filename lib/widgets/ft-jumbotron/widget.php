@@ -126,7 +126,7 @@ class FT_Jumbotron extends WP_Widget {
 		// TODO:	Store the values of the widget in their own variable
 		
 		// Display the admin form
-		include( plugin_dir_path(__FILE__) . '/views/admin.php' );	
+		include( plugin_dir_path(__FILE__) . '/views/form.php' );	
 		
 	} // end form
 

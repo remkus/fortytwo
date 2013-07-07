@@ -149,7 +149,7 @@ class FT_Featured_Page extends WP_Widget {
 		}
 		
 		// Display the admin form
-		include( dirname (__FILE__) . '/views/admin.php' );	
+		include( dirname (__FILE__) . '/views/form.php' );	
 		
 	} // end form
 
