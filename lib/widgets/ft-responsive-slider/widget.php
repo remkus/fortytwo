@@ -1,203 +1,445 @@
 <?php
 /*
-Plugin Name: FortyTwo Responsive Slider Widget
-Plugin URI: http://forsitethemes.com
-Description: FortyTwo Responsive Slider Widget
-Version: 1.0
-Author: Forsite Themes
-Author URI: http://forsitethemes.com
-Author Email: mail@forsitethemes.com
-Network: false
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+  Based on:
 
-Copyright 2013 mail@forsitethemes.com
+	Plugin Name: Genesis Responsive Slider
+	Description: A responsive featured slider for the Genesis Framework.
+	Author: StudioPress
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as
-published by the Free Software Foundation.
+	Version: 0.9.2
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+	License: GNU General Public License v2.0 (or later)
+	License URI: http://www.opensource.org/licenses/gpl-license.php
 */
 
-class FT_Responsive_Slider extends WP_Widget {
+/**
+ * Props to Rafal Tomal, Nick Croft, Nathan Rice, Ron Rennick, Josh Byers and Brian Gardner for collaboratively writing this plugin.
+ */
+ 
+ /**
+ * Thanks to Tyler Smith for creating the awesome jquery FlexSlider plugin - http://flex.madebymufffin.com/.
+ */
 
-	/*--------------------------------------------------*/
-	/* Constructor
-	/*--------------------------------------------------*/
+define( 'FT_RESPONSIVE_SLIDER_SETTINGS_FIELD', 'ft_responsive_slider_settings' );
+define( 'FT_RESPONSIVE_SLIDER_VERSION', '0.9.2' );
 
-	/**
-	 * Specifies the classname and description, instantiates the widget,
-	 * loads localization files, and includes necessary stylesheets and JavaScript.
-	 */
-	public function __construct() {
+function ft_responsive_slider_url($file) {
+  return FORTYTWO_WIDGETS_URL.'/ft-responsive-slider'.$file;
+}
 
-		// load plugin text domain
-		add_action( 'init', array( $this, 'widget_textdomain' ) );
+add_action( 'after_setup_theme', 'FTResponsiveSliderInit', 15 );
+/**
+ * Loads required files and adds image via Genesis Init Hook
+ */
+function FTResponsiveSliderInit() {
 
-		// Hooks fired when the Widget is activated and deactivated
-		register_activation_hook( __FILE__, array( $this, 'activate' ) );
-		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
+	// translation support
+	load_plugin_textdomain( 'ft-responsive-slider', false, '/ft-responsive-slider/languages/' );
+	
+	/** hook all frontend slider functions here to ensure Genesis is active **/
+	add_action( 'wp_enqueue_scripts', 'ft_responsive_slider_scripts' );
+	add_action( 'wp_print_styles', 'ft_responsive_slider_styles' );
+	add_action( 'wp_head', 'ft_responsive_slider_head', 1 );
+	add_action( 'wp_footer', 'ft_responsive_slider_flexslider_params' );
+	add_action( 'widgets_init', 'ft_responsive_sliderRegister' );
+	
+	/** Include Admin file */
+	if ( is_admin() ) require_once( dirname( __FILE__ ) . '/views/admin.php' );
 
-		// TODO:	update classname and description
-		// TODO:	replace 'widget-name-locale' to be named more plugin specific. Other instances exist throughout the code, too.
-		parent::__construct(
-			'widget-name-id',
-			__( 'Widget Name', 'widget-name-locale' ),
-			array(
-				'classname'		=>	'widget-name-class',
-				'description'	=>	__( 'Short description of the widget goes here.', 'widget-name-locale' )
-			)
-		);
+	/** Add new image size */
+	add_image_size( 'slider', ( int ) ft_get_responsive_slider_option( 'slideshow_width' ), ( int ) ft_get_responsive_slider_option( 'slideshow_height' ), TRUE );
 
-		// Register admin styles and scripts
-		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
+}
 
-		// Register site styles and scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_scripts' ) );
+add_action( 'genesis_settings_sanitizer_init', 'ft_responsive_slider_sanitization' );
+/**
+ * Add settings to Genesis sanitization
+ *
+ */
+function ft_responsive_slider_sanitization() {
+	genesis_add_option_filter( 'one_zero', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD,
+		array(
+			'slideshow_arrows',
+			'slideshow_excerpt_show',
+			'slideshow_title_show',
+			'slideshow_loop',
+			'slideshow_hide_mobile',
+			'slideshow_no_link',
+			'slideshow_pager'
+		) );
+	genesis_add_option_filter( 'no_html', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD,
+		array(
+			'post_type',
+			'posts_term',
+			'exclude_terms',
+			'include_exclude',
+			'post_id',
+			'posts_num',
+			'posts_offset',
+			'orderby',
+			'slideshow_timer',
+			'slideshow_delay',
+			'slideshow_height',
+			'slideshow_width',
+			'slideshow_effect',
+			'slideshow_excerpt_content',
+			'slideshow_excerpt_content_limit',
+			'slideshow_more_text',
+			'slideshow_excerpt_width',
+			'location_vertical',
+			'location_horizontal',
+		) );
+}
 
-	} // end constructor
+/**
+ * Load the script files
+ */
+function ft_responsive_slider_scripts() {
 
-	/*--------------------------------------------------*/
-	/* Widget API Functions
-	/*--------------------------------------------------*/
+	/** easySlider JavaScript code */
+	wp_enqueue_script( 'flexslider', ft_responsive_slider_url('/js/jquery.flexslider-min.js'), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, TRUE );
 
-	/**
-	 * Outputs the content of the widget.
-	 *
-	 * @param	array	args		The array of form elements
-	 * @param	array	instance	The current instance of the widget
-	 */
-	public function widget( $args, $instance ) {
+}
 
-		extract( $args, EXTR_SKIP );
+/**
+ * Load the CSS files
+ */
+function ft_responsive_slider_styles() {
 
-		echo $before_widget;
+	/** standard slideshow styles */
+	wp_register_style( 'slider_styles', ft_responsive_slider_url('/css/style.css'), array(), FT_RESPONSIVE_SLIDER_VERSION );
+	wp_enqueue_style( 'slider_styles' );
 
-		// TODO:	Here is where you manipulate your widget's values based on their input fields
+}
 
-		include( plugin_dir_path( __FILE__ ) . '/views/widget.php' );
+/**
+ * Loads scripts and styles via wp_head hook.
+ */
+function ft_responsive_slider_head() {
 
+		$height = ( int ) ft_get_responsive_slider_option( 'slideshow_height' );
+		$width = ( int ) ft_get_responsive_slider_option( 'slideshow_width' );
+
+		$slideInfoWidth = ( int ) ft_get_responsive_slider_option( 'slideshow_excerpt_width' );
+		$slideNavTop = ( int ) ( ($height - 60) * .5 );
+
+		$vertical = ft_get_responsive_slider_option( 'location_vertical' );
+		$horizontal = ft_get_responsive_slider_option( 'location_horizontal' );
+		$display = ( ft_get_responsive_slider_option( 'posts_num' ) >= 2 && ft_get_responsive_slider_option( 'slideshow_arrows' ) ) ? 'top: ' . $slideNavTop . 'px' : 'display: none';
+		
+		$hide_mobile = ft_get_responsive_slider_option( 'slideshow_hide_mobile' );
+		$slideshow_pager = ft_get_responsive_slider_option( 'slideshow_pager' ) ;
+
+		echo '
+		<style type="text/css">
+			.slide-excerpt { width: ' . $slideInfoWidth . '%; }
+			.slide-excerpt { ' . $vertical . ': 0; }
+			.slide-excerpt { '. $horizontal . ': 0; }
+			.flexslider { max-width: ' . $width . 'px; max-height: ' . $height . 'px; }
+			.slide-image { max-height: ' . $height . 'px; } 
+		</style>';
+		
+		if ( $hide_mobile == 1 ) {
+		echo '
+		<style type="text/css"> 
+			@media only screen 
+			and (min-device-width : 320px) 
+			and (max-device-width : 480px) {
+				.slide-excerpt { display: none !important; }
+			}			 
+		</style> ';
+		}
+}
+
+/**
+ * Outputs slider script on wp_footer hook.
+ */
+function ft_responsive_slider_flexslider_params() {
+
+	$timer = ( int ) ft_get_responsive_slider_option( 'slideshow_timer' );
+	$duration = ( int ) ft_get_responsive_slider_option( 'slideshow_delay' );
+	$effect = ft_get_responsive_slider_option( 'slideshow_effect' );
+	$controlnav = ft_get_responsive_slider_option( 'slideshow_pager' );
+	$directionnav = ft_get_responsive_slider_option( 'slideshow_arrows' );
+
+	$output = 'jQuery(document).ready(function($) {
+				$(".flexslider").flexslider({
+					controlsContainer: "#ft-responsive-slider",
+					animation: "' . esc_js( $effect ) . '",
+					directionNav: ' . $directionnav . ',
+					controlNav: ' . $controlnav . ',
+					animationDuration: ' . $duration . ',
+					slideshowSpeed: ' . $timer . ',
+          useCSS: false
+			    });
+			  });';
+
+	$output = str_replace( array( "\n", "\t", "\r" ), '', $output );
+
+	echo '<script type=\'text/javascript\'>' . $output . '</script>';
+}
+
+/**
+ * Registers the slider widget
+ */
+function ft_responsive_sliderRegister() {
+	register_widget( 'ft_responsive_sliderWidget' );
+}
+
+/** Creates read more link after excerpt */
+function ft_responsive_slider_excerpt_more( $more ) {
+	global $post;
+	static $read_more = null;
+
+	if ( $read_more === null )
+		$read_more = ft_get_responsive_slider_option( 'slideshow_more_text' );
+
+	if ( !$read_more )
+		return '';
+
+	return '&hellip; <a href="'. get_permalink( $post->ID ) . '">' . __( $read_more, 'ft-responsive-slider' ) . '</a>';
+}
+
+/**
+ * Slideshow Widget Class
+ */
+class ft_responsive_sliderWidget extends WP_Widget {
+
+		function ft_responsive_sliderWidget() {
+			$widget_ops = array( 'classname' => 'ft_responsive_slider', 'description' => __( 'Displays a slideshow inside a widget area', 'ft-responsive-slider' ) );
+			$control_ops = array( 'width' => 200, 'height' => 250, 'id_base' => 'ftresponsiveslider-widget' );
+			$this->WP_Widget( 'ftresponsiveslider-widget', __( 'FortyTwo - Responsive Slider', 'ft-responsive-slider' ), $widget_ops, $control_ops );
+		}
+
+		function save_settings( $settings ) {
+			$settings['_multiwidget'] = 0;
+			update_option( $this->option_name, $settings );
+		}
+
+		// display widget
+		function widget( $args, $instance ) {
+			extract( $args );
+
+			echo $before_widget;
+
+			$title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
+			if ( $title )
+				echo $before_title . $title . $after_title;
+
+			$term_args = array( );
+
+			if ( 'page' != ft_get_responsive_slider_option( 'post_type' ) ) {
+
+				if ( ft_get_responsive_slider_option( 'posts_term' ) ) {
+
+					$posts_term = explode( ',', ft_get_responsive_slider_option( 'posts_term' ) );
+
+					if ( 'category' == $posts_term['0'] )
+						$posts_term['0'] = 'category_name';
+
+					if ( 'post_tag' == $posts_term['0'] )
+						$posts_term['0'] = 'tag';
+
+					if ( isset( $posts_term['1'] ) )
+						$term_args[$posts_term['0']] = $posts_term['1'];
+
+				}
+
+				if ( !empty( $posts_term['0'] ) ) {
+
+					if ( 'category' == $posts_term['0'] )
+						$taxonomy = 'category';
+
+					elseif ( 'post_tag' == $posts_term['0'] )
+						$taxonomy = 'post_tag';
+
+					else
+						$taxonomy = $posts_term['0'];
+
+				} else {
+
+					$taxonomy = 'category';
+
+				}
+
+				if ( ft_get_responsive_slider_option( 'exclude_terms' ) ) {
+
+					$exclude_terms = explode( ',', str_replace( ' ', '', ft_get_responsive_slider_option( 'exclude_terms' ) ) );
+					$term_args[$taxonomy . '__not_in'] = $exclude_terms;
+
+				}
+			}
+
+			if ( ft_get_responsive_slider_option( 'posts_offset' ) ) {
+				$myOffset = ft_get_responsive_slider_option( 'posts_offset' );
+				$term_args['offset'] = $myOffset;
+			}
+
+			if ( ft_get_responsive_slider_option( 'post_id' ) ) {
+				$IDs = explode( ',', str_replace( ' ', '', ft_get_responsive_slider_option( 'post_id' ) ) );
+				if ( 'include' == ft_get_responsive_slider_option( 'include_exclude' ) )
+					$term_args['post__in'] = $IDs;
+				else
+					$term_args['post__not_in'] = $IDs;
+			}
+
+			$query_args = array_merge( $term_args, array(
+				'post_type' => ft_get_responsive_slider_option( 'post_type' ),
+				'posts_per_page' => ft_get_responsive_slider_option( 'posts_num' ),
+				'orderby' => ft_get_responsive_slider_option( 'orderby' ),
+				'order' => ft_get_responsive_slider_option( 'order' ),
+				'meta_key' => ft_get_responsive_slider_option( 'meta_key' )
+			) );
+
+			$query_args = apply_filters( 'ft_responsive_slider_query_args', $query_args );
+			add_filter( 'excerpt_more', 'ft_responsive_slider_excerpt_more' );
+		
+?>
+
+		<div id="ft-responsive-slider">			
+			<div class="flexslider">
+				<ul class="slides">
+					<?php
+						$slider_posts = new WP_Query( $query_args );
+						if ( $slider_posts->have_posts() ) {
+							$show_excerpt = ft_get_responsive_slider_option( 'slideshow_excerpt_show' );
+							$show_title = ft_get_responsive_slider_option( 'slideshow_title_show' );
+							$show_type = ft_get_responsive_slider_option( 'slideshow_excerpt_content' );
+							$show_limit = ft_get_responsive_slider_option( 'slideshow_excerpt_content_limit' );
+							$more_text = ft_get_responsive_slider_option( 'slideshow_more_text' );
+							$no_image_link = ft_get_responsive_slider_option( 'slideshow_no_link' );
+						} 
+						while ( $slider_posts->have_posts() ) : $slider_posts->the_post();
+					?>
+					<li>
+
+					<?php if ( $show_excerpt == 1 || $show_title == 1 ) { ?>
+						<div class="slide-excerpt slide-<?php the_ID(); ?>">
+							<div class="slide-background"></div><!-- end .slide-background -->
+							<div class="slide-excerpt-border ">
+								<?php
+									if ( $show_title == 1 ) { 
+								?>
+								<h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+								<?php 
+									}
+									if ( $show_excerpt ) {
+										if ( $show_type != 'full' )
+											the_excerpt();
+										elseif ( $show_limit )
+											the_content_limit( (int)$show_limit, esc_html( $more_text ) );
+										else
+											the_content( esc_html( $more_text ) );
+									}
+								?>
+							</div><!-- end .slide-excerpt-border  -->
+						</div><!-- end .slide-excerpt -->
+					<?php } ?>
+
+						<div class="slide-image">
+					<?php
+						if ( $no_image_link ) {
+					?>
+							<img src="<?php genesis_image( 'format=url&size=slider' ); ?>" alt="<?php the_title(); ?>" />
+					<?php
+						} else {
+					?>
+							<a href="<?php the_permalink() ?>" rel="bookmark"><img src="<?php genesis_image( 'format=url&size=slider' ); ?>" alt="<?php the_title(); ?>" /></a>
+					<?php
+
+						} // $no_image_link
+					?>
+						</div><!-- end .slide-image -->
+
+					</li>
+				<?php endwhile; ?>
+				</ul><!-- end ul.slides -->
+			</div><!-- end .flexslider -->
+		</div><!-- end #ft-responsive-slider -->
+
+<?php
 		echo $after_widget;
+		wp_reset_query();
+		remove_filter( 'excerpt_more', 'ft_responsive_slider_excerpt_more' );
 
-	} // end widget
+		}
 
-	/**
-	 * Processes the widget's options to be saved.
-	 *
-	 * @param	array	new_instance	The previous instance of values before the update.
-	 * @param	array	old_instance	The new instance of values to be generated via the update.
-	 */
-	public function update( $new_instance, $old_instance ) {
+		/** Widget options */
+		function form( $instance ) {
+			$instance = wp_parse_args( (array) $instance, array( 'title' => '') );
+			$title = $instance['title'];
+?>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'ft-responsive-slider' ); ?> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></label></p>
+<?php
+			echo '<p>';
+			printf( __( 'To configure slider options, please go to the <a href="%s">Slider Settings</a> page.', 'ft-responsive-slider' ), menu_page_url( 'genesis_responsive_slider', 0 ) );
+			echo '</p>';
+		}
 
-		$instance = $old_instance;
+		function update( $new_instance, $old_instance ) {
+			$instance = $old_instance;
+			$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '' ) );
+			$instance['title'] = strip_tags( $new_instance['title'] );
+			return $instance;
+		}
 
-		// TODO:	Here is where you update your widget's old values with the new, incoming values
+}
 
-		return $instance;
+/**
+ * Used to exclude taxonomies and related terms from list of available terms/taxonomies in widget form().
+ *
+ * @since 0.9
+ * @author Nick Croft
+ *
+ * @param string $taxonomy 'taxonomy' being tested
+ * @return string
+ */
+function ft_responsive_slider_exclude_taxonomies( $taxonomy ) {
 
-	} // end widget
+	$filters = array( '', 'nav_menu' );
+	$filters = apply_filters( 'ft_responsive_slider_exclude_taxonomies', $filters );
 
-	/**
-	 * Generates the administration form for the widget.
-	 *
-	 * @param	array	instance	The array of keys and values for the widget.
-	 */
-	public function form( $instance ) {
+	return ( ! in_array( $taxonomy->name, $filters ) );
 
-    	// TODO:	Define default values for your variables
-		$instance = wp_parse_args(
-			(array) $instance
-		);
+}
 
-		// TODO:	Store the values of the widget in their own variable
+/**
+ * Used to exclude post types from list of available post_types in widget form().
+ *
+ * @since 0.9
+ * @author Nick Croft
+ *
+ * @param string $type 'post_type' being tested
+ * @return string
+ */
+function ft_responsive_slider_exclude_post_types( $type ) {
 
-		// Display the admin form
-		include( plugin_dir_path(__FILE__) . '/views/admin.php' );
+	$filters = array( '', 'attachment' );
+	$filters = apply_filters( 'ft_responsive_slider_exclude_post_types', $filters );
 
-	} // end form
+	return ( ! in_array( $type, $filters ) );
 
-	/*--------------------------------------------------*/
-	/* Public Functions
-	/*--------------------------------------------------*/
+}
 
-	/**
-	 * Loads the Widget's text domain for localization and translation.
-	 */
-	public function widget_textdomain() {
+/**
+ * Returns Slider Option
+ *
+ * @param string $key key value for option
+ * @return string
+ */
+function ft_get_responsive_slider_option( $key ) {
+	return genesis_get_option( $key, FT_RESPONSIVE_SLIDER_SETTINGS_FIELD );
+}
 
-		// TODO be sure to change 'widget-name' to the name of *your* plugin
-		load_plugin_textdomain( 'widget-name-locale', false, plugin_dir_path( __FILE__ ) . '/lang/' );
+/**
+ * Echos Slider Option
+ *
+ * @param string $key key value for option
+ */
+function ft_responsive_slider_option( $key ) {
 
-	} // end widget_textdomain
+	if ( ! ft_get_responsive_slider_option( $key ) )
+		return false;
 
-	/**
-	 * Fired when the plugin is activated.
-	 *
-	 * @param		boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog.
-	 */
-	public function activate( $network_wide ) {
-		// TODO define activation functionality here
-	} // end activate
-
-	/**
-	 * Fired when the plugin is deactivated.
-	 *
-	 * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
-	 */
-	public function deactivate( $network_wide ) {
-		// TODO define deactivation functionality here
-	} // end deactivate
-
-	/**
-	 * Registers and enqueues admin-specific styles.
-	 */
-	public function register_admin_styles() {
-
-		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'widget-name-admin-styles', modules_url( 'widget-name/css/admin.css' ) );
-
-	} // end register_admin_styles
-
-	/**
-	 * Registers and enqueues admin-specific JavaScript.
-	 */
-	public function register_admin_scripts() {
-
-		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'widget-name-admin-script', modules_url( 'widget-name/js/admin.js' ), array('jquery') );
-
-	} // end register_admin_scripts
-
-	/**
-	 * Registers and enqueues widget-specific styles.
-	 */
-	public function register_widget_styles() {
-
-		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'widget-name-widget-styles', modules_url( 'widget-name/css/widget.css' ) );
-
-	} // end register_widget_styles
-
-	/**
-	 * Registers and enqueues widget-specific scripts.
-	 */
-	public function register_widget_scripts() {
-
-		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'widget-name-script', modules_url( 'widget-name/js/widget.js' ), array('jquery') );
-
-	} // end register_widget_scripts
-
-} // end class
-
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Responsive_Slider");' ) );
+	echo ft_get_responsive_slider_option( $key );
+}
