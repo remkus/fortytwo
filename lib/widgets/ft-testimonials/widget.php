@@ -76,9 +76,7 @@ class FT_Testimonials extends WP_Widget {
 		extract( $args, EXTR_SKIP );
 		
 		echo $before_widget;
-    
-		// TODO:	Here is where you manipulate your widget's values based on their input fields
-    
+      
 		include( plugin_dir_path( __FILE__ ) . '/views/widget.php' );
 		
 		echo $after_widget;
@@ -108,9 +106,12 @@ class FT_Testimonials extends WP_Widget {
 	 */
 	public function form( $instance ) {
 	
-    	// TODO:	Define default values for your variables
-		$instance = wp_parse_args(
-			(array) $instance
+  	$instance = wp_parse_args(
+			(array) $instance,
+            array(
+                'foo' => '',
+                'bar' => ''
+            )
 		);
 	
 		// TODO:	Store the values of the widget in their own variable
