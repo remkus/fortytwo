@@ -75,14 +75,14 @@ class FT_Featured_Page extends WP_Widget {
 		echo $before_widget;
     
     foreach (array('title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name) {
-			$$field_name = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
+			$instance[$field_name] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
 		}
-		if ( empty( $title ) ) $title  = "The title";
-		if ( empty( $icon ) ) $icon  = "icon-star";
-		if ( empty( $content ) ) $content  = "And purely one near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill
-    yikes considering far above. Physically less snickered much and and while";
-		if ( empty( $button_text ) ) $button_text  = "Click me!";
-		if ( empty( $button_link ) ) $button_link  = "#";
+		$this->set_default( $instance['title'], "The title");
+		$this->set_default( $instance['icon '], "icon-star");
+		$this->set_default( $instance['content'], "And purely one near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill
+    yikes considering far above. Physically less snickered much and and while");
+		$this->set_default( $instance['button_text'], "Click me!");
+		$this->set_default( $instance['button_link'], "#");
 		
 		include( dirname( __FILE__ )  . '/views/widget.php' );
 		
@@ -90,6 +90,10 @@ class FT_Featured_Page extends WP_Widget {
 		
 	} // end widget
 	
+	private function set_default(&$value, $default) {
+			if ( empty ($value) ) $value = $default;
+	}
+
 	public function echo_field_id($field) {
 		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
 	}
@@ -122,7 +126,7 @@ class FT_Featured_Page extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-    	// Default values for variables
+    // Default values for variables
 		$instance = wp_parse_args(
 			(array) $instance,
             array(
