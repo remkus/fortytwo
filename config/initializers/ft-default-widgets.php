@@ -9,35 +9,28 @@
  *
  */
 
-add_filter( 'widget_archives_args', 'fortytwo_modify_archives_args' );
+add_filter( 'get_archives_link', 'fortytwo_modify_archives_link' );
 /**
- * Filter to replace the arguments of the archive widget
- *
- **/
-function fortytwo_modify_archives_args( $attr ) {
-
-    $args = array(
-        'before'          => '<span class="test">',
-        'after'           => '</span>'
-    );
-
-    $attr = wp_parse_args( $attr, $args );
-
-    return $attr;
-}
-
-add_filter( 'get_archives_link', 'fortytwo_modify_archives_link', 10, 6 );
-/**
- * Filter to replace the arguments of the archive widget
+ * Filter to change the structure of the archive link
  *
  **/
 function fortytwo_modify_archives_link( $link_html ) {
 
     preg_match ( "/href='(.+?)'/", $link_html, $url );
+    preg_match ( "/\<\/a\>&nbsp;\((\d+)\)/", $link_html, $post_count );
+
     $requested = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
-    if ( $requested == $url[1] ) {
-        $link_html = str_replace( '<li>', '<li class="current">', $link_html );
+    if ( ! empty( $url )&& $requested == $url[1] ) {
+        $link_html = str_replace( '<li>', '<li class="archive-list-item current">', $link_html );
+    } else {
+        $link_html = str_replace( '<li>', '<li class="archive-list-item">', $link_html );
+    }
+
+    if ( empty( $post_count ) ) {
+        $link_html = str_replace( '</a>', '</a><span class="icon icon-angle-right"></span>', $link_html );
+    } else {
+        $link_html = str_replace( $post_count[0], '</span><span class="badge">' . $post_count[1] . '</span></a><span class="icon icon-angle-right">', $link_html );
     }
 
     return $link_html;

@@ -10,6 +10,30 @@
     border-bottom: 1px dashed #fff;
     border-bottom: 1px dashed rgba(255,255,255,.5);
   }
+
+  &.widget_archive ul {
+    margin: 0;
+  }
+
+  .archive-list-item {
+    position: relative;
+    display: block;
+    padding: 10px 0 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    .icon {
+      line-height: @line-height-base;
+      float:left;
+      text-align: left;
+    }
+
+    .badge {
+      float: right;
+    }
+  }
 }
 
 .widget-ft-tabs {
