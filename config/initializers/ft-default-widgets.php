@@ -25,3 +25,21 @@ function fortytwo_modify_archives_args( $attr ) {
 
     return $attr;
 }
+
+add_filter( 'get_archives_link', 'fortytwo_modify_archives_link', 10, 6 );
+/**
+ * Filter to replace the arguments of the archive widget
+ *
+ **/
+function fortytwo_modify_archives_link( $link_html ) {
+
+    preg_match ( "/href='(.+?)'/", $link_html, $url );
+    $requested = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+    if ( $requested == $url[1] ) {
+        $link_html = str_replace( '<li>', '<li class="current">', $link_html );
+    }
+
+    return $link_html;
+
+}
