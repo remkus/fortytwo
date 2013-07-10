@@ -21,6 +21,8 @@ require_once( 'ft-slider.php' );
 
 require_once( 'ft-page-blog.php');
 
+require_once( 'ft-default-widgets.php');
+
 /** Activate modules **/
 
 //TODO:  Move this somewhere sensible
