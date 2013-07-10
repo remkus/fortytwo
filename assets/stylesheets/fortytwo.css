@@ -1321,7 +1321,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   display: block;
-  min-height: 15.428571429px;
+  min-height: 36px;
   padding: 8px 12px;
   font-size: 14px;
   line-height: 1.428571429;
@@ -1397,10 +1397,10 @@ input[type="checkbox"] {
 /* line 115, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 select,
 input[type="file"] {
-  height: 15.428571429px;
+  height: 36px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
 
-  line-height: 15.428571429px;
+  line-height: 36px;
 }
 /* line 122, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 select[multiple],
@@ -1533,7 +1533,7 @@ input[type="url"].input-small,
 input[type="search"].input-small,
 input[type="tel"].input-small,
 input[type="color"].input-small {
-  min-height: 7.428571429px;
+  min-height: 30px;
   padding: 5px 10px;
   font-size: 11.9px;
   border-radius: 2px;
@@ -3574,8 +3574,8 @@ button.close {
 }
 /* line 136, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-form {
-  margin-top: 15.2857142855px;
-  margin-bottom: 15.2857142855px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 /* line 430, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/forms.less */
 .navbar-form input,
@@ -3752,7 +3752,7 @@ button.close {
 }
 /* line 322, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-btn {
-  margin-top: 15.2857142855px;
+  margin-top: 5px;
 }
 /* line 332, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/navbar.less */
 .navbar-text {
