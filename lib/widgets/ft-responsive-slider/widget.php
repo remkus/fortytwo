@@ -42,9 +42,6 @@ add_action( 'after_setup_theme', 'FTResponsiveSliderInit', 15 );
  * Loads required files and adds image via Genesis Init Hook
  */
 function FTResponsiveSliderInit() {
-
-	// translation support
-	load_plugin_textdomain( 'ft-responsive-slider', false, '/ft-responsive-slider/languages/' );
 	
 	/** hook all frontend slider functions here to ensure Genesis is active **/
 	add_action( 'wp_enqueue_scripts', 'ft_responsive_slider_scripts' );

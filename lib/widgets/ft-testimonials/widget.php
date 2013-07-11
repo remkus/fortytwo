@@ -34,9 +34,6 @@ class FT_Testimonials extends WP_Widget {
 	 * loads localization files, and includes necessary stylesheets and JavaScript.
 	 */
 	public function __construct() {
-	
-		// load plugin text domain
-		add_action( 'init', array( $this, 'widget_textdomain' ) );
 		
 		parent::__construct(
 			'widget-ft-testimonials',
@@ -124,15 +121,6 @@ class FT_Testimonials extends WP_Widget {
 	/*--------------------------------------------------*/
 	/* Public Functions
 	/*--------------------------------------------------*/
-	
-	/**
-	 * Loads the Widget's text domain for localization and translation.
-	 */
-	public function widget_textdomain() {
-	
-		load_plugin_textdomain( 'ft-testimonials-locale', false, plugin_dir_path( __FILE__ ) . '/lang/' );
-		
-	} // end widget_textdomain
 	
 	/**
 	 * Registers and enqueues admin-specific styles.
