@@ -9,21 +9,20 @@
 				</div>
 		</td>
 		<td>
-			<input class="span2" type="text" placeholder="<?php _e( 'Title' ); ?>"  
-			         <?php $this->echo_field_id("title") ?>  value="<?php echo esc_attr( $title ); ?>">
+			<?php _e( 'Title' ); ?>:
+			<input class="span2" type="text" <?php $this->echo_field_id("title") ?>  value="<?php echo esc_attr( $title ); ?>">
 		</td>
   </tr>
 	<tr><td colspan="2">
-		  <textarea rows="5" placeholder="<?php _e( 'Enter descriptive content here' ); ?>"	<?php $this->echo_field_id("content") ?>
+			<?php _e( 'Content' ); ?>
+		  <textarea rows="5" <?php $this->echo_field_id("content") ?>
 		  	><?php echo esc_textarea( $content ); ?></textarea>
   </td></tr>
-	<tr>
-		<td valign="middle">Button</td>
-		<td>
-			<input type="text" placeholder="<?php _e( 'Text' ); ?>"
-					   <?php $this->echo_field_id("button_text") ?> value="<?php echo esc_attr( $button_text ); ?>"><br />
-		  <input type="text" placeholder="<?php _e( 'Link' ); ?>"
-		  		   <?php $this->echo_field_id("button_link") ?> value="<?php echo esc_attr( $button_link ); ?>">
+	<tr><td colspan="2">
+			<?php _e( 'Button text' ); ?>
+			<input type="text" <?php $this->echo_field_id("button_text") ?> value="<?php echo esc_attr( $button_text ); ?>"><br />
+		  <?php _e( 'Button link' ); ?>
+		  <input type="text" <?php $this->echo_field_id("button_link") ?> value="<?php echo esc_attr( $button_link ); ?>">
 		</td>
 	</tr>
 </table>
