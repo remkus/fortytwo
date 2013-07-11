@@ -1,27 +1,22 @@
 <?php
 /**
-    Description: ForSite Themes Tabs widget class
-    Author: Forsite Themes
-    Author URI: http://forsitethemes.com
-    Author Email: mail@forsitethemes.com
-    License: GPLv2 or later
-    License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-    Copyright 2013 mail@forsitethemes.com
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as 
-    published by the Free Software Foundation.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-
+ * Description: ForSite Themes Tabs widget class
+ * Author: Forsite Themes
+ * Author URI: http://forsitethemes.com
+ * Author Email: mail@forsitethemes.com
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Copyright 2013 mail@forsitethemes.com
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License, version 2, as
+ * published by the Free Software Foundation.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * @package Genesis
  * @subpackage Widgets
@@ -72,7 +67,7 @@ class FT_Tabs_Widget extends WP_Widget {
         add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
     } // End Constructor
 
-    private function url($file) {
+    private function url( $file ) {
         return FORTYTWO_WIDGETS_URL.'/ft-tabs-widget'.$file;
     }
 
@@ -97,7 +92,7 @@ class FT_Tabs_Widget extends WP_Widget {
         /* Before widget (defined by themes). */
         echo $before_widget;
 
-        include( dirname( __FILE__ ) . '/views/widget.php' );
+        include dirname( __FILE__ ) . '/views/widget.php';
 
         /* After widget (defined by themes). */
         echo $after_widget;
@@ -166,7 +161,7 @@ class FT_Tabs_Widget extends WP_Widget {
         $instance = wp_parse_args( (array) $instance, $defaults );
         $available_tabs = $this->available_tabs;
 
-        include( dirname( __FILE__ ) . '/views/form.php' );
+        include dirname( __FILE__ ) . '/views/form.php';
 
     } // End form()
 
@@ -189,7 +184,7 @@ class FT_Tabs_Widget extends WP_Widget {
      * @return void
      */
     function enqueue_styles() {
-        wp_register_style( $this->fst_widget_idbase, $this->url( '/css/style.css' ), array( 'bootstrap' ));
+        wp_register_style( $this->fst_widget_idbase, $this->url( '/css/style.css' ), array( 'bootstrap' ) );
         wp_enqueue_style( $this->fst_widget_idbase );
     } // End enqueue_styles()
 
@@ -221,8 +216,8 @@ class FT_Tabs_Widget extends WP_Widget {
         $html .= '<ul class="latest">' . "\n";
         $latest = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=post_date&order=desc' );
         $last_post = end( $latest );
-        foreach( $latest as $post ) {
-            setup_postdata($post);
+        foreach ( $latest as $post ) {
+            setup_postdata( $post );
             $html .= '<li class="media">' . "\n";
             if ( $image_dimension > 0 ) {
                 $html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
@@ -258,8 +253,8 @@ class FT_Tabs_Widget extends WP_Widget {
         $html .= '<ul class="popular">' . "\n";
         $popular = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=comment_count&order=desc' );
         $last_popular = end( $popular );
-        foreach( $popular as $post ) {
-            setup_postdata($post);
+        foreach ( $popular as $post ) {
+            setup_postdata( $post );
             $html .= '<li class="media">' . "\n";
             if ( $image_dimension > 0 ) {
                 $html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";

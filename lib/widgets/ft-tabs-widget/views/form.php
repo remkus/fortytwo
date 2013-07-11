@@ -46,12 +46,12 @@
     <p>
       <small>
         <?php
-        if ( current_theme_supports( 'post-thumbnails' ) ) {
-            _e( 'The "featured image" will be used as thumbnails.', 'fstpack' );
-        } else {
-            _e( 'Post thumbnails are not supported by your theme. Thumbnails will not be displayed.', 'fstpack' );
-        }
-        ?>
+if ( current_theme_supports( 'post-thumbnails' ) ) {
+  _e( 'The "featured image" will be used as thumbnails.', 'fstpack' );
+} else {
+  _e( 'Post thumbnails are not supported by your theme. Thumbnails will not be displayed.', 'fstpack' );
+}
+?>
       </small>
     </p>
   </div>
