@@ -36,9 +36,6 @@ class FT_Jumbotron extends WP_Widget {
 	 */
 	public function __construct() {
 	
-		// load plugin text domain
-		add_action( 'init', array( $this, 'widget_textdomain' ) );
-
 		parent::__construct(
 			'widget-ft-jumbotron',
 			__( 'FortyTwo - Jumbotron', 'ft-jumbotron-locale' ),
@@ -126,16 +123,6 @@ class FT_Jumbotron extends WP_Widget {
 	/*--------------------------------------------------*/
 	/* Public Functions
 	/*--------------------------------------------------*/
-	
-	/**
-	 * Loads the Widget's text domain for localization and translation.
-	 */
-	public function widget_textdomain() {
-	
-		// TODO be sure to change 'widget-name' to the name of *your* plugin
-		load_plugin_textdomain( 'ft-jumbotron-locale', false, plugin_dir_path( __FILE__ ) . '/lang/' );
-		
-	} // end widget_textdomain
 	
 	/**
 	 * Registers and enqueues admin-specific styles.

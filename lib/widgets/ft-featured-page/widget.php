@@ -36,9 +36,6 @@ class FT_Featured_Page extends WP_Widget {
 	 */
 	public function __construct() {
 	
-		// load plugin text domain
-		add_action( 'init', array( $this, 'widget_textdomain' ) );
-
 		parent::__construct(
 			'ft-featured-page',
 			__( 'FortyTwo - Featured Page', 'ft-featured-page-locale' ),
@@ -151,15 +148,6 @@ class FT_Featured_Page extends WP_Widget {
 	/*--------------------------------------------------*/
 	/* Public Functions
 	/*--------------------------------------------------*/
-	
-	/**
-	 * Loads the Widget's text domain for localization and translation.
-	 */
-	public function widget_textdomain() {
-	
-		load_plugin_textdomain( 'ft-featured-page-locale', false, dirname( __FILE__ ) . '/lang/' );
-		
-	} // end widget_textdomain
 	
 	/**
 	 * Registers and enqueues admin-specific styles.
