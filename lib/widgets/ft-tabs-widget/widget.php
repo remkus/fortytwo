@@ -45,9 +45,9 @@ class FT_Tabs_Widget extends WP_Widget {
 
         /* Widget variable settings. */
         $this->fst_widget_cssclass = 'widget-ft-tabs';
-        $this->fst_widget_description = __( 'This is a Forsite Themes Extension Pack bundled tabs widget.', 'fstpack' );
+        $this->fst_widget_description = __( 'This is a Forsite Themes Extension Pack bundled tabs widget.', 'fortytwo' );
         $this->fst_widget_idbase = 'fstpack_tabs';
-        $this->fst_widget_title = __( 'FT - Tabs', 'fstpack' );
+        $this->fst_widget_title = __( 'FT - Tabs', 'fortytwo' );
 
         $this->available_tabs = array( 'latest', 'popular', "comments", "tags" );
         // Allow child themes/plugins to filter here.
@@ -148,7 +148,7 @@ class FT_Tabs_Widget extends WP_Widget {
         /* Set up some default widget settings. */
         /* Make sure all keys are added here, even with empty string values. */
         $defaults = array(
-            'title'             => __( 'Tabs', 'fstpack' ),
+            'title'             => __( 'Tabs', 'fortytwo' ),
             'tabs'              => array_slice( $this->available_tabs, 0, 3 ), /* default to selecting the first 3, to suggest that it is possible to omit having a tab */
             'limit'             => 5,
             'image_dimension'   => 45,
@@ -170,9 +170,9 @@ class FT_Tabs_Widget extends WP_Widget {
      */
     private function render_tabs_dropdown( $available_tabs, $selected_tabs, $position ) {
         echo "<p><select name='{$this->get_field_name( "tab_$position" )}' class='widefat' id='{$this->get_field_id( "tab_$position" )}'>";
-        echo '<option value="none">' . __( ' - None selected - ', 'fstpack' ) . '</option>';
+        echo '<option value="none">' . __( ' - None selected - ', 'fortytwo' ) . '</option>';
         foreach ( $available_tabs as $available_tab ) {
-            echo '<option value="' . $available_tab . '"' . selected( $available_tab, $selected_tabs[$position], false ) . '>' . __( $available_tab, 'fstpack' ) . "</option>";
+            echo '<option value="' . $available_tab . '"' . selected( $available_tab, $selected_tabs[$position], false ) . '>' . __( $available_tab, 'fortytwo' ) . "</option>";
         }
         echo "</select></p>";
     }
@@ -293,7 +293,7 @@ class FT_Tabs_Widget extends WP_Widget {
             foreach ( $comments as $c ) {
                 $html .= '<li>' . "\n";
                 $html .= get_avatar( $c, 45 );
-                $html .= '<a title="' . esc_attr( $c->comment_author . ' ' . __( 'on', 'fstpack' ) . ' ' . get_the_title( $c->comment_post_ID ) ) . '" href="' . esc_url( get_comment_link( $c->comment_ID ) ) . '">' . esc_html( $c->comment_author ) . '</a>' . "\n";
+                $html .= '<a title="' . esc_attr( $c->comment_author . ' ' . __( 'on', 'fortytwo' ) . ' ' . get_the_title( $c->comment_post_ID ) ) . '" href="' . esc_url( get_comment_link( $c->comment_ID ) ) . '">' . esc_html( $c->comment_author ) . '</a>' . "\n";
                 $html .= '<span class="comment-content">' . stripslashes( substr( esc_html( $c->comment_content ), 0, 50 ) ) . '</span>' . "\n";
                 $html .= '</li>' . "\n";
                 if ( $c != $last_comments ) {

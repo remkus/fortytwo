@@ -74,9 +74,9 @@ function ft_responsive_slider_notice() {
 		return;
 
 	if ( isset( $_REQUEST['reset'] ) && 'true' == $_REQUEST['reset'] )
-		echo '<div id="message" class="updated"><p><strong>' . __( 'Settings reset.', 'ft-responsive-slider' ) . '</strong></p></div>';
+		echo '<div id="message" class="updated"><p><strong>' . __( 'Settings reset.', 'fortytwo' ) . '</strong></p></div>';
 	elseif ( isset( $_REQUEST['settings-updated'] ) && $_REQUEST['settings-updated'] == 'true' )
-		echo '<div id="message" class="updated"><p><strong>' . __( 'Settings saved.', 'ft-responsive-slider' ) . '</strong></p></div>';
+		echo '<div id="message" class="updated"><p><strong>' . __( 'Settings saved.', 'fortytwo' ) . '</strong></p></div>';
 
 }
 
@@ -89,7 +89,7 @@ function ft_responsive_slider_settings_init() {
 	global $_ft_responsive_slider_settings_pagehook;
 
 	// Add "Design Settings" submenu
-	$_ft_responsive_slider_settings_pagehook = add_submenu_page( 'genesis', __( 'Slider Settings', 'ft-responsive-slider' ), __( 'Slider Settings', 'ft-responsive-slider' ), 'manage_options', 'ft_responsive_slider', 'ft_responsive_slider_settings_admin' );
+	$_ft_responsive_slider_settings_pagehook = add_submenu_page( 'genesis', __( 'Slider Settings', 'fortytwo' ), __( 'Slider Settings', 'fortytwo' ), 'manage_options', 'ft_responsive_slider', 'ft_responsive_slider_settings_admin' );
 
 	add_action( 'load-' . $_ft_responsive_slider_settings_pagehook, 'ft_responsive_slider_settings_scripts' );
 	add_action( 'load-' . $_ft_responsive_slider_settings_pagehook, 'ft_responsive_slider_settings_boxes' );
@@ -102,7 +102,7 @@ function ft_responsive_slider_settings_scripts() {
 	wp_enqueue_script( 'common' );
 	wp_enqueue_script( 'wp-lists' );
 	wp_enqueue_script( 'postbox' );
-	wp_enqueue_script( 'ft_responsive_slider_admin_scripts', modules_url( 'js/admin.js', __FILE__ ), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, TRUE );
+	wp_enqueue_script( 'ft_responsive_slider_admin_scripts', ft_responsive_slider_url( '/js/admin.js' ), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, TRUE );
 }
 
 /*
@@ -111,7 +111,7 @@ function ft_responsive_slider_settings_scripts() {
 function ft_responsive_slider_settings_boxes() {
 	global $_ft_responsive_slider_settings_pagehook;
 
-	add_meta_box( 'ft-responsive-slider-options', __( 'FT Responsive Slider Settings', 'ft-responsive-slider' ), 'ft_responsive_slider_options_box', $_ft_responsive_slider_settings_pagehook, 'column1' );
+	add_meta_box( 'ft-responsive-slider-options', __( 'FT Responsive Slider Settings', 'fortytwo' ), 'ft_responsive_slider_options_box', $_ft_responsive_slider_settings_pagehook, 'column1' );
 }
 
 
@@ -149,9 +149,9 @@ function ft_responsive_slider_settings_admin() {
 
 			<?php screen_icon( 'plugins' ); ?>
 			<h2>
-				<?php _e( 'FT - Responsive Slider', 'ft-responsive-slider' ); ?>
-				<input type="submit" class="button-primary ft-h2-button" value="<?php _e( 'Save Settings', 'ft-responsive-slider' ) ?>" />
-				<input type="submit" class="button-highlighted ft-h2-button" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[reset]" value="<?php _e( 'Reset Settings', 'ft-responsive-slider' ); ?>" onclick="return ft_confirm('<?php echo esc_js( __( 'Are you sure you want to reset?', 'ft-responsive-slider' ) ); ?>');" />
+				<?php _e( 'FT - Responsive Slider', 'fortytwo' ); ?>
+				<input type="submit" class="button-primary ft-h2-button" value="<?php _e( 'Save Settings', 'fortytwo' ) ?>" />
+				<input type="submit" class="button-highlighted ft-h2-button" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[reset]" value="<?php _e( 'Reset Settings', 'fortytwo' ); ?>" onclick="return ft_confirm('<?php echo esc_js( __( 'Are you sure you want to reset?', 'fortytwo' ) ); ?>');" />
 			</h2>
 
 			<div class="metabox-holder">
@@ -161,8 +161,8 @@ function ft_responsive_slider_settings_admin() {
 			</div>
 
 			<div class="bottom-buttons">
-				<input type="submit" class="button-primary" value="<?php _e( 'Save Settings', 'ft-responsive-slider' ) ?>" />
-				<input type="submit" class="button-highlighted" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[reset]" value="<?php _e( 'Reset Settings', 'ft-responsive-slider' ); ?>" />
+				<input type="submit" class="button-primary" value="<?php _e( 'Save Settings', 'fortytwo' ) ?>" />
+				<input type="submit" class="button-highlighted" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[reset]" value="<?php _e( 'Reset Settings', 'fortytwo' ); ?>" />
 			</div>
 
 		</form>
@@ -191,9 +191,9 @@ function ft_responsive_slider_options_box() {
 
 			<div id="ft-responsive-slider-content-type">
 
-				<h4><?php _e( 'Type of Content', 'ft-responsive-slider' ); ?></h4>
+				<h4><?php _e( 'Type of Content', 'fortytwo' ); ?></h4>
 
-				<p><label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[post_type]"><?php _e( 'Would you like to use posts or pages', 'ft-responsive-slider' ); ?>?</label>
+				<p><label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[post_type]"><?php _e( 'Would you like to use posts or pages', 'fortytwo' ); ?>?</label>
 					<select id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[post_type]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[post_type]">
 <?php
 
@@ -212,11 +212,11 @@ function ft_responsive_slider_options_box() {
 
 				<div id="ft-responsive-slider-taxonomy">
 
-					<p><strong style="display: block; font-size: 11px; margin-top: 10px;"><?php _e( 'By Taxonomy and Terms', 'ft-responsive-slider' ); ?></strong><label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[posts_term]"><?php _e( 'Choose a term to determine what slides to include', 'ft-responsive-slider' ); ?>.</label>
+					<p><strong style="display: block; font-size: 11px; margin-top: 10px;"><?php _e( 'By Taxonomy and Terms', 'fortytwo' ); ?></strong><label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[posts_term]"><?php _e( 'Choose a term to determine what slides to include', 'fortytwo' ); ?>.</label>
 
 						<select id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[posts_term]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[posts_term]" style="margin-top: 5px;">
 
-							<option style="padding-right:10px;" value="" <?php selected( '', ft_get_responsive_slider_option( 'posts_term' ) ); ?>><?php _e( 'All Taxonomies and Terms', 'ft-responsive-slider' ); ?></option>
+							<option style="padding-right:10px;" value="" <?php selected( '', ft_get_responsive_slider_option( 'posts_term' ) ); ?>><?php _e( 'All Taxonomies and Terms', 'fortytwo' ); ?></option>
 			<?php
 	$taxonomies = get_taxonomies( array( 'public' => true ), 'objects' );
 
@@ -243,10 +243,10 @@ function ft_responsive_slider_options_box() {
 						</select>
 					</p>
 
-					<p><strong style="display: block; font-size: 11px; margin-top: 10px;"><?php _e( 'Include or Exclude by Taxonomy ID', 'ft-responsive-slider' ); ?></strong></p>
+					<p><strong style="display: block; font-size: 11px; margin-top: 10px;"><?php _e( 'Include or Exclude by Taxonomy ID', 'fortytwo' ); ?></strong></p>
 
 					<p>
-						<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[exclude_terms]"><?php printf( __( 'List which category, tag or other taxonomy IDs to exclude. (1,2,3,4 for example)', 'ft-responsive-slider' ), '<br />' ); ?></label>
+						<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[exclude_terms]"><?php printf( __( 'List which category, tag or other taxonomy IDs to exclude. (1,2,3,4 for example)', 'fortytwo' ), '<br />' ); ?></label>
 					</p>
 
 					<p>
@@ -256,42 +256,42 @@ function ft_responsive_slider_options_box() {
 				</div>
 
 				<p>
-					<strong style="font-size:11px;margin-top:10px;"><label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[include_exclude]"><?php printf( __( 'Include or Exclude by %s ID', 'ft-responsive-slider' ), ft_get_responsive_slider_option( 'post_type' ) ); ?></label></strong>
+					<strong style="font-size:11px;margin-top:10px;"><label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[include_exclude]"><?php printf( __( 'Include or Exclude by %s ID', 'fortytwo' ), ft_get_responsive_slider_option( 'post_type' ) ); ?></label></strong>
 				</p>
 
-				<p><?php _e( 'Choose the include / exclude slides using their post / page ID in a comma-separated list. (1,2,3,4 for example)', 'ft-responsive-slider' ); ?></p>
+				<p><?php _e( 'Choose the include / exclude slides using their post / page ID in a comma-separated list. (1,2,3,4 for example)', 'fortytwo' ); ?></p>
 
 				<p>
 					<select style="margin-top: 5px;" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[include_exclude]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[include_exclude]">
-						<option style="padding-right:10px;" value="" <?php selected( '', ft_get_responsive_slider_option( 'include_exclude' ) ); ?>><?php _e( 'Select', 'ft-responsive-slider' ); ?></option>
-						<option style="padding-right:10px;" value="include" <?php selected( 'include', ft_get_responsive_slider_option( 'include_exclude' ) ); ?>><?php _e( 'Include', 'ft-responsive-slider' ); ?></option>
-						<option style="padding-right:10px;" value="exclude" <?php selected( 'exclude', ft_get_responsive_slider_option( 'include_exclude' ) ); ?>><?php _e( 'Exclude', 'ft-responsive-slider' ); ?></option>
+						<option style="padding-right:10px;" value="" <?php selected( '', ft_get_responsive_slider_option( 'include_exclude' ) ); ?>><?php _e( 'Select', 'fortytwo' ); ?></option>
+						<option style="padding-right:10px;" value="include" <?php selected( 'include', ft_get_responsive_slider_option( 'include_exclude' ) ); ?>><?php _e( 'Include', 'fortytwo' ); ?></option>
+						<option style="padding-right:10px;" value="exclude" <?php selected( 'exclude', ft_get_responsive_slider_option( 'include_exclude' ) ); ?>><?php _e( 'Exclude', 'fortytwo' ); ?></option>
 					</select>
 				</p>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[post_id]"><?php _e( 'List which', 'ft-responsive-slider' ); ?> <strong><?php echo ft_get_responsive_slider_option( 'post_type' ) . ' ' . __( 'ID', 'ft-responsive-slider' ); ?>s</strong> <?php _e( 'to include / exclude. (1,2,3,4 for example)', 'ft-responsive-slider' ); ?></label></p>
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[post_id]"><?php _e( 'List which', 'fortytwo' ); ?> <strong><?php echo ft_get_responsive_slider_option( 'post_type' ) . ' ' . __( 'ID', 'fortytwo' ); ?>s</strong> <?php _e( 'to include / exclude. (1,2,3,4 for example)', 'fortytwo' ); ?></label></p>
 				<p>
 					<input type="text" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[post_id]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[post_id]" value="<?php echo esc_attr( ft_get_responsive_slider_option( 'post_id' ) ); ?>" style="width:60%;" />
 				</p>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[posts_num]"><?php _e( 'Number of Slides to Show', 'ft-responsive-slider' ); ?>:</label>
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[posts_num]"><?php _e( 'Number of Slides to Show', 'fortytwo' ); ?>:</label>
 					<input type="text" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[posts_num]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[posts_num]" value="<?php echo esc_attr( ft_get_responsive_slider_option( 'posts_num' ) ); ?>" size="2" />
 				</p>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[posts_offset]"><?php _e( 'Number of Posts to Offset', 'ft-responsive-slider' ); ?>:</label>
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[posts_offset]"><?php _e( 'Number of Posts to Offset', 'fortytwo' ); ?>:</label>
 					<input type="text" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[posts_offset]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[posts_offset]" value="<?php echo esc_attr( ft_get_responsive_slider_option( 'posts_offset' ) ); ?>" size="2" />
 				</p>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[orderby]"><?php _e( 'Order By', 'ft-responsive-slider' ); ?>:</label>
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[orderby]"><?php _e( 'Order By', 'fortytwo' ); ?>:</label>
 					<select id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[orderby]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[orderby]">
-						<option style="padding-right:10px;" value="date" <?php selected( 'date', ft_get_responsive_slider_option( 'orderby' ) ); ?>><?php _e( 'Date', 'ft-responsive-slider' ); ?></option>
-						<option style="padding-right:10px;" value="title" <?php selected( 'title', ft_get_responsive_slider_option( 'orderby' ) ); ?>><?php _e( 'Title', 'ft-responsive-slider' ); ?></option>
-						<option style="padding-right:10px;" value="ID" <?php selected( 'ID', ft_get_responsive_slider_option( 'orderby' ) ); ?>><?php _e( 'ID', 'ft-responsive-slider' ); ?></option>
-						<option style="padding-right:10px;" value="rand" <?php selected( 'rand', ft_get_responsive_slider_option( 'orderby' ) ); ?>><?php _e( 'Random', 'ft-responsive-slider' ); ?></option>
+						<option style="padding-right:10px;" value="date" <?php selected( 'date', ft_get_responsive_slider_option( 'orderby' ) ); ?>><?php _e( 'Date', 'fortytwo' ); ?></option>
+						<option style="padding-right:10px;" value="title" <?php selected( 'title', ft_get_responsive_slider_option( 'orderby' ) ); ?>><?php _e( 'Title', 'fortytwo' ); ?></option>
+						<option style="padding-right:10px;" value="ID" <?php selected( 'ID', ft_get_responsive_slider_option( 'orderby' ) ); ?>><?php _e( 'ID', 'fortytwo' ); ?></option>
+						<option style="padding-right:10px;" value="rand" <?php selected( 'rand', ft_get_responsive_slider_option( 'orderby' ) ); ?>><?php _e( 'Random', 'fortytwo' ); ?></option>
 					</select>
 				</p>
 
@@ -299,107 +299,107 @@ function ft_responsive_slider_options_box() {
 
 			<hr class="div" />
 
-			<h4><?php _e( 'Transition Settings', 'ft-responsive-slider' ); ?></h4>
+			<h4><?php _e( 'Transition Settings', 'fortytwo' ); ?></h4>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_timer]"><?php _e( 'Time Between Slides (in milliseconds)', 'ft-responsive-slider' ); ?>:
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_timer]"><?php _e( 'Time Between Slides (in milliseconds)', 'fortytwo' ); ?>:
 					<input type="text" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_timer]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_timer]" value="<?php echo ft_get_responsive_slider_option( 'slideshow_timer' ); ?>" size="5" /></label>
 				</p>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_delay]"><?php _e( 'Slide Transition Speed (in milliseconds)', 'ft-responsive-slider' ); ?>:
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_delay]"><?php _e( 'Slide Transition Speed (in milliseconds)', 'fortytwo' ); ?>:
 					<input type="text" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_delay]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_delay]" value="<?php echo ft_get_responsive_slider_option( 'slideshow_delay' ); ?>" size="5" /></label>
 				</p>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_effect]"><?php _e( 'Slider Effect', 'ft-responsive-slider' ); ?>:
-					<?php _e( 'Select one of the following:', 'ft-responsive-slider' ); ?>
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_effect]"><?php _e( 'Slider Effect', 'fortytwo' ); ?>:
+					<?php _e( 'Select one of the following:', 'fortytwo' ); ?>
 					<select name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_effect]" id="<?php echo FT_SETTINGS_FIELD; ?>[slideshow_effect]">
-						<option value="slide" <?php selected( 'slide', genesis_get_option( 'slideshow_effect', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD ) ); ?>><?php _e( 'Slide', 'ft-responsive-slider' ); ?></option>
-						<option value="fade" <?php selected( 'fade', genesis_get_option( 'slideshow_effect', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD ) ); ?>><?php _e( 'Fade', 'ft-responsive-slider' ); ?></option>
+						<option value="slide" <?php selected( 'slide', genesis_get_option( 'slideshow_effect', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD ) ); ?>><?php _e( 'Slide', 'fortytwo' ); ?></option>
+						<option value="fade" <?php selected( 'fade', genesis_get_option( 'slideshow_effect', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD ) ); ?>><?php _e( 'Fade', 'fortytwo' ); ?></option>
 					</select>
 				</p>
 
 			<hr class="div" />
 
-			<h4><?php _e( 'Display Settings', 'ft-responsive-slider' ); ?></h4>
+			<h4><?php _e( 'Display Settings', 'fortytwo' ); ?></h4>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_width]"><?php _e( 'Maximum Slider Width (in pixels)', 'ft-responsive-slider' ); ?>:
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_width]"><?php _e( 'Maximum Slider Width (in pixels)', 'fortytwo' ); ?>:
 					<input type="text" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_width]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_width]" value="<?php echo ft_get_responsive_slider_option( 'slideshow_width' ); ?>" size="5" /></label>
 				</p>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_height]"><?php _e( 'Maximum Slider Height (in pixels)', 'ft-responsive-slider' ); ?>:
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_height]"><?php _e( 'Maximum Slider Height (in pixels)', 'fortytwo' ); ?>:
 					<input type="text" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_height]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_height]" value="<?php echo ft_get_responsive_slider_option( 'slideshow_height' ); ?>" size="5" /></label>
 				</p>
 
 				<p>
-					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_arrows]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_arrows]" value="1" <?php checked( 1, ft_get_responsive_slider_option( 'slideshow_arrows' ) ); ?> /> <label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_arrows]"><?php _e( 'Display Next / Previous Arrows in Slider?', 'ft-responsive-slider' ); ?></label>
+					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_arrows]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_arrows]" value="1" <?php checked( 1, ft_get_responsive_slider_option( 'slideshow_arrows' ) ); ?> /> <label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_arrows]"><?php _e( 'Display Next / Previous Arrows in Slider?', 'fortytwo' ); ?></label>
 				</p>
 
 				<p>
-					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_pager]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_pager]" value="1" <?php checked( 1, ft_get_responsive_slider_option( 'slideshow_pager' ) ); ?> /> <label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_pager]"><?php _e( 'Display Pagination in Slider?', 'ft-responsive-slider' ); ?></label>
+					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_pager]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_pager]" value="1" <?php checked( 1, ft_get_responsive_slider_option( 'slideshow_pager' ) ); ?> /> <label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_pager]"><?php _e( 'Display Pagination in Slider?', 'fortytwo' ); ?></label>
 				</p>
 
 			<hr class="div" />
 
-			<h4><?php _e( 'Content Settings', 'ft-responsive-slider' ); ?></h4>
+			<h4><?php _e( 'Content Settings', 'fortytwo' ); ?></h4>
 
 				<p>
-					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_no_link]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_no_link]" value="1" <?php checked( 1, ft_get_responsive_slider_option( 'slideshow_no_link' ) ); ?> /> <label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_no_link]"><?php _e( 'Do not link Slider image to Post/Page.', 'ft-responsive-slider' ); ?></label>
+					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_no_link]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_no_link]" value="1" <?php checked( 1, ft_get_responsive_slider_option( 'slideshow_no_link' ) ); ?> /> <label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_no_link]"><?php _e( 'Do not link Slider image to Post/Page.', 'fortytwo' ); ?></label>
 				</p>
 
 				<p>
-					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_title_show]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_title_show]" value="1" <?php checked( 1, ft_get_responsive_slider_option( 'slideshow_title_show' ) ); ?> /> <label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_title_show]"><?php _e( 'Display Post/Page Title in Slider?', 'ft-responsive-slider' ); ?></label>
+					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_title_show]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_title_show]" value="1" <?php checked( 1, ft_get_responsive_slider_option( 'slideshow_title_show' ) ); ?> /> <label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_title_show]"><?php _e( 'Display Post/Page Title in Slider?', 'fortytwo' ); ?></label>
 				</p>
 				<p>
-					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_show]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_show]" value="1" <?php checked( 1, ft_get_responsive_slider_option( 'slideshow_excerpt_show' ) ); ?> /> <label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_show]"><?php _e( 'Display Content in Slider?', 'ft-responsive-slider' ); ?></label>
-				</p>
-
-				<p>
-					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_hide_mobile]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_hide_mobile]" value="1" <?php checked( 1, ft_get_responsive_slider_option( 'slideshow_hide_mobile' ) ); ?> /> <label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_hide_mobile]"><?php _e( 'Hide Title & Content on Mobile Devices', 'ft-responsive-slider' ); ?></label>
+					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_show]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_show]" value="1" <?php checked( 1, ft_get_responsive_slider_option( 'slideshow_excerpt_show' ) ); ?> /> <label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_show]"><?php _e( 'Display Content in Slider?', 'fortytwo' ); ?></label>
 				</p>
 
 				<p>
-					<?php _e( 'Select one of the following:', 'ft-responsive-slider' ); ?>
+					<input type="checkbox" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_hide_mobile]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_hide_mobile]" value="1" <?php checked( 1, ft_get_responsive_slider_option( 'slideshow_hide_mobile' ) ); ?> /> <label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_hide_mobile]"><?php _e( 'Hide Title & Content on Mobile Devices', 'fortytwo' ); ?></label>
+				</p>
+
+				<p>
+					<?php _e( 'Select one of the following:', 'fortytwo' ); ?>
 					<select name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_content]" id="<?php echo FT_SETTINGS_FIELD; ?>[slideshow_excerpt_content]">
-						<option value="full" <?php selected( 'full', genesis_get_option( 'slideshow_excerpt_content', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD ) ); ?>><?php _e( 'Display post content', 'ft-responsive-slider' ); ?></option>
-						<option value="excerpts" <?php selected( 'excerpts', genesis_get_option( 'slideshow_excerpt_content', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD ) ); ?>><?php _e( 'Display post excerpts', 'ft-responsive-slider' ); ?></option>
+						<option value="full" <?php selected( 'full', genesis_get_option( 'slideshow_excerpt_content', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD ) ); ?>><?php _e( 'Display post content', 'fortytwo' ); ?></option>
+						<option value="excerpts" <?php selected( 'excerpts', genesis_get_option( 'slideshow_excerpt_content', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD ) ); ?>><?php _e( 'Display post excerpts', 'fortytwo' ); ?></option>
 					</select>
 				</p>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_more_text]"><?php _e( 'More Text (if applicable)', 'ft-responsive-slider' ); ?>:</label>
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_more_text]"><?php _e( 'More Text (if applicable)', 'fortytwo' ); ?>:</label>
 					<input type="text" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_more_text]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_more_text]" value="<?php echo esc_attr( genesis_get_option( 'slideshow_more_text', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD ) ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_content_limit]"><?php _e( 'Limit content to', 'ft-responsive-slider' ); ?></label>
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_content_limit]"><?php _e( 'Limit content to', 'fortytwo' ); ?></label>
 					<input type="text" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_content_limit]" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_content_limit]" value="<?php echo esc_attr( genesis_option( 'slideshow_excerpt_content_limit', FT_RESPONSIVE_SLIDER_SETTINGS_FIELD ) ); ?>" size="3" />
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_content_limit]"><?php _e( 'characters', 'ft-responsive-slider' ); ?></label>
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_content_limit]"><?php _e( 'characters', 'fortytwo' ); ?></label>
 				</p>
 
-				<p><span class="description"><?php _e( 'Using this option will limit the text and strip all formatting from the text displayed. To use this option, choose "Display post content" in the select box above.', 'ft-responsive-slider' ); ?></span></p>
+				<p><span class="description"><?php _e( 'Using this option will limit the text and strip all formatting from the text displayed. To use this option, choose "Display post content" in the select box above.', 'fortytwo' ); ?></span></p>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]"><?php _e( 'Slider Excerpt Width (in percentage)', 'ft-responsive-slider' ); ?>:
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]"><?php _e( 'Slider Excerpt Width (in percentage)', 'fortytwo' ); ?>:
 					<input type="text" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]" value="<?php echo ft_get_responsive_slider_option( 'slideshow_excerpt_width' ); ?>" size="5" /></label>
 				</p>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_vertical]"><?php _e( 'Excerpt Location (vertical)', 'ft-responsive-slider' ); ?>:</label>
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_vertical]"><?php _e( 'Excerpt Location (vertical)', 'fortytwo' ); ?>:</label>
 					<select id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_vertical]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_vertical]">
-						<option style="padding-right:10px;" value="top" <?php selected( 'top', ft_get_responsive_slider_option( 'location_vertical' ) ); ?>><?php _e( 'Top', 'ft-responsive-slider' ); ?></option>
-						<option style="padding-right:10px;" value="bottom" <?php selected( 'bottom', ft_get_responsive_slider_option( 'location_vertical' ) ); ?>><?php _e( 'Bottom', 'ft-responsive-slider' ); ?></option>
+						<option style="padding-right:10px;" value="top" <?php selected( 'top', ft_get_responsive_slider_option( 'location_vertical' ) ); ?>><?php _e( 'Top', 'fortytwo' ); ?></option>
+						<option style="padding-right:10px;" value="bottom" <?php selected( 'bottom', ft_get_responsive_slider_option( 'location_vertical' ) ); ?>><?php _e( 'Bottom', 'fortytwo' ); ?></option>
 					</select>
 				</p>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_horizontal]"><?php _e( 'Excerpt Location (horizontal)', 'ft-responsive-slider' ); ?>:</label>
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_horizontal]"><?php _e( 'Excerpt Location (horizontal)', 'fortytwo' ); ?>:</label>
 					<select id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_horizontal]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_horizontal]">
-						<option style="padding-right:10px;" value="left" <?php selected( 'left', ft_get_responsive_slider_option( 'location_horizontal' ) ); ?>><?php _e( 'Left', 'ft-responsive-slider' ); ?></option>
-						<option style="padding-right:10px;" value="right" <?php selected( 'right', ft_get_responsive_slider_option( 'location_horizontal' ) ); ?>><?php _e( 'Right', 'ft-responsive-slider' ); ?></option>
+						<option style="padding-right:10px;" value="left" <?php selected( 'left', ft_get_responsive_slider_option( 'location_horizontal' ) ); ?>><?php _e( 'Left', 'fortytwo' ); ?></option>
+						<option style="padding-right:10px;" value="right" <?php selected( 'right', ft_get_responsive_slider_option( 'location_horizontal' ) ); ?>><?php _e( 'Right', 'fortytwo' ); ?></option>
 					</select>
 				</p>
 <?php
@@ -409,5 +409,5 @@ function ft_responsive_slider_options_box() {
  * Echos form submit button for settings page.
  */
 function ft_responsive_slider_form_submit( $args = array( ) ) {
-	echo '<p><input type="submit" class="button-primary" value="' . __( 'Save Changes', 'ft-responsive-slider' ) . '" /></p>';
+	echo '<p><input type="submit" class="button-primary" value="' . __( 'Save Changes', 'fortytwo' ) . '" /></p>';
 }

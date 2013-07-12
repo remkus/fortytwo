@@ -204,7 +204,7 @@ function ft_responsive_slider_excerpt_more( $more ) {
 	if ( !$read_more )
 		return '';
 
-	return '&hellip; <a href="'. get_permalink( $post->ID ) . '">' . __( $read_more, 'ft-responsive-slider' ) . '</a>';
+	return '&hellip; <a href="'. get_permalink( $post->ID ) . '">' . __( $read_more, 'fortytwo' ) . '</a>';
 }
 
 /**
@@ -213,9 +213,9 @@ function ft_responsive_slider_excerpt_more( $more ) {
 class ft_responsive_sliderWidget extends WP_Widget {
 
 	function ft_responsive_sliderWidget() {
-		$widget_ops = array( 'classname' => 'ft_responsive_slider', 'description' => __( 'Displays a slideshow inside a widget area', 'ft-responsive-slider' ) );
+		$widget_ops = array( 'classname' => 'ft_responsive_slider', 'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' ) );
 		$control_ops = array( 'width' => 200, 'height' => 250, 'id_base' => 'ftresponsiveslider-widget' );
-		$this->WP_Widget( 'ftresponsiveslider-widget', __( 'FortyTwo - Responsive Slider', 'ft-responsive-slider' ), $widget_ops, $control_ops );
+		$this->WP_Widget( 'ftresponsiveslider-widget', __( 'FortyTwo - Responsive Slider', 'fortytwo' ), $widget_ops, $control_ops );
 	}
 
 	function save_settings( $settings ) {
@@ -376,10 +376,10 @@ class ft_responsive_sliderWidget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title = $instance['title'];
 ?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'ft-responsive-slider' ); ?> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'fortytwo' ); ?> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></label></p>
 <?php
 		echo '<p>';
-		printf( __( 'To configure slider options, please go to the <a href="%s">Slider Settings</a> page.', 'ft-responsive-slider' ), menu_page_url( 'genesis_responsive_slider', 0 ) );
+		printf( __( 'To configure slider options, please go to the <a href="%s">Slider Settings</a> page.', 'fortytwo' ), menu_page_url( 'genesis_responsive_slider', 0 ) );
 		echo '</p>';
 	}
 

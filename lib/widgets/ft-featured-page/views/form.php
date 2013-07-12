@@ -9,19 +9,19 @@
 				</div>
 		</td>
 		<td>
-			<?php _e( 'Title' ); ?>:
+			<?php _e( 'Title', 'fortytwo' ); ?>:
 			<input class="span2" type="text" <?php $this->echo_field_id( "title" ) ?>  value="<?php echo esc_attr( $title ); ?>">
 		</td>
   </tr>
 	<tr><td colspan="2">
-			<?php _e( 'Content' ); ?>
+			<?php _e( 'Content', 'fortytwo' ); ?>
 		  <textarea rows="5" <?php $this->echo_field_id( "content" ) ?>
 		  	><?php echo esc_textarea( $content ); ?></textarea>
   </td></tr>
 	<tr><td colspan="2">
-			<?php _e( 'Button text' ); ?>
+			<?php _e( 'Button text', 'fortytwo' ); ?>
 			<input type="text" <?php $this->echo_field_id( "button_text" ) ?> value="<?php echo esc_attr( $button_text ); ?>"><br />
-		  <?php _e( 'Button link' ); ?>
+		  <?php _e( 'Button link', 'fortytwo' ); ?>
 		  <input type="text" <?php $this->echo_field_id( "button_link" ) ?> value="<?php echo esc_attr( $button_link ); ?>">
 		</td>
 	</tr>

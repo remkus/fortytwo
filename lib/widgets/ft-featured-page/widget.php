@@ -38,10 +38,10 @@ class FT_Featured_Page extends WP_Widget {
 
 		parent::__construct(
 			'ft-featured-page',
-			__( 'FortyTwo - Featured Page', 'ft-featured-page-locale' ),
+			__( 'FortyTwo - Featured Page', 'fortytwo' ),
 			array(
 				'classname'  => 'ft-featured-page',
-				'description' => __( 'Featured Page widget for the FortyTwo Theme.', 'ft-featured-page-locale' )
+				'description' => __( 'Featured Page widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
 
@@ -74,11 +74,11 @@ class FT_Featured_Page extends WP_Widget {
 		foreach ( array( 'title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name ) {
 			$instance[$field_name] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
 		}
-		$this->set_default( $instance['title'], "The title" );
+		$this->set_default( $instance['title'], __( "The title", 'fortytwo' ) );
 		$this->set_default( $instance['icon '], "icon-star" );
-		$this->set_default( $instance['content'], "And purely one near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill
-    yikes considering far above. Physically less snickered much and and while" );
-		$this->set_default( $instance['button_text'], "Click me!" );
+		$this->set_default( $instance['content'], __( "And purely one near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill
+    yikes considering far above. Physically less snickered much and and while", 'fortytwo' ) );
+		$this->set_default( $instance['button_text'], __( "Click me!", 'fortytwo' ) );
 		$this->set_default( $instance['button_link'], "#" );
 
 		include dirname( __FILE__ )  . '/views/widget.php';

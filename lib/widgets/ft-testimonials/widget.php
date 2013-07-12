@@ -37,10 +37,10 @@ class FT_Testimonials extends WP_Widget {
 
 		parent::__construct(
 			'widget-ft-testimonials',
-			__( 'FortyTwo - Testimonials', 'ft-testimonials-locale' ),
+			__( 'FortyTwo - Testimonials', 'fortytwo' ),
 			array(
 				'classname'  => 'ft-testimonials',
-				'description' => __( 'Testimonials widget for the FortyTwo Theme.', 'ft-testimonials-locale' )
+				'description' => __( 'Testimonials widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
 
@@ -74,7 +74,7 @@ class FT_Testimonials extends WP_Widget {
 
 		echo $before_widget;
 
-		include plugin_dir_path( __FILE__ ) . '/views/widget.php';
+		include dirname( __FILE__ ) . '/views/widget.php';
 
 		echo $after_widget;
 
@@ -114,7 +114,7 @@ class FT_Testimonials extends WP_Widget {
 		// TODO: Store the values of the widget in their own variable
 
 		// Display the admin form
-		include plugin_dir_path( __FILE__ ) . '/views/form.php';
+		include dirname( __FILE__ ) . '/views/form.php';
 
 	} // end form
 
