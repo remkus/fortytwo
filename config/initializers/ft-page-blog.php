@@ -55,8 +55,6 @@ function fortytwo_do_post_image() {
 
 		if ( ! empty( $img ) ) {
             printf( '<a href="%s" title="%s" class="pull-left">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), $img );
-        } else {
-            printf( '<a href="%s" title="%s" class="pull-left"><img data-src="holder.js/300x200" class="alignleft post-image entry-image"></a>', get_permalink(), the_title_attribute( 'echo=0' ) );
         }
 	}
 
