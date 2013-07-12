@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-<!-- generator="WordPress/3.5.2" created="2013-07-12 12:43" -->
+<!-- generator="WordPress/3.5.2" created="2013-07-12 12:48" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>Forsite Themes</title>
 	<link>http://www.gitpress.dev</link>
 	<description>A Genesis Child Theme By Forsite Themes</description>
-	<pubDate>Fri, 12 Jul 2013 12:43:44 +0000</pubDate>
+	<pubDate>Fri, 12 Jul 2013 12:48:28 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>http://www.gitpress.dev</wp:base_site_url>
@@ -2184,7 +2184,7 @@
 	</item>
 	<item>
 		<title>Static Pages</title>
-		<link>http://www.gitpress.dev/home-2/attachment/static-pages/</link>
+		<link>http://www.gitpress.dev/?attachment_id=1071</link>
 		<pubDate>Fri, 15 Mar 2013 23:02:10 +0000</pubDate>
 		<dc:creator>ryanholder</dc:creator>
 		<guid isPermaLink="false">http://www.gitpress.dev/content/uploads/2013/03/static-pages.png</guid>
@@ -2198,7 +2198,7 @@
 		<wp:ping_status>open</wp:ping_status>
 		<wp:post_name>static-pages</wp:post_name>
 		<wp:status>inherit</wp:status>
-		<wp:post_parent>1064</wp:post_parent>
+		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type>attachment</wp:post_type>
 		<wp:post_password></wp:post_password>
@@ -9414,61 +9414,6 @@
 	</item>
 	<item>
 		<title></title>
-		<link>http://www.gitpress.dev/uncategorized/1245/</link>
-		<pubDate>Fri, 12 Jul 2013 11:23:16 +0000</pubDate>
-		<dc:creator>ryanholder</dc:creator>
-		<guid isPermaLink="false">http://www.gitpress.dev/uncategorized/1245/</guid>
-		<description></description>
-		<content:encoded><![CDATA[ ]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>1245</wp:post_id>
-		<wp:post_date>2013-07-12 11:23:16</wp:post_date>
-		<wp:post_date_gmt>2013-07-12 11:23:16</wp:post_date_gmt>
-		<wp:comment_status>open</wp:comment_status>
-		<wp:ping_status>open</wp:ping_status>
-		<wp:post_name>1245</wp:post_name>
-		<wp:status>publish</wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>5</wp:menu_order>
-		<wp:post_type>nav_menu_item</wp:post_type>
-		<wp:post_password></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-		<category domain="nav_menu" nicename="long-menu"><![CDATA[Long Menu]]></category>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_type</wp:meta_key>
-			<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_object_id</wp:meta_key>
-			<wp:meta_value><![CDATA[1064]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_object</wp:meta_key>
-			<wp:meta_value><![CDATA[page]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_target</wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_classes</wp:meta_key>
-			<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_xfn</wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_url</wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-	</item>
-	<item>
-		<title></title>
 		<link>http://www.gitpress.dev/uncategorized/1246/</link>
 		<pubDate>Fri, 12 Jul 2013 11:23:16 +0000</pubDate>
 		<dc:creator>ryanholder</dc:creator>
@@ -10128,6 +10073,61 @@
 		</wp:postmeta>
 	</item>
 	<item>
+		<title></title>
+		<link>http://www.gitpress.dev/uncategorized/1258/</link>
+		<pubDate>Fri, 12 Jul 2013 11:23:16 +0000</pubDate>
+		<dc:creator>ryanholder</dc:creator>
+		<guid isPermaLink="false">http://www.gitpress.dev/uncategorized/1258/</guid>
+		<description></description>
+		<content:encoded><![CDATA[ ]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>1258</wp:post_id>
+		<wp:post_date>2013-07-12 11:23:16</wp:post_date>
+		<wp:post_date_gmt>2013-07-12 11:23:16</wp:post_date_gmt>
+		<wp:comment_status>open</wp:comment_status>
+		<wp:ping_status>open</wp:ping_status>
+		<wp:post_name>1258</wp:post_name>
+		<wp:status>publish</wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>3</wp:menu_order>
+		<wp:post_type>nav_menu_item</wp:post_type>
+		<wp:post_password></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="nav_menu" nicename="testing-menu"><![CDATA[Testing Menu]]></category>
+		<wp:postmeta>
+			<wp:meta_key>_menu_item_type</wp:meta_key>
+			<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
+			<wp:meta_value><![CDATA[1145]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>_menu_item_object_id</wp:meta_key>
+			<wp:meta_value><![CDATA[1062]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>_menu_item_object</wp:meta_key>
+			<wp:meta_value><![CDATA[page]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>_menu_item_target</wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>_menu_item_classes</wp:meta_key>
+			<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>_menu_item_xfn</wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>_menu_item_url</wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
 		<title>Sample Page</title>
 		<link>http://www.gitpress.dev/sample-page/</link>
 		<pubDate>Sun, 15 Aug 2010 19:03:46 +0000</pubDate>
@@ -10448,58 +10448,83 @@ This is an example of a WordPress page, you could edit this to put information a
 		</wp:postmeta>
 	</item>
 	<item>
-		<title></title>
-		<link>http://www.gitpress.dev/uncategorized/1258/</link>
-		<pubDate>Fri, 12 Jul 2013 11:23:16 +0000</pubDate>
+		<title>Sub Page 3.2</title>
+		<link>http://www.gitpress.dev/sample-page/sub-page-11/sub-page-21/sub-page-32/</link>
+		<pubDate>Sun, 15 Aug 2010 19:06:13 +0000</pubDate>
 		<dc:creator>ryanholder</dc:creator>
-		<guid isPermaLink="false">http://www.gitpress.dev/uncategorized/1258/</guid>
+		<guid isPermaLink="false">http://demo.studiopress.com/genesis</guid>
 		<description></description>
-		<content:encoded><![CDATA[ ]]></content:encoded>
+		<content:encoded><![CDATA[This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
+
+This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
+
+This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
+
+This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
+
+This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
+
+This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>1258</wp:post_id>
-		<wp:post_date>2013-07-12 11:23:16</wp:post_date>
-		<wp:post_date_gmt>2013-07-12 11:23:16</wp:post_date_gmt>
+		<wp:post_id>58</wp:post_id>
+		<wp:post_date>2010-08-15 19:06:13</wp:post_date>
+		<wp:post_date_gmt>2010-08-15 19:06:13</wp:post_date_gmt>
 		<wp:comment_status>open</wp:comment_status>
-		<wp:ping_status>open</wp:ping_status>
-		<wp:post_name>1258</wp:post_name>
+		<wp:ping_status>closed</wp:ping_status>
+		<wp:post_name>sub-page-32</wp:post_name>
 		<wp:status>publish</wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>3</wp:menu_order>
-		<wp:post_type>nav_menu_item</wp:post_type>
+		<wp:post_parent>54</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type>page</wp:post_type>
 		<wp:post_password></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-		<category domain="nav_menu" nicename="testing-menu"><![CDATA[Testing Menu]]></category>
 		<wp:postmeta>
-			<wp:meta_key>_menu_item_type</wp:meta_key>
-			<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+			<wp:meta_key>_edit_last</wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
 		</wp:postmeta>
 		<wp:postmeta>
-			<wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
-			<wp:meta_value><![CDATA[1145]]></wp:meta_value>
+			<wp:meta_key>_wp_page_template</wp:meta_key>
+			<wp:meta_value><![CDATA[default]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>Sub Page 3.3</title>
+		<link>http://www.gitpress.dev/sample-page/sub-page-11/sub-page-21/sub-page-33/</link>
+		<pubDate>Sun, 15 Aug 2010 19:06:28 +0000</pubDate>
+		<dc:creator>ryanholder</dc:creator>
+		<guid isPermaLink="false">http://demo.studiopress.com/genesis</guid>
+		<description></description>
+		<content:encoded><![CDATA[This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
+
+This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
+
+This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
+
+This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
+
+This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
+
+This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>59</wp:post_id>
+		<wp:post_date>2010-08-15 19:06:28</wp:post_date>
+		<wp:post_date_gmt>2010-08-15 19:06:28</wp:post_date_gmt>
+		<wp:comment_status>open</wp:comment_status>
+		<wp:ping_status>closed</wp:ping_status>
+		<wp:post_name>sub-page-33</wp:post_name>
+		<wp:status>publish</wp:status>
+		<wp:post_parent>54</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type>page</wp:post_type>
+		<wp:post_password></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:postmeta>
+			<wp:meta_key>_edit_last</wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
 		</wp:postmeta>
 		<wp:postmeta>
-			<wp:meta_key>_menu_item_object_id</wp:meta_key>
-			<wp:meta_value><![CDATA[1062]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_object</wp:meta_key>
-			<wp:meta_value><![CDATA[page]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_target</wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_classes</wp:meta_key>
-			<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_xfn</wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_url</wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
+			<wp:meta_key>_wp_page_template</wp:meta_key>
+			<wp:meta_value><![CDATA[default]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
@@ -10535,61 +10560,6 @@ This is an example of a WordPress page, you could edit this to put information a
 		<wp:postmeta>
 			<wp:meta_key>_menu_item_object_id</wp:meta_key>
 			<wp:meta_value><![CDATA[1176]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_object</wp:meta_key>
-			<wp:meta_value><![CDATA[page]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_target</wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_classes</wp:meta_key>
-			<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_xfn</wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_url</wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-	</item>
-	<item>
-		<title></title>
-		<link>http://www.gitpress.dev/uncategorized/1260/</link>
-		<pubDate>Fri, 12 Jul 2013 11:23:17 +0000</pubDate>
-		<dc:creator>ryanholder</dc:creator>
-		<guid isPermaLink="false">http://www.gitpress.dev/uncategorized/1260/</guid>
-		<description></description>
-		<content:encoded><![CDATA[ ]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>1260</wp:post_id>
-		<wp:post_date>2013-07-12 11:23:17</wp:post_date>
-		<wp:post_date_gmt>2013-07-12 11:23:17</wp:post_date_gmt>
-		<wp:comment_status>open</wp:comment_status>
-		<wp:ping_status>open</wp:ping_status>
-		<wp:post_name>1260</wp:post_name>
-		<wp:status>publish</wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>5</wp:menu_order>
-		<wp:post_type>nav_menu_item</wp:post_type>
-		<wp:post_password></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-		<category domain="nav_menu" nicename="testing-menu"><![CDATA[Testing Menu]]></category>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_type</wp:meta_key>
-			<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
-			<wp:meta_value><![CDATA[1145]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_menu_item_object_id</wp:meta_key>
-			<wp:meta_value><![CDATA[1064]]></wp:meta_value>
 		</wp:postmeta>
 		<wp:postmeta>
 			<wp:meta_key>_menu_item_object</wp:meta_key>
@@ -11105,86 +11075,6 @@ This is an example of a WordPress page, you could edit this to put information a
 		<wp:postmeta>
 			<wp:meta_key>_menu_item_url</wp:meta_key>
 			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-	</item>
-	<item>
-		<title>Sub Page 3.2</title>
-		<link>http://www.gitpress.dev/sample-page/sub-page-11/sub-page-21/sub-page-32/</link>
-		<pubDate>Sun, 15 Aug 2010 19:06:13 +0000</pubDate>
-		<dc:creator>ryanholder</dc:creator>
-		<guid isPermaLink="false">http://demo.studiopress.com/genesis</guid>
-		<description></description>
-		<content:encoded><![CDATA[This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
-
-This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
-
-This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
-
-This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
-
-This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
-
-This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>58</wp:post_id>
-		<wp:post_date>2010-08-15 19:06:13</wp:post_date>
-		<wp:post_date_gmt>2010-08-15 19:06:13</wp:post_date_gmt>
-		<wp:comment_status>open</wp:comment_status>
-		<wp:ping_status>closed</wp:ping_status>
-		<wp:post_name>sub-page-32</wp:post_name>
-		<wp:status>publish</wp:status>
-		<wp:post_parent>54</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type>page</wp:post_type>
-		<wp:post_password></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-		<wp:postmeta>
-			<wp:meta_key>_edit_last</wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_wp_page_template</wp:meta_key>
-			<wp:meta_value><![CDATA[default]]></wp:meta_value>
-		</wp:postmeta>
-	</item>
-	<item>
-		<title>Sub Page 3.3</title>
-		<link>http://www.gitpress.dev/sample-page/sub-page-11/sub-page-21/sub-page-33/</link>
-		<pubDate>Sun, 15 Aug 2010 19:06:28 +0000</pubDate>
-		<dc:creator>ryanholder</dc:creator>
-		<guid isPermaLink="false">http://demo.studiopress.com/genesis</guid>
-		<description></description>
-		<content:encoded><![CDATA[This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
-
-This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
-
-This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
-
-This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
-
-This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.
-
-This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>59</wp:post_id>
-		<wp:post_date>2010-08-15 19:06:28</wp:post_date>
-		<wp:post_date_gmt>2010-08-15 19:06:28</wp:post_date_gmt>
-		<wp:comment_status>open</wp:comment_status>
-		<wp:ping_status>closed</wp:ping_status>
-		<wp:post_name>sub-page-33</wp:post_name>
-		<wp:status>publish</wp:status>
-		<wp:post_parent>54</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type>page</wp:post_type>
-		<wp:post_password></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-		<wp:postmeta>
-			<wp:meta_key>_edit_last</wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_wp_page_template</wp:meta_key>
-			<wp:meta_value><![CDATA[default]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
@@ -11921,6 +11811,36 @@ This is an example of a WordPress page, you could edit this to put information a
 		<wp:is_sticky>0</wp:is_sticky>
 	</item>
 	<item>
+		<title>Scheduled</title>
+		<link>http://www.gitpress.dev/content/scheduled/</link>
+		<pubDate>Sat, 01 Jan 2050 18:00:18 +0000</pubDate>
+		<dc:creator>ryanholder</dc:creator>
+		<guid isPermaLink="false">http://wpthemetestdata.wordpress.com/?p=418</guid>
+		<description></description>
+		<content:encoded><![CDATA[This post is scheduled to be published in the future.
+
+It should not be displayed by the theme.]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>418</wp:post_id>
+		<wp:post_date>2050-01-01 12:00:18</wp:post_date>
+		<wp:post_date_gmt>2050-01-01 18:00:18</wp:post_date_gmt>
+		<wp:comment_status>open</wp:comment_status>
+		<wp:ping_status>closed</wp:ping_status>
+		<wp:post_name>scheduled</wp:post_name>
+		<wp:status>future</wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type>post</wp:post_type>
+		<wp:post_password></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="content"><![CDATA[Content]]></category>
+		<category domain="category" nicename="unpublished"><![CDATA[Unpublished]]></category>
+		<wp:postmeta>
+			<wp:meta_key>_edit_last</wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
 		<title>Landing Page</title>
 		<link>http://www.gitpress.dev/landing/</link>
 		<pubDate>Tue, 22 Nov 2011 16:35:47 +0000</pubDate>
@@ -11960,6 +11880,48 @@ This is an example of a WordPress page, you could edit this to put information a
 		<wp:postmeta>
 			<wp:meta_key>_wp_page_template</wp:meta_key>
 			<wp:meta_value><![CDATA[page_landing.php]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>Draft</title>
+		<link>http://www.gitpress.dev/?p=922</link>
+		<pubDate>Wed, 30 Nov -0001 00:00:00 +0000</pubDate>
+		<dc:creator>ryanholder</dc:creator>
+		<guid isPermaLink="false">http://wptest.io/demo/?p=922</guid>
+		<description></description>
+		<content:encoded><![CDATA[This post is drafted and not published yet.
+
+It should not be displayed by the theme.]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>922</wp:post_id>
+		<wp:post_date>2013-07-12 12:20:21</wp:post_date>
+		<wp:post_date_gmt>0000-00-00 00:00:00</wp:post_date_gmt>
+		<wp:comment_status>open</wp:comment_status>
+		<wp:ping_status>open</wp:ping_status>
+		<wp:post_name></wp:post_name>
+		<wp:status>draft</wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type>post</wp:post_type>
+		<wp:post_password></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="content"><![CDATA[Content]]></category>
+		<category domain="category" nicename="unpublished"><![CDATA[Unpublished]]></category>
+		<wp:postmeta>
+			<wp:meta_key>_edit_last</wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>standard_seo_post_level_layout</wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>standard_link_url_field</wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>standard_seo_post_meta_description</wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
@@ -12674,6 +12636,87 @@ And, just for fun, it also contains a child page (aka. a grandchild page).]]></c
 		<wp:postmeta>
 			<wp:meta_key>_wp_page_template</wp:meta_key>
 			<wp:meta_value><![CDATA[default]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>Password Protected (the password is &quot;enter&quot;)</title>
+		<link>http://www.gitpress.dev/comments/password-protected/</link>
+		<pubDate>Fri, 04 Jan 2013 15:38:05 +0000</pubDate>
+		<dc:creator>ryanholder</dc:creator>
+		<guid isPermaLink="false">http://wpthemetestdata.wordpress.com/2007/09/04/test-with-secret-password/</guid>
+		<description></description>
+		<content:encoded><![CDATA[<span style="line-height: 1.714285714; font-size: 1rem;">This content, comments, pingbacks, and trackbacks should not be visible until the password is entered.</span>]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>131</wp:post_id>
+		<wp:post_date>2013-01-04 09:38:05</wp:post_date>
+		<wp:post_date_gmt>2013-01-04 15:38:05</wp:post_date_gmt>
+		<wp:comment_status>open</wp:comment_status>
+		<wp:ping_status>open</wp:ping_status>
+		<wp:post_name>password-protected</wp:post_name>
+		<wp:status>publish</wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type>post</wp:post_type>
+		<wp:post_password>enter</wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="comments"><![CDATA[Comments]]></category>
+		<category domain="category" nicename="password"><![CDATA[Password]]></category>
+		<category domain="category" nicename="pingbacks"><![CDATA[Pingbacks]]></category>
+		<category domain="category" nicename="trackbacks"><![CDATA[Trackbacks]]></category>
+		<wp:postmeta>
+			<wp:meta_key>_edit_last</wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>_wp_old_slug</wp:meta_key>
+			<wp:meta_value><![CDATA[test-with-secret-password]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:comment>
+			<wp:comment_id>57</wp:comment_id>
+			<wp:comment_author><![CDATA[Tom McFarlin]]></wp:comment_author>
+			<wp:comment_author_email>tom@tommcfarlin.com</wp:comment_author_email>
+			<wp:comment_author_url>http://tommcfarlin.com/</wp:comment_author_url>
+			<wp:comment_author_IP>24.126.245.62</wp:comment_author_IP>
+			<wp:comment_date>2013-03-14 11:56:08</wp:comment_date>
+			<wp:comment_date_gmt>2013-03-14 16:56:08</wp:comment_date_gmt>
+			<wp:comment_content><![CDATA[This comment should not be visible until the password is entered.]]></wp:comment_content>
+			<wp:comment_approved>1</wp:comment_approved>
+			<wp:comment_type></wp:comment_type>
+			<wp:comment_parent>0</wp:comment_parent>
+			<wp:comment_user_id>0</wp:comment_user_id>
+		</wp:comment>
+	</item>
+	<item>
+		<title></title>
+		<link>http://www.gitpress.dev/titles/no-title/</link>
+		<pubDate>Sat, 05 Jan 2013 15:00:23 +0000</pubDate>
+		<dc:creator>ryanholder</dc:creator>
+		<guid isPermaLink="false">http://wpthemetestdata.wordpress.com/2007/09/04/14/</guid>
+		<description></description>
+		<content:encoded><![CDATA[This post has no title, but it still must link to the single post view somehow.
+
+This is typically done by placing the permalink on the post date.]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>133</wp:post_id>
+		<wp:post_date>2013-01-05 09:00:23</wp:post_date>
+		<wp:post_date_gmt>2013-01-05 15:00:23</wp:post_date_gmt>
+		<wp:comment_status>closed</wp:comment_status>
+		<wp:ping_status>closed</wp:ping_status>
+		<wp:post_name>no-title</wp:post_name>
+		<wp:status>publish</wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type>post</wp:post_type>
+		<wp:post_password></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="titles"><![CDATA[Titles]]></category>
+		<wp:postmeta>
+			<wp:meta_key>_wp_old_slug</wp:meta_key>
+			<wp:meta_value><![CDATA[14]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>_edit_last</wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
@@ -13494,36 +13537,6 @@ There should be no comment reply form or any pingbacks and trackbacks listed.]]>
 		</wp:postmeta>
 	</item>
 	<item>
-		<title>Scheduled</title>
-		<link>http://www.gitpress.dev/content/scheduled/</link>
-		<pubDate>Sat, 01 Jan 2050 18:00:18 +0000</pubDate>
-		<dc:creator>ryanholder</dc:creator>
-		<guid isPermaLink="false">http://wpthemetestdata.wordpress.com/?p=418</guid>
-		<description></description>
-		<content:encoded><![CDATA[This post is scheduled to be published in the future.
-
-It should not be displayed by the theme.]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>418</wp:post_id>
-		<wp:post_date>2050-01-01 12:00:18</wp:post_date>
-		<wp:post_date_gmt>2050-01-01 18:00:18</wp:post_date_gmt>
-		<wp:comment_status>open</wp:comment_status>
-		<wp:ping_status>closed</wp:ping_status>
-		<wp:post_name>scheduled</wp:post_name>
-		<wp:status>future</wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type>post</wp:post_type>
-		<wp:post_password></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-		<category domain="category" nicename="content"><![CDATA[Content]]></category>
-		<category domain="category" nicename="unpublished"><![CDATA[Unpublished]]></category>
-		<wp:postmeta>
-			<wp:meta_key>_edit_last</wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-	</item>
-	<item>
 		<title>Post Format: Gallery</title>
 		<link>http://www.gitpress.dev/post-formats/post-format-gallery/</link>
 		<pubDate>Mon, 10 Dec 2012 16:00:14 +0000</pubDate>
@@ -13922,98 +13935,34 @@ audio/mpeg
 		</wp:postmeta>
 	</item>
 	<item>
-		<title>Draft</title>
-		<link>http://www.gitpress.dev/?p=922</link>
-		<pubDate>Wed, 30 Nov -0001 00:00:00 +0000</pubDate>
+		<title>Title With Markup</title>
+		<link>http://www.gitpress.dev/titles/title-with-markup/</link>
+		<pubDate>Sat, 05 Jan 2013 16:00:49 +0000</pubDate>
 		<dc:creator>ryanholder</dc:creator>
-		<guid isPermaLink="false">http://wptest.io/demo/?p=922</guid>
+		<guid isPermaLink="false">http://wptest.io/demo/?p=861</guid>
 		<description></description>
-		<content:encoded><![CDATA[This post is drafted and not published yet.
-
-It should not be displayed by the theme.]]></content:encoded>
+		<content:encoded><![CDATA[Verify that:
+<ul>
+	<li><span style="line-height: 1.714285714; font-size: 1rem;">The post title renders the word "with" in </span><em style="line-height: 1.714285714; font-size: 1rem;">italics</em><span style="line-height: 1.714285714; font-size: 1rem;"> and the word "markup" in </span><strong style="line-height: 1.714285714; font-size: 1rem;">bold</strong><span style="line-height: 1.714285714; font-size: 1rem;">.</span></li>
+	<li><span style="line-height: 1.714285714; font-size: 1rem;">The post title markup should be removed from the browser window / tab.</span></li>
+</ul>]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>922</wp:post_id>
-		<wp:post_date>2013-07-12 12:20:21</wp:post_date>
-		<wp:post_date_gmt>0000-00-00 00:00:00</wp:post_date_gmt>
+		<wp:post_id>861</wp:post_id>
+		<wp:post_date>2013-01-05 10:00:49</wp:post_date>
+		<wp:post_date_gmt>2013-01-05 16:00:49</wp:post_date_gmt>
 		<wp:comment_status>open</wp:comment_status>
 		<wp:ping_status>open</wp:ping_status>
-		<wp:post_name></wp:post_name>
-		<wp:status>draft</wp:status>
+		<wp:post_name>title-with-markup</wp:post_name>
+		<wp:status>publish</wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type>post</wp:post_type>
 		<wp:post_password></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-		<category domain="category" nicename="content"><![CDATA[Content]]></category>
-		<category domain="category" nicename="unpublished"><![CDATA[Unpublished]]></category>
+		<category domain="category" nicename="titles"><![CDATA[Titles]]></category>
 		<wp:postmeta>
 			<wp:meta_key>_edit_last</wp:meta_key>
 			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>standard_seo_post_level_layout</wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>standard_link_url_field</wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>standard_seo_post_meta_description</wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-	</item>
-	<item>
-		<title>Home</title>
-		<link>http://www.gitpress.dev/home-2/</link>
-		<pubDate>Fri, 15 Mar 2013 22:56:11 +0000</pubDate>
-		<dc:creator>ryanholder</dc:creator>
-		<guid isPermaLink="false">http://wptest.io/demo/?page_id=1064</guid>
-		<description></description>
-		<content:encoded><![CDATA[Note that you will probably want to test this page in conjunction with the <span style="text-decoration: underline;"><strong>Blog</strong></span> page.
-
-To test this page:
-<ul>
-	<li>Navigate to <strong><em>Settings &gt; Reading</em></strong> in the WordPress admin.</li>
-	<li>Then use the settings in the screenshot below.</li>
-</ul>
-<img class="alignnone size-full wp-image-1071" alt="Static Pages" src="http://www.gitpress.dev/content/uploads/2013/03/static-pages.png" width="1390" height="1022" />
-
-A few things to check once this is done.
-<ul>
-	<li>Navigating to the root URL loads this page.</li>
-	<li>The site title should be an <code>H1</code> and the page title should be an <code>H2</code> (if displayed).</li>
-	<li>Check that the browser window / tab name is what you intend it to show.</li>
-	<li>If your theme displays breadcrumbs, they should probably not show when this page is the front page.</li>
-</ul>]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>1064</wp:post_id>
-		<wp:post_date>2013-03-15 17:56:11</wp:post_date>
-		<wp:post_date_gmt>2013-03-15 22:56:11</wp:post_date_gmt>
-		<wp:comment_status>open</wp:comment_status>
-		<wp:ping_status>open</wp:ping_status>
-		<wp:post_name>home-2</wp:post_name>
-		<wp:status>trash</wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type>page</wp:post_type>
-		<wp:post_password></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-		<wp:postmeta>
-			<wp:meta_key>_edit_last</wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_wp_page_template</wp:meta_key>
-			<wp:meta_value><![CDATA[default]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_wp_trash_meta_status</wp:meta_key>
-			<wp:meta_value><![CDATA[publish]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_wp_trash_meta_time</wp:meta_key>
-			<wp:meta_value><![CDATA[1373632863]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
@@ -14251,87 +14200,6 @@ The last item in this post is a floated image. Make sure any elements after it a
 		</wp:postmeta>
 	</item>
 	<item>
-		<title>Password Protected (the password is &quot;enter&quot;)</title>
-		<link>http://www.gitpress.dev/comments/password-protected/</link>
-		<pubDate>Fri, 04 Jan 2013 15:38:05 +0000</pubDate>
-		<dc:creator>ryanholder</dc:creator>
-		<guid isPermaLink="false">http://wpthemetestdata.wordpress.com/2007/09/04/test-with-secret-password/</guid>
-		<description></description>
-		<content:encoded><![CDATA[<span style="line-height: 1.714285714; font-size: 1rem;">This content, comments, pingbacks, and trackbacks should not be visible until the password is entered.</span>]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>131</wp:post_id>
-		<wp:post_date>2013-01-04 09:38:05</wp:post_date>
-		<wp:post_date_gmt>2013-01-04 15:38:05</wp:post_date_gmt>
-		<wp:comment_status>open</wp:comment_status>
-		<wp:ping_status>open</wp:ping_status>
-		<wp:post_name>password-protected</wp:post_name>
-		<wp:status>publish</wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type>post</wp:post_type>
-		<wp:post_password>enter</wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-		<category domain="category" nicename="comments"><![CDATA[Comments]]></category>
-		<category domain="category" nicename="password"><![CDATA[Password]]></category>
-		<category domain="category" nicename="pingbacks"><![CDATA[Pingbacks]]></category>
-		<category domain="category" nicename="trackbacks"><![CDATA[Trackbacks]]></category>
-		<wp:postmeta>
-			<wp:meta_key>_edit_last</wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_wp_old_slug</wp:meta_key>
-			<wp:meta_value><![CDATA[test-with-secret-password]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:comment>
-			<wp:comment_id>57</wp:comment_id>
-			<wp:comment_author><![CDATA[Tom McFarlin]]></wp:comment_author>
-			<wp:comment_author_email>tom@tommcfarlin.com</wp:comment_author_email>
-			<wp:comment_author_url>http://tommcfarlin.com/</wp:comment_author_url>
-			<wp:comment_author_IP>24.126.245.62</wp:comment_author_IP>
-			<wp:comment_date>2013-03-14 11:56:08</wp:comment_date>
-			<wp:comment_date_gmt>2013-03-14 16:56:08</wp:comment_date_gmt>
-			<wp:comment_content><![CDATA[This comment should not be visible until the password is entered.]]></wp:comment_content>
-			<wp:comment_approved>1</wp:comment_approved>
-			<wp:comment_type></wp:comment_type>
-			<wp:comment_parent>0</wp:comment_parent>
-			<wp:comment_user_id>0</wp:comment_user_id>
-		</wp:comment>
-	</item>
-	<item>
-		<title></title>
-		<link>http://www.gitpress.dev/titles/no-title/</link>
-		<pubDate>Sat, 05 Jan 2013 15:00:23 +0000</pubDate>
-		<dc:creator>ryanholder</dc:creator>
-		<guid isPermaLink="false">http://wpthemetestdata.wordpress.com/2007/09/04/14/</guid>
-		<description></description>
-		<content:encoded><![CDATA[This post has no title, but it still must link to the single post view somehow.
-
-This is typically done by placing the permalink on the post date.]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>133</wp:post_id>
-		<wp:post_date>2013-01-05 09:00:23</wp:post_date>
-		<wp:post_date_gmt>2013-01-05 15:00:23</wp:post_date_gmt>
-		<wp:comment_status>closed</wp:comment_status>
-		<wp:ping_status>closed</wp:ping_status>
-		<wp:post_name>no-title</wp:post_name>
-		<wp:status>publish</wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type>post</wp:post_type>
-		<wp:post_password></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-		<category domain="category" nicename="titles"><![CDATA[Titles]]></category>
-		<wp:postmeta>
-			<wp:meta_key>_wp_old_slug</wp:meta_key>
-			<wp:meta_value><![CDATA[14]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key>_edit_last</wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-	</item>
-	<item>
 		<title>No Content</title>
 		<link>http://www.gitpress.dev/content/no-content/</link>
 		<pubDate>Sun, 06 Jan 2013 15:39:56 +0000</pubDate>
@@ -14514,37 +14382,6 @@ Thank you all very much.]]></content:encoded>
 		<wp:postmeta>
 			<wp:meta_key>_wp_trash_meta_time</wp:meta_key>
 			<wp:meta_value><![CDATA[1363313915]]></wp:meta_value>
-		</wp:postmeta>
-	</item>
-	<item>
-		<title>Title With Markup</title>
-		<link>http://www.gitpress.dev/titles/title-with-markup/</link>
-		<pubDate>Sat, 05 Jan 2013 16:00:49 +0000</pubDate>
-		<dc:creator>ryanholder</dc:creator>
-		<guid isPermaLink="false">http://wptest.io/demo/?p=861</guid>
-		<description></description>
-		<content:encoded><![CDATA[Verify that:
-<ul>
-	<li><span style="line-height: 1.714285714; font-size: 1rem;">The post title renders the word "with" in </span><em style="line-height: 1.714285714; font-size: 1rem;">italics</em><span style="line-height: 1.714285714; font-size: 1rem;"> and the word "markup" in </span><strong style="line-height: 1.714285714; font-size: 1rem;">bold</strong><span style="line-height: 1.714285714; font-size: 1rem;">.</span></li>
-	<li><span style="line-height: 1.714285714; font-size: 1rem;">The post title markup should be removed from the browser window / tab.</span></li>
-</ul>]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>861</wp:post_id>
-		<wp:post_date>2013-01-05 10:00:49</wp:post_date>
-		<wp:post_date_gmt>2013-01-05 16:00:49</wp:post_date_gmt>
-		<wp:comment_status>open</wp:comment_status>
-		<wp:ping_status>open</wp:ping_status>
-		<wp:post_name>title-with-markup</wp:post_name>
-		<wp:status>publish</wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type>post</wp:post_type>
-		<wp:post_password></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-		<category domain="category" nicename="titles"><![CDATA[Titles]]></category>
-		<wp:postmeta>
-			<wp:meta_key>_edit_last</wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
