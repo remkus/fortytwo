@@ -25,9 +25,13 @@ require_once 'ft-nav.php';
 
 require_once 'ft-page-title.php';
 
-require_once 'ft-default-widgets.php';
+<<<<<<< HEAD
+require_once( 'ft-default-widgets.php');
 
+/** Activate modules **/
+=======
 require_once 'ft-slider.php';
+>>>>>>> refs/heads/master
 
 require_once 'ft-page-blog.php';
 
