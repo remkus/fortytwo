@@ -38,10 +38,10 @@ class FT_Jumbotron extends WP_Widget {
 
 		parent::__construct(
 			'widget-ft-jumbotron',
-			__( 'FortyTwo - Jumbotron', 'ft-jumbotron-locale' ),
+			__( 'FortyTwo - Jumbotron', 'fortytwo' ),
 			array(
 				'classname'  => 'ft-jumbotron',
-				'description' => __( 'Jumbotron widget for the FortyTwo Theme.', 'ft-jumbotron-locale' )
+				'description' => __( 'Jumbotron widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
 
@@ -75,7 +75,7 @@ class FT_Jumbotron extends WP_Widget {
 
 		echo $before_widget;
 
-		include plugin_dir_path( __FILE__ ) . '/views/widget.php';
+		include dirname( __FILE__ ) . '/views/widget.php';
 
 		echo $after_widget;
 
@@ -116,7 +116,7 @@ class FT_Jumbotron extends WP_Widget {
 		// TODO: Store the values of the widget in their own variable
 
 		// Display the admin form
-		include plugin_dir_path( __FILE__ ) . '/views/form.php';
+		include dirname( __FILE__ )  . '/views/form.php';
 
 	} // end form
 

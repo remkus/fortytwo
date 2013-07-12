@@ -30,7 +30,7 @@ if ( count( $tabs ) > 0 ) {
         if ( $count == count( $tabs ) ) { $class = ' last'; }
 
         $tab_links .= '<li class="tab-heading-' . esc_attr( $tab ) . $class . '"><a href="#tab-pane-' .
-            esc_attr( $tab ) . '" data-toggle="tab">' . __( $tab, 'fstpack' ) . '</a></li>' . "\n";
+            esc_attr( $tab ) . '" data-toggle="tab">' . __( $tab, 'fortytwo' ) . '</a></li>' . "\n";
 
         $tab_content .= '<div id="tab-pane-' . esc_attr( $tab ) . '" class="tab-pane tab-pane-' . esc_attr( $tab ) . $class . '">' . "\n";
 
