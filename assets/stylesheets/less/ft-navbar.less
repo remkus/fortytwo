@@ -5,7 +5,7 @@
 // Navbar
 // --------------------------------------------------
 .nav-primary {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #e8e8e8;
 }
 
 .dropdown-menu {
@@ -32,31 +32,36 @@
 
   > li {
 
-    border-right: 1px solid #ddd;
-
-    &:first-child { border-left: 1px solid #ddd; }
+    &:first-child a {border-left: 1px solid #e8e8e8;}
 
     > a {
-      padding: 10px 20px;
-      margin: -1px -1px 0;
-      border-width: 2px 0 2px 0;
-      border-style: solid;
-      border-color: transparent;
+      border-top: 1px solid transparent;
+      border-right: 1px solid #e8e8e8;
+      padding: 11px 20px;
+      margin: -1px 0 0 0;
+
+
 
       &:hover,
       &:focus,
       &:active {
-        border-color: #424242 transparent transparent transparent;
         background-color: transparent;
+        border-top-color: #424242;
       }
+    }
+
+
+    &.open > a {
+      background-color: #f8f8f8;
+    }
+
+    &.current-menu-parent > a,
+    &.current-menu-item > a,
+    &.open > a {
+      color: #5ad7ba;
+      border-top-color: #424242;
     }
 
   }
 
-  > .current-menu-parent a,
-  > .current-menu-item a,
-  > .open a {
-    color: #5ad7ba;
-    border-color: #424242 transparent transparent transparent;
-  }
 }

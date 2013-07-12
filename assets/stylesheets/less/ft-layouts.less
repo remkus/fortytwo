@@ -1,97 +1,148 @@
 // Custom file for FortyTwo Content Layouts
 
 //
-// Content Sidebar
+// Files specific mixins
 // --------------------------------------------------
+.height-adjust() {
+  padding-top: 40px;
+  margin-bottom: -9999px;
+  padding-bottom: 9999px;
+}
 
 .content-sidebar-wrap {
   .make-row;
-  .box-padding(45, 0, 45, 0);
-}
-
-.home .content-sidebar-wrap {
-  .box-padding(0);
+  padding-bottom: 40px;
+  min-height: 100%;
+  overflow: hidden;
 }
 
 .full-width-content {
-
   .content {
     .make-column(12);
+    .height-adjust();
   }
-
 }
 
 .content-sidebar,
 .sidebar-content {
-
   .content {
     .make-column(9);
+    .height-adjust();
   }
 
   .sidebar-primary {
     .make-column(3);
+    .height-adjust();
   }
-
 }
 
 .content-sidebar-sidebar,
-.sidebar-content-sidebar,
-.sidebar-sidebar-content {
-
+.sidebar-sidebar-content,
+.sidebar-content-sidebar {
   .content {
     .make-column(7);
+    .height-adjust();
   }
 
   .sidebar-primary {
     .make-column(3);
+    .height-adjust();
   }
 
   .sidebar-secondary {
     .make-column(2);
+    .height-adjust();
+  }
+}
+
+.content-sidebar {
+  .content {
+    padding-right: 30px;
+    padding-left: 15px;
   }
 
+  .sidebar-primary {
+    padding-right: 15px;
+    padding-left: 30px;
+    border-left: 1px solid #e8e8e8;
+  }
 }
 
 .sidebar-content {
-
   .content {
-    .make-column-push(3)
+    .make-column-push(3);
+    padding-right: 15px;
+    padding-left: 30px;
   }
 
   .sidebar-primary {
     .make-column-pull(9);
+    padding-right: 30px;
+    padding-left: 15px;
+    border-right: 1px solid #e8e8e8;
   }
-
 }
 
-.sidebar-sidebar-content {
-
+.content-sidebar-sidebar {
   .content {
-    .make-column-push(5)
+    padding-right: 30px;
+    padding-left: 15px;
+  }
+
+  .sidebar-primary {
+    padding-right: 30px;
+    padding-left: 30px;
+    border-left: 1px solid #e8e8e8;
+  }
+
+  .sidebar-secondary {
+    padding-right: 15px;
+    padding-left: 30px;
+    border-left: 1px solid #e8e8e8;
+  }
+}
+
+
+.sidebar-sidebar-content {
+  .content {
+    .make-column-push(5);
+    padding-right: 15px;
+    padding-left: 30px;
   }
 
   .sidebar-primary {
     .make-column-pull(5);
+    padding-right: 30px;
+    padding-left: 30px;
+    border-right: 1px solid #e8e8e8;
   }
 
   .sidebar-secondary {
     .make-column-pull(10);
+    padding-right: 30px;
+    padding-left: 15px;
+    border-right: 1px solid #e8e8e8;
   }
-
 }
 
 .sidebar-content-sidebar {
-
   .content {
-    .make-column-push(2)
+    .make-column-push(2);
+    padding-right: 30px;
+    padding-left: 30px;
   }
 
   .sidebar-primary {
     .make-column-push(2);
+    padding-right: 15px;
+    padding-left: 30px;
+    border-left: 1px solid #e8e8e8;
   }
 
   .sidebar-secondary {
     .make-column-pull(10);
+    padding-right: 30px;
+    padding-left: 15px;
+    border-right: 1px solid #e8e8e8;
   }
-
 }
