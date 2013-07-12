@@ -123,7 +123,7 @@
 @table-background-accent:            #f9f9f9; // for striping
 @table-background-hover:             #f5f5f5; // for hover
 
-@table-border:                       #ddd; // table and cell border
+@table-border:                       #e8e8e8; // table and cell border
 
 
 // Buttons
@@ -158,13 +158,12 @@
 
 @input-border:                   #ccc;
 @input-border-radius:            @border-radius-base;
-@input-border-radius-search:     20px;
 
 @input-color-placeholder:        @grayLight;
 
-@input-height-base:              @line-height-base + 14px; // base line-height + 12px vertical padding + 2px top/bottom border
-@input-height-large:             @line-height-base + 24px; // base line-height + 22px vertical padding + 2px top/bottom border
-@input-height-small:             @line-height-base + 6px;  // base line-height + 4px vertical padding + 2px top/bottom border
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2));
+@input-height-large:             (@line-height-computed + (@padding-large-vertical * 2));
+@input-height-small:             (@line-height-computed + (@padding-small-vertical * 2));
 
 // adjust min-height on input sizes
 
@@ -265,7 +264,7 @@
 
 @pagination-background:                #fff;
 @pagination-background-active:         #f5f5f5;
-@pagination-border:                    #ddd;
+@pagination-border:                    #e8e8e8;
 
 
 // Jumbotron
