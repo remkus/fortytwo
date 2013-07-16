@@ -40,8 +40,45 @@
 }
 
 .widget_calendar {
+  caption {
+    text-transform: uppercase;
+    padding: 0 0 10px;
+  }
+
   table {
     .table;
+    border-collapse: separate;
+    border-spacing: 3px;
+    position: relative;
+    margin-bottom: 0;
+
+    thead > tr > th {
+      text-align: center;
+      padding: 0;
+      font-weight: 600;
+      .font-size(13);
+    }
+
+    tbody > tr > td {
+      padding: 7px;
+      border: none;
+      text-align: center;
+      .font-size(13);
+      background: #fafafa;
+      border-radius: .2em;
+
+      &.pad {
+        background: none;
+      }
+    }
+
+    tfoot {
+      position: absolute;
+      top: 0;
+      border-spacing: 0;
+    }
+
+
   }
 }
 
