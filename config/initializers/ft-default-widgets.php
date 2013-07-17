@@ -115,17 +115,75 @@ class FortyTwo_Walker_Category extends Walker_Category {
 
 }
 
-add_filter( 'widget_categories_args', 'fortytwo_modify_categories_walker_arg', 10, 1 );
+add_filter( 'widget_categories_args', 'fortytwo_modify_widget_categories_args', 10, 1 );
 /**
- * Filter to change wp_categories_list args to add our own walker
+ * Filter to change widget_categories_args to add our own walker
  *
  **/
-function fortytwo_modify_categories_walker_arg( $cat_args ) {
-
+function fortytwo_modify_widget_categories_args( $cat_args ) {
     $FortyTwo_Walker_Category = new FortyTwo_Walker_Category();
 
     $cat_args['walker'] = $FortyTwo_Walker_Category;
 
     return $cat_args;
+}
 
+
+/**
+ * Modify HTML list of pages.
+ *
+ * @package FortyTwo
+ * @since 1.0.0
+ * @uses Walker_Pages
+ */
+class FortyTwo_Walker_Page extends Walker_Page {
+
+   	function start_el( &$output, $page, $depth, $args, $current_page = 0 ) {
+   		if ( $depth )
+   			$indent = str_repeat("\t", $depth);
+   		else
+   			$indent = '';
+
+   		extract($args, EXTR_SKIP);
+   		$css_class = array('page_item', 'page-item-'.$page->ID);
+   		if ( !empty($current_page) ) {
+   			$_current_page = get_post( $current_page );
+   			if ( in_array( $page->ID, $_current_page->ancestors ) )
+   				$css_class[] = 'current_page_ancestor';
+   			if ( $page->ID == $current_page )
+   				$css_class[] = 'current_page_item';
+   			elseif ( $_current_page && $page->ID == $_current_page->post_parent )
+   				$css_class[] = 'current_page_parent';
+   		} elseif ( $page->ID == get_option('page_for_posts') ) {
+   			$css_class[] = 'current_page_parent';
+   		}
+
+   		$css_class = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+
+   		$output .= $indent . '<li class="' . $css_class . '"><a href="' . get_permalink($page->ID) . '">' . $link_before . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after . '</a>';
+
+        $output .= '<span class="icon icon-angle-right"></span>';
+
+   		if ( !empty($show_date) ) {
+   			if ( 'modified' == $show_date )
+   				$time = $page->post_modified;
+   			else
+   				$time = $page->post_date;
+
+   			$output .= " " . mysql2date($date_format, $time);
+   		}
+   	}
+
+}
+
+add_filter( 'widget_pages_args', 'fortytwo_modify_widget_pages_args', 10, 1 );
+/**
+ * Filter to change widget_pages_args to add our own walker
+ *
+ **/
+function fortytwo_modify_widget_pages_args( $page_args ) {
+    $FortyTwo_Walker_Page = new FortyTwo_Walker_Page();
+
+    $page_args['walker'] = $FortyTwo_Walker_Page;
+    return $page_args;
 }
