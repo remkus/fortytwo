@@ -59,6 +59,10 @@ class FT_Jumbotron extends WP_Widget {
 		return FORTYTWO_WIDGETS_URL.'/ft-jumbotron'.$file;
 	}
 
+	public function echo_field_id( $field ) {
+		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
+	}
+
 	/*--------------------------------------------------*/
 	/* Widget API Functions
 	/*--------------------------------------------------*/
@@ -103,17 +107,16 @@ class FT_Jumbotron extends WP_Widget {
 	 * @param array   instance The array of keys and values for the widget.
 	 */
 	public function form( $instance ) {
-
-		// TODO: Define default values for your variables
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
-				'foo' => '',
-				'bar' => ''
+				'title' => '',
+				'content' => '',
+				'button_alignment' => 'right',
+				'button_text' => '',
+				'button_link' => ''
 			)
 		);
-
-		// TODO: Store the values of the widget in their own variable
 
 		// Display the admin form
 		include dirname( __FILE__ )  . '/views/form.php';
