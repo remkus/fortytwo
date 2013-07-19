@@ -135,11 +135,6 @@ class FT_Featured_Page extends WP_Widget {
 			)
 		);
 
-		// Set $template_var to instance[$template_var]
-		foreach ( array( 'title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name ) {
-			$$field_name = $instance[ $field_name ];
-		}
-
 		// Display the admin form
 		include dirname( __FILE__ ) . '/views/form.php';
 
