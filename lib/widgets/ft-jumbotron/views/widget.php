@@ -1,10 +1,17 @@
-<!-- This file is used to markup the public-facing widget. -->
+<?php
+$action_button_text = esc_html( $instance['button_text'] );
+$action_button_link = esc_url( $instance['button_link'] );
+$action_button = <<<HTML
+<div class="ft-jumbotron-action">
+		<a class="btn btn-primary" href="$action_button_link">$action_button_text</a>
+</div>
+HTML;
+?>
 <div class="row">
+		<?php if ( strtolower( $instance['button_alignment'] ) == 'left' ) { echo $action_button; } ?>
     <div class="ft-jumbotron-detail">
-        <span>Biznis is our HTML5 & Responsive Ready WordPress Theme powered by the Genesis Framework -</span>
-        <p>FortyTwo comes with a great selection of page templates including our professional and easy-to-use business theme templates.</p>
+        <span><?php echo esc_html( $instance['title'] ) ?></span>
+        <p><?php echo esc_html( $instance['content'] ) ?></p>
     </div>
-    <div class="ft-jumbotron-action">
-        <a class="btn btn-primary">Purchase Today !</a>
-    </div>
+    <?php if ( strtolower( $instance['button_alignment'] ) == 'right' ) { echo $action_button; } ?>
 </div>

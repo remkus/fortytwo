@@ -59,6 +59,10 @@ class FT_Jumbotron extends WP_Widget {
 		return FORTYTWO_WIDGETS_URL.'/ft-jumbotron'.$file;
 	}
 
+	public function echo_field_id( $field ) {
+		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
+	}
+
 	/*--------------------------------------------------*/
 	/* Widget API Functions
 	/*--------------------------------------------------*/
@@ -75,11 +79,25 @@ class FT_Jumbotron extends WP_Widget {
 
 		echo $before_widget;
 
+		foreach ( array( 'title', 'content', 'button_text', 'button_link', 'button_alignment' ) as $field_name ) {
+			$instance[$field_name] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
+		}
+		$this->set_default( $instance['title'], __( "Announcing the most important product feature", 'fortytwo' ) );
+		$this->set_default( $instance['content'], __( "And purely one near this hey therefore darn firefly had ducked overpaid wow!", 'fortytwo' ) );
+		$this->set_default( $instance['button_text'], __( "Purchase Today !", 'fortytwo' ) );
+		$this->set_default( $instance['button_link'], "#" );
+		$this->set_default( $instance['button_alignment'], "right" );
+
 		include dirname( __FILE__ ) . '/views/widget.php';
 
 		echo $after_widget;
 
 	} // end widget
+
+
+	private function set_default( &$value, $default ) {
+		if ( empty ( $value ) ) $value = $default;
+	}
 
 	/**
 	 * Processes the widget's options to be saved.
@@ -91,7 +109,9 @@ class FT_Jumbotron extends WP_Widget {
 
 		$instance = $old_instance;
 
-		// TODO: Here is where you update your widget's old values with the new, incoming values
+		foreach ( array( 'title', 'content', 'button_text', 'button_link', 'button_alignment' ) as $field_name ) {
+			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
+		}
 
 		return $instance;
 
@@ -103,17 +123,16 @@ class FT_Jumbotron extends WP_Widget {
 	 * @param array   instance The array of keys and values for the widget.
 	 */
 	public function form( $instance ) {
-
-		// TODO: Define default values for your variables
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
-				'foo' => '',
-				'bar' => ''
+				'title' => '',
+				'content' => '',
+				'button_alignment' => 'right',
+				'button_text' => '',
+				'button_link' => ''
 			)
 		);
-
-		// TODO: Store the values of the widget in their own variable
 
 		// Display the admin form
 		include dirname( __FILE__ )  . '/views/form.php';
