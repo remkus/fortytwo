@@ -128,62 +128,49 @@ function fortytwo_modify_widget_categories_args( $cat_args ) {
     return $cat_args;
 }
 
-
+add_filter( 'get_search_form', 'fortytwo_search_form' );
 /**
- * Modify HTML list of pages.
+ * Modify default search form.
  *
  * @package FortyTwo
  * @since 1.0.0
- * @uses Walker_Pages
  */
-class FortyTwo_Walker_Page extends Walker_Page {
+function fortytwo_search_form( $form ) {
 
-   	function start_el( &$output, $page, $depth, $args, $current_page = 0 ) {
-   		if ( $depth )
-   			$indent = str_repeat("\t", $depth);
-   		else
-   			$indent = '';
+    // create form action
+    $form_action = home_url( '/' );
+    // get the search query
+    $search_query = get_search_query();
 
-   		extract($args, EXTR_SKIP);
-   		$css_class = array('page_item', 'page-item-'.$page->ID);
-   		if ( !empty($current_page) ) {
-   			$_current_page = get_post( $current_page );
-   			if ( in_array( $page->ID, $_current_page->ancestors ) )
-   				$css_class[] = 'current_page_ancestor';
-   			if ( $page->ID == $current_page )
-   				$css_class[] = 'current_page_item';
-   			elseif ( $_current_page && $page->ID == $_current_page->post_parent )
-   				$css_class[] = 'current_page_parent';
-   		} elseif ( $page->ID == get_option('page_for_posts') ) {
-   			$css_class[] = 'current_page_parent';
-   		}
+    $form = <<<EOD
+        <form role="search" method="get" id="searchform" class="input-group" action="{$form_action}">
+            <input type="text" value="{$search_query}" name="s" id="s" />
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Search</button>
+            </span>
+        </form>
+EOD;
 
-   		$css_class = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
-
-   		$output .= $indent . '<li class="' . $css_class . '"><a href="' . get_permalink($page->ID) . '">' . $link_before . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after . '</a>';
-
-        $output .= '<span class="icon icon-angle-right"></span>';
-
-   		if ( !empty($show_date) ) {
-   			if ( 'modified' == $show_date )
-   				$time = $page->post_modified;
-   			else
-   				$time = $page->post_date;
-
-   			$output .= " " . mysql2date($date_format, $time);
-   		}
-   	}
-
+    return $form;
 }
 
-add_filter( 'widget_pages_args', 'fortytwo_modify_widget_pages_args', 10, 1 );
+add_filter( 'widget_tag_cloud_args', 'fortytwo_tag_cloud_list_format' );
 /**
- * Filter to change widget_pages_args to add our own walker
+ * Modify default tag cloud to display as a list.
  *
- **/
-function fortytwo_modify_widget_pages_args( $page_args ) {
-    $FortyTwo_Walker_Page = new FortyTwo_Walker_Page();
+ * @package FortyTwo
+ * @since 1.0.0
+ */
+function fortytwo_tag_cloud_list_format( $args ) {
+    $defaults = array(
+        'format'   => 'list',
+        'unit'     => '%',
+        'smallest' => 100,
+        'largest'  => 100
+    );
 
-    $page_args['walker'] = $FortyTwo_Walker_Page;
-    return $page_args;
+    // Parse incoming $args into an array and merge it with $defaults
+    $args = wp_parse_args( $args, $defaults );
+
+    return $args;
 }
