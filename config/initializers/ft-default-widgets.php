@@ -153,3 +153,24 @@ EOD;
 
     return $form;
 }
+
+add_filter( 'widget_tag_cloud_args', 'fortytwo_tag_cloud_list_format' );
+/**
+ * Modify default tag cloud to display as a list.
+ *
+ * @package FortyTwo
+ * @since 1.0.0
+ */
+function fortytwo_tag_cloud_list_format( $args ) {
+    $defaults = array(
+        'format'   => 'list',
+        'unit'     => '%',
+        'smallest' => 100,
+        'largest'  => 100
+    );
+
+    // Parse incoming $args into an array and merge it with $defaults
+    $args = wp_parse_args( $args, $defaults );
+
+    return $args;
+}
