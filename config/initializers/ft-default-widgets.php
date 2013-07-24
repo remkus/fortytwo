@@ -127,3 +127,29 @@ function fortytwo_modify_widget_categories_args( $cat_args ) {
 
     return $cat_args;
 }
+
+add_filter( 'get_search_form', 'fortytwo_search_form' );
+/**
+ * Modify default search form.
+ *
+ * @package FortyTwo
+ * @since 1.0.0
+ */
+function fortytwo_search_form( $form ) {
+
+    // create form action
+    $form_action = home_url( '/' );
+    // get the search query
+    $search_query = get_search_query();
+
+    $form = <<<EOD
+        <form role="search" method="get" id="searchform" class="input-group" action="{$form_action}">
+            <input type="text" value="{$search_query}" name="s" id="s" />
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Search</button>
+            </span>
+        </form>
+EOD;
+
+    return $form;
+}
