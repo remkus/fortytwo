@@ -57,6 +57,10 @@ class FT_Testimonials extends WP_Widget {
 	private function url( $file ) {
 		return FORTYTWO_WIDGETS_URL.'/ft-testimonials'.$file;
 	}
+	
+	public function echo_field_id( $field ) {
+		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
+	}
 
 	/*--------------------------------------------------*/
 	/* Widget API Functions
