@@ -31,6 +31,9 @@
 						<?php } ?>
 					</select>
 				</div>
+				<div class="testimonials_by_woothemes datasource_block">
+					TODO
+				</div>
 			</div>
 		</td>
 	</tr>
@@ -42,9 +45,14 @@
 	$(document).ready(function () {
 		$('#<?php echo $this->get_field_id( "datasource" )?>').change(function() 
 		{
-			 var datasource_div_class = ".<?php echo $this->get_field_id( "datasource" ); ?> ."+$(this).attr('value');
-			 console.log("Toggling visibility of ", datasource_div_class);
-			 $(datasource_div_class).toggleClass('make_visible');
+			var active_datasource = $(this).attr('value');
+			$('.<?php echo $this->get_field_id( "datasource" ); ?> .datasource_block').each( function() {	
+					if (this.className.indexOf(active_datasource)>=0) {
+						$(this).addClass('make_visible');
+					} else {
+						$(this).removeClass('make_visible');
+					}
+			})
 		});
 	});
 }(jQuery));
