@@ -23,12 +23,13 @@
 			<div class="<?php echo $this->get_field_id( 'datasource' ) ?>">
 				<div class="category datasource_block">
 					<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e( 'Category', 'fortytwo' ); ?></label> 
-				  <select <?php $this->echo_field_id( "category" ) ?> class="widefat">
-				  	<?php foreach ($instance['categories'] as $category) { ?>
-						<option value="<?php echo esc_attr($category); ?>" <?php if ( $category == $instance['category'] ) echo 'selected="selected"'; ?>>
-							<?php echo esc_html( __( $category, 'fortytwo' )); ?>
-						</option>
-						<?php } ?>
+					<?php wp_dropdown_categories(array(
+						'id'=>$this->get_field_id( 'category' ),
+						'name'=>$this->get_field_name( 'category' ),
+						'selected'=>$instance['category'],
+						'show_count'=>1,
+						'hierarchical'=>1)
+						); ?>
 					</select>
 				</div>
 				<div class="testimonials_by_woothemes datasource_block">
