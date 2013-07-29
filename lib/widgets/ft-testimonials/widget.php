@@ -57,7 +57,7 @@ class FT_Testimonials extends WP_Widget {
 	private function url( $file ) {
 		return FORTYTWO_WIDGETS_URL.'/ft-testimonials'.$file;
 	}
-	
+
 	public function echo_field_id( $field ) {
 		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
 	}
@@ -78,11 +78,23 @@ class FT_Testimonials extends WP_Widget {
 
 		echo $before_widget;
 
+		foreach ( array( 'title', 'limit', 'datasource', 'category' ) as $field_name ) {
+			$instance[$field_name] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
+		}
+		$this->set_default( $instance['title'], __( "Client Testimonials", 'fortytwo' ) );
+		$this->set_default( $instance['limit'], 5 );
+		$this->set_default( $instance['datasource'], 'category' );
+		$this->set_default( $instance['category'], 1 );
+
 		include dirname( __FILE__ ) . '/views/widget.php';
 
 		echo $after_widget;
 
 	} // end widget
+
+	private function set_default( &$value, $default ) {
+		if ( empty ( $value ) ) $value = $default;
+	}
 
 	/**
 	 * Processes the widget's options to be saved.
@@ -94,7 +106,9 @@ class FT_Testimonials extends WP_Widget {
 
 		$instance = $old_instance;
 
-		// TODO: Here is where you update your widget's old values with the new, incoming values
+		foreach ( array( 'title', 'limit', 'datasource', 'category' ) as $field_name ) {
+			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
+		}
 
 		return $instance;
 
@@ -110,12 +124,12 @@ class FT_Testimonials extends WP_Widget {
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
-				'foo' => '',
-				'bar' => ''
+				'title' => '',
+				'limit' => 5,
+				'datasource' => '',
+				'category' => ''
 			)
 		);
-
-		// TODO: Store the values of the widget in their own variable
 
 		// Display the admin form
 		include dirname( __FILE__ ) . '/views/form.php';
