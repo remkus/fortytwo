@@ -43,19 +43,24 @@ add_action( 'genesis_after_entry', 'fortytwo_add_entry_hr' );
  * Echo the post image on blog layout pages.
  *
  */
-function fortytwo_do_post_image() {
+function fortytwo_do_post_image()
+{
 
-	if ( ! is_singular() && genesis_get_option( 'content_archive_thumbnail' ) ) {
+	if ( !is_singular() && genesis_get_option( 'content_archive_thumbnail' ) ) {
+
 		$img = genesis_get_image( array(
-			'format'  => 'html',
-			'size'    => genesis_get_option( 'image_size' ),
+			'format' => 'html',
+			'size' => 'width=260&height=154&crop=1&crop_from_position=center,left',
 			'context' => 'archive',
-			'attr'    => genesis_parse_attr( 'entry-image' ),
+			'attr' => array_merge( genesis_parse_attr( 'entry-image' ), array(
+					'srcset' => 'large.png 600w 200h 1x, large_2x-res.png 600w 200h 2x, mobile-icon.png 200w 200h'
+				))
 		) );
 
-		if ( ! empty( $img ) ) {
-            printf( '<a href="%s" title="%s" class="pull-left">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), $img );
-        }
+		//TODO ln 63: class="pull-left" should be a dynamic value
+		if ( !empty( $img ) ) {
+			printf( '<a href="%s" title="%s" class="pull-left">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), $img );
+		}
 	}
 
 }
@@ -70,19 +75,37 @@ function fortytwo_add_entry_hr() {
 }
 
 add_filter( 'genesis_post_info', 'fortytwo_post_info_filter' );
-function fortytwo_post_info_filter($post_info) {
-    if ( !is_page() ) {
+/**
+ * Change the post info layout to use our label based style
+ *
+ * @since 1.0
+ *
+ */
+function fortytwo_post_info_filter( $post_info ) {
+    if ( ! is_page() ) {
         $post_info = '[post_date before="<i class=\'icon-time\'>&nbsp;" after="</i>"] [post_author_posts_link before="<i class=\'icon-user\'>&nbsp;" after="</i>"] [post_comments before="<i class=\'icon-comment\'>&nbsp;" after="</i>"] [post_categories before="<i class=\'icon-tag\'>&nbsp;" after="</i>"]'; //TODO need to add back the post edit link
         return $post_info;
     }
 }
 
 add_filter( 'get_the_content_more_link', 'fortytwo_read_more_ellipsis' );
+/**
+ * Changes the content more link
+ *
+ * @since 1.0
+ *
+ */
 function fortytwo_read_more_ellipsis() {
 	return '...';
 }
 
 add_filter( 'get_the_content_limit', 'fortytwo_read_more_link' );
+/**
+ * Alter the FortyTwo posts read more link
+ *
+ * @since 1.0
+ *
+ */
 function fortytwo_read_more_link( $output ) {
 	$output .= '<a class="btn" href="' . get_permalink() . '">Read More</a>';
     return $output;
