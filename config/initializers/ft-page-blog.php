@@ -45,15 +45,17 @@ add_action( 'genesis_after_entry', 'fortytwo_add_entry_hr' );
  */
 function fortytwo_do_post_image()
 {
+	global $post;
 
 	if ( !is_singular() && genesis_get_option( 'content_archive_thumbnail' ) ) {
 
 		$img = genesis_get_image( array(
 			'format' => 'html',
-			'size' => 'width=260&height=154&crop=1&crop_from_position=center,left',
+			'size' => 'width=260&height=154&crop=1',
 			'context' => 'archive',
 			'attr' => array_merge( genesis_parse_attr( 'entry-image' ), array(
-					'srcset' => 'large.png 600w 200h 1x, large_2x-res.png 600w 200h 2x, mobile-icon.png 200w 200h'
+					//'srcset' => 'pear-mobile.jpeg 319w, pear-tablet.jpeg 1279w, pear-desktop.jpeg 1x'
+					'srcset' => current( wp_get_attachment_image_src( $id, 'width=260&height=260&crop=1' ) ) . ' 800w'
 				))
 		) );
 
@@ -123,5 +125,14 @@ function fortytwo_media_post_class( $classes ) {
     //* Add "media" to the post class array
     $classes[] = 'media';
     return $classes;
+
+}
+
+
+//add_filter( 'genesis_get_image', 'fortytwo_add_srcset', 10, 6 );
+
+function fortytwo_add_srcset ( $output, $args, $id, $html, $url, $src ) {
+
+	return $output;
 
 }
