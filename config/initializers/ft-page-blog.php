@@ -36,37 +36,32 @@ remove_action( 'genesis_entry_content', 'genesis_do_post_image' );
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 
 add_action( 'genesis_entry_header', 'fortytwo_do_post_image', 1 );
-add_action( 'genesis_after_entry', 'fortytwo_add_entry_hr' );
-
-
 /**
  * Echo the post image on blog layout pages.
  *
  */
-function fortytwo_do_post_image()
-{
-	global $post;
+function fortytwo_do_post_image() {
 
-	if ( !is_singular() && genesis_get_option( 'content_archive_thumbnail' ) ) {
-
+	if ( ! is_singular() && genesis_get_option( 'content_archive_thumbnail' ) ) {
 		$img = genesis_get_image( array(
-			'format' => 'html',
-			'size' => 'width=260&height=154&crop=1',
+			'format'  => 'html',
+			'size'    => 'width=260&height=154&crop=1',
 			'context' => 'archive',
-			'attr' => array_merge( genesis_parse_attr( 'entry-image' ), array(
-					//'srcset' => 'pear-mobile.jpeg 319w, pear-tablet.jpeg 1279w, pear-desktop.jpeg 1x'
-					'srcset' => current( wp_get_attachment_image_src( $id, 'width=260&height=260&crop=1' ) ) . ' 800w'
-				))
+			'attr'    => genesis_parse_attr( 'entry-image' )
 		) );
 
 		//TODO ln 63: class="pull-left" should be a dynamic value
-		if ( !empty( $img ) ) {
+		if ( !empty( $img ) )
 			printf( '<a href="%s" title="%s" class="pull-left">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), $img );
-		}
 	}
 
 }
 
+add_action( 'genesis_after_entry', 'fortytwo_add_entry_hr' );
+/**
+ * Add <hr> element after posts.
+ *
+ */
 function fortytwo_add_entry_hr() {
 
     global $wp_query;
@@ -84,10 +79,12 @@ add_filter( 'genesis_post_info', 'fortytwo_post_info_filter' );
  *
  */
 function fortytwo_post_info_filter( $post_info ) {
+
     if ( ! is_page() ) {
         $post_info = '[post_date before="<i class=\'icon-time\'>&nbsp;" after="</i>"] [post_author_posts_link before="<i class=\'icon-user\'>&nbsp;" after="</i>"] [post_comments before="<i class=\'icon-comment\'>&nbsp;" after="</i>"] [post_categories before="<i class=\'icon-tag\'>&nbsp;" after="</i>"]'; //TODO need to add back the post edit link
         return $post_info;
     }
+
 }
 
 add_filter( 'get_the_content_more_link', 'fortytwo_read_more_ellipsis' );
@@ -98,7 +95,9 @@ add_filter( 'get_the_content_more_link', 'fortytwo_read_more_ellipsis' );
  *
  */
 function fortytwo_read_more_ellipsis() {
+
 	return '...';
+
 }
 
 add_filter( 'get_the_content_limit', 'fortytwo_read_more_link' );
@@ -109,8 +108,10 @@ add_filter( 'get_the_content_limit', 'fortytwo_read_more_link' );
  *
  */
 function fortytwo_read_more_link( $output ) {
+
 	$output .= '<a class="btn" href="' . get_permalink() . '">Read More</a>';
     return $output;
+
 }
 
 add_filter( 'post_class', 'fortytwo_media_post_class' );
@@ -128,11 +129,50 @@ function fortytwo_media_post_class( $classes ) {
 
 }
 
+add_filter( 'wpthumb_post_image_path','fortytwo_add_srcset_images', 10, 3 );
+/**
+ * Adds additional sizes for our responsive images making use of srcset
+ *
+ * @since 1.0
+ *
+ */
+function fortytwo_add_srcset_images( $path, $id ) {
 
-//add_filter( 'genesis_get_image', 'fortytwo_add_srcset', 10, 6 );
+	$args = 'width=420&height=300&crop=1';
 
-function fortytwo_add_srcset ( $output, $args, $id, $html, $url, $src ) {
+	$srcset_image = new WP_Thumb( $path, $args );
+	$srcset_image_args = $srcset_image->getArgs();
+	$srcset_url = $srcset_image->returnImage();
 
-	return $output;
+	$defaults = array(
+		'srcset' => array(
+			'url'    => $srcset_url,
+			'width'  => $srcset_image_args['width'],
+			'height' => $srcset_image_args['height']
+		)
+	);
+
+	$imgmeta = wp_get_attachment_metadata( $id );
+	$imgmeta = wp_parse_args( $imgmeta, $defaults );
+	wp_update_attachment_metadata( $id, $imgmeta );
+	$imgmeta = wp_get_attachment_metadata( $id );
 
 }
+
+//add_filter( 'wp_get_attachment_image_attributes', 'fortytwo_add_srcset_attr', 10, 2 );
+
+/*function fortytwo_add_srcset_attr( $attr, $attachment ) {
+
+	$image_src = $image->getFileURL();
+	//$id = $attachment['ID'];
+
+	list( $url ) = wp_get_attachment_image_src( $id, 'width=260&height=260&crop=1' );
+
+	$srcset = array(
+		'srcset' => $url . ' 800w'
+	);
+
+
+	return $attr;
+
+}*/
