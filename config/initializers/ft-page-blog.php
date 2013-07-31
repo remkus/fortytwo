@@ -160,20 +160,25 @@ function fortytwo_add_srcset_images( $path, $id ) {
 
 }
 
-//add_filter( 'wp_get_attachment_image_attributes', 'fortytwo_add_srcset_attr', 10, 2 );
+add_filter( 'wp_get_attachment_image_attributes', 'fortytwo_add_srcset_attr', 10, 2 );
+/**
+ * Adds srcset attribute to the post image
+ *
+ * @since 1.0
+ *
+ */
+function fortytwo_add_srcset_attr( $attr, $attachment ) {
 
-/*function fortytwo_add_srcset_attr( $attr, $attachment ) {
+	$imgmeta = wp_get_attachment_metadata( $attachment->ID );
 
-	$image_src = $image->getFileURL();
-	//$id = $attachment['ID'];
+	if ( isset( $imgmeta['srcset'] ) ) {
+		$srcset = array(
+			'srcset' => $imgmeta['srcset']['url'] . ' 800w'
+		);
 
-	list( $url ) = wp_get_attachment_image_src( $id, 'width=260&height=260&crop=1' );
-
-	$srcset = array(
-		'srcset' => $url . ' 800w'
-	);
-
+		$attr = wp_parse_args( $attr, $srcset );
+	}
 
 	return $attr;
 
-}*/
+}
