@@ -155,7 +155,8 @@ function fortytwo_add_srcset_images( $path, $id ) {
 	$imgmeta = wp_get_attachment_metadata( $id );
 	$imgmeta = wp_parse_args( $imgmeta, $defaults );
 	wp_update_attachment_metadata( $id, $imgmeta );
-	$imgmeta = wp_get_attachment_metadata( $id );
+
+	return $path;
 
 }
 
