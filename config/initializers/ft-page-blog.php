@@ -182,3 +182,18 @@ function fortytwo_add_srcset_attr( $attr, $attachment ) {
 	return $attr;
 
 }
+
+/**
+ * Use built-in wpthumb filter to create images based on added image sizes
+ *
+ * @since 1.0
+ *
+ */
+add_filter( 'wpthumb_create_args_from_size', function( $size ) {
+
+	if ( $size === 'thumbnail-bw' )
+		return array( 'width' => get_option('thumbnail_size_w'), 'height' => get_option('thumbnail_size_h'), 'greyscale' => true );
+
+	return $size;
+
+});

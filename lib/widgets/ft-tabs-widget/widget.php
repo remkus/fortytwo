@@ -344,7 +344,7 @@ class FT_Tabs_Widget extends WP_Widget {
         $html = '<img data-src="holder.js/94x94" class="media-object">';
 
         if ( current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID ) ) {
-            $html = get_the_post_thumbnail( $post->ID, array( $dimension, $dimension ), array( 'class' => 'media-object' ) );
+            $html = get_the_post_thumbnail( $post->ID, array( 'width' => $dimension, 'height' => $dimension, 'crop' => true ), array( 'class' => 'media-object' ) );
         }
 
         return $html;
