@@ -85,6 +85,24 @@ class FT_Testimonials extends WP_Widget {
 		$this->set_default( $instance['limit'], 5 );
 		$this->set_default( $instance['datasource'], 'category' );
 		$this->set_default( $instance['category'], 1 );
+		$this->set_default( $instance['testimonials'], array() );
+
+		switch($instance['datasource']) {
+			case "category":
+				$posts = get_posts( array( 
+						'posts_per_page' => $instance['limit'],  
+						'category' => $instance['category'] ) 
+				);
+				$instance['testimonials'] = array();
+				foreach($posts as $post) {
+					setup_postdata($post);
+					$instance['testimonials'][] = array (
+							'title' => get_the_title($post->ID),
+							'content' => get_the_excerpt()
+					);
+				}
+				break;
+		}
 
 		include dirname( __FILE__ ) . '/views/widget.php';
 
