@@ -231,13 +231,13 @@
 // Basics of a navbar
 @navbar-height:                    46px;
 @navbar-color:                     #777;
-@navbar-bg:                        #eee;
+@navbar-bg:                        #fff;
 @navbar-padding-horizontal:        floor(@grid-gutter-width / 2);  // ~15px
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
 // Navbar links
-@navbar-link-color:                #777;
-@navbar-link-hover-color:          #333;
+@navbar-link-color:                @brand-primary;
+@navbar-link-hover-color:          darken(@navbar-link-color, 10%);
 @navbar-link-hover-bg:             transparent;
 @navbar-link-active-color:         #555;
 @navbar-link-active-bg:            darken(@navbar-bg, 10%);
