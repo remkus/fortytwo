@@ -44,17 +44,21 @@
 (function ($) {
 	"use strict";
 	$(document).ready(function () {
-		$('#<?php echo $this->get_field_id( "datasource" )?>').change(function() 
-		{
-			var active_datasource = $(this).attr('value');
+		var display_active_datasource = function(active_datasource) {
 			$('.<?php echo $this->get_field_id( "datasource" ); ?> .datasource_block').each( function() {	
 					if (this.className.indexOf(active_datasource)>=0) {
 						$(this).addClass('make_visible');
 					} else {
 						$(this).removeClass('make_visible');
 					}
-			})
+			});
+		}
+		$('#<?php echo $this->get_field_id( "datasource" )?>').change(function() 
+		{
+			var active_datasource = $(this).attr('value');
+			display_active_datasource(active_datasource);
 		});
+		display_active_datasource('<?php echo $instance['datasource']; ?>');
 	});
 }(jQuery));
 </script>
