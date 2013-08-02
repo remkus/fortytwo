@@ -97,7 +97,9 @@ class FT_Testimonials extends WP_Widget {
 				foreach($posts as $post) {
 					setup_postdata($post);
 					$instance['testimonials'][] = array (
-							'title' => get_the_title($post->ID),
+						  'quote_author' => '', # none of the default post fields really make sense
+							'quote_source' => get_the_title($post->ID),
+							'quote_source_link' => get_permalink($post->ID),
 							'content' => get_the_excerpt()
 					);
 				}
