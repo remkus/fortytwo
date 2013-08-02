@@ -3,7 +3,13 @@
   <?php foreach($instance['testimonials'] as $testimonial) { ?>
   <blockquote>
     <p><?php echo $testimonial['content'];?></p>
-    <small>Someone famous <cite title="<?php echo $testimonial['title'];?>"><?php echo $testimonial['title'];?></cite></small>
+    <small><?php if ($testimonial['quote_author']) { echo $testimonial['quote_author'].' '.__('in', 'fortytwo').' '; }?>
+    	<a href="<?php echo $testimonial['quote_source_link'];?>">
+    		<cite title="<?php echo $testimonial['quote_source'];?>">
+    			<?php echo $testimonial['quote_source'];?>
+    		</cite>
+    	</a>
+    </small>
   </blockquote>
   <?php if ($testimonial !== end($instance['testimonials'])) { ?><hr /><?php } ?>
   <?php } ?>
