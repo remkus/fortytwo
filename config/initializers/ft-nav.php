@@ -37,9 +37,9 @@ function fortytwo_genesis_do_nav() {
 
 	    //TODO: navbar-brand has a hard coded FortyTwo as the value, needs to pull current title
         $nav_output = <<<EOD
-            <nav class="nav-primary" data-spy="affix" data-offset-top="130" role="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+            <nav class="nav-primary" role="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
                 <div class="wrap">
-                    <a class="navbar-brand" href="#">FortyTwo Theme</a>
+                    <a class="navbar-brand" href="#">FortyTwo</a>
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
