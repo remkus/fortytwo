@@ -34,9 +34,20 @@
 						'hierarchical'=>1)
 						); ?>
 					</select>
+					<table>
+						<tr><th>Display</th><th>Source</th></tr>
+						<tr><td>Content</td><td>Post excerpt</td></tr>
+						<tr><td>Cite &amp; Title</td><td>Post title</td></tr>
+						<tr><td>LInk</td><td>Post permalink</td></tr>
+					</table>
 				</div>
 				<div class="testimonials-by-woothemes datasource_block">
-					TODO
+					<table>
+						<tr><th>Display</th><th>Source</th></tr>
+						<tr><td>Content</td><td>Post excerpt</td></tr>
+						<tr><td>Source</td><td>Post title &amp; Testimonial Details: Byline</td></tr>
+						<tr><td>Link</td><td>Testimonial Details: Url</td></tr>
+					</table>
 				</div>
 			</div>
 		</td>
