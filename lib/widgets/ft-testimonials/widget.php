@@ -87,23 +87,51 @@ class FT_Testimonials extends WP_Widget {
 		$this->set_default( $instance['category'], 1 );
 		$this->set_default( $instance['testimonials'], array() );
 
-		switch($instance['datasource']) {
-			case "category":
-				$posts = get_posts( array( 
-						'posts_per_page' => $instance['limit'],  
-						'category' => $instance['category'] ) 
+		switch ( $instance['datasource'] ) {
+		case "testimonials-by-woothemes":
+			if (!$this->is_testimonials_by_woothemes_installed()) break;
+			$posts = woothemes_get_testimonials( array(
+					'limit' => $instance['limit'],
+					'orderby' => 'menu_order',
+					'order' => 'DESC',
+					'display_author' => true,
+					'display_avatar' => true,
+					'display_url' => true,
+					'effect' => 'fade', // Options: 'fade', 'none'
+					'pagination' => false,
+					'echo' => true,
+					'size' => 50,
+				) );
+			foreach ( $posts as $post ) {
+				setup_postdata( $post );
+				$s = "";
+				if ($post->url)    $s.="<a href='{$post->url}'>";
+				                   $s .= $post->post_title;
+				if ($post->byline) $s.= ", {$post->byline}";
+				if ($post->url)    $s.="</a>";
+				$instance['testimonials'][] = array (
+					'quote_source_formatted' => $s,
+					'content' => get_the_excerpt()
 				);
-				$instance['testimonials'] = array();
-				foreach($posts as $post) {
-					setup_postdata($post);
-					$instance['testimonials'][] = array (
-						  'quote_author' => '', # none of the default post fields really make sense
-							'quote_source' => get_the_title($post->ID),
-							'quote_source_link' => get_permalink($post->ID),
-							'content' => get_the_excerpt()
-					);
-				}
-				break;
+			}
+			break;
+		case "category":
+			$posts = get_posts( array(
+					'posts_per_page' => $instance['limit'],
+					'category' => $instance['category'] )
+			);
+			foreach ( $posts as $post ) {
+				setup_postdata( $post );
+				$s  = "<a href='".get_permalink( $post->ID )."'>";
+				$title = get_the_title( $post->ID );
+				$s .= "<cite title='$title'>$title</cite>";
+				$s .= "</a>";             
+				$instance['testimonials'][] = array (
+					'quote_source_formatted' => $s,
+					'content' => get_the_excerpt()
+				);
+			}
+			break;
 		}
 
 		include dirname( __FILE__ ) . '/views/widget.php';
@@ -114,6 +142,12 @@ class FT_Testimonials extends WP_Widget {
 
 	private function set_default( &$value, $default ) {
 		if ( empty ( $value ) ) $value = $default;
+	}
+
+	private function is_testimonials_by_woothemes_installed() {
+			//xdebug_break();
+			//testimonials-by-woothemes/woothemes-testimonials.php
+			return is_plugin_active("testimonials-by-woothemes/woothemes-testimonials.php");
 	}
 
 	/**
@@ -141,13 +175,20 @@ class FT_Testimonials extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
+		$datasources = array();
+		$datasources[] = array('name' => 'Category', 'value' => 'category');
+		if ($this->is_testimonials_by_woothemes_installed()) { 
+			$datasources[] = array( 'name' => 'Testimonials by WooThemes', 'value' => 'testimonials-by-woothemes' );
+		}
+
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
 				'title' => '',
 				'limit' => 5,
 				'datasource' => '',
-				'category' => ''
+				'category' => '',
+				'datasources' => $datasources
 			)
 		);
 

@@ -17,8 +17,11 @@
 			<label for="<?php echo $this->get_field_id( 'datasource' ); ?>"><?php _e( 'Datasource', 'fortytwo' ); ?></label> 
 			<select <?php $this->echo_field_id( 'datasource' ) ?> class="widefat">
 				<option <?php if ( '' == $instance['datasource'] ) echo 'selected="selected"'; ?>>==&gt;&nbsp;<?php _e( 'Select', 'fortytwo' ); ?>&nbsp;&lt;==</option>
-				<option value="category" <?php if ( 'category' == $instance['datasource'] ) echo 'selected="selected"'; ?>><?php _e( 'Category', 'fortytwo' ); ?></option>
-				<option value="testimonials_by_woothemes"  <?php if ( 'testimonials_by_woothemes' == $instance['datasource'] ) echo 'selected="selected"'; ?>><?php _e( 'Testimonials by Woothemes', 'fortytwo' ); ?></option>
+				<?php foreach ($instance['datasources'] as $datasource) { ?>
+				<option value="<?php echo $datasource['value']; ?>" <?php if ( $datasource['value'] == $instance['datasource'] ) echo 'selected="selected"'; ?>>
+					<?php _e( $datasource['name'], 'fortytwo' ); ?>
+				</option>
+				<?php } ?>
 			</select>
 			<div class="<?php echo $this->get_field_id( 'datasource' ) ?>">
 				<div class="category datasource_block">
@@ -32,7 +35,7 @@
 						); ?>
 					</select>
 				</div>
-				<div class="testimonials_by_woothemes datasource_block">
+				<div class="testimonials-by-woothemes datasource_block">
 					TODO
 				</div>
 			</div>
