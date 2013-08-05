@@ -108,7 +108,7 @@ class FT_Testimonials extends WP_Widget {
 			foreach ( $posts as $post ) {
 				setup_postdata( $post );
 				$s = "";
-				if ($post->url)    $s.="<a href='{$post->url}'>";
+				if ($post->url)    $s.="<a href='".esc_url($post->url)."'>";
 				                   $s .= $post->post_title;
 				if ($post->byline) $s.= ", {$post->byline}";
 				if ($post->url)    $s.="</a>";
