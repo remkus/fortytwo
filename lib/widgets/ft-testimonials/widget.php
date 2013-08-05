@@ -23,6 +23,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+//Required for use of is_plugin_active() - http://codex.wordpress.org/Function_Reference/is_plugin_active#Usage
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); 
+
 class FT_Testimonials extends WP_Widget {
 
 	/*--------------------------------------------------*/
@@ -145,8 +148,6 @@ class FT_Testimonials extends WP_Widget {
 	}
 
 	private function is_testimonials_by_woothemes_installed() {
-			//xdebug_break();
-			//testimonials-by-woothemes/woothemes-testimonials.php
 			return is_plugin_active("testimonials-by-woothemes/woothemes-testimonials.php");
 	}
 
