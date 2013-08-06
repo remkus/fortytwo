@@ -1,0 +1,48 @@
+//
+// Header section
+// --------------------------------------------------
+
+.site-header {
+	padding: 40px (@grid-gutter-width / 2);
+
+	.title-area {
+		.pull-left;
+	}
+
+	.header-widget-area {
+		.pull-right;
+	}
+
+	.site-title {
+		margin: 0 15px 0 0;
+		.pull-left;
+
+		a {
+			background: url('@{ft-images-path}/logo.png') no-repeat;
+			display: block;
+			float: left;
+			overflow: hidden;
+			text-indent: -9999px;
+			height: 46px;
+			width: 212px;
+		}
+	}
+
+	.site-description {
+		.pull-left;
+		border-left: 1px solid #e8e8e8;
+		padding-left: 15px;
+		margin: 0;
+		text-transform: uppercase;
+		width: 190px;
+		color: @color-d-darker;
+	}
+
+	.widget-area {
+		.pull-right;
+	}
+}
+
+#title a {
+	width: 100%;
+}

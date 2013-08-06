@@ -8,45 +8,54 @@
 // Grid system
 // --------------------------------------------------
 
-
 /* Column Widths and Positions
 --------------------------------------------- */
 
 // Set the container width, and override it for fixed navbars in media queries
-.wrap,
-.content-sidebar-wrap,
+
+.site-inner,
+.site-header > .wrap,
+.page-title > .wrap,
+nav > .wrap,
 [id^="home"] .widget-wrap {
-  .container-fixed();
+	.container-fixed();
 }
 
 // Mobile-first defaults
-.row {
-  .make-row();
+.row,
+.content-sidebar-wrap {
+	.make-row();
 }
 
 // Small device columns (phones to tablets)
 @media (min-width: @screen-tablet) {
-  .wrap,
-  .content-sidebar-wrap,
-  [id^="home"] .widget-wrap {
-    max-width: @container-tablet;
-  }
+	.site-inner,
+	.site-header > .wrap,
+	.page-title > .wrap,
+	nav > .wrap,
+	[id^="home"] .widget-wrap {
+		max-width: @container-tablet;
+	}
 }
 
 // Medium and large device columns (desktop and up)
 @media (min-width: @screen-desktop) {
-  .wrap,
-  .content-sidebar-wrap,
-  [id^="home"] .widget-wrap {
-    max-width: @container-desktop;
-  }
+	.site-inner,
+	.site-header > .wrap,
+	.page-title > .wrap,
+	nav > .wrap,
+	[id^="home"] .widget-wrap {
+		max-width: @container-desktop;
+	}
 }
 
 // Large desktops and up
 @media (min-width: @screen-large-desktop) {
-  .wrap,
-  .content-sidebar-wrap,
-  [id^="home"] .widget-wrap {
-    max-width: @container-large-desktop;
-  }
+	.site-inner,
+	.site-header > .wrap,
+	.page-title > .wrap,
+	nav > .wrap,
+	[id^="home"] .widget-wrap {
+		max-width: @container-large-desktop;
+	}
 }
