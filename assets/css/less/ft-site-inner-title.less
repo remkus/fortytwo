@@ -4,25 +4,29 @@
 // Slider
 // --------------------------------------------------
 
-.site-inner-title {
+.site-subheader {
 	background: #f9f9f9;
 	border-bottom: 1px solid #e8e8e8;
-	position: relative;
-	padding: 40px (@grid-gutter-width / 2);
+	padding: 40px 0;
 
-	h2 {
-		.font-size(26);
-		font-weight: 300;
-		margin: 0;
+	.subheader-area {
+		.make-column(6);
+
+		h2 {
+			.font-size(26);
+			font-weight: 300;
+			margin: 0;
+		}
+
+		.breadcrumb {
+			background-color: transparent;
+			margin: 0;
+			padding: 8px 0 0;
+		}
 	}
 
-	.site-inner-title-full {
-		.make-column(12);
+	.subheader-widget-area {
+		.make-column(6);
 	}
 
-	.breadcrumb {
-		background-color: transparent;
-		margin: 0;
-		padding: 8px 0 0;
-	}
 }
