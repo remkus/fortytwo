@@ -16,9 +16,10 @@ add_theme_support( 'genesis-structural-wraps', array(
 	'footer'
 ) );
 
-//add_filter( 'genesis_structural_wrap-header', 'fortytwo_add_col_wrap', 10, 2 );
+add_filter( 'genesis_structural_wrap-header', 'fortytwo_add_extra_structural_wrap', 10, 2 );
 /**
- * Add a structural wrap that acts as a row for columns inside the Genesis <div class="wrap">.
+ * Add a structural extra .wrap div so we can rename the original one later in the
+ * process of adding structural wraps.
  *
  * @since 1.0
  *
@@ -27,14 +28,14 @@ add_theme_support( 'genesis-structural-wraps', array(
  *
  * @return string Wrap HTML with col-wrap.
  */
-function fortytwo_add_col_wrap( $output, $original_output ) {
+function fortytwo_add_extra_structural_wrap( $output, $original_output ) {
 
 	switch ( $original_output ) {
 		case 'open':
-			$output .= sprintf( '<div %s>', genesis_attr( 'structural-wrap' ) );
+			$output = sprintf( '<div %s>', genesis_attr( 'extra-structural-wrap' ) );
 			break;
 		case 'close':
-			$output .= '</div>';
+			$output = '</div>';
 			break;
 	}
 
@@ -42,9 +43,9 @@ function fortytwo_add_col_wrap( $output, $original_output ) {
 }
 
 
-//add_filter( 'genesis_attr_structural-col-wrap', 'fortytwo_attributes_structural_col_wrap' );
+add_filter( 'genesis_attr_extra-structural-wrap', 'fortytwo_attributes_extra_structural_wrap' );
 /**
- * Add attributes for structural column wrap element.
+ * Add attributes for extra structural wrap element.
  *
  * @since 1.0
  *
@@ -52,18 +53,24 @@ function fortytwo_add_col_wrap( $output, $original_output ) {
  *
  * @return array Amended attributes.
  */
-function fortytwo_attributes_structural_col_wrap( $attributes ) {
+function fortytwo_attributes_extra_structural_wrap( $attributes ) {
 
-	$attributes['class'] = 'col-wrap';
+	$attributes['class'] = 'wrap';
 
 	return $attributes;
 
 }
 
 
-add_filter( 'genesis_attr_structural-wrap', 'fortytwo_reapply_structural_wrap', 15 );
+add_filter( 'genesis_attr_structural-wrap', 'fortytwo_rename_structural_wrap', 15 );
 /**
- * Add attributes for structural column wrap element.
+ * Edit the default attribute value of the structural wrap.
+ *
+ * We have to execute this in what seems a reverse order due to the fact
+ * that Genesis provides us a way to add structure before the current .wrap
+ * and not after it. As we need .wrap before our .col-wrap we use the above
+ * function fortytwo_add_extra_structural_wrap() to add an extra .wrap div
+ * so we can rename the original one.
  *
  * @since 1.0
  *
@@ -71,7 +78,7 @@ add_filter( 'genesis_attr_structural-wrap', 'fortytwo_reapply_structural_wrap', 
  *
  * @return array Amended attributes.
  */
-function fortytwo_reapply_structural_wrap( $output, $attributes, $context ) {
+function fortytwo_rename_structural_wrap( $attributes ) {
 
 	$attributes['class'] = 'col-wrap';
 
