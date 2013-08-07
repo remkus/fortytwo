@@ -3,19 +3,23 @@
 // --------------------------------------------------
 
 .site-header {
-	padding: 40px (@grid-gutter-width / 2);
+	padding: 40px 0;
 
 	.title-area {
-		.pull-left;
+		.make-column(6);
 	}
 
 	.header-widget-area {
-		.pull-right;
+		.make-column(6);
+
+		> .widget {
+			float: right;
+		}
 	}
 
 	.site-title {
 		margin: 0 15px 0 0;
-		.pull-left;
+		float: left;
 
 		a {
 			background: url('@{ft-images-path}/logo.png') no-repeat;
@@ -29,7 +33,7 @@
 	}
 
 	.site-description {
-		.pull-left;
+		float: left;
 		border-left: 1px solid #e8e8e8;
 		padding-left: 15px;
 		margin: 0;
@@ -38,9 +42,6 @@
 		color: @color-d-darker;
 	}
 
-	.widget-area {
-		.pull-right;
-	}
 }
 
 #title a {
