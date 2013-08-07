@@ -17,7 +17,7 @@ add_action( 'genesis_after_header', 'fortytwo_insert_page_title' );
 function fortytwo_insert_page_title() {
     if ( !is_front_page() ) {
         $ft_page_title = <<<EOD
-            <div class="page-title">
+            <div class="site-inner-title">
                 <div class="wrap">
                     <div class="col col-lg-6">
                         <h2>Page Title</h2>

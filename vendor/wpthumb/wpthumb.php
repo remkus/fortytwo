@@ -206,7 +206,11 @@ class WP_Thumb {
         if ( $this->getArg( 'cache_with_query_params' ) )
             return $this->file_path;
 
-        $this->_file_path = reset( explode( '?', $this->file_path ) );
+		// This change is a temp fix to solve a strict standards warning thrown in WP 3.6
+		// https://github.com/humanmade/WPThumb/issues/76
+		// Old code was - $this->_file_path = reset( explode( '?', $this->file_path ) );
+		$exploded = explode( '?', $this->file_path );
+		$this->_file_path = reset( $exploded );
 
 		return $this->_file_path;
 	}
