@@ -17,6 +17,9 @@ add_theme_support( 'genesis-structural-wraps', array(
 ) );
 
 add_filter( 'genesis_structural_wrap-header', 'fortytwo_add_extra_structural_wrap', 10, 2 );
+//add_filter( 'genesis_structural_wrap-site-inner', 'fortytwo_add_extra_structural_wrap', 10, 2 );
+add_filter( 'genesis_structural_wrap-footer-widgets', 'fortytwo_add_extra_structural_wrap', 10, 2 );
+add_filter( 'genesis_structural_wrap-footer', 'fortytwo_add_extra_structural_wrap', 10, 2 );
 /**
  * Add a structural extra .wrap div so we can rename the original one later in the
  * process of adding structural wraps.
@@ -55,14 +58,14 @@ add_filter( 'genesis_attr_extra-structural-wrap', 'fortytwo_attributes_extra_str
  */
 function fortytwo_attributes_extra_structural_wrap( $attributes ) {
 
-	$attributes['class'] = 'wrap';
+	$attributes['class'] = 'outer-wrap';
 
 	return $attributes;
 
 }
 
 
-add_filter( 'genesis_attr_structural-wrap', 'fortytwo_rename_structural_wrap', 15 );
+//add_filter( 'genesis_attr_structural-wrap', 'fortytwo_rename_structural_wrap' );
 /**
  * Edit the default attribute value of the structural wrap.
  *
@@ -78,11 +81,10 @@ add_filter( 'genesis_attr_structural-wrap', 'fortytwo_rename_structural_wrap', 1
  *
  * @return array Amended attributes.
  */
-function fortytwo_rename_structural_wrap( $attributes ) {
-
-	$attributes['class'] = 'col-wrap';
-
-	return $attributes;
-
-}
-
+//function fortytwo_rename_structural_wrap( $attributes ) {
+//
+//	$attributes['class'] = 'col-wrap';
+//
+//	return $attributes;
+//
+//}
