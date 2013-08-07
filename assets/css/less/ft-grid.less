@@ -13,26 +13,21 @@
 
 // Set the container width, and override it for fixed navbars in media queries
 
-//.site-inner,
-.site-header > .wrap,
-.site-inner-title > .wrap,
-nav > .wrap,
+.wrap,
 [id^="home"] .widget-wrap {
 	.container-fixed();
 }
 
 // Mobile-first defaults
-.row,
-.content-sidebar-wrap {
-//	.make-row();
+
+.content-sidebar-wrap,
+.col-wrap {
+	.make-row();
 }
 
 // Small device columns (phones to tablets)
 @media (min-width: @screen-tablet) {
-//	.site-inner,
-	.site-header > .wrap,
-	.site-inner-title > .wrap,
-	nav > .wrap,
+	.wrap,
 	[id^="home"] .widget-wrap {
 		max-width: @container-tablet;
 	}
@@ -40,10 +35,7 @@ nav > .wrap,
 
 // Medium and large device columns (desktop and up)
 @media (min-width: @screen-desktop) {
-//	.site-inner,
-	.site-header > .wrap,
-	.site-inner-title > .wrap,
-	nav > .wrap,
+	.wrap,
 	[id^="home"] .widget-wrap {
 		max-width: @container-desktop;
 	}
@@ -51,10 +43,7 @@ nav > .wrap,
 
 // Large desktops and up
 @media (min-width: @screen-large-desktop) {
-//	.site-inner,
-	.site-header > .wrap,
-	.site-inner-title > .wrap,
-	nav > .wrap,
+	.wrap,
 	[id^="home"] .widget-wrap {
 		max-width: @container-large-desktop;
 	}
