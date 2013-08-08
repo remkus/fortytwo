@@ -11,7 +11,7 @@ add_theme_support( 'genesis-structural-wraps', array(
 	'header',
 	'menu-primary',
 	'menu-secondary',
-	'site-inner',
+//	'site-inner',
 	'footer-widgets',
 	'footer'
 ) );
@@ -64,27 +64,40 @@ function fortytwo_attributes_extra_structural_wrap( $attributes ) {
 
 }
 
-
-//add_filter( 'genesis_attr_structural-wrap', 'fortytwo_rename_structural_wrap' );
+add_action( 'genesis_before_content_sidebar_wrap', 'fortytwo_need_name_insert_open_outer_wrap' );
 /**
- * Edit the default attribute value of the structural wrap.
- *
- * We have to execute this in what seems a reverse order due to the fact
- * that Genesis provides us a way to add structure before the current .wrap
- * and not after it. As we need .wrap before our .col-wrap we use the above
- * function fortytwo_add_extra_structural_wrap() to add an extra .wrap div
- * so we can rename the original one.
+ * Add a structural extra .wrap div so we can rename the original one later in the
+ * process of adding structural wraps.
  *
  * @since 1.0
  *
- * @param array $attributes Existing attributes.
+ * @param string $output Existing attributes.
+ * @param string $output_original
  *
- * @return array Amended attributes.
+ * @return string Wrap HTML with col-wrap.
  */
-//function fortytwo_rename_structural_wrap( $attributes ) {
-//
-//	$attributes['class'] = 'col-wrap';
-//
-//	return $attributes;
-//
-//}
+function fortytwo_need_name_insert_open_outer_wrap() {
+
+	$output = sprintf( '<div %s>', genesis_attr( 'extra-structural-wrap' ) );
+
+	echo $output;
+}
+
+add_action( 'genesis_after_content_sidebar_wrap', 'fortytwo_need_name_insert_close_outer_wrap' );
+/**
+ * Add a structural extra .wrap div so we can rename the original one later in the
+ * process of adding structural wraps.
+ *
+ * @since 1.0
+ *
+ * @param string $output Existing attributes.
+ * @param string $output_original
+ *
+ * @return string Wrap HTML with col-wrap.
+ */
+function fortytwo_need_name_insert_close_outer_wrap() {
+
+	$output = '</div>';
+
+	echo $output;
+}
