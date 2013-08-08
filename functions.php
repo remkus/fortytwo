@@ -24,7 +24,7 @@ add_filter( 'stylesheet_uri', 'fortywo_replace_default_style_sheet', 10, 2 );
  * @return constant Base FortyTwo CSS
  */
 function fortywo_replace_default_style_sheet() {
-    return CHILD_URL . '/assets/stylesheets/fortytwo.css';
+    return CHILD_URL . '/assets/css/fortytwo.css';
 }
 
 add_action( 'wp_enqueue_scripts', 'fortytwo_load_custom_style_sheet' );
