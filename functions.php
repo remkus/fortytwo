@@ -128,12 +128,12 @@ function fortytwo_footer_widgets_layout() {
         dynamic_sidebar( 'footer-' . $counter );
         $widgets = ob_get_clean();
 
-        $output .= sprintf( '<div class="footer-widgets-%d col col-lg-3">%s</div>', $counter, $widgets );
+        $output .= sprintf( '<div class="footer-widgets-%d footer-widget-area">%s</div>', $counter, $widgets );
 
         $counter++;
     }
 
-    echo sprintf( '<div id="footer-widgets"><div class="container"><div class="row">%1$s</div></div></div>', $output );
+    echo sprintf( '<div id="footer-widgets"><div class="outer-wrap"><div class="wrap">%1$s</div></div></div>', $output );
 
 }
 
@@ -144,12 +144,13 @@ add_action( 'genesis_footer', 'fortytwo_custom_footer' );
 
 function fortytwo_custom_footer() {
 
-    $footer_output = <<<EOD
-        <div class="row">
-            <div class="col col-lg-12">
-                <span>&copy; Copyright 2012 <a href="http://mydomain.com/">My Domain</a> &middot; All Rights Reserved &middot; Powered by <a href="http://wordpress.org/">WordPress</a> &middot; <a href="http://mydomain.com/wp-admin">Admin</a></span>
-            </div>
-        </div>
+	$footer_output = <<<EOD
+		<div class="copyright-area">
+			<span>&copy; Copyright 2012 <a href="http://mydomain.com/">My Domain</a> &middot; All Rights Reserved &middot; Powered by <a href="http://wordpress.org/">WordPress</a> &middot; <a href="http://mydomain.com/wp-admin">Admin</a></span>
+		</div>
+		<aside class="widget-area footer-widget-area">
+			<span>Links to come here...</span>
+		</aside>
 EOD;
 
     echo($footer_output);
