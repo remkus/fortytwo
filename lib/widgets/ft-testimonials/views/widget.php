@@ -1,17 +1,10 @@
-<h4 class="widgettitle">Client Testimonials</h4>
+<h4 class="widgettitle"><?php echo $instance['title']; ?></h4>
 <div class="testimonial-content">
-    <blockquote>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <small>Someone famous <cite title="Source Title">Source Title</cite></small>
-    </blockquote>
-    <hr />
-    <blockquote>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <small>Someone famous <cite title="Source Title">Source Title</cite></small>
-    </blockquote>
-    <hr />
-    <blockquote>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <small>Someone famous <cite title="Source Title">Source Title</cite></small>
-    </blockquote>
+  <?php foreach($instance['testimonials'] as $testimonial) { ?>
+  <blockquote>
+    <p><?php echo $testimonial['content'];?></p>
+    <small><?php echo $testimonial['quote_source_formatted'];?></small>
+  </blockquote>
+  <?php if ($testimonial !== end($instance['testimonials'])) { ?><hr /><?php } ?>
+  <?php } ?>
 </div>
