@@ -11,7 +11,7 @@ jQuery(document ).ready( function ($) {
 		$navbar.affix( {
 			offset: {
 				top: function () {
-					var offsetTop = 130
+					var offsetTop = 130 //TODO: this value should be dynamic based on navbar height
 					return ( this.top = offsetTop )
 				}
 			}
