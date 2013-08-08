@@ -5,17 +5,30 @@
 // --------------------------------------------------
 
 #footer-widgets {
-  background: #424242;
-  color: #fff;
-  .row {
-    .box-padding(45, 0, 45, 0);
-  }
-  .clearfix();
+	background: #424242;
+	color: #fff;
+
+	.row {
+		.box-padding(45, 0, 45, 0);
+	}
+
+	.clearfix();
 }
 
 .site-footer {
-  background: #353535;
-  color: #fff;
+	background: #353535;
+	color: #fff;
+	.box-padding(20, 0, 20, 0);
 
-  .box-padding(20, 0, 20, 0);
+	.copyright-area {
+		.make-column(6);
+	}
+
+	.footer-widget-area {
+		.make-column(6);
+
+		> span {
+			float: right;
+		}
+	}
 }
