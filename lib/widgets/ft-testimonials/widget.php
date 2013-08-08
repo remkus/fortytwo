@@ -23,6 +23,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+//Required for use of is_plugin_active() - http://codex.wordpress.org/Function_Reference/is_plugin_active#Usage
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); 
+
 class FT_Testimonials extends WP_Widget {
 
 	/*--------------------------------------------------*/
@@ -58,6 +61,10 @@ class FT_Testimonials extends WP_Widget {
 		return FORTYTWO_WIDGETS_URL.'/ft-testimonials'.$file;
 	}
 
+	public function echo_field_id( $field ) {
+		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
+	}
+
 	/*--------------------------------------------------*/
 	/* Widget API Functions
 	/*--------------------------------------------------*/
@@ -74,11 +81,75 @@ class FT_Testimonials extends WP_Widget {
 
 		echo $before_widget;
 
+		foreach ( array( 'title', 'limit', 'datasource', 'category' ) as $field_name ) {
+			$instance[$field_name] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
+		}
+		$this->set_default( $instance['title'], __( "Client Testimonials", 'fortytwo' ) );
+		$this->set_default( $instance['limit'], 5 );
+		$this->set_default( $instance['datasource'], 'category' );
+		$this->set_default( $instance['category'], 1 );
+		$this->set_default( $instance['testimonials'], array() );
+
+		switch ( $instance['datasource'] ) {
+		case "testimonials-by-woothemes":
+			if (!$this->is_testimonials_by_woothemes_installed()) break;
+			$posts = woothemes_get_testimonials( array(
+					'limit' => $instance['limit'],
+					'orderby' => 'menu_order',
+					'order' => 'DESC',
+					'display_author' => true,
+					'display_avatar' => true,
+					'display_url' => true,
+					'effect' => 'fade', // Options: 'fade', 'none'
+					'pagination' => false,
+					'echo' => true,
+					'size' => 50,
+				) );
+			foreach ( $posts as $post ) {
+				setup_postdata( $post );
+				$s = "";
+				if ($post->url)    $s.="<a href='".esc_url($post->url)."'>";
+				                   $s .= $post->post_title;
+				if ($post->byline) $s.= ", {$post->byline}";
+				if ($post->url)    $s.="</a>";
+				$instance['testimonials'][] = array (
+					'quote_source_formatted' => $s,
+					'content' => get_the_excerpt()
+				);
+			}
+			break;
+		case "category":
+			$posts = get_posts( array(
+					'posts_per_page' => $instance['limit'],
+					'category' => $instance['category'] )
+			);
+			foreach ( $posts as $post ) {
+				setup_postdata( $post );
+				$s  = "<a href='".get_permalink( $post->ID )."'>";
+				$title = get_the_title( $post->ID );
+				$s .= "<cite title='$title'>$title</cite>";
+				$s .= "</a>";             
+				$instance['testimonials'][] = array (
+					'quote_source_formatted' => $s,
+					'content' => get_the_excerpt()
+				);
+			}
+			break;
+		}
+
 		include dirname( __FILE__ ) . '/views/widget.php';
 
 		echo $after_widget;
 
 	} // end widget
+
+	private function set_default( &$value, $default ) {
+		if ( empty ( $value ) ) $value = $default;
+	}
+
+	private function is_testimonials_by_woothemes_installed() {
+			return is_plugin_active("testimonials-by-woothemes/woothemes-testimonials.php");
+	}
 
 	/**
 	 * Processes the widget's options to be saved.
@@ -90,7 +161,9 @@ class FT_Testimonials extends WP_Widget {
 
 		$instance = $old_instance;
 
-		// TODO: Here is where you update your widget's old values with the new, incoming values
+		foreach ( array( 'title', 'limit', 'datasource', 'category' ) as $field_name ) {
+			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
+		}
 
 		return $instance;
 
@@ -103,15 +176,22 @@ class FT_Testimonials extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
+		$datasources = array();
+		$datasources[] = array('name' => 'Category', 'value' => 'category');
+		if ($this->is_testimonials_by_woothemes_installed()) { 
+			$datasources[] = array( 'name' => 'Testimonials by WooThemes', 'value' => 'testimonials-by-woothemes' );
+		}
+
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
-				'foo' => '',
-				'bar' => ''
+				'title' => '',
+				'limit' => 5,
+				'datasource' => '',
+				'category' => '',
+				'datasources' => $datasources
 			)
 		);
-
-		// TODO: Store the values of the widget in their own variable
 
 		// Display the admin form
 		include dirname( __FILE__ ) . '/views/form.php';

@@ -1,1 +1,12 @@
 /* This stylesheet is used to style the admin option form of the widget. */
+.ft-testimonials-admin .datasource_block {
+	display:none;
+	border-top: 3px dashed #e4e4e4;
+	border-left: 3px dashed #e4e4e4;
+	margin: 5px 5px 0px 0px;
+	padding: 10px;
+}
+
+.ft-testimonials-admin .make_visible {
+	display:block;
+}
