@@ -4,142 +4,141 @@
 // Files specific mixins
 // --------------------------------------------------
 .height-adjust() {
-  padding-top: 40px;
-  margin-bottom: -9999px;
-  padding-bottom: 9999px;
+	padding-top: 40px;
+	margin-bottom: -9999px;
+	padding-bottom: 9999px;
 }
 
 .content-sidebar-wrap {
-  padding-bottom: 40px;
-  min-height: 100%;
-  overflow: hidden;
+	padding-bottom: 40px;
+	min-height: 100%;
+	overflow: hidden;
 }
 
 .full-width-content {
-  .content {
-    .make-column(12);
-    .height-adjust();
-  }
+	.content {
+		.make-column(12);
+		.height-adjust();
+	}
 }
 
 .content-sidebar,
 .sidebar-content {
-  .content {
-    .make-column(9);
-    .height-adjust();
-  }
+	.content {
+		.make-column(9);
+		.height-adjust();
+	}
 
-  .sidebar-primary {
-    .make-column(3);
-    .height-adjust();
-  }
+	.sidebar-primary {
+		.make-column(3);
+		.height-adjust();
+	}
 }
 
 .content-sidebar-sidebar,
 .sidebar-sidebar-content,
 .sidebar-content-sidebar {
-  .content {
-    .make-column(7);
-    .height-adjust();
-  }
+	.content {
+		.make-column(7);
+		.height-adjust();
+	}
 
-  .sidebar-primary {
-    .make-column(3);
-    .height-adjust();
-  }
+	.sidebar-primary {
+		.make-column(3);
+		.height-adjust();
+	}
 
-  .sidebar-secondary {
-    .make-column(2);
-    .height-adjust();
-  }
+	.sidebar-secondary {
+		.make-column(2);
+		.height-adjust();
+	}
 }
 
 .content-sidebar {
-  .content {
-    padding-right: @grid-gutter-width;
-  }
+	.content {
+		padding-right: @grid-gutter-width;
+	}
 
-  .sidebar-primary {
-    padding-left: @grid-gutter-width;
-    border-left: 1px solid #e8e8e8;
-  }
+	.sidebar-primary {
+		padding-left: @grid-gutter-width;
+		border-left: 1px solid #e8e8e8;
+	}
 }
 
 .sidebar-content {
-  .content {
-    .make-column-push(3);
-    padding-right: 15px;
-    padding-left: 30px;
-  }
+	.content {
+		.make-column-push(3);
+		padding-right: 15px;
+		padding-left: 30px;
+	}
 
-  .sidebar-primary {
-    .make-column-pull(9);
-    padding-right: 30px;
-    padding-left: 15px;
-    border-right: 1px solid #e8e8e8;
-  }
+	.sidebar-primary {
+		.make-column-pull(9);
+		padding-right: 30px;
+		padding-left: 15px;
+		border-right: 1px solid #e8e8e8;
+	}
 }
 
 .content-sidebar-sidebar {
-  .content {
-    padding-right: 30px;
-    padding-left: 15px;
-  }
+	.content {
+		padding-right: 30px;
+		padding-left: 15px;
+	}
 
-  .sidebar-primary {
-    padding-right: 30px;
-    padding-left: 30px;
-    border-left: 1px solid #e8e8e8;
-  }
+	.sidebar-primary {
+		padding-right: 30px;
+		padding-left: 30px;
+		border-left: 1px solid #e8e8e8;
+	}
 
-  .sidebar-secondary {
-    padding-right: 15px;
-    padding-left: 30px;
-    border-left: 1px solid #e8e8e8;
-  }
+	.sidebar-secondary {
+		padding-right: 15px;
+		padding-left: 30px;
+		border-left: 1px solid #e8e8e8;
+	}
 }
 
-
 .sidebar-sidebar-content {
-  .content {
-    .make-column-push(5);
-    padding-right: 15px;
-    padding-left: 30px;
-  }
+	.content {
+		.make-column-push(5);
+		padding-right: 15px;
+		padding-left: 30px;
+	}
 
-  .sidebar-primary {
-    .make-column-pull(5);
-    padding-right: 30px;
-    padding-left: 30px;
-    border-right: 1px solid #e8e8e8;
-  }
+	.sidebar-primary {
+		.make-column-pull(5);
+		padding-right: 30px;
+		padding-left: 30px;
+		border-right: 1px solid #e8e8e8;
+	}
 
-  .sidebar-secondary {
-    .make-column-pull(10);
-    padding-right: 30px;
-    padding-left: 15px;
-    border-right: 1px solid #e8e8e8;
-  }
+	.sidebar-secondary {
+		.make-column-pull(10);
+		padding-right: 30px;
+		padding-left: 15px;
+		border-right: 1px solid #e8e8e8;
+	}
 }
 
 .sidebar-content-sidebar {
-  .content {
-    .make-column-push(2);
-    padding-right: 30px;
-    padding-left: 30px;
-  }
+	.content {
+		.make-column-push(2);
+		padding-right: 30px;
+		padding-left: 30px;
+	}
 
-  .sidebar-primary {
-    .make-column-push(2);
-    padding-right: 15px;
-    padding-left: 30px;
-    border-left: 1px solid #e8e8e8;
-  }
+	.sidebar-primary {
+		.make-column-push(2);
+		padding-right: 15px;
+		padding-left: 30px;
+		border-left: 1px solid #e8e8e8;
+	}
 
-  .sidebar-secondary {
-    .make-column-pull(10);
-    padding-right: 30px;
-    padding-left: 15px;
-    border-right: 1px solid #e8e8e8;
-  }
+	.sidebar-secondary {
+		.make-column-pull(10);
+		padding-right: 30px;
+		padding-left: 15px;
+		border-right: 1px solid #e8e8e8;
+	}
 }

@@ -128,12 +128,12 @@ function fortytwo_footer_widgets_layout() {
         dynamic_sidebar( 'footer-' . $counter );
         $widgets = ob_get_clean();
 
-        $output .= sprintf( '<div class="footer-widgets-%d col col-lg-3">%s</div>', $counter, $widgets );
+        $output .= sprintf( '<div class="footer-widgets-%d footer-widget-area">%s</div>', $counter, $widgets );
 
         $counter++;
     }
 
-    echo sprintf( '<div id="footer-widgets"><div class="container"><div class="row">%1$s</div></div></div>', $output );
+    echo sprintf( '<div id="footer-widgets"><div class="outer-wrap"><div class="wrap">%1$s</div></div></div>', $output );
 
 }
 
