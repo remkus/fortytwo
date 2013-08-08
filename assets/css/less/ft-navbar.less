@@ -5,7 +5,32 @@
 // Navbar
 // --------------------------------------------------
 .nav-primary {
+  .navbar;
   border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+
+  &.affix {
+    .navbar-fixed-top;
+    .navbar-inverse;
+    border-color: #111;
+
+    .menu-primary > li > a {
+      border-color: #111;
+    }
+
+    & ~ .page-title,
+    & ~ #home-slider {
+      margin-top: 48px;
+    }
+  }
+}
+
+.navbar-brand {
+  display: none;
+
+  .affix & {
+    display: block;
+  }
 }
 
 .dropdown-menu {
@@ -35,21 +60,8 @@
     &:first-child a {border-left: 1px solid #e8e8e8;}
 
     > a {
-      border-top: 1px solid transparent;
       border-right: 1px solid #e8e8e8;
-      padding: 11px 20px;
-      margin: -1px 0 0 0;
-
-
-
-      &:hover,
-      &:focus,
-      &:active {
-        background-color: transparent;
-        border-top-color: #424242;
-      }
     }
-
 
     &.open > a {
       background-color: #f8f8f8;
@@ -58,8 +70,7 @@
     &.current-menu-parent > a,
     &.current-menu-item > a,
     &.open > a {
-      color: #5ad7ba;
-      border-top-color: #424242;
+      color: @navbar-link-hover-color;
     }
 
   }

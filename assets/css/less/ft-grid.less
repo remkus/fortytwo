@@ -19,37 +19,34 @@
   .container-fixed();
 }
 
-// Generate small grid classes first
-.generate-grid-columns(@grid-columns);
-
-// Then generate the larger grid classes via media query
-@media screen and (min-width: @screen-small) {
-  .generate-large-grid-columns(@grid-columns);
+// Mobile-first defaults
+.row {
+  .make-row();
 }
 
-// Responsive: Tablets and up
-@media screen and (min-width: @screen-tablet) {
+// Small device columns (phones to tablets)
+@media (min-width: @screen-tablet) {
   .wrap,
   .content-sidebar-wrap,
   [id^="home"] .widget-wrap {
-    max-width: 728px;
+    max-width: @container-tablet;
   }
 }
 
-// Responsive: Desktops and up
-@media screen and (min-width: @screen-desktop) {
+// Medium and large device columns (desktop and up)
+@media (min-width: @screen-desktop) {
   .wrap,
   .content-sidebar-wrap,
   [id^="home"] .widget-wrap {
-    max-width: 940px;
+    max-width: @container-desktop;
   }
 }
 
-// Responsive: Large desktops and up
-@media screen and (min-width: @screen-large-desktop) {
+// Large desktops and up
+@media (min-width: @screen-large-desktop) {
   .wrap,
   .content-sidebar-wrap,
   [id^="home"] .widget-wrap {
-    max-width: 1170px;
+    max-width: @container-large-desktop;
   }
 }

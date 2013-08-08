@@ -28,27 +28,25 @@ function fortytwo_genesis_do_nav() {
         $args = array(
             'theme_location' => 'primary',
             'container'      => '',
-            'menu_class'     => 'menu genesis-nav-menu menu-primary nav',
+            'menu_class'     => 'menu genesis-nav-menu menu-primary nav navbar-nav',
             'echo'           => 0,
             'walker'         => new FortyTwo_Walker_Nav_Menu()
         );
         // load the navigation arguments
         $nav = wp_nav_menu( $args );
 
+	    //TODO: navbar-brand has a hard coded FortyTwo as the value, needs to pull current title
         $nav_output = <<<EOD
             <nav class="nav-primary" role="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
                 <div class="wrap">
-                    <div class="navbar">
-                        <div class="container">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                              <span class="icon-bar"></span>
-                              <span class="icon-bar"></span>
-                              <span class="icon-bar"></span>
-                            </button>
-                            <div class="nav-collapse navbar-responsive-collapse collapse">
-                              {$nav}
-                            </div>
-                        </div>
+                    <a class="navbar-brand" href="#">FortyTwo</a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <div class="nav-collapse navbar-responsive-collapse collapse">
+                      {$nav}
                     </div>
                 </div>
             </nav>
