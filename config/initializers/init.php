@@ -39,6 +39,7 @@ require_once FORTYTWO_WIDGETS_DIR . '/ft-featured-page/widget.php';
 require_once FORTYTWO_WIDGETS_DIR . '/ft-jumbotron/widget.php';
 require_once FORTYTWO_WIDGETS_DIR . '/ft-testimonials/widget.php';
 require_once FORTYTWO_WIDGETS_DIR . '/ft-tabs-widget/widget.php';
+require_once FORTYTWO_WIDGETS_DIR . '/ft-contact/widget.php';
 
 //Require once to include WPThumb
 require_once CHILD_DIR . '/vendor/wpthumb/wpthumb.php';
