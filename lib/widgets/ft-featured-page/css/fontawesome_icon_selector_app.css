@@ -1,32 +1,23 @@
-/* This stylesheet is used to style the admin option form of the widget. */
-.the-icon-selector-wrapper .the-icon-selector-dropdown {
-	position:absolute;
-	right:260px;
-	width:250px;
-	height:300px;
-	border: 1px solid black;
-	background-color: white;
+.the-icon-selector-dialog {
 	padding: 5px;
-	visibility: hidden;
+	background-color: white;
+  -webkit-box-shadow: 0px 0px 16px rgba( 0,0,0,0.3 );
+  box-shadow: 0px 0px 16px rgba( 0,0,0,0.3 );
 }
 
-.the-icon-selector-wrapper .is-visible {
-	visibility: visible;
+.the-icon-selector-dialog .ui-dialog-titlebar-close {
+  display: none;
 }
 
-
-.the-icon-selector-wrapper .the-icon-selector-dropdown .the-icon-list {
-	margin-top: 5px;
+.the-icon-selector-dialog .the-icon-selector-dropdown .the-icon-list {
 	padding: 5px;
 	position:absolute;
 	overflow-y: scroll;
+	overflow-x: hidden; 
 	width:91%;
-	height:80%;
+	height:75%;
 }
 
-
-.the-icon-selector-wrapper .the-icon-selector-dropdown INPUT {
+.the-icon-selector-dialog .the-icon-selector-dropdown INPUT {
 	width: 95%;
 }
-
-
