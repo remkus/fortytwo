@@ -7502,14 +7502,14 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
   padding: 0.5rem 1rem;
 }
 /* line 7, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-footer.less */
-#footer-widgets {
+.footer-widgets {
   background: #424242;
   color: #fff;
   padding: 40px 0px 40px 0px;
   padding: 4rem 0rem 4rem 0rem;
 }
 /* line 12, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-footer.less */
-#footer-widgets .footer-widget-area {
+.footer-widgets .footer-widget-area {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -7517,7 +7517,7 @@ fieldset[disabled] #home-slider .slide-excerpt .more-link.active {
 }
 @media (min-width: 768px) {
   /* line 477, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/frameworks/bootstrap/less/mixins.less */
-  #footer-widgets .footer-widget-area {
+  .footer-widgets .footer-widget-area {
     float: left;
     width: 25%;
   }
