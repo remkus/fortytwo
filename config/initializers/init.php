@@ -27,11 +27,14 @@ require_once 'ft-nav.php';
 
 require_once 'ft-subheader.php';
 
-require_once 'ft-default-widgets.php';
-
 require_once 'ft-slider.php';
 
 require_once 'ft-page-blog.php';
+
+require_once 'ft-default-widgets.php';
+
+require_once 'ft-footer.php';
+
 
 //Require all theme widgets
 require_once FORTYTWO_WIDGETS_DIR . '/ft-responsive-slider/widget.php';

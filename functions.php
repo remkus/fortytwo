@@ -48,11 +48,10 @@ function fortytwo_load_google_fonts() {
     wp_enqueue_style( 'google-font-source-sans-pro', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700', array(), PARENT_THEME_VERSION );
 }
 
-// Add support for structural wraps
-//add_theme_support( 'genesis-structural-wraps', array( 'header', 'nav', 'subnav', 'inner', 'footer-widgets', 'footer' ) );
+// Add support for footer widgets TODO we could do the same add support for fortytwo-content-widgets
+add_theme_support( 'genesis-footer-widgets' );
 
-// Add support for 4-column footer widgets TODO we could do the same add support for fortytwo-content-widgets
-add_theme_support( 'genesis-footer-widgets', 4 );
+
 
 
 // Register widget areas
@@ -97,45 +96,15 @@ genesis_register_sidebar(array(
     'description' => __('This is Column 2 of Row 2 on the homepage.', 'fortytwo'),
 ));
 
-
-// FortyTwo footer widget areas
-remove_action( 'genesis_before_footer', 'genesis_footer_widget_areas' );
-
-add_action( 'genesis_before_footer', 'fortytwo_footer_widgets_layout', 5 );
-
-function fortytwo_footer_widgets_layout() {
-
-    $footer_widgets = get_theme_support( 'genesis-footer-widgets' );
-
-    if ( ! $footer_widgets || ! isset( $footer_widgets[0] ) || ! is_numeric( $footer_widgets[0] ) )
-        return;
-
-    $footer_widgets = (int) $footer_widgets[0];
-
-    /**
-     * Check to see if first widget area has widgets. If not,
-     * do nothing. No need to check all footer widget areas.
-     */
-    if ( ! is_active_sidebar( 'footer-1' ) )
-        return;
-
-    $output  = '';
-    $counter = 1;
-
-    while ( $counter <= $footer_widgets ) {
-        /** Darn you, WordPress! Gotta output buffer. */
-        ob_start();
-        dynamic_sidebar( 'footer-' . $counter );
-        $widgets = ob_get_clean();
-
-        $output .= sprintf( '<div class="footer-widgets-%d footer-widget-area">%s</div>', $counter, $widgets );
-
-        $counter++;
-    }
-
-    echo sprintf( '<div id="footer-widgets"><div class="outer-wrap"><div class="wrap">%1$s</div></div></div>', $output );
-
-}
+// Registering the sidebar for our footer columns
+genesis_register_sidebar(
+	array(
+		'id'               => 'footer-columns',
+		'name'             => __( 'Footer Columns', 'fortytwo' ),
+		'description'      => __( 'This is the section inserted prior to the final footer', 'fortytwo' ),
+		'_genesis_builtin' => true,
+	)
+);
 
 /** Customize the default footer */
 remove_action( 'genesis_footer', 'genesis_do_footer' );
