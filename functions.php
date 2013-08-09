@@ -8,7 +8,7 @@ require_once( CHILD_DIR . '/config/initializers/init.php' );
 /**
  * Activates FortyTwo theme features.
  */
-add_theme_support( 'genesis-html5' );
+add_theme_support( 'html5' );
 add_theme_support( 'genesis-responsive-viewport' );
 
 // Add support for post format images
