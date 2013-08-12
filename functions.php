@@ -102,7 +102,6 @@ genesis_register_sidebar(
 		'id'               => 'footer-columns',
 		'name'             => __( 'Footer Columns', 'fortytwo' ),
 		'description'      => __( 'This is the section inserted prior to the final footer', 'fortytwo' ),
-		'_genesis_builtin' => true,
 	)
 );
 
