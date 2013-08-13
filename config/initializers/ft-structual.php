@@ -11,14 +11,14 @@ add_theme_support( 'genesis-structural-wraps', array(
 	'header',
 	'menu-primary',
 	'menu-secondary',
-	'site-features',
+	'site-section',
 	'site-inner',
 	'footer-widgets',
 	'footer'
 ) );
 
 add_filter( 'genesis_structural_wrap-header', 'fortytwo_add_extra_structural_wrap', 10, 2 );
-add_filter( 'genesis_structural_wrap-site-features', 'fortytwo_add_extra_structural_wrap', 10, 2 );
+add_filter( 'genesis_structural_wrap-site-section', 'fortytwo_add_extra_structural_wrap', 10, 2 );
 add_filter( 'genesis_structural_wrap-site-inner', 'fortytwo_add_extra_structural_wrap', 10, 2 );
 add_filter( 'genesis_structural_wrap-footer-widgets', 'fortytwo_add_extra_structural_wrap', 10, 2 );
 add_filter( 'genesis_structural_wrap-footer', 'fortytwo_add_extra_structural_wrap', 10, 2 );

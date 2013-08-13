@@ -17,6 +17,9 @@ add_action( 'genesis_loop', 'fortytwo_home_loop_helper' );
 
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
+
+
+
 add_filter( 'body_class', 'fortytwo_add_body_classes' );
 /**
  * Add body classes to identify that this is fortytwo and it is the business page template
@@ -33,30 +36,34 @@ function fortytwo_add_body_classes( $classes ) {
 	return $classes;
 }
 
-add_action( 'genesis_after_header', 'fortytwo_add_site_features_section' );
+add_action( 'genesis_after_header', 'fortytwo_add_page_business_sections' );
 /**
- * This adds the .site-features section to the business page template if the widget areas have widgets
+ * This adds the .page-home-section-1 section to the business page template if the widget area has widgets
  *
  * @since 1.0
  */
 
-function fortytwo_add_site_features_section( $output = '' ) {
+function fortytwo_add_page_business_sections() {
 
+	if ( is_active_sidebar( 'page-business-section' ) ) {
+		echo '<div class="site-section">';
 
-    if ( is_active_sidebar( 'page-business-section' ) || is_active_sidebar( 'page-business-section-1' ) ) {
-
-		echo '<div class="site-features">';
-
-		genesis_structural_wrap( 'site-features', 'open' );
-
-		dynamic_sidebar( 'page-business-section' );
-
-		genesis_structural_wrap( 'site-features', 'close' );
+			genesis_structural_wrap( 'site-section', 'open' );
+				dynamic_sidebar( 'page-business-section' );
+			genesis_structural_wrap( 'site-section', 'close' );
 
 		echo '</div>';
+	}
 
-    }
+	if ( is_active_sidebar( 'page-business-section-2' ) ) {
+		echo '<div class="site-section-2">';
 
+			genesis_structural_wrap( 'site-section', 'open' );
+				dynamic_sidebar( 'page-business-section-2' );
+			genesis_structural_wrap( 'site-section', 'close' );
+
+		echo '</div>';
+	}
 
 }
 
