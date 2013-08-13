@@ -10,43 +10,53 @@
  * @link     http://www.forsitethemes.com/
  */
 
-add_action( 'genesis_meta', 'ft_home_genesis_meta' );
+
+remove_action( 'genesis_loop', 'genesis_do_loop' );
+
+add_action( 'genesis_loop', 'fortytwo_home_loop_helper' );
+
+add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
+add_filter( 'body_class', 'fortytwo_add_body_classes' );
 /**
- * Add widget support for homepage. If no widgets active, display the default loop.
+ * Add body classes to identify that this is fortytwo and it is the business page template
  *
+ * @since 1.0
+ *
+ * @param string $classes Existing body classes.
+ *
+ * @return string Body classes.
  */
-function ft_home_genesis_meta() {
+function fortytwo_add_body_classes( $classes ) {
+	$classes[] = 'fortytwo fortytwo-page-business';
 
-	if ( is_active_sidebar( 'home-slider' ) || is_active_sidebar( 'home-notice' ) || is_active_sidebar( 'home-row-1-col-1' ) || is_active_sidebar( 'home-row-1-col-2' ) || is_active_sidebar( 'home-row-1-col-3' ) || is_active_sidebar( 'home-row-1-col-4' ) ) {
-
-		remove_action( 'genesis_loop', 'genesis_do_loop' );
-		add_action( 'genesis_after_header', 'fortytwo_home_slider_notice' );
-		add_action( 'genesis_loop', 'fortytwo_home_loop_helper' );
-		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-		add_filter( 'body_class', 'add_body_class' );
-
-		function add_body_class( $classes ) {
-   			$classes[] = 'fortytwo';
-  			return $classes;
-		}
-
-	}
+	return $classes;
 }
 
-function fortytwo_home_slider_notice() {
+add_action( 'genesis_after_header', 'fortytwo_add_site_features_section' );
+/**
+ * This adds the .site-features section to the business page template if the widget areas have widgets
+ *
+ * @since 1.0
+ */
+
+function fortytwo_add_site_features_section( $output = '' ) {
 
 
-    if ( is_active_sidebar( 'home-slider' ) ) {
-        echo '<div id="home-slider">';
-        dynamic_sidebar( 'home-slider' );
-        echo '</div><!-- end #home-slider -->';
+    if ( is_active_sidebar( 'page-business-section' ) || is_active_sidebar( 'page-business-section-1' ) ) {
+
+		echo '<div class="site-features">';
+
+		genesis_structural_wrap( 'site-features', 'open' );
+
+		dynamic_sidebar( 'page-business-section' );
+
+		genesis_structural_wrap( 'site-features', 'close' );
+
+		echo '</div>';
+
     }
 
-    if ( is_active_sidebar( 'home-notice' ) ) {
-        echo '<div id="home-notice">';
-        dynamic_sidebar( 'home-notice' );
-        echo '</div><!-- end #home-notice -->';
-    }
 
 }
 

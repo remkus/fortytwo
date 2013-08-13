@@ -48,7 +48,7 @@ function fortytwo_load_google_fonts() {
     wp_enqueue_style( 'google-font-source-sans-pro', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700', array(), PARENT_THEME_VERSION );
 }
 
-// Add support for footer widgets TODO we could do the same add support for fortytwo-content-widgets
+// Add support for footer widgets
 add_theme_support( 'genesis-footer-widgets' );
 
 
