@@ -1,78 +1,84 @@
 // Custom file for navbar to make Bootstrap work with Genesis
 
-
 //
 // Navbar
 // --------------------------------------------------
 .nav-primary {
-  .navbar;
-  border-top: 1px solid #e8e8e8;
-  border-bottom: 1px solid #e8e8e8;
+	.navbar;
+	border-top: 1px solid #e8e8e8;
+	border-bottom: 1px solid #e8e8e8;
 
-  &.affix {
-    .navbar-fixed-top;
-    .navbar-inverse;
-    border-color: #111;
+	// Navbar fixed to the top when the .affix-top class becomes .affix which is controlled by fortytwo.js
+	&.affix {
+		.navbar-fixed-top;
+		.navbar-inverse;
+		border-color: #111;
 
-    .menu-primary > li > a {
-      border-color: #111;
-    }
+		// This is used to add extra space from the top if the .wpadminbar is visible
+		.admin-bar & {
+			top: 28px;
+		}
 
-    & ~ .site-inner-title,
-    & ~ #home-slider {
-      margin-top: 48px;
-    }
-  }
+		.menu-primary > li > a {
+			border-color: #111;
+		}
+
+		& ~ .site-subheader,
+		& ~ #home-slider {
+			margin-top: 48px;
+		}
+	}
 }
 
 .navbar-brand {
-  display: none;
+	display: none;
 
-  .affix & {
-    display: block;
-  }
+	.affix & {
+		display: block;
+	}
 }
 
 .dropdown-menu {
-  border-radius: 0;
-  margin-top: 1px;
-  margin-left: -1px;
-  border-width: 0 1px 1px 1px;
+	border-radius: 0;
+	margin-top: 1px;
+	margin-left: -1px;
+	border-width: 0 1px 1px 1px;
 }
 
 .dropdown-submenu > .dropdown-menu {
-  margin-top: -5px;
+	margin-top: -5px;
 }
 
 .navbar {
-  border-radius: 0;
-  margin-bottom: 0;
+	border-radius: 0;
+	margin-bottom: 0;
 }
 
 .menu-primary {
 
-  .dropdown-menu {
-    min-width: 180px;
-  }
+	.dropdown-menu {
+		min-width: 180px;
+	}
 
-  > li {
+	> li {
 
-    &:first-child a {border-left: 1px solid #e8e8e8;}
+		&:first-child a {
+			border-left: 1px solid #e8e8e8;
+		}
 
-    > a {
-      border-right: 1px solid #e8e8e8;
-    }
+		> a {
+			border-right: 1px solid #e8e8e8;
+		}
 
-    &.open > a {
-      background-color: #f8f8f8;
-    }
+		&.open > a {
+			background-color: #f8f8f8;
+		}
 
-    &.current-menu-parent > a,
-    &.current-menu-item > a,
-    &.open > a {
-      color: @navbar-link-hover-color;
-    }
+		&.current-menu-parent > a,
+		&.current-menu-item > a,
+		&.open > a {
+			color: @navbar-link-hover-color;
+		}
 
-  }
-
+	}
 }
