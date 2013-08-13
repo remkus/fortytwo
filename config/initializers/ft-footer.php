@@ -50,6 +50,7 @@ function fortytwo_insert_footer_widget() {
  */
 function fortytwo_add_widget_count_class( $id ) {
 
+	//TODO: Want to add data attribute for widget order in sidebar data-widget-order='first'... 'second' etc
 	global $wp_registered_sidebars;
 	global $sidebars_widgets;
 

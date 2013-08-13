@@ -52,49 +52,70 @@ function fortytwo_load_google_fonts() {
 add_theme_support( 'genesis-footer-widgets' );
 
 
-
-
 // Register widget areas
-genesis_register_sidebar(array(
-    'id' => 'home-slider',
-    'name' => __('Home Slider', 'fortytwo'),
-    'description' => __('This is the slider section of the homepage.', 'fortytwo'),
-));
-genesis_register_sidebar(array(
-    'id' => 'home-notice',
-    'name' => __('Home Notice', 'fortytwo'),
-    'description' => __('This is the notice section of the homepage.', 'fortytwo'),
-));
-genesis_register_sidebar(array(
-    'id' => 'home-row-1-col-1',
-    'name' => __('Home Row 1 Column 1', 'fortytwo'),
-    'description' => __('This is Column 1 of Row 1 on the homepage.', 'fortytwo'),
-));
-genesis_register_sidebar(array(
-    'id' => 'home-row-1-col-2',
-    'name' => __('Home Row 1 Column 2', 'fortytwo'),
-    'description' => __('This is Column 2 of Row 1 on the homepage.', 'fortytwo'),
-));
-genesis_register_sidebar(array(
-    'id' => 'home-row-1-col-3',
-    'name' => __('Home Row 1 Column 3', 'fortytwo'),
-    'description' => __('This is Column 3 of Row 1 on the homepage.', 'fortytwo'),
-));
-genesis_register_sidebar(array(
-    'id' => 'home-row-1-col-4',
-    'name' => __('Home Row 1 Column 4', 'fortytwo'),
-    'description' => __('This is Column 4 of Row 1 on the homepage.', 'fortytwo'),
-));
-genesis_register_sidebar(array(
-    'id' => 'home-row-2-col-1',
-    'name' => __('Home Row 2 Column 1', 'fortytwo'),
-    'description' => __('This is Column 1 of Row 1 on the homepage.', 'fortytwo'),
-));
-genesis_register_sidebar(array(
-    'id' => 'home-row-2-col-2',
-    'name' => __('Home Row 2 Column 2', 'fortytwo'),
-    'description' => __('This is Column 2 of Row 2 on the homepage.', 'fortytwo'),
-));
+genesis_register_sidebar(
+	array(
+		'id'          => 'home-slider',
+		'name'        => __( 'Home Slider', 'fortytwo' ),
+		'description' => __( 'This is the slider section of the homepage.', 'fortytwo' ),
+	)
+);
+
+genesis_register_sidebar(
+	array(
+		'id'          => 'home-notice',
+		'name'        => __( 'Home Notice', 'fortytwo' ),
+		'description' => __( 'This is the notice section of the homepage.', 'fortytwo' ),
+	)
+);
+
+genesis_register_sidebar(
+	array(
+		'id'          => 'home-row-1-col-1',
+		'name'        => __( 'Home Row 1 Column 1', 'fortytwo' ),
+		'description' => __( 'This is Column 1 of Row 1 on the homepage.', 'fortytwo' ),
+	)
+);
+
+genesis_register_sidebar(
+	array(
+		'id'          => 'home-row-1-col-2',
+		'name'        => __( 'Home Row 1 Column 2', 'fortytwo' ),
+		'description' => __( 'This is Column 2 of Row 1 on the homepage.', 'fortytwo' ),
+	)
+);
+
+genesis_register_sidebar(
+	array(
+		'id'          => 'home-row-1-col-3',
+		'name'        => __( 'Home Row 1 Column 3', 'fortytwo' ),
+		'description' => __( 'This is Column 3 of Row 1 on the homepage.', 'fortytwo' ),
+	)
+);
+
+genesis_register_sidebar(
+	array(
+		'id'          => 'home-row-1-col-4',
+		'name'        => __( 'Home Row 1 Column 4', 'fortytwo' ),
+		'description' => __( 'This is Column 4 of Row 1 on the homepage.', 'fortytwo' ),
+	)
+);
+
+genesis_register_sidebar(
+	array(
+		'id'          => 'home-row-2-col-1',
+		'name'        => __( 'Home Row 2 Column 1', 'fortytwo' ),
+		'description' => __( 'This is Column 1 of Row 1 on the homepage.', 'fortytwo' ),
+	)
+);
+
+genesis_register_sidebar(
+	array(
+		'id'          => 'home-row-2-col-2',
+		'name'        => __( 'Home Row 2 Column 2', 'fortytwo' ),
+		'description' => __( 'This is Column 2 of Row 2 on the homepage.', 'fortytwo' ),
+	)
+);
 
 // Registering the sidebar for our footer columns
 genesis_register_sidebar(
