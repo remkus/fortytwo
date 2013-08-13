@@ -21,6 +21,8 @@ require_once 'ft-cleanup.php';
 
 require_once 'ft-scripts.php';
 
+require_once 'ft-widget-areas.php';
+
 require_once 'ft-structual.php';
 
 require_once 'ft-nav.php';
