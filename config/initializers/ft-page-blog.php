@@ -31,11 +31,11 @@
 
 // Modify the blog page template, new FortyTwo layout
 
-remove_action( 'genesis_entry_header', 'genesis_do_post_format_image', 5 );
-remove_action( 'genesis_entry_content', 'genesis_do_post_image' );
+remove_action( 'genesis_entry_header', 'genesis_do_post_format_image', 4 );
+remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 
-add_action( 'genesis_entry_header', 'fortytwo_do_post_image', 1 );
+add_action( 'genesis_entry_header', 'fortytwo_do_post_image', 4 );
 /**
  * Echo the post image on blog layout pages.
  *
