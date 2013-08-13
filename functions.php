@@ -55,22 +55,6 @@ add_theme_support( 'genesis-footer-widgets' );
 // Register widget areas
 genesis_register_sidebar(
 	array(
-		'id'          => 'home-slider',
-		'name'        => __( 'Home Slider', 'fortytwo' ),
-		'description' => __( 'This is the slider section of the homepage.', 'fortytwo' ),
-	)
-);
-
-genesis_register_sidebar(
-	array(
-		'id'          => 'home-notice',
-		'name'        => __( 'Home Notice', 'fortytwo' ),
-		'description' => __( 'This is the notice section of the homepage.', 'fortytwo' ),
-	)
-);
-
-genesis_register_sidebar(
-	array(
 		'id'          => 'home-row-1-col-1',
 		'name'        => __( 'Home Row 1 Column 1', 'fortytwo' ),
 		'description' => __( 'This is Column 1 of Row 1 on the homepage.', 'fortytwo' ),
