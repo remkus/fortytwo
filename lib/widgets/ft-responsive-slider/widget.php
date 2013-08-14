@@ -134,7 +134,6 @@ function ft_responsive_slider_head() {
 	$horizontal = ft_get_responsive_slider_option( 'location_horizontal' );
 	$display = ( ft_get_responsive_slider_option( 'posts_num' ) >= 2 && ft_get_responsive_slider_option( 'slideshow_arrows' ) ) ? 'top: ' . $slideNavTop . 'px' : 'display: none';
 
-	$hide_mobile = ft_get_responsive_slider_option( 'slideshow_hide_mobile' );
 	$slideshow_pager = ft_get_responsive_slider_option( 'slideshow_pager' ) ;
 
 	echo '
@@ -145,17 +144,6 @@ function ft_responsive_slider_head() {
 			.flexslider { max-width: ' . $width . 'px; max-height: ' . $height . 'px; }
 			.slide-image { max-height: ' . $height . 'px; }
 		</style>';
-
-	if ( $hide_mobile == 1 ) {
-		echo '
-		<style type="text/css">
-			@media only screen
-			and (min-device-width : 320px)
-			and (max-device-width : 480px) {
-				.slide-excerpt { display: none !important; }
-			}
-		</style> ';
-	}
 }
 
 /**
@@ -177,7 +165,7 @@ function ft_responsive_slider_flexslider_params() {
 					controlNav: ' . $controlnav . ',
 					animationDuration: ' . $duration . ',
 					slideshowSpeed: ' . $timer . ',
-          useCSS: false
+					useCSS: false
 			    });
 			  });';
 
@@ -315,51 +303,58 @@ class ft_responsive_sliderWidget extends WP_Widget {
 			$show_limit = ft_get_responsive_slider_option( 'slideshow_excerpt_content_limit' );
 			$more_text = ft_get_responsive_slider_option( 'slideshow_more_text' );
 			$no_image_link = ft_get_responsive_slider_option( 'slideshow_no_link' );
+			$hide_mobile = ( ft_get_responsive_slider_option( 'slideshow_hide_mobile' ) == 1 ? ' hidden-xs' : '' );
 		}
-		while ( $slider_posts->have_posts() ) : $slider_posts->the_post();
-?>
-					<li>
+					while ( $slider_posts->have_posts() ) : $slider_posts->the_post();
+						?>
+						<li>
 
-					<?php if ( $show_excerpt == 1 || $show_title == 1 ) { ?>
-						<div class="slide-excerpt slide-<?php the_ID(); ?>">
-							<div class="slide-background"></div><!-- end .slide-background -->
-							<div class="slide-excerpt-border ">
+						<?php if ( $show_excerpt == 1 || $show_title == 1 ) { ?>
+							<div class="slide-excerpt slide-<?php the_ID(); ?><?php echo $hide_mobile ?>">
+								<div class="slide-background"></div>
+								<!-- end .slide-background -->
+								<div class="slide-excerpt-border ">
+									<?php
+									if ( $show_title == 1 ) {
+										?>
+										<h2><a href="<?php the_permalink() ?>"
+											   rel="bookmark"><?php the_title(); ?></a></h2>
+									<?php
+									}
+									if ( $show_excerpt ) {
+										if ( $show_type != 'full' )
+											the_excerpt();
+										elseif ( $show_limit )
+											the_content_limit( (int)$show_limit, esc_html( $more_text ) ); else
+											the_content( esc_html( $more_text ) );
+									}
+									?>
+								</div>
+								<!-- end .slide-excerpt-border  -->
+							</div><!-- end .slide-excerpt -->
+						<?php } ?>
+
+							<div class="slide-image">
 								<?php
-			if ( $show_title == 1 ) {
-?>
-								<h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+								if ( $no_image_link ) {
+									?>
+									<img src="<?php genesis_image( 'format=url&size=slider' ); ?>"
+										 alt="<?php the_title(); ?>"/>
 								<?php
-			}
-			if ( $show_excerpt ) {
-				if ( $show_type != 'full' )
-					the_excerpt();
-				elseif ( $show_limit )
-					the_content_limit( (int)$show_limit, esc_html( $more_text ) );
-				else
-					the_content( esc_html( $more_text ) );
-			}
-?>
-							</div><!-- end .slide-excerpt-border  -->
-						</div><!-- end .slide-excerpt -->
-					<?php } ?>
+								} else {
+									?>
+									<a href="<?php the_permalink() ?>" rel="bookmark"><img
+											src="<?php genesis_image( 'format=url&size=slider' ); ?>"
+											alt="<?php the_title(); ?>"/></a>
+								<?php
 
-						<div class="slide-image">
-					<?php
-		if ( $no_image_link ) {
-?>
-							<img src="<?php genesis_image( 'format=url&size=slider' ); ?>" alt="<?php the_title(); ?>" />
-					<?php
-		} else {
-?>
-							<a href="<?php the_permalink() ?>" rel="bookmark"><img src="<?php genesis_image( 'format=url&size=slider' ); ?>" alt="<?php the_title(); ?>" /></a>
-					<?php
+								}
+								?>
+							</div>
+							<!-- end .slide-image -->
 
-		} // $no_image_link
-?>
-						</div><!-- end .slide-image -->
-
-					</li>
-				<?php endwhile; ?>
+						</li>
+					<?php endwhile; ?>
 				</ul><!-- end ul.slides -->
 			</div><!-- end .flexslider -->
 		</div><!-- end #ft-responsive-slider -->
