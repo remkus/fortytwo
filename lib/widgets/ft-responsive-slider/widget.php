@@ -157,7 +157,7 @@ function ft_responsive_slider_flexslider_params() {
 
 	$output = 'jQuery(document).ready(function($) {
 				$(".slider-inner").flexslider({
-					controlsContainer: ".ft-responsive-slider",
+					controlsContainer: ".ft-responsive-slider > .widget-wrap",
 					animation: "' . esc_js( $effect ) . '",
 					directionNav: ' . $directionnav . ',
 					controlNav: ' . $controlnav . ',
@@ -200,8 +200,8 @@ class ft_responsive_sliderWidget extends WP_Widget {
 
 	function ft_responsive_sliderWidget() {
 		$widget_ops = array( 'classname' => 'ft-responsive-slider', 'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' ) );
-		$control_ops = array( 'width' => 200, 'height' => 250, 'id_base' => 'ftresponsiveslider-widget' );
-		$this->WP_Widget( 'ftresponsiveslider-widget', __( 'FortyTwo - Responsive Slider', 'fortytwo' ), $widget_ops, $control_ops );
+		$control_ops = array( 'width' => 200, 'height' => 250, 'id_base' => 'ft-responsive-slider' );
+		$this->WP_Widget( 'ft-responsive-slider', __( 'FortyTwo - Responsive Slider', 'fortytwo' ), $widget_ops, $control_ops );
 	}
 
 	function save_settings( $settings ) {
