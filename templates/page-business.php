@@ -25,6 +25,7 @@ add_filter( 'body_class', 'fortytwo_add_body_classes' );
  * @return string Body classes.
  */
 function fortytwo_add_body_classes( $classes ) {
+
 	$classes[] = 'fortytwo fortytwo-page-business';
 
 	return $classes;
@@ -81,6 +82,15 @@ function fortytwo_add_section_in_loop() {
 
 	}
 
+	if ( is_active_sidebar( 'page-business-section-4' ) ) {
+
+		fortytwo_add_widget_count_class( 'page-business-section-4' );
+
+		echo '<div class="site-section-4">';
+			dynamic_sidebar( 'page-business-section-4' );
+		echo '</div>';
+
+	}
 }
 
 genesis();
