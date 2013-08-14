@@ -102,7 +102,16 @@ function ft_responsive_slider_settings_scripts() {
 	wp_enqueue_script( 'common' );
 	wp_enqueue_script( 'wp-lists' );
 	wp_enqueue_script( 'postbox' );
+	wp_enqueue_script( 'jquery-ui-slider' );
 	wp_enqueue_script( 'ft_responsive_slider_admin_scripts', ft_responsive_slider_url( '/js/admin.js' ), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, TRUE );
+
+	wp_enqueue_style ( 'jquery-ui-styles', ft_responsive_slider_url( '/css/jquery-ui-styles.css' ) );
+
+	if ( 'classic' == get_user_option( 'admin_color') )
+		wp_enqueue_style ( 'jquery-ui-css', ft_responsive_slider_url( '/css/jquery-ui-classic.css' ) );
+	else
+		wp_enqueue_style ( 'jquery-ui-css', ft_responsive_slider_url( '/css/jquery-ui-fresh.css' ) );
+
 }
 
 /*
@@ -386,6 +395,7 @@ function ft_responsive_slider_options_box() {
 					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]"><?php _e( 'Slider Excerpt Width (in percentage)', 'fortytwo' ); ?>:
 					<input type="text" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]" value="<?php echo ft_get_responsive_slider_option( 'slideshow_excerpt_width' ); ?>" size="5" /></label>
 				</p>
+				<div id="slider"></div>
 
 				<p>
 					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_vertical]"><?php _e( 'Excerpt Location (vertical)', 'fortytwo' ); ?>:</label>
