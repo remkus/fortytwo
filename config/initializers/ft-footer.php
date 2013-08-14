@@ -40,22 +40,3 @@ function fortytwo_insert_footer_widget() {
 	echo '</div>';
 
 }
-
-/**
- * Function calculates the number of widgets in a sidebar and then calculates
- * the number of columns each widget requires based on no. of widgets.
- *
- * We then alter the specific sidebar's before_widget value
- *
- */
-function fortytwo_add_widget_count_class( $id ) {
-
-	//TODO: Want to add data attribute for widget order in sidebar data-widget-order='first'... 'second' etc
-	global $wp_registered_sidebars;
-	global $sidebars_widgets;
-
-	$widget_count_class = ' col-' . ( 12 / ( count ( $sidebars_widgets[$id] ) ) );
-
-	$wp_registered_sidebars[$id]['before_widget'] = '<section id="%1$s" class="widget %2$s' . $widget_count_class . '"><div class="widget-wrap">';
-
-}

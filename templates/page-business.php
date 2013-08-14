@@ -4,21 +4,15 @@
  * The file handles the default business layout of FortyTwo.
  *
  * @category FortyTwo
- * @package  Templates
- * @author   Forsite Themes
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link     http://www.forsitethemes.com/
+ * @package  Templates
+ * @author   Forsite Themes
+ * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
+ * @link     http://www.forsitethemes.com/
  */
 
 
 remove_action( 'genesis_loop', 'genesis_do_loop' );
-
-add_action( 'genesis_loop', 'fortytwo_home_loop_helper' );
-
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-
-
-
 
 add_filter( 'body_class', 'fortytwo_add_body_classes' );
 /**
@@ -36,82 +30,56 @@ function fortytwo_add_body_classes( $classes ) {
 	return $classes;
 }
 
-add_action( 'genesis_after_header', 'fortytwo_add_page_business_sections' );
+add_action( 'genesis_after_header', 'fortytwo_add_section_after_header' );
 /**
- * This adds the .page-home-section-1 section to the business page template if the widget area has widgets
+ * This adds the page-business-section to the business page template if the widget area has widgets
  *
  * @since 1.0
  */
-
-function fortytwo_add_page_business_sections() {
+function fortytwo_add_section_after_header() {
 
 	if ( is_active_sidebar( 'page-business-section' ) ) {
 		echo '<div class="site-section">';
 
-			genesis_structural_wrap( 'site-section', 'open' );
-				dynamic_sidebar( 'page-business-section' );
-			genesis_structural_wrap( 'site-section', 'close' );
-
-		echo '</div>';
-	}
-
-	if ( is_active_sidebar( 'page-business-section-2' ) ) {
-		echo '<div class="site-section-2">';
-
-			genesis_structural_wrap( 'site-section', 'open' );
-				dynamic_sidebar( 'page-business-section-2' );
-			genesis_structural_wrap( 'site-section', 'close' );
+		genesis_structural_wrap( 'site-section', 'open' );
+		dynamic_sidebar( 'page-business-section' );
+		genesis_structural_wrap( 'site-section', 'close' );
 
 		echo '</div>';
 	}
 
 }
 
-function fortytwo_home_loop_helper() {
+add_action( 'genesis_loop', 'fortytwo_add_section_in_loop' );
+/**
+ * This adds the page-business-section 2-4 to the business page template if the widget areas have widgets
+ *
+ * @since 1.0
+ */
+function fortytwo_add_section_in_loop() {
 
-    echo '<div class="container">';
+//	global $wp_registered_sidebars;
+//	global $sidebars_widgets;
 
-    if ( is_active_sidebar( 'home-row-1-col-1' ) || is_active_sidebar( 'home-row-1-col-2' ) || is_active_sidebar( 'home-row-1-col-3' ) || is_active_sidebar( 'home-row-1-col-4' ) ) {
+	if ( is_active_sidebar( 'page-business-section-2' ) ) {
 
-        echo '<div class="row">';
+		fortytwo_add_widget_count_class( 'page-business-section-2' );
 
-            echo '<div class="col col-lg-3">';
-            dynamic_sidebar( 'home-row-1-col-1' );
-            echo '</div><!-- end .home-row-1-col-1 -->';
+		echo '<div class="site-section-2">';
+			dynamic_sidebar( 'page-business-section-2' );
+		echo '</div>';
 
-            echo '<div class="col col-lg-3">';
-            dynamic_sidebar( 'home-row-1-col-2' );
-            echo '</div><!-- end .home-row-1-col-2 -->';
+	}
 
-            echo '<div class="col col-lg-3">';
-            dynamic_sidebar( 'home-row-1-col-3' );
-            echo '</div><!-- end .home-row-1-col-3 -->';
+	if ( is_active_sidebar( 'page-business-section-3' ) ) {
 
-            echo '<div class="col col-lg-3">';
-            dynamic_sidebar( 'home-row-1-col-4' );
-            echo '</div><!-- end .home-row-1-col-4 -->';
+		fortytwo_add_widget_count_class( 'page-business-section-3' );
 
-        echo '</div>';
+		echo '<div class="site-section-3">';
+			dynamic_sidebar( 'page-business-section-3' );
+		echo '</div>';
 
-    }
-
-    if ( is_active_sidebar( 'home-row-2-col-1' ) || is_active_sidebar( 'home-row-2-col-2' ) ) {
-
-        echo '<div class="row">';
-
-            echo '<div class="col col-lg-7">';
-            dynamic_sidebar( 'home-row-2-col-1' );
-            echo '</div><!-- end .home-row-2-col-1 -->';
-
-            echo '<div class="col col-lg-5">';
-            dynamic_sidebar( 'home-row-2-col-2' );
-            echo '</div><!-- end .home-row-2-col-2 -->';
-
-        echo '</div>';
-
-    }
-
-    echo '</div>';
+	}
 
 }
 
