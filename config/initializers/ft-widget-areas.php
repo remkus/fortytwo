@@ -15,11 +15,11 @@ add_action( 'after_setup_theme', 'fortytwo_register_widget_areas' );
  */
 function fortytwo_register_widget_areas() {
 	$page_business_widget_areas = array(
-		'name'          => __( 'Page > Business > Section %d', 'fortytwo' ),
-		'id'            => "page-business-section",
+		'name'          => __( 'Business > Section %d', 'fortytwo' ),
+		'id'            => 'page-business-section',
 		'description'   => __( 'Widgets  areas for sections of the Business Page Template' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-wrap">',
-		'after_widget'  => '</section>',
+		'after_widget'  => '</div></section>',
 		'before_title'  => '<h4 class="widget-title widgettitle">',
 		'after_title'   => '</h4>'
 	);

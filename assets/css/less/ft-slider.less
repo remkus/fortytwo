@@ -4,7 +4,7 @@
 // Slider
 // --------------------------------------------------
 
-.site-section {
+.section-1 {
 	background: #f9f9f9;
 	border-bottom: 1px solid #e8e8e8;
 	max-height: 340px;
@@ -12,16 +12,33 @@
 	padding: 40px 0;
 
 	.ft-responsive-slider {
-		.make-column(12);
 
-		.slides > li {
-			position: relative;
-	  		display: block;
+		.widget-wrap {
 			.make-row();
 		}
+
+		.slider-inner {
+			overflow: hidden;
+			width: 100%;
+		}
+
+		.slides {
+			.clearfix();
+
+			> li {
+				position: relative;
+				display: block;
+			}
+
+			.slide-image {
+				> img,
+				> a > img {
+					.img-responsive();
+					line-height: 1;
+				}
+			}
+		}
 	}
-
-
 
 
 /*	li {

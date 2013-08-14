@@ -26,7 +26,7 @@ add_filter( 'body_class', 'fortytwo_add_body_classes' );
  */
 function fortytwo_add_body_classes( $classes ) {
 
-	$classes[] = 'fortytwo fortytwo-page-business';
+	$classes[] = 'fortytwo ft-page-business';
 
 	return $classes;
 }
@@ -40,10 +40,12 @@ add_action( 'genesis_after_header', 'fortytwo_add_section_after_header' );
 function fortytwo_add_section_after_header() {
 
 	if ( is_active_sidebar( 'page-business-section' ) ) {
-		echo '<div class="site-section">';
+		echo '<div class="section-container section-1">';
+
+		fortytwo_add_widget_count_class( 'page-business-section' );
 
 		genesis_structural_wrap( 'site-section', 'open' );
-		dynamic_sidebar( 'page-business-section' );
+			dynamic_sidebar( 'page-business-section' );
 		genesis_structural_wrap( 'site-section', 'close' );
 
 		echo '</div>';
@@ -66,7 +68,7 @@ function fortytwo_add_section_in_loop() {
 
 		fortytwo_add_widget_count_class( 'page-business-section-2' );
 
-		echo '<div class="site-section-2">';
+		echo '<div class="section-container section-2">';
 			dynamic_sidebar( 'page-business-section-2' );
 		echo '</div>';
 
@@ -76,7 +78,7 @@ function fortytwo_add_section_in_loop() {
 
 		fortytwo_add_widget_count_class( 'page-business-section-3' );
 
-		echo '<div class="site-section-3">';
+		echo '<div class="section-container section-3">';
 			dynamic_sidebar( 'page-business-section-3' );
 		echo '</div>';
 
@@ -86,7 +88,7 @@ function fortytwo_add_section_in_loop() {
 
 		fortytwo_add_widget_count_class( 'page-business-section-4' );
 
-		echo '<div class="site-section-4">';
+		echo '<div class="section-container section-4">';
 			dynamic_sidebar( 'page-business-section-4' );
 		echo '</div>';
 
