@@ -127,7 +127,6 @@ function ft_responsive_slider_head() {
 	$height = ( int ) ft_get_responsive_slider_option( 'slideshow_height' );
 	$width = ( int ) ft_get_responsive_slider_option( 'slideshow_width' );
 
-	$slideInfoWidth = ( int ) ft_get_responsive_slider_option( 'slideshow_excerpt_width' );
 	$slideNavTop = ( int ) ( ( $height - 60 ) * .5 );
 
 	$vertical = ft_get_responsive_slider_option( 'location_vertical' );
@@ -138,7 +137,6 @@ function ft_responsive_slider_head() {
 
 	echo '
 		<style type="text/css">
-			.slide-excerpt { width: ' . $slideInfoWidth . '%; }
 			.slide-excerpt { ' . $vertical . ': 0; }
 			.slide-excerpt { '. $horizontal . ': 0; }
 			.flexslider { max-width: ' . $width . 'px; max-height: ' . $height . 'px; }
@@ -158,7 +156,7 @@ function ft_responsive_slider_flexslider_params() {
 	$directionnav = ft_get_responsive_slider_option( 'slideshow_arrows' );
 
 	$output = 'jQuery(document).ready(function($) {
-				$(".flexslider").flexslider({
+				$(".slider-inner").flexslider({
 					controlsContainer: ".ft-responsive-slider",
 					animation: "' . esc_js( $effect ) . '",
 					directionNav: ' . $directionnav . ',
@@ -303,6 +301,9 @@ class ft_responsive_sliderWidget extends WP_Widget {
 		$more_text = ft_get_responsive_slider_option( 'slideshow_more_text' );
 		$no_image_link = ft_get_responsive_slider_option( 'slideshow_no_link' );
 
+		$slide_excerpt_col = ( int ) ft_get_responsive_slider_option( 'slideshow_excerpt_width' );
+		$slide_image_col = 12 - $slide_excerpt_col;
+
 		if ( ft_get_responsive_slider_option( 'slideshow_hide_mobile' ) == 1 ) {
 			$hide_mobile = array(
 				'hide_excerpt'   => ' hidden-xs',
@@ -321,7 +322,7 @@ class ft_responsive_sliderWidget extends WP_Widget {
 					<li class="slide-<?php the_ID(); ?>">
 
 					<?php if ( $show_excerpt == 1 || $show_title == 1 ) { ?>
-						<div class="slide-excerpt<?php echo $hide_mobile['hide_excerpt'] ?>">
+						<div class="slide-excerpt col-<?php echo $slide_excerpt_col ?><?php echo $hide_mobile['hide_excerpt'] ?>">
 							<?php
 							if ( $show_title == 1 ) {
 								?>
@@ -340,7 +341,7 @@ class ft_responsive_sliderWidget extends WP_Widget {
 						</div>
 					<?php } ?>
 
-						<div class="slide-image<?php echo $hide_mobile['add_image_cols'] ?>">
+						<div class="slide-image col-<?php echo $slide_image_col ?><?php echo $hide_mobile['add_image_cols'] ?>">
 							<?php
 							if ( $no_image_link ) {
 								?>
