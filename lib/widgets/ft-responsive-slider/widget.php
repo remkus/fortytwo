@@ -119,7 +119,7 @@ function ft_responsive_slider_flexslider_params() {
 
 	$output = 'jQuery(document).ready(function($) {
 				$(".slider-inner").flexslider({
-					controlsContainer: ".slider-nav",
+					controlsContainer: ".slider-inner",
 					animation: "' . esc_js( $effect ) . '",
 					directionNav: ' . $directionnav . ',
 					controlNav: ' . $controlnav . ',
@@ -338,9 +338,6 @@ class ft_responsive_sliderWidget extends WP_Widget {
 			</ul>
 		</div>
 <?php
-		if ( $controlnav || $directionnav ) {
-			echo '<div class="slider-nav invisible"></div>';
-		}
 
 		echo $after_widget;
 		wp_reset_query();
