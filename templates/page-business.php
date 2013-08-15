@@ -4,98 +4,95 @@
  * The file handles the default business layout of FortyTwo.
  *
  * @category FortyTwo
- * @package  Templates
- * @author   Forsite Themes
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link     http://www.forsitethemes.com/
+ * @package  Templates
+ * @author   Forsite Themes
+ * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
+ * @link     http://www.forsitethemes.com/
  */
 
-add_action( 'genesis_meta', 'ft_home_genesis_meta' );
+
+remove_action( 'genesis_loop', 'genesis_do_loop' );
+add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
+add_filter( 'body_class', 'fortytwo_add_body_classes' );
 /**
- * Add widget support for homepage. If no widgets active, display the default loop.
+ * Add body classes to identify that this is fortytwo and it is the business page template
  *
+ * @since 1.0
+ *
+ * @param string $classes Existing body classes.
+ *
+ * @return string Body classes.
  */
-function ft_home_genesis_meta() {
+function fortytwo_add_body_classes( $classes ) {
 
-	if ( is_active_sidebar( 'home-slider' ) || is_active_sidebar( 'home-notice' ) || is_active_sidebar( 'home-row-1-col-1' ) || is_active_sidebar( 'home-row-1-col-2' ) || is_active_sidebar( 'home-row-1-col-3' ) || is_active_sidebar( 'home-row-1-col-4' ) ) {
+	$classes[] = 'fortytwo ft-page-business';
 
-		remove_action( 'genesis_loop', 'genesis_do_loop' );
-		add_action( 'genesis_after_header', 'fortytwo_home_slider_notice' );
-		add_action( 'genesis_loop', 'fortytwo_home_loop_helper' );
-		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-		add_filter( 'body_class', 'add_body_class' );
+	return $classes;
+}
 
-		function add_body_class( $classes ) {
-   			$classes[] = 'fortytwo';
-  			return $classes;
-		}
+add_action( 'genesis_after_header', 'fortytwo_add_section_after_header' );
+/**
+ * This adds the page-business-section to the business page template if the widget area has widgets
+ *
+ * @since 1.0
+ */
+function fortytwo_add_section_after_header() {
+
+	if ( is_active_sidebar( 'page-business-section' ) ) {
+		echo '<div class="section-container section-1">';
+
+		fortytwo_add_widget_count_class( 'page-business-section' );
+
+		genesis_structural_wrap( 'site-section', 'open' );
+			dynamic_sidebar( 'page-business-section' );
+		genesis_structural_wrap( 'site-section', 'close' );
+
+		echo '</div>';
+	}
+
+}
+
+add_action( 'genesis_loop', 'fortytwo_add_section_in_loop' );
+/**
+ * This adds the page-business-section 2-4 to the business page template if the widget areas have widgets
+ *
+ * @since 1.0
+ */
+function fortytwo_add_section_in_loop() {
+
+//	global $wp_registered_sidebars;
+//	global $sidebars_widgets;
+
+	if ( is_active_sidebar( 'page-business-section-2' ) ) {
+
+		fortytwo_add_widget_count_class( 'page-business-section-2' );
+
+		echo '<div class="section-container section-2">';
+			dynamic_sidebar( 'page-business-section-2' );
+		echo '</div>';
 
 	}
-}
 
-function fortytwo_home_slider_notice() {
+	if ( is_active_sidebar( 'page-business-section-3' ) ) {
 
+		fortytwo_add_widget_count_class( 'page-business-section-3' );
 
-    if ( is_active_sidebar( 'home-slider' ) ) {
-        echo '<div id="home-slider">';
-        dynamic_sidebar( 'home-slider' );
-        echo '</div><!-- end #home-slider -->';
-    }
+		echo '<div class="section-container section-3">';
+			dynamic_sidebar( 'page-business-section-3' );
+		echo '</div>';
 
-    if ( is_active_sidebar( 'home-notice' ) ) {
-        echo '<div id="home-notice">';
-        dynamic_sidebar( 'home-notice' );
-        echo '</div><!-- end #home-notice -->';
-    }
+	}
 
-}
+	if ( is_active_sidebar( 'page-business-section-4' ) ) {
 
-function fortytwo_home_loop_helper() {
+		fortytwo_add_widget_count_class( 'page-business-section-4' );
 
-    echo '<div class="container">';
+		echo '<div class="section-container section-4">';
+			dynamic_sidebar( 'page-business-section-4' );
+		echo '</div>';
 
-    if ( is_active_sidebar( 'home-row-1-col-1' ) || is_active_sidebar( 'home-row-1-col-2' ) || is_active_sidebar( 'home-row-1-col-3' ) || is_active_sidebar( 'home-row-1-col-4' ) ) {
-
-        echo '<div class="row">';
-
-            echo '<div class="col col-lg-3">';
-            dynamic_sidebar( 'home-row-1-col-1' );
-            echo '</div><!-- end .home-row-1-col-1 -->';
-
-            echo '<div class="col col-lg-3">';
-            dynamic_sidebar( 'home-row-1-col-2' );
-            echo '</div><!-- end .home-row-1-col-2 -->';
-
-            echo '<div class="col col-lg-3">';
-            dynamic_sidebar( 'home-row-1-col-3' );
-            echo '</div><!-- end .home-row-1-col-3 -->';
-
-            echo '<div class="col col-lg-3">';
-            dynamic_sidebar( 'home-row-1-col-4' );
-            echo '</div><!-- end .home-row-1-col-4 -->';
-
-        echo '</div>';
-
-    }
-
-    if ( is_active_sidebar( 'home-row-2-col-1' ) || is_active_sidebar( 'home-row-2-col-2' ) ) {
-
-        echo '<div class="row">';
-
-            echo '<div class="col col-lg-7">';
-            dynamic_sidebar( 'home-row-2-col-1' );
-            echo '</div><!-- end .home-row-2-col-1 -->';
-
-            echo '<div class="col col-lg-5">';
-            dynamic_sidebar( 'home-row-2-col-2' );
-            echo '</div><!-- end .home-row-2-col-2 -->';
-
-        echo '</div>';
-
-    }
-
-    echo '</div>';
-
+	}
 }
 
 genesis();

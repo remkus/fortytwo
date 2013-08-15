@@ -102,7 +102,16 @@ function ft_responsive_slider_settings_scripts() {
 	wp_enqueue_script( 'common' );
 	wp_enqueue_script( 'wp-lists' );
 	wp_enqueue_script( 'postbox' );
+	wp_enqueue_script( 'jquery-ui-slider' );
 	wp_enqueue_script( 'ft_responsive_slider_admin_scripts', ft_responsive_slider_url( '/js/admin.js' ), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, TRUE );
+
+	wp_enqueue_style ( 'jquery-ui-styles', ft_responsive_slider_url( '/css/jquery-ui-styles.css' ) );
+
+	if ( 'classic' == get_user_option( 'admin_color') )
+		wp_enqueue_style ( 'jquery-ui-css', ft_responsive_slider_url( '/css/jquery-ui-classic.css' ) );
+	else
+		wp_enqueue_style ( 'jquery-ui-css', ft_responsive_slider_url( '/css/jquery-ui-fresh.css' ) );
+
 }
 
 /*
@@ -140,7 +149,8 @@ function ft_responsive_slider_settings_admin() {
 	$width = "width: 99%;";
 	$hide2 = $hide3 = " display: none;";
 ?>
-		<div id="gs" class="wrap ft-metaboxes">
+
+		<div id="gs" class="wrap genesis-metaboxes">
 		<form method="post" action="options.php">
 
 			<?php wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false ); ?>
@@ -383,7 +393,7 @@ function ft_responsive_slider_options_box() {
 				<p><span class="description"><?php _e( 'Using this option will limit the text and strip all formatting from the text displayed. To use this option, choose "Display post content" in the select box above.', 'fortytwo' ); ?></span></p>
 
 				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]"><?php _e( 'Slider Excerpt Width (in percentage)', 'fortytwo' ); ?>:
+					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]"><?php _e( 'Slider Excerpt Width in Columns (1-12)', 'fortytwo' ); ?>:
 					<input type="text" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]" value="<?php echo ft_get_responsive_slider_option( 'slideshow_excerpt_width' ); ?>" size="5" /></label>
 				</p>
 
