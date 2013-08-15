@@ -45,8 +45,6 @@ function FTResponsiveSliderInit() {
 
   // hook all frontend slider functions here to ensure Genesis is active **/
 	add_action( 'wp_enqueue_scripts', 'ft_responsive_slider_scripts' );
-//	add_action( 'wp_print_styles', 'ft_responsive_slider_styles' );
-//	add_action( 'wp_head', 'ft_responsive_slider_head', 1 );
 	add_action( 'wp_footer', 'ft_responsive_slider_flexslider_params' );
 	add_action( 'widgets_init', 'ft_responsive_sliderRegister' );
 
@@ -109,42 +107,6 @@ function ft_responsive_slider_scripts() {
 }
 
 /**
- * Load the CSS files
- */
-function ft_responsive_slider_styles() {
-
-	/* standard slideshow styles */
-	wp_register_style( 'slider_styles', ft_responsive_slider_url( '/css/style.css' ), array(), FT_RESPONSIVE_SLIDER_VERSION );
-	wp_enqueue_style( 'slider_styles' );
-
-}
-
-/**
- * Loads scripts and styles via wp_head hook.
- */
-function ft_responsive_slider_head() {
-
-	$height = ( int ) ft_get_responsive_slider_option( 'slideshow_height' );
-	$width = ( int ) ft_get_responsive_slider_option( 'slideshow_width' );
-
-	$slideNavTop = ( int ) ( ( $height - 60 ) * .5 );
-
-	$vertical = ft_get_responsive_slider_option( 'location_vertical' );
-	$horizontal = ft_get_responsive_slider_option( 'location_horizontal' );
-	$display = ( ft_get_responsive_slider_option( 'posts_num' ) >= 2 && ft_get_responsive_slider_option( 'slideshow_arrows' ) ) ? 'top: ' . $slideNavTop . 'px' : 'display: none';
-
-	$slideshow_pager = ft_get_responsive_slider_option( 'slideshow_pager' ) ;
-
-	echo '
-		<style type="text/css">
-			.slide-excerpt { ' . $vertical . ': 0; }
-			.slide-excerpt { '. $horizontal . ': 0; }
-			.flexslider { max-width: ' . $width . 'px; max-height: ' . $height . 'px; }
-			.slide-image { max-height: ' . $height . 'px; }
-		</style>';
-}
-
-/**
  * Outputs slider script on wp_footer hook.
  */
 function ft_responsive_slider_flexslider_params() {
@@ -157,12 +119,14 @@ function ft_responsive_slider_flexslider_params() {
 
 	$output = 'jQuery(document).ready(function($) {
 				$(".slider-inner").flexslider({
-					controlsContainer: ".ft-responsive-slider > .widget-wrap",
+					controlsContainer: ".slider-nav",
 					animation: "' . esc_js( $effect ) . '",
 					directionNav: ' . $directionnav . ',
 					controlNav: ' . $controlnav . ',
 					animationSpeed: ' . $duration . ',
 					slideshowSpeed: ' . $timer . ',
+					prevText: "",
+					nextText: "",
 					useCSS: false
 			    });
 			  });';
@@ -301,6 +265,9 @@ class ft_responsive_sliderWidget extends WP_Widget {
 		$more_text = ft_get_responsive_slider_option( 'slideshow_more_text' );
 		$no_image_link = ft_get_responsive_slider_option( 'slideshow_no_link' );
 
+		$controlnav = ft_get_responsive_slider_option( 'slideshow_pager' );
+		$directionnav = ft_get_responsive_slider_option( 'slideshow_arrows' );
+
 		$slide_excerpt_col = ( int ) ft_get_responsive_slider_option( 'slideshow_excerpt_width' );
 		$slide_image_col = 12 - $slide_excerpt_col;
 
@@ -363,8 +330,11 @@ class ft_responsive_sliderWidget extends WP_Widget {
 				<?php endwhile; ?>
 			</ul>
 		</div>
-
 <?php
+		if ( $controlnav || $directionnav ) {
+			echo '<div class="slider-nav"></div>';
+		}
+
 		echo $after_widget;
 		wp_reset_query();
 		remove_filter( 'excerpt_more', 'ft_responsive_slider_excerpt_more' );
