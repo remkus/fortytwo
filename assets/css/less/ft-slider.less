@@ -5,10 +5,10 @@
 // --------------------------------------------------
 
 .section-1 {
+
 	background: #f9f9f9;
 	border-bottom: 1px solid #e8e8e8;
 	max-height: 340px;
-	position: relative;
 	padding: 40px 0;
 
 	.ft-responsive-slider {
@@ -17,10 +17,6 @@
 		.slider-inner,
 		.slider-nav {
 			.make-row();
-		}
-
-		.slider-nav {
-			padding: 40px 0 0;
 		}
 
 		.slides {
@@ -64,9 +60,6 @@
 		.flex-control-nav,
 		.flex-direction-nav {
 
-			.make-column(4);
-			.make-column-push(4);
-
 			> li {
 				display: inline-block;
 				vertical-align: middle;
@@ -76,7 +69,6 @@
 					cursor: pointer;
 				}
 			}
-
 		}
 
 		.flex-control-nav {
@@ -97,12 +89,9 @@
 					background-color: @slider-control-nav-active-bg-color;
 				}
 			}
-
 		}
 
 		.flex-direction-nav {
-
-			text-align: right;
 
 			> li {
 

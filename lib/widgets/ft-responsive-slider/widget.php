@@ -127,7 +127,14 @@ function ft_responsive_slider_flexslider_params() {
 					slideshowSpeed: ' . $timer . ',
 					prevText: "",
 					nextText: "",
-					useCSS: false
+					useCSS: false,
+					start: function(slider){
+						var arr = [ "slider-inner", "slider-nav" ];
+						$.each(arr, function() {
+							$("." + this).removeClass("invisible");
+						});
+
+					}
 			    });
 			  });';
 
@@ -253,7 +260,7 @@ class ft_responsive_sliderWidget extends WP_Widget {
 
 ?>
 
-		<div class="slider-inner">
+		<div class="slider-inner invisible">
 			<ul class="slides">
 				<?php
 	$slider_posts = new WP_Query( $query_args );
@@ -332,7 +339,7 @@ class ft_responsive_sliderWidget extends WP_Widget {
 		</div>
 <?php
 		if ( $controlnav || $directionnav ) {
-			echo '<div class="slider-nav"></div>';
+			echo '<div class="slider-nav invisible"></div>';
 		}
 
 		echo $after_widget;
