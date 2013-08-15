@@ -45,8 +45,6 @@ function FTResponsiveSliderInit() {
 
   // hook all frontend slider functions here to ensure Genesis is active **/
 	add_action( 'wp_enqueue_scripts', 'ft_responsive_slider_scripts' );
-	add_action( 'wp_print_styles', 'ft_responsive_slider_styles' );
-	add_action( 'wp_head', 'ft_responsive_slider_head', 1 );
 	add_action( 'wp_footer', 'ft_responsive_slider_flexslider_params' );
 	add_action( 'widgets_init', 'ft_responsive_sliderRegister' );
 
@@ -109,56 +107,6 @@ function ft_responsive_slider_scripts() {
 }
 
 /**
- * Load the CSS files
- */
-function ft_responsive_slider_styles() {
-
-	/* standard slideshow styles */
-	wp_register_style( 'slider_styles', ft_responsive_slider_url( '/css/style.css' ), array(), FT_RESPONSIVE_SLIDER_VERSION );
-	wp_enqueue_style( 'slider_styles' );
-
-}
-
-/**
- * Loads scripts and styles via wp_head hook.
- */
-function ft_responsive_slider_head() {
-
-	$height = ( int ) ft_get_responsive_slider_option( 'slideshow_height' );
-	$width = ( int ) ft_get_responsive_slider_option( 'slideshow_width' );
-
-	$slideInfoWidth = ( int ) ft_get_responsive_slider_option( 'slideshow_excerpt_width' );
-	$slideNavTop = ( int ) ( ( $height - 60 ) * .5 );
-
-	$vertical = ft_get_responsive_slider_option( 'location_vertical' );
-	$horizontal = ft_get_responsive_slider_option( 'location_horizontal' );
-	$display = ( ft_get_responsive_slider_option( 'posts_num' ) >= 2 && ft_get_responsive_slider_option( 'slideshow_arrows' ) ) ? 'top: ' . $slideNavTop . 'px' : 'display: none';
-
-	$hide_mobile = ft_get_responsive_slider_option( 'slideshow_hide_mobile' );
-	$slideshow_pager = ft_get_responsive_slider_option( 'slideshow_pager' ) ;
-
-	echo '
-		<style type="text/css">
-			.slide-excerpt { width: ' . $slideInfoWidth . '%; }
-			.slide-excerpt { ' . $vertical . ': 0; }
-			.slide-excerpt { '. $horizontal . ': 0; }
-			.flexslider { max-width: ' . $width . 'px; max-height: ' . $height . 'px; }
-			.slide-image { max-height: ' . $height . 'px; }
-		</style>';
-
-	if ( $hide_mobile == 1 ) {
-		echo '
-		<style type="text/css">
-			@media only screen
-			and (min-device-width : 320px)
-			and (max-device-width : 480px) {
-				.slide-excerpt { display: none !important; }
-			}
-		</style> ';
-	}
-}
-
-/**
  * Outputs slider script on wp_footer hook.
  */
 function ft_responsive_slider_flexslider_params() {
@@ -170,14 +118,23 @@ function ft_responsive_slider_flexslider_params() {
 	$directionnav = ft_get_responsive_slider_option( 'slideshow_arrows' );
 
 	$output = 'jQuery(document).ready(function($) {
-				$(".flexslider").flexslider({
-					controlsContainer: "#ft-responsive-slider",
+				$(".slider-inner").flexslider({
+					controlsContainer: ".slider-inner",
 					animation: "' . esc_js( $effect ) . '",
 					directionNav: ' . $directionnav . ',
 					controlNav: ' . $controlnav . ',
-					animationDuration: ' . $duration . ',
+					animationSpeed: ' . $duration . ',
 					slideshowSpeed: ' . $timer . ',
-          useCSS: false
+					prevText: "",
+					nextText: "",
+					useCSS: false,
+					start: function(slider){
+						var arr = [ "slider-inner", "slider-nav" ];
+						$.each(arr, function() {
+							$("." + this).removeClass("invisible");
+						});
+
+					}
 			    });
 			  });';
 
@@ -213,9 +170,9 @@ function ft_responsive_slider_excerpt_more( $more ) {
 class ft_responsive_sliderWidget extends WP_Widget {
 
 	function ft_responsive_sliderWidget() {
-		$widget_ops = array( 'classname' => 'ft_responsive_slider', 'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' ) );
-		$control_ops = array( 'width' => 200, 'height' => 250, 'id_base' => 'ftresponsiveslider-widget' );
-		$this->WP_Widget( 'ftresponsiveslider-widget', __( 'FortyTwo - Responsive Slider', 'fortytwo' ), $widget_ops, $control_ops );
+		$widget_ops = array( 'classname' => 'ft-responsive-slider', 'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' ) );
+		$control_ops = array( 'width' => 200, 'height' => 250, 'id_base' => 'ft-responsive-slider' );
+		$this->WP_Widget( 'ft-responsive-slider', __( 'FortyTwo - Responsive Slider', 'fortytwo' ), $widget_ops, $control_ops );
 	}
 
 	function save_settings( $settings ) {
@@ -303,68 +260,85 @@ class ft_responsive_sliderWidget extends WP_Widget {
 
 ?>
 
-		<div id="ft-responsive-slider">
-			<div class="flexslider">
-				<ul class="slides">
-					<?php
-		$slider_posts = new WP_Query( $query_args );
-		if ( $slider_posts->have_posts() ) {
-			$show_excerpt = ft_get_responsive_slider_option( 'slideshow_excerpt_show' );
-			$show_title = ft_get_responsive_slider_option( 'slideshow_title_show' );
-			$show_type = ft_get_responsive_slider_option( 'slideshow_excerpt_content' );
-			$show_limit = ft_get_responsive_slider_option( 'slideshow_excerpt_content_limit' );
-			$more_text = ft_get_responsive_slider_option( 'slideshow_more_text' );
-			$no_image_link = ft_get_responsive_slider_option( 'slideshow_no_link' );
+		<div class="slider-inner invisible">
+			<ul class="slides">
+				<?php
+	$slider_posts = new WP_Query( $query_args );
+	if ( $slider_posts->have_posts() ) {
+		$show_excerpt = ft_get_responsive_slider_option( 'slideshow_excerpt_show' );
+		$show_title = ft_get_responsive_slider_option( 'slideshow_title_show' );
+		$show_type = ft_get_responsive_slider_option( 'slideshow_excerpt_content' );
+		$show_limit = ft_get_responsive_slider_option( 'slideshow_excerpt_content_limit' );
+		$more_text = ft_get_responsive_slider_option( 'slideshow_more_text' );
+		$no_image_link = ft_get_responsive_slider_option( 'slideshow_no_link' );
+
+		$controlnav = ft_get_responsive_slider_option( 'slideshow_pager' );
+		$directionnav = ft_get_responsive_slider_option( 'slideshow_arrows' );
+
+		$slide_excerpt_col = ( int ) ft_get_responsive_slider_option( 'slideshow_excerpt_width' );
+		$slide_image_col = 12 - $slide_excerpt_col;
+
+		if ( ft_get_responsive_slider_option( 'slideshow_hide_mobile' ) == 1 ) {
+			$hide_mobile = array(
+				'hide_excerpt'   => ' hidden-xs',
+				'add_image_cols' => ' col-xs-12'
+			);
+		} else {
+			$hide_mobile = array(
+				'hide_excerpt'   => '',
+				'add_image_cols' => ''
+			);
 		}
-		while ( $slider_posts->have_posts() ) : $slider_posts->the_post();
-?>
-					<li>
+
+	}
+				while ( $slider_posts->have_posts() ) : $slider_posts->the_post();
+					?>
+					<li class="slide-<?php the_ID(); ?>">
 
 					<?php if ( $show_excerpt == 1 || $show_title == 1 ) { ?>
-						<div class="slide-excerpt slide-<?php the_ID(); ?>">
-							<div class="slide-background"></div><!-- end .slide-background -->
-							<div class="slide-excerpt-border ">
-								<?php
-			if ( $show_title == 1 ) {
-?>
-								<h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-								<?php
-			}
-			if ( $show_excerpt ) {
-				if ( $show_type != 'full' )
-					the_excerpt();
-				elseif ( $show_limit )
-					the_content_limit( (int)$show_limit, esc_html( $more_text ) );
-				else
-					the_content( esc_html( $more_text ) );
-			}
-?>
-							</div><!-- end .slide-excerpt-border  -->
-						</div><!-- end .slide-excerpt -->
+						<div class="slide-excerpt col-<?php echo $slide_excerpt_col ?><?php echo $hide_mobile['hide_excerpt'] ?>">
+							<?php
+							if ( $show_title == 1 ) {
+								?>
+								<h2><a href="<?php the_permalink() ?>"
+									   rel="bookmark"><?php the_title(); ?></a></h2>
+							<?php
+							}
+							if ( $show_excerpt ) {
+								if ( $show_type != 'full' )
+									the_excerpt();
+								elseif ( $show_limit )
+									the_content_limit( (int)$show_limit, esc_html( $more_text ) ); else
+									the_content( esc_html( $more_text ) );
+							}
+							?>
+						</div>
 					<?php } ?>
 
-						<div class="slide-image">
-					<?php
-		if ( $no_image_link ) {
-?>
-							<img src="<?php genesis_image( 'format=url&size=slider' ); ?>" alt="<?php the_title(); ?>" />
-					<?php
-		} else {
-?>
-							<a href="<?php the_permalink() ?>" rel="bookmark"><img src="<?php genesis_image( 'format=url&size=slider' ); ?>" alt="<?php the_title(); ?>" /></a>
-					<?php
+						<div class="slide-image col-<?php echo $slide_image_col ?><?php echo $hide_mobile['add_image_cols'] ?>">
+							<?php
+							if ( $no_image_link ) {
+								?>
+								<img src="<?php genesis_image( 'format=url&size=slider' ); ?>"
+									 alt="<?php the_title(); ?>"/>
+							<?php
+							} else {
+								?>
+								<a href="<?php the_permalink() ?>" rel="bookmark"><img
+										src="<?php genesis_image( 'format=url&size=slider' ); ?>"
+										alt="<?php the_title(); ?>"/></a>
+							<?php
 
-		} // $no_image_link
-?>
-						</div><!-- end .slide-image -->
+							}
+							?>
+						</div>
 
 					</li>
 				<?php endwhile; ?>
-				</ul><!-- end ul.slides -->
-			</div><!-- end .flexslider -->
-		</div><!-- end #ft-responsive-slider -->
-
+			</ul>
+		</div>
 <?php
+
 		echo $after_widget;
 		wp_reset_query();
 		remove_filter( 'excerpt_more', 'ft_responsive_slider_excerpt_more' );
