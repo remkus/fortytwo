@@ -4897,37 +4897,42 @@ td.visible-print {
   }
 }
 /*!
- *  Font Awesome 3.0.2
- *  the iconic font designed for use with Twitter Bootstrap
- *  -------------------------------------------------------
- *  The full suite of pictographic icons, examples, and documentation
- *  can be found at: http://fortawesome.github.com/Font-Awesome/
+ *  Font Awesome 3.2.1
+ *  the iconic font designed for Bootstrap
+ *  ------------------------------------------------------------------------------
+ *  The full suite of pictographic icons, examples, and documentation can be
+ *  found at http://fontawesome.io.  Stay up to date on Twitter at
+ *  http://twitter.com/fontawesome.
  *
  *  License
- *  -------------------------------------------------------
- *  - The Font Awesome font is licensed under the SIL Open Font License - http://scripts.sil.org/OFL
- *  - Font Awesome CSS, LESS, and SASS files are licensed under the MIT License -
+ *  ------------------------------------------------------------------------------
+ *  - The Font Awesome font is licensed under SIL OFL 1.1 -
+ *    http://scripts.sil.org/OFL
+ *  - Font Awesome CSS, LESS, and SASS files are licensed under MIT License -
  *    http://opensource.org/licenses/mit-license.html
- *  - The Font Awesome pictograms are licensed under the CC BY 3.0 License - http://creativecommons.org/licenses/by/3.0/
+ *  - Font Awesome documentation licensed under CC BY 3.0 -
+ *    http://creativecommons.org/licenses/by/3.0/
  *  - Attribution is no longer required in Font Awesome 3.0, but much appreciated:
- *    "Font Awesome by Dave Gandy - http://fortawesome.github.com/Font-Awesome"
-
- *  Contact
- *  -------------------------------------------------------
- *  Email: dave@davegandy.com
- *  Twitter: http://twitter.com/fortaweso_me
- *  Work: Lead Product Designer @ http://kyruus.com
+ *    "Font Awesome by Dave Gandy - http://fontawesome.io"
+ *
+ *  Author - Dave Gandy
+ *  ------------------------------------------------------------------------------
+ *  Email: dave@fontawesome.io
+ *  Twitter: http://twitter.com/davegandy
+ *  Work: Lead Product Designer @ Kyruus - http://kyruus.com
  */
+/* FONT PATH
+ * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../fonts/fontawesome-webfont.eot?v=3.0.1');
-  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=3.0.1') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=3.0.1') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=3.0.1') format('truetype');
+  src: url('../font/fontawesome-webfont.eot?v=3.2.1');
+  src: url('../font/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../font/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../font/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
   font-weight: normal;
   font-style: normal;
 }
-/*  Font Awesome styles
-    ------------------------------------------------------- */
-/* line 45, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* FONT AWESOME CORE
+ * -------------------------- */
+/* line 4, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
 [class^="icon-"],
 [class*=" icon-"] {
   font-family: FontAwesome;
@@ -4935,8 +4940,151 @@ td.visible-print {
   font-style: normal;
   text-decoration: inherit;
   -webkit-font-smoothing: antialiased;
-  /* sprites.less reset */
-
+  *margin-right: .3em;
+}
+/* line 9, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+}
+/* makes the font 33% larger relative to the icon container */
+/* line 17, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icon-large:before {
+  vertical-align: -10%;
+  font-size: 1.3333333333333333em;
+}
+/* makes sure icons active on rollover in links */
+/* line 24, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+a [class^="icon-"],
+a [class*=" icon-"] {
+  display: inline;
+}
+/* increased font size for icon-large */
+/* line 33, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+[class^="icon-"].icon-fixed-width,
+[class*=" icon-"].icon-fixed-width {
+  display: inline-block;
+  width: 1.1428571428571428em;
+  text-align: right;
+  padding-right: 0.2857142857142857em;
+}
+/* line 38, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+[class^="icon-"].icon-fixed-width.icon-large,
+[class*=" icon-"].icon-fixed-width.icon-large {
+  width: 1.4285714285714286em;
+}
+/* line 44, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icons-ul {
+  margin-left: 2.142857142857143em;
+  list-style-type: none;
+}
+/* line 48, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icons-ul > li {
+  position: relative;
+}
+/* line 50, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icons-ul .icon-li {
+  position: absolute;
+  left: -2.142857142857143em;
+  width: 2.142857142857143em;
+  text-align: center;
+  line-height: inherit;
+}
+/* line 62, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+[class^="icon-"].hide,
+[class*=" icon-"].hide {
+  display: none;
+}
+/* line 67, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icon-muted {
+  color: #eeeeee;
+}
+/* line 68, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icon-light {
+  color: #ffffff;
+}
+/* line 69, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icon-dark {
+  color: #333333;
+}
+/* line 74, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icon-border {
+  border: solid 1px #eeeeee;
+  padding: .2em .25em .15em;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 83, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icon-2x {
+  font-size: 2em;
+}
+/* line 85, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icon-2x.icon-border {
+  border-width: 2px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+/* line 90, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icon-3x {
+  font-size: 3em;
+}
+/* line 92, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icon-3x.icon-border {
+  border-width: 3px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 97, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icon-4x {
+  font-size: 4em;
+}
+/* line 99, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icon-4x.icon-border {
+  border-width: 4px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+/* line 105, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icon-5x {
+  font-size: 5em;
+}
+/* line 107, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.icon-5x.icon-border {
+  border-width: 5px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+}
+/* line 118, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.pull-right {
+  float: right;
+}
+/* line 119, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+.pull-left {
+  float: left;
+}
+/* line 123, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+[class^="icon-"].pull-left,
+[class*=" icon-"].pull-left {
+  margin-right: .3em;
+}
+/* line 126, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/core.less */
+[class^="icon-"].pull-right,
+[class*=" icon-"].pull-right {
+  margin-left: .3em;
+}
+/* BOOTSTRAP SPECIFIC CLASSES
+ * -------------------------- */
+/* Bootstrap 2.0 sprites.less reset */
+/* line 5, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+[class^="icon-"],
+[class*=" icon-"] {
   display: inline;
   width: auto;
   height: auto;
@@ -4948,7 +5096,7 @@ td.visible-print {
   margin-top: 0;
 }
 /* more sprites.less reset */
-/* line 66, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 19, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
 .icon-white,
 .nav-pills > .active > a > [class^="icon-"],
 .nav-pills > .active > a > [class*=" icon-"],
@@ -4964,57 +5112,22 @@ td.visible-print {
 .dropdown-submenu:hover > a > [class*=" icon-"] {
   background-image: none;
 }
-/* line 82, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-[class^="icon-"]:before,
-[class*=" icon-"]:before {
-  text-decoration: inherit;
-  display: inline-block;
-  speak: none;
-}
-/* makes sure icons active on rollover in links */
-/* line 91, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-a [class^="icon-"],
-a [class*=" icon-"] {
-  display: inline-block;
-}
-/* makes the font 33% larger relative to the icon container */
-/* line 98, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-large:before {
-  vertical-align: -10%;
-  font-size: 1.3333333333333333em;
-}
-/* line 104, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.btn [class^="icon-"],
-.nav [class^="icon-"],
-.btn [class*=" icon-"],
-.nav [class*=" icon-"] {
-  display: inline;
-  /* keeps button heights with and without icons the same */
-
-}
-/* line 108, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* keeps Bootstrap styles with and without icons the same */
+/* line 41, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
 .btn [class^="icon-"].icon-large,
 .nav [class^="icon-"].icon-large,
 .btn [class*=" icon-"].icon-large,
 .nav [class*=" icon-"].icon-large {
   line-height: .9em;
 }
-/* line 109, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 42, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
 .btn [class^="icon-"].icon-spin,
 .nav [class^="icon-"].icon-spin,
 .btn [class*=" icon-"].icon-spin,
 .nav [class*=" icon-"].icon-spin {
   display: inline-block;
 }
-/* line 114, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.nav-tabs [class^="icon-"],
-.nav-pills [class^="icon-"],
-.nav-tabs [class*=" icon-"],
-.nav-pills [class*=" icon-"] {
-  /* keeps button heights with and without icons the same */
-
-}
-/* line 117, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 48, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
 .nav-tabs [class^="icon-"],
 .nav-pills [class^="icon-"],
 .nav-tabs [class*=" icon-"],
@@ -5025,139 +5138,84 @@ a [class*=" icon-"] {
 .nav-pills [class*=" icon-"].icon-large {
   line-height: .9em;
 }
-/* line 122, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-li [class^="icon-"],
-.nav li [class^="icon-"],
-li [class*=" icon-"],
-.nav li [class*=" icon-"] {
-  display: inline-block;
-  width: 1.25em;
-  text-align: center;
-}
-/* line 127, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-li [class^="icon-"].icon-large,
-.nav li [class^="icon-"].icon-large,
-li [class*=" icon-"].icon-large,
-.nav li [class*=" icon-"].icon-large {
-  /* increased font size for icon-large */
-
-  width: 1.5625em;
-}
-/* line 134, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-ul.icons {
-  list-style-type: none;
-  text-indent: -0.75em;
-}
-/* line 139, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-ul.icons li [class^="icon-"],
-ul.icons li [class*=" icon-"] {
-  width: .75em;
-}
-/* line 146, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-muted {
-  color: #eeeeee;
-}
-/* line 153, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-border {
-  border: solid 1px #eeeeee;
-  padding: .2em .25em .15em;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-/* line 162, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-2x {
-  font-size: 2em;
-}
-/* line 164, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-2x.icon-border {
-  border-width: 2px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
-/* line 169, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-3x {
-  font-size: 3em;
-}
-/* line 171, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-3x.icon-border {
-  border-width: 3px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-/* line 176, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-4x {
-  font-size: 4em;
-}
-/* line 178, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-4x.icon-border {
-  border-width: 4px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-}
-/* line 188, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.pull-right {
-  float: right;
-}
-/* line 189, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.pull-left {
-  float: left;
-}
-/* line 193, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-[class^="icon-"].pull-left,
-[class*=" icon-"].pull-left {
-  margin-right: .3em;
-}
-/* line 196, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-[class^="icon-"].pull-right,
-[class*=" icon-"].pull-right {
-  margin-left: .3em;
-}
-/* line 205, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 55, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
 .btn [class^="icon-"].pull-left.icon-2x,
 .btn [class*=" icon-"].pull-left.icon-2x,
 .btn [class^="icon-"].pull-right.icon-2x,
 .btn [class*=" icon-"].pull-right.icon-2x {
   margin-top: .18em;
 }
-/* line 207, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 57, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
 .btn [class^="icon-"].icon-spin.icon-large,
 .btn [class*=" icon-"].icon-spin.icon-large {
   line-height: .8em;
 }
-/* line 215, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 64, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
 .btn.btn-small [class^="icon-"].pull-left.icon-2x,
 .btn.btn-small [class*=" icon-"].pull-left.icon-2x,
 .btn.btn-small [class^="icon-"].pull-right.icon-2x,
 .btn.btn-small [class*=" icon-"].pull-right.icon-2x {
   margin-top: .25em;
 }
-/* line 221, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 69, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
 .btn.btn-large [class^="icon-"],
 .btn.btn-large [class*=" icon-"] {
   margin-top: 0;
 }
-/* line 225, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 73, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
 .btn.btn-large [class^="icon-"].pull-left.icon-2x,
 .btn.btn-large [class*=" icon-"].pull-left.icon-2x,
 .btn.btn-large [class^="icon-"].pull-right.icon-2x,
 .btn.btn-large [class*=" icon-"].pull-right.icon-2x {
   margin-top: .05em;
 }
-/* line 227, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 75, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
 .btn.btn-large [class^="icon-"].pull-left.icon-2x,
 .btn.btn-large [class*=" icon-"].pull-left.icon-2x {
   margin-right: .2em;
 }
-/* line 228, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 76, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
 .btn.btn-large [class^="icon-"].pull-right.icon-2x,
 .btn.btn-large [class*=" icon-"].pull-right.icon-2x {
   margin-left: .2em;
 }
-/* line 233, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* Fixes alignment in nav lists */
+/* line 81, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+.nav-list [class^="icon-"],
+.nav-list [class*=" icon-"] {
+  line-height: inherit;
+}
+/* EXTRAS
+ * -------------------------- */
+/* Stacked and layered icon */
+/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/mixins.less */
+.icon-stack {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: -35%;
+}
+/* line 32, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/mixins.less */
+.icon-stack [class^="icon-"],
+.icon-stack [class*=" icon-"] {
+  display: block;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 1em;
+  line-height: inherit;
+  *line-height: 2em;
+}
+/* line 43, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/mixins.less */
+.icon-stack .icon-stack-base {
+  font-size: 2em;
+  *line-height: 1em;
+}
+/* Animated rotating icon */
+/* line 8, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
 .icon-spin {
   display: inline-block;
   -moz-animation: spin 2s infinite linear;
@@ -5165,1072 +5223,1578 @@ ul.icons li [class*=" icon-"] {
   -webkit-animation: spin 2s infinite linear;
   animation: spin 2s infinite linear;
 }
+/* Prevent stack and spinners from being taken inline when inside a link */
+/* line 17, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
+a .icon-stack,
+a .icon-spin {
+  display: inline-block;
+  text-decoration: none;
+}
 @-moz-keyframes spin {
-  /* line 242, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+  /* line 24, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
   0% {
     -moz-transform: rotate(0deg);
   }
-  /* line 243, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+  /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
   100% {
     -moz-transform: rotate(359deg);
   }
 }
 @-webkit-keyframes spin {
-  /* line 246, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+  /* line 28, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
   0% {
     -webkit-transform: rotate(0deg);
   }
-  /* line 247, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+  /* line 29, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
   100% {
     -webkit-transform: rotate(359deg);
   }
 }
 @-o-keyframes spin {
-  /* line 250, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+  /* line 32, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
   0% {
     -o-transform: rotate(0deg);
   }
-  /* line 251, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+  /* line 33, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
   100% {
     -o-transform: rotate(359deg);
   }
 }
 @-ms-keyframes spin {
-  /* line 254, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+  /* line 36, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
   0% {
     -ms-transform: rotate(0deg);
   }
-  /* line 255, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+  /* line 37, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
   100% {
     -ms-transform: rotate(359deg);
   }
 }
 @keyframes spin {
-  /* line 258, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+  /* line 40, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
   0% {
     transform: rotate(0deg);
   }
-  /* line 259, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+  /* line 41, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
   100% {
     transform: rotate(359deg);
   }
 }
-@-moz-document url-prefix() {
-  /* line 263, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-  .icon-spin {
-    height: .9em;
-  }
-  /* line 264, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-  .btn .icon-spin {
-    height: auto;
-  }
-  /* line 265, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-  .icon-spin.icon-large {
-    height: 1.25em;
-  }
-  /* line 266, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-  .btn .icon-spin.icon-large {
-    height: .75em;
-  }
+/* Icon rotations and mirroring */
+/* line 45, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
+.icon-rotate-90:before {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
 }
-/*  Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
-    readers do not read off random characters that represent icons */
-/* line 271, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 54, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
+.icon-rotate-180:before {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
+/* line 63, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
+.icon-rotate-270:before {
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+/* line 72, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
+.icon-flip-horizontal:before {
+  -webkit-transform: scale(-1, 1);
+  -moz-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+/* line 80, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
+.icon-flip-vertical:before {
+  -webkit-transform: scale(1, -1);
+  -moz-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  -o-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+/* ensure rotation occurs inside anchor tags */
+/* line 91, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/extras.less */
+a .icon-rotate-90:before,
+a .icon-rotate-180:before,
+a .icon-rotate-270:before,
+a .icon-flip-horizontal:before,
+a .icon-flip-vertical:before {
+  display: inline-block;
+}
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+/* line 4, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-glass:before {
   content: "\f000";
 }
-/* line 272, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 5, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-music:before {
   content: "\f001";
 }
-/* line 273, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 6, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-search:before {
   content: "\f002";
 }
-/* line 274, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-envelope:before {
+/* line 7, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-envelope-alt:before {
   content: "\f003";
 }
-/* line 275, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 8, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-heart:before {
   content: "\f004";
 }
-/* line 276, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 9, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-star:before {
   content: "\f005";
 }
-/* line 277, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 10, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-star-empty:before {
   content: "\f006";
 }
-/* line 278, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 11, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-user:before {
   content: "\f007";
 }
-/* line 279, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 12, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-film:before {
   content: "\f008";
 }
-/* line 280, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 13, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-th-large:before {
   content: "\f009";
 }
-/* line 281, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 14, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-th:before {
   content: "\f00a";
 }
-/* line 282, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 15, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-th-list:before {
   content: "\f00b";
 }
-/* line 283, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 16, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-ok:before {
   content: "\f00c";
 }
-/* line 284, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 17, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-remove:before {
   content: "\f00d";
 }
-/* line 285, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 18, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-zoom-in:before {
   content: "\f00e";
 }
-/* line 287, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 19, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-zoom-out:before {
   content: "\f010";
 }
-/* line 288, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-power-off:before,
 .icon-off:before {
   content: "\f011";
 }
-/* line 289, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 22, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-signal:before {
   content: "\f012";
 }
-/* line 290, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 23, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-gear:before,
 .icon-cog:before {
   content: "\f013";
 }
-/* line 291, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-trash:before {
   content: "\f014";
 }
-/* line 292, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 26, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-home:before {
   content: "\f015";
 }
-/* line 293, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-file:before {
+/* line 27, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-file-alt:before {
   content: "\f016";
 }
-/* line 294, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 28, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-time:before {
   content: "\f017";
 }
-/* line 295, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 29, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-road:before {
   content: "\f018";
 }
-/* line 296, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 30, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-download-alt:before {
   content: "\f019";
 }
-/* line 297, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 31, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-download:before {
   content: "\f01a";
 }
-/* line 298, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 32, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-upload:before {
   content: "\f01b";
 }
-/* line 299, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 33, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-inbox:before {
   content: "\f01c";
 }
-/* line 300, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 34, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-play-circle:before {
   content: "\f01d";
 }
-/* line 301, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 35, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-rotate-right:before,
 .icon-repeat:before {
   content: "\f01e";
 }
-/* \f020 doesn't work in Safari. all shifted one down */
-/* line 304, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 37, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-refresh:before {
   content: "\f021";
 }
-/* line 305, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 38, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-list-alt:before {
   content: "\f022";
 }
-/* line 306, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 39, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-lock:before {
   content: "\f023";
 }
-/* line 307, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 40, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-flag:before {
   content: "\f024";
 }
-/* line 308, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 41, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-headphones:before {
   content: "\f025";
 }
-/* line 309, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 42, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-volume-off:before {
   content: "\f026";
 }
-/* line 310, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 43, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-volume-down:before {
   content: "\f027";
 }
-/* line 311, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 44, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-volume-up:before {
   content: "\f028";
 }
-/* line 312, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 45, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-qrcode:before {
   content: "\f029";
 }
-/* line 313, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 46, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-barcode:before {
   content: "\f02a";
 }
-/* line 314, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 47, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-tag:before {
   content: "\f02b";
 }
-/* line 315, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 48, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-tags:before {
   content: "\f02c";
 }
-/* line 316, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 49, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-book:before {
   content: "\f02d";
 }
-/* line 317, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 50, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-bookmark:before {
   content: "\f02e";
 }
-/* line 318, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 51, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-print:before {
   content: "\f02f";
 }
-/* line 320, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 52, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-camera:before {
   content: "\f030";
 }
-/* line 321, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 53, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-font:before {
   content: "\f031";
 }
-/* line 322, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 54, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-bold:before {
   content: "\f032";
 }
-/* line 323, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 55, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-italic:before {
   content: "\f033";
 }
-/* line 324, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 56, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-text-height:before {
   content: "\f034";
 }
-/* line 325, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 57, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-text-width:before {
   content: "\f035";
 }
-/* line 326, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 58, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-align-left:before {
   content: "\f036";
 }
-/* line 327, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 59, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-align-center:before {
   content: "\f037";
 }
-/* line 328, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 60, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-align-right:before {
   content: "\f038";
 }
-/* line 329, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 61, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-align-justify:before {
   content: "\f039";
 }
-/* line 330, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 62, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-list:before {
   content: "\f03a";
 }
-/* line 331, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 63, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-indent-left:before {
   content: "\f03b";
 }
-/* line 332, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 64, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-indent-right:before {
   content: "\f03c";
 }
-/* line 333, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 65, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-facetime-video:before {
   content: "\f03d";
 }
-/* line 334, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 66, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-picture:before {
   content: "\f03e";
 }
-/* line 336, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 67, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-pencil:before {
   content: "\f040";
 }
-/* line 337, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 68, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-map-marker:before {
   content: "\f041";
 }
-/* line 338, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 69, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-adjust:before {
   content: "\f042";
 }
-/* line 339, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 70, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-tint:before {
   content: "\f043";
 }
-/* line 340, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 71, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-edit:before {
   content: "\f044";
 }
-/* line 341, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 72, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-share:before {
   content: "\f045";
 }
-/* line 342, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 73, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-check:before {
   content: "\f046";
 }
-/* line 343, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 74, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-move:before {
   content: "\f047";
 }
-/* line 344, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 75, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-step-backward:before {
   content: "\f048";
 }
-/* line 345, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 76, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-fast-backward:before {
   content: "\f049";
 }
-/* line 346, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 77, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-backward:before {
   content: "\f04a";
 }
-/* line 347, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 78, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-play:before {
   content: "\f04b";
 }
-/* line 348, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 79, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-pause:before {
   content: "\f04c";
 }
-/* line 349, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 80, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-stop:before {
   content: "\f04d";
 }
-/* line 350, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 81, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-forward:before {
   content: "\f04e";
 }
-/* line 352, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 82, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-fast-forward:before {
   content: "\f050";
 }
-/* line 353, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 83, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-step-forward:before {
   content: "\f051";
 }
-/* line 354, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 84, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-eject:before {
   content: "\f052";
 }
-/* line 355, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 85, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-chevron-left:before {
   content: "\f053";
 }
-/* line 356, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 86, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-chevron-right:before {
   content: "\f054";
 }
-/* line 357, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 87, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-plus-sign:before {
   content: "\f055";
 }
-/* line 358, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 88, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-minus-sign:before {
   content: "\f056";
 }
-/* line 359, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 89, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-remove-sign:before {
   content: "\f057";
 }
-/* line 360, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 90, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-ok-sign:before {
   content: "\f058";
 }
-/* line 361, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 91, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-question-sign:before {
   content: "\f059";
 }
-/* line 362, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 92, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-info-sign:before {
   content: "\f05a";
 }
-/* line 363, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 93, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-screenshot:before {
   content: "\f05b";
 }
-/* line 364, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 94, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-remove-circle:before {
   content: "\f05c";
 }
-/* line 365, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 95, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-ok-circle:before {
   content: "\f05d";
 }
-/* line 366, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 96, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-ban-circle:before {
   content: "\f05e";
 }
-/* line 368, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 97, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-arrow-left:before {
   content: "\f060";
 }
-/* line 369, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 98, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-arrow-right:before {
   content: "\f061";
 }
-/* line 370, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 99, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-arrow-up:before {
   content: "\f062";
 }
-/* line 371, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 100, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-arrow-down:before {
   content: "\f063";
 }
-/* line 372, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 101, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-mail-forward:before,
 .icon-share-alt:before {
   content: "\f064";
 }
-/* line 373, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 103, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-resize-full:before {
   content: "\f065";
 }
-/* line 374, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 104, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-resize-small:before {
   content: "\f066";
 }
-/* line 375, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 105, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-plus:before {
   content: "\f067";
 }
-/* line 376, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 106, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-minus:before {
   content: "\f068";
 }
-/* line 377, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 107, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-asterisk:before {
   content: "\f069";
 }
-/* line 378, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 108, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-exclamation-sign:before {
   content: "\f06a";
 }
-/* line 379, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 109, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-gift:before {
   content: "\f06b";
 }
-/* line 380, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 110, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-leaf:before {
   content: "\f06c";
 }
-/* line 381, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 111, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-fire:before {
   content: "\f06d";
 }
-/* line 382, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 112, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-eye-open:before {
   content: "\f06e";
 }
-/* line 384, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 113, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-eye-close:before {
   content: "\f070";
 }
-/* line 385, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 114, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-warning-sign:before {
   content: "\f071";
 }
-/* line 386, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 115, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-plane:before {
   content: "\f072";
 }
-/* line 387, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 116, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-calendar:before {
   content: "\f073";
 }
-/* line 388, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 117, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-random:before {
   content: "\f074";
 }
-/* line 389, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 118, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-comment:before {
   content: "\f075";
 }
-/* line 390, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 119, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-magnet:before {
   content: "\f076";
 }
-/* line 391, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 120, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-chevron-up:before {
   content: "\f077";
 }
-/* line 392, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 121, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-chevron-down:before {
   content: "\f078";
 }
-/* line 393, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 122, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-retweet:before {
   content: "\f079";
 }
-/* line 394, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 123, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-shopping-cart:before {
   content: "\f07a";
 }
-/* line 395, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 124, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-folder-close:before {
   content: "\f07b";
 }
-/* line 396, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 125, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-folder-open:before {
   content: "\f07c";
 }
-/* line 397, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 126, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-resize-vertical:before {
   content: "\f07d";
 }
-/* line 398, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 127, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-resize-horizontal:before {
   content: "\f07e";
 }
-/* line 400, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 128, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-bar-chart:before {
   content: "\f080";
 }
-/* line 401, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 129, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-twitter-sign:before {
   content: "\f081";
 }
-/* line 402, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 130, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-facebook-sign:before {
   content: "\f082";
 }
-/* line 403, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 131, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-camera-retro:before {
   content: "\f083";
 }
-/* line 404, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 132, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-key:before {
   content: "\f084";
 }
-/* line 405, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 133, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-gears:before,
 .icon-cogs:before {
   content: "\f085";
 }
-/* line 406, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 135, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-comments:before {
   content: "\f086";
 }
-/* line 407, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-thumbs-up:before {
+/* line 136, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-thumbs-up-alt:before {
   content: "\f087";
 }
-/* line 408, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-thumbs-down:before {
+/* line 137, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-thumbs-down-alt:before {
   content: "\f088";
 }
-/* line 409, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 138, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-star-half:before {
   content: "\f089";
 }
-/* line 410, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 139, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-heart-empty:before {
   content: "\f08a";
 }
-/* line 411, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 140, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-signout:before {
   content: "\f08b";
 }
-/* line 412, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 141, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-linkedin-sign:before {
   content: "\f08c";
 }
-/* line 413, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 142, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-pushpin:before {
   content: "\f08d";
 }
-/* line 414, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 143, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-external-link:before {
   content: "\f08e";
 }
-/* line 416, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 144, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-signin:before {
   content: "\f090";
 }
-/* line 417, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 145, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-trophy:before {
   content: "\f091";
 }
-/* line 418, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 146, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-github-sign:before {
   content: "\f092";
 }
-/* line 419, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 147, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-upload-alt:before {
   content: "\f093";
 }
-/* line 420, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 148, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-lemon:before {
   content: "\f094";
 }
-/* line 421, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 149, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-phone:before {
   content: "\f095";
 }
-/* line 422, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 150, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-unchecked:before,
 .icon-check-empty:before {
   content: "\f096";
 }
-/* line 423, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 152, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-bookmark-empty:before {
   content: "\f097";
 }
-/* line 424, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 153, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-phone-sign:before {
   content: "\f098";
 }
-/* line 425, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 154, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-twitter:before {
   content: "\f099";
 }
-/* line 426, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 155, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-facebook:before {
   content: "\f09a";
 }
-/* line 427, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 156, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-github:before {
   content: "\f09b";
 }
-/* line 428, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 157, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-unlock:before {
   content: "\f09c";
 }
-/* line 429, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 158, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-credit-card:before {
   content: "\f09d";
 }
-/* line 430, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 159, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-rss:before {
   content: "\f09e";
 }
-/* line 432, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 160, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-hdd:before {
   content: "\f0a0";
 }
-/* line 433, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 161, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-bullhorn:before {
   content: "\f0a1";
 }
-/* line 434, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 162, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-bell:before {
   content: "\f0a2";
 }
-/* line 435, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 163, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-certificate:before {
   content: "\f0a3";
 }
-/* line 436, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 164, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-hand-right:before {
   content: "\f0a4";
 }
-/* line 437, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 165, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-hand-left:before {
   content: "\f0a5";
 }
-/* line 438, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 166, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-hand-up:before {
   content: "\f0a6";
 }
-/* line 439, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 167, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-hand-down:before {
   content: "\f0a7";
 }
-/* line 440, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 168, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-circle-arrow-left:before {
   content: "\f0a8";
 }
-/* line 441, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 169, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-circle-arrow-right:before {
   content: "\f0a9";
 }
-/* line 442, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 170, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-circle-arrow-up:before {
   content: "\f0aa";
 }
-/* line 443, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 171, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-circle-arrow-down:before {
   content: "\f0ab";
 }
-/* line 444, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 172, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-globe:before {
   content: "\f0ac";
 }
-/* line 445, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 173, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-wrench:before {
   content: "\f0ad";
 }
-/* line 446, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 174, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-tasks:before {
   content: "\f0ae";
 }
-/* line 448, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 175, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-filter:before {
   content: "\f0b0";
 }
-/* line 449, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 176, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-briefcase:before {
   content: "\f0b1";
 }
-/* line 450, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 177, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-fullscreen:before {
   content: "\f0b2";
 }
-/* line 452, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 178, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-group:before {
   content: "\f0c0";
 }
-/* line 453, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 179, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-link:before {
   content: "\f0c1";
 }
-/* line 454, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 180, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-cloud:before {
   content: "\f0c2";
 }
-/* line 455, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 181, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-beaker:before {
   content: "\f0c3";
 }
-/* line 456, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 182, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-cut:before {
   content: "\f0c4";
 }
-/* line 457, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 183, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-copy:before {
   content: "\f0c5";
 }
-/* line 458, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 184, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-paperclip:before,
 .icon-paper-clip:before {
   content: "\f0c6";
 }
-/* line 459, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 186, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-save:before {
   content: "\f0c7";
 }
-/* line 460, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 187, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-sign-blank:before {
   content: "\f0c8";
 }
-/* line 461, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 188, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-reorder:before {
   content: "\f0c9";
 }
-/* line 462, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 189, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-list-ul:before {
   content: "\f0ca";
 }
-/* line 463, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 190, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-list-ol:before {
   content: "\f0cb";
 }
-/* line 464, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 191, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-strikethrough:before {
   content: "\f0cc";
 }
-/* line 465, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 192, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-underline:before {
   content: "\f0cd";
 }
-/* line 466, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 193, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-table:before {
   content: "\f0ce";
 }
-/* line 468, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 194, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-magic:before {
   content: "\f0d0";
 }
-/* line 469, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 195, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-truck:before {
   content: "\f0d1";
 }
-/* line 470, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 196, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-pinterest:before {
   content: "\f0d2";
 }
-/* line 471, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 197, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-pinterest-sign:before {
   content: "\f0d3";
 }
-/* line 472, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 198, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-google-plus-sign:before {
   content: "\f0d4";
 }
-/* line 473, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 199, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-google-plus:before {
   content: "\f0d5";
 }
-/* line 474, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 200, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-money:before {
   content: "\f0d6";
 }
-/* line 475, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 201, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-caret-down:before {
   content: "\f0d7";
 }
-/* line 476, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 202, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-caret-up:before {
   content: "\f0d8";
 }
-/* line 477, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 203, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-caret-left:before {
   content: "\f0d9";
 }
-/* line 478, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 204, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-caret-right:before {
   content: "\f0da";
 }
-/* line 479, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 205, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-columns:before {
   content: "\f0db";
 }
-/* line 480, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 206, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-sort:before {
   content: "\f0dc";
 }
-/* line 481, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 207, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-sort-down:before {
   content: "\f0dd";
 }
-/* line 482, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 208, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-sort-up:before {
   content: "\f0de";
 }
-/* line 484, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-envelope-alt:before {
+/* line 209, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-envelope:before {
   content: "\f0e0";
 }
-/* line 485, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 210, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-linkedin:before {
   content: "\f0e1";
 }
-/* line 486, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 211, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-rotate-left:before,
 .icon-undo:before {
   content: "\f0e2";
 }
-/* line 487, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 213, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-legal:before {
   content: "\f0e3";
 }
-/* line 488, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 214, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-dashboard:before {
   content: "\f0e4";
 }
-/* line 489, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 215, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-comment-alt:before {
   content: "\f0e5";
 }
-/* line 490, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 216, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-comments-alt:before {
   content: "\f0e6";
 }
-/* line 491, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 217, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-bolt:before {
   content: "\f0e7";
 }
-/* line 492, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 218, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-sitemap:before {
   content: "\f0e8";
 }
-/* line 493, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 219, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-umbrella:before {
   content: "\f0e9";
 }
-/* line 494, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 220, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-paste:before {
   content: "\f0ea";
 }
-/* line 495, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 221, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-lightbulb:before {
   content: "\f0eb";
 }
-/* line 496, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 222, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-exchange:before {
   content: "\f0ec";
 }
-/* line 497, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 223, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-cloud-download:before {
   content: "\f0ed";
 }
-/* line 498, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 224, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-cloud-upload:before {
   content: "\f0ee";
 }
-/* line 500, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 225, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-user-md:before {
   content: "\f0f0";
 }
-/* line 501, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 226, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-stethoscope:before {
   content: "\f0f1";
 }
-/* line 502, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 227, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-suitcase:before {
   content: "\f0f2";
 }
-/* line 503, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 228, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-bell-alt:before {
   content: "\f0f3";
 }
-/* line 504, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 229, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-coffee:before {
   content: "\f0f4";
 }
-/* line 505, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 230, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-food:before {
   content: "\f0f5";
 }
-/* line 506, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
-.icon-file-alt:before {
+/* line 231, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-file-text-alt:before {
   content: "\f0f6";
 }
-/* line 507, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 232, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-building:before {
   content: "\f0f7";
 }
-/* line 508, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 233, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-hospital:before {
   content: "\f0f8";
 }
-/* line 509, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 234, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-ambulance:before {
   content: "\f0f9";
 }
-/* line 510, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 235, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-medkit:before {
   content: "\f0fa";
 }
-/* line 511, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 236, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-fighter-jet:before {
   content: "\f0fb";
 }
-/* line 512, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 237, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-beer:before {
   content: "\f0fc";
 }
-/* line 513, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 238, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-h-sign:before {
   content: "\f0fd";
 }
-/* line 514, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 239, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-plus-sign-alt:before {
   content: "\f0fe";
 }
-/* line 516, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 240, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-double-angle-left:before {
   content: "\f100";
 }
-/* line 517, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 241, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-double-angle-right:before {
   content: "\f101";
 }
-/* line 518, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 242, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-double-angle-up:before {
   content: "\f102";
 }
-/* line 519, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 243, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-double-angle-down:before {
   content: "\f103";
 }
-/* line 520, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 244, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-angle-left:before {
   content: "\f104";
 }
-/* line 521, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 245, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-angle-right:before {
   content: "\f105";
 }
-/* line 522, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 246, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-angle-up:before {
   content: "\f106";
 }
-/* line 523, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 247, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-angle-down:before {
   content: "\f107";
 }
-/* line 524, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 248, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-desktop:before {
   content: "\f108";
 }
-/* line 525, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 249, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-laptop:before {
   content: "\f109";
 }
-/* line 526, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 250, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-tablet:before {
   content: "\f10a";
 }
-/* line 527, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 251, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-mobile-phone:before {
   content: "\f10b";
 }
-/* line 528, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 252, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-circle-blank:before {
   content: "\f10c";
 }
-/* line 529, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 253, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-quote-left:before {
   content: "\f10d";
 }
-/* line 530, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 254, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-quote-right:before {
   content: "\f10e";
 }
-/* line 532, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 255, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-spinner:before {
   content: "\f110";
 }
-/* line 533, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 256, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-circle:before {
   content: "\f111";
 }
-/* line 534, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 257, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-mail-reply:before,
 .icon-reply:before {
   content: "\f112";
 }
-/* line 535, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 259, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-github-alt:before {
   content: "\f113";
 }
-/* line 536, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 260, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-folder-close-alt:before {
   content: "\f114";
 }
-/* line 537, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/font-awesome.less */
+/* line 261, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
 .icon-folder-open-alt:before {
   content: "\f115";
+}
+/* line 262, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-expand-alt:before {
+  content: "\f116";
+}
+/* line 263, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-collapse-alt:before {
+  content: "\f117";
+}
+/* line 264, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-smile:before {
+  content: "\f118";
+}
+/* line 265, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-frown:before {
+  content: "\f119";
+}
+/* line 266, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-meh:before {
+  content: "\f11a";
+}
+/* line 267, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-gamepad:before {
+  content: "\f11b";
+}
+/* line 268, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-keyboard:before {
+  content: "\f11c";
+}
+/* line 269, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-flag-alt:before {
+  content: "\f11d";
+}
+/* line 270, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-flag-checkered:before {
+  content: "\f11e";
+}
+/* line 271, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-terminal:before {
+  content: "\f120";
+}
+/* line 272, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-code:before {
+  content: "\f121";
+}
+/* line 273, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-reply-all:before {
+  content: "\f122";
+}
+/* line 274, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-mail-reply-all:before {
+  content: "\f122";
+}
+/* line 275, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-star-half-full:before,
+.icon-star-half-empty:before {
+  content: "\f123";
+}
+/* line 277, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-location-arrow:before {
+  content: "\f124";
+}
+/* line 278, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-crop:before {
+  content: "\f125";
+}
+/* line 279, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-code-fork:before {
+  content: "\f126";
+}
+/* line 280, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-unlink:before {
+  content: "\f127";
+}
+/* line 281, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-question:before {
+  content: "\f128";
+}
+/* line 282, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-info:before {
+  content: "\f129";
+}
+/* line 283, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-exclamation:before {
+  content: "\f12a";
+}
+/* line 284, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-superscript:before {
+  content: "\f12b";
+}
+/* line 285, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-subscript:before {
+  content: "\f12c";
+}
+/* line 286, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-eraser:before {
+  content: "\f12d";
+}
+/* line 287, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-puzzle-piece:before {
+  content: "\f12e";
+}
+/* line 288, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-microphone:before {
+  content: "\f130";
+}
+/* line 289, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-microphone-off:before {
+  content: "\f131";
+}
+/* line 290, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-shield:before {
+  content: "\f132";
+}
+/* line 291, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-calendar-empty:before {
+  content: "\f133";
+}
+/* line 292, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-fire-extinguisher:before {
+  content: "\f134";
+}
+/* line 293, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-rocket:before {
+  content: "\f135";
+}
+/* line 294, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-maxcdn:before {
+  content: "\f136";
+}
+/* line 295, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-chevron-sign-left:before {
+  content: "\f137";
+}
+/* line 296, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-chevron-sign-right:before {
+  content: "\f138";
+}
+/* line 297, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-chevron-sign-up:before {
+  content: "\f139";
+}
+/* line 298, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-chevron-sign-down:before {
+  content: "\f13a";
+}
+/* line 299, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-html5:before {
+  content: "\f13b";
+}
+/* line 300, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-css3:before {
+  content: "\f13c";
+}
+/* line 301, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-anchor:before {
+  content: "\f13d";
+}
+/* line 302, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-unlock-alt:before {
+  content: "\f13e";
+}
+/* line 303, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-bullseye:before {
+  content: "\f140";
+}
+/* line 304, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-ellipsis-horizontal:before {
+  content: "\f141";
+}
+/* line 305, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-ellipsis-vertical:before {
+  content: "\f142";
+}
+/* line 306, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-rss-sign:before {
+  content: "\f143";
+}
+/* line 307, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-play-sign:before {
+  content: "\f144";
+}
+/* line 308, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-ticket:before {
+  content: "\f145";
+}
+/* line 309, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-minus-sign-alt:before {
+  content: "\f146";
+}
+/* line 310, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-check-minus:before {
+  content: "\f147";
+}
+/* line 311, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-level-up:before {
+  content: "\f148";
+}
+/* line 312, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-level-down:before {
+  content: "\f149";
+}
+/* line 313, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-check-sign:before {
+  content: "\f14a";
+}
+/* line 314, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-edit-sign:before {
+  content: "\f14b";
+}
+/* line 315, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-external-link-sign:before {
+  content: "\f14c";
+}
+/* line 316, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-share-sign:before {
+  content: "\f14d";
+}
+/* line 317, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-compass:before {
+  content: "\f14e";
+}
+/* line 318, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-collapse:before {
+  content: "\f150";
+}
+/* line 319, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-collapse-top:before {
+  content: "\f151";
+}
+/* line 320, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-expand:before {
+  content: "\f152";
+}
+/* line 321, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-euro:before,
+.icon-eur:before {
+  content: "\f153";
+}
+/* line 323, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-gbp:before {
+  content: "\f154";
+}
+/* line 324, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-dollar:before,
+.icon-usd:before {
+  content: "\f155";
+}
+/* line 326, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-rupee:before,
+.icon-inr:before {
+  content: "\f156";
+}
+/* line 328, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-yen:before,
+.icon-jpy:before {
+  content: "\f157";
+}
+/* line 330, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-renminbi:before,
+.icon-cny:before {
+  content: "\f158";
+}
+/* line 332, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-won:before,
+.icon-krw:before {
+  content: "\f159";
+}
+/* line 334, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-bitcoin:before,
+.icon-btc:before {
+  content: "\f15a";
+}
+/* line 336, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-file:before {
+  content: "\f15b";
+}
+/* line 337, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-file-text:before {
+  content: "\f15c";
+}
+/* line 338, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-sort-by-alphabet:before {
+  content: "\f15d";
+}
+/* line 339, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-sort-by-alphabet-alt:before {
+  content: "\f15e";
+}
+/* line 340, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-sort-by-attributes:before {
+  content: "\f160";
+}
+/* line 341, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-sort-by-attributes-alt:before {
+  content: "\f161";
+}
+/* line 342, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-sort-by-order:before {
+  content: "\f162";
+}
+/* line 343, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-sort-by-order-alt:before {
+  content: "\f163";
+}
+/* line 344, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-thumbs-up:before {
+  content: "\f164";
+}
+/* line 345, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-thumbs-down:before {
+  content: "\f165";
+}
+/* line 346, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-youtube-sign:before {
+  content: "\f166";
+}
+/* line 347, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-youtube:before {
+  content: "\f167";
+}
+/* line 348, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-xing:before {
+  content: "\f168";
+}
+/* line 349, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-xing-sign:before {
+  content: "\f169";
+}
+/* line 350, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-youtube-play:before {
+  content: "\f16a";
+}
+/* line 351, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-dropbox:before {
+  content: "\f16b";
+}
+/* line 352, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-stackexchange:before {
+  content: "\f16c";
+}
+/* line 353, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-instagram:before {
+  content: "\f16d";
+}
+/* line 354, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-flickr:before {
+  content: "\f16e";
+}
+/* line 355, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-adn:before {
+  content: "\f170";
+}
+/* line 356, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-bitbucket:before {
+  content: "\f171";
+}
+/* line 357, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-bitbucket-sign:before {
+  content: "\f172";
+}
+/* line 358, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-tumblr:before {
+  content: "\f173";
+}
+/* line 359, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-tumblr-sign:before {
+  content: "\f174";
+}
+/* line 360, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-long-arrow-down:before {
+  content: "\f175";
+}
+/* line 361, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-long-arrow-up:before {
+  content: "\f176";
+}
+/* line 362, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-long-arrow-left:before {
+  content: "\f177";
+}
+/* line 363, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-long-arrow-right:before {
+  content: "\f178";
+}
+/* line 364, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-apple:before {
+  content: "\f179";
+}
+/* line 365, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-windows:before {
+  content: "\f17a";
+}
+/* line 366, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-android:before {
+  content: "\f17b";
+}
+/* line 367, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-linux:before {
+  content: "\f17c";
+}
+/* line 368, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-dribbble:before {
+  content: "\f17d";
+}
+/* line 369, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-skype:before {
+  content: "\f17e";
+}
+/* line 370, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-foursquare:before {
+  content: "\f180";
+}
+/* line 371, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-trello:before {
+  content: "\f181";
+}
+/* line 372, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-female:before {
+  content: "\f182";
+}
+/* line 373, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-male:before {
+  content: "\f183";
+}
+/* line 374, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-gittip:before {
+  content: "\f184";
+}
+/* line 375, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-sun:before {
+  content: "\f185";
+}
+/* line 376, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-moon:before {
+  content: "\f186";
+}
+/* line 377, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-archive:before {
+  content: "\f187";
+}
+/* line 378, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-bug:before {
+  content: "\f188";
+}
+/* line 379, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-vk:before {
+  content: "\f189";
+}
+/* line 380, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-weibo:before {
+  content: "\f18a";
+}
+/* line 381, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/icons.less */
+.icon-renren:before {
+  content: "\f18b";
 }
 /* Column Widths and Positions
 --------------------------------------------- */
