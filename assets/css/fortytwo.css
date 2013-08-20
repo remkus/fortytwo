@@ -6933,14 +6933,15 @@ a .icon-flip-vertical:before {
 }
 /* line 15, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
 .site-header .header-widget-area > .widget {
+  line-height: 46px;
   float: right;
 }
-/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
+/* line 21, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
 .site-header .site-title {
   margin: 0 15px 0 0;
   float: left;
 }
-/* line 24, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
+/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
 .site-header .site-title a {
   background: url('../images/logo.png') no-repeat;
   display: block;
@@ -6950,7 +6951,7 @@ a .icon-flip-vertical:before {
   height: 46px;
   width: 212px;
 }
-/* line 35, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
+/* line 36, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
 .site-header .site-description {
   float: left;
   border-left: 1px solid #e8e8e8;
@@ -6958,9 +6959,10 @@ a .icon-flip-vertical:before {
   margin: 0;
   text-transform: uppercase;
   width: 190px;
+  line-height: 23px;
   color: #9c9c9c;
 }
-/* line 47, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
+/* line 49, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
 #title a {
   width: 100%;
 }
@@ -7035,330 +7037,6 @@ h5,
 h6,
 .h6 {
   font-size: 12px;
-}
-@charset "UTF-8";
-@font-face {
-  font-family: "SSSocial";
-  src: url('../fonts/ss-social-circle.eot');
-  src: url('../fonts/ss-social-circle.eot?#iefix') format('embedded-opentype'), url('../fonts/ss-social-circle.woff') format('woff'), url('../fonts/ss-social-circle.ttf') format('truetype'), url('../fonts/ss-social-circle.svg#SSSocialCircle') format('svg');
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: "SSSocial";
-  src: url('../fonts/ss-social-regular.eot');
-  src: url('../fonts/ss-social-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/ss-social-regular.woff') format('woff'), url('../fonts/ss-social-regular.ttf') format('truetype'), url('../fonts/ss-social-regular.svg#SSSocialRegular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-/* This triggers a redraw in IE to Fix IE8's :before content rendering. */
-/* line 28, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-html:hover [class^="ss-"] {
-  -ms-zoom: 1;
-}
-/* line 32, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-#menu-socialnav {
-  font-family: "SSSocial";
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: none;
-  text-rendering: optimizeLegibility;
-  white-space: nowrap;
-  /*-webkit-font-feature-settings: "liga"; Currently broken in Chrome >= v22. Falls back to text-rendering. Safari is unaffected. */
-
-  -moz-font-feature-settings: "liga=1";
-  -moz-font-feature-settings: "liga";
-  -ms-font-feature-settings: "liga" 1;
-  -o-font-feature-settings: "liga";
-  font-feature-settings: "liga";
-  -webkit-font-smoothing: antialiased;
-  margin: 5px 0 5px 15px;
-}
-/* line 49, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-#menu-socialnav li {
-  display: inline-block;
-  float: left;
-  list-style: none;
-  height: 36px;
-  width: 32px;
-  margin: 0 0 0 10px;
-}
-/* line 58, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-#menu-socialnav a {
-  color: #444444;
-  font-size: 32px;
-  font-weight: bold;
-  line-height: normal;
-  padding: 0;
-  display: inline-block;
-  width: 32px;
-  height: 36px;
-}
-/* line 68, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-#menu-socialnav a:hover {
-  text-decoration: none;
-  color: #101010;
-}
-/* line 75, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-icon,
-.ss-icon.ss-social,
-.ss-icon.ss-social-circle,
-[class^="ss-"]:before,
-[class*=" ss-"]:before,
-[class^="ss-"][class*=" ss-social"]:before,
-[class*=" ss-"][class*=" ss-social"]:before,
-[class^="ss-"].right:after,
-[class*=" ss-"].right:after,
-[class^="ss-"][class*=" ss-social"].right:after,
-[class*=" ss-"][class*=" ss-social"].right:after {
-  font-family: "SSSocial";
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: none;
-  text-rendering: optimizeLegibility;
-  white-space: nowrap;
-  /*-webkit-font-feature-settings: "liga"; Currently broken in Chrome >= v22. Falls back to text-rendering. Safari is unaffected. */
-
-  -moz-font-feature-settings: "liga=1";
-  -moz-font-feature-settings: "liga";
-  -ms-font-feature-settings: "liga" 1;
-  -o-font-feature-settings: "liga";
-  font-feature-settings: "liga";
-  -webkit-font-smoothing: antialiased;
-}
-/* line 95, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-icon.ss-social-circle,
-[class^="ss-"].ss-social-circle:before,
-[class*=" ss-"].ss-social-circle:before,
-[class^="ss-"].ss-social-circle.right:after,
-[class*=" ss-"].ss-social-circle.right:after {
-  font-weight: bold;
-}
-/* line 101, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-[class^="ss-"].right:before,
-[class*=" ss-"].right:before {
-  display: none;
-  content: '';
-}
-/* line 107, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-facebook:before,
-.ss-facebook.right:after {
-  content: '';
-}
-/* line 111, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-twitter:before,
-.ss-twitter.right:after {
-  content: '';
-}
-/* line 115, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-linkedin:before,
-.ss-linkedin.right:after {
-  content: '';
-}
-/* line 119, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-googleplus:before,
-.ss-googleplus.right:after {
-  content: '';
-}
-/* line 123, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-appdotnet:before,
-.ss-appdotnet.right:after {
-  content: '';
-}
-/* line 127, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-zerply:before,
-.ss-zerply.right:after {
-  content: '';
-}
-/* line 131, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-reddit:before,
-.ss-reddit.right:after {
-  content: '';
-}
-/* line 135, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-tumblr:before,
-.ss-tumblr.right:after {
-  content: '';
-}
-/* line 139, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-wordpress:before,
-.ss-wordpress.right:after {
-  content: '';
-}
-/* line 143, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-blogger:before,
-.ss-blogger.right:after {
-  content: '';
-}
-/* line 147, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-posterous:before,
-.ss-posterous.right:after {
-  content: '';
-}
-/* line 151, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-youtube:before,
-.ss-youtube.right:after {
-  content: '';
-}
-/* line 155, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-vimeo:before,
-.ss-vimeo.right:after {
-  content: '';
-}
-/* line 159, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-flickr:before,
-.ss-flickr.right:after {
-  content: '';
-}
-/* line 163, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-instagram:before,
-.ss-instagram.right:after {
-  content: '';
-}
-/* line 167, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-fivehundredpx:before,
-.ss-fivehundredpx.right:after {
-  content: '';
-}
-/* line 171, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-pinterest:before,
-.ss-pinterest.right:after {
-  content: '';
-}
-/* line 175, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-svpply:before,
-.ss-svpply.right:after {
-  content: '';
-}
-/* line 179, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-readmill:before,
-.ss-readmill.right:after {
-  content: '';
-}
-/* line 183, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-dropbox:before,
-.ss-dropbox.right:after {
-  content: '';
-}
-/* line 187, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-pinboard:before,
-.ss-pinboard.right:after {
-  content: '';
-}
-/* line 191, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-dribbble:before,
-.ss-dribbble.right:after {
-  content: '';
-}
-/* line 195, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-behance:before,
-.ss-behance.right:after {
-  content: '';
-}
-/* line 199, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-github:before,
-.ss-github.right:after {
-  content: '';
-}
-/* line 203, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-octocat:before,
-.ss-octocat.right:after {
-  content: '';
-}
-/* line 207, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-stackoverflow:before,
-.ss-stackoverflow.right:after {
-  content: '';
-}
-/* line 211, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-paypal:before,
-.ss-paypal.right:after {
-  content: '';
-}
-/* line 215, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-kickstarter:before,
-.ss-kickstarter.right:after {
-  content: '';
-}
-/* line 219, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-foursquare:before,
-.ss-foursquare.right:after {
-  content: '';
-}
-/* line 223, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-yelp:before,
-.ss-yelp.right:after {
-  content: '';
-}
-/* line 227, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-skype:before,
-.ss-skype.right:after {
-  content: '';
-}
-/* line 231, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-rdio:before,
-.ss-rdio.right:after {
-  content: '';
-}
-/* line 235, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-spotify:before,
-.ss-spotify.right:after {
-  content: '';
-}
-/* line 239, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-lastfm:before,
-.ss-lastfm.right:after {
-  content: '';
-}
-/* line 243, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-soundcloud:before,
-.ss-soundcloud.right:after {
-  content: '';
-}
-/* line 247, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-mail:before,
-.ss-mail.right:after {
-  content: '✉';
-}
-/* line 251, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-like:before,
-.ss-like.right:after {
-  content: '👍';
-}
-/* line 255, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-rss:before,
-.ss-rss.right:after {
-  content: '';
-}
-/* line 259, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-share:before,
-.ss-share.right:after {
-  content: '';
-}
-/* line 263, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-apple:before,
-.ss-apple.right:after {
-  content: '';
-}
-/* line 267, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-microsoft:before,
-.ss-microsoft.right:after {
-  content: '';
-}
-/* line 271, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-windows:before,
-.ss-windows.right:after {
-  content: '';
-}
-/* line 275, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-android:before,
-.ss-android.right:after {
-  content: '';
-}
-/* line 279, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-social-font.less */
-.ss-blackberry:before,
-.ss-blackberry.right:after {
-  content: '';
 }
 /* line 6, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-navbar.less */
 .nav-primary {
@@ -7546,6 +7224,35 @@ html:hover [class^="ss-"] {
 .menu-primary > li.current-menu-item > a,
 .menu-primary > li.open > a {
   color: #3071a9;
+}
+/* line 88, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-navbar.less */
+nav > .menu > li[class^="icon-"] {
+  line-height: 36px;
+  position: relative;
+  font-size: 23px;
+  font-size: 2.3rem;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  display: inline-block;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  border-radius: 18px;
+  background: #424242;
+  text-align: center;
+  vertical-align: middle;
+}
+/* line 101, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-navbar.less */
+nav > .menu > li[class^="icon-"] > a {
+  position: absolute;
+  left: 0;
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+  width: 36px;
+  height: 36px;
 }
 /* line 7, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-slider.less */
 .section-1 {
