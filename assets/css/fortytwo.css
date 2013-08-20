@@ -7050,7 +7050,11 @@ h6,
 .section-container {
   padding: 40px 0;
 }
-/* line 42, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
+/* line 41, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
+.section-container + .section-container {
+  border-top: 1px solid #e8e8e8;
+}
+/* line 46, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
 .content-sidebar-wrap {
   position: relative;
   min-height: 1px;
