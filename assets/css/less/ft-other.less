@@ -32,3 +32,17 @@ h3, .h3 { font-size: ceil(@font-size-base * 1.25); } // ~18px
 h4, .h4 { font-size: ceil(@font-size-base * 1.10); } // ~16px
 h5, .h5 { font-size:  @font-size-base; }
 h6, .h6 { font-size: ceil(@font-size-base * 0.85); } // ~12px
+
+
+// Default Section Padding
+.section-container {
+	padding: 40px 0;
+
+	+ .section-container {
+		border-top: 1px solid #e8e8e8;
+	}
+}
+
+.content-sidebar-wrap {
+	.make-column(12);
+}

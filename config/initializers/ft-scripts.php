@@ -21,6 +21,6 @@ function fortytwo_add_scripts() {
 	wp_enqueue_script( 'srcset-polyfill', CHILD_URL . '/vendor/js/srcset.min.js', array() , '0.1.0', false );
 
 	// Bootstrap js file
-	wp_enqueue_script( 'bootstrap', CHILD_URL . '/vendor/frameworks/bootstrap/dist/js/bootstrap.min.js', array( 'jquery' ), '3.0.0', true );
+	wp_enqueue_script( 'bootstrap', CHILD_URL . '/vendor/bootstrap/dist/js/bootstrap.min.js', array( 'jquery' ), '3.0.0', true );
 
 }

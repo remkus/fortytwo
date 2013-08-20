@@ -52,8 +52,8 @@ class FT_Contact_Widget extends WP_Widget {
 			'widget-ft-contact',
 			__( 'FortyTwo - Contact', 'fortytwo' ),
 			array(
-				'classname'  => 'ft-contact-widget',
-				'description' => __( 'A Schema.org compliant Contact widget', 'fortytwo' )
+				'classname'  => 'ft-contact',
+				'description' => __( 'A Schema.org compliant Contact Widget', 'fortytwo' )
 			)
 		);
 
