@@ -9,7 +9,6 @@
 	background: #f9f9f9;
 	border-bottom: 1px solid #e8e8e8;
 	max-height: 340px;
-	padding: 40px 0;
 
 	.ft-responsive-slider {
 
@@ -102,9 +101,9 @@
 			.opacity(0);
 
 			> li {
-				top: -14px;
+				top: -13px;
 				right: -5%;
-				.square(28px);
+				.square(26px);
 				position: absolute;
 
 				&:first-child {
@@ -113,28 +112,25 @@
 
 				> a {
 
-					line-height: 26px;
-					.square(28px);
-					margin: 1px;
-					border: 1px solid @slider-direction-nav-border-color;
-					border-radius: 2px;
+					.square(26px);
 					text-align: center;
 
-					font-size: 16px;
+					font-size: 26px;
 					font-family: FontAwesome;
 					font-weight: normal;
 
-					color: @slider-control-nav-bg-color;
+					color: @slider-direction-nav-color;
 					text-decoration: none;
 					background: @slider-direction-nav-bg-color;
+					line-height: 1;
 
 
 					&.flex-prev:before {
-						content: "\f104";
+						content: "\f053";
 					}
 
 					&.flex-next:before {
-						content: "\f105";
+						content: "\f054";
 					}
 
 				}
