@@ -2,6 +2,9 @@
 /** Start the engine */
 require_once( TEMPLATEPATH . '/lib/init.php' );
 
+/** Localization */
+load_child_theme_textdomain( 'fortytwo', get_stylesheet_directory() . '/lib/languages' );
+
 /** Add FortyTwo Turbos */
 require_once( CHILD_DIR . '/config/initializers/init.php' );
 
