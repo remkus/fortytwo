@@ -42,7 +42,7 @@ if ( count( $tabs ) > 0 ) {
 
 
     $html .= $tab_links;
-    $html .= '<div class="tabbed-content image-align-' . $instance['image_alignment'] . '">' . "\n" . $tab_content . '</div>' . "\n";
+    $html .= '<div class="tab-content image-align-' . $instance['image_alignment'] . '">' . "\n" . $tab_content . '</div>' . "\n";
 
 }
 
