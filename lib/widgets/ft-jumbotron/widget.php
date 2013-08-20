@@ -82,9 +82,9 @@ class FT_Jumbotron extends WP_Widget {
 		foreach ( array( 'title', 'content', 'button_text', 'button_link', 'button_alignment' ) as $field_name ) {
 			$instance[$field_name] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
 		}
-		$this->set_default( $instance['title'], __( "Announcing the most important product feature", 'fortytwo' ) );
-		$this->set_default( $instance['content'], __( "And purely one near this hey therefore darn firefly had ducked overpaid wow!", 'fortytwo' ) );
-		$this->set_default( $instance['button_text'], __( "Purchase Today !", 'fortytwo' ) );
+		$this->set_default( $instance['title'], __( 'Announcing the most important product feature', 'fortytwo' ) );
+		$this->set_default( $instance['content'], __( 'And purely one near this hey therefore darn firefly had ducked overpaid wow!', 'fortytwo' ) );
+		$this->set_default( $instance['button_text'], __( 'Purchase Today !', 'fortytwo' ) );
 		$this->set_default( $instance['button_link'], "#" );
 		$this->set_default( $instance['button_alignment'], "right" );
 

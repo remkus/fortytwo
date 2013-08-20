@@ -30,7 +30,7 @@ function ft_responsive_slider_defaults() {
 		'slideshow_effect' => 'slide',
 		'slideshow_excerpt_content' => 'excerpts',
 		'slideshow_excerpt_content_limit' => 150,
-		'slideshow_more_text' => '[Continue Reading]',
+		'slideshow_more_text' => __( '[Continue Reading]', 'fortytwo' ),
 		'slideshow_excerpt_show' => 1,
 		'slideshow_excerpt_width' => 50,
 		'location_vertical' => 'bottom',
