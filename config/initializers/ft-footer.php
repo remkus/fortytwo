@@ -27,13 +27,17 @@ function fortytwo_insert_footer_widget() {
 
 	genesis_markup( array(
 		'html5'   => '<div %s>',
-		'xhtml'   => '<div id="footer-widgets" class="footer-widgets">',
+		'xhtml'   => '<div id="footer-widgets">',
 		'context' => 'footer-widgets'
 	) );
 
 	genesis_structural_wrap( 'footer-widgets', 'open' );
 
+	echo '<div class="inner-wrap">';
+
 	dynamic_sidebar( 'footer-columns' );
+
+	echo '</div>';
 
 	genesis_structural_wrap( 'footer-widgets', 'close' );
 

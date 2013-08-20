@@ -19,8 +19,8 @@ function fortytwo_insert_site_subheader() {
 	if ( !is_front_page() ) {
 		$ft_site_subheader = <<<EOD
 			<div class="site-subheader">
-				<div class="outer-wrap">
-					<div class="wrap">
+				<div class="wrap">
+					<div class="inner-wrap">
 						<div class="subheader-area">
 							<h2>Page Title</h2>
 							<ul class="breadcrumb">
