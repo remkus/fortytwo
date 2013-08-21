@@ -214,19 +214,18 @@ class FT_Tabbed_Content extends WP_Widget {
 		global $post;
 		$html = '';
 
-		$html .= '<ul class="latest">' . "\n";
+		$html .= '<ul class="latest list-group">' . "\n";
 		$latest = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=post_date&order=desc' );
 		$last_post = end( $latest );
 		foreach ( $latest as $post ) {
 			setup_postdata( $post );
-			$html .= '<li class="media">' . "\n";
+			$html .= '<li class="list-group-item">' . "\n";
 			if ( $image_dimension > 0 ) {
 				$html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
 			}
-			$html .= '<div class="media-body">' . "\n";
-			$html .= '<h4 class="media-heading"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
+
+			$html .= '<h4><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
 			$html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
-			$html .= '</div>' . "\n";
 			$html .= '</li>' . "\n";
 			if ( $post != $last_post ) {
 				$html .= '<hr />' . "\n";
@@ -253,7 +252,7 @@ class FT_Tabbed_Content extends WP_Widget {
 		global $post;
 		$html = '';
 
-		$html .= '<ul class="popular">' . "\n";
+		$html .= '<ul class="popular list-group">' . "\n";
 		$popular = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=comment_count&order=desc' );
 		$last_popular = end( $popular );
 		foreach ( $popular as $post ) {
@@ -295,7 +294,7 @@ class FT_Tabbed_Content extends WP_Widget {
 		$comments = get_comments( array( 'number' => $limit, 'status' => 'approve' ) );
 		$last_comments = end( $comments );
 		if ( $comments ) {
-			$html .= '<ul class="comments">' . "\n";
+			$html .= '<ul class="comments list-group">' . "\n";
 			foreach ( $comments as $c ) {
 				$html .= '<li>' . "\n";
 				$html .= get_avatar( $c, 45 );
@@ -352,14 +351,15 @@ class FT_Tabbed_Content extends WP_Widget {
 	 * @return string $html
 	 */
 	function get_image( $dimension, $post ) {
-
-		$html = '<img data-src="holder.js/94x94" class="media-object">';
+		// TODO: This could use post type icon if no post thumbnail is supported
+		$html = '<img data-src="holder.js/' . $dimension . 'x' . $dimension .'" class="no-thumbnail wp-post-image">';
 
 		if ( current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID ) ) {
-			$html = get_the_post_thumbnail( $post->ID, array( 'width' => $dimension, 'height' => $dimension, 'crop' => true ), array( 'class' => 'media-object' ) );
+			$html = get_the_post_thumbnail( $post->ID, array( 'width' => $dimension, 'height' => $dimension, 'crop' => true ), array( 'class' => 'has-thumbnail' ) );
 		}
 
 		return $html;
+
 	} // End get_image()
 
 } // End Class
