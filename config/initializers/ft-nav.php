@@ -27,7 +27,7 @@ function fortytwo_do_nav()
 	if ( has_nav_menu( 'primary' ) ) {
 
 		$nav_brand =  esc_attr( get_bloginfo('name') );
-		$nav_brand_url = home_url();
+		$nav_brand_url = trailingslashit( home_url() );
 
 		$args = array(
 			'theme_location' => 'primary',

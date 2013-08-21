@@ -12,6 +12,7 @@ add_theme_support( 'genesis-structural-wraps', array(
 	'menu-primary',
 	'menu-secondary',
 	'site-inner',
+	'site-section',
 	'footer-widgets',
 	'footer'
 ) );
@@ -85,7 +86,7 @@ function fortytwo_add_widget_count_class( $id ) {
 	global $wp_registered_sidebars;
 	global $sidebars_widgets;
 
-	$widget_count_class = ' col-' . ( 12 / ( count ( $sidebars_widgets[$id] ) ) );
+	$widget_count_class = ' col-lg-' . ( 12 / ( count ( $sidebars_widgets[$id] ) ) );
 
 	$wp_registered_sidebars[$id]['before_widget'] = '<section id="%1$s" class="widget %2$s' . $widget_count_class . '"><div class="widget-wrap">';
 
