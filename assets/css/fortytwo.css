@@ -9130,7 +9130,7 @@ a .icon-flip-vertical:before {
   padding-top: 40px;
   padding-bottom: 40px;
 }
-/* line 12, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
+/* line 10, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
 .site-header .title-area {
   position: relative;
   min-height: 1px;
@@ -9144,7 +9144,7 @@ a .icon-flip-vertical:before {
     width: 50%;
   }
 }
-/* line 16, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
+/* line 14, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
 .site-header .header-widget-area {
   position: relative;
   min-height: 1px;
@@ -9158,17 +9158,17 @@ a .icon-flip-vertical:before {
     width: 50%;
   }
 }
-/* line 19, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
+/* line 17, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
 .site-header .header-widget-area > .widget {
   line-height: 46px;
   float: right;
 }
-/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
+/* line 23, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
 .site-header .site-title {
   margin: 0 15px 0 0;
   float: left;
 }
-/* line 29, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
+/* line 27, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
 .site-header .site-title a {
   background: url('../images/logo.png') no-repeat;
   display: block;
@@ -9178,7 +9178,7 @@ a .icon-flip-vertical:before {
   height: 46px;
   width: 212px;
 }
-/* line 40, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
+/* line 38, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
 .site-header .site-description {
   float: left;
   border-left: 1px solid #e8e8e8;
@@ -9189,7 +9189,7 @@ a .icon-flip-vertical:before {
   line-height: 23px;
   color: #9c9c9c;
 }
-/* line 53, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
+/* line 51, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
 #title a {
   width: 100%;
 }
@@ -9767,7 +9767,7 @@ nav > .menu > li[class^="icon-"] > a {
   background: #f9f9f9;
   border-bottom: 1px solid #e8e8e8;
 }
-/* line 14, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
+/* line 12, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
 .site-subheader .subheader-area {
   position: relative;
   min-height: 1px;
@@ -9781,20 +9781,20 @@ nav > .menu > li[class^="icon-"] > a {
     width: 50%;
   }
 }
-/* line 17, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
+/* line 15, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
 .site-subheader .subheader-area h2 {
   font-size: 26px;
   font-size: 2.6rem;
   font-weight: 300;
   margin: 0;
 }
-/* line 23, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
+/* line 21, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
 .site-subheader .subheader-area .breadcrumb {
   background-color: transparent;
   margin: 0;
   padding: 8px 0 0;
 }
-/* line 30, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
+/* line 28, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
 .site-subheader .subheader-widget-area {
   position: relative;
   min-height: 1px;

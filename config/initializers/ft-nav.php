@@ -14,9 +14,9 @@
 
 // Modify the display of the front-end menu
 remove_action( 'genesis_after_header', 'genesis_do_nav' );
-add_action( 'genesis_after_header', 'fortytwo_genesis_do_nav' );
+add_action( 'genesis_after_header', 'fortytwo_do_nav' );
 
-function fortytwo_genesis_do_nav()
+function fortytwo_do_nav()
 {
 
 	/** Do nothing if menu not supported */
@@ -25,6 +25,9 @@ function fortytwo_genesis_do_nav()
 
 	/** If menu is assigned to theme location, output */
 	if ( has_nav_menu( 'primary' ) ) {
+
+		$nav_brand =  esc_attr( get_bloginfo('name') );
+		$nav_brand_url = home_url();
 
 		$args = array(
 			'theme_location' => 'primary',
@@ -41,19 +44,24 @@ function fortytwo_genesis_do_nav()
 
 		//TODO: navbar-brand has a hard coded FortyTwo as the value, needs to pull current title
 		$nav_output = <<<EOD
-            <nav class="nav-primary" {$nav_attr}>
-                <div class="outer-wrap">
-                    <a class="navbar-brand" href="#">FortyTwo</a>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                    <div class="nav-collapse navbar-responsive-collapse collapse">
-                      {$nav}
-                    </div>
-                </div>
-            </nav>
+			<nav class="nav-primary" {$nav_attr}>
+				<div class="wrap">
+					<div class="inner-wrap">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-primary-collapse">
+								<span class="sr-only">Toggle Navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="{$nav_brand_url}">{$nav_brand}</a>
+						</div>
+						<div class="collapse navbar-collapse nav-primary-collapse">
+						  {$nav}
+						</div>
+					</div>
+				</div>
+			</nav>
 EOD;
 
 		// re-applying the default filters
