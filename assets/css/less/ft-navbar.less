@@ -5,15 +5,12 @@
 // --------------------------------------------------
 .nav-primary {
 	.navbar;
-	border-top: 1px solid #e8e8e8;
-	border-bottom: 1px solid #e8e8e8;
+	.navbar-default;
 
 	// Navbar fixed to the top when the .affix-top class becomes .affix which is controlled by fortytwo.js
 	&.affix {
 		.navbar-fixed-top;
 		.navbar-inverse;
-		border-color: #111;
-		border-top-width: 1px;
 
 		// This is used to add extra space from the top if the .wpadminbar is visible
 		.admin-bar & {
@@ -29,17 +26,6 @@
 			margin-top: 48px;
 		}
 	}
-}
-
-.navbar-brand {
-	display: none !important;
- 	visibility: hidden !important;
-
-	.affix & {
-		display: block !important;
-		visibility: visible !important;
-	}
-
 }
 
 .dropdown-menu {
@@ -81,7 +67,7 @@
 		&.current-menu-parent > a,
 		&.current-menu-item > a,
 		&.open > a {
-			color: @navbar-link-hover-color;
+			color: @navbar-default-link-hover-color;
 		}
 
 	}
