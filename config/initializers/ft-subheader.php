@@ -3,7 +3,10 @@
  * FortyTwo Insert Page Title: Adds the page title to all pages
  */
 
-//* Reposition the breadcrumbs
+// TODO: $ft_site_subheader to be translated and possibly filterable
+// TODO: page title and breadcrumbs should have our own do action
+
+// Remove the default location of breadcrumbs as well call it when adding our subheader area
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 
 add_filter( 'genesis_breadcrumb_args', 'fortytwo_breadcrumb_args' );
@@ -36,13 +39,16 @@ function fortytwo_breadcrumb_args( $args ) {
 
 add_action( 'genesis_after_header', 'fortytwo_insert_site_subheader' );
 /**
- * Insert subheader section for site-inner TODO $ft_site_subheader to be translated and possibly filterable
+ * Insert subheader section for site-inner
  *
  */
 function fortytwo_insert_site_subheader( $ft_subheader_attr = array() ) {
 	if ( !is_front_page() ) {
 
 		global $post;
+
+		if ( ! is_page_template( 'page_blog.php' ) )
+			remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
 
 		$ft_subheader_attr = array(
 			'title'       => $post->post_title, //apply_filters( 'ft_subheader_title', $ft_subheader_attr ),
@@ -55,7 +61,9 @@ function fortytwo_insert_site_subheader( $ft_subheader_attr = array() ) {
 				<div class="wrap">
 					<div class="inner-wrap">
 						<div class="subheader-area">
-							<h2>{$ft_subheader_attr['title']}</h2>
+							<header class="entry-header">
+								<h1 class="entry-title" itemprop="headline">{$ft_subheader_attr['title']}</h1>
+							</header>
 EOD;
 		echo $ft_site_subheader;
 
