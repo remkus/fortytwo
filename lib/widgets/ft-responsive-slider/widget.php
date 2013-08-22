@@ -296,7 +296,7 @@ class ft_responsive_sliderWidget extends WP_Widget {
 					<li class="slide-<?php the_ID(); ?>">
 
 					<?php if ( $show_excerpt == 1 || $show_title == 1 ) { ?>
-						<div class="slide-excerpt col-<?php echo $slide_excerpt_col ?><?php echo $hide_mobile['hide_excerpt'] ?>">
+						<div class="slide-excerpt col-lg-<?php echo $slide_excerpt_col ?><?php echo $hide_mobile['hide_excerpt'] ?>">
 							<?php
 							if ( $show_title == 1 ) {
 								?>
@@ -315,7 +315,7 @@ class ft_responsive_sliderWidget extends WP_Widget {
 						</div>
 					<?php } ?>
 
-						<div class="slide-image col-<?php echo $slide_image_col ?><?php echo $hide_mobile['add_image_cols'] ?>">
+						<div class="slide-image col-lg-<?php echo $slide_image_col ?><?php echo $hide_mobile['add_image_cols'] ?>">
 							<?php
 							if ( $no_image_link ) {
 								?>
