@@ -216,7 +216,6 @@ class FT_Tabbed_Content extends WP_Widget {
 
 		$html .= '<ul class="latest list-group">' . "\n";
 		$latest = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=post_date&order=desc' );
-		$last_post = end( $latest );
 		foreach ( $latest as $post ) {
 			setup_postdata( $post );
 			$html .= '<li class="list-group-item">' . "\n";
@@ -226,9 +225,6 @@ class FT_Tabbed_Content extends WP_Widget {
 			$html .= '<h4><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
 			$html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
 			$html .= '</li>' . "\n";
-			if ( $post != $last_post ) {
-				$html .= '<hr />' . "\n";
-			}
 		}
 		$html .= '</ul>' . "\n";
 		wp_reset_query();
@@ -253,7 +249,6 @@ class FT_Tabbed_Content extends WP_Widget {
 
 		$html .= '<ul class="popular list-group">' . "\n";
 		$popular = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=comment_count&order=desc' );
-		$last_popular = end( $popular );
 		foreach ( $popular as $post ) {
 			setup_postdata( $post );
 			$html .= '<li class="list-group-item">' . "\n";
@@ -263,9 +258,6 @@ class FT_Tabbed_Content extends WP_Widget {
 			$html .= '<h4><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
 			$html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
 			$html .= '</li>' . "\n";
-			if ( $post != $last_popular ) {
-				$html .= '<hr />' . "\n";
-			}
 		}
 		$html .= '</ul>' . "\n";
 		wp_reset_query();
@@ -289,7 +281,6 @@ class FT_Tabbed_Content extends WP_Widget {
 		$html = '';
 
 		$comments = get_comments( array( 'number' => $limit, 'status' => 'approve' ) );
-		$last_comments = end( $comments );
 		if ( $comments ) {
 			$html .= '<ul class="comments list-group">' . "\n";
 			foreach ( $comments as $c ) {
@@ -298,9 +289,6 @@ class FT_Tabbed_Content extends WP_Widget {
 				$html .= '<h4><a title="' . esc_attr( $c->comment_author . ' ' . __( 'on', 'fortytwo' ) . ' ' . get_the_title( $c->comment_post_ID ) ) . '" href="' . esc_url( get_comment_link( $c->comment_ID ) ) . '">' . esc_html( $c->comment_author ) . '</a></h4>' . "\n";
 				$html .= '<span">' . stripslashes( substr( esc_html( $c->comment_content ), 0, 50 ) ) . '</span>' . "\n";
 				$html .= '</li>' . "\n";
-				if ( $c != $last_comments ) {
-					$html .= '<hr />' . "\n";
-				}
 			}
 			$html .= '</ul>' . "\n";
 		}
@@ -362,4 +350,3 @@ class FT_Tabbed_Content extends WP_Widget {
 } // End Class
 
 add_action( 'widgets_init', create_function( '', 'register_widget("FT_Tabbed_Content");' ) );
-?>
