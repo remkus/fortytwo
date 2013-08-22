@@ -22,36 +22,33 @@
 .ft-tabbed-content {
 
 	.widgettitle {
-
 		position: relative;
+	}
 
-		> .btn-group {
-			margin-left: 15px;
-			position: absolute;
-			top: -3px;
+	.btn-group {
+		margin-left: 15px;
+		position: absolute;
+		top: -4px;
 
-			.btn-default.active {
-				.box-shadow(none);
+		.btn {
+			padding: 0;
 
+
+			a {
+				text-transform: capitalize;
+				display: inline-block;
+				padding: @padding-small-vertical @padding-small-horizontal;
+				color: @btn-default-color;
+
+				&:hover {
+					text-decoration: none;
+				}
 			}
 		}
-	}
 
-	.nav > li > a {
-		padding: 0.5rem 1rem;
-		text-transform: capitalize;
-	}
-
-	ul[class*="nav-"] > li {
-		float: none;
-		display: table-cell;
-		text-align: center;
-	}
-
-	.nav-pills > li > a {
-		border-radius: 3px;
-		padding: 4px 10px;
-		margin-right: 5px;
+		.btn.active {
+			.box-shadow(none);
+		}
 	}
 
 	.list-group-item {

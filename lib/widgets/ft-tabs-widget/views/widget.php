@@ -7,7 +7,7 @@ if ( count( $tabs ) > 0 ) {
 	$tab_links = '';
 
 	// Setup the various tabs.
-	$tab_links .= '<ul class="btn-group btn-group-sm">' . "\n";
+	$tab_links .= '<ul class="btn-group">' . "\n";
 	$count = 0;
 	foreach ( $tabs as $tab ) {
 		$count++;
