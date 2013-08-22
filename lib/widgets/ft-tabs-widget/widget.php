@@ -223,7 +223,6 @@ class FT_Tabbed_Content extends WP_Widget {
 			if ( $image_dimension > 0 ) {
 				$html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
 			}
-
 			$html .= '<h4><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
 			$html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
 			$html .= '</li>' . "\n";
@@ -257,14 +256,12 @@ class FT_Tabbed_Content extends WP_Widget {
 		$last_popular = end( $popular );
 		foreach ( $popular as $post ) {
 			setup_postdata( $post );
-			$html .= '<li class="media">' . "\n";
+			$html .= '<li class="list-group-item">' . "\n";
 			if ( $image_dimension > 0 ) {
 				$html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
 			}
-			$html .= '<div class="media-body">' . "\n";
-			$html .= '<h4 class="media-heading"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
+			$html .= '<h4><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
 			$html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
-			$html .= '</div>' . "\n";
 			$html .= '</li>' . "\n";
 			if ( $post != $last_popular ) {
 				$html .= '<hr />' . "\n";
@@ -287,7 +284,7 @@ class FT_Tabbed_Content extends WP_Widget {
 	 *
 	 * @return void
 	 */
-	function tab_content_comments( $limit, $image_dimension ) {
+	function tab_content_comments( $limit, $image_dimension, $image_alignment ) {
 		global $wpdb;
 		$html = '';
 
@@ -296,10 +293,10 @@ class FT_Tabbed_Content extends WP_Widget {
 		if ( $comments ) {
 			$html .= '<ul class="comments list-group">' . "\n";
 			foreach ( $comments as $c ) {
-				$html .= '<li>' . "\n";
-				$html .= get_avatar( $c, 45 );
-				$html .= '<a title="' . esc_attr( $c->comment_author . ' ' . __( 'on', 'fortytwo' ) . ' ' . get_the_title( $c->comment_post_ID ) ) . '" href="' . esc_url( get_comment_link( $c->comment_ID ) ) . '">' . esc_html( $c->comment_author ) . '</a>' . "\n";
-				$html .= '<span class="comment-content">' . stripslashes( substr( esc_html( $c->comment_content ), 0, 50 ) ) . '</span>' . "\n";
+				$html .= '<li class="list-group-item">' . "\n";
+				$html .= '<span class="pull-' . $image_alignment . '">' . get_avatar( $c, 60 ) . '</span>';
+				$html .= '<h4><a title="' . esc_attr( $c->comment_author . ' ' . __( 'on', 'fortytwo' ) . ' ' . get_the_title( $c->comment_post_ID ) ) . '" href="' . esc_url( get_comment_link( $c->comment_ID ) ) . '">' . esc_html( $c->comment_author ) . '</a></h4>' . "\n";
+				$html .= '<span">' . stripslashes( substr( esc_html( $c->comment_content ), 0, 50 ) ) . '</span>' . "\n";
 				$html .= '</li>' . "\n";
 				if ( $c != $last_comments ) {
 					$html .= '<hr />' . "\n";
@@ -352,7 +349,7 @@ class FT_Tabbed_Content extends WP_Widget {
 	 */
 	function get_image( $dimension, $post ) {
 		// TODO: This could use post type icon if no post thumbnail is supported
-		$html = '<img data-src="holder.js/' . $dimension . 'x' . $dimension .'" class="no-thumbnail wp-post-image">';
+		$html = '<img data-src="holder.js/' . $dimension . 'x' . $dimension .'" class="no-thumbnail wp-post-image hide">';
 
 		if ( current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID ) ) {
 			$html = get_the_post_thumbnail( $post->ID, array( 'width' => $dimension, 'height' => $dimension, 'crop' => true ), array( 'class' => 'has-thumbnail' ) );
