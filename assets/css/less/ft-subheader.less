@@ -22,9 +22,17 @@
 		}
 
 		.breadcrumb {
-			background-color: transparent;
 			margin: 0;
-			padding: 8px 0 0;
+			padding: 10px 0 0;
+			color: @breadcrumb-active-color;
+
+			> a {
+				display: inline-block;
+				&:after {
+					padding: 0 5px;
+					color: @breadcrumb-color;
+				}
+			}
 		}
 	}
 
