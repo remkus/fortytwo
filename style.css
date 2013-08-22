@@ -7254,8 +7254,8 @@ td.visible-print {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../font/fontawesome-webfont.eot?v=3.2.1');
-  src: url('../font/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../font/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../font/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
+  src: url('assets/fonts/fontawesome-webfont.eot?v=3.2.1');
+  src: url('assets/fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('assets/fonts/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('assets/fonts/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('assets/fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -9170,7 +9170,7 @@ a .icon-flip-vertical:before {
 }
 /* line 27, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-header.less */
 .site-header .site-title a {
-  background: url('../images/logo.png') no-repeat;
+  background: url('assets/images/logo.png') no-repeat;
   display: block;
   float: left;
   overflow: hidden;
