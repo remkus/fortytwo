@@ -3,44 +3,77 @@
  * FortyTwo Insert Page Title: Adds the page title to all pages
  */
 
-//* Reposition the breadcrumbs
+// TODO: $ft_site_subheader to be translated and possibly filterable
+// TODO: page title and breadcrumbs should have our own do action
+
+// Remove the default location of breadcrumbs as well call it when adding our subheader area
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 
-//add_action( 'genesis_after_header', 'genesis_do_breadcrumbs' ); //TODO bring in modified breadcrumbs
+add_filter( 'genesis_breadcrumb_args', 'fortytwo_breadcrumb_args' );
+/**
+ * Modifying the default breadcrumb
+ *
+ */
+function fortytwo_breadcrumb_args( $args ) {
+
+	$args['home'] = 'Home';
+	$args['sep'] = ' / ';
+	$args['list_sep'] = ', '; // Genesis 1.5 and later
+	$args['prefix'] = '<div class="breadcrumb">';
+	$args['suffix'] = '</div>';
+	$args['heirarchial_attachments'] = true; // Genesis 1.5 and later
+	$args['heirarchial_categories'] = true; // Genesis 1.5 and later
+	$args['display'] = true;
+	$args['labels']['prefix'] = '';
+	$args['labels']['author'] = '';
+	$args['labels']['category'] = ''; // Genesis 1.6 and later
+	$args['labels']['tag'] = '';
+	$args['labels']['date'] = '';
+	$args['labels']['search'] = '';
+	$args['labels']['tax'] = '';
+	$args['labels']['post_type'] = '';
+	$args['labels']['404'] = 'Not found: '; // Genesis 1.5 and later
+
+	return $args;
+}
 
 add_action( 'genesis_after_header', 'fortytwo_insert_site_subheader' );
 /**
  * Insert subheader section for site-inner
  *
- * @return [type] [description]
- * @TODO $ft_site_subheader to be translated and possibly filterable
  */
-function fortytwo_insert_site_subheader() {
+function fortytwo_insert_site_subheader( $ft_subheader_attr = array() ) {
 	if ( !is_front_page() ) {
+
+		global $post;
+
+		if ( ! is_page_template( 'page_blog.php' ) )
+			remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
+			remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
+			remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
+
+		$ft_subheader_attr = array(
+			'title'       => $post->post_title, //apply_filters( 'ft_subheader_title', $ft_subheader_attr ),
+			'breadcrumbs' => true,
+			'widget'      => false
+		);
+
 		$ft_site_subheader = <<<EOD
 			<div class="site-subheader">
-				<div class="outer-wrap">
-					<div class="wrap">
+				<div class="wrap">
+					<div class="inner-wrap">
 						<div class="subheader-area">
-							<h2>Page Title</h2>
-							<ul class="breadcrumb">
-								<li><a href="#">Home</a></li>
-								<li><a href="#">Library</a></li>
-								<li class="active">Data</li>
-							</ul>
+							<header class="entry-header">
+								<h1 class="entry-title" itemprop="headline">{$ft_subheader_attr['title']}</h1>
+							</header>
+EOD;
+		echo $ft_site_subheader;
+
+							if ( $ft_subheader_attr['breadcrumbs'] )
+								genesis_do_breadcrumbs();
+
+		$ft_site_subheader = <<<EOD
 						</div>
-						<aside class="widget-area subheader-widget-area">
-							<section id="search-4" class="widget widget_search">
-								<div class="widget-wrap">
-									<form role="search" method="get" id="searchform" class="input-group" action="http://www.gitpress.dev/">
-										<input type="text" value="" name="s" id="s">
-										<span class="input-group-btn">
-											<button class="btn btn-default" type="submit">Search</button>
-										</span>
-									</form>
-								</div>
-							</section>
-						</aside>
 					</div>
 				</div>
 			</div>

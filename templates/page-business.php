@@ -42,11 +42,15 @@ function fortytwo_add_section_after_header() {
 	if ( is_active_sidebar( 'page-business-section' ) ) {
 		echo '<div class="section-container section-1">';
 
-		fortytwo_add_widget_count_class( 'page-business-section' );
+			fortytwo_add_widget_count_class( 'page-business-section' );
 
-		genesis_structural_wrap( 'site-section', 'open' );
-			dynamic_sidebar( 'page-business-section' );
-		genesis_structural_wrap( 'site-section', 'close' );
+			genesis_structural_wrap( 'site-section', 'open' );
+
+				echo '<div class="inner-wrap">';
+					dynamic_sidebar( 'page-business-section' );
+				echo '</div>';
+
+			genesis_structural_wrap( 'site-section', 'close' );
 
 		echo '</div>';
 	}

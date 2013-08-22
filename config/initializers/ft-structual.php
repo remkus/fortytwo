@@ -11,56 +11,57 @@ add_theme_support( 'genesis-structural-wraps', array(
 	'header',
 	'menu-primary',
 	'menu-secondary',
-	'site-section',
 	'site-inner',
+	'site-section',
 	'footer-widgets',
 	'footer'
 ) );
 
-add_filter( 'genesis_structural_wrap-header', 'fortytwo_add_extra_structural_wrap', 10, 2 );
-add_filter( 'genesis_structural_wrap-site-section', 'fortytwo_add_extra_structural_wrap', 10, 2 );
-add_filter( 'genesis_structural_wrap-site-inner', 'fortytwo_add_extra_structural_wrap', 10, 2 );
-add_filter( 'genesis_structural_wrap-footer-widgets', 'fortytwo_add_extra_structural_wrap', 10, 2 );
-add_filter( 'genesis_structural_wrap-footer', 'fortytwo_add_extra_structural_wrap', 10, 2 );
+add_action( 'genesis_header', 'fortytwo_inner_structural_wrap_open', 6 );
+add_action( 'genesis_footer', 'fortytwo_inner_structural_wrap_open', 6 );
 /**
- * Add a structural extra .wrap div so we can rename the original one later in the
- * process of adding structural wraps.
+ * Echo the extra opening structural wrap for header.
  *
  * @since 1.0
  *
- * @param string $output Existing attributes.
- * @param string $output_original
- *
- * @return string Wrap HTML with col-wrap.
  */
-function fortytwo_add_extra_structural_wrap( $output, $original_output ) {
+function fortytwo_inner_structural_wrap_open() {
 
-	switch ( $original_output ) {
-		case 'open':
-			$output = sprintf( '<div %s>', genesis_attr( 'extra-structural-wrap' ) );
-			break;
-		case 'close':
-			$output = '</div>';
-			break;
-	}
+	genesis_markup( array(
+		'html5'   => '<div %s>',
+		'xhtml'   => '<div id="inner-wrap">',
+		'context' => 'inner-wrap',
+	) );
 
-	echo $output;
 }
 
-
-add_filter( 'genesis_attr_extra-structural-wrap', 'fortytwo_attributes_extra_structural_wrap' );
+add_action( 'genesis_header', 'fortytwo_inner_structural_wrap_close', 14 );
+add_action( 'genesis_footer', 'fortytwo_inner_structural_wrap_close', 14 );
 /**
- * Add attributes for extra structural wrap element.
+ * Echo the extra closing structural wrap for header.
  *
  * @since 1.0
  *
- * @param array $attributes Existing attributes.
- *
- * @return array Amended attributes.
  */
-function fortytwo_attributes_extra_structural_wrap( $attributes ) {
+function fortytwo_inner_structural_wrap_close() {
 
-	$attributes['class'] = 'outer-wrap';
+	genesis_markup( array(
+		'html5' => '</div>',
+		'xhtml' => '</div>',
+	) );
+
+}
+
+add_filter( 'genesis_attr_content-sidebar-wrap', 'fortytwo_attributes_content_sidebar_wrap' );
+/**
+ * Add additional class attributes content-sidebar-wrap.
+ *
+ * @since 1.0
+ *
+ */
+function fortytwo_attributes_content_sidebar_wrap( $attributes ) {
+
+	$attributes['class'] = 'content-sidebar-wrap inner-wrap';
 
 	return $attributes;
 
@@ -85,7 +86,7 @@ function fortytwo_add_widget_count_class( $id ) {
 	global $wp_registered_sidebars;
 	global $sidebars_widgets;
 
-	$widget_count_class = ' col-' . ( 12 / ( count ( $sidebars_widgets[$id] ) ) );
+	$widget_count_class = ' col-lg-' . ( 12 / ( count ( $sidebars_widgets[$id] ) ) );
 
 	$wp_registered_sidebars[$id]['before_widget'] = '<section id="%1$s" class="widget %2$s' . $widget_count_class . '"><div class="widget-wrap">';
 

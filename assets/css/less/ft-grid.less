@@ -1,45 +1,9 @@
 // Custom file for grid layout to make Bootstrap work with Genesis
 
-//
-// Genesis Wrap and Bootstrap Container
-// --------------------------------------------------
-
-//
-// Grid system
-// --------------------------------------------------
-
-/* Column Widths and Positions
---------------------------------------------- */
-
-// Set the container width, and override it for fixed navbars in media queries
-
-.outer-wrap {
-	.container-fixed();
+.wrap {
+	&:extend(.container all);
 }
 
-// Mobile-first defaults
-.wrap,
-.section-container {
-	.make-row();
-}
-
-// Small device columns (phones to tablets)
-@media (min-width: @screen-tablet) {
-	.outer-wrap {
-		max-width: @container-tablet;
-	}
-}
-
-// Medium and large device columns (desktop and up)
-@media (min-width: @screen-desktop) {
-	.outer-wrap {
-		max-width: @container-desktop;
-	}
-}
-
-// Large desktops and up
-@media (min-width: @screen-large-desktop) {
-	.outer-wrap {
-		max-width: @container-large-desktop;
-	}
+.inner-wrap {
+	&:extend(.row all);
 }
