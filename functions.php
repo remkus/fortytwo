@@ -11,32 +11,6 @@ require_once( CHILD_DIR . '/config/initializers/init.php' );
 add_theme_support( 'html5' );
 add_theme_support( 'genesis-responsive-viewport' );
 
-// Add support for post format images
-//add_theme_support( 'genesis-post-format-images' );
-
-// Add support for post formats
-add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) ); //TODO add post format support using font icons
-
-
-add_filter( 'stylesheet_uri', 'fortywo_replace_default_style_sheet', 10, 2 );
-/**
- * Replace default style sheet
- * @return constant Base FortyTwo CSS
- */
-function fortywo_replace_default_style_sheet() {
-    return CHILD_URL . '/assets/css/fortytwo.css';
-}
-
-add_action( 'wp_enqueue_scripts', 'fortytwo_load_custom_style_sheet' );
-/**
- * Load custom style sheet for...
- * @todo  Better explanation as to why this function is needed
- * @return [type] [description]
- */
-function fortytwo_load_custom_style_sheet() {
-    wp_enqueue_style( 'custom-stylesheet', CHILD_URL . '/style.css', array(), PARENT_THEME_VERSION );
-}
-
 add_action( 'wp_enqueue_scripts', 'fortytwo_load_google_fonts' );
 /**
  * Loading Google Fonts
