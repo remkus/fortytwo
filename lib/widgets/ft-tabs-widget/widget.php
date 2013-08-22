@@ -225,7 +225,7 @@ class FT_Tabbed_Content extends WP_Widget {
 			}
 			$html .= '<div class="media-body">' . "\n";
 			$html .= '<h4 class="media-heading"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
-			$html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
+			$html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">'. __( 'Read more', 'fortytwo' ) . '</a>' . "\n";
 			$html .= '</div>' . "\n";
 			$html .= '</li>' . "\n";
 			if ( $post != $last_post ) {
@@ -264,7 +264,7 @@ class FT_Tabbed_Content extends WP_Widget {
 			}
 			$html .= '<div class="media-body">' . "\n";
 			$html .= '<h4 class="media-heading"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
-			$html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
+			$html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">'. __( 'Read more', 'fortytwo' ) . '</a>' . "\n";
 			$html .= '</div>' . "\n";
 			$html .= '</li>' . "\n";
 			if ( $post != $last_popular ) {
@@ -365,4 +365,3 @@ class FT_Tabbed_Content extends WP_Widget {
 } // End Class
 
 add_action( 'widgets_init', create_function( '', 'register_widget("FT_Tabbed_Content");' ) );
-?>
