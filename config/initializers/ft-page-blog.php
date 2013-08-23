@@ -50,7 +50,6 @@ function fortytwo_do_post_image() {
 			'attr'    => genesis_parse_attr( 'entry-image' )
 		) );
 
-		//TODO ln 63: class="pull-left" should be a dynamic value
 		if ( !empty( $img ) )
 			printf( '<a href="%s" title="%s" class="pull-left">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), $img );
 	}
