@@ -37,7 +37,7 @@
 		});
 		var iconList = new window.FontAwesomeIconSelectorApp.Views.IconListView({
 			collection: iconCollection,
-			selectedIconCss: '<?php echo $icon; ?>'||'icon-star',
+			selectedIconCss: '<?php echo $instance["icon"] ?>'||'icon-star',
 			el: '.<?php echo $this->get_field_id( "the-icon-selector" )?>'
 		});
 	});
