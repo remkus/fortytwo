@@ -31,15 +31,10 @@
 (function ($) {
 	"use strict";
 	$(document).ready(function () {
-		var iconCollection = new window.FontAwesomeIconSelectorApp.IconCollection();
-		iconCollection.on('change:selectedIcon', function(selectedIcon) {
-			$('#<?php echo $this->get_field_id( "icon" )?>').val(selectedIcon.get('css'));
-		});
-		var iconList = new window.FontAwesomeIconSelectorApp.Views.IconListView({
-			collection: iconCollection,
-			selectedIconCss: '<?php echo $icon; ?>'||'icon-star',
-			el: '.<?php echo $this->get_field_id( "the-icon-selector" )?>'
-		});
+		var iconSaveInputElement = '#<?php echo $this->get_field_id( "icon" )?>',
+			  selectedIcon = '<?php echo $instance["icon"]; ?>',
+			  iconSelectorElement = '.<?php echo $this->get_field_id( "the-icon-selector" )?>';
+		window.FontAwesomeIconSelectorApp.attachApp(selectedIcon, iconSelectorElement, iconSaveInputElement);
 	});
 }(jQuery));
 </script>
