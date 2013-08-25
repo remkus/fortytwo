@@ -42,7 +42,6 @@ function fortytwo_do_nav()
 		// Get the Genesis attributes for navigation
 		$nav_attr = genesis_attr( 'nav-primary' );
 
-		//TODO: navbar-brand has a hard coded FortyTwo as the value, needs to pull current title
 		$nav_output = <<<EOD
 			<nav class="nav-primary" {$nav_attr}>
 				<div class="wrap">
