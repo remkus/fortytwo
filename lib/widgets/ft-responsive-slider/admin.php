@@ -146,6 +146,22 @@ function ft_responsive_slider_settings_layout_columns( $columns, $screen ) {
 function ft_responsive_slider_settings_admin() {
 	global $_ft_responsive_slider_settings_pagehook, $screen_layout_columns;
 
+	//FIXME: Hack to hide wp menus
+	echo <<<STYLE
+	<style>
+		#adminmenuback, #adminmenuwrap, #adminmenushadow, #adminmenu {
+			display: none;
+		}
+		#wpadminbar, #screen-meta, #screen-meta-links {
+			display: none;
+		}
+		/* for MP6 */
+		#moby6-toggle {
+			display: none;
+		}
+	</style>
+STYLE;
+
 	$width = "width: 99%;";
 	$hide2 = $hide3 = " display: none;";
 ?>
