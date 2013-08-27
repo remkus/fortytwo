@@ -1,8 +1,68 @@
 // FortyTwo Comments
 
+.entry-comments {
+	position: relative;
+}
+
 .comment-respond {
 
 }
+
+.comment-list {
+	margin: 40px 0 0;
+	padding-left: 0; // reset padding because ul and ol
+
+	> .comment {
+		&:extend(.panel all);
+		display: block;
+		margin-bottom: @line-height-computed * 2;
+	}
+
+}
+
+.entry-comments > h3 {
+	.hide-text();
+	width: 100%;
+	margin: 0;
+	display: table;
+	border-top: 1px dashed #e8e8e8;
+	text-align: center;
+}
+
+.entry-comments > h3:before,
+.entry-comments > h3:after {
+	display: table-cell;
+	width: 100%;
+	font-family: FontAwesome;
+	position: absolute;
+}
+
+.entry-comments > h3:before {
+	font-size: 40px;
+	content: "\f111";
+	color: #424242;
+}
+
+.entry-comments > h3:after {
+	font-size: 20px;
+	content: "\f086";
+	color: #fff;
+}
+
+.comment-header {
+//	.panel-heading;
+}
+
+.comment-content {
+//	.panel-body;
+}
+
+.comment-reply {
+//	.panel-footer;
+}
+
+
+/*
 #comments,
 #respond {
 	line-height: 1.5;
@@ -74,4 +134,4 @@ label {
 #comments .navigation {
 	margin-top: 32px;
 	margin-top: 2rem;
-}
+}*/
