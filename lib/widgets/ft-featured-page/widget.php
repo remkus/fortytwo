@@ -164,6 +164,7 @@ class FT_Featured_Page extends WP_Widget {
 		wp_enqueue_script( 'jquery-ui-position' );
 		wp_enqueue_script( 'jquery-effects-slide' );
 		wp_enqueue_script( 'backbone' );
+		wp_enqueue_script( 'add_event_saved_widget', $this->url( '/js/add_event_saved_widget.js' ),  array( 'backbone' ) );
 		wp_enqueue_script( 'fontawesome_icon_selector_app', $this->url( '/js/fontawesome_icon_selector_app.js' ), array( 'backbone' ) );
 		wp_enqueue_script( 'ft-featured-page-admin-script', $this->url( '/js/admin.js' ),  array( 'fontawesome_icon_selector_app' ) );
 

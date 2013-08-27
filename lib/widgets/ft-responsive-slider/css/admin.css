@@ -1,1 +1,17 @@
 /* This stylesheet is used to style the admin option form of the plugin. */
+.ft-responsive-slider-container-dialog {
+	padding: 0px 10px 0px 10px;
+	background-color: white;
+  -webkit-box-shadow: 0px 0px 16px rgba( 0,0,0,0.3 );
+  box-shadow: 0px 0px 16px rgba( 0,0,0,0.3 );
+}
+
+.ft-responsive-slider-container-dialog .ui-dialog-titlebar-close {
+  display: none;
+}
+
+.ft-responsive-slider-container-dialog .content-iframe {
+  width: 100%;
+  height: 100%;
+}
+

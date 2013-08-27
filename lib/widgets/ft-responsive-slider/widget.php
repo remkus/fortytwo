@@ -33,27 +33,11 @@
 define( 'FT_RESPONSIVE_SLIDER_SETTINGS_FIELD', 'ft_responsive_slider_settings' );
 define( 'FT_RESPONSIVE_SLIDER_VERSION', '0.9.2' );
 
+// Include Admin file 
+if ( is_admin() ) require_once dirname( __FILE__ ) . '/admin.php';
+
 function ft_responsive_slider_url( $file ) {
 	return FORTYTWO_WIDGETS_URL.'/ft-responsive-slider'.$file;
-}
-
-add_action( 'after_setup_theme', 'FTResponsiveSliderInit', 15 );
-/**
- * Loads required files and adds image via Genesis Init Hook
- */
-function FTResponsiveSliderInit() {
-
-  // hook all frontend slider functions here to ensure Genesis is active **/
-	add_action( 'wp_enqueue_scripts', 'ft_responsive_slider_scripts' );
-	add_action( 'wp_footer', 'ft_responsive_slider_flexslider_params' );
-	add_action( 'widgets_init', 'ft_responsive_sliderRegister' );
-
-	// Include Admin file 
-	if ( is_admin() ) require_once dirname( __FILE__ ) . '/views/form.php';
-
-	/* Add new image size */
-	add_image_size( 'slider', ( int ) ft_get_responsive_slider_option( 'slideshow_width' ), ( int ) ft_get_responsive_slider_option( 'slideshow_height' ), TRUE );
-
 }
 
 add_action( 'genesis_settings_sanitizer_init', 'ft_responsive_slider_sanitization' );
@@ -143,13 +127,6 @@ function ft_responsive_slider_flexslider_params() {
 	echo '<script type=\'text/javascript\'>' . $output . '</script>';
 }
 
-/**
- * Registers the slider widget
- */
-function ft_responsive_sliderRegister() {
-	register_widget( 'ft_responsive_sliderWidget' );
-}
-
 /* Creates read more link after excerpt */
 function ft_responsive_slider_excerpt_more( $more ) {
 	global $post;
@@ -165,14 +142,102 @@ function ft_responsive_slider_excerpt_more( $more ) {
 }
 
 /**
+ * Used to exclude taxonomies and related terms from list of available terms/taxonomies in widget form().
+ *
+ * @since 0.9
+ * @author Nick Croft
+ *
+ * @param string  $taxonomy 'taxonomy' being tested
+ * @return string
+ */
+function ft_responsive_slider_exclude_taxonomies( $taxonomy ) {
+
+	$filters = array( '', 'nav_menu' );
+	$filters = apply_filters( 'ft_responsive_slider_exclude_taxonomies', $filters );
+
+	return ! in_array( $taxonomy->name, $filters );
+
+}
+
+/**
+ * Used to exclude post types from list of available post_types in widget form().
+ *
+ * @since 0.9
+ * @author Nick Croft
+ *
+ * @param string  $type 'post_type' being tested
+ * @return string
+ */
+function ft_responsive_slider_exclude_post_types( $type ) {
+
+	$filters = array( '', 'attachment' );
+	$filters = apply_filters( 'ft_responsive_slider_exclude_post_types', $filters );
+
+	return ! in_array( $type, $filters );
+
+}
+
+/**
+ * Returns Slider Option
+ *
+ * @param string  $key key value for option
+ * @return string
+ */
+function ft_get_responsive_slider_option( $key ) {
+	return genesis_get_option( $key, FT_RESPONSIVE_SLIDER_SETTINGS_FIELD );
+}
+
+/**
+ * Echos Slider Option
+ *
+ * @param string  $key key value for option
+ */
+function ft_responsive_slider_option( $key ) {
+
+	if ( ! ft_get_responsive_slider_option( $key ) )
+		return false;
+
+	echo ft_get_responsive_slider_option( $key );
+}
+
+//#### below ######### Already refactored to FT widget structure #########
+
+/**
  * Slideshow Widget Class
  */
-class ft_responsive_sliderWidget extends WP_Widget {
+class FT_Responsive_Slider extends WP_Widget {
 
-	function ft_responsive_sliderWidget() {
-		$widget_ops = array( 'classname' => 'ft-responsive-slider', 'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' ) );
-		$control_ops = array( 'width' => 200, 'height' => 250, 'id_base' => 'ft-responsive-slider' );
-		$this->WP_Widget( 'ft-responsive-slider', __( 'FortyTwo - Responsive Slider', 'fortytwo' ), $widget_ops, $control_ops );
+	/**
+	 * Specifies the classname and description, instantiates the widget,
+	 * loads localization files, and includes necessary stylesheets and JavaScript.
+	 */
+	public function __construct() {
+		global $_ft_responsive_slider_settings_pagehook;
+
+		parent::__construct(
+			'ft-responsive-slider',
+			__( 'FortyTwo - Responsive Slider', 'fortytwo' ),
+			array(
+				'classname' => 'ft-responsive-slider',
+				'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' )
+			),
+			array( 
+				'width' => 200, 
+				'height' => 250, 
+				'id_base' => 'ft-responsive-slider' 
+			)
+		);
+	
+		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
+
+	  // hook all frontend slider functions here to ensure Genesis is active **/
+		add_action( 'wp_enqueue_scripts', 'ft_responsive_slider_scripts' );
+		add_action( 'wp_footer', 'ft_responsive_slider_flexslider_params' );
+
+		/* Add new image size */
+		add_image_size( 'slider', ( int ) ft_get_responsive_slider_option( 'slideshow_width' ), ( int ) ft_get_responsive_slider_option( 'slideshow_height' ), TRUE );
+
 	}
 
 	function save_settings( $settings ) {
@@ -349,12 +414,10 @@ class ft_responsive_sliderWidget extends WP_Widget {
 	function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title = $instance['title'];
-?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'fortytwo' ); ?> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></label></p>
-<?php
-		echo '<p>';
-		printf( __( 'To configure slider options, please go to the <a href="%s">Slider Settings</a> page.', 'fortytwo' ), menu_page_url( 'genesis_responsive_slider', 0 ) );
-		echo '</p>';
+
+		// Display the admin form
+		include dirname( __FILE__ ) . '/views/form.widget.php';
+
 	}
 
 	function update( $new_instance, $old_instance ) {
@@ -364,63 +427,26 @@ class ft_responsive_sliderWidget extends WP_Widget {
 		return $instance;
 	}
 
-}
+	/**
+	 * Registers and enqueues admin-specific styles.
+	 */
+	function register_admin_styles() {
 
-/**
- * Used to exclude taxonomies and related terms from list of available terms/taxonomies in widget form().
- *
- * @since 0.9
- * @author Nick Croft
- *
- * @param string  $taxonomy 'taxonomy' being tested
- * @return string
- */
-function ft_responsive_slider_exclude_taxonomies( $taxonomy ) {
+		wp_enqueue_style ( 'ft-responsive-slider-admin-css', ft_responsive_slider_url( '/css/admin.css' ) );
+		
+	} // end register_admin_styles
 
-	$filters = array( '', 'nav_menu' );
-	$filters = apply_filters( 'ft_responsive_slider_exclude_taxonomies', $filters );
+	/**
+	 * Registers and enqueues admin-specific JavaScript.
+	 */
+	function register_admin_scripts() {
 
-	return ! in_array( $taxonomy->name, $filters );
+		wp_enqueue_script( 'jquery-ui-slider' );
+		wp_enqueue_script( 'jquery-ui-dialog' );
+		wp_enqueue_script( 'jquery-ui-position' );
 
-}
-
-/**
- * Used to exclude post types from list of available post_types in widget form().
- *
- * @since 0.9
- * @author Nick Croft
- *
- * @param string  $type 'post_type' being tested
- * @return string
- */
-function ft_responsive_slider_exclude_post_types( $type ) {
-
-	$filters = array( '', 'attachment' );
-	$filters = apply_filters( 'ft_responsive_slider_exclude_post_types', $filters );
-
-	return ! in_array( $type, $filters );
+	} // end register_admin_scripts
 
 }
 
-/**
- * Returns Slider Option
- *
- * @param string  $key key value for option
- * @return string
- */
-function ft_get_responsive_slider_option( $key ) {
-	return genesis_get_option( $key, FT_RESPONSIVE_SLIDER_SETTINGS_FIELD );
-}
-
-/**
- * Echos Slider Option
- *
- * @param string  $key key value for option
- */
-function ft_responsive_slider_option( $key ) {
-
-	if ( ! ft_get_responsive_slider_option( $key ) )
-		return false;
-
-	echo ft_get_responsive_slider_option( $key );
-}
+add_action( 'widgets_init', create_function( '', 'register_widget("FT_Responsive_Slider");' ) );
