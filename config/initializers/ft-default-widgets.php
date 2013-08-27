@@ -59,12 +59,10 @@ class FortyTwo_Walker_Category extends Walker_Category {
 		$link .= '>';
 		$link .= $cat_name;
 
-        if ( !empty($show_count) )
-            $link .= '<span class="badge">' . intval($category->count) . '</span>';
+		if ( !empty($show_count) )
+			$link .= '<span class="badge">' . intval($category->count) . '</span>';
 
-        $link .= '</a>';
-
-        $link .= '<span class="icon icon-angle-right"></span>';
+		$link .= '</a>';
 
 		if ( !empty($feed_image) || !empty($feed) ) {
 			$link .= ' ';
