@@ -122,30 +122,6 @@
 		padding-top: 30px;
 	}
 
-	.widget_archive {
-
-		li {
-			position: relative;
-			display: block;
-			padding: 10px 0 0;
-
-			&:first-child {
-				padding-top: 0;
-			}
-
-			.icon {
-				line-height: @line-height-base;
-				float: left;
-				text-align: left;
-			}
-
-			.badge {
-				float: right;
-				border-radius: 0.25em;
-			}
-		}
-	}
-
 	.widget_calendar {
 		caption {
 			text-transform: uppercase;
@@ -204,7 +180,9 @@
 
 	.widget_pages,
 	.widget_categories,
+	.widget_archive,
 	.widget_meta,
+	.widget_recent_comments,
 	.widget_recent_entries,
 	.widget_nav_menu {
 
@@ -216,6 +194,7 @@
 		}
 
 		li {
+			.text-overflow();
 			position: relative;
 			display: block;
 			padding: 10px 0 0 20px;
@@ -307,44 +286,6 @@
 				}
 			}
 
-		}
-	}
-
-	.widget_recent_comments {
-		> .widget-wrap {
-
-			ul.children {
-				margin-top: 10px;
-			}
-		}
-
-		li {
-			position: relative;
-			display: block;
-			padding: 10px 0 0 20px;
-
-			&:before {
-				position: absolute;
-				left: 0;
-				font-size: 14px;
-				font-family: FontAwesome;
-				content: "\f0e5";
-			}
-
-			&:first-child {
-				padding-top: 0;
-			}
-
-			.icon {
-				line-height: @line-height-base;
-				float: left;
-				text-align: left;
-			}
-
-			.badge {
-				float: right;
-				border-radius: 0.25em;
-			}
 		}
 	}
 
