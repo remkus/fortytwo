@@ -47,10 +47,11 @@ function fortytwo_insert_site_subheader( $ft_subheader_attr = array() ) {
 
 		global $post;
 
-		if ( ! is_page_template( 'page_blog.php' ) )
+		if ( ! is_page_template( 'page_blog.php' ) ) {
 			remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
 			remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
 			remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
+		}
 
 		$ft_subheader_attr = array(
 			'title'       => $post->post_title, //apply_filters( 'ft_subheader_title', $ft_subheader_attr ),

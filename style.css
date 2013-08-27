@@ -2272,7 +2272,7 @@ fieldset[disabled] .btn {
 /* line 57, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
 .btn-default {
   color: #333333;
-  background-color: #ffffff;
+  background-color: #ff0000;
   border-color: #cccccc;
 }
 /* line 412, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
@@ -2282,7 +2282,7 @@ fieldset[disabled] .btn {
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
   color: #333333;
-  background-color: #ebebeb;
+  background-color: #d60000;
   border-color: #adadad;
 }
 /* line 421, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
@@ -2307,7 +2307,7 @@ fieldset[disabled] .btn-default:active,
 .btn-default.disabled.active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active {
-  background-color: #ffffff;
+  background-color: #ff0000;
   border-color: #cccccc;
 }
 /* line 60, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
@@ -9207,7 +9207,7 @@ body {
 /* line 21, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
 .btn {
   color: #333333;
-  background-color: #ffffff;
+  background-color: #ff0000;
   border-color: #cccccc;
 }
 /* line 412, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
@@ -9217,7 +9217,7 @@ body {
 .btn.active,
 .open .dropdown-toggle.btn {
   color: #333333;
-  background-color: #ebebeb;
+  background-color: #d60000;
   border-color: #adadad;
 }
 /* line 421, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
@@ -9242,7 +9242,7 @@ fieldset[disabled] .btn:active,
 .btn.disabled.active,
 .btn[disabled].active,
 fieldset[disabled] .btn.active {
-  background-color: #ffffff;
+  background-color: #ff0000;
   border-color: #cccccc;
 }
 /* line 28, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
