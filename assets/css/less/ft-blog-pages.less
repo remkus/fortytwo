@@ -4,10 +4,12 @@
 .entry-author,
 .entry-comments-link,
 .entry-categories {
+
 	.label;
+	.font-size(13);
 	background-color: #f9f9f9;
 	color: @color-d-dark;
-	.font-size(13);
+
 	a {
 		color: @color-d-dark;
 	}
@@ -17,6 +19,16 @@
 
 	article {
 		.clearfix();
+
+		margin: 40px 0;
+		padding: 40px 0 0;
+		border-top: 1px dashed #ccc;
+
+		&:first-child {
+			margin-top: 0;
+			padding-top: 0;
+			border-top: none;
+		}
 
 		.post-image-link {
 			.pull-left;
@@ -33,14 +45,13 @@
 		}
 	}
 
-	hr {
-		border-top: 1px dashed @hr-border;
-		margin: 30px 0;
+	.comment-respond {
+		margin: 0 0 40px;
 	}
 
 	.pagination {
 
-		margin: 50px 0;
+		margin: 0 0 40px;
 		list-style: none;
 		text-align: center;
 		.clearfix();

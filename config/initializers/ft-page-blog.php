@@ -33,20 +33,6 @@ function fortytwo_do_post_image() {
 
 }
 
-add_action( 'genesis_after_entry', 'fortytwo_add_entry_hr' );
-/**
- * Add <hr> element after posts.
- *
- */
-function fortytwo_add_entry_hr() {
-
-    global $wp_query;
-    if ( $wp_query->current_post +1 !== $wp_query->post_count ) {
-        echo '<hr>';
-    }
-
-}
-
 add_filter( 'genesis_post_info', 'fortytwo_post_info_filter' );
 /**
  * Change the post info layout to use our label based style
