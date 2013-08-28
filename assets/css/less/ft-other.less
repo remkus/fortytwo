@@ -36,7 +36,13 @@ h6, .h6 { font-size: ceil(@font-size-base * 0.85); } // ~12px
 	}
 }
 
-.content > article > .entry-content :first-child {
+// Removes top padding and margin from first element of .entry-content
+.content > article > .entry-content > :first-child {
 	margin-top: 0;
 	padding-top: 0;
+}
+
+// adds default styling to all tables
+table {
+	&:extend(.table all);
 }
