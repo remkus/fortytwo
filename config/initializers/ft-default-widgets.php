@@ -31,8 +31,6 @@ function fortytwo_modify_archives_link( $link_html ) {
         $link_html = str_replace( $post_count[0], '<span class="badge">' . $post_count[1] . '</span></a>', $link_html );
     }
 
-    $link_html = str_replace( '</a>', '</a><span class="icon icon-angle-right"></span>', $link_html );
-
     return $link_html;
 
 }
@@ -59,12 +57,10 @@ class FortyTwo_Walker_Category extends Walker_Category {
 		$link .= '>';
 		$link .= $cat_name;
 
-        if ( !empty($show_count) )
-            $link .= '<span class="badge">' . intval($category->count) . '</span>';
+		if ( !empty($show_count) )
+			$link .= '<span class="badge">' . intval($category->count) . '</span>';
 
-        $link .= '</a>';
-
-        $link .= '<span class="icon icon-angle-right"></span>';
+		$link .= '</a>';
 
 		if ( !empty($feed_image) || !empty($feed) ) {
 			$link .= ' ';

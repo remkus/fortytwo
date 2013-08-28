@@ -122,30 +122,6 @@
 		padding-top: 30px;
 	}
 
-	.widget_archive {
-
-		li {
-			position: relative;
-			display: block;
-			padding: 10px 0 0;
-
-			&:first-child {
-				padding-top: 0;
-			}
-
-			.icon {
-				line-height: @line-height-base;
-				float: left;
-				text-align: left;
-			}
-
-			.badge {
-				float: right;
-				border-radius: 0.25em;
-			}
-		}
-	}
-
 	.widget_calendar {
 		caption {
 			text-transform: uppercase;
@@ -161,9 +137,10 @@
 
 			thead > tr > th {
 				text-align: center;
-				padding: 0;
 				font-weight: 600;
 				.font-size(13);
+				border: none;
+				background-color: #fafafa;
 			}
 
 			tbody > tr > td {
@@ -180,6 +157,11 @@
 			}
 
 			tfoot {
+
+				> tr > td {
+					padding-top: 0;
+					border-top: none;
+				}
 				position: absolute;
 				top: 0;
 				border-spacing: 0;
@@ -196,76 +178,11 @@
 		}
 	}
 
-	.widget_categories {
-		> .widget-wrap {
-
-			ul.children {
-				margin-top: 10px;
-			}
-		}
-
-		li {
-			position: relative;
-			display: block;
-			padding: 10px 0 0;
-
-			&:first-child {
-				padding-top: 0;
-			}
-
-			.icon {
-				line-height: @line-height-base;
-				float: left;
-				text-align: left;
-			}
-
-			.badge {
-				float: right;
-				border-radius: 0.25em;
-			}
-		}
-	}
-
-	.widget_pages {
-		> .widget-wrap {
-
-			ul.children {
-				margin-top: 10px;
-				margin-left: 5px;
-			}
-		}
-
-		li {
-			position: relative;
-			display: block;
-			padding: 10px 0 0 20px;
-
-			&:before {
-				position: absolute;
-				left: 0;
-				font-size: 14px;
-				font-family: FontAwesome;
-				content: "\f105";
-			}
-
-			&:first-child {
-				padding-top: 0;
-			}
-
-			.icon {
-				line-height: @line-height-base;
-				float: left;
-				text-align: left;
-			}
-
-			.badge {
-				float: right;
-				border-radius: 0.25em;
-			}
-		}
-	}
-
+	.widget_pages,
+	.widget_categories,
+	.widget_archive,
 	.widget_meta,
+	.widget_recent_comments,
 	.widget_recent_entries,
 	.widget_nav_menu {
 
@@ -277,6 +194,7 @@
 		}
 
 		li {
+			.text-overflow();
 			position: relative;
 			display: block;
 			padding: 10px 0 0 20px;
@@ -371,44 +289,6 @@
 		}
 	}
 
-	.widget_recent_comments {
-		> .widget-wrap {
-
-			ul.children {
-				margin-top: 10px;
-			}
-		}
-
-		li {
-			position: relative;
-			display: block;
-			padding: 10px 0 0 20px;
-
-			&:before {
-				position: absolute;
-				left: 0;
-				font-size: 14px;
-				font-family: FontAwesome;
-				content: "\f0e5";
-			}
-
-			&:first-child {
-				padding-top: 0;
-			}
-
-			.icon {
-				line-height: @line-height-base;
-				float: left;
-				text-align: left;
-			}
-
-			.badge {
-				float: right;
-				border-radius: 0.25em;
-			}
-		}
-	}
-
 	.widget_tag_cloud {
 		.tagcloud {
 
@@ -416,10 +296,11 @@
 
 				> li {
 					.label;
+					.label-default;
 					display: inline-block;
 					margin: 0 0 5px 0;
-					padding: .5em .6em;
 					font-size: 100%;
+					font-weight: normal;
 
 					> a {
 						color: #fff;
