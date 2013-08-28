@@ -2,10 +2,15 @@
 
 .entry-comments {
 	position: relative;
+	margin-bottom: 40px;
 }
 
-.entry-comments,
-.comment-respond {
+.entry-comments + .comment-respond {
+	margin-bottom: 40px;
+	margin-top: -40px;
+}
+
+.entry-comments {
 	> h3 {
 		.font-size(22);
 		font-weight: 300;
@@ -33,13 +38,10 @@
 	color: #fff;
 	top: -1px;
 }*/
-.entry-comments,
-.comment-respond {
-	margin: 0 0 40px;
-}
 
 .comment-list {
 	padding-left: 0; // reset padding because ul and ol
+	margin: 0;
 
 	.comment {
 		display: block;
@@ -106,8 +108,11 @@
 //		padding-left: 58px;
 	}
 
-	.comment-reply {
-//		padding-left: 58px;
+	.comment-reply-link {
+		.btn;
+		.btn-default;
+		.btn-xs;
+		text-transform: uppercase;
 	}
 
 	.comment-author {
@@ -127,8 +132,74 @@
 
 }
 
+.comment-respond {
+	position: relative;
+	background: #f9f9f9;
+	padding: 30px;
+	margin-left: 24px;
 
+	.comment-reply-title {
+		margin: 0 0 20px;
 
+		> small > a {
+			.btn;
+			.btn-default;
+			.btn-xs;
+			margin: 0 0 5px 5px;
+			text-transform: uppercase;
+		}
+	}
+
+	.comment-notes {
+		.alert;
+		.alert-info;
+	}
+
+	.comment-form-author,
+	.comment-form-email,
+	.comment-form-url,
+	.comment-form-comment {
+		.form-group;
+	}
+
+	select,
+	input[type="text"],
+	input[type="password"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="week"],
+	input[type="number"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"] {
+		.form-control;
+		width: 50%;
+	}
+
+	textarea {
+		.form-control;
+		height: auto;
+	}
+
+	.form-allowed-tags {
+		.help-block;
+
+		code {
+			display: block;
+			white-space: normal;
+		}
+	}
+
+	input[type="submit"] {
+		.btn;
+		.btn-default;
+	}
+}
 
 
 /*
