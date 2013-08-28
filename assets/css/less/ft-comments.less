@@ -4,16 +4,16 @@
 	position: relative;
 }
 
-.entry-comments > h3 {
-	.hide-text();
-	width: 100%;
-	margin: 0 0 40px;
-	display: table;
-	text-align: center;
-	border-top: 1px dashed #e8e8e8;
+.entry-comments,
+.comment-respond {
+	> h3 {
+		.font-size(22);
+		font-weight: 300;
+		margin: 0;
+		margin-bottom: 40px;
+	}
 }
-
-.entry-comments > h3:before,
+/*.entry-comments > h3:before,
 .entry-comments > h3:after {
 	display: table-cell;
 	width: 100%;
@@ -32,10 +32,10 @@
 	content: "\f086";
 	color: #fff;
 	top: -1px;
-}
-
+}*/
+.entry-comments,
 .comment-respond {
-
+	margin: 0 0 40px;
 }
 
 .comment-list {
@@ -51,13 +51,22 @@
 		padding: 40px 0 0 30px;
 		border-left: 1px dashed #e8e8e8;
 
+		&:first-child {
+			padding-top: 0;
+
+		}
+
 		> article {
-			border-top: 1px dashed #e8e8e8;
+			border-bottom: 1px dashed #e8e8e8;
 			margin: 0;
-			padding: 40px 0 0 0;
+			padding: 0 0 40px 0;
 		}
 
 		> .children {
+			border-top: none;
+			border-bottom: 1px dashed #e8e8e8;
+			padding-bottom: 30px;
+			padding-top: 0;
 		}
 
 	}
