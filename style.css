@@ -10091,15 +10091,16 @@ nav > .menu > li[class^="icon-"] > a {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+  text-align: center;
 }
 @media (min-width: 1200px) {
   /* line 627, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
   .site-footer .copyright-area {
     float: left;
-    width: 50%;
+    width: 100%;
   }
 }
-/* line 22, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-footer.less */
+/* line 23, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-footer.less */
 .site-footer .footer-widget-area {
   position: relative;
   min-height: 1px;
@@ -10113,7 +10114,7 @@ nav > .menu > li[class^="icon-"] > a {
     width: 50%;
   }
 }
-/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-footer.less */
+/* line 26, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-footer.less */
 .site-footer .footer-widget-area > span {
   float: right;
 }
