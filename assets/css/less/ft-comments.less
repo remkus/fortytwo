@@ -4,29 +4,13 @@
 	position: relative;
 }
 
-.comment-respond {
-
-}
-
-.comment-list {
-	margin: 40px 0 0;
-	padding-left: 0; // reset padding because ul and ol
-
-	> .comment {
-		&:extend(.panel all);
-		display: block;
-		margin-bottom: @line-height-computed * 2;
-	}
-
-}
-
 .entry-comments > h3 {
 	.hide-text();
 	width: 100%;
-	margin: 0;
+	margin: 0 0 40px;
 	display: table;
-	border-top: 1px dashed #e8e8e8;
 	text-align: center;
+	border-top: 1px dashed #e8e8e8;
 }
 
 .entry-comments > h3:before,
@@ -38,7 +22,7 @@
 }
 
 .entry-comments > h3:before {
-	font-size: 40px;
+	font-size: 42px;
 	content: "\f111";
 	color: #424242;
 }
@@ -47,19 +31,80 @@
 	font-size: 20px;
 	content: "\f086";
 	color: #fff;
+	top: -1px;
 }
 
-.comment-header {
-//	.panel-heading;
+.comment-respond {
+
 }
 
-.comment-content {
-//	.panel-body;
+.comment-list {
+	padding-left: 0; // reset padding because ul and ol
+
+	> .comment {
+
+		margin-left: 24px;
+		padding: 0 0 0 34px;
+		border-left: 1px dashed #e8e8e8;
+
+		> article {
+			border-top: 1px dashed #e8e8e8;
+			margin: 0;
+			padding: 40px 0;
+		}
+
+		&:first-child article {
+			border-top: none;
+		}
+	}
+
+	.comment {
+		display: block;
+
+		> .children {
+			padding-left: 0;
+			position: relative;
+
+			.comment {
+				margin-left: 24px;
+				padding-left: 34px;
+				border-left: 1px dashed #e8e8e8;
+			}
+		}
+	}
+
+	.comment-header {
+		height: 48px;
+//		padding-left: 58px;
+	}
+
+	.comment-content {
+//		padding-left: 58px;
+	}
+
+	.comment-reply {
+//		padding-left: 58px;
+	}
+
+	.comment-author {
+		.font-size(16);
+		margin-bottom: 0;
+
+		> img {
+			position: absolute;
+			left: 0;
+			border-radius: 24px;
+		}
+	}
+
+	.comment-meta {
+		.font-size(12);
+	}
+
 }
 
-.comment-reply {
-//	.panel-footer;
-}
+
+
 
 
 /*
