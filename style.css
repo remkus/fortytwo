@@ -10986,53 +10986,64 @@ nav > .menu > li[class^="icon-"] > a {
   padding-left: 0;
 }
 /* line 44, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
-.comment-list > .comment {
-  margin-left: 24px;
-  padding: 0 0 0 34px;
-  border-left: 1px dashed #e8e8e8;
-}
-/* line 50, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
-.comment-list > .comment > article {
-  border-top: 1px dashed #e8e8e8;
-  margin: 0;
-  padding: 40px 0;
-}
-/* line 56, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
-.comment-list > .comment:first-child article {
-  border-top: none;
-}
-/* line 61, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
 .comment-list .comment {
   display: block;
 }
-/* line 64, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
-.comment-list .comment > .children {
+/* line 48, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list > .comment {
+  margin-left: 24px;
+  padding: 40px 0 0 30px;
+  border-left: 1px dashed #e8e8e8;
+}
+/* line 54, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list > .comment > article {
+  border-top: 1px dashed #e8e8e8;
+  margin: 0;
+  padding: 40px 0 0 0;
+}
+/* line 65, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list article + .children {
+  border-top: 1px dashed #e8e8e8;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+/* line 71, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .children {
   padding-left: 0;
   position: relative;
 }
-/* line 68, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
-.comment-list .comment > .children .comment {
-  margin-left: 24px;
-  padding-left: 34px;
-  border-left: 1px dashed #e8e8e8;
+/* line 75, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .children .comment ~ .comment {
+  border-top: 1px dashed #e8e8e8;
+  margin: 20px 0 0 0;
+  padding: 20px 0 0 54px;
 }
-/* line 76, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+/* line 81, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .children article {
+  margin: 0;
+}
+/* line 85, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .children .comment {
+  margin-left: 24px;
+  padding-left: 30px;
+}
+/* line 91, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
 .comment-list .comment-header {
   height: 48px;
 }
-/* line 89, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+/* line 104, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
 .comment-list .comment-author {
   font-size: 16px;
   font-size: 1.6rem;
   margin-bottom: 0;
 }
-/* line 93, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+/* line 108, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
 .comment-list .comment-author > img {
   position: absolute;
   left: 0;
   border-radius: 24px;
 }
-/* line 100, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+/* line 115, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
 .comment-list .comment-meta {
   font-size: 12px;
   font-size: 1.2rem;

@@ -41,35 +41,50 @@
 .comment-list {
 	padding-left: 0; // reset padding because ul and ol
 
+	.comment {
+		display: block;
+	}
+
 	> .comment {
 
 		margin-left: 24px;
-		padding: 0 0 0 34px;
+		padding: 40px 0 0 30px;
 		border-left: 1px dashed #e8e8e8;
 
 		> article {
 			border-top: 1px dashed #e8e8e8;
 			margin: 0;
-			padding: 40px 0;
+			padding: 40px 0 0 0;
 		}
-
-		&:first-child article {
-			border-top: none;
-		}
-	}
-
-	.comment {
-		display: block;
 
 		> .children {
-			padding-left: 0;
-			position: relative;
+		}
 
-			.comment {
-				margin-left: 24px;
-				padding-left: 34px;
-				border-left: 1px dashed #e8e8e8;
-			}
+	}
+
+	article + .children {
+		border-top: 1px dashed #e8e8e8;
+		padding-top: 20px;
+		margin-top: 20px;
+	}
+
+	.children {
+		padding-left: 0;
+		position: relative;
+
+		.comment ~ .comment {
+			border-top: 1px dashed #e8e8e8;
+			margin: 20px 0 0 0;
+			padding: 20px 0 0 54px;
+		}
+
+		article {
+			margin: 0;
+		}
+
+		.comment {
+			margin-left: 24px;
+			padding-left: 30px;
 		}
 	}
 
