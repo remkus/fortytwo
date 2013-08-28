@@ -10,9 +10,13 @@
 
 remove_action( 'genesis_entry_header', 'genesis_do_post_format_image', 4 );
 remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
+remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_open', 5 );
+remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_close', 15 );
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 
+
 add_action( 'genesis_entry_header', 'fortytwo_do_post_image', 4 );
+
 /**
  * Echo the post image on blog layout pages.
  *
@@ -28,7 +32,7 @@ function fortytwo_do_post_image() {
 		) );
 
 		if ( !empty( $img ) )
-			printf( '<a href="%s" title="%s" class="post-image-link">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), $img );
+			printf( '<a href="%s" title="%s" class="aligncustom">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), $img );
 	}
 
 }
