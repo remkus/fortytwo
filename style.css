@@ -289,7 +289,9 @@ table {
   }
   /* line 75, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/print.less */
   .table td,
-  .table th {
+  .table th,
+  table td,
+  table th {
     background-color: #fff !important;
   }
   /* line 82, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/print.less */
@@ -302,7 +304,8 @@ table {
     border: 1px solid #000;
   }
   /* line 90, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/print.less */
-  .table {
+  .table,
+  table {
     border-collapse: collapse !important;
   }
   /* line 94, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/print.less */
@@ -827,7 +830,8 @@ pre code {
 }
 /* line 12, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/grid.less */
 .row,
-.inner-wrap {
+.inner-wrap,
+.content > .section-container {
   margin-left: -15px;
   margin-right: -15px;
 }
@@ -835,7 +839,9 @@ pre code {
 .row:before,
 .row:after,
 .inner-wrap:before,
-.inner-wrap:after {
+.inner-wrap:after,
+.content > .section-container:before,
+.content > .section-container:after {
   content: " ";
   /* 1 */
 
@@ -845,14 +851,17 @@ pre code {
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .row:after,
-.inner-wrap:after {
+.inner-wrap:after,
+.content > .section-container:after {
   clear: both;
 }
 /* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .row:before,
 .row:after,
 .inner-wrap:before,
-.inner-wrap:after {
+.inner-wrap:after,
+.content > .section-container:before,
+.content > .section-container:after {
   content: " ";
   /* 1 */
 
@@ -862,7 +871,8 @@ pre code {
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .row:after,
-.inner-wrap:after {
+.inner-wrap:after,
+.content > .section-container:after {
   clear: both;
 }
 /* line 17, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/grid.less */
@@ -1618,7 +1628,8 @@ th {
   text-align: left;
 }
 /* line 17, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/tables.less */
-.table {
+.table,
+table {
   width: 100%;
   margin-bottom: 20px;
 }
@@ -1628,14 +1639,21 @@ th {
 .table tfoot > tr > th,
 .table thead > tr > td,
 .table tbody > tr > td,
-.table tfoot > tr > td {
+.table tfoot > tr > td,
+table thead > tr > th,
+table tbody > tr > th,
+table tfoot > tr > th,
+table thead > tr > td,
+table tbody > tr > td,
+table tfoot > tr > td {
   padding: 8px;
   line-height: 1.428571429;
   vertical-align: top;
   border-top: 1px solid #e8e8e8;
 }
 /* line 35, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/tables.less */
-.table thead > tr > th {
+.table thead > tr > th,
+table thead > tr > th {
   vertical-align: bottom;
   border-bottom: 2px solid #e8e8e8;
 }
@@ -1645,15 +1663,23 @@ th {
 .table thead:first-child tr:first-child th,
 .table caption + thead tr:first-child td,
 .table colgroup + thead tr:first-child td,
-.table thead:first-child tr:first-child td {
+.table thead:first-child tr:first-child td,
+table caption + thead tr:first-child th,
+table colgroup + thead tr:first-child th,
+table thead:first-child tr:first-child th,
+table caption + thead tr:first-child td,
+table colgroup + thead tr:first-child td,
+table thead:first-child tr:first-child td {
   border-top: 0;
 }
 /* line 50, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/tables.less */
-.table tbody + tbody {
+.table tbody + tbody,
+table tbody + tbody {
   border-top: 2px solid #e8e8e8;
 }
 /* line 55, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/tables.less */
-.table .table {
+.table .table,
+table table {
   background-color: #ffffff;
 }
 /* line 68, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/tables.less */
@@ -1716,7 +1742,19 @@ table th[class*="col-"] {
 .table > tfoot > tr.active > td,
 .table > thead > tr.active > th,
 .table > tbody > tr.active > th,
-.table > tfoot > tr.active > th {
+.table > tfoot > tr.active > th,
+table > thead > tr > td.active,
+table > tbody > tr > td.active,
+table > tfoot > tr > td.active,
+table > thead > tr > th.active,
+table > tbody > tr > th.active,
+table > tfoot > tr > th.active,
+table > thead > tr.active > td,
+table > tbody > tr.active > td,
+table > tfoot > tr.active > td,
+table > thead > tr.active > th,
+table > tbody > tr.active > th,
+table > tfoot > tr.active > th {
   background-color: #f5f5f5;
 }
 /* line 382, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
@@ -1731,7 +1769,19 @@ table th[class*="col-"] {
 .table > tfoot > tr.success > td,
 .table > thead > tr.success > th,
 .table > tbody > tr.success > th,
-.table > tfoot > tr.success > th {
+.table > tfoot > tr.success > th,
+table > thead > tr > td.success,
+table > tbody > tr > td.success,
+table > tfoot > tr > td.success,
+table > thead > tr > th.success,
+table > tbody > tr > th.success,
+table > tfoot > tr > th.success,
+table > thead > tr.success > td,
+table > tbody > tr.success > td,
+table > tfoot > tr.success > td,
+table > thead > tr.success > th,
+table > tbody > tr.success > th,
+table > tfoot > tr.success > th {
   background-color: #dff0d8;
   border-color: #d6e9c6;
 }
@@ -1754,7 +1804,19 @@ table th[class*="col-"] {
 .table > tfoot > tr.danger > td,
 .table > thead > tr.danger > th,
 .table > tbody > tr.danger > th,
-.table > tfoot > tr.danger > th {
+.table > tfoot > tr.danger > th,
+table > thead > tr > td.danger,
+table > tbody > tr > td.danger,
+table > tfoot > tr > td.danger,
+table > thead > tr > th.danger,
+table > tbody > tr > th.danger,
+table > tfoot > tr > th.danger,
+table > thead > tr.danger > td,
+table > tbody > tr.danger > td,
+table > tfoot > tr.danger > td,
+table > thead > tr.danger > th,
+table > tbody > tr.danger > th,
+table > tfoot > tr.danger > th {
   background-color: #f2dede;
   border-color: #eed3d7;
 }
@@ -1777,7 +1839,19 @@ table th[class*="col-"] {
 .table > tfoot > tr.warning > td,
 .table > thead > tr.warning > th,
 .table > tbody > tr.warning > th,
-.table > tfoot > tr.warning > th {
+.table > tfoot > tr.warning > th,
+table > thead > tr > td.warning,
+table > tbody > tr > td.warning,
+table > tfoot > tr > td.warning,
+table > thead > tr > th.warning,
+table > tbody > tr > th.warning,
+table > tfoot > tr > th.warning,
+table > thead > tr.warning > td,
+table > tbody > tr.warning > td,
+table > tfoot > tr.warning > td,
+table > thead > tr.warning > th,
+table > tbody > tr.warning > th,
+table > tfoot > tr.warning > th {
   background-color: #fcf8e3;
   border-color: #fbeed5;
 }
@@ -1798,7 +1872,8 @@ table th[class*="col-"] {
     border: 1px solid #e8e8e8;
   }
   /* line 192, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/tables.less */
-  .table-responsive > .table {
+  .table-responsive > .table,
+  .table-responsive > table {
     margin-bottom: 0;
     background-color: #fff;
   }
@@ -1808,7 +1883,13 @@ table th[class*="col-"] {
   .table-responsive > .table > tfoot > tr > th,
   .table-responsive > .table > thead > tr > td,
   .table-responsive > .table > tbody > tr > td,
-  .table-responsive > .table > tfoot > tr > td {
+  .table-responsive > .table > tfoot > tr > td,
+  .table-responsive > table > thead > tr > th,
+  .table-responsive > table > tbody > tr > th,
+  .table-responsive > table > tfoot > tr > th,
+  .table-responsive > table > thead > tr > td,
+  .table-responsive > table > tbody > tr > td,
+  .table-responsive > table > tfoot > tr > td {
     white-space: nowrap;
   }
   /* line 210, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/tables.less */
@@ -2272,7 +2353,7 @@ fieldset[disabled] .btn {
 /* line 57, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
 .btn-default {
   color: #333333;
-  background-color: #ff0000;
+  background-color: #ffffff;
   border-color: #cccccc;
 }
 /* line 412, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
@@ -2282,7 +2363,7 @@ fieldset[disabled] .btn {
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
   color: #333333;
-  background-color: #d60000;
+  background-color: #ebebeb;
   border-color: #adadad;
 }
 /* line 421, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
@@ -2307,7 +2388,7 @@ fieldset[disabled] .btn-default:active,
 .btn-default.disabled.active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active {
-  background-color: #ff0000;
+  background-color: #ffffff;
   border-color: #cccccc;
 }
 /* line 60, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
@@ -4965,7 +5046,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   line-height: 1.428571429;
   text-decoration: none;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 1px solid #cccccc;
   margin-left: -1px;
 }
 /* line 24, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/pagination.less */
@@ -4997,8 +5078,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > .active > span:focus {
   z-index: 2;
   color: #ffffff;
-  background-color: #428bca;
-  border-color: #428bca;
+  background-color: #eeeeee;
+  border-color: #eeeeee;
   cursor: default;
 }
 /* line 60, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/pagination.less */
@@ -5008,7 +5089,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > .disabled > a:focus {
   color: #999999;
   background-color: #ffffff;
-  border-color: #dddddd;
+  border-color: #cccccc;
   cursor: not-allowed;
 }
 /* line 453, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
@@ -5092,7 +5173,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   display: inline-block;
   padding: 5px 14px;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 1px solid #cccccc;
   border-radius: 15px;
 }
 /* line 23, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/pager.less */
@@ -5708,11 +5789,13 @@ a.list-group-item:focus {
   border-top-width: 0;
 }
 /* line 59, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/panels.less */
-.panel > .table {
+.panel > .table,
+.panel > table {
   margin-bottom: 0;
 }
 /* line 62, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/panels.less */
-.panel > .panel-body + .table {
+.panel > .panel-body + .table,
+.panel > .panel-body + table {
   border-top: 1px solid #e8e8e8;
 }
 /* line 69, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/panels.less */
@@ -9195,126 +9278,34 @@ a .icon-flip-vertical:before {
 #title a {
   width: 100%;
 }
-/* line 4, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
-html {
-  -webkit-font-smoothing: antialiased;
+/* line 5, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-images.less */
+img {
+  border-radius: 2px;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
-/* line 12, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
-body {
-  border-top: 4px solid #2a2a2a;
-  box-shadow: inset 0 1px 0 #e8e8e8;
+/* line 11, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-images.less */
+img.alignleft {
+  float: left !important;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
-/* line 21, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
-.btn {
-  color: #333333;
-  background-color: #ff0000;
-  border-color: #cccccc;
+/* line 17, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-images.less */
+img.aligncenter {
+  text-align: center;
+  margin-bottom: 10px;
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
 }
-/* line 412, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.btn:hover,
-.btn:focus,
-.btn:active,
-.btn.active,
-.open .dropdown-toggle.btn {
-  color: #333333;
-  background-color: #d60000;
-  border-color: #adadad;
-}
-/* line 421, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.btn:active,
-.btn.active,
-.open .dropdown-toggle.btn {
-  background-image: none;
-}
-/* line 429, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.btn.disabled,
-.btn[disabled],
-fieldset[disabled] .btn,
-.btn.disabled:hover,
-.btn[disabled]:hover,
-fieldset[disabled] .btn:hover,
-.btn.disabled:focus,
-.btn[disabled]:focus,
-fieldset[disabled] .btn:focus,
-.btn.disabled:active,
-.btn[disabled]:active,
-fieldset[disabled] .btn:active,
-.btn.disabled.active,
-.btn[disabled].active,
-fieldset[disabled] .btn.active {
-  background-color: #ff0000;
-  border-color: #cccccc;
-}
-/* line 28, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
-h1,
-.h1 {
-  font-size: 32px;
-}
-/* line 29, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
-h2,
-.h2 {
-  font-size: 24px;
-}
-/* line 30, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
-h3,
-.h3 {
-  font-size: 18px;
-}
-/* line 31, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
-h4,
-.h4 {
-  font-size: 16px;
-}
-/* line 32, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
-h5,
-.h5 {
-  font-size: 14px;
-}
-/* line 33, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
-h6,
-.h6 {
-  font-size: 12px;
-}
-/* line 37, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
-.section-container {
-  padding: 40px 0;
-}
-/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.section-container:before,
-.section-container:after {
-  content: " ";
-  /* 1 */
-
-  display: table;
-  /* 2 */
-
-}
-/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.section-container:after {
-  clear: both;
-}
-/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.section-container:before,
-.section-container:after {
-  content: " ";
-  /* 1 */
-
-  display: table;
-  /* 2 */
-
-}
-/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.section-container:after {
-  clear: both;
-}
-/* line 40, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
-.section-container + .section-container {
-  border-top: 1px solid #e8e8e8;
-}
-/* line 45, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
-.content > article > .entry-content :first-child {
-  margin-top: 0;
-  padding-top: 0;
+/* line 23, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-images.less */
+img.alignright {
+  float: right !important;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 /* line 6, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-navbar.less */
 .nav-primary {
@@ -9977,7 +9968,7 @@ nav > .menu > li[class^="icon-"] > a {
   overflow: hidden;
   zoom: 1;
 }
-/* line 12, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-inner.less */
+/* line 8, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-inner.less */
 .widget h4 {
   margin-top: 0;
   font-size: 22px;
@@ -9985,18 +9976,18 @@ nav > .menu > li[class^="icon-"] > a {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
 }
-/* line 19, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-inner.less */
+/* line 15, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-inner.less */
 .widget .widgettitle {
   max-height: 38px;
   margin-bottom: 2rem;
 }
-/* line 26, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-inner.less */
+/* line 22, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-inner.less */
 .ft-featured-page i {
   margin-right: 5px;
   font-size: 21px;
   font-size: 2.1rem;
 }
-/* line 31, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-inner.less */
+/* line 27, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-inner.less */
 .ft-featured-page .btn {
   padding: 0.5rem 1rem;
 }
@@ -10020,15 +10011,16 @@ nav > .menu > li[class^="icon-"] > a {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+  text-align: center;
 }
 @media (min-width: 1200px) {
   /* line 627, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
   .site-footer .copyright-area {
     float: left;
-    width: 50%;
+    width: 100%;
   }
 }
-/* line 22, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-footer.less */
+/* line 23, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-footer.less */
 .site-footer .footer-widget-area {
   position: relative;
   min-height: 1px;
@@ -10042,7 +10034,7 @@ nav > .menu > li[class^="icon-"] > a {
     width: 50%;
   }
 }
-/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-footer.less */
+/* line 26, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-footer.less */
 .site-footer .footer-widget-area > span {
   float: right;
 }
@@ -10175,33 +10167,12 @@ nav > .menu > li[class^="icon-"] > a {
   padding-bottom: 30px;
   padding-top: 30px;
 }
-/* line 127, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_archive li {
-  position: relative;
-  display: block;
-  padding: 10px 0 0;
-}
-/* line 132, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_archive li:first-child {
-  padding-top: 0;
-}
-/* line 136, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_archive li .icon {
-  line-height: 1.428571429;
-  float: left;
-  text-align: left;
-}
-/* line 142, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_archive li .badge {
-  float: right;
-  border-radius: 0.25em;
-}
-/* line 150, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 126, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_calendar caption {
   text-transform: uppercase;
   padding: 0 0 10px;
 }
-/* line 155, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 131, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_calendar table {
   width: 100%;
   margin-bottom: 20px;
@@ -10241,18 +10212,20 @@ nav > .menu > li[class^="icon-"] > a {
   border-top: 2px solid #e8e8e8;
 }
 /* line 55, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/tables.less */
-.sidebar .widget_calendar table .table {
+.sidebar .widget_calendar table .table,
+.sidebar .widget_calendar table table {
   background-color: #ffffff;
 }
-/* line 162, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 138, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_calendar table thead > tr > th {
   text-align: center;
-  padding: 0;
   font-weight: 600;
   font-size: 13px;
   font-size: 1.3rem;
+  border: none;
+  background-color: #fafafa;
 }
-/* line 169, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 146, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_calendar table tbody > tr > td {
   padding: 7px;
   border: none;
@@ -10262,99 +10235,60 @@ nav > .menu > li[class^="icon-"] > a {
   background: #fafafa;
   border-radius: 0.2em;
 }
-/* line 177, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 154, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_calendar table tbody > tr > td.pad {
   background: none;
 }
-/* line 182, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 159, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_calendar table tfoot {
   position: absolute;
   top: 0;
   border-spacing: 0;
 }
-/* line 187, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 161, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+.sidebar .widget_calendar table tfoot > tr > td {
+  padding-top: 0;
+  border-top: none;
+}
+/* line 169, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_calendar table tfoot a {
   white-space: nowrap;
 }
-/* line 191, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 173, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_calendar table tfoot .pad {
   width: 100%;
 }
-/* line 202, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_categories > .widget-wrap ul.children {
-  margin-top: 10px;
-}
-/* line 207, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_categories li {
-  position: relative;
-  display: block;
-  padding: 10px 0 0;
-}
-/* line 212, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_categories li:first-child {
-  padding-top: 0;
-}
-/* line 216, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_categories li .icon {
-  line-height: 1.428571429;
-  float: left;
-  text-align: left;
-}
-/* line 222, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_categories li .badge {
-  float: right;
-  border-radius: 0.25em;
-}
-/* line 232, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_pages > .widget-wrap ul.children {
-  margin-top: 10px;
-  margin-left: 5px;
-}
-/* line 238, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_pages li {
-  position: relative;
-  display: block;
-  padding: 10px 0 0 20px;
-}
-/* line 243, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_pages li:before {
-  position: absolute;
-  left: 0;
-  font-size: 14px;
-  font-family: FontAwesome;
-  content: "\f105";
-}
-/* line 251, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_pages li:first-child {
-  padding-top: 0;
-}
-/* line 255, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_pages li .icon {
-  line-height: 1.428571429;
-  float: left;
-  text-align: left;
-}
-/* line 261, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_pages li .badge {
-  float: right;
-  border-radius: 0.25em;
-}
-/* line 274, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 191, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+.sidebar .widget_pages > .widget-wrap ul.children,
+.sidebar .widget_categories > .widget-wrap ul.children,
+.sidebar .widget_archive > .widget-wrap ul.children,
 .sidebar .widget_meta > .widget-wrap ul.children,
+.sidebar .widget_recent_comments > .widget-wrap ul.children,
 .sidebar .widget_recent_entries > .widget-wrap ul.children,
 .sidebar .widget_nav_menu > .widget-wrap ul.children {
   margin-top: 10px;
 }
-/* line 279, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 196, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+.sidebar .widget_pages li,
+.sidebar .widget_categories li,
+.sidebar .widget_archive li,
 .sidebar .widget_meta li,
+.sidebar .widget_recent_comments li,
 .sidebar .widget_recent_entries li,
 .sidebar .widget_nav_menu li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   position: relative;
   display: block;
   padding: 10px 0 0 20px;
 }
-/* line 284, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 202, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+.sidebar .widget_pages li:before,
+.sidebar .widget_categories li:before,
+.sidebar .widget_archive li:before,
 .sidebar .widget_meta li:before,
+.sidebar .widget_recent_comments li:before,
 .sidebar .widget_recent_entries li:before,
 .sidebar .widget_nav_menu li:before {
   position: absolute;
@@ -10363,34 +10297,45 @@ nav > .menu > li[class^="icon-"] > a {
   font-family: FontAwesome;
   content: "\f105";
 }
-/* line 292, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 210, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+.sidebar .widget_pages li:first-child,
+.sidebar .widget_categories li:first-child,
+.sidebar .widget_archive li:first-child,
 .sidebar .widget_meta li:first-child,
+.sidebar .widget_recent_comments li:first-child,
 .sidebar .widget_recent_entries li:first-child,
 .sidebar .widget_nav_menu li:first-child {
   padding-top: 0;
 }
-/* line 296, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 214, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+.sidebar .widget_pages li .icon,
+.sidebar .widget_categories li .icon,
+.sidebar .widget_archive li .icon,
 .sidebar .widget_meta li .icon,
+.sidebar .widget_recent_comments li .icon,
 .sidebar .widget_recent_entries li .icon,
 .sidebar .widget_nav_menu li .icon {
   line-height: 1.428571429;
   float: left;
   text-align: left;
 }
-/* line 302, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 220, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+.sidebar .widget_pages li .badge,
+.sidebar .widget_categories li .badge,
+.sidebar .widget_archive li .badge,
 .sidebar .widget_meta li .badge,
+.sidebar .widget_recent_comments li .badge,
 .sidebar .widget_recent_entries li .badge,
 .sidebar .widget_nav_menu li .badge {
   float: right;
   border-radius: 0.25em;
 }
-/* line 315, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 233, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_rss > .widget-wrap > ul a.rsswidget {
   font-family: 'Open Sans', sans-serif;
   font-weight: 500;
   line-height: 1.1;
   font-size: 24px;
-  font-size: 18px;
   font-weight: 300;
 }
 /* line 55, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/type.less */
@@ -10399,12 +10344,12 @@ nav > .menu > li[class^="icon-"] > a {
   line-height: 1;
   color: #999999;
 }
-/* line 319, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 237, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_rss > .widget-wrap > ul a.rsswidget:after {
   content: " ";
   display: block;
 }
-/* line 326, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 244, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_rss > .widget-wrap li {
   position: relative;
   display: block;
@@ -10412,12 +10357,12 @@ nav > .menu > li[class^="icon-"] > a {
   margin: 15px 0 0;
   border-top: 1px dashed #e8e8e8;
 }
-/* line 333, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 251, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_rss > .widget-wrap li:first-child {
   padding-top: 0;
   border-top: none;
 }
-/* line 339, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 257, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_rss > .widget-wrap .rss-date {
   display: inline;
   padding: .2em .6em .3em;
@@ -10429,10 +10374,10 @@ nav > .menu > li[class^="icon-"] > a {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
-  background-color: #f9f9f9;
-  color: #b6b6b6;
   font-size: 13px;
   font-size: 1.3rem;
+  background-color: #f9f9f9;
+  color: #b6b6b6;
   font-size: 12px;
   font-size: 1.2rem;
   display: inline-block;
@@ -10449,11 +10394,11 @@ nav > .menu > li[class^="icon-"] > a {
 .sidebar .widget_rss > .widget-wrap .rss-date:empty {
   display: none;
 }
-/* line 11, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 13, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .sidebar .widget_rss > .widget-wrap .rss-date a {
   color: #b6b6b6;
 }
-/* line 345, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 263, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_rss > .widget-wrap .rss-date:before {
   font-family: FontAwesome;
   content: "\f017";
@@ -10461,11 +10406,11 @@ nav > .menu > li[class^="icon-"] > a {
   font-size: 1.3rem;
   padding: 0 5px 0 0;
 }
-/* line 354, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 272, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_rss > .widget-wrap .rssSummary {
   margin: 5px 0 0;
 }
-/* line 358, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 276, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_rss > .widget-wrap cite {
   font-size: 12px;
   font-size: 1.2rem;
@@ -10473,47 +10418,14 @@ nav > .menu > li[class^="icon-"] > a {
   margin: 5px 0 0;
   color: #b6b6b6;
 }
-/* line 364, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 282, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_rss > .widget-wrap cite:before {
   font-family: FontAwesome;
   content: "\2014 \00A0";
   font-size: 13px;
   font-size: 1.3rem;
 }
-/* line 377, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_recent_comments > .widget-wrap ul.children {
-  margin-top: 10px;
-}
-/* line 382, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_recent_comments li {
-  position: relative;
-  display: block;
-  padding: 10px 0 0 20px;
-}
-/* line 387, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_recent_comments li:before {
-  position: absolute;
-  left: 0;
-  font-size: 14px;
-  font-family: FontAwesome;
-  content: "\f0e5";
-}
-/* line 395, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_recent_comments li:first-child {
-  padding-top: 0;
-}
-/* line 399, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_recent_comments li .icon {
-  line-height: 1.428571429;
-  float: left;
-  text-align: left;
-}
-/* line 405, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
-.sidebar .widget_recent_comments li .badge {
-  float: right;
-  border-radius: 0.25em;
-}
-/* line 417, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 297, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_tag_cloud .tagcloud > ul > li {
   display: inline;
   padding: .2em .6em .3em;
@@ -10525,10 +10437,11 @@ nav > .menu > li[class^="icon-"] > a {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
+  background-color: #999999;
   display: inline-block;
   margin: 0 0 5px 0;
-  padding: .5em .6em;
   font-size: 100%;
+  font-weight: normal;
 }
 /* line 19, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/labels.less */
 .sidebar .widget_tag_cloud .tagcloud > ul > li[href]:hover,
@@ -10541,7 +10454,12 @@ nav > .menu > li[class^="icon-"] > a {
 .sidebar .widget_tag_cloud .tagcloud > ul > li:empty {
   display: none;
 }
-/* line 424, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
+/* line 478, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.sidebar .widget_tag_cloud .tagcloud > ul > li[href]:hover,
+.sidebar .widget_tag_cloud .tagcloud > ul > li[href]:focus {
+  background-color: #808080;
+}
+/* line 305, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-widgets.less */
 .sidebar .widget_tag_cloud .tagcloud > ul > li > a {
   color: #fff;
 }
@@ -10550,7 +10468,51 @@ nav > .menu > li[class^="icon-"] > a {
   min-height: 100%;
   overflow: hidden;
 }
-/* line 19, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 18, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+.full-width-content .content {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+@media (min-width: 1200px) {
+  /* line 627, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+  .full-width-content .content {
+    float: left;
+    width: 100%;
+  }
+}
+/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.full-width-content .content:before,
+.full-width-content .content:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
+}
+/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.full-width-content .content:after {
+  clear: both;
+}
+/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.full-width-content .content:before,
+.full-width-content .content:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
+}
+/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.full-width-content .content:after {
+  clear: both;
+}
+/* line 28, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .content-sidebar .content,
 .sidebar-content .content {
   position: relative;
@@ -10569,7 +10531,7 @@ nav > .menu > li[class^="icon-"] > a {
     width: 75%;
   }
 }
-/* line 24, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 33, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .content-sidebar .sidebar-primary,
 .sidebar-content .sidebar-primary {
   position: relative;
@@ -10588,7 +10550,7 @@ nav > .menu > li[class^="icon-"] > a {
     width: 25%;
   }
 }
-/* line 33, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 42, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .content-sidebar-sidebar .content,
 .sidebar-sidebar-content .content,
 .sidebar-content-sidebar .content {
@@ -10609,7 +10571,7 @@ nav > .menu > li[class^="icon-"] > a {
     width: 58.333333333333336%;
   }
 }
-/* line 38, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 47, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .content-sidebar-sidebar .sidebar-primary,
 .sidebar-sidebar-content .sidebar-primary,
 .sidebar-content-sidebar .sidebar-primary {
@@ -10630,7 +10592,7 @@ nav > .menu > li[class^="icon-"] > a {
     width: 25%;
   }
 }
-/* line 43, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 52, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .content-sidebar-sidebar .sidebar-secondary,
 .sidebar-sidebar-content .sidebar-secondary,
 .sidebar-content-sidebar .sidebar-secondary {
@@ -10651,16 +10613,16 @@ nav > .menu > li[class^="icon-"] > a {
     width: 16.666666666666664%;
   }
 }
-/* line 50, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 59, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .content-sidebar .content {
   padding-right: 30px;
 }
-/* line 54, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 63, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .content-sidebar .sidebar-primary {
   padding-left: 30px;
   border-left: 1px solid #e8e8e8;
 }
-/* line 61, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 70, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .sidebar-content .content {
   padding-right: 15px;
   padding-left: 30px;
@@ -10671,7 +10633,7 @@ nav > .menu > li[class^="icon-"] > a {
     left: 25%;
   }
 }
-/* line 67, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 76, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .sidebar-content .sidebar-primary {
   padding-right: 30px;
   padding-left: 15px;
@@ -10683,24 +10645,24 @@ nav > .menu > li[class^="icon-"] > a {
     right: 75%;
   }
 }
-/* line 76, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 85, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .content-sidebar-sidebar .content {
   padding-right: 30px;
   padding-left: 15px;
 }
-/* line 81, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 90, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .content-sidebar-sidebar .sidebar-primary {
   padding-right: 30px;
   padding-left: 30px;
   border-left: 1px solid #e8e8e8;
 }
-/* line 87, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 96, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .content-sidebar-sidebar .sidebar-secondary {
   padding-right: 15px;
   padding-left: 30px;
   border-left: 1px solid #e8e8e8;
 }
-/* line 95, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 104, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .sidebar-sidebar-content .content {
   padding-right: 15px;
   padding-left: 30px;
@@ -10711,7 +10673,7 @@ nav > .menu > li[class^="icon-"] > a {
     left: 41.66666666666667%;
   }
 }
-/* line 101, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 110, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .sidebar-sidebar-content .sidebar-primary {
   padding-right: 30px;
   padding-left: 30px;
@@ -10723,7 +10685,7 @@ nav > .menu > li[class^="icon-"] > a {
     right: 41.66666666666667%;
   }
 }
-/* line 108, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 117, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .sidebar-sidebar-content .sidebar-secondary {
   padding-right: 30px;
   padding-left: 15px;
@@ -10735,7 +10697,7 @@ nav > .menu > li[class^="icon-"] > a {
     right: 83.33333333333334%;
   }
 }
-/* line 117, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 126, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .sidebar-content-sidebar .content {
   padding-right: 30px;
   padding-left: 30px;
@@ -10746,7 +10708,7 @@ nav > .menu > li[class^="icon-"] > a {
     left: 16.666666666666664%;
   }
 }
-/* line 123, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 132, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .sidebar-content-sidebar .sidebar-primary {
   padding-right: 15px;
   padding-left: 30px;
@@ -10758,7 +10720,7 @@ nav > .menu > li[class^="icon-"] > a {
     left: 16.666666666666664%;
   }
 }
-/* line 130, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
+/* line 139, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-layouts.less */
 .sidebar-content-sidebar .sidebar-secondary {
   padding-right: 30px;
   padding-left: 15px;
@@ -10785,10 +10747,10 @@ nav > .menu > li[class^="icon-"] > a {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
-  background-color: #f9f9f9;
-  color: #b6b6b6;
   font-size: 13px;
   font-size: 1.3rem;
+  background-color: #f9f9f9;
+  color: #b6b6b6;
 }
 /* line 19, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/labels.less */
 .entry-time[href]:hover,
@@ -10810,26 +10772,18 @@ nav > .menu > li[class^="icon-"] > a {
 .entry-categories:empty {
   display: none;
 }
-/* line 11, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 13, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .entry-time a,
 .entry-author a,
 .entry-comments-link a,
 .entry-categories a {
   color: #b6b6b6;
 }
-/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.content article:before,
-.content article:after {
-  content: " ";
-  /* 1 */
-
-  display: table;
-  /* 2 */
-
-}
-/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.content article:after {
-  clear: both;
+/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+.content article {
+  margin: 40px 0;
+  padding: 40px 0 0;
+  border-top: 1px dashed #e8e8e8;
 }
 /* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .content article:before,
@@ -10845,23 +10799,34 @@ nav > .menu > li[class^="icon-"] > a {
 .content article:after {
   clear: both;
 }
-/* line 21, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
-.content article img {
-  display: block;
-  border-radius: 2px;
+/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.content article:before,
+.content article:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
 }
-/* line 26, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.content article:after {
+  clear: both;
+}
+/* line 27, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+.content article:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+/* line 33, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content article .entry-title {
   margin: 0 0 5px;
+  line-height: 1;
 }
-/* line 31, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
-.content hr {
-  border-top: 1px dashed #e8e8e8;
-  margin: 30px 0;
-}
-/* line 36, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 39, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination {
-  margin: 50px 0;
+  margin: 0 0 40px;
   list-style: none;
   text-align: center;
 }
@@ -10893,36 +10858,37 @@ nav > .menu > li[class^="icon-"] > a {
 .content .pagination:after {
   clear: both;
 }
-/* line 43, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 46, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination > div {
   display: inline;
 }
-/* line 45, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 48, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination > div > a,
 .content .pagination > div > span {
+  color: #333333;
   display: inline-block;
   padding: 5px 14px;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 1px solid #cccccc;
   border-radius: 15px;
 }
-/* line 54, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 58, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination > div > a:hover,
 .content .pagination > div > a:focus {
   text-decoration: none;
-  background-color: #428bca;
+  background-color: #eeeeee;
 }
-/* line 62, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 66, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination .alignright > a,
 .content .pagination .alignright > span {
   float: right;
 }
-/* line 69, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 73, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination .alignleft > a,
 .content .pagination .alignleft > span {
   float: left;
 }
-/* line 76, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 80, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination .disabled > a,
 .content .pagination .disabled > a:hover,
 .content .pagination .disabled > a:focus,
@@ -10931,41 +10897,42 @@ nav > .menu > li[class^="icon-"] > a {
   background-color: #ffffff;
   cursor: default;
 }
-/* line 86, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 90, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination > ul {
   margin-bottom: 0;
   padding-left: 0;
   border-radius: 4px;
 }
-/* line 91, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 95, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination > ul > li {
   display: inline;
 }
-/* line 95, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 99, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination > ul > li > a,
 .content .pagination > ul > li > span {
+  color: #333333;
   float: left;
   padding: 4px 12px;
   line-height: 1.428571429;
   text-decoration: none;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 1px solid #cccccc;
   border-left-width: 0;
 }
-/* line 106, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 111, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination > ul > li > a:hover,
 .content .pagination > ul > li > a:focus,
 .content .pagination > ul > .active > a,
 .content .pagination > ul > .active > span {
-  background-color: #428bca;
+  background-color: #eeeeee;
 }
-/* line 113, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 118, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination > ul > .active > a,
 .content .pagination > ul > .active > span {
   color: #999999;
   cursor: default;
 }
-/* line 119, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 124, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination > ul > .disabled > span,
 .content .pagination > ul > .disabled > a,
 .content .pagination > ul > .disabled > a:hover,
@@ -10974,86 +10941,1061 @@ nav > .menu > li[class^="icon-"] > a {
   background-color: #ffffff;
   cursor: default;
 }
-/* line 128, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 133, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination > ul > li:first-child > a,
 .content .pagination > ul > li:first-child > span {
   border-left-width: 1px;
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
 }
-/* line 134, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
+/* line 139, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-blog-pages.less */
 .content .pagination > ul > li:last-child > a,
 .content .pagination > ul > li:last-child > span {
   border-bottom-right-radius: 4px;
   border-top-right-radius: 4px;
 }
 /* line 3, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.entry-comments {
+  position: relative;
+  margin-bottom: 40px;
+}
+/* line 8, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.entry-comments + .comment-respond {
+  margin-bottom: 40px;
+  margin-top: -40px;
+}
+/* line 14, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.entry-comments > h3 {
+  font-size: 22px;
+  font-size: 2.2rem;
+  font-weight: 300;
+  margin: 0;
+  margin-bottom: 40px;
+}
+/*.entry-comments > h3:before,
+.entry-comments > h3:after {
+	display: table-cell;
+	width: 100%;
+	font-family: FontAwesome;
+	position: absolute;
+}
+
+.entry-comments > h3:before {
+	font-size: 42px;
+	content: "\f111";
+	color: #424242;
+}
+
+.entry-comments > h3:after {
+	font-size: 20px;
+	content: "\f086";
+	color: #fff;
+	top: -1px;
+}*/
+/* line 42, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list {
+  padding-left: 0;
+  margin: 0;
+}
+/* line 46, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .comment {
+  display: block;
+}
+/* line 50, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list > .comment {
+  margin-left: 24px;
+  padding: 40px 0 0 30px;
+  border-left: 1px dashed #e8e8e8;
+}
+/* line 56, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list > .comment:first-child {
+  padding-top: 0;
+}
+/* line 61, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list > .comment > article {
+  border-bottom: 1px dashed #e8e8e8;
+  margin: 0;
+  padding: 0 0 40px 0;
+}
+/* line 67, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list > .comment > .children {
+  border-top: none;
+  border-bottom: 1px dashed #e8e8e8;
+  padding-bottom: 30px;
+  padding-top: 0;
+}
+/* line 76, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list article + .children {
+  border-top: 1px dashed #e8e8e8;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+/* line 82, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .children {
+  padding-left: 0;
+  position: relative;
+}
+/* line 86, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .children .comment ~ .comment {
+  border-top: 1px dashed #e8e8e8;
+  margin: 20px 0 0 0;
+  padding: 20px 0 0 54px;
+}
+/* line 92, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .children article {
+  margin: 0;
+}
+/* line 96, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .children .comment {
+  margin-left: 24px;
+  padding-left: 30px;
+}
+/* line 102, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .comment-header {
+  height: 48px;
+}
+/* line 111, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .comment-reply-link {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  padding: 1px 5px;
+  text-transform: uppercase;
+}
+/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
+.comment-list .comment-reply-link:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+/* line 29, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
+.comment-list .comment-reply-link:hover,
+.comment-list .comment-reply-link:focus {
+  color: #333333;
+  text-decoration: none;
+}
+/* line 35, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
+.comment-list .comment-reply-link:active,
+.comment-list .comment-reply-link.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+/* line 42, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
+.comment-list .comment-reply-link.disabled,
+.comment-list .comment-reply-link[disabled],
+fieldset[disabled] .comment-list .comment-reply-link {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* line 41, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+.comment-list .comment-reply-link [class^="icon-"].icon-large,
+.comment-list .comment-reply-link [class*=" icon-"].icon-large {
+  line-height: .9em;
+}
+/* line 42, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+.comment-list .comment-reply-link [class^="icon-"].icon-spin,
+.comment-list .comment-reply-link [class*=" icon-"].icon-spin {
+  display: inline-block;
+}
+/* line 55, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+.comment-list .comment-reply-link [class^="icon-"].pull-left.icon-2x,
+.comment-list .comment-reply-link [class*=" icon-"].pull-left.icon-2x,
+.comment-list .comment-reply-link [class^="icon-"].pull-right.icon-2x,
+.comment-list .comment-reply-link [class*=" icon-"].pull-right.icon-2x {
+  margin-top: .18em;
+}
+/* line 57, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+.comment-list .comment-reply-link [class^="icon-"].icon-spin.icon-large,
+.comment-list .comment-reply-link [class*=" icon-"].icon-spin.icon-large {
+  line-height: .8em;
+}
+/* line 412, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-list .comment-reply-link:hover,
+.comment-list .comment-reply-link:focus,
+.comment-list .comment-reply-link:active,
+.comment-list .comment-reply-link.active,
+.open .dropdown-toggle.comment-list .comment-reply-link {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+/* line 421, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-list .comment-reply-link:active,
+.comment-list .comment-reply-link.active,
+.open .dropdown-toggle.comment-list .comment-reply-link {
+  background-image: none;
+}
+/* line 429, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-list .comment-reply-link.disabled,
+.comment-list .comment-reply-link[disabled],
+fieldset[disabled] .comment-list .comment-reply-link,
+.comment-list .comment-reply-link.disabled:hover,
+.comment-list .comment-reply-link[disabled]:hover,
+fieldset[disabled] .comment-list .comment-reply-link:hover,
+.comment-list .comment-reply-link.disabled:focus,
+.comment-list .comment-reply-link[disabled]:focus,
+fieldset[disabled] .comment-list .comment-reply-link:focus,
+.comment-list .comment-reply-link.disabled:active,
+.comment-list .comment-reply-link[disabled]:active,
+fieldset[disabled] .comment-list .comment-reply-link:active,
+.comment-list .comment-reply-link.disabled.active,
+.comment-list .comment-reply-link[disabled].active,
+fieldset[disabled] .comment-list .comment-reply-link.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+/* line 412, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-list .comment-reply-link:hover,
+.comment-list .comment-reply-link:focus,
+.comment-list .comment-reply-link:active,
+.comment-list .comment-reply-link.active,
+.open .dropdown-toggle.comment-list .comment-reply-link {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+/* line 421, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-list .comment-reply-link:active,
+.comment-list .comment-reply-link.active,
+.open .dropdown-toggle.comment-list .comment-reply-link {
+  background-image: none;
+}
+/* line 429, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-list .comment-reply-link.disabled,
+.comment-list .comment-reply-link[disabled],
+fieldset[disabled] .comment-list .comment-reply-link,
+.comment-list .comment-reply-link.disabled:hover,
+.comment-list .comment-reply-link[disabled]:hover,
+fieldset[disabled] .comment-list .comment-reply-link:hover,
+.comment-list .comment-reply-link.disabled:focus,
+.comment-list .comment-reply-link[disabled]:focus,
+fieldset[disabled] .comment-list .comment-reply-link:focus,
+.comment-list .comment-reply-link.disabled:active,
+.comment-list .comment-reply-link[disabled]:active,
+fieldset[disabled] .comment-list .comment-reply-link:active,
+.comment-list .comment-reply-link.disabled.active,
+.comment-list .comment-reply-link[disabled].active,
+fieldset[disabled] .comment-list .comment-reply-link.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+/* line 118, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .comment-author {
+  font-size: 16px;
+  font-size: 1.6rem;
+  margin-bottom: 0;
+}
+/* line 122, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .comment-author > img {
+  position: absolute;
+  left: 0;
+  border-radius: 50%;
+}
+/* line 129, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-list .comment-meta {
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+/* line 135, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-respond {
+  position: relative;
+  background: #f9f9f9;
+  padding: 30px;
+  margin-left: 24px;
+}
+/* line 141, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-respond .comment-reply-title {
+  margin: 0 0 20px;
+}
+/* line 144, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-respond .comment-reply-title > small > a {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  padding: 1px 5px;
+  margin: 0 0 5px 5px;
+  text-transform: uppercase;
+}
+/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
+.comment-respond .comment-reply-title > small > a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+/* line 29, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
+.comment-respond .comment-reply-title > small > a:hover,
+.comment-respond .comment-reply-title > small > a:focus {
+  color: #333333;
+  text-decoration: none;
+}
+/* line 35, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
+.comment-respond .comment-reply-title > small > a:active,
+.comment-respond .comment-reply-title > small > a.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+/* line 42, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
+.comment-respond .comment-reply-title > small > a.disabled,
+.comment-respond .comment-reply-title > small > a[disabled],
+fieldset[disabled] .comment-respond .comment-reply-title > small > a {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* line 41, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+.comment-respond .comment-reply-title > small > a [class^="icon-"].icon-large,
+.comment-respond .comment-reply-title > small > a [class*=" icon-"].icon-large {
+  line-height: .9em;
+}
+/* line 42, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+.comment-respond .comment-reply-title > small > a [class^="icon-"].icon-spin,
+.comment-respond .comment-reply-title > small > a [class*=" icon-"].icon-spin {
+  display: inline-block;
+}
+/* line 55, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+.comment-respond .comment-reply-title > small > a [class^="icon-"].pull-left.icon-2x,
+.comment-respond .comment-reply-title > small > a [class*=" icon-"].pull-left.icon-2x,
+.comment-respond .comment-reply-title > small > a [class^="icon-"].pull-right.icon-2x,
+.comment-respond .comment-reply-title > small > a [class*=" icon-"].pull-right.icon-2x {
+  margin-top: .18em;
+}
+/* line 57, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+.comment-respond .comment-reply-title > small > a [class^="icon-"].icon-spin.icon-large,
+.comment-respond .comment-reply-title > small > a [class*=" icon-"].icon-spin.icon-large {
+  line-height: .8em;
+}
+/* line 412, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond .comment-reply-title > small > a:hover,
+.comment-respond .comment-reply-title > small > a:focus,
+.comment-respond .comment-reply-title > small > a:active,
+.comment-respond .comment-reply-title > small > a.active,
+.open .dropdown-toggle.comment-respond .comment-reply-title > small > a {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+/* line 421, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond .comment-reply-title > small > a:active,
+.comment-respond .comment-reply-title > small > a.active,
+.open .dropdown-toggle.comment-respond .comment-reply-title > small > a {
+  background-image: none;
+}
+/* line 429, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond .comment-reply-title > small > a.disabled,
+.comment-respond .comment-reply-title > small > a[disabled],
+fieldset[disabled] .comment-respond .comment-reply-title > small > a,
+.comment-respond .comment-reply-title > small > a.disabled:hover,
+.comment-respond .comment-reply-title > small > a[disabled]:hover,
+fieldset[disabled] .comment-respond .comment-reply-title > small > a:hover,
+.comment-respond .comment-reply-title > small > a.disabled:focus,
+.comment-respond .comment-reply-title > small > a[disabled]:focus,
+fieldset[disabled] .comment-respond .comment-reply-title > small > a:focus,
+.comment-respond .comment-reply-title > small > a.disabled:active,
+.comment-respond .comment-reply-title > small > a[disabled]:active,
+fieldset[disabled] .comment-respond .comment-reply-title > small > a:active,
+.comment-respond .comment-reply-title > small > a.disabled.active,
+.comment-respond .comment-reply-title > small > a[disabled].active,
+fieldset[disabled] .comment-respond .comment-reply-title > small > a.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+/* line 412, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond .comment-reply-title > small > a:hover,
+.comment-respond .comment-reply-title > small > a:focus,
+.comment-respond .comment-reply-title > small > a:active,
+.comment-respond .comment-reply-title > small > a.active,
+.open .dropdown-toggle.comment-respond .comment-reply-title > small > a {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+/* line 421, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond .comment-reply-title > small > a:active,
+.comment-respond .comment-reply-title > small > a.active,
+.open .dropdown-toggle.comment-respond .comment-reply-title > small > a {
+  background-image: none;
+}
+/* line 429, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond .comment-reply-title > small > a.disabled,
+.comment-respond .comment-reply-title > small > a[disabled],
+fieldset[disabled] .comment-respond .comment-reply-title > small > a,
+.comment-respond .comment-reply-title > small > a.disabled:hover,
+.comment-respond .comment-reply-title > small > a[disabled]:hover,
+fieldset[disabled] .comment-respond .comment-reply-title > small > a:hover,
+.comment-respond .comment-reply-title > small > a.disabled:focus,
+.comment-respond .comment-reply-title > small > a[disabled]:focus,
+fieldset[disabled] .comment-respond .comment-reply-title > small > a:focus,
+.comment-respond .comment-reply-title > small > a.disabled:active,
+.comment-respond .comment-reply-title > small > a[disabled]:active,
+fieldset[disabled] .comment-respond .comment-reply-title > small > a:active,
+.comment-respond .comment-reply-title > small > a.disabled.active,
+.comment-respond .comment-reply-title > small > a[disabled].active,
+fieldset[disabled] .comment-respond .comment-reply-title > small > a.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+/* line 153, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-respond .comment-notes {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #3a87ad;
+}
+/* line 16, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
+.comment-respond .comment-notes h4 {
+  margin-top: 0;
+  color: inherit;
+}
+/* line 22, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
+.comment-respond .comment-notes .alert-link {
+  font-weight: bold;
+}
+/* line 27, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
+.comment-respond .comment-notes > p,
+.comment-respond .comment-notes > ul {
+  margin-bottom: 0;
+}
+/* line 31, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
+.comment-respond .comment-notes > p + p {
+  margin-top: 5px;
+}
+/* line 366, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond .comment-notes hr {
+  border-top-color: #a6e1ec;
+}
+/* line 369, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond .comment-notes .alert-link {
+  color: #2d6987;
+}
+/* line 158, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-respond .comment-form-author,
+.comment-respond .comment-form-email,
+.comment-respond .comment-form-url,
+.comment-respond .comment-form-comment {
+  margin-bottom: 15px;
+}
+/* line 165, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-respond select,
+.comment-respond input[type="text"],
+.comment-respond input[type="password"],
+.comment-respond input[type="datetime"],
+.comment-respond input[type="datetime-local"],
+.comment-respond input[type="date"],
+.comment-respond input[type="month"],
+.comment-respond input[type="time"],
+.comment-respond input[type="week"],
+.comment-respond input[type="number"],
+.comment-respond input[type="email"],
+.comment-respond input[type="url"],
+.comment-respond input[type="search"],
+.comment-respond input[type="tel"],
+.comment-respond input[type="color"] {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555555;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  width: 50%;
+}
+/* line 57, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond select:-moz-placeholder,
+.comment-respond input[type="text"]:-moz-placeholder,
+.comment-respond input[type="password"]:-moz-placeholder,
+.comment-respond input[type="datetime"]:-moz-placeholder,
+.comment-respond input[type="datetime-local"]:-moz-placeholder,
+.comment-respond input[type="date"]:-moz-placeholder,
+.comment-respond input[type="month"]:-moz-placeholder,
+.comment-respond input[type="time"]:-moz-placeholder,
+.comment-respond input[type="week"]:-moz-placeholder,
+.comment-respond input[type="number"]:-moz-placeholder,
+.comment-respond input[type="email"]:-moz-placeholder,
+.comment-respond input[type="url"]:-moz-placeholder,
+.comment-respond input[type="search"]:-moz-placeholder,
+.comment-respond input[type="tel"]:-moz-placeholder,
+.comment-respond input[type="color"]:-moz-placeholder {
+  color: #999999;
+}
+/* line 58, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond select::-moz-placeholder,
+.comment-respond input[type="text"]::-moz-placeholder,
+.comment-respond input[type="password"]::-moz-placeholder,
+.comment-respond input[type="datetime"]::-moz-placeholder,
+.comment-respond input[type="datetime-local"]::-moz-placeholder,
+.comment-respond input[type="date"]::-moz-placeholder,
+.comment-respond input[type="month"]::-moz-placeholder,
+.comment-respond input[type="time"]::-moz-placeholder,
+.comment-respond input[type="week"]::-moz-placeholder,
+.comment-respond input[type="number"]::-moz-placeholder,
+.comment-respond input[type="email"]::-moz-placeholder,
+.comment-respond input[type="url"]::-moz-placeholder,
+.comment-respond input[type="search"]::-moz-placeholder,
+.comment-respond input[type="tel"]::-moz-placeholder,
+.comment-respond input[type="color"]::-moz-placeholder {
+  color: #999999;
+}
+/* line 59, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond select:-ms-input-placeholder,
+.comment-respond input[type="text"]:-ms-input-placeholder,
+.comment-respond input[type="password"]:-ms-input-placeholder,
+.comment-respond input[type="datetime"]:-ms-input-placeholder,
+.comment-respond input[type="datetime-local"]:-ms-input-placeholder,
+.comment-respond input[type="date"]:-ms-input-placeholder,
+.comment-respond input[type="month"]:-ms-input-placeholder,
+.comment-respond input[type="time"]:-ms-input-placeholder,
+.comment-respond input[type="week"]:-ms-input-placeholder,
+.comment-respond input[type="number"]:-ms-input-placeholder,
+.comment-respond input[type="email"]:-ms-input-placeholder,
+.comment-respond input[type="url"]:-ms-input-placeholder,
+.comment-respond input[type="search"]:-ms-input-placeholder,
+.comment-respond input[type="tel"]:-ms-input-placeholder,
+.comment-respond input[type="color"]:-ms-input-placeholder {
+  color: #999999;
+}
+/* line 60, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond select::-webkit-input-placeholder,
+.comment-respond input[type="text"]::-webkit-input-placeholder,
+.comment-respond input[type="password"]::-webkit-input-placeholder,
+.comment-respond input[type="datetime"]::-webkit-input-placeholder,
+.comment-respond input[type="datetime-local"]::-webkit-input-placeholder,
+.comment-respond input[type="date"]::-webkit-input-placeholder,
+.comment-respond input[type="month"]::-webkit-input-placeholder,
+.comment-respond input[type="time"]::-webkit-input-placeholder,
+.comment-respond input[type="week"]::-webkit-input-placeholder,
+.comment-respond input[type="number"]::-webkit-input-placeholder,
+.comment-respond input[type="email"]::-webkit-input-placeholder,
+.comment-respond input[type="url"]::-webkit-input-placeholder,
+.comment-respond input[type="search"]::-webkit-input-placeholder,
+.comment-respond input[type="tel"]::-webkit-input-placeholder,
+.comment-respond input[type="color"]::-webkit-input-placeholder {
+  color: #999999;
+}
+/* line 695, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond select:focus,
+.comment-respond input[type="text"]:focus,
+.comment-respond input[type="password"]:focus,
+.comment-respond input[type="datetime"]:focus,
+.comment-respond input[type="datetime-local"]:focus,
+.comment-respond input[type="date"]:focus,
+.comment-respond input[type="month"]:focus,
+.comment-respond input[type="time"]:focus,
+.comment-respond input[type="week"]:focus,
+.comment-respond input[type="number"]:focus,
+.comment-respond input[type="email"]:focus,
+.comment-respond input[type="url"]:focus,
+.comment-respond input[type="search"]:focus,
+.comment-respond input[type="tel"]:focus,
+.comment-respond input[type="color"]:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+/* line 139, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/forms.less */
+.comment-respond select[disabled],
+.comment-respond input[type="text"][disabled],
+.comment-respond input[type="password"][disabled],
+.comment-respond input[type="datetime"][disabled],
+.comment-respond input[type="datetime-local"][disabled],
+.comment-respond input[type="date"][disabled],
+.comment-respond input[type="month"][disabled],
+.comment-respond input[type="time"][disabled],
+.comment-respond input[type="week"][disabled],
+.comment-respond input[type="number"][disabled],
+.comment-respond input[type="email"][disabled],
+.comment-respond input[type="url"][disabled],
+.comment-respond input[type="search"][disabled],
+.comment-respond input[type="tel"][disabled],
+.comment-respond input[type="color"][disabled],
+.comment-respond select[readonly],
+.comment-respond input[type="text"][readonly],
+.comment-respond input[type="password"][readonly],
+.comment-respond input[type="datetime"][readonly],
+.comment-respond input[type="datetime-local"][readonly],
+.comment-respond input[type="date"][readonly],
+.comment-respond input[type="month"][readonly],
+.comment-respond input[type="time"][readonly],
+.comment-respond input[type="week"][readonly],
+.comment-respond input[type="number"][readonly],
+.comment-respond input[type="email"][readonly],
+.comment-respond input[type="url"][readonly],
+.comment-respond input[type="search"][readonly],
+.comment-respond input[type="tel"][readonly],
+.comment-respond input[type="color"][readonly],
+fieldset[disabled] .comment-respond select,
+fieldset[disabled] .comment-respond input[type="text"],
+fieldset[disabled] .comment-respond input[type="password"],
+fieldset[disabled] .comment-respond input[type="datetime"],
+fieldset[disabled] .comment-respond input[type="datetime-local"],
+fieldset[disabled] .comment-respond input[type="date"],
+fieldset[disabled] .comment-respond input[type="month"],
+fieldset[disabled] .comment-respond input[type="time"],
+fieldset[disabled] .comment-respond input[type="week"],
+fieldset[disabled] .comment-respond input[type="number"],
+fieldset[disabled] .comment-respond input[type="email"],
+fieldset[disabled] .comment-respond input[type="url"],
+fieldset[disabled] .comment-respond input[type="search"],
+fieldset[disabled] .comment-respond input[type="tel"],
+fieldset[disabled] .comment-respond input[type="color"] {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+}
+/* line 147, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/forms.less */
+textarea.comment-respond select,
+textarea.comment-respond input[type="text"],
+textarea.comment-respond input[type="password"],
+textarea.comment-respond input[type="datetime"],
+textarea.comment-respond input[type="datetime-local"],
+textarea.comment-respond input[type="date"],
+textarea.comment-respond input[type="month"],
+textarea.comment-respond input[type="time"],
+textarea.comment-respond input[type="week"],
+textarea.comment-respond input[type="number"],
+textarea.comment-respond input[type="email"],
+textarea.comment-respond input[type="url"],
+textarea.comment-respond input[type="search"],
+textarea.comment-respond input[type="tel"],
+textarea.comment-respond input[type="color"] {
+  height: auto;
+}
+/* line 184, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-respond textarea {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555555;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  height: auto;
+}
+/* line 57, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond textarea:-moz-placeholder {
+  color: #999999;
+}
+/* line 58, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond textarea::-moz-placeholder {
+  color: #999999;
+}
+/* line 59, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond textarea:-ms-input-placeholder {
+  color: #999999;
+}
+/* line 60, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond textarea::-webkit-input-placeholder {
+  color: #999999;
+}
+/* line 695, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond textarea:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+/* line 139, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/forms.less */
+.comment-respond textarea[disabled],
+.comment-respond textarea[readonly],
+fieldset[disabled] .comment-respond textarea {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+}
+/* line 147, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/forms.less */
+textarea.comment-respond textarea {
+  height: auto;
+}
+/* line 189, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-respond .form-allowed-tags {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #737373;
+}
+/* line 192, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-respond .form-allowed-tags code {
+  display: block;
+  white-space: normal;
+}
+/* line 198, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+.comment-respond input[type="submit"] {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
+.comment-respond input[type="submit"]:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+/* line 29, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
+.comment-respond input[type="submit"]:hover,
+.comment-respond input[type="submit"]:focus {
+  color: #333333;
+  text-decoration: none;
+}
+/* line 35, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
+.comment-respond input[type="submit"]:active,
+.comment-respond input[type="submit"].active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+/* line 42, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/buttons.less */
+.comment-respond input[type="submit"].disabled,
+.comment-respond input[type="submit"][disabled],
+fieldset[disabled] .comment-respond input[type="submit"] {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* line 41, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+.comment-respond input[type="submit"] [class^="icon-"].icon-large,
+.comment-respond input[type="submit"] [class*=" icon-"].icon-large {
+  line-height: .9em;
+}
+/* line 42, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+.comment-respond input[type="submit"] [class^="icon-"].icon-spin,
+.comment-respond input[type="submit"] [class*=" icon-"].icon-spin {
+  display: inline-block;
+}
+/* line 55, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+.comment-respond input[type="submit"] [class^="icon-"].pull-left.icon-2x,
+.comment-respond input[type="submit"] [class*=" icon-"].pull-left.icon-2x,
+.comment-respond input[type="submit"] [class^="icon-"].pull-right.icon-2x,
+.comment-respond input[type="submit"] [class*=" icon-"].pull-right.icon-2x {
+  margin-top: .18em;
+}
+/* line 57, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/font-awesome/less/bootstrap.less */
+.comment-respond input[type="submit"] [class^="icon-"].icon-spin.icon-large,
+.comment-respond input[type="submit"] [class*=" icon-"].icon-spin.icon-large {
+  line-height: .8em;
+}
+/* line 412, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond input[type="submit"]:hover,
+.comment-respond input[type="submit"]:focus,
+.comment-respond input[type="submit"]:active,
+.comment-respond input[type="submit"].active,
+.open .dropdown-toggle.comment-respond input[type="submit"] {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+/* line 421, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond input[type="submit"]:active,
+.comment-respond input[type="submit"].active,
+.open .dropdown-toggle.comment-respond input[type="submit"] {
+  background-image: none;
+}
+/* line 429, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond input[type="submit"].disabled,
+.comment-respond input[type="submit"][disabled],
+fieldset[disabled] .comment-respond input[type="submit"],
+.comment-respond input[type="submit"].disabled:hover,
+.comment-respond input[type="submit"][disabled]:hover,
+fieldset[disabled] .comment-respond input[type="submit"]:hover,
+.comment-respond input[type="submit"].disabled:focus,
+.comment-respond input[type="submit"][disabled]:focus,
+fieldset[disabled] .comment-respond input[type="submit"]:focus,
+.comment-respond input[type="submit"].disabled:active,
+.comment-respond input[type="submit"][disabled]:active,
+fieldset[disabled] .comment-respond input[type="submit"]:active,
+.comment-respond input[type="submit"].disabled.active,
+.comment-respond input[type="submit"][disabled].active,
+fieldset[disabled] .comment-respond input[type="submit"].active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+/* line 412, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond input[type="submit"]:hover,
+.comment-respond input[type="submit"]:focus,
+.comment-respond input[type="submit"]:active,
+.comment-respond input[type="submit"].active,
+.open .dropdown-toggle.comment-respond input[type="submit"] {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+/* line 421, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond input[type="submit"]:active,
+.comment-respond input[type="submit"].active,
+.open .dropdown-toggle.comment-respond input[type="submit"] {
+  background-image: none;
+}
+/* line 429, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.comment-respond input[type="submit"].disabled,
+.comment-respond input[type="submit"][disabled],
+fieldset[disabled] .comment-respond input[type="submit"],
+.comment-respond input[type="submit"].disabled:hover,
+.comment-respond input[type="submit"][disabled]:hover,
+fieldset[disabled] .comment-respond input[type="submit"]:hover,
+.comment-respond input[type="submit"].disabled:focus,
+.comment-respond input[type="submit"][disabled]:focus,
+fieldset[disabled] .comment-respond input[type="submit"]:focus,
+.comment-respond input[type="submit"].disabled:active,
+.comment-respond input[type="submit"][disabled]:active,
+fieldset[disabled] .comment-respond input[type="submit"]:active,
+.comment-respond input[type="submit"].disabled.active,
+.comment-respond input[type="submit"][disabled].active,
+fieldset[disabled] .comment-respond input[type="submit"].active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+/*
 #comments,
 #respond {
-  line-height: 1.5;
-  overflow: hidden;
+	line-height: 1.5;
+	overflow: hidden;
 }
-/* line 9, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+
 .ping-list,
 #comments {
-  margin-bottom: 48px;
-  margin-bottom: 3rem;
+	margin-bottom: 48px;
+	margin-bottom: 3rem;
 }
-/* line 15, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+
 #author,
 #email,
 #url {
-  width: 50%;
+	width: 50%;
 }
-/* line 21, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+
 .commentmetadata,
 #author,
 #email,
 #url {
-  margin-bottom: 12px;
-  margin-bottom: 0.75rem;
+	margin-bottom: 12px;
+	margin-bottom: 0.75rem;
 }
-/* line 29, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+
 #comment {
-  margin: 12px 0;
-  margin: 0.75rem 0;
+	margin: 12px 0;
+	margin: 0.75rem 0;
 }
-/* line 34, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+
 label {
-  margin-left: 12px;
-  margin-left: 0.75rem;
+	margin-left: 12px;
+	margin-left: 0.75rem;
 }
-/* line 39, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+
 .comment-list li,
 .ping-list li {
-  list-style-type: none;
-  margin-top: 24px;
-  margin-top: 1.5rem;
-  padding: 32px;
-  padding: 2rem;
+	list-style-type: none;
+	margin-top: 24px;
+	margin-top: 1.5rem;
+	padding: 32px;
+	padding: 2rem;
 }
-/* line 48, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+
 .comment-list li ul li {
-  margin-right: -32px;
-  margin-right: -2rem;
+	margin-right: -32px;
+	margin-right: -2rem;
 }
-/* line 53, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+
 .comment-header {
-  overflow: hidden;
+	overflow: hidden;
 }
-/* line 57, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+
 .comment {
-  background-color: #f5f5f5;
-  border: 2px solid #fff;
-  border-right: none;
+	background-color: #f5f5f5;
+	border: 2px solid #fff;
+	border-right: none;
 }
-/* line 63, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+
 .comment-content p {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+	margin-bottom: 24px;
+	margin-bottom: 1.5rem;
 }
-/* line 71, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-comments.less */
+
+.bypostauthor {
+}
+
 #comments .navigation {
-  margin-top: 32px;
-  margin-top: 2rem;
+	margin-top: 32px;
+	margin-top: 2rem;
+}*/
+/* line 6, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
+.site-container {
+  border-top: 4px solid #2a2a2a;
+  box-shadow: inset 0 1px 0 #e8e8e8;
+}
+/* line 15, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
+.btn {
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+/* line 412, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.open .dropdown-toggle.btn {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+/* line 421, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.btn:active,
+.btn.active,
+.open .dropdown-toggle.btn {
+  background-image: none;
+}
+/* line 429, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn,
+.btn.disabled:hover,
+.btn[disabled]:hover,
+fieldset[disabled] .btn:hover,
+.btn.disabled:focus,
+.btn[disabled]:focus,
+fieldset[disabled] .btn:focus,
+.btn.disabled:active,
+.btn[disabled]:active,
+fieldset[disabled] .btn:active,
+.btn.disabled.active,
+.btn[disabled].active,
+fieldset[disabled] .btn.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
+.section-container {
+  padding: 40px 0;
+}
+/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.section-container:before,
+.section-container:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
+}
+/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.section-container:after {
+  clear: both;
+}
+/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.section-container:before,
+.section-container:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
+}
+/* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
+.section-container:after {
+  clear: both;
+}
+/* line 23, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
+.section-container + .section-container {
+  border-top: 1px solid #e8e8e8;
+}
+/* line 28, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
+.ft-page-business .content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* line 37, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-other.less */
+.content > article > .entry-content > :first-child {
+  margin-top: 0;
+  padding-top: 0;
 }

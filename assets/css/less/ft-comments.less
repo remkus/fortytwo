@@ -1,5 +1,208 @@
 // FortyTwo Comments
 
+.entry-comments {
+	position: relative;
+	margin-bottom: 40px;
+}
+
+.entry-comments + .comment-respond {
+	margin-bottom: 40px;
+	margin-top: -40px;
+}
+
+.entry-comments {
+	> h3 {
+		.font-size(22);
+		font-weight: 300;
+		margin: 0;
+		margin-bottom: 40px;
+	}
+}
+/*.entry-comments > h3:before,
+.entry-comments > h3:after {
+	display: table-cell;
+	width: 100%;
+	font-family: FontAwesome;
+	position: absolute;
+}
+
+.entry-comments > h3:before {
+	font-size: 42px;
+	content: "\f111";
+	color: #424242;
+}
+
+.entry-comments > h3:after {
+	font-size: 20px;
+	content: "\f086";
+	color: #fff;
+	top: -1px;
+}*/
+
+.comment-list {
+	padding-left: 0; // reset padding because ul and ol
+	margin: 0;
+
+	.comment {
+		display: block;
+	}
+
+	> .comment {
+
+		margin-left: 24px;
+		padding: 40px 0 0 30px;
+		border-left: 1px dashed #e8e8e8;
+
+		&:first-child {
+			padding-top: 0;
+
+		}
+
+		> article {
+			border-bottom: 1px dashed #e8e8e8;
+			margin: 0;
+			padding: 0 0 40px 0;
+		}
+
+		> .children {
+			border-top: none;
+			border-bottom: 1px dashed #e8e8e8;
+			padding-bottom: 30px;
+			padding-top: 0;
+		}
+
+	}
+
+	article + .children {
+		border-top: 1px dashed #e8e8e8;
+		padding-top: 20px;
+		margin-top: 20px;
+	}
+
+	.children {
+		padding-left: 0;
+		position: relative;
+
+		.comment ~ .comment {
+			border-top: 1px dashed #e8e8e8;
+			margin: 20px 0 0 0;
+			padding: 20px 0 0 54px;
+		}
+
+		article {
+			margin: 0;
+		}
+
+		.comment {
+			margin-left: 24px;
+			padding-left: 30px;
+		}
+	}
+
+	.comment-header {
+		height: 48px;
+//		padding-left: 58px;
+	}
+
+	.comment-content {
+//		padding-left: 58px;
+	}
+
+	.comment-reply-link {
+		.btn;
+		.btn-default;
+		.btn-xs;
+		text-transform: uppercase;
+	}
+
+	.comment-author {
+		.font-size(16);
+		margin-bottom: 0;
+
+		> img {
+			position: absolute;
+			left: 0;
+			border-radius: 50%;
+		}
+	}
+
+	.comment-meta {
+		.font-size(12);
+	}
+
+}
+
+.comment-respond {
+	position: relative;
+	background: #f9f9f9;
+	padding: 30px;
+	margin-left: 24px;
+
+	.comment-reply-title {
+		margin: 0 0 20px;
+
+		> small > a {
+			.btn;
+			.btn-default;
+			.btn-xs;
+			margin: 0 0 5px 5px;
+			text-transform: uppercase;
+		}
+	}
+
+	.comment-notes {
+		.alert;
+		.alert-info;
+	}
+
+	.comment-form-author,
+	.comment-form-email,
+	.comment-form-url,
+	.comment-form-comment {
+		.form-group;
+	}
+
+	select,
+	input[type="text"],
+	input[type="password"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="week"],
+	input[type="number"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"] {
+		.form-control;
+		width: 50%;
+	}
+
+	textarea {
+		.form-control;
+		height: auto;
+	}
+
+	.form-allowed-tags {
+		.help-block;
+
+		code {
+			display: block;
+			white-space: normal;
+		}
+	}
+
+	input[type="submit"] {
+		.btn;
+		.btn-default;
+	}
+}
+
+
+/*
 #comments,
 #respond {
 	line-height: 1.5;
@@ -71,4 +274,4 @@ label {
 #comments .navigation {
 	margin-top: 32px;
 	margin-top: 2rem;
-}
+}*/

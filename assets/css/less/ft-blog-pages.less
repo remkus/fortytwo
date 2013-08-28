@@ -4,10 +4,12 @@
 .entry-author,
 .entry-comments-link,
 .entry-categories {
+
 	.label;
+	.font-size(13);
 	background-color: #f9f9f9;
 	color: @color-d-dark;
-	.font-size(13);
+
 	a {
 		color: @color-d-dark;
 	}
@@ -18,24 +20,25 @@
 	article {
 		.clearfix();
 
-		img {
-			.media-object;
-			border-radius: 2px;
+		margin: 40px 0;
+		padding: 40px 0 0;
+		border-top: 1px dashed #e8e8e8;
+
+		&:first-child {
+			margin-top: 0;
+			padding-top: 0;
+			border-top: none;
 		}
 
 		.entry-title {
 			.media-heading;
+			line-height: 1;
 		}
-	}
-
-	hr {
-		border-top: 1px dashed @hr-border;
-		margin: 30px 0;
 	}
 
 	.pagination {
 
-		margin: 50px 0;
+		margin: 0 0 40px;
 		list-style: none;
 		text-align: center;
 		.clearfix();
@@ -44,6 +47,7 @@
 			display: inline;
 			> a,
 			> span {
+				color: @pagination-color;
 				display: inline-block;
 				padding: 5px 14px;
 				background-color: @pagination-bg;
@@ -94,6 +98,7 @@
 
 			> li > a,
 			> li > span {
+				color: @pagination-color;
 				float: left; // Collapse white-space
 				padding: 4px 12px;
 				line-height: @line-height-base;

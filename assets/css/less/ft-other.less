@@ -1,17 +1,11 @@
 // Less file of randon styles which should be broken in to specific sections
 
-// Related to font flashing in webkit when slider moves
-html {
-  -webkit-font-smoothing: antialiased
-}
-
 //
 // Top of page border
 // --------------------------------------------------
-
-body {
-  border-top: 4px solid @color-a;
-  box-shadow: inset 0 1px 0 #e8e8e8;
+.site-container {
+	border-top: 4px solid @color-a;
+	box-shadow: inset 0 1px 0 #e8e8e8;
 }
 
 //
@@ -19,19 +13,8 @@ body {
 // --------------------------------------------------
 
 .btn {
-  .btn-default;
+	.btn-default;
 }
-
-//
-// Changing the default sizes of H tags
-
-h1, .h1 { font-size: ceil(@font-size-base * 2.25); } // ~32px
-h2, .h2 { font-size: ceil(@font-size-base * 1.70); } // ~24px
-h3, .h3 { font-size: ceil(@font-size-base * 1.25); } // ~18px
-h4, .h4 { font-size: ceil(@font-size-base * 1.10); } // ~16px
-h5, .h5 { font-size:  @font-size-base; }
-h6, .h6 { font-size: ceil(@font-size-base * 0.85); } // ~12px
-
 
 // Default Section Padding
 .section-container {
@@ -42,7 +25,21 @@ h6, .h6 { font-size: ceil(@font-size-base * 0.85); } // ~12px
 	}
 }
 
-.content > article > .entry-content :first-child {
+.ft-page-business .content {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.content > .section-container {
+	&:extend(.row all);
+}
+// Removes top padding and margin from first element of .entry-content
+.content > article > .entry-content > :first-child {
 	margin-top: 0;
 	padding-top: 0;
+}
+
+// adds default styling to all tables
+table {
+	&:extend(.table all);
 }
