@@ -33,8 +33,6 @@ function ft_responsive_slider_defaults() {
 		'slideshow_more_text' => __( '[Continue Reading]', 'fortytwo' ),
 		'slideshow_excerpt_show' => 1,
 		'slideshow_excerpt_width' => 50,
-		'location_vertical' => 'bottom',
-		'location_horizontal' => 'right',
 		'slideshow_hide_mobile' => 1
 	);
 
@@ -411,22 +409,6 @@ function ft_responsive_slider_options_box() {
 				<p>
 					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]"><?php _e( 'Slider Excerpt Width in Columns (1-12)', 'fortytwo' ); ?>:
 					<input type="text" id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[slideshow_excerpt_width]" value="<?php echo ft_get_responsive_slider_option( 'slideshow_excerpt_width' ); ?>" size="5" /></label>
-				</p>
-
-				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_vertical]"><?php _e( 'Excerpt Location (vertical)', 'fortytwo' ); ?>:</label>
-					<select id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_vertical]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_vertical]">
-						<option style="padding-right:10px;" value="top" <?php selected( 'top', ft_get_responsive_slider_option( 'location_vertical' ) ); ?>><?php _e( 'Top', 'fortytwo' ); ?></option>
-						<option style="padding-right:10px;" value="bottom" <?php selected( 'bottom', ft_get_responsive_slider_option( 'location_vertical' ) ); ?>><?php _e( 'Bottom', 'fortytwo' ); ?></option>
-					</select>
-				</p>
-
-				<p>
-					<label for="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_horizontal]"><?php _e( 'Excerpt Location (horizontal)', 'fortytwo' ); ?>:</label>
-					<select id="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_horizontal]" name="<?php echo FT_RESPONSIVE_SLIDER_SETTINGS_FIELD; ?>[location_horizontal]">
-						<option style="padding-right:10px;" value="left" <?php selected( 'left', ft_get_responsive_slider_option( 'location_horizontal' ) ); ?>><?php _e( 'Left', 'fortytwo' ); ?></option>
-						<option style="padding-right:10px;" value="right" <?php selected( 'right', ft_get_responsive_slider_option( 'location_horizontal' ) ); ?>><?php _e( 'Right', 'fortytwo' ); ?></option>
-					</select>
 				</p>
 <?php
 }
