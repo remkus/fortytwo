@@ -75,8 +75,6 @@ function ft_responsive_slider_sanitization() {
 			'slideshow_excerpt_content_limit',
 			'slideshow_more_text',
 			'slideshow_excerpt_width',
-			'location_vertical',
-			'location_horizontal',
 		) );
 }
 
