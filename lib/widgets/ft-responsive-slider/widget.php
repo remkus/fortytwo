@@ -252,6 +252,10 @@ class FT_Responsive_Slider extends WP_Widget {
 		echo '<script type=\'text/javascript\'>' . $output . '</script>';
 	}
 
+	public function echo_field_id( $field ) {
+		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
+	}
+
 	/*--------------------------------------------------*/
 	/* Widget API Functions
 	/*--------------------------------------------------*/
@@ -286,18 +290,41 @@ class FT_Responsive_Slider extends WP_Widget {
 	 * @param array   instance The array of keys and values for the widget.
 	 */
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		
-		$title = $instance['title'];
+		$instance = wp_parse_args( (array) $instance, array( 
+			 'title' => ''
+			,'post_type' => 'post'
+			,'posts_term' => ''
+			,'exclude_terms' => ''
+			,'include_exclude' => 'include'
+			,'post_id' => ''
+			,'posts_num' => 3
+			,'posts_offset' => 0
+			,'orderby' => 'date'
+			,'slideshow_timer' => 4000
+			,'slideshow_delay' => 800
+			,'slideshow_effect' => 'slide'
+			,'slideshow_width' => 1170
+			,'slideshow_height' => 420
+			,'slideshow_arrows' => 1
+			,'slideshow_pager' => 0
+			,'slideshow_no_link' => 0
+			,'slideshow_title_show' => 1
+			,'slideshow_excerpt_show' => 1
+			,'slideshow_hide_mobile' => 0
+			,'slideshow_excerpt_content' => 'excerpts'
+			,'slideshow_more_text' => __('Read More', 'fortytwo')
+			,'slideshow_excerpt_content_limit' => 300
+			,'slideshow_excerpt_width' => 7
+		) );
 
 		$post_types = get_post_types( array( 'public' => true ), 'names', 'and' );
-		$post_types = array_filter( $post_types, 'ft_responsive_slider_exclude_post_types' );
+		$instance['post_types'] = array_filter( $post_types, 'ft_responsive_slider_exclude_post_types' );
 
 		$taxonomies = get_taxonomies( array( 'public' => true ), 'objects' );
-
-		$taxonomies = array_filter( $taxonomies, 'ft_responsive_slider_exclude_taxonomies' );
-		$test = get_taxonomies( array( 'public' => true ), 'objects' );
-
+		$instance['taxonomies'] = array_filter( $taxonomies, 'ft_responsive_slider_exclude_taxonomies' );
+		
+		$instance['test'] = get_taxonomies( array( 'public' => true ), 'objects' );
 
 		// Display the admin form
 		include dirname( __FILE__ ) . '/views/form.php';
@@ -312,7 +339,32 @@ class FT_Responsive_Slider extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = array();
-		foreach ( array( 'title' ) as $field_name ) {
+		foreach ( array( 
+				'title'
+				,'post_type'
+				,'posts_term'
+				,'exclude_terms'
+				,'include_exclude' 
+				,'post_id' 
+				,'posts_num' 
+				,'posts_offset'
+				,'orderby'
+				,'slideshow_timer'
+				,'slideshow_delay'
+				,'slideshow_effect'
+				,'slideshow_width'
+				,'slideshow_height'
+				,'slideshow_arrows'
+				,'slideshow_pager'
+				,'slideshow_no_link'
+				,'slideshow_title_show'
+				,'slideshow_excerpt_show'
+				,'slideshow_hide_mobile'
+				,'slideshow_excerpt_content'
+				,'slideshow_more_text'
+				,'slideshow_excerpt_content_limit'
+				,'slideshow_excerpt_width'
+			) as $field_name ) {
 			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
 		}
 
