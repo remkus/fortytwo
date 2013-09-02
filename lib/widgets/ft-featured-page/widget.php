@@ -85,7 +85,7 @@ class FT_Featured_Page extends WP_Widget {
 
 		echo $after_widget;
 
-	} // end widget
+	} 
 
 	private function set_default( &$value, $default ) {
 		if ( empty ( $value ) ) $value = $default;
@@ -114,7 +114,7 @@ class FT_Featured_Page extends WP_Widget {
 
 		return $instance;
 
-	} // end widget
+	} // end update()
 
 	/**
 	 * Generates the administration form for the widget.
