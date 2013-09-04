@@ -316,8 +316,6 @@ class FT_Responsive_Slider extends WP_Widget {
 				'post_type' => $instance['post_type'],
 				'posts_per_page' => $instance['posts_num'],
 				'orderby' => $instance['orderby'],
-				'order' => $instance['order'],
-				'meta_key' => $instance['meta_key']
 			) );
 
 		$query_args = apply_filters( 'ft_responsive_slider_query_args', $query_args );

@@ -17,15 +17,10 @@
 	padding: unit((@top /10), rem) unit((@right /10), rem) unit((@bottom /10), rem) unit((@left /10), rem);
 }
 
-//
-// The is a modification of the container-fixed() mixin in BS 3.0
-//
-// Here we are using an auto margin left/right with calc() to subtract
-// the width of the (gutter / 2).
-//
-//.container-fixed() {
-//	margin-right: auto;
-//	margin-left: auto;
-//
-//	.clearfix();
-//}
+.ft-nav-divider(@color: #e5e5e5) {
+	&:after {
+		content: " ";
+		display: block;
+		.nav-divider(@color);
+	}
+}
