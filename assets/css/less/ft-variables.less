@@ -1,63 +1,22 @@
-// FortyTwo Image Paths
-// -------------------------
-@ft-images-path:          "assets/images";
+//
+// Bootstrap Variables
+//
+// All variables up to the "FortyTwo Variables" section
+// are the ones declared by Bootstrap.
+// --------------------------------------------------
 
-// FortyTwo Font Paths
-// -------------------------
-@FontAwesomePath:         "assets/fonts";
-@ft-fonts-path:           "assets/fonts";
 
-// FortyTwo palete colors a-e
-// -------------------------
-@color-a:        #2a2a2a;
-@color-b:        #5ad7ba;
-@color-c:        #f9f9f9;
-@color-d:        #cfcfcf;
-@color-e:        #bada55;
-
-// FortyTwo palete colors shades
-// -------------------------
-@color-a-darker:        darken(@color-a, 20%);
-@color-a-dark:          darken(@color-a, 10%);
-@color-a-light:         lighten(@color-a, 10%);
-@color-a-lighter:       lighten(@color-a, 20%);
-
-@color-b-darker:        darken(@color-b, 20%);
-@color-b-dark:          darken(@color-b, 10%);
-@color-b-light:         lighten(@color-b, 10%);
-@color-b-lighter:       lighten(@color-b, 20%);
-
-@color-c-darker:        darken(@color-c, 20%);
-@color-c-dark:          darken(@color-c, 10%);
-@color-c-light:         lighten(@color-c, 10%);
-@color-c-lighter:       lighten(@color-c, 20%);
-
-@color-d-darker:        darken(@color-d, 20%);
-@color-d-dark:          darken(@color-d, 10%);
-@color-d-light:         lighten(@color-d, 10%);
-@color-d-lighter:       lighten(@color-d, 20%);
-
-@color-e-darker:        darken(@color-e, 20%);
-@color-e-dark:          darken(@color-e, 10%);
-@color-e-light:         lighten(@color-e, 10%);
-@color-e-lighter:       lighten(@color-e, 20%);
-
+// Global values
+// --------------------------------------------------
 
 // Grays
 // -------------------------
 
-@grayDarker:            #222;
-@grayDark:              #333;
-@gray:                  #555;
-@grayLight:             #999;
-@grayLighter:           #eee;
-
-	// TODO: New BS RC1 variables are below however current version of FontAwesome uses some of the above
-	@gray-darker:            lighten(#000, 13.5%); // #222
-	@gray-dark:              lighten(#000, 20%);   // #333
-	@gray:                   lighten(#000, 33.5%); // #555
-	@gray-light:             lighten(#000, 60%);   // #999
-	@gray-lighter:           lighten(#000, 93.5%); // #eee
+@gray-darker:            lighten(#000, 13.5%); // #222
+@gray-dark:              lighten(#000, 20%);   // #333
+@gray:                   lighten(#000, 33.5%); // #555
+@gray-light:             lighten(#000, 60%);   // #999
+@gray-lighter:           lighten(#000, 93.5%); // #eee
 
 // Brand colors
 // -------------------------
@@ -375,7 +334,6 @@
 // Pagination
 // -------------------------
 
-@pagination-color:                     #333;
 @pagination-bg:                        #fff;
 @pagination-border:                    #ccc;
 
@@ -600,18 +558,6 @@
 @breadcrumb-active-color:     @gray-light;
 
 
-// FT Responsive Slider
-// ------------------------
-
-@slider-control-nav-size:					10px;
-@slider-control-nav-border-color:			#ccc;
-@slider-control-nav-bg-color:				#fff;
-@slider-control-nav-active-bg-color:		@brand-primary;
-
-@slider-direction-nav-color:				#424242;
-@slider-direction-nav-bg-color:				none;
-@slider-direction-nav-border-color:			@brand-primary;
-
 // Carousel
 // ------------------------
 
@@ -675,3 +621,47 @@
 
 // Large screen / wide desktop
 @container-lg-desktop:        ((1140px + @grid-gutter-width));
+
+
+//
+// FortyTwo Variables
+//
+// All variables below are the specific to FortyTwo
+// --------------------------------------------------
+
+
+// FortyTwo Image Paths
+// -------------------------
+@ft-images-path:          "assets/images";
+
+
+// FortyTwo Font Paths
+// -------------------------
+@FontAwesomePath:         "assets/fonts";
+@ft-fonts-path:           "assets/fonts";
+
+
+// Grays (in use by FontAwesome)
+// -------------------------
+@grayDarker:            #222;
+@grayDark:              #333;
+@gray:                  #555;
+@grayLight:             #999;
+@grayLighter:           #eee;
+
+
+// Pagination
+// -------------------------
+@pagination-color:                     #333;
+
+
+// FT Responsive Slider
+// ------------------------
+@slider-control-nav-size:					10px;
+@slider-control-nav-border-color:			#ccc;
+@slider-control-nav-bg-color:				#fff;
+@slider-control-nav-active-bg-color:		@brand-primary;
+
+@slider-direction-nav-color:				#424242;
+@slider-direction-nav-bg-color:				none;
+@slider-direction-nav-border-color:			@brand-primary;
