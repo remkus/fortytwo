@@ -3,24 +3,22 @@
  Description: FortyTwo, the answer to all you child theme requirements
  Author: Forsite Themes
  Author URI: http://forsitethemes.com/
- Version: 1.0
+ Version: 1.0.0
  License: GPL-2.0+
  License URI: http://www.opensource.org/licenses/gpl-license.php
 
  Template: genesis
 */
 
-// Add Bootstrap
-@import "../../../vendor/bootstrap/less/bootstrap";
+// FortyTwo variables and mixins
+@import "ft-variables";
+@import "ft-mixins";
+
+// Combination of Bootstrap files
+@import "ft-bootstrap";
 
 // Add Font Awesome More
 @import "../../../vendor/font-awesome/less/font-awesome";
-
-// Core variables and mixins
-@import "ft-variables"; // Modify this for custom colors, font-sizes, etc
-
-// FortyTwo mixins
-@import "ft-mixins";
 
 // FortyTwo grid less to work with Genesis
 @import "ft-grid";
