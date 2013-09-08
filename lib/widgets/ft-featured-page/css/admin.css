@@ -2,3 +2,9 @@
 .ft-featured-page-admin textarea {
 	width:100%;
 }
+
+/* Add icons to widget page using CSS3 selectors: http://reference.sitepoint.com/css/css3attributeselectors */
+div[id*="ft-featured-page"] .widget-title {
+  background: url('../../../../assets/images/favicon.png') no-repeat;
+	padding-left: 42px;
+}
