@@ -37,7 +37,7 @@ define( 'FT_RESPONSIVE_SLIDER_VERSION', '0.10.0' );
  */
 class FT_Responsive_Slider extends WP_Widget {
 
-	public $instance_values = array();
+	public $all_widget_settings = array();
 
 	/*--------------------------------------------------*/
 	/* Constructor
@@ -64,16 +64,16 @@ class FT_Responsive_Slider extends WP_Widget {
 			)
 		);
 	
-		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
+		add_action( 'admin_print_styles', array( &$this, 'register_admin_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( &$this, 'register_admin_scripts' ) );
 
 		// Register site styles and scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_scripts' ) );
-		add_action( 'wp_footer', array( $this, 'ft_responsive_slider_flexslider_params' ) );
+		add_action( 'wp_enqueue_scripts', array( &$this, 'register_widget_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( &$this, 'register_widget_scripts' ) );
 
 		//TODO: Which action should this be attached to?  It needs to be after $this->number is populated
-		add_action ('wp_enqueue_scripts', array( $this, 'register_slider_image_size' ) );
+		add_action ('wp_enqueue_scripts', array( &$this, 'register_slider_image_size' ) );
+	
 	}
 
 	/* Add new image size */
@@ -129,13 +129,13 @@ class FT_Responsive_Slider extends WP_Widget {
 	}
 
 	private function get_value($field, $force_reload = false) {
-
-		if ( count($this->instance_values)==0 || $force_reload ) {
-			$all_settings = $this->get_settings(); //Returns settings for all the widgets of this type.
-			$this->instance_values = $this->sanitization_values($all_settings[$this->number]);
+		//Cache sanitized widget values
+		if ( count($this->all_widget_settings)==0 || $force_reload ) {
+			foreach($this->get_settings() as $key => $value) {
+				$this->all_widget_settings[$key] = $this->sanitization_values($value);
+			}
 		}
-		
-		return $this->instance_values[$field];
+		return $this->all_widget_settings[$this->number][$field];
 	}
 
 	/* Creates read more link after excerpt */
@@ -167,43 +167,6 @@ class FT_Responsive_Slider extends WP_Widget {
 	 */
 	function register_widget_styles() {
 			//no-op
-	}
-
-	/**
-	 * Outputs slider script on wp_footer hook.
-	 */
-	function ft_responsive_slider_flexslider_params() {
-
-		$timer = ( int ) $this->get_value( 'slideshow_timer' );
-		$duration = ( int ) $this->get_value( 'slideshow_delay' );
-		$effect = $this->get_value( 'slideshow_effect' );
-		$controlnav = $this->get_value( 'slideshow_pager' );
-		$directionnav = $this->get_value( 'slideshow_arrows' );
-
-		$output = 'jQuery(document).ready(function($) {
-					$(".slider-inner").flexslider({
-						controlsContainer: ".slider-inner",
-						animation: "' . esc_js( $effect ) . '",
-						directionNav: ' . $directionnav . ',
-						controlNav: ' . $controlnav . ',
-						animationSpeed: ' . $duration . ',
-						slideshowSpeed: ' . $timer . ',
-						prevText: "",
-						nextText: "",
-						useCSS: false,
-						start: function(slider){
-							var arr = [ "slider-inner", "slider-nav" ];
-							$.each(arr, function() {
-								$("." + this).removeClass("invisible");
-							});
-
-						}
-				    });
-				  });';
-
-		$output = str_replace( array( "\n", "\t", "\r" ), '', $output );
-
-		echo '<script type=\'text/javascript\'>' . $output . '</script>';
 	}
 
 	public function echo_field_id( $field ) {
@@ -355,7 +318,7 @@ class FT_Responsive_Slider extends WP_Widget {
 
 		echo $after_widget;
 		wp_reset_query();
-		remove_filter( 'excerpt_more', 'ft_responsive_slider_excerpt_more' );
+		remove_filter( 'excerpt_more', array(&$this, 'ft_responsive_slider_excerpt_more' ) );
 
 	}
 
