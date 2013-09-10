@@ -9,14 +9,22 @@
 	overflow: hidden;
 }
 
-.content,
+.content {
+	.height-adjust();
+	.font-size(@font-size-content);
+}
+
 .sidebar-primary,
 .sidebar-secondary {
 	.height-adjust();
+	.font-size(@font-size-sidebar);
+	line-height: round(@line-height-base * 0.85, 3);
 }
+
 .full-width-content {
 	.content {
 		.make-lg-column(@grid-columns);
+		.calc-line-height(@font-size-content, @grid-columns, @container-lg-desktop);
 	}
 }
 
