@@ -4,39 +4,30 @@
 
 // Custom file for FortyTwo Content Layouts
 
-//
-// Files specific mixins
-// --------------------------------------------------
-.height-adjust() {
-	padding-top: 40px;
-	margin-bottom: -9999px;
-	padding-bottom: 9999px;
-}
-
 .content-sidebar-wrap {
 	min-height: 100%;
 	overflow: hidden;
 }
 
+.content,
+.sidebar-primary,
+.sidebar-secondary {
+	.height-adjust();
+}
 .full-width-content {
 	.content {
-		.make-lg-column(12);
-		padding-top: 40px;
-		padding-bottom: 40px;
-		.clearfix();
+		.make-lg-column(@grid-columns);
 	}
 }
 
 .content-sidebar,
 .sidebar-content {
 	.content {
-		.make-lg-column(9);
-		.height-adjust();
+		.make-lg-column(@grid-columns - @grid-columns-sidebar-primary);
 	}
 
 	.sidebar-primary {
-		.make-lg-column(3);
-		.height-adjust();
+		.make-lg-column(@grid-columns-sidebar-primary);
 	}
 }
 
@@ -44,18 +35,15 @@
 .sidebar-sidebar-content,
 .sidebar-content-sidebar {
 	.content {
-		.make-lg-column(7);
-		.height-adjust();
+		.make-lg-column(@grid-columns - (@grid-columns-sidebar-primary + @grid-columns-sidebar-secondary));
 	}
 
 	.sidebar-primary {
-		.make-lg-column(3);
-		.height-adjust();
+		.make-lg-column(@grid-columns-sidebar-primary);
 	}
 
 	.sidebar-secondary {
-		.make-lg-column(2);
-		.height-adjust();
+		.make-lg-column(@grid-columns-sidebar-secondary);
 	}
 }
 
@@ -65,85 +53,77 @@
 	}
 
 	.sidebar-primary {
+		border-left: @grid-columns-border;
 		padding-left: @grid-gutter-width;
-		border-left: 1px solid #e8e8e8;
 	}
 }
 
 .sidebar-content {
 	.content {
-		.make-lg-column-push(3);
-		padding-right: 15px;
-		padding-left: 30px;
+		.make-lg-column-push(@grid-columns-sidebar-primary);
+		padding-left: @grid-gutter-width;
 	}
 
 	.sidebar-primary {
-		.make-lg-column-pull(9);
-		padding-right: 30px;
-		padding-left: 15px;
-		border-right: 1px solid #e8e8e8;
+		.make-lg-column-pull(@grid-columns - @grid-columns-sidebar-primary);
+		border-right: @grid-columns-border;
+		padding-right: @grid-gutter-width;
 	}
 }
 
 .content-sidebar-sidebar {
 	.content {
-		padding-right: 30px;
-		padding-left: 15px;
+		padding-right: @grid-gutter-width;
 	}
 
 	.sidebar-primary {
-		padding-right: 30px;
-		padding-left: 30px;
-		border-left: 1px solid #e8e8e8;
+		border-left: @grid-columns-border;
+		padding-left: @grid-gutter-width;
+		padding-right: @grid-gutter-width;
 	}
 
 	.sidebar-secondary {
-		padding-right: 15px;
-		padding-left: 30px;
-		border-left: 1px solid #e8e8e8;
+		border-left: @grid-columns-border;
+		padding-left: @grid-gutter-width;
 	}
 }
 
 .sidebar-sidebar-content {
 	.content {
-		.make-lg-column-push(5);
-		padding-right: 15px;
-		padding-left: 30px;
+		.make-lg-column-push(@grid-columns-sidebar-primary + @grid-columns-sidebar-secondary);
+		padding-left: @grid-gutter-width;
 	}
 
 	.sidebar-primary {
-		.make-lg-column-pull(5);
-		padding-right: 30px;
-		padding-left: 30px;
-		border-right: 1px solid #e8e8e8;
+		.make-lg-column-pull(@grid-columns-sidebar-primary + @grid-columns-sidebar-secondary);
+		border-right: @grid-columns-border;
+		padding-right: @grid-gutter-width;
+		padding-left: @grid-gutter-width;
 	}
 
 	.sidebar-secondary {
-		.make-lg-column-pull(10);
-		padding-right: 30px;
-		padding-left: 15px;
-		border-right: 1px solid #e8e8e8;
+		.make-lg-column-pull(@grid-columns - @grid-columns-sidebar-secondary);
+		border-right: @grid-columns-border;
+		padding-right: @grid-gutter-width;
 	}
 }
 
 .sidebar-content-sidebar {
 	.content {
-		.make-lg-column-push(2);
-		padding-right: 30px;
-		padding-left: 30px;
+		.make-lg-column-push(@grid-columns-sidebar-secondary);
+		padding-right: @grid-gutter-width;
+		padding-left: @grid-gutter-width;
 	}
 
 	.sidebar-primary {
-		.make-lg-column-push(2);
-		padding-right: 15px;
-		padding-left: 30px;
-		border-left: 1px solid #e8e8e8;
+		.make-lg-column-push(@grid-columns-sidebar-secondary);
+		padding-left: @grid-gutter-width;
+		border-left: @grid-columns-border;
 	}
 
 	.sidebar-secondary {
-		.make-lg-column-pull(10);
-		padding-right: 30px;
-		padding-left: 15px;
-		border-right: 1px solid #e8e8e8;
+		.make-lg-column-pull(@grid-columns - @grid-columns-sidebar-secondary);
+		padding-right: @grid-gutter-width;
+		border-right: @grid-columns-border;
 	}
 }
