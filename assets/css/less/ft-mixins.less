@@ -31,34 +31,13 @@
 	padding-bottom: 9999px;
 }
 
+.calc-line-height(@screen-size, @cols, @font-size: @font-size-base, @ratio: @golden) {
+	@f: unit(@font-size);
+	@w: (unit(@screen-size) / @cols) * @cols;
+	@r: @ratio;
 
+	@h: @r - (1 / (2 * @r)) * (1 - (@w / pow(@f * @r, 2)));
+	@l: round(@f * @h);
 
- // 1.61803398874989 or "The Golden Ratio"
-
-
-//@yoo: sqrt(@ContentWidth) / @phi; // Line-height
-//@zoo: @phi - @xoo * (1 - (@ContentWidth / @yoo));
-
-// Golden ratio font size calcs - https://gist.github.com/gregrickaby/5001983
-
-/*.calcFontSize() {
-  @cfsfoo: round(sqrt(@ContentWidth) / @phi);
-}*/
-
-.calc-line-height(@f, @w) {
-	@font-size: unit(@f);
-	@content-width: @w;
-	@phi: (1 + sqrt(5)) / 2;
-	@xoo: 1 / (2 * @phi);
-
-	@foobar: sqrt(@ContentWidth) / @phi;
-	@foo: round(@zzz * (@phi - @xoo * (1 - (@ContentWidth / pow(@zzz * @phi, 2)))));
-	@fo: @foo / @zzz;
-
-	line-height: @fo;
-	color: @phi;
-	color: @xoo;
-	color: @foobar;
-	color: @foo;
-	color: @fo;
+	line-height: @h;
 }

@@ -9,51 +9,13 @@
 	overflow: hidden;
 }
 
-.content {
-	.height-adjust();
-	.font-size(@font-size-content);
-}
-
+.content,
 .sidebar-primary,
 .sidebar-secondary {
 	.height-adjust();
-	.font-size(@font-size-sidebar);
-	line-height: round(@line-height-base * 0.85, 3);
 }
 
-.full-width-content {
-	.content {
-		.make-lg-column(@grid-columns);
-		.calc-line-height(@font-size-content, @grid-columns, @container-lg-desktop);
-	}
-}
 
-.content-sidebar,
-.sidebar-content {
-	.content {
-		.make-lg-column(@grid-columns - @grid-columns-sidebar-primary);
-	}
-
-	.sidebar-primary {
-		.make-lg-column(@grid-columns-sidebar-primary);
-	}
-}
-
-.content-sidebar-sidebar,
-.sidebar-sidebar-content,
-.sidebar-content-sidebar {
-	.content {
-		.make-lg-column(@grid-columns - (@grid-columns-sidebar-primary + @grid-columns-sidebar-secondary));
-	}
-
-	.sidebar-primary {
-		.make-lg-column(@grid-columns-sidebar-primary);
-	}
-
-	.sidebar-secondary {
-		.make-lg-column(@grid-columns-sidebar-secondary);
-	}
-}
 
 .content-sidebar {
 	.content {
@@ -134,4 +96,106 @@
 		padding-right: @grid-gutter-width;
 		border-right: @grid-columns-border;
 	}
+}
+
+
+// Extra small grid
+//
+// Grid classes for extra small devices like smartphones. No offset, push, or
+// pull classes are present here due to the size of the target.
+//
+// Note that `.col-xs-12` doesn't get floated on purpose—there's no need since
+// it's full-width.
+
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11 {
+  float: left;
+}
+.col-xs-1  { width: percentage((1 / @grid-columns)); }
+.col-xs-2  { width: percentage((2 / @grid-columns)); }
+.col-xs-3  { width: percentage((3 / @grid-columns)); }
+.col-xs-4  { width: percentage((4 / @grid-columns)); }
+.col-xs-5  { width: percentage((5 / @grid-columns)); }
+.col-xs-6  { width: percentage((6 / @grid-columns)); }
+.col-xs-7  { width: percentage((7 / @grid-columns)); }
+.col-xs-8  { width: percentage((8 / @grid-columns)); }
+.col-xs-9  { width: percentage((9 / @grid-columns)); }
+.col-xs-10 { width: percentage((10/ @grid-columns)); }
+.col-xs-11 { width: percentage((11/ @grid-columns)); }
+.col-xs-12 { width: 100%; }
+
+
+// Small grid
+//
+// Layouts for the small device range, from phones
+// to tablets.
+
+@media (min-width: @screen-tablet) {
+
+}
+
+
+// Medium grid
+//
+// Layouts for the desktop device range.
+
+@media (min-width: @screen-desktop) {
+
+}
+
+
+// Large grid
+//
+// Layouts for the large desktop device range.
+
+@media (min-width: @screen-lg-desktop) {
+
+
+	@c:        12;
+	@cs:       9 3;
+	@css:      7 3 2;
+
+	.full-width-content {
+		.content {
+			.make-lg-column(@c);
+			.calc-line-height(@screen-lg, @c);
+		}
+	}
+
+	.content-sidebar,
+	.sidebar-content {
+		.content {
+			.make-lg-column(extract(@cs, 1));
+		}
+
+		.sidebar-primary {
+			.make-lg-column(extract(@cs, 2));
+		}
+	}
+
+	.content-sidebar-sidebar,
+	.sidebar-sidebar-content,
+	.sidebar-content-sidebar {
+		.content {
+			.make-lg-column(@grid-columns - (@grid-columns-sidebar-primary + @grid-columns-sidebar-secondary));
+		}
+
+		.sidebar-primary {
+			.make-lg-column(@grid-columns-sidebar-primary);
+		}
+
+		.sidebar-secondary {
+			.make-lg-column(@grid-columns-sidebar-secondary);
+		}
+	}
+
 }
