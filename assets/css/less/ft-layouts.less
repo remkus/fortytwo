@@ -4,16 +4,7 @@
 
 // Custom file for FortyTwo Content Layouts
 
-.content-sidebar-wrap {
-	min-height: 100%;
-	overflow: hidden;
-}
 
-.content,
-.sidebar-primary,
-.sidebar-secondary {
-	.height-adjust();
-}
 
 
 
@@ -101,37 +92,19 @@
 
 // Extra small grid
 //
-// Grid classes for extra small devices like smartphones. No offset, push, or
+// Layout small devices like smartphones. No offset, push, or
 // pull classes are present here due to the size of the target.
-//
-// Note that `.col-xs-12` doesn't get floated on purpose—there's no need since
-// it's full-width.
 
-.col-xs-1,
-.col-xs-2,
-.col-xs-3,
-.col-xs-4,
-.col-xs-5,
-.col-xs-6,
-.col-xs-7,
-.col-xs-8,
-.col-xs-9,
-.col-xs-10,
-.col-xs-11 {
-  float: left;
+.content-sidebar-wrap {
+	min-height: 100%;
+	overflow: hidden;
 }
-.col-xs-1  { width: percentage((1 / @grid-columns)); }
-.col-xs-2  { width: percentage((2 / @grid-columns)); }
-.col-xs-3  { width: percentage((3 / @grid-columns)); }
-.col-xs-4  { width: percentage((4 / @grid-columns)); }
-.col-xs-5  { width: percentage((5 / @grid-columns)); }
-.col-xs-6  { width: percentage((6 / @grid-columns)); }
-.col-xs-7  { width: percentage((7 / @grid-columns)); }
-.col-xs-8  { width: percentage((8 / @grid-columns)); }
-.col-xs-9  { width: percentage((9 / @grid-columns)); }
-.col-xs-10 { width: percentage((10/ @grid-columns)); }
-.col-xs-11 { width: percentage((11/ @grid-columns)); }
-.col-xs-12 { width: 100%; }
+
+.content,
+.sidebar-primary,
+.sidebar-secondary {
+	.height-adjust();
+}
 
 
 // Small grid
@@ -159,10 +132,9 @@
 
 @media (min-width: @screen-lg-desktop) {
 
-
-	@c:        12;
-	@cs:       9 3;
-	@css:      7 3 2;
+	@c:          12;
+	@c-s:        9 3;
+	@c-s-s:      7 3 2;
 
 	.full-width-content {
 		.content {
@@ -174,11 +146,13 @@
 	.content-sidebar,
 	.sidebar-content {
 		.content {
-			.make-lg-column(extract(@cs, 1));
+			.make-lg-column(extract(@c-s, 1));
+			.set-layout-order(1)
 		}
 
 		.sidebar-primary {
-			.make-lg-column(extract(@cs, 2));
+			.make-lg-column(extract(@c-s, 2));
+			.set-layout-order(2)
 		}
 	}
 
@@ -186,15 +160,15 @@
 	.sidebar-sidebar-content,
 	.sidebar-content-sidebar {
 		.content {
-			.make-lg-column(@grid-columns - (@grid-columns-sidebar-primary + @grid-columns-sidebar-secondary));
+			.make-lg-column(extract(@c-s-s, 1));
 		}
 
 		.sidebar-primary {
-			.make-lg-column(@grid-columns-sidebar-primary);
+			.make-lg-column(extract(@c-s-s, 2));
 		}
 
 		.sidebar-secondary {
-			.make-lg-column(@grid-columns-sidebar-secondary);
+			.make-lg-column(extract(@c-s-s, 3));
 		}
 	}
 

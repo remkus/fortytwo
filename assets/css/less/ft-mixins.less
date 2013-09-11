@@ -7,7 +7,6 @@
 // Generate rem font-sizes with pixel fallbacks
 // By default uses `@font-size-base` with an initial value of 14 (1.4rem or 14px)
 .font-size( @font-size: @font-size-base ) {
-//	@rem-size: unit(@font-size) / 10;
 	font-size: unit(@font-size, px);
 	font-size: unit(@font-size, rem) / 10;
 }
@@ -40,4 +39,8 @@
 	@l: round(@f * @h);
 
 	line-height: @h;
+}
+
+.set-layout-order(@pos) {
+
 }
