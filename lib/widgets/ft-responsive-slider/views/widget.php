@@ -1,4 +1,4 @@
-<div class="slider-inner invisible">
+<div class="<?php echo $this->get_field_id( 'container' )?> slider-inner invisible">
 	<ul class="slides">
 		<?php while ( $slider_posts->have_posts() ) : $slider_posts->the_post(); ?>
 			<li class="slide-<?php the_ID(); ?>">
@@ -31,4 +31,33 @@
 			</li>
 		<?php endwhile; ?>
 	</ul>
+	<?php 
+		$controlsContainer = ".{$this->get_field_id( 'container' )}.slider-inner";
+		$timer = ( int ) $this->get_value( 'slideshow_timer' );
+		$duration = ( int ) $this->get_value( 'slideshow_delay' );
+		$effect = $this->get_value( 'slideshow_effect' );
+		$controlnav = $this->get_value( 'slideshow_pager' );
+		$directionnav = $this->get_value( 'slideshow_arrows' );
+		?>
+		<script>
+		jQuery(document).ready(function($) {
+					$("<?php echo $controlsContainer ?>").flexslider({
+						controlsContainer: "<?php echo $controlsContainer ?>",
+						animation: "<?php echo esc_js( $effect ) ?>",
+						directionNav: <?php echo $directionnav ?>,
+						controlNav: <?php echo $controlnav ?>,
+						animationSpeed: <?php echo $duration ?>,
+						slideshowSpeed: <?php echo $timer ?>,
+						prevText: "",
+						nextText: "",
+						useCSS: false,
+						start: function(slider){
+							var arr = [ "slider-inner", "slider-nav" ];
+							$.each(arr, function() {
+								$("." + this).removeClass("invisible");
+							});
+						}
+		    });
+		  });
+		</script>
 </div>

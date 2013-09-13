@@ -10,3 +10,9 @@
 .ft-testimonials-admin .make_visible {
 	display:block;
 }
+
+/* Add icons to widget page using CSS3 selectors: http://reference.sitepoint.com/css/css3attributeselectors */
+div[id*="ft-testimonials"] .widget-title {
+  background: url('../../../../assets/images/favicon.png') no-repeat;
+	padding-left: 42px;
+}
