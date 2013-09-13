@@ -57,7 +57,14 @@ class FT_Contact_Widget extends WP_Widget {
 			)
 		);
 
+		// Register admin styles and scripts
+		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
+
 	} // end constructor
+
+	private function url( $file ) {
+		return FORTYTWO_WIDGETS_URL . '/ft-contact' . $file;
+	}
 
 	/**
 	 * Echo the widget content.
@@ -126,6 +133,17 @@ class FT_Contact_Widget extends WP_Widget {
 		include dirname( __FILE__ ) . '/views/form.php';
 
 	}
+
+	/**
+	 * Registers and enqueues admin-specific styles.
+	 */
+	public function register_admin_styles() {
+
+		wp_enqueue_style( 'ft-contact-admin-styles', $this->url( '/css/admin.css' ) );
+	
+	} // end register_admin_styles
+
+
 }
 
 add_action( 'widgets_init', create_function( '', 'register_widget("FT_Contact_Widget");' ) );
