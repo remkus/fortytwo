@@ -13,6 +13,7 @@
 
 /* Add icons to widget page using CSS3 selectors: http://reference.sitepoint.com/css/css3attributeselectors */
 div[id*="ft-testimonials"] .widget-title {
-  background: url('../../../../assets/images/favicon.png') no-repeat;
-	padding-left: 42px;
+	background: url('../../../../assets/images/favicon.png') no-repeat;
+	padding-left: 30px;
+	background-size: 24px 24px;
 }
