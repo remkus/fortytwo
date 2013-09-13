@@ -32,15 +32,30 @@
 
 .calc-line-height(@screen-size, @cols, @font-size: @font-size-base, @ratio: @golden) {
 	@f: unit(@font-size);
-	@w: (unit(@screen-size) / @cols) * @cols;
+	@w: (unit(@screen-size) / 12) * @cols;
 	@r: @ratio;
 
 	@h: @r - (1 / (2 * @r)) * (1 - (@w / pow(@f * @r, 2)));
 	@l: round(@f * @h);
 
 	line-height: @h;
+	color: @f;
+	color: @w;
+	color: @r;
+	color: @l;
 }
 
-.set-layout-order(@pos) {
+.set-page-layout(@rest...) {
 
+	.grid-generator (@devices, @breakpoints, @count, @index) when (@index < @count + 1){
+	    @device: extract(@devices, @index);
+	    @breakpoint: extract(@breakpoints, @index);
+
+	    .grid-device-generator (@device, @breakpoint);
+
+	    .grid-generator (@devices, @breakpoints, @count, @index + 1);
+	}
+
+	color: extract(@rest, 1);
+	color: extract(@rest, 2);
 }

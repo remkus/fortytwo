@@ -137,22 +137,30 @@
 	@c-s-s:      7 3 2;
 
 	.full-width-content {
+
 		.content {
 			.make-lg-column(@c);
 			.calc-line-height(@screen-lg, @c);
 		}
 	}
 
+/*	.content-sidebar {
+		.set-page-layout(
+			content, 9;
+			sidebar-primary, 3
+		);
+	}*/
+
 	.content-sidebar,
 	.sidebar-content {
 		.content {
 			.make-lg-column(extract(@c-s, 1));
-			.set-layout-order(1)
+			.calc-line-height(@screen-lg, extract(@c-s, 1));
 		}
 
 		.sidebar-primary {
 			.make-lg-column(extract(@c-s, 2));
-			.set-layout-order(2)
+			.calc-line-height(@screen-lg, extract(@c-s, 2));
 		}
 	}
 
@@ -161,14 +169,17 @@
 	.sidebar-content-sidebar {
 		.content {
 			.make-lg-column(extract(@c-s-s, 1));
+			.calc-line-height(@screen-lg, extract(@c-s-s, 1));
 		}
 
 		.sidebar-primary {
 			.make-lg-column(extract(@c-s-s, 2));
+			.calc-line-height(@screen-lg, extract(@c-s-s, 2));
 		}
 
 		.sidebar-secondary {
 			.make-lg-column(extract(@c-s-s, 3));
+			.calc-line-height(@screen-lg, extract(@c-s-s, 3));
 		}
 	}
 
