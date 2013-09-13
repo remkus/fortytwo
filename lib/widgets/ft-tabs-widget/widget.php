@@ -54,6 +54,9 @@ class FT_Tabbed_Content extends WP_Widget {
 		/* Create the widget. */
 		$this->WP_Widget( $this->fst_widget_idbase, $this->fst_widget_title, $widget_ops, $control_ops );
 
+		// Register admin styles and scripts
+		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
+
 		/* Load in assets for the widget */
 		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
@@ -162,6 +165,15 @@ class FT_Tabbed_Content extends WP_Widget {
 		include dirname( __FILE__ ) . '/views/form.php';
 
 	} // End form()
+
+	/**
+	 * Registers and enqueues admin-specific styles.
+	 */
+	public function register_admin_styles() {
+
+		wp_enqueue_style( 'ft-tabbed-content-admin-styles', $this->url( '/css/admin.css' ) );
+	
+	} // end register_admin_styles
 
 	/**
 	 * Renders a tabs selection dropdown box
