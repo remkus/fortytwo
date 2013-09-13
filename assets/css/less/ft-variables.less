@@ -51,8 +51,8 @@
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
-@line-height-base:        1.428571429; // 20/14
-@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
+@line-height-base:        1.618; // 20/14
+@line-height-computed:    round(@font-size-base * @line-height-base);
 
 @headings-font-family:    @font-family-base;
 @headings-font-weight:    500;
@@ -623,7 +623,6 @@
 @container-lg-desktop:        ((1140px + @grid-gutter-width));
 
 
-//
 // FortyTwo Variables
 //
 // All variables below are the specific to FortyTwo
@@ -639,6 +638,40 @@
 // -------------------------
 @FontAwesomePath:         "assets/fonts";
 @ft-fonts-path:           "assets/fonts";
+
+
+// FortyTwo Page Layouts
+// -------------------------
+@grid-columns-sidebar-primary:            3;
+@grid-columns-sidebar-secondary:          2;
+@grid-columns-border:                     1px solid #e8e8e8;
+
+
+// FortyTwo Typography
+// -------------------------
+//@font-size-content:             @font-size-base;
+//@font-size-sidebar:             @font-size-base;
+
+
+// FortyTwo Scale Ratio's
+// -------------------------
+@minor-second:        1.067;
+@major-second:        1.125;
+@minor-third:         1.2;
+@major-third:         1.25;
+@perfect-fourth:      1.333;
+@fourth-dim-fifth:    1.414;
+@perfect-fifth:       1.5;
+@minor-sixth:         1.6;
+@golden:              1.618;
+@major-sixth:         1.667;
+@minor-seventh:       1.778;
+@major-seventh:       1.875;
+@octave:              2;
+@major-tenth:         2.5;
+@major-eleventh:      2.667;
+@major-twelfth:       3;
+@double-octave:       4;
 
 
 // Grays (in use by FontAwesome)
