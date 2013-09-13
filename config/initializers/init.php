@@ -23,7 +23,7 @@ require_once 'ft-scripts.php';
 
 require_once 'ft-widget-areas.php';
 
-require_once 'ft-structual.php';
+require_once 'ft-structural.php';
 
 require_once 'ft-nav.php';
 
@@ -31,7 +31,7 @@ require_once 'ft-subheader.php';
 
 require_once 'ft-slider.php';
 
-require_once 'ft-page-blog.php';
+//require_once 'ft-page-blog.php';
 
 require_once 'ft-default-widgets.php';
 
