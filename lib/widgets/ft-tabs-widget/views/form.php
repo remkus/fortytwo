@@ -16,14 +16,6 @@
 <div class="genesis-widget-column genesis-widget-column-right">
 
   <div class="genesis-widget-column-box genesis-widget-column-box-top">
-    <!-- Tabs Style: Select Input -->
-    <p>
-      <label for="<?php echo $this->get_field_id( 'tabs_style' ); ?>"><?php _e( 'Tabs Style:', 'fortytwo' ); ?></label>
-      <select name="<?php echo $this->get_field_name( 'tabs_style' ); ?>" class="widefat" id="<?php echo $this->get_field_id( 'tabs_style' ); ?>">
-        <option value="tabs"<?php selected( $instance['tabs_style'], 'tabs' ); ?>><?php _e( 'Tabs', 'fortytwo' ); ?></option>
-        <option value="pills"<?php selected( $instance['tabs_style'], 'pills' ); ?>><?php _e( 'Pills', 'fortytwo' ); ?></option>
-      </select>
-    </p>
     <!-- Widget Limit: Text Input -->
     <p>
       <label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:', 'fortytwo' ); ?></label>

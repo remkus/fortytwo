@@ -84,7 +84,6 @@ class FT_Tabbed_Content extends WP_Widget {
 		/* Our variables from the widget settings. */
 		$title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
 		$tabs = $instance['tabs'];
-		$tabs_style = $instance['tabs_style'];
 
 		/* Before widget (defined by themes). */
 		echo $before_widget;
@@ -113,7 +112,6 @@ class FT_Tabbed_Content extends WP_Widget {
 		$instance['title'] = strip_tags( $new_instance['title'] );
 
 		/* The select box is returning a text value, so we escape it. */
-		$instance['tabs_style'] = esc_attr( $new_instance['tabs_style'] );
 		$instance['image_alignment'] = esc_attr( $new_instance['image_alignment'] );
 
 		/* Escape the text string and convert to an integer. */
@@ -153,7 +151,6 @@ class FT_Tabbed_Content extends WP_Widget {
 			'tabs'            => array_slice( $this->available_tabs, 0, 3 ), /* default to selecting the first 3, to suggest that it is possible to omit having a tab */
 			'limit'           => 5,
 			'image_dimension' => 45,
-			'tabs_style'      => 'tabs',
 			'image_alignment' => 'left'
 		);
 
