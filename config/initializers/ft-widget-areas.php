@@ -17,7 +17,7 @@ function fortytwo_register_widget_areas() {
 	$page_business_widget_areas = array(
 		'name'          => __( 'Business > Section %d', 'fortytwo' ),
 		'id'            => 'page-business-section',
-		'description'   => __( 'Widgets  areas for sections of the Business Page Template' ),
+		'description'   => __( 'Widgets  areas for sections of the Business Page Template', 'fortytwo' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-wrap">',
 		'after_widget'  => '</div></section>',
 		'before_title'  => '<h4 class="widget-title widgettitle">',
