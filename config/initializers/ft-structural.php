@@ -91,5 +91,6 @@ function fortytwo_add_widget_count_class( $id ) {
 	$widget_count_class = ' col-lg-' . ( 12 / ( count ( $sidebars_widgets[$id] ) ) );
 
 	$wp_registered_sidebars[$id]['before_widget'] = '<section id="%1$s" class="widget %2$s' . $widget_count_class . '"><div class="widget-wrap">';
+	$wp_registered_sidebars[$id]['after_widget'] = '</div></section>';
 
 }
