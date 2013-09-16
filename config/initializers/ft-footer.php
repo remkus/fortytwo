@@ -14,11 +14,6 @@ add_action( 'genesis_before_footer', 'fortytwo_insert_footer_widget' );
  */
 function fortytwo_insert_footer_widget() {
 
-	$footer_widgets = get_theme_support( 'genesis-footer-widgets' );
-
-	if ( ! $footer_widgets )
-		return;
-
 	//* Check to see if footer-columns has widgets.
 	if ( ! is_active_sidebar( 'footer-columns' ) )
 		return;

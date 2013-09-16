@@ -27,9 +27,6 @@ function fortytwo_register_widget_areas() {
 }
 
 
-// Add support for footer widgets
-add_theme_support( 'genesis-footer-widgets' );
-
 // Registering the sidebar for our footer columns
 genesis_register_sidebar(
 	array(
