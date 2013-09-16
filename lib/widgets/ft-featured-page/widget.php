@@ -24,6 +24,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+/**
+ *  @todo  This code needs better documentation
+ */
 class FT_Featured_Page extends WP_Widget {
 
 	/*--------------------------------------------------*/
@@ -85,7 +88,7 @@ class FT_Featured_Page extends WP_Widget {
 
 		echo $after_widget;
 
-	} 
+	}
 
 	private function set_default( &$value, $default ) {
 		if ( empty ( $value ) ) $value = $default;

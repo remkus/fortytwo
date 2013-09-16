@@ -1,10 +1,9 @@
 <?php
-/*
+/**
  * FotyTwo: Register widget areas for the theme
  *
  * @since 1.0.0
- *
- * TODO: Want the ability to read in from json settings files to determine what sidebars we need to register
+ * @todo  Want the ability to read in from json settings files to determine what sidebars we need to register
  */
 
 add_action( 'after_setup_theme', 'fortytwo_register_widget_areas' );
@@ -12,6 +11,8 @@ add_action( 'after_setup_theme', 'fortytwo_register_widget_areas' );
  * Regsiter the widget areas for FortyTwo, uses a single row section approach
  *
  * @since 1.0
+ * @todo  This code needs better documentation
+ *
  */
 function fortytwo_register_widget_areas() {
 	$page_business_widget_areas = array(

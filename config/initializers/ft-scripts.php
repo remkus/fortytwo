@@ -11,6 +11,7 @@ add_action( 'wp_enqueue_scripts', 'fortytwo_add_scripts', 100 );
  * @return [type] [description]
  * @todo  These needs to be named bootstrap to prevent FST-PACK from also loading bootstrap
  * @todo  Need to change bootstrap.js for final version to minified
+ * @todo  This code needs better documentation
  */
 function fortytwo_add_scripts() {
 

@@ -1,6 +1,6 @@
 <div id="<?php echo $this->get_field_id( 'container' )?>" class="ft-responsive-slider-container">
 	<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'fortytwo' ); ?> 
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'fortytwo' ); ?>
 			<input class="widefat" <?php $this->echo_field_id( "title" ) ?> type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 		</label>
 	</p>
@@ -47,7 +47,7 @@
 													foreach ( $terms as $term ) {
 											?>
 											<option style="margin-left: 8px;" value="<?php echo esc_attr( $query_label ) . ',' . $term->slug; ?>" <?php selected( esc_attr( $query_label ) . ',' . $term->slug, $instance['posts_term'] ); ?>><?php echo '-' . esc_attr( $term->name ); ?></option><?php } ?>
-										</optgroup> 
+										</optgroup>
 								<?php } ?>
 								</select>
 							</p>
@@ -185,7 +185,7 @@
 					<label for="<?php echo $this->get_field_id( 'slideshow_excerpt_width' ); ?>"><?php _e( 'Slider Excerpt Width in Columns (1-12)', 'fortytwo' ); ?>:
 					<input type="text" class="slider" <?php $this->echo_field_id( "slideshow_excerpt_width" ) ?> value="<?php echo $instance['slideshow_excerpt_width']; ?>" size="5" /></label>
 					<div class="slider"></div>
-				</p>  
+				</p>
 		  </div>
 		</div>
 	</div>
@@ -218,11 +218,11 @@
 		// 	var theOverlay = theForm.find('.ui-widget-overlay'),
 		// 			zIndex = theOverlay.css("z-index");
 
-		// 	theDialogEl.css('z-index', 9999999);	
+		// 	theDialogEl.css('z-index', 9999999);
 		// 	theOverlay.appendTo('body');
 		// } );
 
-		theDialogEl.find( ".media-modal-close" ).on('click',function() { 
+		theDialogEl.find( ".media-modal-close" ).on('click',function() {
 			theDialogEl.dialog("close");
 		});
 
@@ -241,9 +241,7 @@
 		dialogContainer.find('.openDialogButton').click(function(){
 		  theDialog.dialog('open');
 		});
- 
+
 	});
 }(jQuery));
 </script>
-
-

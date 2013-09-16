@@ -23,8 +23,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-//Required for use of is_plugin_active() - http://codex.wordpress.org/Function_Reference/is_plugin_active#Usage
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); 
+/**
+ * Required for use of is_plugin_active() -
+ * @link http://codex.wordpress.org/Function_Reference/is_plugin_active#Usage
+ * @todo  This code needs better documentation
+ *
+ */
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 class FT_Testimonials extends WP_Widget {
 
@@ -128,7 +133,7 @@ class FT_Testimonials extends WP_Widget {
 				$s  = "<a href='".get_permalink( $post->ID )."'>";
 				$title = get_the_title( $post->ID );
 				$s .= "<cite title='$title'>$title</cite>";
-				$s .= "</a>";             
+				$s .= "</a>";
 				$instance['testimonials'][] = array (
 					'quote_source_formatted' => $s,
 					'content' => get_the_excerpt()
@@ -178,7 +183,7 @@ class FT_Testimonials extends WP_Widget {
 
 		$datasources = array();
 		$datasources[] = array('name' => 'Category', 'value' => 'category');
-		if ($this->is_testimonials_by_woothemes_installed()) { 
+		if ($this->is_testimonials_by_woothemes_installed()) {
 			$datasources[] = array( 'name' => 'Testimonials by WooThemes', 'value' => 'testimonials-by-woothemes' );
 		}
 
