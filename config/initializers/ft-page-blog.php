@@ -17,6 +17,7 @@ add_action( 'genesis_entry_header', 'fortytwo_do_post_image', 4 );
 
 /**
  * Echo the post image on blog layout pages.
+ * @todo  This code needs better documentation
  *
  */
 function fortytwo_do_post_image() {
@@ -40,6 +41,7 @@ add_filter( 'genesis_post_info', 'fortytwo_post_info_filter' );
  * Change the post info layout to use our label based style
  *
  * @since 1.0
+ * @todo  This code needs better documentation
  *
  */
 function fortytwo_post_info_filter( $post_info ) {
@@ -56,6 +58,7 @@ add_filter( 'get_the_content_more_link', 'fortytwo_read_more_ellipsis' );
  * Changes the content more link
  *
  * @since 1.0
+ * @todo  This code needs better documentation
  *
  */
 function fortytwo_read_more_ellipsis() {
@@ -69,6 +72,7 @@ add_filter( 'get_the_content_limit', 'fortytwo_read_more_link' );
  * Alter the FortyTwo posts read more link
  *
  * @since 1.0
+ * @todo  This code needs better documentation
  *
  */
 function fortytwo_read_more_link( $output ) {
@@ -83,6 +87,7 @@ add_filter( 'post_class', 'fortytwo_media_post_class' );
  * Adds .media to article
  *
  * @since 1.0
+ * @todo  This code needs better documentation
  *
  */
 function fortytwo_media_post_class( $classes ) {
@@ -98,6 +103,7 @@ add_filter( 'wpthumb_post_image_path','fortytwo_add_srcset_images', 10, 3 );
  * Adds additional sizes for our responsive images making use of srcset
  *
  * @since 1.0
+ * @todo  This code needs better documentation
  *
  */
 function fortytwo_add_srcset_images( $path, $id ) {
@@ -129,6 +135,7 @@ add_filter( 'wp_get_attachment_image_attributes', 'fortytwo_add_srcset_attr', 10
  * Adds srcset attribute to the post image
  *
  * @since 1.0
+ * @todo  This code needs better documentation
  *
  */
 function fortytwo_add_srcset_attr( $attr, $attachment ) {
@@ -151,6 +158,7 @@ function fortytwo_add_srcset_attr( $attr, $attachment ) {
  * Use built-in wpthumb filter to create images based on added image sizes
  *
  * @since 1.0
+ * @todo  This code needs better documentation
  *
  */
 add_filter( 'wpthumb_create_args_from_size', function( $size ) {

@@ -1,4 +1,8 @@
 <?php
+/**
+ *  @todo  This code needs better documentation
+ *
+ */
 
 $html = '';
 

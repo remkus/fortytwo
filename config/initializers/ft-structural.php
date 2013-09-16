@@ -25,6 +25,7 @@ add_action( 'genesis_footer', 'fortytwo_inner_structural_wrap_open', 6 );
  *
  * @since 1.0
  * @todo  remove xhtml references
+ * @todo  This code needs better documentation
  *
  */
 function fortytwo_inner_structural_wrap_open() {
@@ -44,6 +45,7 @@ add_action( 'genesis_footer', 'fortytwo_inner_structural_wrap_close', 14 );
  *
  * @since 1.0
  * @todo  remove xhtml references
+ * @todo  This code needs better documentation
  *
  */
 function fortytwo_inner_structural_wrap_close() {
@@ -60,6 +62,7 @@ add_filter( 'genesis_attr_content-sidebar-wrap', 'fortytwo_attributes_content_si
  * Add additional class attributes content-sidebar-wrap.
  *
  * @since 1.0
+ * @todo  This code needs better documentation
  *
  */
 function fortytwo_attributes_content_sidebar_wrap( $attributes ) {
@@ -82,6 +85,8 @@ add_action( 'genesis_after_content', 'genesis_get_sidebar_alt' );
  *
  * We then alter the specific sidebar's before_widget value
  * @todo Want to add data attribute for widget order in sidebar data-widget-order='first'... 'second' etc
+ * @todo  This code needs better documentation
+ *
  */
 function fortytwo_add_widget_count_class( $id ) {
 
