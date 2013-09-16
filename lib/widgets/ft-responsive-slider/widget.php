@@ -57,13 +57,13 @@ class FT_Responsive_Slider extends WP_Widget {
 				'classname' => 'ft-responsive-slider',
 				'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' )
 			),
-			array( 
-				'width' => 200, 
-				'height' => 250, 
-				'id_base' => 'ft-responsive-slider' 
+			array(
+				'width' => 200,
+				'height' => 250,
+				'id_base' => 'ft-responsive-slider'
 			)
 		);
-	
+
 		add_action( 'admin_print_styles', array( &$this, 'register_admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'register_admin_scripts' ) );
 
@@ -73,7 +73,7 @@ class FT_Responsive_Slider extends WP_Widget {
 
 		//TODO: Which action should this be attached to?  It needs to be after $this->number is populated
 		add_action ('wp_enqueue_scripts', array( &$this, 'register_slider_image_size' ) );
-	
+
 	}
 
 	/* Add new image size */
@@ -97,7 +97,7 @@ class FT_Responsive_Slider extends WP_Widget {
 				'slideshow_no_link',
 				'slideshow_pager'
 			) ) ) {
-				if ( (int) $value == 1) { 
+				if ( (int) $value == 1) {
 					$instance[$field] = 1;
 				} else {
 					$instance[$field] = 0;
@@ -135,7 +135,8 @@ class FT_Responsive_Slider extends WP_Widget {
 				$this->all_widget_settings[$key] = $this->sanitization_values($value);
 			}
 		}
-		return $this->all_widget_settings[$this->number][$field];
+		if ( isset( $this->all_widget_settings[$this->number] ) )
+			return $this->all_widget_settings[$this->number][$field];
 	}
 
 	/* Creates read more link after excerpt */
@@ -192,13 +193,13 @@ class FT_Responsive_Slider extends WP_Widget {
 		if ( $title )
 			echo $before_title . $title . $after_title;
 
-		foreach ( array( 
+		foreach ( array(
 				'post_type'
 				,'posts_term'
 				,'exclude_terms'
-				,'include_exclude' 
-				,'post_id' 
-				,'posts_num' 
+				,'include_exclude'
+				,'post_id'
+				,'posts_num'
 				,'posts_offset'
 				,'orderby'
 				,'slideshow_timer'
@@ -328,8 +329,8 @@ class FT_Responsive_Slider extends WP_Widget {
 	 * @param array   instance The array of keys and values for the widget.
 	 */
 	function form( $instance ) {
-		
-		$instance = wp_parse_args( (array) $instance, array( 
+
+		$instance = wp_parse_args( (array) $instance, array(
 			 'title' => ''
 			,'post_type' => 'post'
 			,'posts_term' => ''
@@ -361,7 +362,7 @@ class FT_Responsive_Slider extends WP_Widget {
 
 		$taxonomies = get_taxonomies( array( 'public' => true ), 'objects' );
 		$instance['taxonomies'] = array_filter( $taxonomies, array(&$this, 'ft_responsive_slider_exclude_taxonomies' ) );
-		
+
 		$instance['test'] = get_taxonomies( array( 'public' => true ), 'objects' );
 
 		// Display the admin form
@@ -413,14 +414,14 @@ class FT_Responsive_Slider extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = array();
-		foreach ( array( 
+		foreach ( array(
 				'title'
 				,'post_type'
 				,'posts_term'
 				,'exclude_terms'
-				,'include_exclude' 
-				,'post_id' 
-				,'posts_num' 
+				,'include_exclude'
+				,'post_id'
+				,'posts_num'
 				,'posts_offset'
 				,'orderby'
 				,'slideshow_timer'
@@ -453,9 +454,9 @@ class FT_Responsive_Slider extends WP_Widget {
 
 		wp_enqueue_style ( 'ft-responsive-slider-admin-css', $this->url( '/css/admin.css' ) );
 		//TODO These styles will need to be removed when jquery ui styles are included in WP 3.3 - https://core.trac.wordpress.org/ticket/18909
-		wp_enqueue_style ( 'jquery-ui-fresh', $this->url( '/css/jquery-ui-fresh.css' ) ); 
+		wp_enqueue_style ( 'jquery-ui-fresh', $this->url( '/css/jquery-ui-fresh.css' ) );
 		wp_enqueue_style ( 'jquery-ui-styles', $this->url( '/css/jquery-ui-styles.css' ) );
-		
+
 	} // end register_admin_styles
 
 	/**
