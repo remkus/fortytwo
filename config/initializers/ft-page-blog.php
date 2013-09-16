@@ -7,13 +7,11 @@
  */
 
 // Modify the blog page template, new FortyTwo layout
-
 remove_action( 'genesis_entry_header', 'genesis_do_post_format_image', 4 );
 remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
 remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_open', 5 );
 remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_close', 15 );
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
-
 
 add_action( 'genesis_entry_header', 'fortytwo_do_post_image', 4 );
 
@@ -75,7 +73,7 @@ add_filter( 'get_the_content_limit', 'fortytwo_read_more_link' );
  */
 function fortytwo_read_more_link( $output ) {
 
-	$output .= '<a class="btn" href="' . get_permalink() . '">Read More</a>';
+	$output .= '<a class="btn" href="' . get_permalink() . '">'. __( 'Read More', 'fortytwo' ) . '</a>';
     return $output;
 
 }
@@ -158,8 +156,8 @@ function fortytwo_add_srcset_attr( $attr, $attachment ) {
 add_filter( 'wpthumb_create_args_from_size', function( $size ) {
 
 	if ( $size === 'thumbnail-bw' )
-		return array( 'width' => get_option('thumbnail_size_w'), 'height' => get_option('thumbnail_size_h'), 'greyscale' => true );
+		return array( 'width' => get_option( 'thumbnail_size_w' ), 'height' => get_option( 'thumbnail_size_h' ), 'greyscale' => true );
 
 	return $size;
 
-});
+} );
