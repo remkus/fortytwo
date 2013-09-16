@@ -39,10 +39,13 @@ add_action( 'genesis_after_header', 'fortytwo_insert_site_subheader' );
  *
  */
 function fortytwo_insert_site_subheader( $ft_subheader_attr = array() ) {
+
+	// do nothing when we're not on the front-page
 	if ( !is_front_page() ) {
 
 		global $post;
 
+		// remove entry_header items when we're not using the default Genesis blog template
 		if ( ! is_page_template( 'page_blog.php' ) ) {
 			remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
 			remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
