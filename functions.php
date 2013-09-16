@@ -3,7 +3,7 @@
 require_once TEMPLATEPATH . '/lib/init.php';
 
 /** Localization */
-load_child_theme_textdomain( 'fortytwo', get_stylesheet_directory() . '/lib/languages' );
+load_child_theme_textdomain( 'fortytwo', CHILD_DIR . '/lib/languages' );
 
 /** Activates html5 support */
 add_theme_support( 'html5' );
