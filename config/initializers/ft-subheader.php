@@ -16,11 +16,8 @@ add_filter( 'genesis_breadcrumb_args', 'fortytwo_breadcrumb_args' );
  */
 function fortytwo_breadcrumb_args( $args ) {
 
-	$args['home'] = 'Home';
 	$args['sep'] = ' / ';
 	$args['list_sep'] = ', '; // Genesis 1.5 and later
-	$args['prefix'] = '<div class="breadcrumb">';
-	$args['suffix'] = '</div>';
 	$args['heirarchial_attachments'] = true; // Genesis 1.5 and later
 	$args['heirarchial_categories'] = true; // Genesis 1.5 and later
 	$args['display'] = true;
@@ -32,7 +29,6 @@ function fortytwo_breadcrumb_args( $args ) {
 	$args['labels']['search'] = '';
 	$args['labels']['tax'] = '';
 	$args['labels']['post_type'] = '';
-	$args['labels']['404'] = 'Not found: '; // Genesis 1.5 and later
 
 	return $args;
 }
@@ -43,10 +39,13 @@ add_action( 'genesis_after_header', 'fortytwo_insert_site_subheader' );
  *
  */
 function fortytwo_insert_site_subheader( $ft_subheader_attr = array() ) {
+
+	// do nothing when we're not on the front-page
 	if ( !is_front_page() ) {
 
 		global $post;
 
+		// remove entry_header items when we're not using the default Genesis blog template
 		if ( ! is_page_template( 'page_blog.php' ) ) {
 			remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
 			remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
