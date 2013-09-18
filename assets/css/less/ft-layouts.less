@@ -1,110 +1,11 @@
-// Some custom calculation for the Typography
-// --------------------------------------------------
-
-
 // Custom file for FortyTwo Content Layouts
-
-
-
-
-
-.content-sidebar {
-	.content {
-		padding-right: @grid-gutter-width;
-	}
-
-	.sidebar-primary {
-		border-left: @grid-columns-border;
-		padding-left: @grid-gutter-width;
-	}
-}
-
-.sidebar-content {
-	.content {
-		.make-lg-column-push(@grid-columns-sidebar-primary);
-		padding-left: @grid-gutter-width;
-	}
-
-	.sidebar-primary {
-		.make-lg-column-pull(@grid-columns - @grid-columns-sidebar-primary);
-		border-right: @grid-columns-border;
-		padding-right: @grid-gutter-width;
-	}
-}
-
-.content-sidebar-sidebar {
-	.content {
-		padding-right: @grid-gutter-width;
-	}
-
-	.sidebar-primary {
-		border-left: @grid-columns-border;
-		padding-left: @grid-gutter-width;
-		padding-right: @grid-gutter-width;
-	}
-
-	.sidebar-secondary {
-		border-left: @grid-columns-border;
-		padding-left: @grid-gutter-width;
-	}
-}
-
-.sidebar-sidebar-content {
-	.content {
-		.make-lg-column-push(@grid-columns-sidebar-primary + @grid-columns-sidebar-secondary);
-		padding-left: @grid-gutter-width;
-	}
-
-	.sidebar-primary {
-		.make-lg-column-pull(@grid-columns-sidebar-primary + @grid-columns-sidebar-secondary);
-		border-right: @grid-columns-border;
-		padding-right: @grid-gutter-width;
-		padding-left: @grid-gutter-width;
-	}
-
-	.sidebar-secondary {
-		.make-lg-column-pull(@grid-columns - @grid-columns-sidebar-secondary);
-		border-right: @grid-columns-border;
-		padding-right: @grid-gutter-width;
-	}
-}
-
-.sidebar-content-sidebar {
-	.content {
-		.make-lg-column-push(@grid-columns-sidebar-secondary);
-		padding-right: @grid-gutter-width;
-		padding-left: @grid-gutter-width;
-	}
-
-	.sidebar-primary {
-		.make-lg-column-push(@grid-columns-sidebar-secondary);
-		padding-left: @grid-gutter-width;
-		border-left: @grid-columns-border;
-	}
-
-	.sidebar-secondary {
-		.make-lg-column-pull(@grid-columns - @grid-columns-sidebar-secondary);
-		padding-right: @grid-gutter-width;
-		border-right: @grid-columns-border;
-	}
-}
-
+// --------------------------------------------------
 
 // Extra small grid
 //
 // Layout small devices like smartphones. No offset, push, or
 // pull classes are present here due to the size of the target.
 
-.content-sidebar-wrap {
-	min-height: 100%;
-	overflow: hidden;
-}
-
-.content,
-.sidebar-primary,
-.sidebar-secondary {
-	.height-adjust();
-}
 
 
 // Small grid
@@ -137,31 +38,20 @@
 	@c-s-s:      7 3 2;
 
 	.full-width-content {
+		@layout-sections:		1;
+		@layout-columns: 		12;
+		@layout-selectors: 		~".content";
 
-		.content {
-			.make-lg-column(@c);
-			.calc-line-height(@screen-lg, @c);
-		}
+		.set-page-layout(@layout-sections; @layout-columns; @layout-selectors);
 	}
-
-/*	.content-sidebar {
-		.set-page-layout(
-			content, 9;
-			sidebar-primary, 3
-		);
-	}*/
 
 	.content-sidebar,
 	.sidebar-content {
-		.content {
-			.make-lg-column(extract(@c-s, 1));
-			.calc-line-height(@screen-lg, extract(@c-s, 1));
-		}
+		@layout-sections:		2;
+		@layout-columns: 		9 3;
+		@layout-selectors: 		~".content", ~".sidebar-primary";
 
-		.sidebar-primary {
-			.make-lg-column(extract(@c-s, 2));
-			.calc-line-height(@screen-lg, extract(@c-s, 2));
-		}
+		.set-page-layout(@layout-sections; @layout-columns; @layout-selectors);
 	}
 
 	.content-sidebar-sidebar,

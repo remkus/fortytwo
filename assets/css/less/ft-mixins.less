@@ -24,13 +24,7 @@
 	}
 }
 
-.height-adjust() {
-	padding-top: 40px;
-	margin-bottom: -9999px;
-	padding-bottom: 9999px;
-}
-
-.calc-line-height(@screen-size, @cols, @font-size: @font-size-base, @ratio: @golden) {
+.calc-line-height( @screen-size, @cols, @font-size: @font-size-base, @ratio: @golden ) {
 	@f: unit(@font-size);
 	@w: (unit(@screen-size) / 12) * @cols;
 	@r: @ratio;
@@ -39,23 +33,57 @@
 	@l: round(@f * @h);
 
 	line-height: @h;
-	color: @f;
-	color: @w;
-	color: @r;
-	color: @l;
 }
 
-.set-page-layout(@rest...) {
+/*.set-page-layout( @layout-sections; @layout-columns; @layout-selectors; @layout-order: @layout-selectors; ) when ( @layout-sections > 0 ) {
 
-	.grid-generator (@devices, @breakpoints, @count, @index) when (@index < @count + 1){
-	    @device: extract(@devices, @index);
-	    @breakpoint: extract(@breakpoints, @index);
+	color: @layout-sections;
+	color: @layout-columns;
+	color: @layout-selectors;
 
-	    .grid-device-generator (@device, @breakpoint);
+	@selector: extract("@{layout-selectors} 0", @layout-sections);
 
-	    .grid-generator (@devices, @breakpoints, @count, @index + 1);
+	color: @selector;
+//	@selector: e(extract(@layout-selectors, @layout-sections));
+//	@column: extract("@{layout-columns} 0", @layout-sections);
+//	@order: e(extract("@{layout-order} 0", @layout-sections));
+
+	@{selector} {
+//		.make-lg-column(@column);
+//		.calc-line-height(@screen-lg, @column);
 	}
 
-	color: extract(@rest, 1);
-	color: extract(@rest, 2);
+	.set-page-layout((@layout-sections - 1); @layout-columns; @layout-selectors;);
+}
+.set-page-layout (0; @layout-columns; @layout-selectors;) {}*/
+
+
+.renderPageLayout(@selector; @columns) {
+	@{selector} {
+		.make-lg-column(@columns);
+	}
+}
+
+.setPageLayoutX(@index; @lsections; @lcolumns; @lselectors) when (isstring(extract(@lselectors, @index))) {
+	@selector: extract(@lselectors, @index);
+	@columns: extract(@lcolumns, @index);
+
+	.renderPageLayout(@selector; @columns);
+
+	.setPageLayoutX((@index + 1); @lsections; @lcolumns; @lselectors);
+}
+
+.setPageLayout(@lsections; @lcolumns; @lselectors) {
+	@selector: @lselectors;
+	@columns: @lcolumns;
+
+	.renderPageLayout(@selector; @columns);
+}
+
+.set-page-layout(@lsections, @lcolumns, @lselectors) when (@lsections = 1) {
+	.setPageLayout(@lsections; @lcolumns; @lselectors);
+}
+
+.set-page-layout(@lsections, @lcolumns, @lselectors) when (@lsections > 1) {
+	.setPageLayoutX(1; @lsections; @lcolumns; @lselectors);
 }
