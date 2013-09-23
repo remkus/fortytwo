@@ -8,6 +8,8 @@
  * @author   Forsite Themes
  * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
  * @link     http://www.forsitethemes.com/
+ * @todo  This code needs better documentation
+ *
  */
 
 
@@ -19,10 +21,10 @@ add_filter( 'body_class', 'fortytwo_add_body_classes' );
  * Add body classes to identify that this is fortytwo and it is the business page template
  *
  * @since 1.0
- *
  * @param string $classes Existing body classes.
- *
  * @return string Body classes.
+ * @todo  This code needs better documentation
+ *
  */
 function fortytwo_add_body_classes( $classes ) {
 
@@ -36,6 +38,8 @@ add_action( 'genesis_after_header', 'fortytwo_add_section_after_header' );
  * This adds the page-business-section to the business page template if the widget area has widgets
  *
  * @since 1.0
+ * @todo  This code needs better documentation
+ *
  */
 function fortytwo_add_section_after_header() {
 
@@ -62,6 +66,8 @@ add_action( 'genesis_loop', 'fortytwo_add_section_in_loop' );
  * This adds the page-business-section 2-4 to the business page template if the widget areas have widgets
  *
  * @since 1.0
+ * @todo  This code needs better documentation
+ *
  */
 function fortytwo_add_section_in_loop() {
 

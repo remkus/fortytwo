@@ -27,13 +27,17 @@
  */
 
 /**
- * Thanks to Tyler Smith for creating the awesome jquery FlexSlider plugin - http://flex.madebymufffin.com/.
+ *
+ *
+ * @link Thanks to Tyler Smith for creating the awesome jquery FlexSlider plugin - http://flex.madebymufffin.com/.
  */
 
 define( 'FT_RESPONSIVE_SLIDER_VERSION', '0.10.0' );
 
 /**
  * Slideshow Widget Class
+ *
+ * @todo  This entire class code needs better documentation
  */
 class FT_Responsive_Slider extends WP_Widget {
 
@@ -72,67 +76,67 @@ class FT_Responsive_Slider extends WP_Widget {
 		add_action( 'wp_enqueue_scripts', array( &$this, 'register_widget_scripts' ) );
 
 		//TODO: Which action should this be attached to?  It needs to be after $this->number is populated
-		add_action ('wp_enqueue_scripts', array( &$this, 'register_slider_image_size' ) );
+		add_action ( 'wp_enqueue_scripts', array( &$this, 'register_slider_image_size' ) );
 
 	}
 
 	/* Add new image size */
 	public function register_slider_image_size() {
 		//TODO: Should this be called once / widget?
-		add_image_size( 'slider', ( int ) $this->get_value('slideshow_width'), ( int ) $this->get_value('slideshow_height'), TRUE );
+		add_image_size( 'slider', ( int ) $this->get_value( 'slideshow_width' ), ( int ) $this->get_value( 'slideshow_height' ), TRUE );
 	}
 
 	private function url( $file ) {
 		return FORTYTWO_WIDGETS_URL.'/ft-responsive-slider'.$file;
 	}
 
-	private function sanitization_values($instance) {
-		foreach($instance as $field => $value) {
-			if (in_array($field, array(
-				'slideshow_arrows',
-				'slideshow_excerpt_show',
-				'slideshow_title_show',
-				'slideshow_loop',
-				'slideshow_hide_mobile',
-				'slideshow_no_link',
-				'slideshow_pager'
-			) ) ) {
-				if ( (int) $value == 1) {
+	private function sanitization_values( $instance ) {
+		foreach ( $instance as $field => $value ) {
+			if ( in_array( $field, array(
+						'slideshow_arrows',
+						'slideshow_excerpt_show',
+						'slideshow_title_show',
+						'slideshow_loop',
+						'slideshow_hide_mobile',
+						'slideshow_no_link',
+						'slideshow_pager'
+					) ) ) {
+				if ( (int) $value == 1 ) {
 					$instance[$field] = 1;
 				} else {
 					$instance[$field] = 0;
 				}
 			}
-			if (in_array($field, array(
-				'post_type',
-				'posts_term',
-				'exclude_terms',
-				'include_exclude',
-				'post_id',
-				'posts_num',
-				'posts_offset',
-				'orderby',
-				'slideshow_timer',
-				'slideshow_delay',
-				'slideshow_height',
-				'slideshow_width',
-				'slideshow_effect',
-				'slideshow_excerpt_content',
-				'slideshow_excerpt_content_limit',
-				'slideshow_more_text',
-				'slideshow_excerpt_width'
-			) ) ) {
+			if ( in_array( $field, array(
+						'post_type',
+						'posts_term',
+						'exclude_terms',
+						'include_exclude',
+						'post_id',
+						'posts_num',
+						'posts_offset',
+						'orderby',
+						'slideshow_timer',
+						'slideshow_delay',
+						'slideshow_height',
+						'slideshow_width',
+						'slideshow_effect',
+						'slideshow_excerpt_content',
+						'slideshow_excerpt_content_limit',
+						'slideshow_more_text',
+						'slideshow_excerpt_width'
+					) ) ) {
 				$instance[$field] = wp_filter_nohtml_kses( $value );
 			}
 		}
 		return $instance;
 	}
 
-	private function get_value($field, $force_reload = false) {
+	private function get_value( $field, $force_reload = false ) {
 		//Cache sanitized widget values
-		if ( count($this->all_widget_settings)==0 || $force_reload ) {
-			foreach($this->get_settings() as $key => $value) {
-				$this->all_widget_settings[$key] = $this->sanitization_values($value);
+		if ( count( $this->all_widget_settings )==0 || $force_reload ) {
+			foreach ( $this->get_settings() as $key => $value ) {
+				$this->all_widget_settings[$key] = $this->sanitization_values( $value );
 			}
 		}
 		if ( isset( $this->all_widget_settings[$this->number] ) )
@@ -145,7 +149,7 @@ class FT_Responsive_Slider extends WP_Widget {
 		static $read_more = null;
 
 		if ( $read_more === null )
-			$read_more = $this->get_value('slideshow_more_text');
+			$read_more = $this->get_value( 'slideshow_more_text' );
 
 		if ( !$read_more )
 			return '';
@@ -167,7 +171,7 @@ class FT_Responsive_Slider extends WP_Widget {
 	 * Load the style files
 	 */
 	function register_widget_styles() {
-			//no-op
+		//no-op
 	}
 
 	public function echo_field_id( $field ) {
@@ -283,7 +287,7 @@ class FT_Responsive_Slider extends WP_Widget {
 			) );
 
 		$query_args = apply_filters( 'ft_responsive_slider_query_args', $query_args );
-		add_filter( 'excerpt_more', array(&$this, 'ft_responsive_slider_excerpt_more' ) );
+		add_filter( 'excerpt_more', array( &$this, 'ft_responsive_slider_excerpt_more' ) );
 
 		$slider_posts = new WP_Query( $query_args );
 		if ( $slider_posts->have_posts() ) {
@@ -312,14 +316,14 @@ class FT_Responsive_Slider extends WP_Widget {
 				);
 			}
 
-}
+		}
 
 		// Display the widget frontend
 		include dirname( __FILE__ ) . '/views/widget.php';
 
 		echo $after_widget;
 		wp_reset_query();
-		remove_filter( 'excerpt_more', array(&$this, 'ft_responsive_slider_excerpt_more' ) );
+		remove_filter( 'excerpt_more', array( &$this, 'ft_responsive_slider_excerpt_more' ) );
 
 	}
 
@@ -331,37 +335,37 @@ class FT_Responsive_Slider extends WP_Widget {
 	function form( $instance ) {
 
 		$instance = wp_parse_args( (array) $instance, array(
-			 'title' => ''
-			,'post_type' => 'post'
-			,'posts_term' => ''
-			,'exclude_terms' => ''
-			,'include_exclude' => 'include'
-			,'post_id' => ''
-			,'posts_num' => 3
-			,'posts_offset' => 0
-			,'orderby' => 'date'
-			,'slideshow_timer' => 4000
-			,'slideshow_delay' => 800
-			,'slideshow_effect' => 'slide'
-			,'slideshow_width' => 1170
-			,'slideshow_height' => 420
-			,'slideshow_arrows' => 1
-			,'slideshow_pager' => 0
-			,'slideshow_no_link' => 0
-			,'slideshow_title_show' => 1
-			,'slideshow_excerpt_show' => 1
-			,'slideshow_hide_mobile' => 0
-			,'slideshow_excerpt_content' => 'excerpts'
-			,'slideshow_more_text' => __('Read More', 'fortytwo')
-			,'slideshow_excerpt_content_limit' => 300
-			,'slideshow_excerpt_width' => 7
-		) );
+				'title' => ''
+				, 'post_type' => 'post'
+				, 'posts_term' => ''
+				, 'exclude_terms' => ''
+				, 'include_exclude' => 'include'
+				, 'post_id' => ''
+				, 'posts_num' => 3
+				, 'posts_offset' => 0
+				, 'orderby' => 'date'
+				, 'slideshow_timer' => 4000
+				, 'slideshow_delay' => 800
+				, 'slideshow_effect' => 'slide'
+				, 'slideshow_width' => 1170
+				, 'slideshow_height' => 420
+				, 'slideshow_arrows' => 1
+				, 'slideshow_pager' => 0
+				, 'slideshow_no_link' => 0
+				, 'slideshow_title_show' => 1
+				, 'slideshow_excerpt_show' => 1
+				, 'slideshow_hide_mobile' => 0
+				, 'slideshow_excerpt_content' => 'excerpts'
+				, 'slideshow_more_text' => __( 'Read More', 'fortytwo' )
+				, 'slideshow_excerpt_content_limit' => 300
+				, 'slideshow_excerpt_width' => 7
+			) );
 
 		$post_types = get_post_types( array( 'public' => true ), 'names', 'and' );
-		$instance['post_types'] = array_filter( $post_types, array(&$this, 'ft_responsive_slider_exclude_post_types' ) );
+		$instance['post_types'] = array_filter( $post_types, array( &$this, 'ft_responsive_slider_exclude_post_types' ) );
 
 		$taxonomies = get_taxonomies( array( 'public' => true ), 'objects' );
-		$instance['taxonomies'] = array_filter( $taxonomies, array(&$this, 'ft_responsive_slider_exclude_taxonomies' ) );
+		$instance['taxonomies'] = array_filter( $taxonomies, array( &$this, 'ft_responsive_slider_exclude_taxonomies' ) );
 
 		$instance['test'] = get_taxonomies( array( 'public' => true ), 'objects' );
 
@@ -443,7 +447,7 @@ class FT_Responsive_Slider extends WP_Widget {
 			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
 		}
 
-		return $this->sanitization_values($instance);
+		return $this->sanitization_values( $instance );
 
 	} // end update()
 

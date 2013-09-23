@@ -21,7 +21,9 @@
  * @package    FortyTwo
  * @subpackage Widgets
  * @since      0.1
+ * @todo  This entire class code needs better documentation
  */
+
 
 class FT_Tabbed_Content extends WP_Widget {
 
@@ -169,7 +171,7 @@ class FT_Tabbed_Content extends WP_Widget {
 	public function register_admin_styles() {
 
 		wp_enqueue_style( 'ft-tabbed-content-admin-styles', $this->url( '/css/admin.css' ) );
-	
+
 	} // end register_admin_styles
 
 	/**

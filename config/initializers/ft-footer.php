@@ -10,7 +10,7 @@ add_action( 'genesis_before_footer', 'fortytwo_insert_footer_widget' );
  * Echo the markup necessary to facilitate the footer widget area.
  *
  * We are creating one widget area and columns are determined by no. widgets
- *
+ * @todo  This code needs better documentation
  */
 function fortytwo_insert_footer_widget() {
 

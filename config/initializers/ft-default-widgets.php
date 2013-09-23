@@ -15,6 +15,8 @@ add_filter( 'get_archives_link', 'fortytwo_modify_archives_link' );
  *
  * @package FortyTwo
  * @since 1.0.0
+ * @todo  This code needs better documentation
+ *
  **/
 function fortytwo_modify_archives_link( $link_html ) {
 
@@ -41,6 +43,7 @@ function fortytwo_modify_archives_link( $link_html ) {
  * @package FortyTwo
  * @since 1.0.0
  * @uses Walker_Category
+ * @todo  This code needs a lot more and better documentation
  */
 class FortyTwo_Walker_Category extends Walker_Category {
 
@@ -114,6 +117,7 @@ class FortyTwo_Walker_Category extends Walker_Category {
 add_filter( 'widget_categories_args', 'fortytwo_modify_widget_categories_args', 10, 1 );
 /**
  * Filter to change widget_categories_args to add our own walker
+ * @todo  This code needs better documentation
  *
  **/
 function fortytwo_modify_widget_categories_args( $cat_args ) {
@@ -130,6 +134,8 @@ add_filter( 'get_search_form', 'fortytwo_search_form' );
  *
  * @package FortyTwo
  * @since 1.0.0
+ * @todo  This code needs better documentation
+ *
  */
 function fortytwo_search_form( $form ) {
 
@@ -156,6 +162,7 @@ add_filter( 'widget_tag_cloud_args', 'fortytwo_tag_cloud_list_format' );
  *
  * @package FortyTwo
  * @since 1.0.0
+ * @todo  This code needs better documentation
  */
 function fortytwo_tag_cloud_list_format( $args ) {
     $defaults = array(

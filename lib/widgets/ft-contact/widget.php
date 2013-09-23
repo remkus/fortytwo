@@ -92,8 +92,8 @@ class FT_Contact_Widget extends WP_Widget {
 		echo $after_widget;
 	}
 
-	 /** Update a particular instance.
-	 *
+	/**
+	 * Update a particular instance.
 	 * This function should check that $new_instance is set correctly.
 	 * The newly calculated value of $instance should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
@@ -115,7 +115,8 @@ class FT_Contact_Widget extends WP_Widget {
 		return $new_instance;
 	}
 
-	/** Echo the settings update form.
+	/**
+	 * Echo the settings update form.
 	 *
 	 * @param array   $instance Current settings
 	 */
