@@ -76,6 +76,7 @@ class FT_Contact_Widget extends WP_Widget {
 		extract( $args );
 
 		$instance = wp_parse_args( (array) $instance, array(
+				'title'     => '',
 				'name'		=> '',
 				'phone'		=> '',
 				'fax'		=> '',
@@ -140,7 +141,7 @@ class FT_Contact_Widget extends WP_Widget {
 	public function register_admin_styles() {
 
 		wp_enqueue_style( 'ft-contact-admin-styles', $this->url( '/css/admin.css' ) );
-	
+
 	} // end register_admin_styles
 
 
