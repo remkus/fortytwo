@@ -57,7 +57,14 @@ class FT_Contact_Widget extends WP_Widget {
 			)
 		);
 
+		// Register admin styles and scripts
+		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
+
 	} // end constructor
+
+	private function url( $file ) {
+		return FORTYTWO_WIDGETS_URL . '/ft-contact' . $file;
+	}
 
 	/**
 	 * Echo the widget content.
@@ -69,6 +76,7 @@ class FT_Contact_Widget extends WP_Widget {
 		extract( $args );
 
 		$instance = wp_parse_args( (array) $instance, array(
+				'title'     => '',
 				'name'		=> '',
 				'phone'		=> '',
 				'fax'		=> '',
@@ -84,8 +92,8 @@ class FT_Contact_Widget extends WP_Widget {
 		echo $after_widget;
 	}
 
-	 /** Update a particular instance.
-	 *
+	/**
+	 * Update a particular instance.
 	 * This function should check that $new_instance is set correctly.
 	 * The newly calculated value of $instance should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
@@ -107,7 +115,8 @@ class FT_Contact_Widget extends WP_Widget {
 		return $new_instance;
 	}
 
-	/** Echo the settings update form.
+	/**
+	 * Echo the settings update form.
 	 *
 	 * @param array   $instance Current settings
 	 */
@@ -126,6 +135,17 @@ class FT_Contact_Widget extends WP_Widget {
 		include dirname( __FILE__ ) . '/views/form.php';
 
 	}
+
+	/**
+	 * Registers and enqueues admin-specific styles.
+	 */
+	public function register_admin_styles() {
+
+		wp_enqueue_style( 'ft-contact-admin-styles', $this->url( '/css/admin.css' ) );
+
+	} // end register_admin_styles
+
+
 }
 
 add_action( 'widgets_init', create_function( '', 'register_widget("FT_Contact_Widget");' ) );

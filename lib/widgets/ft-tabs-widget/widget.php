@@ -21,7 +21,9 @@
  * @package    FortyTwo
  * @subpackage Widgets
  * @since      0.1
+ * @todo  This entire class code needs better documentation
  */
+
 
 class FT_Tabbed_Content extends WP_Widget {
 
@@ -54,6 +56,9 @@ class FT_Tabbed_Content extends WP_Widget {
 		/* Create the widget. */
 		$this->WP_Widget( $this->fst_widget_idbase, $this->fst_widget_title, $widget_ops, $control_ops );
 
+		// Register admin styles and scripts
+		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
+
 		/* Load in assets for the widget */
 		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
@@ -81,7 +86,6 @@ class FT_Tabbed_Content extends WP_Widget {
 		/* Our variables from the widget settings. */
 		$title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
 		$tabs = $instance['tabs'];
-		$tabs_style = $instance['tabs_style'];
 
 		/* Before widget (defined by themes). */
 		echo $before_widget;
@@ -110,7 +114,6 @@ class FT_Tabbed_Content extends WP_Widget {
 		$instance['title'] = strip_tags( $new_instance['title'] );
 
 		/* The select box is returning a text value, so we escape it. */
-		$instance['tabs_style'] = esc_attr( $new_instance['tabs_style'] );
 		$instance['image_alignment'] = esc_attr( $new_instance['image_alignment'] );
 
 		/* Escape the text string and convert to an integer. */
@@ -150,7 +153,6 @@ class FT_Tabbed_Content extends WP_Widget {
 			'tabs'            => array_slice( $this->available_tabs, 0, 3 ), /* default to selecting the first 3, to suggest that it is possible to omit having a tab */
 			'limit'           => 5,
 			'image_dimension' => 45,
-			'tabs_style'      => 'tabs',
 			'image_alignment' => 'left'
 		);
 
@@ -162,6 +164,15 @@ class FT_Tabbed_Content extends WP_Widget {
 		include dirname( __FILE__ ) . '/views/form.php';
 
 	} // End form()
+
+	/**
+	 * Registers and enqueues admin-specific styles.
+	 */
+	public function register_admin_styles() {
+
+		wp_enqueue_style( 'ft-tabbed-content-admin-styles', $this->url( '/css/admin.css' ) );
+
+	} // end register_admin_styles
 
 	/**
 	 * Renders a tabs selection dropdown box
@@ -223,7 +234,7 @@ class FT_Tabbed_Content extends WP_Widget {
 				$html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
 			}
 			$html .= '<h4><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
-			$html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
+			$html .= get_the_excerpt() . ' <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
 			$html .= '</li>' . "\n";
 		}
 		$html .= '</ul>' . "\n";
@@ -256,7 +267,7 @@ class FT_Tabbed_Content extends WP_Widget {
 				$html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
 			}
 			$html .= '<h4><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
-			$html .= 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis... <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
+			$html .= get_the_excerpt() . ' <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
 			$html .= '</li>' . "\n";
 		}
 		$html .= '</ul>' . "\n";

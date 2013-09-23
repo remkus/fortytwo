@@ -1,4 +1,8 @@
 <?php
+/**
+ * @todo  This code needs better documentation
+ * @var [type]
+ */
 $action_button_text = esc_html( $instance['button_text'] );
 $action_button_link = esc_url( $instance['button_link'] );
 $action_button_align = strtolower( $instance['button_alignment'] );

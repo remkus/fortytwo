@@ -11,6 +11,8 @@ add_action( 'wp_print_styles', 'fortytwo_cleanup_unwanted_styles', 100 );
 /**
  * Removes the Genesis responsive slider stylesheet
  * @return [type] [description]
+ * @todo  This code needs better documentation
+ *
  */
 function fortytwo_cleanup_unwanted_styles() {
 
@@ -23,6 +25,7 @@ add_action( 'init', 'fortytwo_cleanup_inline_styles', 100 );
 /**
  * Removes the Genesis responsive slider inline css block
  * @return [type] [description]
+ * @todo  This code needs better documentation
  */
 function fortytwo_cleanup_inline_styles() {
 

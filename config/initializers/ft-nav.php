@@ -16,8 +16,13 @@
 remove_action( 'genesis_after_header', 'genesis_do_nav' );
 add_action( 'genesis_after_header', 'fortytwo_do_nav' );
 
-function fortytwo_do_nav()
-{
+/**
+ * [fortytwo_do_nav description]
+ * @return [type] [description]
+ * @todo  This code needs better documentation
+ *
+ */
+function fortytwo_do_nav() {
 
 	/** Do nothing if menu not supported */
 	if ( !genesis_nav_menu_supported( 'primary' ) )
@@ -72,11 +77,20 @@ EOD;
 
 /**
  * Custom Walker to change submenu class items from default "sub-menu" to "dropdown-menu"
+ * @todo  This code needs better documentation
+ *
  */
-class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu
-{
+class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 
-	// replacing the class with our version
+	/**
+	 * replacing the class with our version
+	 * @param  [type]  $output [description]
+	 * @param  integer $depth  [description]
+	 * @param  array   $args   [description]
+	 * @return [type]          [description]
+	 * @todo  This code needs better documentation
+	 *
+	 */
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
 
 		// depth dependent classes
@@ -90,10 +104,18 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu
 		$output .= "\n" . $indent . '<ul class="' . $class_names . '">' . "\n";
 	}
 
-	// building the HTML output
-
-	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 )
-	{
+	/**
+	 * building the HTML output
+	 * @param  [type]  $output [description]
+	 * @param  [type]  $item   [description]
+	 * @param  integer $depth  [description]
+	 * @param  array   $args   [description]
+	 * @param  integer $id     [description]
+	 * @return [type]          [description]
+	 * @todo  This code needs better documentation
+	 *
+	 */
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		global $wp_query;
 
 		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
@@ -136,8 +158,19 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
 
-	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output )
-	{
+	/**
+	 * [display_element description]
+	 * @param  [type]  $element           [description]
+	 * @param  [type]  $children_elements [description]
+	 * @param  [type]  $max_depth         [description]
+	 * @param  integer $depth             [description]
+	 * @param  [type]  $args              [description]
+	 * @param  [type]  $output            [description]
+	 * @return [type]                     [description]
+	 * @todo  This code needs better documentation
+	 *
+	 */
+	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 		if ( !$element ) {
 			return;
 		}
