@@ -24,7 +24,7 @@
 	}
 }
 
-.calc-line-height( @screen-size, @cols, @font-size: @font-size-base, @ratio: @golden ) {
+.calc-line-height( @screen-size: @screen-phone, @cols: 12, @font-size: @font-size-base, @ratio: @golden ) {
 	@f: unit(@font-size);
 	@w: (unit(@screen-size) / 12) * @cols;
 	@r: @ratio;
@@ -35,55 +35,35 @@
 	line-height: @h;
 }
 
-/*.set-page-layout( @layout-sections; @layout-columns; @layout-selectors; @layout-order: @layout-selectors; ) when ( @layout-sections > 0 ) {
-
-	color: @layout-sections;
-	color: @layout-columns;
-	color: @layout-selectors;
-
-	@selector: extract("@{layout-selectors} 0", @layout-sections);
-
-	color: @selector;
-//	@selector: e(extract(@layout-selectors, @layout-sections));
-//	@column: extract("@{layout-columns} 0", @layout-sections);
-//	@order: e(extract("@{layout-order} 0", @layout-sections));
-
-	@{selector} {
-//		.make-lg-column(@column);
-//		.calc-line-height(@screen-lg, @column);
-	}
-
-	.set-page-layout((@layout-sections - 1); @layout-columns; @layout-selectors;);
-}
-.set-page-layout (0; @layout-columns; @layout-selectors;) {}*/
-
-
-.renderPageLayout(@selector; @columns) {
+.renderPageLayout(@selector; @columns; @screensize) {
 	@{selector} {
 		.make-lg-column(@columns);
+		.calc-line-height(@screensize, @columns);
 	}
 }
 
-.setPageLayoutX(@index; @lsections; @lcolumns; @lselectors) when (isstring(extract(@lselectors, @index))) {
+.setPageLayoutX(@index; @lsections; @lcolumns; @lselectors; @lscreensize) when (isstring(extract(@lselectors, @index))) {
 	@selector: extract(@lselectors, @index);
 	@columns: extract(@lcolumns, @index);
+	@screensize: @lscreensize;
 
-	.renderPageLayout(@selector; @columns);
+	.renderPageLayout(@selector; @columns; @screensize);
 
-	.setPageLayoutX((@index + 1); @lsections; @lcolumns; @lselectors);
+	.setPageLayoutX((@index + 1); @lsections; @lcolumns; @lselectors; @lscreensize);
 }
 
-.setPageLayout(@lsections; @lcolumns; @lselectors) {
+.setPageLayout(@lsections; @lcolumns; @lselectors; @lscreensize) {
 	@selector: @lselectors;
 	@columns: @lcolumns;
+	@screensize: @lscreensize;
 
-	.renderPageLayout(@selector; @columns);
+	.renderPageLayout(@selector; @columns; @screensize);
 }
 
-.set-page-layout(@lsections, @lcolumns, @lselectors) when (@lsections = 1) {
-	.setPageLayout(@lsections; @lcolumns; @lselectors);
+.set-page-layout(@lsections, @lcolumns, @lselectors, @lscreensize) when (@lsections = 1) {
+	.setPageLayout(@lsections; @lcolumns; @lselectors; @lscreensize);
 }
 
-.set-page-layout(@lsections, @lcolumns, @lselectors) when (@lsections > 1) {
-	.setPageLayoutX(1; @lsections; @lcolumns; @lselectors);
+.set-page-layout(@lsections, @lcolumns, @lselectors, @lscreensize) when (@lsections > 1) {
+	.setPageLayoutX(1; @lsections; @lcolumns; @lselectors; @lscreensize);
 }
