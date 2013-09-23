@@ -35,35 +35,39 @@
 	line-height: @h;
 }
 
-.renderPageLayout(@selector; @columns; @screensize) {
+.render-column-push(@push) when (isnumber(@push)) and (@push > 0) {
+	left: percentage((@push / @grid-columns));
+}
+
+.render-column-pull(@pull) when (isnumber(@pull)) and (@pull > 0) {
+	right: percentage((@pull / @grid-columns));
+}
+
+.render-column(@arguments) when (isstring(extract(@arguments, 1))) and (isnumber(extract(@arguments, 2))) {
+	@selector: extract(@arguments, 1);
+	@columns: extract(@arguments, 2);
+	@push: extract(@arguments, 3);
+	@pull: extract(@arguments, 4);
+	@gutter: @grid-gutter-width;
+
 	@{selector} {
-		.make-lg-column(@columns);
-		.calc-line-height(@screensize, @columns);
+		color: @arguments;
+		color: @selector;
+		color: @columns;
+		color: @push;
+		color: @pull;
+		position: relative;
+		float: left;
+		width: percentage((@columns / @grid-columns));
+		min-height: 1px;
+		padding-left:  (@gutter / 2);
+		padding-right: (@gutter / 2);
+		.calc-line-height(@screen-size, @columns);
+		.render-column-push(@push);
+		.render-column-pull(@pull);
 	}
 }
 
-.setPageLayoutX(@index; @lsections; @lcolumns; @lselectors; @lscreensize) when (isstring(extract(@lselectors, @index))) {
-	@selector: extract(@lselectors, @index);
-	@columns: extract(@lcolumns, @index);
-	@screensize: @lscreensize;
-
-	.renderPageLayout(@selector; @columns; @screensize);
-
-	.setPageLayoutX((@index + 1); @lsections; @lcolumns; @lselectors; @lscreensize);
-}
-
-.setPageLayout(@lsections; @lcolumns; @lselectors; @lscreensize) {
-	@selector: @lselectors;
-	@columns: @lcolumns;
-	@screensize: @lscreensize;
-
-	.renderPageLayout(@selector; @columns; @screensize);
-}
-
-.set-page-layout(@lsections, @lcolumns, @lselectors, @lscreensize) when (@lsections = 1) {
-	.setPageLayout(@lsections; @lcolumns; @lselectors; @lscreensize);
-}
-
-.set-page-layout(@lsections, @lcolumns, @lselectors, @lscreensize) when (@lsections > 1) {
-	.setPageLayoutX(1; @lsections; @lcolumns; @lselectors; @lscreensize);
+.make-column(...) {
+	.render-column(@arguments);
 }

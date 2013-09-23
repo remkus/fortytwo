@@ -5,61 +5,80 @@
 //
 // Layout small devices like smartphones. No offset, push, or
 // pull classes are present here due to the size of the target.
-.full-width-content {
-	@layout-sections:		1;
-	@layout-columns: 		12;
-	@layout-selectors: 		~".content";
+@screen-size: @screen-xs;
 
-	.set-page-layout(@layout-sections; @layout-columns; @layout-selectors; @screen-phone);
+.full-width-content {
+	.make-column(~".content" 12);
 }
 
 .content-sidebar {
-	@layout-sections:		2;
-	@layout-columns: 		9 3;
-	@layout-selectors: 		~".content", ~".sidebar-primary";
-
-	.set-page-layout(@layout-sections; @layout-columns; @layout-selectors; @screen-phone);
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
 }
 
 .sidebar-content {
-	@layout-sections:		2;
-	@layout-columns: 		3 9;
-	@layout-selectors: 		~".sidebar-primary", ~".content";
-
-	.set-page-layout(@layout-sections; @layout-columns; @layout-selectors; @screen-phone);
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
 }
 
 .content-sidebar-sidebar {
-	@layout-sections:		3;
-	@layout-columns: 		7 3 2;
-	@layout-selectors: 		~".content", ~".sidebar-primary", ~".sidebar-secondary";
-
-	.set-page-layout(@layout-sections; @layout-columns; @layout-selectors; @screen-phone);
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
 }
 
 .sidebar-sidebar-content {
-	@layout-sections:		3;
-	@layout-columns: 		3 2 7;
-	@layout-selectors: 		~".sidebar-primary", ~".sidebar-secondary", ~".content";
-
-	.set-page-layout(@layout-sections; @layout-columns; @layout-selectors; @screen-phone);
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
 }
 
 .sidebar-content-sidebar {
-	@layout-sections:		3;
-	@layout-columns: 		3 7 2;
-	@layout-selectors: 		~".sidebar-primary", ~".content", ~".sidebar-secondary";
-
-	.set-page-layout(@layout-sections; @layout-columns; @layout-selectors; @screen-phone);
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
 }
-
 
 // Small grid
 //
 // Layouts for the small device range, from phones
 // to tablets.
 
-@media (min-width: @screen-tablet) {
+@media (min-width: @screen-sm) {
+
+	@screen-size: @screen-sm;
+
+	.full-width-content {
+		.make-column(~".content" 12 0 0);
+	}
+
+	.content-sidebar {
+		.make-column(~".content" 8 0 0);
+		.make-column(~".sidebar-primary" 4 0 0);
+	}
+
+	.sidebar-content {
+		.make-column(~".content" 8 4 0);
+		.make-column(~".sidebar-primary" 4 0 8);
+	}
+
+	.content-sidebar-sidebar {
+		.make-column(~".content" 6 0 0);
+		.make-column(~".sidebar-primary" 4 0 0);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
+
+	.sidebar-sidebar-content {
+		.make-column(~".content" 6 6 0);
+		.make-column(~".sidebar-primary" 4 0 4);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
+
+	.sidebar-content-sidebar {
+		.make-column(~".content" 6 2 0);
+		.make-column(~".sidebar-primary" 4 2 0);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
 
 }
 
@@ -68,7 +87,41 @@
 //
 // Layouts for the desktop device range.
 
-@media (min-width: @screen-desktop) {
+@media (min-width: @screen-md) {
+
+	@screen-size: @screen-md;
+
+	.full-width-content {
+		.make-column(~".content" 12 0 0);
+	}
+
+	.content-sidebar {
+		.make-column(~".content" 9 0 0);
+		.make-column(~".sidebar-primary" 3 0 0);
+	}
+
+	.sidebar-content {
+		.make-column(~".content" 9 3 0);
+		.make-column(~".sidebar-primary" 3 0 9);
+	}
+
+	.content-sidebar-sidebar {
+		.make-column(~".content" 7 0 0);
+		.make-column(~".sidebar-primary" 3 0 0);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
+
+	.sidebar-sidebar-content {
+		.make-column(~".content" 7 5 0);
+		.make-column(~".sidebar-primary" 3 0 5);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
+
+	.sidebar-content-sidebar {
+		.make-column(~".content" 7 2 0);
+		.make-column(~".sidebar-primary" 3 2 0);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
 
 }
 
@@ -77,54 +130,40 @@
 //
 // Layouts for the large desktop device range.
 
-@media (min-width: @screen-lg-desktop) {
+@media (min-width: @screen-lg) {
+
+	@screen-size: @screen-lg;
 
 	.full-width-content {
-		@layout-sections:		1;
-		@layout-columns: 		12;
-		@layout-selectors: 		~".content";
-
-		.set-page-layout(@layout-sections; @layout-columns; @layout-selectors; @screen-lg-desktop);
+		.make-column(~".content" 12 0 0);
 	}
 
 	.content-sidebar {
-		@layout-sections:		2;
-		@layout-columns: 		9 3;
-		@layout-selectors: 		~".content", ~".sidebar-primary";
-
-		.set-page-layout(@layout-sections; @layout-columns; @layout-selectors; @screen-lg-desktop);
+		.make-column(~".content" 9 0 0);
+		.make-column(~".sidebar-primary" 3 0 0);
 	}
 
 	.sidebar-content {
-		@layout-sections:		2;
-		@layout-columns: 		3 9;
-		@layout-selectors: 		~".sidebar-primary", ~".content";
-
-		.set-page-layout(@layout-sections; @layout-columns; @layout-selectors; @screen-lg-desktop);
+		.make-column(~".content" 9 3 0);
+		.make-column(~".sidebar-primary" 3 0 9);
 	}
 
 	.content-sidebar-sidebar {
-		@layout-sections:		3;
-		@layout-columns: 		7 3 2;
-		@layout-selectors: 		~".content", ~".sidebar-primary", ~".sidebar-secondary";
-
-		.set-page-layout(@layout-sections; @layout-columns; @layout-selectors; @screen-lg-desktop);
+		.make-column(~".content" 7 0 0);
+		.make-column(~".sidebar-primary" 3 0 0);
+		.make-column(~".sidebar-secondary" 2 0 0);
 	}
 
 	.sidebar-sidebar-content {
-		@layout-sections:		3;
-		@layout-columns: 		3 2 7;
-		@layout-selectors: 		~".sidebar-primary", ~".sidebar-secondary", ~".content";
-
-		.set-page-layout(@layout-sections; @layout-columns; @layout-selectors; @screen-lg-desktop);
+		.make-column(~".content" 7 5 0);
+		.make-column(~".sidebar-primary" 3 0 5);
+		.make-column(~".sidebar-secondary" 2 0 10);
 	}
 
 	.sidebar-content-sidebar {
-		@layout-sections:		3;
-		@layout-columns: 		3 7 2;
-		@layout-selectors: 		~".sidebar-primary", ~".content", ~".sidebar-secondary";
-
-		.set-page-layout(@layout-sections; @layout-columns; @layout-selectors; @screen-lg-desktop);
+		.make-column(~".content" 7 2 0);
+		.make-column(~".sidebar-primary" 3 2 0);
+		.make-column(~".sidebar-secondary" 2 0 10);
 	}
 
 }
