@@ -24,13 +24,7 @@
 	}
 }
 
-.height-adjust() {
-	padding-top: 40px;
-	margin-bottom: -9999px;
-	padding-bottom: 9999px;
-}
-
-.calc-line-height(@screen-size, @cols, @font-size: @font-size-base, @ratio: @golden) {
+.calc-line-height( @screen-size: @screen-phone, @cols: 12, @font-size: @font-size-base, @ratio: @golden ) {
 	@f: unit(@font-size);
 	@w: (unit(@screen-size) / 12) * @cols;
 	@r: @ratio;
@@ -39,23 +33,36 @@
 	@l: round(@f * @h);
 
 	line-height: @h;
-	color: @f;
-	color: @w;
-	color: @r;
-	color: @l;
 }
 
-.set-page-layout(@rest...) {
+.render-column-push(@push) when (isnumber(@push)) and (@push > 0) {
+	left: percentage((@push / @grid-columns));
+}
 
-	.grid-generator (@devices, @breakpoints, @count, @index) when (@index < @count + 1){
-	    @device: extract(@devices, @index);
-	    @breakpoint: extract(@breakpoints, @index);
+.render-column-pull(@pull) when (isnumber(@pull)) and (@pull > 0) {
+	right: percentage((@pull / @grid-columns));
+}
 
-	    .grid-device-generator (@device, @breakpoint);
+.render-column(@arguments) when (isstring(extract(@arguments, 1))) and (isnumber(extract(@arguments, 2))) {
+	@selector: extract(@arguments, 1);
+	@columns: extract(@arguments, 2);
+	@push: extract(@arguments, 3);
+	@pull: extract(@arguments, 4);
+	@gutter: @grid-gutter-width;
 
-	    .grid-generator (@devices, @breakpoints, @count, @index + 1);
+	@{selector} {
+		position: relative;
+		float: left;
+		width: percentage((@columns / @grid-columns));
+		min-height: 1px;
+		padding-left:  (@gutter / 2);
+		padding-right: (@gutter / 2);
+		.calc-line-height(@screen-size, @columns);
+		.render-column-push(@push);
+		.render-column-pull(@pull);
 	}
+}
 
-	color: extract(@rest, 1);
-	color: extract(@rest, 2);
+.make-column(...) {
+	.render-column(@arguments);
 }
