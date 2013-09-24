@@ -8,7 +8,7 @@
 /* Child theme (do not remove) */
 define( 'CHILD_THEME_NAME', 'FortyTwo Theme' );
 define( 'CHILD_THEME_URL', 'http://forsitethemes.com/themes/fortytwo' );
-define( 'CHILD_THEME_VERSION', filemtime( get_stylesheet_directory() . '/style.css' ) );
+define( 'CHILD_THEME_VERSION', '1.0.0-RC2' );
 
 define( 'FORTYTWO_DIR', CHILD_DIR );
 define( 'FORTYTWO_URL', CHILD_URL );
