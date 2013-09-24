@@ -44,12 +44,13 @@ add_action( 'wp_head', 'fortytwo_respond_ie_media_queries' );
  *
  * @uses genesis_html5() Check for HTML5 support.
  *
- * @return Return early if HTML5 not supported.
+ * @return Return early if not IE or HTML5 not supported.
  *
  */
 function fortytwo_respond_ie_media_queries() {
+	global $is_IE;
 
-	if ( ! genesis_html5() )
+	if ( ! $is_IE || ! genesis_html5() )
 		return;
 
 	echo '<!--[if lt IE 9]><script src="' . CHILD_URL . '/vendor/js/respond.min.js"></script><![endif]-->' . "\n";
