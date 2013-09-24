@@ -23,6 +23,8 @@ require_once 'ft-cleanup.php';
 
 require_once 'ft-scripts.php';
 
+require_once 'ft-layouts.php';
+
 require_once 'ft-widget-areas.php';
 
 require_once 'ft-structural.php';

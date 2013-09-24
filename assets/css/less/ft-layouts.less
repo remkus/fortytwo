@@ -1,118 +1,120 @@
-// Some custom calculation for the Typography
-// --------------------------------------------------
-
-
 // Custom file for FortyTwo Content Layouts
-
-
-
-
-
-.content-sidebar {
-	.content {
-		padding-right: @grid-gutter-width;
-	}
-
-	.sidebar-primary {
-		border-left: @grid-columns-border;
-		padding-left: @grid-gutter-width;
-	}
-}
-
-.sidebar-content {
-	.content {
-		.make-lg-column-push(@grid-columns-sidebar-primary);
-		padding-left: @grid-gutter-width;
-	}
-
-	.sidebar-primary {
-		.make-lg-column-pull(@grid-columns - @grid-columns-sidebar-primary);
-		border-right: @grid-columns-border;
-		padding-right: @grid-gutter-width;
-	}
-}
-
-.content-sidebar-sidebar {
-	.content {
-		padding-right: @grid-gutter-width;
-	}
-
-	.sidebar-primary {
-		border-left: @grid-columns-border;
-		padding-left: @grid-gutter-width;
-		padding-right: @grid-gutter-width;
-	}
-
-	.sidebar-secondary {
-		border-left: @grid-columns-border;
-		padding-left: @grid-gutter-width;
-	}
-}
-
-.sidebar-sidebar-content {
-	.content {
-		.make-lg-column-push(@grid-columns-sidebar-primary + @grid-columns-sidebar-secondary);
-		padding-left: @grid-gutter-width;
-	}
-
-	.sidebar-primary {
-		.make-lg-column-pull(@grid-columns-sidebar-primary + @grid-columns-sidebar-secondary);
-		border-right: @grid-columns-border;
-		padding-right: @grid-gutter-width;
-		padding-left: @grid-gutter-width;
-	}
-
-	.sidebar-secondary {
-		.make-lg-column-pull(@grid-columns - @grid-columns-sidebar-secondary);
-		border-right: @grid-columns-border;
-		padding-right: @grid-gutter-width;
-	}
-}
-
-.sidebar-content-sidebar {
-	.content {
-		.make-lg-column-push(@grid-columns-sidebar-secondary);
-		padding-right: @grid-gutter-width;
-		padding-left: @grid-gutter-width;
-	}
-
-	.sidebar-primary {
-		.make-lg-column-push(@grid-columns-sidebar-secondary);
-		padding-left: @grid-gutter-width;
-		border-left: @grid-columns-border;
-	}
-
-	.sidebar-secondary {
-		.make-lg-column-pull(@grid-columns - @grid-columns-sidebar-secondary);
-		padding-right: @grid-gutter-width;
-		border-right: @grid-columns-border;
-	}
-}
-
+// --------------------------------------------------
 
 // Extra small grid
 //
 // Layout small devices like smartphones. No offset, push, or
 // pull classes are present here due to the size of the target.
+@screen-size: @screen-xs;
 
-.content-sidebar-wrap {
-	min-height: 100%;
-	overflow: hidden;
+.full-width-content {
+	.make-column(~".content" 12);
 }
 
-.content,
-.sidebar-primary,
-.sidebar-secondary {
-	.height-adjust();
+.content-sidebar {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
 }
 
+.sidebar-content {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+}
+
+.content-sidebar-sidebar {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
+}
+
+.sidebar-sidebar-content {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
+}
+
+.sidebar-content-sidebar {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
+}
+
+.primary-content-secondary {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
+}
+
+.primary-secondary-content {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
+}
+
+.content-secondary-primary {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
+}
 
 // Small grid
 //
 // Layouts for the small device range, from phones
 // to tablets.
 
-@media (min-width: @screen-tablet) {
+@media (min-width: @screen-sm) {
+
+	@screen-size: @screen-sm;
+
+	.full-width-content {
+		.make-column(~".content" 12 0 0);
+	}
+
+	.content-sidebar {
+		.make-column(~".content" 8 0 0);
+		.make-column(~".sidebar-primary" 4 0 0);
+	}
+
+	.sidebar-content {
+		.make-column(~".content" 8 4 0);
+		.make-column(~".sidebar-primary" 4 0 8);
+	}
+
+	.content-sidebar-sidebar {
+		.make-column(~".content" 6 0 0);
+		.make-column(~".sidebar-primary" 4 0 0);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
+
+	.sidebar-sidebar-content {
+		.make-column(~".content" 6 6 0);
+		.make-column(~".sidebar-primary" 4 0 4);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
+
+	.sidebar-content-sidebar {
+		.make-column(~".content" 6 2 0);
+		.make-column(~".sidebar-primary" 4 2 0);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
+
+	.primary-content-secondary {
+		.make-column(~".content" 6 4 0);
+		.make-column(~".sidebar-primary" 4 0 6);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
+
+	.primary-secondary-content {
+		.make-column(~".content" 6 6 0);
+		.make-column(~".sidebar-primary" 4 0 6);
+		.make-column(~".sidebar-secondary" 2 0 4);
+	}
+
+	.content-secondary-primary {
+		.make-column(~".content" 6 0 0);
+		.make-column(~".sidebar-primary" 4 2 0);
+		.make-column(~".sidebar-secondary" 2 0 4);
+	}
 
 }
 
@@ -121,8 +123,59 @@
 //
 // Layouts for the desktop device range.
 
-@media (min-width: @screen-desktop) {
+@media (min-width: @screen-md) {
 
+	@screen-size: @screen-md;
+
+	.full-width-content {
+		.make-column(~".content" 12 0 0);
+	}
+
+	.content-sidebar {
+		.make-column(~".content" 9 0 0);
+		.make-column(~".sidebar-primary" 3 0 0);
+	}
+
+	.sidebar-content {
+		.make-column(~".content" 9 3 0);
+		.make-column(~".sidebar-primary" 3 0 9);
+	}
+
+	.content-sidebar-sidebar {
+		.make-column(~".content" 7 0 0);
+		.make-column(~".sidebar-primary" 3 0 0);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
+
+	.sidebar-sidebar-content {
+		.make-column(~".content" 7 5 0);
+		.make-column(~".sidebar-primary" 3 0 5);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
+
+	.sidebar-content-sidebar {
+		.make-column(~".content" 7 2 0);
+		.make-column(~".sidebar-primary" 3 2 0);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
+
+	.primary-content-secondary {
+		.make-column(~".content" 7 3 0);
+		.make-column(~".sidebar-primary" 3 0 7);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
+
+	.primary-secondary-content {
+		.make-column(~".content" 7 5 0);
+		.make-column(~".sidebar-primary" 3 0 7);
+		.make-column(~".sidebar-secondary" 2 0 7);
+	}
+
+	.content-secondary-primary {
+		.make-column(~".content" 7 0 0);
+		.make-column(~".sidebar-primary" 3 2 0);
+		.make-column(~".sidebar-secondary" 2 0 3);
+	}
 }
 
 
@@ -130,57 +183,58 @@
 //
 // Layouts for the large desktop device range.
 
-@media (min-width: @screen-lg-desktop) {
+@media (min-width: @screen-lg) {
 
-	@c:          12;
-	@c-s:        9 3;
-	@c-s-s:      7 3 2;
+	@screen-size: @screen-lg;
 
 	.full-width-content {
-
-		.content {
-			.make-lg-column(@c);
-			.calc-line-height(@screen-lg, @c);
-		}
+		.make-column(~".content" 12 0 0);
 	}
 
-/*	.content-sidebar {
-		.set-page-layout(
-			content, 9;
-			sidebar-primary, 3
-		);
-	}*/
+	.content-sidebar {
+		.make-column(~".content" 9 0 0);
+		.make-column(~".sidebar-primary" 3 0 0);
+	}
 
-	.content-sidebar,
 	.sidebar-content {
-		.content {
-			.make-lg-column(extract(@c-s, 1));
-			.calc-line-height(@screen-lg, extract(@c-s, 1));
-		}
-
-		.sidebar-primary {
-			.make-lg-column(extract(@c-s, 2));
-			.calc-line-height(@screen-lg, extract(@c-s, 2));
-		}
+		.make-column(~".content" 9 3 0);
+		.make-column(~".sidebar-primary" 3 0 9);
 	}
 
-	.content-sidebar-sidebar,
-	.sidebar-sidebar-content,
+	.content-sidebar-sidebar {
+		.make-column(~".content" 7 0 0);
+		.make-column(~".sidebar-primary" 3 0 0);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
+
+	.sidebar-sidebar-content {
+		.make-column(~".content" 7 5 0);
+		.make-column(~".sidebar-primary" 3 0 5);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
+
 	.sidebar-content-sidebar {
-		.content {
-			.make-lg-column(extract(@c-s-s, 1));
-			.calc-line-height(@screen-lg, extract(@c-s-s, 1));
-		}
+		.make-column(~".content" 7 2 0);
+		.make-column(~".sidebar-primary" 3 2 0);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
 
-		.sidebar-primary {
-			.make-lg-column(extract(@c-s-s, 2));
-			.calc-line-height(@screen-lg, extract(@c-s-s, 2));
-		}
+	.primary-content-secondary {
+		.make-column(~".content" 7 3 0);
+		.make-column(~".sidebar-primary" 3 0 7);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
 
-		.sidebar-secondary {
-			.make-lg-column(extract(@c-s-s, 3));
-			.calc-line-height(@screen-lg, extract(@c-s-s, 3));
-		}
+	.primary-secondary-content {
+		.make-column(~".content" 7 5 0);
+		.make-column(~".sidebar-primary" 3 0 7);
+		.make-column(~".sidebar-secondary" 2 0 7);
+	}
+
+	.content-secondary-primary {
+		.make-column(~".content" 7 0 0);
+		.make-column(~".sidebar-primary" 3 2 0);
+		.make-column(~".sidebar-secondary" 2 0 3);
 	}
 
 }
