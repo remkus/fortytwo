@@ -13,8 +13,8 @@
  */
 
 
-remove_action( 'genesis_loop', 'genesis_do_loop' );
-add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+//remove_action( 'genesis_loop', 'genesis_do_loop' );
+//add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
 add_filter( 'body_class', 'fortytwo_add_body_classes' );
 /**
@@ -44,24 +44,24 @@ add_action( 'genesis_after_header', 'fortytwo_add_section_after_header' );
 function fortytwo_add_section_after_header() {
 
 	if ( is_active_sidebar( 'page-business-section' ) ) {
-		echo '<div class="section-container section-1">';
+		echo '<div class="site-intro">';
 
 			fortytwo_add_widget_count_class( 'page-business-section' );
 
-			genesis_structural_wrap( 'site-section', 'open' );
+			genesis_structural_wrap( 'site-intro', 'open' );
 
 				echo '<div class="inner-wrap">';
 					dynamic_sidebar( 'page-business-section' );
 				echo '</div>';
 
-			genesis_structural_wrap( 'site-section', 'close' );
+			genesis_structural_wrap( 'site-intro', 'close' );
 
 		echo '</div>';
 	}
 
 }
 
-add_action( 'genesis_loop', 'fortytwo_add_section_in_loop' );
+add_action( 'fortytwo_page_business_content', 'fortytwo_add_section_in_loop' );
 /**
  * This adds the page-business-section 2-4 to the business page template if the widget areas have widgets
  *
@@ -105,4 +105,8 @@ function fortytwo_add_section_in_loop() {
 	}
 }
 
-genesis();
+get_header();
+
+do_action( 'fortytwo_page_business_content' );
+
+get_footer();
