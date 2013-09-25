@@ -99,3 +99,27 @@ function fortytwo_add_widget_count_class( $id ) {
 	$wp_registered_sidebars[$id]['after_widget'] = '</div></section>';
 
 }
+
+add_filter( 'dynamic_sidebar_params', 'fortytwo_data_attribute_widget_count' );
+
+function fortytwo_data_attribute_widget_count( $params ) {
+
+	global $wp_registered_widgets;
+	global $sidebars_widgets;
+
+	$key = array_search( $params[0]['widget_id'], $sidebars_widgets[$params[0]['id']] );
+	$widget_count_value = ( $key + 1 ) . 'of' . ( count ( $sidebars_widgets[$params[0]['id']] ) );
+
+	$classname_ = '';
+	foreach ( (array) $wp_registered_widgets[$params[0]['widget_id']]['classname'] as $cn ) {
+		if ( is_string( $cn ) )
+			$classname_ .= '_' . $cn;
+		elseif ( is_object( $cn ) )
+			$classname_ .= '_' . get_class( $cn );
+	}
+	$classname_ = ltrim( $classname_, '_' );
+
+	$params[0]['before_widget'] = sprintf('<section id="%1$s" class="widget %2$s" data-widget-count="%3$s"><div class="widget-wrap">', $params[0]['widget_id'], $classname_, $widget_count_value);
+
+	return $params;
+}
