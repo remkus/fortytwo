@@ -13,7 +13,6 @@ add_theme_support( 'genesis-structural-wraps', array(
 	'menu-primary',
 	'menu-secondary',
 	'site-inner',
-	'site-intro',
 	'footer-widgets',
 	'footer'
 ) );
@@ -88,27 +87,30 @@ add_action( 'genesis_after_content', 'genesis_get_sidebar_alt' );
  * @todo  This code needs better documentation
  *
  */
-function fortytwo_add_widget_count_class( $id ) {
+function fortytwo_add_data_widget_attr( $id ) {
 
-	global $wp_registered_sidebars;
 	global $sidebars_widgets;
 
-	$widget_count_class = ' col-lg-' . ( 12 / ( count ( $sidebars_widgets[$id] ) ) );
+	$data_widget_count = count ( $sidebars_widgets[$id] );
 
-	$wp_registered_sidebars[$id]['before_widget'] = '<section id="%1$s" class="widget %2$s' . $widget_count_class . '"><div class="widget-wrap">';
-	$wp_registered_sidebars[$id]['after_widget'] = '</div></section>';
+	return $data_widget_count;
 
 }
 
 add_filter( 'dynamic_sidebar_params', 'fortytwo_data_attribute_widget_count' );
-
+/**
+ * We hook in to the dynamic_sidebar_params in order to add a data-attriburte
+ * indicating the position of the current widget in a sidebar area.
+ *
+ * @todo  This code needs better documentation
+ *
+ */
 function fortytwo_data_attribute_widget_count( $params ) {
 
 	global $wp_registered_widgets;
 	global $sidebars_widgets;
 
-	$key = array_search( $params[0]['widget_id'], $sidebars_widgets[$params[0]['id']] );
-	$widget_count_value = ( $key + 1 ) . 'of' . ( count ( $sidebars_widgets[$params[0]['id']] ) );
+	$data_widget_position = (array_search( $params[0]['widget_id'], $sidebars_widgets[$params[0]['id']] )) + 1;
 
 	$classname_ = '';
 	foreach ( (array) $wp_registered_widgets[$params[0]['widget_id']]['classname'] as $cn ) {
@@ -119,7 +121,7 @@ function fortytwo_data_attribute_widget_count( $params ) {
 	}
 	$classname_ = ltrim( $classname_, '_' );
 
-	$params[0]['before_widget'] = sprintf('<section id="%1$s" class="widget %2$s" data-widget-count="%3$s"><div class="widget-wrap">', $params[0]['widget_id'], $classname_, $widget_count_value);
+	$params[0]['before_widget'] = sprintf('<section id="%1$s" class="widget %2$s" data-widget-position="%3$s"><div class="widget-wrap">', $params[0]['widget_id'], $classname_, $data_widget_position);
 
 	return $params;
 }

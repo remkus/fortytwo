@@ -13,8 +13,8 @@
  */
 
 
-//remove_action( 'genesis_loop', 'genesis_do_loop' );
-//add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+remove_action( 'genesis_loop', 'genesis_do_loop' );
+add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
 add_filter( 'body_class', 'fortytwo_add_body_classes' );
 /**
@@ -31,9 +31,10 @@ function fortytwo_add_body_classes( $classes ) {
 	$classes[] = 'fortytwo ft-page-business';
 
 	return $classes;
+
 }
 
-add_action( 'genesis_after_header', 'fortytwo_add_section_after_header' );
+add_action( 'genesis_after_header', 'fortytwo_add_site_intro' );
 /**
  * This adds the page-business-section to the business page template if the widget area has widgets
  *
@@ -41,72 +42,66 @@ add_action( 'genesis_after_header', 'fortytwo_add_section_after_header' );
  * @todo  This code needs better documentation
  *
  */
-function fortytwo_add_section_after_header() {
+function fortytwo_add_site_intro() {
 
 	if ( is_active_sidebar( 'page-business-section' ) ) {
-		echo '<div class="site-intro">';
 
-			fortytwo_add_widget_count_class( 'page-business-section' );
+		$data_widget_count = fortytwo_add_data_widget_attr( 'page-business-section' );
 
-			genesis_structural_wrap( 'site-intro', 'open' );
+		echo '	<div class="site-intro">
+					<div class="wrap">
+						<div class="inner-wrap">
+							<div class="widget-container" data-widget-count="' . $data_widget_count . '">';
 
-				echo '<div class="inner-wrap">';
-					dynamic_sidebar( 'page-business-section' );
-				echo '</div>';
+								dynamic_sidebar( 'page-business-section' );
 
-			genesis_structural_wrap( 'site-intro', 'close' );
-
-		echo '</div>';
+		echo '				</div>
+						</div>
+					</div>
+				</div>';
 	}
 
 }
 
-add_action( 'fortytwo_page_business_content', 'fortytwo_add_section_in_loop' );
+add_action( 'genesis_loop', 'fortytwo_page_business_sections_in_loop' );
 /**
- * This adds the page-business-section 2-4 to the business page template if the widget areas have widgets
+ * We are hooking in to the Genesis loop in order to output the additional business sections for our template
  *
  * @since 1.0
  * @todo  This code needs better documentation
  *
  */
-function fortytwo_add_section_in_loop() {
-
-//	global $wp_registered_sidebars;
-//	global $sidebars_widgets;
+function fortytwo_page_business_sections_in_loop() {
 
 	if ( is_active_sidebar( 'page-business-section-2' ) ) {
 
-		fortytwo_add_widget_count_class( 'page-business-section-2' );
+		$data_widget_count = fortytwo_add_data_widget_attr( 'page-business-section-2' );
 
-		echo '<div class="section-container section-2">';
-			dynamic_sidebar( 'page-business-section-2' );
+		echo '<div class="widget-container" data-widget-count="' .$data_widget_count. '">';
+				dynamic_sidebar( 'page-business-section-2' );
 		echo '</div>';
 
 	}
 
 	if ( is_active_sidebar( 'page-business-section-3' ) ) {
 
-		fortytwo_add_widget_count_class( 'page-business-section-3' );
+		$data_widget_count = fortytwo_add_data_widget_attr( 'page-business-section-3' );
 
-		echo '<div class="section-container section-3">';
-			dynamic_sidebar( 'page-business-section-3' );
+		echo '<div class="widget-container" data-widget-count="' .$data_widget_count. '">';
+				dynamic_sidebar( 'page-business-section-3' );
 		echo '</div>';
 
 	}
 
 	if ( is_active_sidebar( 'page-business-section-4' ) ) {
 
-		fortytwo_add_widget_count_class( 'page-business-section-4' );
+		$data_widget_count = fortytwo_add_data_widget_attr( 'page-business-section-4' );
 
-		echo '<div class="section-container section-4">';
-			dynamic_sidebar( 'page-business-section-4' );
+		echo '<div class="widget-container" data-widget-count="' .$data_widget_count. '">';
+				dynamic_sidebar( 'page-business-section-4' );
 		echo '</div>';
 
 	}
 }
 
-get_header();
-
-do_action( 'fortytwo_page_business_content' );
-
-get_footer();
+genesis();
