@@ -33,10 +33,10 @@ function fortytwo_add_body_classes( $classes ) {
 	return $classes;
 
 }
-// Removing the div.content-sidebar-wrap on our Business Page Template
+/** Removing the div.content-sidebar-wrap on our Business Page Template */
 add_filter( 'genesis_markup_content-sidebar-wrap', 'fortytwo_remove_genesis_markup' );
 
-// Removing the main.content on our Business Page Template
+/** Removing the main.content on our Business Page Template */
 add_filter( 'genesis_markup_content', 'fortytwo_remove_genesis_markup' );
 
 add_action( 'genesis_after_header', 'fortytwo_add_site_intro' );

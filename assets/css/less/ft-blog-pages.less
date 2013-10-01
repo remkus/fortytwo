@@ -1,13 +1,28 @@
 // Blog Page Layouts
 
 .entry-time,
-.entry-author,
 .entry-comments-link,
 .entry-categories {
 
-	.label;
-	.font-size(13);
-	background-color: #f9f9f9;
+	&:before {
+		font-family: FontAwesome;
+		font-weight: normal;
+		padding-right: 4px;
+	}
+
+}
+
+.entry-time:before {
+	content: "\f133";
+}
+
+.entry-comments-link:before {
+	content: "\f0e5";
+	margin-left: 5px;
+}
+
+.entry-categories:before {
+	content: "\f115";
 }
 
 .content {
@@ -15,19 +30,29 @@
 	article {
 		.clearfix();
 
-		margin: 40px 0;
 		padding: 40px 0 0;
-		border-top: 1px dashed #e8e8e8;
+		border-top: 1px solid #e8e8e8;
 
 		&:first-child {
 			margin-top: 0;
 			padding-top: 0;
 			border-top: none;
+
+			.entry-title {
+				margin-top: 0;
+			}
 		}
 
-		.entry-title {
-			.media-heading;
-			line-height: 1;
+		.entry-content {
+			.clearfix();
+		}
+
+		.entry-footer {
+			padding: 13px 0 (@line-height-computed);
+
+			p {
+				margin: 0;
+			}
 		}
 	}
 
