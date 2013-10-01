@@ -125,3 +125,16 @@ function fortytwo_data_attribute_widget_count( $params ) {
 
 	return $params;
 }
+
+/**
+ * We are using the genesis_markup_{context} filter to short circuit the genesis_markup() function
+ *
+ * This will be called from an add_filter() on templates where Genesis framework markup is not required
+ *
+ * @since 1.0
+ * @todo  This code needs better documentation
+ *
+ */
+function fortytwo_remove_genesis_markup () {
+	return true;
+}

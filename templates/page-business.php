@@ -33,6 +33,11 @@ function fortytwo_add_body_classes( $classes ) {
 	return $classes;
 
 }
+// Removing the div.content-sidebar-wrap on our Business Page Template
+add_filter( 'genesis_markup_content-sidebar-wrap', 'fortytwo_remove_genesis_markup' );
+
+// Removing the main.content on our Business Page Template
+add_filter( 'genesis_markup_content', 'fortytwo_remove_genesis_markup' );
 
 add_action( 'genesis_after_header', 'fortytwo_add_site_intro' );
 /**
@@ -73,6 +78,8 @@ add_action( 'genesis_loop', 'fortytwo_page_business_sections_in_loop' );
  */
 function fortytwo_page_business_sections_in_loop() {
 
+	echo '<div class="inner-wrap">';
+
 	if ( is_active_sidebar( 'page-business-section-2' ) ) {
 
 		$data_widget_count = fortytwo_add_data_widget_attr( 'page-business-section-2' );
@@ -102,6 +109,8 @@ function fortytwo_page_business_sections_in_loop() {
 		echo '</div>';
 
 	}
+
+	echo '</div>';
 }
 
 genesis();
