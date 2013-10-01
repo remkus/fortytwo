@@ -17,22 +17,16 @@
 }
 
 // Default Section Padding
-.section-container { //todo: change for new structure
+.widget-container {
 	padding: 40px 0;
 	.clearfix();
-	+ .section-container { //todo: change for new structure
+	+ .widget-container {
 		border-top: 1px solid #e8e8e8;
 	}
 }
 
-.ft-page-business .content {
-	padding-top: 0;
-	padding-bottom: 0;
-	margin-bottom: 0;
-}
-
-.content > .section-container { //todo: change for new structure
-	&:extend(.row all);
+.content-sidebar-wrap {
+	padding: 40px 0;
 }
 // Removes top padding and margin from first element of .entry-content
 .content > article > .entry-content > :first-child {
@@ -45,11 +39,7 @@ table {
 	&:extend(.table all);
 }
 
-.site-inner {
-	padding: 40px 0;
-}
-
-.section-1 { //todo: change for new structure
+.site-intro {
 	background: #f9f9f9;
 	border-bottom: 1px solid #e8e8e8;
 }
