@@ -7,7 +7,7 @@
  */
 
 
-// Remove the default location of breadcrumbs as well call it when adding our subheader area
+/** Remove the default location of breadcrumbs as well call it when adding our subheader area */
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 
 add_filter( 'genesis_breadcrumb_args', 'fortytwo_breadcrumb_args' );
@@ -36,50 +36,83 @@ function fortytwo_breadcrumb_args( $args ) {
 
 add_action( 'genesis_after_header', 'fortytwo_insert_site_subheader' );
 /**
- * Insert subheader section for site-inner
+ * Insert the site-subheader section
  * @todo  This code needs better documentation
  *
  */
-function fortytwo_insert_site_subheader( $ft_subheader_attr = array() ) {
+function fortytwo_insert_site_subheader() {
 
-	// do nothing when we're not on the front-page
+	/** do nothing when we're not on the front-page */
 	if ( !is_front_page() ) {
 
 		global $post;
 
-		// remove entry_header items when we're not using the default Genesis blog template
-		if ( ! is_page_template( 'page_blog.php' ) ) {
-			remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
-			remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
-			remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
-		}
-
-		$ft_subheader_attr = array(
-			'title'       => $post->post_title, //apply_filters( 'ft_subheader_title', $ft_subheader_attr ),
+		$ft_subheader_attr = apply_filters( 'fortytwo_site_subheader_attr', array(
+			'title'       => $post->post_title,
 			'breadcrumbs' => true,
 			'widget'      => false
-		);
+		));
+?>
 
-		$ft_site_subheader = <<<EOD
-			<div class="site-subheader">
-				<div class="wrap">
-					<div class="inner-wrap">
-						<div class="subheader-area">
-							<header class="entry-header">
-								<h1 class="entry-title" itemprop="headline">{$ft_subheader_attr['title']}</h1>
-							</header>
-EOD;
-		echo $ft_site_subheader;
-
-							if ( $ft_subheader_attr['breadcrumbs'] )
-								genesis_do_breadcrumbs();
-
-		$ft_site_subheader = <<<EOD
-						</div>
+		<div class="site-subheader">
+			<div class="wrap">
+				<div class="inner-wrap">
+					<div class="subheader-area">
+						<h1 class="subheader"><?php esc_attr_e( $ft_subheader_attr['title'], 'fortytwo' ); ?></h1>
+						<?php if ( $ft_subheader_attr['breadcrumbs'] ) genesis_do_breadcrumbs(); ?>
 					</div>
 				</div>
 			</div>
-EOD;
-		echo $ft_site_subheader;
+		</div>
+
+<?php
 	}
+}
+
+add_filter( 'fortytwo_site_subheader_attr', 'fortytwo_custom_site_subheader_title' );
+/**
+ * We are altering the title attribute of the site subheader using the fortytwo_site_subheader_attr filter
+ *
+ * We alter this based on the type of page being viewed
+ *
+ * @todo  This code needs better documentation
+ *
+ */
+function fortytwo_custom_site_subheader_title( $ft_subheader_attr ) {
+
+	global $post;
+
+	$subheader_title = single_term_title("", false);
+
+	if ( is_single() ) {
+		$ft_subheader_attr['title'] = esc_attr( 'Article: ', 'fortytwo' ) . $ft_subheader_attr['title'];
+		return $ft_subheader_attr;
+	}
+
+	if ( is_category() ) {
+		$ft_subheader_attr['title'] = esc_attr( 'Category: ', 'fortytwo' ) . single_term_title( '', false );
+		return $ft_subheader_attr;
+	}
+
+	if ( is_tag() ) {
+		$ft_subheader_attr['title'] = esc_attr( 'Tag: ', 'fortytwo' ) . single_term_title( '', false );
+		return $ft_subheader_attr;
+	}
+
+	if ( is_author() ) {
+		$ft_subheader_attr['title'] = esc_attr( 'Articles by ', 'fortytwo' ) . get_the_author_meta( 'display_name', $post->post_author );
+		return $ft_subheader_attr;
+	}
+
+	if ( is_date() ) {
+		$ft_subheader_attr['title'] = esc_attr( 'Articles for ', 'fortytwo' ) . single_month_title( ' ', false );
+		return $ft_subheader_attr;
+	}
+
+	if ( is_archive() ) {
+		$ft_subheader_attr['title'] = esc_attr( 'Archive: ', 'fortytwo' ) . single_term_title( '', false );
+		return $ft_subheader_attr;
+	}
+
+	return $ft_subheader_attr;
 }
