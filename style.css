@@ -9926,7 +9926,7 @@ nav > .menu > li[class^="icon-"] > a {
 .site-subheader {
   padding-top: 40px;
   padding-bottom: 40px;
-  background: #f9f9f9;
+  background-color: #f9f9f9;
   border-bottom: 1px solid #e8e8e8;
 }
 /* line 53, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-mixins.less */
