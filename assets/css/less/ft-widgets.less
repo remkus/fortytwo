@@ -33,6 +33,13 @@
 		border-bottom: 1px dashed #fff;
 		border-bottom: 1px dashed rgba(255, 255, 255, .5);
 	}
+
+	.badge {
+		.badge; //calling the Bootstrap .badge defaults before applying own rules.
+		float: right;
+		border-radius: 0.25em;
+	}
+
 }
 
 .widget {
@@ -253,10 +260,6 @@
 				text-align: left;
 			}
 
-			.badge {
-				float: right;
-				border-radius: 0.25em;
-			}
 		}
 
 	}
