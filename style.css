@@ -259,7 +259,7 @@ table {
   img {
     max-width: 100% !important;
   }
-  @page  {
+  @page {
     margin: 2cm .5cm;
   }
   /* line 58, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/print.less */
@@ -636,10 +636,8 @@ dd {
   .dl-horizontal dd:after {
     content: " ";
     /* 1 */
-  
     display: table;
     /* 2 */
-  
   }
   /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
   .dl-horizontal dd:after {
@@ -650,10 +648,8 @@ dd {
   .dl-horizontal dd:after {
     content: " ";
     /* 1 */
-  
     display: table;
     /* 2 */
-  
   }
   /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
   .dl-horizontal dd:after {
@@ -792,10 +788,8 @@ pre code {
 .wrap:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .container:after,
@@ -809,10 +803,8 @@ pre code {
 .wrap:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .container:after,
@@ -832,10 +824,8 @@ pre code {
 .inner-wrap:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .row:after,
@@ -849,10 +839,8 @@ pre code {
 .inner-wrap:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .row:after,
@@ -1944,7 +1932,6 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;
   /* IE8-9 */
-
   line-height: normal;
 }
 /* line 51, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/forms.less */
@@ -2254,10 +2241,8 @@ textarea.input-lg {
 .form-horizontal .form-group:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .form-horizontal .form-group:after {
@@ -2268,10 +2253,8 @@ textarea.input-lg {
 .form-horizontal .form-group:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .form-horizontal .form-group:after {
@@ -3707,10 +3690,8 @@ input[type="button"].btn-block {
 .btn-toolbar:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .btn-toolbar:after {
@@ -3721,10 +3702,8 @@ input[type="button"].btn-block {
 .btn-toolbar:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .btn-toolbar:after {
@@ -3847,10 +3826,8 @@ input[type="button"].btn-block {
 .btn-group-vertical > .btn-group:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .btn-group-vertical > .btn-group:after {
@@ -3861,10 +3838,8 @@ input[type="button"].btn-block {
 .btn-group-vertical > .btn-group:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .btn-group-vertical > .btn-group:after {
@@ -4096,10 +4071,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .nav:after {
@@ -4110,10 +4083,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .nav:after {
@@ -4290,10 +4261,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .tabbable:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .tabbable:after {
@@ -4304,10 +4273,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .tabbable:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .tabbable:after {
@@ -4352,10 +4319,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .navbar:after {
@@ -4366,10 +4331,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .navbar:after {
@@ -4386,10 +4349,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-header:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .navbar-header:after {
@@ -4400,10 +4361,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-header:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .navbar-header:after {
@@ -4430,10 +4389,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-collapse:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .navbar-collapse:after {
@@ -4444,10 +4401,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-collapse:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .navbar-collapse:after {
@@ -5124,10 +5079,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pager:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .pager:after {
@@ -5138,10 +5091,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pager:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .pager:after {
@@ -5379,98 +5330,6 @@ a.thumbnail:focus {
 .thumbnail .caption {
   padding: 9px;
   color: #333333;
-}
-/* line 9, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
-.alert {
-  padding: 15px;
-  margin-bottom: 23px;
-  border: 1px solid transparent;
-  border-radius: 2px;
-}
-/* line 16, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
-.alert h4 {
-  margin-top: 0;
-  color: inherit;
-}
-/* line 22, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
-.alert .alert-link {
-  font-weight: bold;
-}
-/* line 27, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
-.alert > p,
-.alert > ul {
-  margin-bottom: 0;
-}
-/* line 31, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
-.alert > p + p {
-  margin-top: 5px;
-}
-/* line 40, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
-.alert-dismissable {
-  padding-right: 35px;
-}
-/* line 44, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
-.alert-dismissable .close {
-  position: relative;
-  top: -2px;
-  right: -21px;
-  color: inherit;
-}
-/* line 56, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
-.alert-success {
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #468847;
-}
-/* line 366, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.alert-success hr {
-  border-top-color: #c9e2b3;
-}
-/* line 369, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.alert-success .alert-link {
-  color: #356635;
-}
-/* line 59, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
-.alert-info {
-  background-color: #d9edf7;
-  border-color: #bce8f1;
-  color: #3a87ad;
-}
-/* line 366, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.alert-info hr {
-  border-top-color: #a6e1ec;
-}
-/* line 369, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.alert-info .alert-link {
-  color: #2d6987;
-}
-/* line 62, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
-.alert-warning {
-  background-color: #fcf8e3;
-  border-color: #fbeed5;
-  color: #c09853;
-}
-/* line 366, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.alert-warning hr {
-  border-top-color: #f8e5be;
-}
-/* line 369, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.alert-warning .alert-link {
-  color: #a47e3c;
-}
-/* line 65, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/alerts.less */
-.alert-danger {
-  background-color: #f2dede;
-  border-color: #eed3d7;
-  color: #b94a48;
-}
-/* line 366, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.alert-danger hr {
-  border-top-color: #e6c1c7;
-}
-/* line 369, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
-.alert-danger .alert-link {
-  color: #953b39;
 }
 @-webkit-keyframes progress-bar-stripes {
   /* line 11, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/progress-bars.less */
@@ -5728,10 +5587,8 @@ a.list-group-item:focus {
 .panel-body:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .panel-body:after {
@@ -5742,10 +5599,8 @@ a.list-group-item:focus {
 .panel-body:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .panel-body:after {
@@ -6105,10 +5960,8 @@ body.modal-open,
 .modal-footer:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .modal-footer:after {
@@ -6119,10 +5972,8 @@ body.modal-open,
 .modal-footer:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .modal-footer:after {
@@ -6613,10 +6464,8 @@ body.modal-open,
 .clearfix:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .clearfix:after {
@@ -9306,10 +9155,8 @@ img.alignright {
 .nav-primary:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .nav-primary:after {
@@ -9320,10 +9167,8 @@ img.alignright {
 .nav-primary:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .nav-primary:after {
@@ -9764,10 +9609,8 @@ nav > .menu > li[class^="icon-"] > a {
 .ft-responsive-slider .slider-inner:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .ft-responsive-slider .slider-inner:after {
@@ -9778,10 +9621,8 @@ nav > .menu > li[class^="icon-"] > a {
 .ft-responsive-slider .slider-inner:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .ft-responsive-slider .slider-inner:after {
@@ -9792,10 +9633,8 @@ nav > .menu > li[class^="icon-"] > a {
 .ft-responsive-slider .slides:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .ft-responsive-slider .slides:after {
@@ -9806,10 +9645,8 @@ nav > .menu > li[class^="icon-"] > a {
 .ft-responsive-slider .slides:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .ft-responsive-slider .slides:after {
@@ -10130,10 +9967,8 @@ article.type-page > .entry-header {
 .ft-tabbed-content .list-group-item:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .ft-tabbed-content .list-group-item:after {
@@ -10144,10 +9979,8 @@ article.type-page > .entry-header {
 .ft-tabbed-content .list-group-item:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .ft-tabbed-content .list-group-item:after {
@@ -11482,10 +11315,8 @@ article.type-page > .entry-header {
 .content article:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .content article:after {
@@ -11496,10 +11327,8 @@ article.type-page > .entry-header {
 .content article:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .content article:after {
@@ -11520,10 +11349,8 @@ article.type-page > .entry-header {
 .content article .entry-content:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .content article .entry-content:after {
@@ -11534,10 +11361,8 @@ article.type-page > .entry-header {
 .content article .entry-content:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .content article .entry-content:after {
@@ -11561,10 +11386,8 @@ article.type-page > .entry-header {
 .content .pagination:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .content .pagination:after {
@@ -11575,10 +11398,8 @@ article.type-page > .entry-header {
 .content .pagination:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .content .pagination:after {
@@ -12665,10 +12486,8 @@ fieldset[disabled] .btn.active {
 .widget-container:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .widget-container:after {
@@ -12679,10 +12498,8 @@ fieldset[disabled] .btn.active {
 .widget-container:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 /* line 25, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/mixins.less */
 .widget-container:after {
