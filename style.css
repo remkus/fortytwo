@@ -4943,28 +4943,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse .navbar-link:hover {
   color: #ffffff;
 }
-/* line 6, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/breadcrumbs.less */
-.breadcrumb {
-  padding: 8px 15px;
-  margin-bottom: 23px;
-  list-style: none;
-  background-color: transparent;
-  border-radius: 2px;
-}
-/* line 12, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/breadcrumbs.less */
-.breadcrumb > li {
-  display: inline-block;
-}
-/* line 14, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/breadcrumbs.less */
-.breadcrumb > li + li:before {
-  content: "/\00a0";
-  padding: 0 5px;
-  color: #cccccc;
-}
-/* line 20, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/breadcrumbs.less */
-.breadcrumb > .active {
-  color: #999999;
-}
 /* line 4, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/vendor/bootstrap/less/pagination.less */
 .pagination {
   display: inline-block;
@@ -9700,29 +9678,29 @@ nav > .menu > li[class^="icon-"] > a {
   padding-right: 15px;
   line-height: 1.598057560909147;
 }
-/* line 19, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
-.site-subheader .subheader-area .breadcrumb {
-  margin: 0;
-  padding: 10px 0 0;
-  color: #999999;
-}
-/* line 24, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
-.site-subheader .subheader-area .breadcrumb > a {
-  display: inline-block;
-}
-/* line 26, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
-.site-subheader .subheader-area .breadcrumb > a:after {
-  padding: 0 5px;
-  color: #cccccc;
-}
-/* line 34, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
+/* line 17, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
 .site-subheader .subheader {
   font-size: 28px;
   font-size: 2.8rem;
   font-weight: 300;
   margin: 0;
 }
-/* line 42, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
+/* line 23, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
+.site-subheader .breadcrumb {
+  margin: 0;
+  padding: 10px 0 0;
+  color: #999999;
+}
+/* line 28, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
+.site-subheader .breadcrumb > a {
+  display: inline-block;
+}
+/* line 30, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
+.site-subheader .breadcrumb > a:after {
+  padding: 0 5px;
+  color: #cccccc;
+}
+/* line 39, /Users/ryanholder/Sites/Projects/forsitethemes/content/themes/fortytwo/assets/css/less/ft-subheader.less */
 article.type-page > .entry-header {
   position: absolute;
   width: 1px;

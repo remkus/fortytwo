@@ -14,27 +14,24 @@
 
 	.make-column(~".subheader-area" 12 0 0);
 
-	.subheader-area {
-
-		.breadcrumb {
-			margin: 0;
-			padding: 10px 0 0;
-			color: @breadcrumb-active-color;
-
-			> a {
-				display: inline-block;
-				&:after {
-					padding: 0 5px;
-					color: @breadcrumb-color;
-				}
-			}
-		}
-	}
-
 	.subheader {
 		.font-size(28);
 		font-weight: 300;
 		margin: 0;
+	}
+
+	.breadcrumb {
+		margin: 0;
+		padding: 10px 0 0;
+		color: @breadcrumb-active-color;
+
+		> a {
+			display: inline-block;
+			&:after {
+				padding: 0 5px;
+				color: @breadcrumb-color;
+			}
+		}
 	}
 
 }
