@@ -23,13 +23,12 @@
 */
 
 /**
- * Props to Rafal Tomal, Nick Croft, Nathan Rice, Ron Rennick, Josh Byers and Brian Gardner for collaboratively writing this plugin.
+ * Thanks to Rafal Tomal, Nick Croft, Nathan Rice, Ron Rennick, Josh Byers and Brian Gardner for the original
+ * responsive slider widget.
  */
 
 /**
- *
- *
- * @link Thanks to Tyler Smith for creating the awesome jquery FlexSlider plugin - http://flex.madebymufffin.com/.
+ * Thanks to Tyler Smith for creating the awesome jquery FlexSlider plugin - http://flex.madebymufffin.com/.
  */
 
 define( 'FT_RESPONSIVE_SLIDER_VERSION', '0.10.0' );
@@ -330,7 +329,7 @@ class FT_Responsive_Slider extends WP_Widget {
 	/**
 	 * Generates the administration form for the widget.
 	 *
-	 * @param array   instance The array of keys and values for the widget.
+	 * @param array instance The array of keys and values for the widget.
 	 */
 	function form( $instance ) {
 
