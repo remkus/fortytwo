@@ -59,9 +59,6 @@ class FT_Tabbed_Content extends WP_Widget {
 		// Register admin styles and scripts
 		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
 
-		/* Load in assets for the widget */
-		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
 	} // End Constructor
 
 	private function url( $file ) {
@@ -185,30 +182,6 @@ class FT_Tabbed_Content extends WP_Widget {
 		}
 		echo "</select></p>";
 	}
-
-	/**
-	 * enqueue_styles after bootstrap
-	 *
-	 * @access public
-	 * @since  1.0.0
-	 * @return void
-	 */
-	function enqueue_styles() {
-		wp_register_style( $this->fst_widget_idbase, $this->url( '/css/style.css' ), array( 'bootstrap' ) );
-		wp_enqueue_style( $this->fst_widget_idbase );
-	} // End enqueue_styles()
-
-	/**
-	 * enqueue_scripts after bootstrap
-	 *
-	 * @access public
-	 * @since  1.0.0
-	 * @return void
-	 */
-	function enqueue_scripts() {
-		wp_register_script( $this->fst_widget_idbase, $this->url( '/js/functions.js' ), array( 'bootstrap' ) );
-		wp_enqueue_script( $this->fst_widget_idbase );
-	} // End enqueue_styles()
 
 	/**
 	 * tab_content_latest function.
