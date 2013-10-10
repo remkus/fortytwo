@@ -225,11 +225,11 @@ class FT_Tabbed_Content extends WP_Widget {
 		global $post;
 		$html = '';
 
-		$html .= '<ul class="latest list-group">' . "\n";
+		$html .= '<ul class="latest">' . "\n";
 		$latest = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=post_date&order=desc' );
 		foreach ( $latest as $post ) {
 			setup_postdata( $post );
-			$html .= '<li class="list-group-item">' . "\n";
+			$html .= '<li>' . "\n";
 			if ( $image_dimension > 0 ) {
 				$html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
 			}
@@ -258,11 +258,11 @@ class FT_Tabbed_Content extends WP_Widget {
 		global $post;
 		$html = '';
 
-		$html .= '<ul class="popular list-group">' . "\n";
+		$html .= '<ul class="popular">' . "\n";
 		$popular = get_posts( 'ignore_sticky_posts=1&numberposts=' . $limit . '&orderby=comment_count&order=desc' );
 		foreach ( $popular as $post ) {
 			setup_postdata( $post );
-			$html .= '<li class="list-group-item">' . "\n";
+			$html .= '<li>' . "\n";
 			if ( $image_dimension > 0 ) {
 				$html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
 			}
@@ -293,9 +293,9 @@ class FT_Tabbed_Content extends WP_Widget {
 
 		$comments = get_comments( array( 'number' => $limit, 'status' => 'approve' ) );
 		if ( $comments ) {
-			$html .= '<ul class="comments list-group">' . "\n";
+			$html .= '<ul class="comments">' . "\n";
 			foreach ( $comments as $c ) {
-				$html .= '<li class="list-group-item">' . "\n";
+				$html .= '<li>' . "\n";
 				$html .= '<span class="pull-' . $image_alignment . '">' . get_avatar( $c, 60 ) . '</span>';
 				$html .= '<h4><a title="' . esc_attr( $c->comment_author . ' ' . __( 'on', 'fortytwo' ) . ' ' . get_the_title( $c->comment_post_ID ) ) . '" href="' . esc_url( get_comment_link( $c->comment_ID ) ) . '">' . esc_html( $c->comment_author ) . '</a></h4>' . "\n";
 				$html .= '<span">' . stripslashes( substr( esc_html( $c->comment_content ), 0, 50 ) ) . '</span>' . "\n";

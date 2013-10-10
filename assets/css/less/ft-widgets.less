@@ -93,31 +93,40 @@
 		}
 	}
 
-	.list-group-item {
-		padding: 20px 0;
-		border: none;
-		.clearfix();
+	.tab-pane {
+		> ul {
+			.list-group;
 
-		&:first-child {
-			padding-top: 0;
-		}
+			> li {
+				.list-group-item;
 
-		+ .list-group-item {
-			border-top: 1px dashed #e8e8e8;
-		}
+				padding: 20px 0;
+				border: none;
+				.clearfix();
 
-		h4 {
-			.font-size(20);
-		}
+				&:first-child {
+					padding-top: 0;
+				}
 
-		> .pull-left img {
-			margin-right: 10px;
-		}
+				+ li {
+					border-top: 1px dashed #e8e8e8;
+				}
 
-		> .pull-right img {
-			margin-left: 10px;
+				h4 {
+					.font-size(20);
+				}
+
+				> .pull-left img {
+					margin-right: 10px;
+				}
+
+				> .pull-right img {
+					margin-left: 10px;
+				}
+			}
 		}
 	}
+
 
 	.wp-tag-cloud > li {
 		display: inline-block;
