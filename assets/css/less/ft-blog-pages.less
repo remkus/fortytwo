@@ -56,111 +56,15 @@
 		}
 	}
 
-	.pagination {
-
-		list-style: none;
-		text-align: center;
-		.clearfix();
-
-		> div {
-			display: inline;
-			> a,
-			> span {
-				color: @pagination-color;
-				display: inline-block;
-				padding: 5px 14px;
-				background-color: @pagination-bg;
-				border: 1px solid @pagination-border;
-				border-radius: 15px;
-			}
-
-			> a:hover,
-			> a:focus {
-				text-decoration: none;
-				background-color: @pagination-active-bg;
+	.pagination > ul:extend(.pagination all) {
+		> .active > a,
+		> .active > span {
+			&,
+			&:hover,
+			&:focus {
+				border-color: @pagination-border;
 			}
 		}
-
-		.alignright {
-			> a,
-			> span {
-				float: right;
-			}
-		}
-
-		.alignleft {
-			> a,
-			> span {
-				float: left;
-			}
-		}
-
-		.disabled {
-			> a,
-			> a:hover,
-			> a:focus,
-			> span {
-				color: @gray-light;
-				background-color: @pagination-bg;
-				cursor: default;
-			}
-		}
-
-		> ul {
-			margin-bottom: 0;
-			padding-left: 0;
-			border-radius: @border-radius-base;
-
-			> li {
-				display: inline; // Remove list-style and block-level defaults
-			}
-
-			> li > a,
-			> li > span {
-				color: @pagination-color;
-				float: left; // Collapse white-space
-				padding: 4px 12px;
-				line-height: @line-height-base;
-				text-decoration: none;
-				background-color: @pagination-bg;
-				border: 1px solid @pagination-border;
-				border-left-width: 0;
-			}
-
-			> li > a:hover,
-			> li > a:focus,
-			> .active > a,
-			> .active > span {
-				background-color: @pagination-active-bg;
-			}
-
-			> .active > a,
-			> .active > span {
-				color: @gray-light;
-				cursor: default;
-			}
-
-			> .disabled > span,
-			> .disabled > a,
-			> .disabled > a:hover,
-			> .disabled > a:focus {
-				color: @gray-light;
-				background-color: @pagination-bg;
-				cursor: default;
-			}
-
-			> li:first-child > a,
-			> li:first-child > span {
-				border-left-width: 1px;
-				.border-left-radius(@border-radius-base);
-			}
-
-			> li:last-child > a,
-			> li:last-child > span {
-				.border-right-radius(@border-radius-base);
-			}
-		}
-
 	}
 
 }
