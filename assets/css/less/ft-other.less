@@ -28,7 +28,17 @@
 
 // adds default styling to all tables
 table {
-	&:extend(.table all);
+	max-width: 100%;
+	background-color: @table-bg;
+}
+
+th {
+	text-align: left;
+}
+
+table {
+	.table;
+	.table-bordered;
 }
 
 .site-intro {
