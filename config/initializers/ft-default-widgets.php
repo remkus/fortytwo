@@ -145,7 +145,7 @@ function fortytwo_search_form( $form ) {
     $search_query = get_search_query();
 
     $form = <<<EOD
-        <form role="search" method="get" id="searchform" class="input-group" action="{$form_action}">
+        <form method="get" id="searchform" class="search-form" action="{$form_action}" role="search">
             <input type="text" value="{$search_query}" class="form-control" name="s" id="s" />
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">Search</button>

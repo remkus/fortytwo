@@ -30,7 +30,7 @@
 	article {
 		.clearfix();
 
-		padding: 40px 0 0;
+		padding: 20px 0 0;
 		border-top: 1px solid #e8e8e8;
 
 		&:first-child {
@@ -43,8 +43,15 @@
 			}
 		}
 
+		.entry-title {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			line-height: 1.3;
+		}
+
 		.entry-content {
 			.clearfix();
+			word-wrap: break-word;
 		}
 
 		.entry-footer {
