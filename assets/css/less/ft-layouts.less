@@ -6,7 +6,7 @@
 }
 
 .inner-wrap {
-	&:extend(.row all);
+	.make-row();
 }
 
 // Extra small grid
@@ -70,9 +70,13 @@
 // Layouts for the small device range, from phones
 // to tablets.
 
-@media (min-width: @screen-sm) {
+@media (min-width: @screen-tablet) {
 
 	@screen-size: @screen-sm;
+
+	.container {
+		max-width: @container-tablet;
+	}
 
 	.full-width-content {
 		.make-column(~".content" 12 0 0);
@@ -131,9 +135,13 @@
 //
 // Layouts for the desktop device range.
 
-@media (min-width: @screen-md) {
+@media (min-width: @screen-desktop) {
 
 	@screen-size: @screen-md;
+
+	.container {
+		max-width: @container-desktop;
+	}
 
 	.full-width-content {
 		.make-column(~".content" 12 0 0);
@@ -191,9 +199,13 @@
 //
 // Layouts for the large desktop device range.
 
-@media (min-width: @screen-lg) {
+@media (min-width: @screen-lg-desktop) {
 
 	@screen-size: @screen-lg;
+
+	.container {
+		max-width: @container-lg-desktop;
+	}
 
 	.full-width-content {
 		.make-column(~".content" 12 0 0);
