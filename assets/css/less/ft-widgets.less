@@ -70,28 +70,18 @@
 		position: relative;
 	}
 
-	.btn-group {
+	.tab-select:extend(.btn-group all) {
 		margin-left: 15px;
-		position: absolute;
 		top: -4px;
 
-		.btn {
-			padding: 0;
-
-			a {
-				text-transform: capitalize;
-				display: inline-block;
-				padding: @padding-small-vertical @padding-small-horizontal;
-				color: @btn-default-color;
-
-				&:hover {
-					text-decoration: none;
-				}
+		.tab-select-btn {
+			> a:hover {
+				text-decoration: none;
 			}
-		}
 
-		.btn.active {
-			.box-shadow(none);
+			&.active {
+				.box-shadow(none);
+			}
 		}
 	}
 
@@ -139,6 +129,12 @@
 	.tab-pane-comments {
 		.avatar {
 			border-radius: 30px;
+		}
+	}
+
+	.widget& {
+		.tab-select-btn {
+			.btn-sm();
 		}
 	}
 }
