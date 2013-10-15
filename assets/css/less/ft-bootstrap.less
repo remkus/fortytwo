@@ -3,11 +3,11 @@
 
 
 // Core mixins
-@import "mixins.less";
+@import (reference) "mixins.less";
 
 // Reset
-@import "normalize.less"; //todo: this shuld be minfied in to single line
-@import "print.less"; //todo: this shuld be minfied in to single line
+@import "normalize.less";
+@import "print.less";
 
 // Core CSS
 @import "scaffolding.less";
@@ -20,7 +20,7 @@
 
 // Components
 @import (reference) "component-animations.less";
-@import "glyphicons.less";
+//@import "glyphicons.less";
 @import "dropdowns.less";
 @import (reference) "button-groups.less";
 @import (reference) "input-groups.less";
@@ -49,4 +49,4 @@
 
 // Utility classes
 @import "utilities.less";
-@import "responsive-utilities.less";
+@import (reference) "responsive-utilities.less";
