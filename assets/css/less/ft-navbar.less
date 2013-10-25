@@ -3,11 +3,7 @@
 //
 // Navbar
 // --------------------------------------------------
-.nav-primary {
-	.navbar;
-	.navbar-default;
-
-	.font-size(14px);
+.nav-primary:extend(.navbar .navbar-default all) {
 
 	.navbar-brand {
 		.hide;
@@ -168,7 +164,7 @@ nav > .menu {
 		color: #fff;
 		.square(36px);
 		display: inline-block;
-		.border-radius(18px);
+		border-radius: 18px;
 		background: #424242;
 		text-align: center;
 		vertical-align: middle;

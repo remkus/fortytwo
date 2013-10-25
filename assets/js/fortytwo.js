@@ -11,8 +11,7 @@ jQuery(document ).ready( function ($) {
 		$navbar.affix( {
 			offset: {
 				top: function () {
-					var offsetTop = $(".site-header").outerHeight();
-					return ( this.top = offsetTop )
+					return ( this.top = $(".site-header").outerHeight(true) )
 				}
 			}
 		} )
