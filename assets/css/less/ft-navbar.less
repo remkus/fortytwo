@@ -3,7 +3,9 @@
 //
 // Navbar
 // --------------------------------------------------
-.nav-primary:extend(.navbar .navbar-default all) {
+.nav-primary {
+
+	&:extend(.navbar, .navbar-default);
 
 	.navbar-brand {
 		.hide;
@@ -35,145 +37,149 @@
 			margin-top: (@navbar-height + 2);
 		}
 	}
-}
-
-.dropdown-menu {
-	margin-left: -1px;
-	.font-size(14px);
-
-	// Links within the dropdown menu
-	> li > a {
-		padding: 8px 20px;
-	}
-
-	.nav-menu-divider {
-		.ft-nav-divider(@dropdown-divider-bg);
-	}
-}
-
-.dropdown-submenu > .dropdown-menu {
-	margin-top: -5px;
-}
-
-.dropdown-menu > li > a:focus,
-.dropdown-submenu:hover > a,
-.dropdown-submenu:focus > a {
-   text-decoration: none;
-   color: @dropdown-link-hover-color;
-   #gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
-}
-
-
-.navbar {
-	border-radius: 0;
-	margin-bottom: 0;
-}
-
-.menu-primary {
 
 	.dropdown-menu {
-		min-width: 180px;
-	}
+		margin-left: -1px;
+		.font-size(14px);
 
-	> li {
-		border-right: 1px solid #e8e8e8;
-
-		&:first-child {
-			border-left: 1px solid #e8e8e8;
+		// Links within the dropdown menu
+		> li > a {
+			padding: 8px 20px;
 		}
 
-		&.open > a {
-			background-color: #f8f8f8;
+		.nav-menu-divider {
+			.ft-nav-divider(@dropdown-divider-bg);
+		}
+	}
+
+	.dropdown-submenu > .dropdown-menu {
+		margin-top: -5px;
+	}
+
+	.dropdown-menu > li > a:focus,
+	.dropdown-submenu:hover > a,
+	.dropdown-submenu:focus > a {
+		text-decoration: none;
+		color: @dropdown-link-hover-color;
+		#gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
+	}
+
+
+	.navbar {
+		border-radius: 0;
+		margin-bottom: 0;
+	}
+
+	.menu-primary {
+
+		.dropdown-menu {
+			min-width: 180px;
 		}
 
-		&.current-menu-parent > a,
-		&.current-menu-item > a,
-		&.open > a {
-			color: @navbar-default-link-hover-color;
+		> li {
+			border-right: 1px solid #e8e8e8;
+
+			&:first-child {
+				border-left: 1px solid #e8e8e8;
+			}
+
+			&.open > a {
+				background-color: #f8f8f8;
+			}
+
+			&.current-menu-parent > a,
+			&.current-menu-item > a,
+			&.open > a {
+				color: @navbar-default-link-hover-color;
+			}
+
 		}
-
 	}
-}
 
-// Sub menus
-// ---------------------------
-.dropdown-submenu {
-	position: relative;
-}
-// Default dropdowns
-.dropdown-submenu > .dropdown-menu {
-	top: 0;
-	left: 100%;
-	margin-top: -6px;
-	margin-left: -1px;
-	border-top-left-radius: 0; // Nuke the closest corner as appropriate
-}
-.dropdown-submenu:hover > .dropdown-menu {
-	display: block;
-}
-
-// Dropups
-.dropup .dropdown-submenu > .dropdown-menu {
-	top: auto;
-	bottom: 0;
-	margin-top: 0;
-	margin-bottom: -2px;
-	border-bottom-left-radius: 0; // Nuke the closest corner as appropriate
-}
-
-// Caret to indicate there is a submenu
-.dropdown-submenu > a:after {
-	display: block;
-	content: " ";
-	float: right;
-	width: 0;
-	height: 0;
-	border-color: transparent;
-	border-style: solid;
-	border-width: 5px 0 5px 5px;
-	border-left-color: darken(@dropdown-bg, 20%);
-	margin-top: 5px;
-	margin-right: -10px;
-}
-
-.dropdown-submenu:hover > a:after {
-	border-left-color: @dropdown-link-hover-color;
-}
-
-// Left aligned submenus
-.dropdown-submenu.pull-left {
-	// Undo the float
-	// Yes, this is awkward since .pull-left adds a float, but it sticks to our conventions elsewhere.
-	float: none;
-
-	// Positioning the submenu
-	> .dropdown-menu {
-		left: -100%;
-		margin-left: 10px;
-		border-top-right-radius: 0; // Remove the rounded corner here
-	}
-}
-
-nav > .menu {
-	//TODO: create mixin where social icon size can be set with one value
-	> li[class^="icon-"] {
-
-		line-height: 36px;
+	// Sub menus
+	// ---------------------------
+	.dropdown-submenu {
 		position: relative;
-		.font-size(23);
-		color: #fff;
-		.square(36px);
-		display: inline-block;
-		border-radius: 18px;
-		background: #424242;
-		text-align: center;
-		vertical-align: middle;
+	}
+	// Default dropdowns
+	.dropdown-submenu > .dropdown-menu {
+		top: 0;
+		left: 100%;
+		margin-top: -6px;
+		margin-left: -1px;
+		border-top-left-radius: 0; // Nuke the closest corner as appropriate
+	}
+	.dropdown-submenu:hover > .dropdown-menu {
+		display: block;
+	}
 
-		> a {
-			position: absolute;
-			left: 0;
-			.text-hide;
-			.square(36px);
+	// Dropups
+	.dropup .dropdown-submenu > .dropdown-menu {
+		top: auto;
+		bottom: 0;
+		margin-top: 0;
+		margin-bottom: -2px;
+		border-bottom-left-radius: 0; // Nuke the closest corner as appropriate
+	}
+
+	// Caret to indicate there is a submenu
+	.dropdown-submenu > a:after {
+		display: block;
+		content: " ";
+		float: right;
+		width: 0;
+		height: 0;
+		border-color: transparent;
+		border-style: solid;
+		border-width: 5px 0 5px 5px;
+		border-left-color: darken(@dropdown-bg, 20%);
+		margin-top: 5px;
+		margin-right: -10px;
+	}
+
+	.dropdown-submenu:hover > a:after {
+		border-left-color: @dropdown-link-hover-color;
+	}
+
+	// Left aligned submenus
+	.dropdown-submenu.pull-left {
+		// Undo the float
+		// Yes, this is awkward since .pull-left adds a float, but it sticks to our conventions elsewhere.
+		float: none;
+
+		// Positioning the submenu
+		> .dropdown-menu {
+			left: -100%;
+			margin-left: 10px;
+			border-top-right-radius: 0; // Remove the rounded corner here
 		}
 	}
+
+	nav > .menu {
+		//TODO: create mixin where social icon size can be set with one value
+		> li[class^="icon-"] {
+
+			line-height: 36px;
+			position: relative;
+			.font-size(23);
+			color: #fff;
+			.square(36px);
+			display: inline-block;
+			border-radius: 18px;
+			background: #424242;
+			text-align: center;
+			vertical-align: middle;
+
+			> a {
+				position: absolute;
+				left: 0;
+				.text-hide;
+				.square(36px);
+			}
+		}
+	}
+}
+
+.menu {
+	&:extend(.nav, .navbar-nav);
 }
