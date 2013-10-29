@@ -48,7 +48,7 @@ function fortytwo_do_nav( $nav_output, $nav, $args ) {
 			<div class="wrap">
 				<div class="inner-wrap">
 					<div class="nav-primary-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-primary-collapse">
+						<button type="button" class="nav-toggle" data-toggle="collapse" data-target=".nav-primary-collapse">
 							<span class="sr-only">Toggle Navigation</span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>

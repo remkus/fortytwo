@@ -5,7 +5,8 @@
 // --------------------------------------------------
 .nav-primary {
 
-	&:extend(.navbar, .navbar-default);
+	&:extend(.navbar);
+	&:extend(.navbar-default all);
 
 	.navbar-brand {
 		.hide;
@@ -180,6 +181,10 @@
 	}
 }
 
+.nav-toggle {
+	&:extend(.navbar-toggle all);
+}
+
 .menu {
-	&:extend(.nav, .navbar-nav);
+	&:extend(.nav all, .navbar-nav all);
 }
