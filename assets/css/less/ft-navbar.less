@@ -3,24 +3,52 @@
 //
 // Navbar
 // --------------------------------------------------
+
+.nav-collapse {
+	&:extend(.navbar-collapse all);
+}
+
+.nav-title {
+	&:extend(.navbar-brand all);
+}
+
+.nav-toggle {
+	&:extend(.navbar-toggle all);
+}
+
 .nav-primary {
 
 	&:extend(.navbar);
-	&:extend(.navbar-default all);
+	&:extend(.navbar-default);
 
-	.navbar-brand {
+	.nav-title {
+		&:extend(.navbar-default .navbar-brand all);
 		.hide;
+	}
+
+	.nav-text {
+		&:extend(.navbar-default .navbar-text all);
+	}
+
+	.menu {
+		&:extend(.navbar-default .navbar-nav all);
+	}
+
+	.nav-toggle {
+		&:extend(.navbar-default .navbar-toggle all);
+	}
+
+	.nav-collapse {
+		&:extend(.navbar-default .navbar-collapse all);
 	}
 
 	// Navbar fixed to the top when the .affix-top class becomes .affix which is controlled by fortytwo.js
 	&.affix {
-		.navbar-fixed-top;
-		.navbar-inverse;
-		border-width: 1px 0;
 
-		.navbar-brand {
-			.show;
+		& + * {
+			margin-top: (@navbar-height + 2);
 		}
+
 		// This is used to add extra space from the top if the .wpadminbar is visible
 		.admin-bar & {
 			top: 28px;
@@ -30,16 +58,99 @@
 			top: 32px;
 		}
 
-		.menu-primary > li {
-			border-color: #111;
+		&:extend(.navbar-fixed-top);
+		&:extend(.navbar-inverse);
+
+		.nav-title {
+			&:extend(.navbar-inverse .navbar-brand all);
 		}
 
-		& + * {
-			margin-top: (@navbar-height + 2);
+		.nav-text {
+			&:extend(.navbar-inverse .navbar-text all);
+			.show;
 		}
+
+		.menu {
+			&:extend(.navbar-inverse .navbar-nav all);
+		}
+
+		.nav-toggle {
+			&:extend(.navbar-inverse .navbar-toggle all);
+		}
+
+		.nav-collapse {
+			&:extend(.navbar-inverse .navbar-collapse all);
+		}
+
 	}
+/*
 
-	.dropdown-menu {
+	  // Dropdown menu items and carets
+	  .navbar-nav {
+	    // Caret should match text color on hover
+	    > .dropdown > a:hover .caret,
+	    > .dropdown > a:focus .caret {
+	      border-top-color: @navbar-default-link-hover-color;
+	      border-bottom-color: @navbar-default-link-hover-color;
+	    }
+
+	    // Remove background color from open dropdown
+	    > .open > a {
+	      &,
+	      &:hover,
+	      &:focus {
+	        background-color: @navbar-default-link-active-bg;
+	        color: @navbar-default-link-active-color;
+	        .caret {
+	          border-top-color: @navbar-default-link-active-color;
+	          border-bottom-color: @navbar-default-link-active-color;
+	        }
+	      }
+	    }
+	    > .dropdown > a .caret {
+	      border-top-color: @navbar-default-link-color;
+	      border-bottom-color: @navbar-default-link-color;
+	    }
+
+
+	    @media (max-width: @screen-xs-max) {
+	      // Dropdowns get custom display when collapsed
+	      .open .dropdown-menu {
+	        > li > a {
+	          color: @navbar-default-link-color;
+	          &:hover,
+	          &:focus {
+	            color: @navbar-default-link-hover-color;
+	            background-color: @navbar-default-link-hover-bg;
+	          }
+	        }
+	        > .active > a {
+	          &,
+	          &:hover,
+	          &:focus {
+	            color: @navbar-default-link-active-color;
+	            background-color: @navbar-default-link-active-bg;
+	          }
+	        }
+	        > .disabled > a {
+	          &,
+	          &:hover,
+	          &:focus {
+	            color: @navbar-default-link-disabled-color;
+	            background-color: @navbar-default-link-disabled-bg;
+	          }
+	        }
+	      }
+	    }
+	  }
+
+*/
+
+
+
+
+
+/*	.dropdown-menu {
 		margin-left: -1px;
 		.font-size(14px);
 
@@ -95,7 +206,37 @@
 			}
 
 		}
-	}
+	}*/
+
+
+
+/*	nav > .menu {
+		//TODO: create mixin where social icon size can be set with one value
+		> li[class^="icon-"] {
+
+			line-height: 36px;
+			position: relative;
+			.font-size(23);
+			color: #fff;
+			.square(36px);
+			display: inline-block;
+			border-radius: 18px;
+			background: #424242;
+			text-align: center;
+			vertical-align: middle;
+
+			> a {
+				position: absolute;
+				left: 0;
+				.text-hide;
+				.square(36px);
+			}
+		}
+	}*/
+}
+
+.menu {
+	&:extend(.nav all, .navbar-nav all);
 
 	// Sub menus
 	// ---------------------------
@@ -155,36 +296,4 @@
 			border-top-right-radius: 0; // Remove the rounded corner here
 		}
 	}
-
-	nav > .menu {
-		//TODO: create mixin where social icon size can be set with one value
-		> li[class^="icon-"] {
-
-			line-height: 36px;
-			position: relative;
-			.font-size(23);
-			color: #fff;
-			.square(36px);
-			display: inline-block;
-			border-radius: 18px;
-			background: #424242;
-			text-align: center;
-			vertical-align: middle;
-
-			> a {
-				position: absolute;
-				left: 0;
-				.text-hide;
-				.square(36px);
-			}
-		}
-	}
-}
-
-.nav-toggle {
-	&:extend(.navbar-toggle all);
-}
-
-.menu {
-	&:extend(.nav all, .navbar-nav all);
 }

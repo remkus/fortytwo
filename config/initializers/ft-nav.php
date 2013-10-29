@@ -54,7 +54,7 @@ function fortytwo_do_nav( $nav_output, $nav, $args ) {
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="{$nav_brand_url}">{$nav_brand}</a>
+						<a class="nav-title" href="{$nav_brand_url}">{$nav_brand}</a>
 					</div>
 					<div class="collapse navbar-collapse nav-primary-collapse">
 					  {$nav}
