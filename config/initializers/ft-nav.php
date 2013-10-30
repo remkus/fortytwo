@@ -88,7 +88,7 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 		// depth dependent classes
 		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
 		$classes = array(
-			'dropdown-menu'
+			'sub-menu'
 		);
 		$class_names = implode( ' ', $classes );
 

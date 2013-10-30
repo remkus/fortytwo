@@ -210,29 +210,7 @@
 
 
 
-/*	nav > .menu {
-		//TODO: create mixin where social icon size can be set with one value
-		> li[class^="icon-"] {
 
-			line-height: 36px;
-			position: relative;
-			.font-size(23);
-			color: #fff;
-			.square(36px);
-			display: inline-block;
-			border-radius: 18px;
-			background: #424242;
-			text-align: center;
-			vertical-align: middle;
-
-			> a {
-				position: absolute;
-				left: 0;
-				.text-hide;
-				.square(36px);
-			}
-		}
-	}*/
 }
 
 .menu {
@@ -244,19 +222,19 @@
 		position: relative;
 	}
 	// Default dropdowns
-	.dropdown-submenu > .dropdown-menu {
+	.dropdown-submenu > .sub-menu {
 		top: 0;
 		left: 100%;
 		margin-top: -6px;
 		margin-left: -1px;
 		border-top-left-radius: 0; // Nuke the closest corner as appropriate
 	}
-	.dropdown-submenu:hover > .dropdown-menu {
+	.dropdown-submenu:hover > .sub-menu {
 		display: block;
 	}
 
 	// Dropups
-	.dropup .dropdown-submenu > .dropdown-menu {
+	.dropup .dropdown-submenu > .sub-menu {
 		top: auto;
 		bottom: 0;
 		margin-top: 0;
@@ -290,10 +268,49 @@
 		float: none;
 
 		// Positioning the submenu
-		> .dropdown-menu {
+		> .sub-menu {
 			left: -100%;
 			margin-left: 10px;
 			border-top-right-radius: 0; // Remove the rounded corner here
 		}
+	}
+
+	> li[class^="icon-"] {
+
+		line-height: 36px;
+		position: relative;
+		.font-size(23);
+		color: #fff;
+		.square(36px);
+		display: inline-block;
+		border-radius: 18px;
+		background: #424242;
+		text-align: center;
+		vertical-align: middle;
+
+		> a {
+			position: absolute;
+			left: 0;
+			.text-hide;
+			.square(36px);
+		}
+	}
+}
+
+.caret {
+	&:extend(.caret);
+}
+
+.sub-menu {
+	&:extend(.dropdown-menu all);
+}
+
+.open {
+	> .sub-menu {
+		display: block;
+	}
+
+	> a {
+		outline: 0;
 	}
 }
