@@ -1551,12 +1551,12 @@ textarea.input-group-sm > .search-form .input-group-btn > .btn {
   position: relative;
   z-index: 1000;
   min-height: 46px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   border: 1px solid transparent;
 }
 @media (min-width: 768px) {
   .nav-primary {
-    border-radius: 2px;
+    border-radius: 0;
   }
 }
 .nav-collapse {
@@ -3664,64 +3664,42 @@ img.alignright {
 		}
 	}
 
-	.dropdown-submenu > .dropdown-menu {
-		margin-top: -5px;
-	}
 
-	.dropdown-menu > li > a:focus,
-	.dropdown-submenu:hover > a,
-	.dropdown-submenu:focus > a {
-		text-decoration: none;
-		color: @dropdown-link-hover-color;
-		#gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
-	}
-
-
-	.navbar {
-		border-radius: 0;
-		margin-bottom: 0;
-	}
-
-	.menu-primary {
-
-		.dropdown-menu {
-			min-width: 180px;
-		}
-
-		> li {
-			border-right: 1px solid #e8e8e8;
-
-			&:first-child {
-				border-left: 1px solid #e8e8e8;
-			}
-
-			&.open > a {
-				background-color: #f8f8f8;
-			}
-
-			&.current-menu-parent > a,
-			&.current-menu-item > a,
-			&.open > a {
-				color: @navbar-default-link-hover-color;
-			}
-
-		}
-	}*/
+*/
 }
 .nav-primary .nav-title {
   display: none !important;
+}
+.nav-primary .menu > li {
+  border-right: 1px solid #eeeeee;
+}
+.nav-primary .menu > li:first-child {
+  border-left: 1px solid #eeeeee;
+}
+.nav-primary .sub-menu {
+  border-radius: 0;
+}
+.nav-primary .sub-menu > li > a {
+  line-height: 30px;
 }
 .nav-primary.affix + * {
   margin-top: 48px;
 }
 .admin-bar .nav-primary.affix {
   top: 28px;
+  border-top: 1px solid #080808;
 }
 .admin-bar.mp6 .nav-primary.affix {
   top: 32px;
 }
 .nav-primary.affix .nav-text {
   display: block !important;
+}
+.nav-primary.affix .menu > li {
+  border-right: 1px solid #080808;
+}
+.nav-primary.affix .menu > li:first-child {
+  border-left: 1px solid #080808;
 }
 .menu .dropdown-submenu {
   position: relative;
@@ -3744,17 +3722,12 @@ img.alignright {
   border-bottom-left-radius: 0;
 }
 .menu .dropdown-submenu > a:after {
-  display: block;
-  content: " ";
-  float: right;
+  display: inline-block;
+  content: "";
   width: 0;
   height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
+  border: 4px solid transparent;
+  border-left-color: #777777;
 }
 .menu .dropdown-submenu:hover > a:after {
   border-left-color: #ffffff;

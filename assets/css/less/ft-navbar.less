@@ -32,6 +32,22 @@
 
 	.menu {
 		&:extend(.navbar-default .navbar-nav all);
+
+		> li {
+			border-right: 1px solid @navbar-default-border;
+
+			&:first-child {
+				border-left: 1px solid @navbar-default-border;
+			}
+		}
+	}
+
+	.sub-menu {
+		border-radius: @navbar-border-radius;
+
+		> li > a {
+			line-height: @navbar-submenu-height;
+		}
 	}
 
 	.nav-toggle {
@@ -52,6 +68,7 @@
 		// This is used to add extra space from the top if the .wpadminbar is visible
 		.admin-bar & {
 			top: 28px;
+			border-top: 1px solid @navbar-inverse-border;
 		}
 
 		.admin-bar.mp6 & {
@@ -72,6 +89,14 @@
 
 		.menu {
 			&:extend(.navbar-inverse .navbar-nav all);
+
+			> li {
+				border-right: 1px solid @navbar-inverse-border;
+
+				&:first-child {
+					border-left: 1px solid @navbar-inverse-border;
+				}
+			}
 		}
 
 		.nav-toggle {
@@ -164,49 +189,8 @@
 		}
 	}
 
-	.dropdown-submenu > .dropdown-menu {
-		margin-top: -5px;
-	}
 
-	.dropdown-menu > li > a:focus,
-	.dropdown-submenu:hover > a,
-	.dropdown-submenu:focus > a {
-		text-decoration: none;
-		color: @dropdown-link-hover-color;
-		#gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
-	}
-
-
-	.navbar {
-		border-radius: 0;
-		margin-bottom: 0;
-	}
-
-	.menu-primary {
-
-		.dropdown-menu {
-			min-width: 180px;
-		}
-
-		> li {
-			border-right: 1px solid #e8e8e8;
-
-			&:first-child {
-				border-left: 1px solid #e8e8e8;
-			}
-
-			&.open > a {
-				background-color: #f8f8f8;
-			}
-
-			&.current-menu-parent > a,
-			&.current-menu-item > a,
-			&.open > a {
-				color: @navbar-default-link-hover-color;
-			}
-
-		}
-	}*/
+*/
 
 
 
@@ -244,17 +228,14 @@
 
 	// Caret to indicate there is a submenu
 	.dropdown-submenu > a:after {
-		display: block;
-		content: " ";
-		float: right;
+		content: "";
 		width: 0;
 		height: 0;
-		border-color: transparent;
-		border-style: solid;
-		border-width: 5px 0 5px 5px;
-		border-left-color: darken(@dropdown-bg, 20%);
-		margin-top: 5px;
-		margin-right: -10px;
+		border: @caret-width-base solid transparent;
+		border-left-color: @navbar-default-link-color;
+		position: absolute;
+		right: 12px; // This value is the links padding less ( @caret-width-base * 2 )
+		top: 14px; // This value is the links (( line-height + (pad-top-and-bottom) ) - ( @caret-width-base * 2 )) / 2
 	}
 
 	.dropdown-submenu:hover > a:after {
