@@ -82,18 +82,18 @@ function fortytwo_read_more_link( $output ) {
 
 }
 
-add_filter( 'post_class', 'fortytwo_media_post_class' );
+add_filter( 'post_class', 'fortytwo_post_class' );
 /**
- * Adds .media to article
+ * Adds .fortytwo-post to article
  *
  * @since 1.0
  * @todo  This code needs better documentation
  *
  */
-function fortytwo_media_post_class( $classes ) {
+function fortytwo_post_class( $classes ) {
 
-    //* Add "media" to the post class array
-    $classes[] = 'media';
+    //* Add "fortytwo-post" to the post class array
+    $classes[] = 'fortytwo-post';
     return $classes;
 
 }

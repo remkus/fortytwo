@@ -1,7 +1,7 @@
-// Custom file for Page Titles
+// Less file for the FortyTwo Site Subheader
 
 //
-// Slider
+// Subheader
 // --------------------------------------------------
 
 .site-subheader {
@@ -9,34 +9,33 @@
 	padding-top: 40px;
 	padding-bottom: 40px;
 
-	background: #f9f9f9;
+	background-color: #f9f9f9;
 	border-bottom: 1px solid #e8e8e8;
 
-	.entry-title {
+	.make-column(~".subheader-area" 12 0 0);
+
+	.subheader {
 		.font-size(28);
 		font-weight: 300;
 		margin: 0;
 	}
-	.subheader-area {
-		.make-lg-column(6);
 
-		.breadcrumb {
-			margin: 0;
-			padding: 10px 0 0;
-			color: @breadcrumb-active-color;
+	.breadcrumb {
+		margin: 0;
+		padding: 10px 0 0;
+		color: @breadcrumb-active-color;
 
-			> a {
-				display: inline-block;
-				&:after {
-					padding: 0 5px;
-					color: @breadcrumb-color;
-				}
+		> a {
+			display: inline-block;
+			&:after {
+				padding: 0 5px;
+				color: @breadcrumb-color;
 			}
 		}
 	}
 
-	.subheader-widget-area {
-		.make-lg-column(6);
-	}
+}
 
+article.type-page > .entry-header {
+	.sr-only;
 }

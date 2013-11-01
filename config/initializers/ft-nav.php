@@ -13,8 +13,9 @@
  */
 
 // Modify the display of the front-end menu
-remove_action( 'genesis_after_header', 'genesis_do_nav' );
-add_action( 'genesis_after_header', 'fortytwo_do_nav' );
+//remove_action( 'genesis_after_header', 'genesis_do_nav' );
+//add_action( 'genesis_after_header', 'fortytwo_do_nav' );
+add_filter( 'genesis_do_nav', 'fortytwo_do_nav', 10, 3 );
 
 /**
  * [fortytwo_do_nav description]
@@ -22,57 +23,48 @@ add_action( 'genesis_after_header', 'fortytwo_do_nav' );
  * @todo  This code needs better documentation
  *
  */
-function fortytwo_do_nav() {
+function fortytwo_do_nav( $nav_output, $nav, $args ) {
 
-	/** Do nothing if menu not supported */
-	if ( !genesis_nav_menu_supported( 'primary' ) )
-		return;
+	// Setting our $defaults which is enabling our custom walker to be used
+	$defaults = array(
+		'walker' => new FortyTwo_Walker_Nav_Menu()
+	);
 
-	/** If menu is assigned to theme location, output */
-	if ( has_nav_menu( 'primary' ) ) {
+	// We merge $args with our $defaults
+	$args = wp_parse_args( $args, $defaults );
 
-		$nav_brand =  esc_attr( get_bloginfo('name') );
-		$nav_brand_url = trailingslashit( home_url() );
+	// Load the navigation arguments
+	$nav = wp_nav_menu( $args );
 
-		$args = array(
-			'theme_location' => 'primary',
-			'container' => '',
-			'menu_class' => 'menu genesis-nav-menu menu-primary nav navbar-nav',
-			'echo' => 0,
-			'walker' => new FortyTwo_Walker_Nav_Menu()
-		);
-		// load the navigation arguments
-		$nav = wp_nav_menu( $args );
+	// Get the Genesis attributes for navigation
+	$nav_attr = genesis_attr( 'nav-primary' );
 
-		// Get the Genesis attributes for navigation
-		$nav_attr = genesis_attr( 'nav-primary' );
+	// Get the blog name and url to be used for our .nav-brand
+	$nav_brand =  esc_attr( get_bloginfo('name') );
+	$nav_brand_url = trailingslashit( home_url() );
 
-		$nav_output = <<<EOD
-			<nav class="nav-primary" {$nav_attr}>
-				<div class="wrap">
-					<div class="inner-wrap">
-						<div class="nav-primary-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-primary-collapse">
-								<span class="sr-only">Toggle Navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="{$nav_brand_url}">{$nav_brand}</a>
-						</div>
-						<div class="collapse navbar-collapse nav-primary-collapse">
-						  {$nav}
-						</div>
+	$nav_output = <<<EOD
+		<nav class="nav-primary" {$nav_attr}>
+			<div class="wrap">
+				<div class="inner-wrap">
+					<div class="nav-primary-header">
+						<button type="button" class="nav-toggle" data-toggle="collapse" data-target=".nav-primary-collapse">
+							<span class="sr-only">Toggle Navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="nav-title" href="{$nav_brand_url}">{$nav_brand}</a>
+					</div>
+					<div class="collapse nav-collapse nav-primary-collapse">
+					  {$nav}
 					</div>
 				</div>
-			</nav>
+			</div>
+		</nav>
 EOD;
 
-		// re-applying the default filters
-		echo apply_filters( 'genesis_do_nav', $nav_output, $nav, $args );
-
-	}
-
+	return $nav_output;
 }
 
 /**
@@ -96,7 +88,7 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 		// depth dependent classes
 		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
 		$classes = array(
-			'dropdown-menu'
+			'sub-menu'
 		);
 		$class_names = implode( ' ', $classes );
 

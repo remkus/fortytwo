@@ -1,8 +1,9 @@
 // Importing orginal Bootstrap less files
 // ------------------------------------
 
+
 // Core mixins
-@import "mixins.less";
+@import (reference) "mixins.less";
 
 // Reset
 @import "normalize.less";
@@ -12,40 +13,45 @@
 @import "scaffolding.less";
 @import "type.less";
 @import "code.less";
-@import "grid.less";
-@import "tables.less";
+@import (reference) "grid.less";
+@import (reference) "tables.less";
 @import "forms.less";
 @import "buttons.less";
 
 // Components
-@import "component-animations.less";
-@import "glyphicons.less";
-@import "dropdowns.less";
-@import "button-groups.less";
-@import "input-groups.less";
-@import "navs.less";
-@import "navbar.less";
-@import "breadcrumbs.less";
-@import "pagination.less";
-@import "pager.less";
-@import "labels.less";
-@import "badges.less";
-@import "jumbotron.less";
-@import "thumbnails.less";
-@import "alerts.less";
-@import "progress-bars.less";
-@import "media.less";
-@import "list-group.less";
-@import "panels.less";
-@import "wells.less";
-@import "close.less";
+@import (reference) "component-animations.less";
+//@import "glyphicons.less";
+/* Dropdown starts here */
+@import (reference) "dropdowns.less";
+/* Button Groups starts here */
+@import (reference) "button-groups.less";
+/* Input Groups starts here */
+@import (reference) "input-groups.less";
+/* Navs starts here */
+@import (reference) "navs.less";
+/* Navbar starts here */
+@import (reference) "navbar.less";
+@import (reference) "breadcrumbs.less";
+@import (reference) "pagination.less";
+@import (reference) "pager.less";
+@import (reference) "labels.less";
+@import (reference) "badges.less";
+@import (reference) "jumbotron.less";
+@import (reference) "thumbnails.less";
+@import (reference) "alerts.less";
+@import (reference) "progress-bars.less";
+@import (reference) "media.less";
+@import (reference) "list-group.less";
+@import (reference) "panels.less";
+@import (reference) "wells.less";
+@import (reference) "close.less";
 
 // Components w/ JavaScript
-@import "modals.less";
-@import "tooltip.less";
-@import "popovers.less";
-@import "carousel.less";
+@import (reference) "modals.less";
+@import (reference) "tooltip.less";
+@import (reference) "popovers.less";
+@import (reference) "carousel.less";
 
 // Utility classes
-@import "utilities.less";
-@import "responsive-utilities.less";
+@import (reference) "utilities.less";
+@import (reference) "responsive-utilities.less";

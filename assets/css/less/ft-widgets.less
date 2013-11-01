@@ -4,7 +4,25 @@
 // FortyTwo Tabbed Widget
 // --------------------------------------------------
 
+.widget-container[data-widget-count='1'] {
+	.make-column(~".widget" 12 0 0);
+}
+
+.widget-container[data-widget-count='2'] {
+	.make-column(~".widget" 6 0 0);
+}
+
+.widget-container[data-widget-count='3'] {
+	.make-column(~".widget" 4 0 0);
+}
+
+.widget-container[data-widget-count='4'] {
+	.make-column(~".widget" 3 0 0);
+}
+
 .widget {
+
+	word-wrap: break-word;
 
 	ul,
 	ol {
@@ -17,6 +35,13 @@
 		border-bottom: 1px dashed #fff;
 		border-bottom: 1px dashed rgba(255, 255, 255, .5);
 	}
+
+	.badge {
+		.badge; //calling the Bootstrap .badge defaults before applying own rules.
+		float: right;
+		border-radius: 0.25em;
+	}
+
 }
 
 .widget {
@@ -45,56 +70,55 @@
 		position: relative;
 	}
 
-	.btn-group {
+	.tab-select:extend(.btn-group all) {
 		margin-left: 15px;
-		position: absolute;
 		top: -4px;
 
-		.btn {
-			padding: 0;
+		.tab-select-btn {
+			> a:hover {
+				text-decoration: none;
+			}
 
-			a {
-				text-transform: capitalize;
-				display: inline-block;
-				padding: @padding-small-vertical @padding-small-horizontal;
-				color: @btn-default-color;
+			&.active {
+				.box-shadow(none);
+			}
+		}
+	}
 
-				&:hover {
-					text-decoration: none;
+	.tab-pane {
+		> ul {
+			padding-left: 0;
+
+			> li {
+				.list-group-item;
+
+				padding: 20px 0;
+				border: none;
+				.clearfix();
+
+				&:first-child {
+					padding-top: 0;
+				}
+
+				+ li {
+					border-top: 1px dashed #e8e8e8;
+				}
+
+				h4 {
+					.font-size(20);
+				}
+
+				> .pull-left img {
+					margin-right: 10px;
+				}
+
+				> .pull-right img {
+					margin-left: 10px;
 				}
 			}
 		}
-
-		.btn.active {
-			.box-shadow(none);
-		}
 	}
 
-	.list-group-item {
-		padding: 20px 0;
-		border: none;
-		.clearfix();
-
-		&:first-child {
-			padding-top: 0;
-		}
-
-		+ .list-group-item {
-			border-top: 1px dashed #e8e8e8;
-		}
-
-		h4 {
-			.font-size(20);
-		}
-
-		> .pull-left img {
-			margin-right: 10px;
-		}
-
-		> .pull-right img {
-			margin-left: 10px;
-		}
-	}
 
 	.wp-tag-cloud > li {
 		display: inline-block;
@@ -105,6 +129,12 @@
 	.tab-pane-comments {
 		.avatar {
 			border-radius: 30px;
+		}
+	}
+
+	.sidebar & {
+		.tab-select-btn {
+			.btn-sm();
 		}
 	}
 }
@@ -237,10 +267,6 @@
 				text-align: left;
 			}
 
-			.badge {
-				float: right;
-				border-radius: 0.25em;
-			}
 		}
 
 	}

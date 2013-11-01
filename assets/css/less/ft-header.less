@@ -4,16 +4,14 @@
 
 .site-header {
 
+	box-shadow: inset 0 1px 0 #e8e8e8;
 	padding-top: 40px;
 	padding-bottom: 40px;
 
-	.title-area {
-		.make-lg-column(6);
-	}
+	.make-column(~".title-area" 6 0 0);
+	.make-column(~".header-widget-area" 6 0 0);
 
 	.header-widget-area {
-		.make-lg-column(6);
-
 		> .widget {
 			line-height: 55px;
 			float: right;

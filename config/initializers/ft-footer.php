@@ -18,7 +18,7 @@ function fortytwo_insert_footer_widget() {
 	if ( ! is_active_sidebar( 'footer-columns' ) )
 		return;
 
-	fortytwo_add_widget_count_class( 'footer-columns' );
+	$data_widget_count = fortytwo_add_data_widget_attr( 'footer-columns' );
 
 	genesis_markup( array(
 		'html5'   => '<div %s>',
@@ -30,7 +30,11 @@ function fortytwo_insert_footer_widget() {
 
 	echo '<div class="inner-wrap">';
 
+	echo '<div class="widget-container" data-widget-count="' .$data_widget_count. '">';
+
 	dynamic_sidebar( 'footer-columns' );
+
+	echo '</div>';
 
 	echo '</div>';
 

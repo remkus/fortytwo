@@ -11,7 +11,7 @@ if ( count( $tabs ) > 0 ) {
 	$tab_links = '';
 
 	// Setup the various tabs.
-	$tab_links .= '<ul class="btn-group">' . "\n";
+	$tab_links .= '<ul class="tab-select">' . "\n";
 	$count = 0;
 	foreach ( $tabs as $tab ) {
 		$count++;
@@ -24,9 +24,7 @@ if ( count( $tabs ) > 0 ) {
 			$class = ' last';
 		}
 
-		$tab_links .= '<li class="btn btn-default tab-heading-' . esc_attr( $tab ) . $class . '"><a href="#tab-pane-' . esc_attr( $tab ) . '" data-toggle="tab">' . __( $tab, 'fortytwo' ) . '</a></li>' . "\n";
-//		$tab_links .= '<button type="button" class="btn btn-default tab-heading-' . esc_attr( $tab ) . $class . '" data-target="#tab-pane-' .
-//			esc_attr( $tab ) . '" data-toggle="tab">' . __( $tab, 'fortytwo' ) . '</button>' . "\n";
+		$tab_links .= '<button type="button" class="tab-select-btn btn tab-heading-' . esc_attr( $tab ) . $class . '" data-target="#tab-pane-' . esc_attr( $tab ) . '" data-toggle="tab">' . __( $tab, 'fortytwo' ) . '</button>' . "\n";
 
 		$tab_content .= '<div id="tab-pane-' . esc_attr( $tab ) . '" class="tab-pane tab-pane-' . esc_attr( $tab ) . $class . '">' . "\n";
 
