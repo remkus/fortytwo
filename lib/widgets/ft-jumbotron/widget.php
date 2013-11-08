@@ -54,7 +54,14 @@ class FT_Jumbotron extends WP_Widget {
 		//add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_scripts' ) );
 
 	} // end constructor
-
+	
+	/**
+	 * Returns an absolute URL to a file releative to the widget's folder
+	 * 
+	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @return string
+	 */
 	private function url( $file ) {
 		return FORTYTWO_WIDGETS_URL.'/ft-jumbotron'.$file;
 	}

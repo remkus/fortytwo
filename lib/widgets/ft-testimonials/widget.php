@@ -62,6 +62,13 @@ class FT_Testimonials extends WP_Widget {
 
 	} // end constructor
 
+	/**
+	 * Returns an absolute URL to a file releative to the widget's folder
+	 * 
+	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @return string
+	 */
 	private function url( $file ) {
 		return FORTYTWO_WIDGETS_URL.'/ft-testimonials'.$file;
 	}

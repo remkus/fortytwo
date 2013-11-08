@@ -84,7 +84,14 @@ class FT_Responsive_Slider extends WP_Widget {
 		//TODO: Should this be called once / widget?
 		add_image_size( 'slider', ( int ) $this->get_value( 'slideshow_width' ), ( int ) $this->get_value( 'slideshow_height' ), TRUE );
 	}
-
+	
+	/**
+	 * Returns an absolute URL to a file releative to the widget's folder
+	 * 
+	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @return string
+	 */
 	private function url( $file ) {
 		return FORTYTWO_WIDGETS_URL.'/ft-responsive-slider'.$file;
 	}

@@ -61,6 +61,13 @@ class FT_Tabbed_Content extends WP_Widget {
 
 	} // End Constructor
 
+	/**
+	 * Returns an absolute URL to a file releative to the widget's folder
+	 * 
+	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @return string
+	 */
 	private function url( $file ) {
 		return FORTYTWO_WIDGETS_URL . '/ft-tabs-widget' . $file;
 	}
