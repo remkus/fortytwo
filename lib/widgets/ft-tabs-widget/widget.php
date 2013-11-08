@@ -21,7 +21,6 @@
  * @package    FortyTwo
  * @subpackage Widgets
  * @since      0.1
- * @todo  This entire class code needs better documentation
  */
 
 
@@ -35,6 +34,14 @@ class FT_Tabbed_Content extends WP_Widget {
 
 	var $available_tabs;
 
+	/*--------------------------------------------------*/
+	/* Constructor
+	/*--------------------------------------------------*/
+
+	/**
+	 * Specifies the classname and description, instantiates the widget,
+	 * loads localization files, and includes necessary stylesheets and JavaScript.
+	 */
 	function __construct() {
 
 		/* Widget variable settings. */
@@ -73,14 +80,10 @@ class FT_Tabbed_Content extends WP_Widget {
 	}
 
 	/**
-	 * widget function.
+	 * Echo the widget content.
 	 *
-	 * @access public
-	 *
-	 * @param array $args
-	 * @param array $instance
-	 *
-	 * @return void
+	 * @param array   $args     Display arguments including before_title, after_title, before_widget, and after_widget.
+	 * @param array   $instance The settings for the particular instance of the widget
 	 */
 	function widget( $args, $instance ) {
 		$html = '';
@@ -102,14 +105,14 @@ class FT_Tabbed_Content extends WP_Widget {
 	} // End widget()
 
 	/**
-	 * update function.
+	 * Update a particular instance.
+	 * This function should check that $new_instance is set correctly.
+	 * The newly calculated value of $instance should be returned.
+	 * If "false" is returned, the instance won't be saved/updated.
 	 *
-	 * @access public
-	 *
-	 * @param array $new_instance
-	 * @param array $old_instance
-	 *
-	 * @return array $instance
+	 * @param array   $new_instance New settings for this instance as input by the user via form()
+	 * @param array   $old_instance Old settings for this instance
+	 * @return array Settings to save or bool false to cancel saving
 	 */
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
@@ -140,13 +143,9 @@ class FT_Tabbed_Content extends WP_Widget {
 	} // End update()
 
 	/**
-	 * form function.
+	 * Echo the settings update form.
 	 *
-	 * @access public
-	 *
-	 * @param array $instance
-	 *
-	 * @return void
+	 * @param array   $instance Current settings
 	 */
 	function form( $instance ) {
 
@@ -180,6 +179,10 @@ class FT_Tabbed_Content extends WP_Widget {
 
 	/**
 	 * Renders a tabs selection dropdown box
+	 *
+	 * @param array   $available_tabs An array of all the available tabs
+	 * @param array   $selected_tabs  An array of the tabs that are currently selected
+	 * @param int     $position       The position / order of the tab in the selected tabs
 	 */
 	private function render_tabs_dropdown( $available_tabs, $selected_tabs, $position ) {
 		echo "<p><select name='{$this->get_field_name( "tab_$position" )}' class='widefat' id='{$this->get_field_id( "tab_$position" )}'>";
@@ -191,15 +194,11 @@ class FT_Tabbed_Content extends WP_Widget {
 	}
 
 	/**
-	 * tab_content_latest function.
+	 * Renders the latest content tab
 	 *
-	 * @access public
-	 * @since  1.0.0
-	 *
-	 * @param int $limit
+	 * @param int $limit            The max number of content items to show
 	 * @param int $image_dimension
-	 *
-	 * @return void
+	 * @param string $image_alignment The image alignment CSS class.  One of (???|???|???)
 	 */
 	function tab_content_latest( $limit, $image_dimension, $image_alignment ) {
 		global $post;
@@ -223,16 +222,12 @@ class FT_Tabbed_Content extends WP_Widget {
 		return $html;
 	} // End tab_content_latest()
 
-	/**
-	 * tab_content_popular function.
+  /**
+	 * Renders the popular content tab
 	 *
-	 * @access public
-	 * @since  1.0.0
-	 *
-	 * @param int $limit
+	 * @param int $limit            The max number of content items to show
 	 * @param int $image_dimension
-	 *
-	 * @return void
+	 * @param string $image_alignment The image alignment CSS class.  One of (???|???|???)
 	 */
 	function tab_content_popular( $limit, $image_dimension, $image_alignment ) {
 		global $post;
@@ -256,16 +251,12 @@ class FT_Tabbed_Content extends WP_Widget {
 		return $html;
 	} // End tab_content_popular()
 
-	/**
-	 * tab_content_comments function.
+  /**
+	 * Renders the comments tab
 	 *
-	 * @access public
-	 * @since  1.0.0
-	 *
-	 * @param int $limit
+	 * @param int $limit            The max number of comment items to show
 	 * @param int $image_dimension
-	 *
-	 * @return void
+	 * @param string $image_alignment The image alignment CSS class.  One of (???|???|???)
 	 */
 	function tab_content_comments( $limit, $image_dimension, $image_alignment ) {
 		global $wpdb;
@@ -288,41 +279,19 @@ class FT_Tabbed_Content extends WP_Widget {
 	} // End tab_content_comments()
 
 	/**
-	 * tab_content_tags function.
-	 *
-	 * @access public
-	 * @since  1.0.0
-	 *
-	 * @param int $limit
-	 * @param int $image_dimension
-	 *
-	 * @return void
-	 */
-	function tab_content_tags( $limit, $image_dimension ) {
-		return wp_tag_cloud( array( 'echo' => false, 'smallest' => 12, 'largest' => 20, 'format' => 'list' ) );
-	} // End tab_content_tags()
-
-	/**
-	 * tab_content_default function.
-	 *
-	 * @access public
-	 * @since  1.0.0
-	 *
-	 * @param string $token (default: '')
-	 *
-	 * @return void
+	 * Return default content for the content tab
+	 * 
+	 * @return string 
 	 */
 	function tab_content_default( $token = '' ) {
 		// Silence is golden.
 	} // End tab_content_default()
 
 	/**
-	 * get_image function.
+	 * Returns an HTML fragment containing an <img> element for a post's image thumbnail
 	 *
-	 * @access public
-	 *
-	 * @param int    $dimension
-	 * @param object $post
+	 * @param int $image_dimension
+	 * @param object $post  The post whose image thumbnail is being fetched
 	 *
 	 * @return string $html
 	 */
