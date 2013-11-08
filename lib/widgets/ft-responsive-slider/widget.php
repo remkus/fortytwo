@@ -209,6 +209,31 @@ class FT_Responsive_Slider extends WP_Widget {
 		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
 	}
 
+	/**
+	 * Helper method for echoing an ASCII art cat
+	 * 
+	 * @return feline A regular ASCII cat
+	 */
+	public function cat_cat() {
+		echo <<<EOC  <!--- EOC = End of Cat -->
+<pre>
+                                | \
+                                | |
+                                | |
+           |\                   | |
+          /, ~\                / /
+         X     `-.....-------./ /
+          ~-. ~  ~              |
+             \             /    |
+              \  /_     ___\   /
+              | /\ ~~~~~   \ |
+              | | \        || |
+              | |\ \       || )
+             (_/ (_/      ((_/
+</pre>
+EOC;
+  }
+  
 	/*--------------------------------------------------*/
 	/* Widget API Functions
 	/*--------------------------------------------------*/
