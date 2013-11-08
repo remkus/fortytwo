@@ -90,6 +90,12 @@ class FT_Featured_Page extends WP_Widget {
 
 	}
 
+	/**
+	 * Set a default value for an empty variable
+	 * 
+	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
+	 * @param mixed   default The default value
+	 */
 	private function set_default( &$value, $default ) {
 		if ( empty ( $value ) ) $value = $default;
 	}
