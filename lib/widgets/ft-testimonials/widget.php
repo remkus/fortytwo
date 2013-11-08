@@ -73,6 +73,12 @@ class FT_Testimonials extends WP_Widget {
 		return FORTYTWO_WIDGETS_URL.'/ft-testimonials'.$file;
 	}
 
+	/**
+	 * Helper method to echo both the id= and name= attributes for a field input element
+	 * 
+	 * @param string   field The field name
+	 *
+	 */
 	public function echo_field_id( $field ) {
 		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
 	}
