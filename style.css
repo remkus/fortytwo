@@ -4578,6 +4578,17 @@ img.alignright {
   margin-left: 10px;
   margin-bottom: 10px;
 }
+.wp-caption {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.wp-caption > .wp-caption-text {
+  font-style: italic;
+  font-size: 12px;
+  font-size: 1.2rem;
+  padding: 5px 5px;
+}
 /* Navbar starts here */
 .nav-primary {
   /*
