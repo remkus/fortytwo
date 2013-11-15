@@ -88,28 +88,28 @@ function fortytwo_custom_site_subheader_title( $ft_subheader_attr ) {
 	}
 
 	if ( is_category() ) {
-		$ft_subheader_attr['title'] = __( 'Category: ', 'fortytwo' ) . single_term_title( '', false );
+		$ft_subheader_attr['title'] = __( 'Articles by Category: ', 'fortytwo' ) . single_term_title( '', false );
 		return $ft_subheader_attr;
 	}
 
 	if ( is_tag() ) {
-		$ft_subheader_attr['title'] = __( 'Tag: ', 'fortytwo' ) . single_term_title( '', false );
+		$ft_subheader_attr['title'] = __( 'Articles by Tag: ', 'fortytwo' ) . single_term_title( '', false );
 		return $ft_subheader_attr;
 	}
 
 	if ( is_author() ) {
-		$ft_subheader_attr['title'] = __( 'Author: ', 'fortytwo' ) . get_the_author_meta( 'display_name', $post->post_author );
+		$ft_subheader_attr['title'] = __( 'Articles by Author: ', 'fortytwo' ) . get_the_author_meta( 'display_name', $post->post_author );
 		return $ft_subheader_attr;
 	}
 
 	if ( is_day() ) {
-		$ft_subheader_attr['title'] = __( 'Daily Archives: ', 'fortytwo' ) . get_the_date();
+		$ft_subheader_attr['title'] = __( 'Articles by Day: ', 'fortytwo' ) . get_the_date();
 		return $ft_subheader_attr;
 	} elseif ( is_month() ) {
-		$ft_subheader_attr['title'] = __( 'Monthly Archives: ', 'fortytwo' ) . get_the_date( _x( 'F Y', 'monthly archives date format', 'fortytwo' ) );
+		$ft_subheader_attr['title'] = __( 'Articles by Month: ', 'fortytwo' ) . get_the_date( _x( 'F Y', 'monthly archives date format', 'fortytwo' ) );
 		return $ft_subheader_attr;
 	} elseif ( is_year() ) {
-		$ft_subheader_attr['title'] = __( 'Yearly Archives: ', 'fortytwo' ) . get_the_date( _x( 'Y', 'yearly archives date format', 'fortytwo' ) );
+		$ft_subheader_attr['title'] = __( 'Articles by Year: ', 'fortytwo' ) . get_the_date( _x( 'Y', 'yearly archives date format', 'fortytwo' ) );
 		return $ft_subheader_attr;
 	}
 
