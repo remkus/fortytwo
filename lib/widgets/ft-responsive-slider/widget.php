@@ -35,8 +35,6 @@ define( 'FT_RESPONSIVE_SLIDER_VERSION', '0.10.0' );
 
 /**
  * Slideshow Widget Class
- *
- * @todo  This entire class code needs better documentation
  */
 class FT_Responsive_Slider extends WP_Widget {
 
@@ -79,16 +77,30 @@ class FT_Responsive_Slider extends WP_Widget {
 
 	}
 
-	/* Add new image size */
+	/**
+	 * Add new image size
+	 */
 	public function register_slider_image_size() {
 		//TODO: Should this be called once / widget?
 		add_image_size( 'slider', ( int ) $this->get_value( 'slideshow_width' ), ( int ) $this->get_value( 'slideshow_height' ), TRUE );
 	}
-
+	
+	/**
+	 * Returns an absolute URL to a file releative to the widget's folder
+	 * 
+	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @return string
+	 */
 	private function url( $file ) {
 		return FORTYTWO_WIDGETS_URL.'/ft-responsive-slider'.$file;
 	}
 
+	/**
+	 * Sanitizes the values of the widget's instance variables
+	 *
+	 * @param array   instance The array of keys and values for the widget.
+	 */
 	private function sanitization_values( $instance ) {
 		foreach ( $instance as $field => $value ) {
 			if ( in_array( $field, array(
@@ -131,6 +143,14 @@ class FT_Responsive_Slider extends WP_Widget {
 		return $instance;
 	}
 
+	/**
+	 * Gets the value of a widget field setting
+	 *
+	 * @param string   field The name of the widget field you are wanting to get
+	 * @param bool     force_reload Whether to force refetching value from DB. By default a cached value is returned
+	 *
+	 * @return The fetched field setting value
+	 */
 	private function get_value( $field, $force_reload = false ) {
 		//Cache sanitized widget values
 		if ( count( $this->all_widget_settings )==0 || $force_reload ) {
@@ -142,7 +162,13 @@ class FT_Responsive_Slider extends WP_Widget {
 			return $this->all_widget_settings[$this->number][$field];
 	}
 
-	/* Creates read more link after excerpt */
+	/**
+	 * Creates read more link after excerpt 
+	 * 
+	 * @param mixed   moret  Not used
+	 *
+	 * @return An HTML fragment containing a "read more" link
+	 */
 	function ft_responsive_slider_excerpt_more( $moret ) {
 		global $post;
 		static $read_more = null;
@@ -173,10 +199,41 @@ class FT_Responsive_Slider extends WP_Widget {
 		//no-op
 	}
 
+	/**
+	 * Helper method to echo both the id= and name= attributes for a field input element
+	 * 
+	 * @param string   field The field name
+	 *
+	 */
 	public function echo_field_id( $field ) {
 		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
 	}
 
+	/**
+	 * Helper method for echoing an ASCII art cat
+	 * 
+	 * @return feline A regular ASCII cat
+	 */
+	public function cat_cat() {
+		echo <<<EOC  <!--- EOC = End of Cat -->
+<pre>
+                                | \
+                                | |
+                                | |
+           |\                   | |
+          /, ~\                / /
+         X     `-.....-------./ /
+          ~-. ~  ~              |
+             \             /    |
+              \  /_     ___\   /
+              | /\ ~~~~~   \ |
+              | | \        || |
+              | |\ \       || )
+             (_/ (_/      ((_/
+</pre>
+EOC;
+  }
+  
 	/*--------------------------------------------------*/
 	/* Widget API Functions
 	/*--------------------------------------------------*/

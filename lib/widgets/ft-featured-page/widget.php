@@ -90,14 +90,33 @@ class FT_Featured_Page extends WP_Widget {
 
 	}
 
+	/**
+	 * Set a default value for an empty variable
+	 * 
+	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
+	 * @param mixed   default The default value
+	 */
 	private function set_default( &$value, $default ) {
 		if ( empty ( $value ) ) $value = $default;
 	}
 
+	/**
+	 * Helper method to echo both the id= and name= attributes for a field input element
+	 * 
+	 * @param string   field The field name
+	 *
+	 */
 	public function echo_field_id( $field ) {
 		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
 	}
 
+	/**
+	 * Returns an absolute URL to a file releative to the widget's folder
+	 * 
+	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @return string
+	 */
 	private function url( $file ) {
 		return FORTYTWO_WIDGETS_URL.'/ft-featured-page'.$file;
 	}

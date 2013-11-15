@@ -26,8 +26,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 /**
  * Required for use of is_plugin_active() -
  * @link http://codex.wordpress.org/Function_Reference/is_plugin_active#Usage
- * @todo  This code needs better documentation
- *
  */
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
@@ -62,10 +60,23 @@ class FT_Testimonials extends WP_Widget {
 
 	} // end constructor
 
+	/**
+	 * Returns an absolute URL to a file releative to the widget's folder
+	 * 
+	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @return string
+	 */
 	private function url( $file ) {
 		return FORTYTWO_WIDGETS_URL.'/ft-testimonials'.$file;
 	}
 
+	/**
+	 * Helper method to echo both the id= and name= attributes for a field input element
+	 * 
+	 * @param string   field The field name
+	 *
+	 */
 	public function echo_field_id( $field ) {
 		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
 	}
@@ -147,11 +158,22 @@ class FT_Testimonials extends WP_Widget {
 		echo $after_widget;
 
 	} // end widget
-
+	
+	/**
+	 * Set a default value for an empty variable
+	 * 
+	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
+	 * @param mixed   default The default value
+	 */
 	private function set_default( &$value, $default ) {
 		if ( empty ( $value ) ) $value = $default;
 	}
 
+	/**
+	 * Set a default value for an empty variable
+	 * 
+	 * @return bool true|false depending on whether the testimonials_by_woothemes plugin is installed
+	 */
 	private function is_testimonials_by_woothemes_installed() {
 			return is_plugin_active("testimonials-by-woothemes/woothemes-testimonials.php");
 	}
