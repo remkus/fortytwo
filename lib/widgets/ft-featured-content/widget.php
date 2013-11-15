@@ -1,7 +1,7 @@
 <?php
 /*
 
-Description: FortyTwo Featured Page Widget
+Description: FortyTwo Featured Content Widget
 Author: Forsite Themes
 Author URI: http://forsitethemes.com
 Author Email: mail@forsitethemes.com
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 /**
  *  @todo  This code needs better documentation
  */
-class FT_Featured_Page extends WP_Widget {
+class FT_Featured_Content extends WP_Widget {
 
 	/*--------------------------------------------------*/
 	/* Constructor
@@ -40,21 +40,17 @@ class FT_Featured_Page extends WP_Widget {
 	public function __construct() {
 
 		parent::__construct(
-			'ft-featured-page',
-			__( 'FortyTwo - Featured Page', 'fortytwo' ),
+			'ft-featured-content',
+			__( 'FortyTwo - Featured Content', 'fortytwo' ),
 			array(
-				'classname'  => 'ft-featured-page',
-				'description' => __( 'Featured Page widget for the FortyTwo Theme.', 'fortytwo' )
+				'classname'  => 'ft-featured-content',
+				'description' => __( 'Featured Content widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
 
 		// Register admin styles and scripts
 		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
-
-		// Register site styles and scripts
-		//add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_styles' ) );
-		//add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_scripts' ) );
 
 	} // end constructor
 
@@ -90,16 +86,35 @@ class FT_Featured_Page extends WP_Widget {
 
 	}
 
+	/**
+	 * Set a default value for an empty variable
+	 * 
+	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
+	 * @param mixed   default The default value
+	 */
 	private function set_default( &$value, $default ) {
 		if ( empty ( $value ) ) $value = $default;
 	}
 
+	/**
+	 * Helper method to echo both the id= and name= attributes for a field input element
+	 * 
+	 * @param string   field The field name
+	 *
+	 */
 	public function echo_field_id( $field ) {
 		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
 	}
 
+	/**
+	 * Returns an absolute URL to a file releative to the widget's folder
+	 * 
+	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @return string
+	 */
 	private function url( $file ) {
-		return FORTYTWO_WIDGETS_URL.'/ft-featured-page'.$file;
+		return FORTYTWO_WIDGETS_URL.'/ft-featured-content'.$file;
 	}
 
 	/**
@@ -152,7 +167,7 @@ class FT_Featured_Page extends WP_Widget {
 	 */
 	public function register_admin_styles() {
 
-		wp_enqueue_style( 'ft-featured-page-admin-styles', $this->url( '/css/admin.css' ) );
+		wp_enqueue_style( 'ft-featured-content-admin-styles', $this->url( '/css/admin.css' ) );
 		wp_enqueue_style( 'font-awesome-more', FORTYTWO_URL . '/vendor/font-awesome/css/font-awesome.min.css' );
 		wp_enqueue_style( 'fontawesome_icon_selector_app', $this->url( '/css/fontawesome_icon_selector_app.css' ), array( 'font-awesome-more' ) );
 
@@ -169,7 +184,7 @@ class FT_Featured_Page extends WP_Widget {
 		wp_enqueue_script( 'backbone' );
 		wp_enqueue_script( 'add_event_saved_widget', $this->url( '/js/add_event_saved_widget.js' ),  array( 'backbone' ) );
 		wp_enqueue_script( 'fontawesome_icon_selector_app', $this->url( '/js/fontawesome_icon_selector_app.js' ), array( 'backbone' ) );
-		wp_enqueue_script( 'ft-featured-page-admin-script', $this->url( '/js/admin.js' ),  array( 'fontawesome_icon_selector_app' ) );
+		wp_enqueue_script( 'ft-featured-content-admin-script', $this->url( '/js/admin.js' ),  array( 'fontawesome_icon_selector_app' ) );
 
 	} // end register_admin_scripts
 
@@ -178,7 +193,7 @@ class FT_Featured_Page extends WP_Widget {
 	 */
 	public function register_widget_styles() {
 
-		wp_enqueue_style( 'ft-featured-page-widget-styles', $this->url( '/css/widget.css' ) );
+		wp_enqueue_style( 'ft-featured-content-widget-styles', $this->url( '/css/widget.css' ) );
 
 	} // end register_widget_styles
 
@@ -187,10 +202,10 @@ class FT_Featured_Page extends WP_Widget {
 	 */
 	public function register_widget_scripts() {
 
-		wp_enqueue_script( 'ft-featured-page-script', $this->url( '/js/widget.js' ) );
+		wp_enqueue_script( 'ft-featured-content-script', $this->url( '/js/widget.js' ) );
 
 	} // end register_widget_scripts
 
 } // end class
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Featured_Page");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("FT_Featured_Content");' ) );

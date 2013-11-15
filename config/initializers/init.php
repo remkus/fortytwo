@@ -44,7 +44,7 @@ require_once 'ft-footer.php';
 
 //Require all theme widgets
 require_once FORTYTWO_WIDGETS_DIR . '/ft-responsive-slider/widget.php';
-require_once FORTYTWO_WIDGETS_DIR . '/ft-featured-page/widget.php';
+require_once FORTYTWO_WIDGETS_DIR . '/ft-featured-content/widget.php';
 require_once FORTYTWO_WIDGETS_DIR . '/ft-jumbotron/widget.php';
 require_once FORTYTWO_WIDGETS_DIR . '/ft-testimonials/widget.php';
 require_once FORTYTWO_WIDGETS_DIR . '/ft-tabs-widget/widget.php';

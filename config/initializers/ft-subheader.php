@@ -82,35 +82,39 @@ function fortytwo_custom_site_subheader_title( $ft_subheader_attr ) {
 
 	global $post;
 
-	$subheader_title = single_term_title("", false);
-
 	if ( is_single() ) {
-		$ft_subheader_attr['title'] = esc_attr( 'Article: ', 'fortytwo' ) . $ft_subheader_attr['title'];
+		$ft_subheader_attr['title'] = __( 'Article: ', 'fortytwo' ) . $ft_subheader_attr['title'];
 		return $ft_subheader_attr;
 	}
 
 	if ( is_category() ) {
-		$ft_subheader_attr['title'] = esc_attr( 'Category: ', 'fortytwo' ) . single_term_title( '', false );
+		$ft_subheader_attr['title'] = __( 'Articles by Category: ', 'fortytwo' ) . single_term_title( '', false );
 		return $ft_subheader_attr;
 	}
 
 	if ( is_tag() ) {
-		$ft_subheader_attr['title'] = esc_attr( 'Tag: ', 'fortytwo' ) . single_term_title( '', false );
+		$ft_subheader_attr['title'] = __( 'Articles by Tag: ', 'fortytwo' ) . single_term_title( '', false );
 		return $ft_subheader_attr;
 	}
 
 	if ( is_author() ) {
-		$ft_subheader_attr['title'] = esc_attr( 'Articles by ', 'fortytwo' ) . get_the_author_meta( 'display_name', $post->post_author );
+		$ft_subheader_attr['title'] = __( 'Articles by Author: ', 'fortytwo' ) . get_the_author_meta( 'display_name', $post->post_author );
 		return $ft_subheader_attr;
 	}
 
-	if ( is_date() ) {
-		$ft_subheader_attr['title'] = esc_attr( 'Articles for ', 'fortytwo' ) . single_month_title( ' ', false );
+	if ( is_day() ) {
+		$ft_subheader_attr['title'] = __( 'Articles by Day: ', 'fortytwo' ) . get_the_date();
+		return $ft_subheader_attr;
+	} elseif ( is_month() ) {
+		$ft_subheader_attr['title'] = __( 'Articles by Month: ', 'fortytwo' ) . get_the_date( _x( 'F Y', 'monthly archives date format', 'fortytwo' ) );
+		return $ft_subheader_attr;
+	} elseif ( is_year() ) {
+		$ft_subheader_attr['title'] = __( 'Articles by Year: ', 'fortytwo' ) . get_the_date( _x( 'Y', 'yearly archives date format', 'fortytwo' ) );
 		return $ft_subheader_attr;
 	}
 
 	if ( is_archive() ) {
-		$ft_subheader_attr['title'] = esc_attr( 'Archive: ', 'fortytwo' ) . single_term_title( '', false );
+		$ft_subheader_attr['title'] = __( 'Archive: ', 'fortytwo' ) . single_term_title( '', false );
 		return $ft_subheader_attr;
 	}
 

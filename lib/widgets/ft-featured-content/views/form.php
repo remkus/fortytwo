@@ -1,5 +1,10 @@
-<?php // This file is used to markup the administration form of the widget. ?>
-<div class="ft-featured-page-admin">
+<?php
+/**
+ * Represents the view for the featured content widget form in the backend.
+ */
+?>
+
+<div class="ft-featured-content-admin">
 <input type="hidden" <?php $this->echo_field_id( "icon" ) ?> value="<?php echo esc_attr( $instance['icon'] ); ?>">
 <table>
 	<tr>

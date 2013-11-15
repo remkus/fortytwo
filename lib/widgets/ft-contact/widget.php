@@ -61,7 +61,14 @@ class FT_Contact_Widget extends WP_Widget {
 		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
 
 	} // end constructor
-
+	
+	/**
+	 * Returns an absolute URL to a file releative to the widget's folder
+	 * 
+	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @return string
+	 */
 	private function url( $file ) {
 		return FORTYTWO_WIDGETS_URL . '/ft-contact' . $file;
 	}
