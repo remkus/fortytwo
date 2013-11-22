@@ -15,31 +15,21 @@ define( 'FORTYTWO_URL', CHILD_URL );
 
 define( 'FORTYTWO_LIB_DIR', CHILD_DIR . '/lib' );
 define( 'FORTYTWO_LIB_URL', CHILD_URL . '/lib' );
+
 define( 'FORTYTWO_WIDGETS_DIR', FORTYTWO_LIB_DIR . '/widgets' );
 define( 'FORTYTWO_WIDGETS_URL', FORTYTWO_LIB_URL . '/widgets' );
 
 /* Load Initializer Components */
-require_once 'ft-cleanup.php';
+require_once 'admin/ft-layouts.php';
 
-require_once 'ft-scripts.php';
+require_once 'general/ft-scripts.php';
+require_once 'general/ft-widget-areas.php';
+require_once 'general/ft-default-widgets.php';
 
-require_once 'ft-layouts.php';
-
-require_once 'ft-widget-areas.php';
-
-require_once 'ft-structural.php';
-
-require_once 'ft-nav.php';
-
-require_once 'ft-subheader.php';
-
-require_once 'ft-slider.php';
-
-//require_once 'ft-page-blog.php';
-
-require_once 'ft-default-widgets.php';
-
-require_once 'ft-footer.php';
+require_once 'structural/ft-structural.php';
+require_once 'structural/ft-nav.php';
+require_once 'structural/ft-subheader.php';
+require_once 'structural/ft-footer.php';
 
 
 //Require all theme widgets

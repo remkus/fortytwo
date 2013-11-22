@@ -20,4 +20,4 @@ add_theme_support( 'genesis-responsive-viewport' );
 /**
  * Add support for footer widgets
  */
-require_once 'config/initializers/init.php';
+require_once 'lib/init.php';
