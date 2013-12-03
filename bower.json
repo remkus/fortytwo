@@ -1,8 +1,9 @@
 {
-  "name": "dashboard-app",
-  "version": "0.1.0",
-  "dependencies": {
-    "bootstrap": "~3.0.1"
-  },
-  "devDependencies": {}
+  "name": "fortytwo",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "font-awesome": "~4.0.3",
+    "bootstrap": "~3.0.2"
+  }
 }

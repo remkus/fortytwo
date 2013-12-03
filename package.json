@@ -1,18 +1,11 @@
 {
-  "name": "dashboard-app",
-  "description": "The grunt plugin for sorting CSS properties in specific order.",
-  "version": "0.1.0",
-  "homepage": "https://github.com/cityindex/dashboard-app",
+  "name": "fortytwo",
+  "description": "FortyTwo a Genesis chile theme",
+  "version": "1.0.0",
+  "homepage": "http://forsitethemes.com/fortytwo/",
   "author": {
-    "name": "Ryan Holder",
-    "url": "https://github.com/ryanholder"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cityindex/dashboard-app.git"
-  },
-  "bugs": {
-    "url": "https://github.com/cityindex/dashboard-app/issues"
+    "name": "Forsite Themes",
+    "url": "http://forsitethemes.com"
   },
   "dependencies": {},
   "devDependencies": {
