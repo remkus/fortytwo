@@ -3,7 +3,6 @@
 module.exports = function (grunt) {
 
     require('time-grunt')(grunt);
-    require('load-grunt-tasks')(grunt);
     require('load-grunt-tasks')(grunt, {pattern: ['grunt-*', 'assemble-less']});
 
     grunt.initConfig({
@@ -35,12 +34,19 @@ module.exports = function (grunt) {
             }
         },
         less: {
-            dist: {
+            bootstrap: {
+                src: 'vendor/bootstrap/less/bootstrap.less',
+                dest: 'bootstrap.css'
+            },
+            fontawesome: {
+
+            },
+            fortytwo: {
                 options: {
-                    paths: [ 'app/bower_components/bootstrap/less', 'app/bower_components/font-awesome/less' ]
+                    paths: ['vendor/bootstrap/less']
                 },
                 files: {
-                    'app/styles/app.css': 'app/styles/less/app.less'
+                    'style.css': ['assets/css/less/fortytwo.less']
                 }
             }
         },
