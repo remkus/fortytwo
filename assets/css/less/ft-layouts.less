@@ -2,11 +2,11 @@
 // --------------------------------------------------
 
 .wrap {
-	&:extend(.container all);
+	.container-fixed();
 }
 
 .inner-wrap {
-	&:extend(.row all);
+	.make-row();
 }
 
 // Extra small grid
@@ -74,7 +74,7 @@
 
 	@screen-size: @screen-sm;
 
-	.container {
+	.wrap {
 		max-width: @container-tablet;
 	}
 
@@ -139,7 +139,7 @@
 
 	@screen-size: @screen-md;
 
-	.container {
+	.wrap {
 		max-width: @container-desktop;
 	}
 
@@ -203,7 +203,7 @@
 
 	@screen-size: @screen-lg;
 
-	.container {
+	.wrap {
 		max-width: @container-large-desktop;
 	}
 
