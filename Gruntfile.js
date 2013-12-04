@@ -46,7 +46,7 @@ module.exports = function (grunt) {
                     paths: ['vendor/bootstrap/less']
                 },
                 files: {
-                    'style.css': ['assets/css/less/fortytwo.less']
+                    'style.css': ['assets/less/fortytwo.less']
                 }
             }
         },
