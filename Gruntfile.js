@@ -34,17 +34,34 @@ module.exports = function (grunt) {
             }
         },
         less: {
-            bootstrap: {
-                src: 'vendor/bootstrap/less/bootstrap.less',
-                dest: 'bootstrap.css'
+            options: {
+                paths: ['vendor/bootstrap/less', 'vendor/font-awesome/less']
             },
-            fontawesome: {
-
-            },
+//            normalize: {
+//                options: {
+//                    banner:
+//                        '/**!\n' +
+//                        '* 1.0 Reset\n' +
+//                        '*\n' +
+//                        '* FortyTwo reset that attempts to make browsers render all elements more\n' +
+//                        '* consistently.\n' +
+//                        '*\n' +
+//                        '* @uses: bootstrap [normalize]\n' +
+//                        '*/\n',
+//                    compress: true
+//                },
+//                files: {
+//                    'assets/less/ft-reset.css': 'vendor/bootstrap/less/normalize.less'
+//                }
+//            },
+//            bootstrap: {
+//                src: 'vendor/bootstrap/less/bootstrap.less',
+//                dest: 'bootstrap.css'
+//            },
+//            fontawesome: {
+//
+//            },
             fortytwo: {
-                options: {
-                    paths: ['vendor/bootstrap/less']
-                },
                 files: {
                     'style.css': ['assets/less/fortytwo.less']
                 }
