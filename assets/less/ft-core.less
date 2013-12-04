@@ -1,0 +1,54 @@
+/**
+* 2.0 Core
+*
+* FortyTwo core aims to contain less(css) that is used repeatedly throughout the remainder
+* of the less(css) files.
+*
+* As this is the core file and is processed directly after the reset we will use it to import
+* variables and mixins.
+*
+* @import: fortytwo [variables, mixins]
+* @import: bootstrap [mixins, scaffolding]
+* @import: font-awesome []
+*/
+
+@import "ft-variables";
+@import "ft-mixins";
+@import (reference) "mixins";
+
+//@import (reference) "bootstrap";
+@import (reference) "scaffolding";
+@import (reference) "font-awesome";
+//@import "type";
+
+// Reset the box-sizing
+* {
+	&:extend(* all); // This extends "*" from scaffolding.less
+}
+
+html {
+	&:extend(html); // This extends "html" from scaffolding.less
+}
+
+body {
+	&:extend(body); // This extends "body" from scaffolding.less
+}
+
+// Reset fonts for relevant elements
+input,
+button,
+select,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+a {
+	&:extend(a all); // This extends "a" from scaffolding.less
+}
+
+img {
+	.img-responsive(); // Mixin call from mixins.less
+	vertical-align: middle;
+}
