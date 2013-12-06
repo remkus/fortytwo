@@ -1,16 +1,13 @@
-/**
+/*!
 * 3.0 Header
 *
 * FortyTwo header
-*
-* @import: fortytwo [variables, mixins]
-* @import: bootstrap [mixins, scaffolding]
-* @import: font-awesome []
 */
 
-@import "ft-variables";
-@import "ft-mixins";
-@import (reference) "mixins";
+// @uses: fortytwo [ft-variables, ft-mixins] via build
+// @uses: bootstrap [mixins] via build
+
+@screen-size: @screen-lg;
 
 .site-header {
 

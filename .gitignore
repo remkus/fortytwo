@@ -5,3 +5,7 @@ stackato.yml
 /vendor/bower_components/
 
 /node_modules/
+
+/tmp/
+
+/style.css

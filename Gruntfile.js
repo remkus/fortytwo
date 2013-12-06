@@ -26,55 +26,60 @@ module.exports = function (grunt) {
             }
         },
         clean: {
-            dist: {
-                src: [ 'dist' ]
-            },
-            publish: {
-                src: [ 'publish' ]
+            tmp: {
+                src: [ 'tmp' ]
             }
         },
         less: {
             options: {
-                paths: ['vendor/bootstrap/less', 'vendor/font-awesome/less']
+                lessrc: '.lessrc'
             },
-//            normalize: {
-//                options: {
-//                    banner:
-//                        '/**!\n' +
-//                        '* 1.0 Reset\n' +
-//                        '*\n' +
-//                        '* FortyTwo reset that attempts to make browsers render all elements more\n' +
-//                        '* consistently.\n' +
-//                        '*\n' +
-//                        '* @uses: bootstrap [normalize]\n' +
-//                        '*/\n',
-//                    compress: true
-//                },
-//                files: {
-//                    'assets/less/ft-reset.css': 'vendor/bootstrap/less/normalize.less'
-//                }
-//            },
-//            bootstrap: {
-//                src: 'vendor/bootstrap/less/bootstrap.less',
-//                dest: 'bootstrap.css'
-//            },
-//            fontawesome: {
-//
-//            },
-            fortytwo: {
+            reset: {
+                options: {
+                    compress: true
+                },
                 files: {
-                    'style.css': ['assets/less/fortytwo.less']
+                    'tmp/assets/css/ft-reset.css': ['assets/less/ft-reset.less']
                 }
+            },
+            components: {
+                files: [
+                    {expand: true, flatten: true, cwd: 'assets/less', src: ['*.less', '!{ft-variables,ft-mixins,ft-reset}.less'], dest: 'tmp/assets/css/', ext: '.css'}
+                ]
             }
         },
         cssmin: {
-            minify: {
-                expand: true,
-                cwd: 'app/styles',
-                src: ['*.css', '!*.min.css'],
-                dest: 'dist/styles/',
-                ext: '.min.css'
+            ftreset: {
+              options: {
+                keepSpecialComments: 1
+              },
+              files: {
+                'tmp/assets/css/ft-reset.css': ['tmp/assets/css/ft-reset.css']
+              }
             }
+        },
+        concat: {
+            options: {
+                separator: '\n\n',
+                banner:
+                    '/*!\n' +
+                    '  Theme Name: <%= pkg.theme.name %>\n' +
+                    '  Theme URI: <%= pkg.theme.uri %>\n' +
+                    '  Description: <%= pkg.theme.description %>\n' +
+                    '  Author: <%= pkg.theme.author %>\n' +
+                    '  Author URI: <%= pkg.theme.authoruri %>\n' +
+                    '  Version: <%= pkg.theme.version %>\n' +
+                    '  Tags: <%= pkg.theme.tags %>\n\n' +
+                    '  License: <%= pkg.theme.license %>\n' +
+                    '  License URI: <%= pkg.theme.licenseuri %>\n\n' +
+                    '  Template: <%= pkg.theme.template %>\n' +
+                    '*/\n\n',
+                footer: '\n/* Would it save you a lot of time if I just gave up and went mad now? ― Douglas Adams */'
+            },
+          fortytwo: {
+              src: ['tmp/assets/css/ft-index.css', 'tmp/assets/css/ft-reset.css', 'tmp/assets/css/ft-core.css', 'tmp/assets/css/ft-header.css'],
+              dest: 'style.css'
+          }
         },
         compress: {
             dist: {
@@ -95,5 +100,12 @@ module.exports = function (grunt) {
         'copy',
         'compress'
 
+    ]);
+
+    grunt.registerTask('stylesheet', [
+        'clean',
+        'less',
+//        'cssmin',
+        'concat'
     ]);
 };

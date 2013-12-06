@@ -1,0 +1,10 @@
+{
+    "paths": [
+        "assets/less",
+        "vendor/bootstrap/less"
+    ],
+    "imports": {
+        "less": ["ft-variables.less", "ft-mixins.less"],
+        "reference": "mixins.less"
+    }
+}

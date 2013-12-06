@@ -1,25 +1,16 @@
-/**
-* 2.0 Core
+/*!
+*  2.0 Core
 *
-* FortyTwo core aims to contain less(css) that is used repeatedly throughout the remainder
-* of the less(css) files.
-*
-* As this is the core file and is processed directly after the reset we will use it to import
-* variables and mixins.
-*
-* @import: fortytwo [variables, mixins]
-* @import: bootstrap [mixins, scaffolding]
-* @import: font-awesome []
+*  FortyTwo core aims to contain less(css) that is used repeatedly throughout the remainder
+*  of the less(css) files.
 */
 
-@import "ft-variables";
-@import "ft-mixins";
-@import (reference) "mixins";
+// @uses: fortytwo [ft-variables, ft-mixins] via build
+// @uses: bootstrap [mixins] via build
+// @uses: bootstrap [scaffolding] via import
+// @uses: font-awesome []
 
-//@import (reference) "bootstrap";
 @import (reference) "scaffolding";
-@import (reference) "font-awesome";
-//@import "type";
 
 // Reset the box-sizing
 * {
