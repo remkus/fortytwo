@@ -1,18 +1,15 @@
 /* This stylesheet is used to style the admin option form of the plugin. */
 
-.ft-responsive-slider-container-dialog .ui-dialog-titlebar-close, 
-.ft-responsive-slider-container-dialog .ui-dialog-titlebar {
+.wp-dialog .ui-dialog-titlebar-close, 
+.wp-dialog .ui-dialog-titlebar {
   display: none;
 }
 
-.ft-responsive-slider-container-dialog ul.ui-widget-header {
-	background-image: none;
-	background-color: transparent;	
-	border: none;
-	border-bottom: 1px solid #dfdfdf;
+.wp-dialog .ui-dialog-content {
+	padding: 0px;
 }
 
-.ft-responsive-slider-container-dialog ul.ui-tabs-nav li {
+.wp-dialog ul.ui-tabs-nav li {
   font-size: 14px;
 	line-height: 1.5;
 }
