@@ -5,27 +5,21 @@
 *  of the less(css) files.
 */
 
-// @uses: fortytwo [ft-variables, ft-mixins] via build
-// @uses: bootstrap [mixins] via build
-// @uses: bootstrap [scaffolding] via import
-// @uses: font-awesome []
-
 @import (reference) "scaffolding";
 
-// Reset the box-sizing
+/* Scaffolding */
 * {
-	&:extend(* all); // This extends "*" from scaffolding.less
+	&:extend(* all);
 }
 
 html {
-	&:extend(html); // This extends "html" from scaffolding.less
+	&:extend(html);
 }
 
 body {
-	&:extend(body); // This extends "body" from scaffolding.less
+	&:extend(body);
 }
 
-// Reset fonts for relevant elements
 input,
 button,
 select,
@@ -36,10 +30,294 @@ textarea {
 }
 
 a {
-	&:extend(a all); // This extends "a" from scaffolding.less
+	&:extend(a all);
 }
 
 img {
-	.img-responsive(); // Mixin call from mixins.less
+	.img-responsive();
 	vertical-align: middle;
+}
+
+/* Typography */
+@import "type";  // Making use of Bootstrap type via import of file
+
+/* Code */
+@import "code"; // Making use of Bootstrap code via import of file
+
+/* Tables */
+@import "tables"; // Making use of Bootstrap tables via import of file
+
+/* Forms */
+@import "forms"; // Making use of Bootstrap forms via import of file
+
+/* Buttons */
+@import "buttons"; // Making use of Bootstrap buttons via import of file
+
+/* Layout */
+.wrap {
+	.container-fixed();
+
+	@media (min-width: @screen-sm) {
+		width: @container-sm;
+	}
+	@media (min-width: @screen-md) {
+		width: @container-md;
+	}
+	@media (min-width: @screen-lg-min) {
+		width: @container-lg;
+	}
+}
+
+.inner-wrap {
+	.make-row();
+}
+
+// Extra small grid
+//
+// Columns, offsets, pushes, and pulls for extra small devices like
+// smartphones.
+@screen-size: @screen-xs-min;
+
+.full-width-content {
+	.make-column(~".content" 12);
+}
+
+.content-sidebar {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+}
+
+.sidebar-content {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+}
+
+.content-sidebar-sidebar {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
+}
+
+.sidebar-sidebar-content {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
+}
+
+.sidebar-content-sidebar {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
+}
+
+.primary-content-secondary {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
+}
+
+.primary-secondary-content {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
+}
+
+.content-secondary-primary {
+	.make-column(~".content" 12);
+	.make-column(~".sidebar-primary" 12);
+	.make-column(~".sidebar-secondary" 12);
+}
+
+// Small grid
+//
+// Columns, offsets, pushes, and pulls for the small device range, from phones
+// to tablets.
+
+@media (min-width: @screen-tablet) {
+
+	@screen-size: @screen-sm-min;
+
+	.wrap {
+		max-width: @container-tablet;
+	}
+
+	.full-width-content {
+		.make-column(~".content" 12 0 0);
+	}
+
+	.content-sidebar {
+		.make-column(~".content" 8 0 0);
+		.make-column(~".sidebar-primary" 4 0 0);
+	}
+
+	.sidebar-content {
+		.make-column(~".content" 8 4 0);
+		.make-column(~".sidebar-primary" 4 0 8);
+	}
+
+	.content-sidebar-sidebar {
+		.make-column(~".content" 6 0 0);
+		.make-column(~".sidebar-primary" 4 0 0);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
+
+	.sidebar-sidebar-content {
+		.make-column(~".content" 6 6 0);
+		.make-column(~".sidebar-primary" 4 0 4);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
+
+	.sidebar-content-sidebar {
+		.make-column(~".content" 6 2 0);
+		.make-column(~".sidebar-primary" 4 2 0);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
+
+	.primary-content-secondary {
+		.make-column(~".content" 6 4 0);
+		.make-column(~".sidebar-primary" 4 0 6);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
+
+	.primary-secondary-content {
+		.make-column(~".content" 6 6 0);
+		.make-column(~".sidebar-primary" 4 0 6);
+		.make-column(~".sidebar-secondary" 2 0 4);
+	}
+
+	.content-secondary-primary {
+		.make-column(~".content" 6 0 0);
+		.make-column(~".sidebar-primary" 4 2 0);
+		.make-column(~".sidebar-secondary" 2 0 4);
+	}
+
+}
+
+
+// Medium grid
+//
+// Columns, offsets, pushes, and pulls for the desktop device range.
+
+@media (min-width: @screen-desktop) {
+
+	@screen-size: @screen-md-min;
+
+	.wrap {
+		max-width: @container-desktop;
+	}
+
+	.full-width-content {
+		.make-column(~".content" 12 0 0);
+	}
+
+	.content-sidebar {
+		.make-column(~".content" 9 0 0);
+		.make-column(~".sidebar-primary" 3 0 0);
+	}
+
+	.sidebar-content {
+		.make-column(~".content" 9 3 0);
+		.make-column(~".sidebar-primary" 3 0 9);
+	}
+
+	.content-sidebar-sidebar {
+		.make-column(~".content" 7 0 0);
+		.make-column(~".sidebar-primary" 3 0 0);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
+
+	.sidebar-sidebar-content {
+		.make-column(~".content" 7 5 0);
+		.make-column(~".sidebar-primary" 3 0 5);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
+
+	.sidebar-content-sidebar {
+		.make-column(~".content" 7 2 0);
+		.make-column(~".sidebar-primary" 3 2 0);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
+
+	.primary-content-secondary {
+		.make-column(~".content" 7 3 0);
+		.make-column(~".sidebar-primary" 3 0 7);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
+
+	.primary-secondary-content {
+		.make-column(~".content" 7 5 0);
+		.make-column(~".sidebar-primary" 3 0 7);
+		.make-column(~".sidebar-secondary" 2 0 7);
+	}
+
+	.content-secondary-primary {
+		.make-column(~".content" 7 0 0);
+		.make-column(~".sidebar-primary" 3 2 0);
+		.make-column(~".sidebar-secondary" 2 0 3);
+	}
+}
+
+
+// Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+
+@media (min-width: @screen-lg-desktop) {
+
+	@screen-size: @screen-lg-min;
+
+	.wrap {
+		max-width: @container-large-desktop;
+	}
+
+	.full-width-content {
+		.make-column(~".content" 12 0 0);
+	}
+
+	.content-sidebar {
+		.make-column(~".content" 9 0 0);
+		.make-column(~".sidebar-primary" 3 0 0);
+	}
+
+	.sidebar-content {
+		.make-column(~".content" 9 3 0);
+		.make-column(~".sidebar-primary" 3 0 9);
+	}
+
+	.content-sidebar-sidebar {
+		.make-column(~".content" 7 0 0);
+		.make-column(~".sidebar-primary" 3 0 0);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
+
+	.sidebar-sidebar-content {
+		.make-column(~".content" 7 5 0);
+		.make-column(~".sidebar-primary" 3 0 5);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
+
+	.sidebar-content-sidebar {
+		.make-column(~".content" 7 2 0);
+		.make-column(~".sidebar-primary" 3 2 0);
+		.make-column(~".sidebar-secondary" 2 0 10);
+	}
+
+	.primary-content-secondary {
+		.make-column(~".content" 7 3 0);
+		.make-column(~".sidebar-primary" 3 0 7);
+		.make-column(~".sidebar-secondary" 2 0 0);
+	}
+
+	.primary-secondary-content {
+		.make-column(~".content" 7 5 0);
+		.make-column(~".sidebar-primary" 3 0 7);
+		.make-column(~".sidebar-secondary" 2 0 7);
+	}
+
+	.content-secondary-primary {
+		.make-column(~".content" 7 0 0);
+		.make-column(~".sidebar-primary" 3 2 0);
+		.make-column(~".sidebar-secondary" 2 0 3);
+	}
+
 }

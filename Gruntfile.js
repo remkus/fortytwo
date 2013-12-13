@@ -42,9 +42,17 @@ module.exports = function (grunt) {
                     'tmp/assets/css/ft-reset.css': ['assets/less/ft-reset.less']
                 }
             },
+            fonticons: {
+                options: {
+                    compress: true
+                },
+                files: {
+                    'tmp/assets/css/ft-font-icons.css': ['assets/less/ft-font-icons.less']
+                }
+            },
             components: {
                 files: [
-                    {expand: true, flatten: true, cwd: 'assets/less', src: ['*.less', '!{ft-variables,ft-mixins,ft-reset}.less'], dest: 'tmp/assets/css/', ext: '.css'}
+                    {expand: true, flatten: true, cwd: 'assets/less', src: ['*.less', '!{ft-variables,ft-mixins,ft-reset,ft-font-icons}.less'], dest: 'tmp/assets/css/', ext: '.css'}
                 ]
             }
         },
@@ -77,7 +85,7 @@ module.exports = function (grunt) {
                 footer: '\n/* Would it save you a lot of time if I just gave up and went mad now? ― Douglas Adams */'
             },
           fortytwo: {
-              src: ['tmp/assets/css/ft-index.css', 'tmp/assets/css/ft-reset.css', 'tmp/assets/css/ft-core.css', 'tmp/assets/css/ft-header.css'],
+              src: ['tmp/assets/css/ft-index.css', 'tmp/assets/css/ft-reset.css', 'tmp/assets/css/ft-core.css', 'tmp/assets/css/ft-font-icon.css', 'tmp/assets/css/ft-header.css'],
               dest: 'style.css'
           }
         },

@@ -24,7 +24,7 @@
 	}
 }
 
-.calc-line-height( @screen-size: @screen-phone, @cols: 12, @font-size: @font-size-base, @ratio: @golden ) {
+.calc-line-height( @screen-size: @screen-xs-min, @cols: 12, @font-size: @font-size-base, @ratio: @golden ) {
 	@f: unit(@font-size);
 	@w: (unit(@screen-size) / 12) * @cols;
 	@r: @ratio;

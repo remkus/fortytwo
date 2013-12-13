@@ -1,7 +1,8 @@
 {
     "paths": [
         "assets/less",
-        "vendor/bootstrap/less"
+        "vendor/bootstrap/less",
+        "vendor/font-awesome/less"
     ],
     "imports": {
         "less": ["ft-variables.less", "ft-mixins.less"],
