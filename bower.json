@@ -1,0 +1,9 @@
+{
+  "name": "fortytwo",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "font-awesome": "~4.0.3",
+    "bootstrap": "~3.0.3"
+  }
+}

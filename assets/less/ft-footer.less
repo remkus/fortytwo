@@ -1,0 +1,38 @@
+/*!
+*  9.0 Footer
+*
+*  FortyTwo footer section.
+*/
+
+.footer-widgets {
+	background: #424242;
+	color: #fff;
+}
+
+.site-footer {
+	background: #353535;
+	color: #fff;
+	padding: 20px 0;
+
+	@screen-size: @screen-xs-min; // For extra small devices like smartphones.
+	.make-column(~".copyright-area" 12 0 0);
+
+	@media (min-width: @screen-sm-min) { // For the small device range, from phones to tablets.
+		@screen-size: @screen-sm-min;
+		.make-column(~".copyright-area" 12 0 0);
+	}
+
+	@media (min-width: @screen-md-min) { // For the desktop device range.
+		@screen-size: @screen-md-min;
+		.make-column(~".copyright-area" 12 0 0);
+	}
+
+	@media (min-width: @screen-lg-min) { // large desktop device range.
+		@screen-size: @screen-lg-min;
+		.make-column(~".copyright-area" 12 0 0);
+	}
+
+	.copyright-area {
+		text-align: center;
+	}
+}

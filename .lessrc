@@ -1,0 +1,7 @@
+{
+    "paths": [
+        "assets/less",
+        "vendor/bootstrap/less",
+        "vendor/font-awesome/less"
+    ]
+}

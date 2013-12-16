@@ -1,0 +1,73 @@
+/*!
+* 4.0 Header
+*
+* FortyTwo header
+*/
+
+.site-header {
+	padding-top: 40px;
+	padding-bottom: 40px;
+
+	// For extra small devices like smartphones.
+	@screen-size: @screen-xs-min;
+	.make-column(~".title-area" 6 0 0);
+	.make-column(~".header-widget-area" 6 0 0);
+
+	// For the small device range, from phones to tablets.
+	@media (min-width: @screen-sm-min) {
+		@screen-size: @screen-sm-min;
+		.make-column(~".title-area" 6 0 0);
+		.make-column(~".header-widget-area" 6 0 0);
+	}
+
+	// For the desktop device range.
+	@media (min-width: @screen-md-min) {
+		@screen-size: @screen-md-min;
+		.make-column(~".title-area" 6 0 0);
+		.make-column(~".header-widget-area" 6 0 0);
+	}
+
+	// large desktop device range.
+	@media (min-width: @screen-lg-min) {
+		@screen-size: @screen-lg-min;
+		.make-column(~".title-area" 6 0 0);
+		.make-column(~".header-widget-area" 6 0 0);
+	}
+
+	.header-widget-area {
+		> .widget {
+			line-height: 55px;
+			float: right;
+		}
+	}
+
+	.site-title {
+		margin: 0 15px 0 0;
+		float: left;
+
+		a {
+			background: url('@{ft-images-path}/logo.png') no-repeat;
+			display: block;
+			float: left;
+			overflow: hidden;
+			text-indent: -9999px;
+			height: 55px;
+			width: 280px;
+		}
+	}
+
+	.site-description {
+		float: left;
+		border-left: 1px solid #e8e8e8;
+		padding: 6px 0 6px 15px;
+		margin: 0;
+		text-transform: uppercase;
+		width: 190px;
+		line-height: 21px;
+		.font-size(14);
+	}
+}
+
+#title a {
+	width: 100%;
+}
