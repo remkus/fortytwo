@@ -1,10 +1,13 @@
-// Custom file for navigation to make Bootstrap work with Genesis
+/*!
+* 5.0 Navigation
+*
+* FortyTwo Navigation
+*/
 
-//
-// Navbar
-// --------------------------------------------------
-
-/* Navbar starts here */
+@import (reference) "navs";
+@import (reference) "navbar";
+@import (reference) "dropdowns";
+@import (reference) "forms";
 
 .nav-collapse {
 	&:extend(.navbar-collapse all);
@@ -25,7 +28,7 @@
 
 	.nav-title {
 		&:extend(.navbar-default .navbar-brand all);
-		.hide;
+		.hidden;
 	}
 
 	.nav-text {

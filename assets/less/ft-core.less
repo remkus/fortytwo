@@ -35,7 +35,38 @@ a {
 
 img {
 	.img-responsive();
+	margin-bottom: 10px;
 	vertical-align: middle;
+
+	&.alignleft {
+		.pull-left;
+		margin-right: 10px;
+	}
+
+	&.aligncenter {
+		text-align: center;
+		.img-responsive(inline-block);
+	}
+
+	&.alignright {
+		.pull-right;
+		margin-left: 10px;
+	}
+}
+
+/* WordPress Core Generated Classes */
+.wp-caption {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	max-width: 100%;
+
+	&.alignleft {
+		margin-right: 14px;
+	}
+
+	&.alignright {
+		margin-left: 14px;
+	}
 }
 
 /* Typography */

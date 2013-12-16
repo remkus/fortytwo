@@ -6,6 +6,6 @@
     ],
     "imports": {
         "less": ["ft-variables.less", "ft-mixins.less"],
-        "reference": "mixins.less"
+        "reference": ["mixins.less", "utilities.less"]
     }
 }
