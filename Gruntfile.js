@@ -7,21 +7,11 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-
         copy: {
-            dist: {
+            font_icons: {
                 files: [
-                    // includes files within path
-                    {expand: true, cwd: 'app', src: ['_locales/**'], dest: 'dist/', filter: 'isFile'}
-
-                    // includes files within path and its sub-directories
-                    //{expand: true, src: ['path/**'], dest: 'dest/'},
-
-                    // makes all src relative to cwd
-                    //{expand: true, cwd: 'path/', src: ['**'], dest: 'dest/'},
-
-                    // flattens results to a single level
-                    //{expand: true, flatten: true, src: ['path/**'], dest: 'dest/', filter: 'isFile'}
+                    {expand: true, flatten: true, src: ['vendor/bootstrap/dist/fonts/*'], dest: 'assets/fonts/', filter: 'isFile'},
+                    {expand: true, flatten: true, src: ['vendor/font-awesome/fonts/*'], dest: 'assets/fonts/', filter: 'isFile'}
                 ]
             }
         },
@@ -36,13 +26,19 @@ module.exports = function (grunt) {
             },
             fonticons: {
                 options: {
-                    compress: true
+                    imports: {reference: ['ft-variables.less', 'vendor/font-awesome/less/mixins.less']}
                 },
                 files: {
                     'tmp/assets/css/ft-font-icons.css': ['assets/less/ft-font-icons.less']
                 }
             },
             components: {
+                options: {
+                    "imports": {
+                        "less": ["ft-variables.less", "ft-mixins.less"],
+                        "reference": ["mixins.less", "utilities.less"]
+                    }
+                },
                 files: [
                     {expand: true, flatten: true, cwd: 'assets/less', src: ['*.less', '!{ft-variables,ft-mixins,ft-font-icons}.less'], dest: 'tmp/assets/css/', ext: '.css'}
                 ]
@@ -82,6 +78,7 @@ module.exports = function (grunt) {
                     'tmp/assets/css/ft-index.css',
                     'tmp/assets/css/ft-reset.css',
                     'tmp/assets/css/ft-core.css',
+                    'tmp/assets/css/ft-font-icons.css',
                     'tmp/assets/css/ft-font-icon.css',
                     'tmp/assets/css/ft-header.css',
                     'tmp/assets/css/ft-navigation.css',
@@ -117,6 +114,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('stylesheet', [
         'clean',
+        'copy:font_icons',
         'less',
         'cssmin',
         'concat'
