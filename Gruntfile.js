@@ -104,19 +104,18 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('build', [
-        'clean',
-        'less',
-        'cssmin',
-        'copy',
-        'compress'
-
-    ]);
-
-    grunt.registerTask('stylesheet', [
-        'clean',
         'copy:font_icons',
         'less',
         'cssmin',
-        'concat'
+        'concat',
+        'clean'
+    ]);
+
+    grunt.registerTask('stylesheet', [
+        'copy:font_icons',
+        'less',
+        'cssmin',
+        'concat',
+        'clean'
     ]);
 };
