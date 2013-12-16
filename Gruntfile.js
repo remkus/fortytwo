@@ -7,24 +7,6 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-
-        copy: {
-            dist: {
-                files: [
-                    // includes files within path
-                    {expand: true, cwd: 'app', src: ['_locales/**'], dest: 'dist/', filter: 'isFile'}
-
-                    // includes files within path and its sub-directories
-                    //{expand: true, src: ['path/**'], dest: 'dest/'},
-
-                    // makes all src relative to cwd
-                    //{expand: true, cwd: 'path/', src: ['**'], dest: 'dest/'},
-
-                    // flattens results to a single level
-                    //{expand: true, flatten: true, src: ['path/**'], dest: 'dest/', filter: 'isFile'}
-                ]
-            }
-        },
         clean: {
             tmp: {
                 src: [ 'tmp' ]
@@ -33,14 +15,6 @@ module.exports = function (grunt) {
         less: {
             options: {
                 lessrc: '.lessrc'
-            },
-            reset: {
-                options: {
-                    compress: true
-                },
-                files: {
-                    'tmp/assets/css/ft-reset.css': ['assets/less/ft-reset.less']
-                }
             },
             fonticons: {
                 options: {
@@ -52,25 +26,19 @@ module.exports = function (grunt) {
             },
             components: {
                 files: [
-                    {expand: true, flatten: true, cwd: 'assets/less', src: ['*.less', '!{ft-variables,ft-mixins,ft-reset,ft-font-icons}.less'], dest: 'tmp/assets/css/', ext: '.css'}
+                    {expand: true, flatten: true, cwd: 'assets/less', src: ['*.less', '!{ft-variables,ft-mixins,ft-font-icons}.less'], dest: 'tmp/assets/css/', ext: '.css'}
                 ]
-            },
-            print: {
-                options: {
-                    compress: true
-                },
-                files: {
-                    'tmp/assets/css/ft-print.css': ['assets/less/ft-print.less']
-                }
             }
         },
         cssmin: {
-            options: {
-                keepSpecialComments: 1
-            },
-            files: {
-                'tmp/assets/css/ft-reset.css': ['tmp/assets/css/ft-reset.css'],
-                'tmp/assets/css/ft-print.css': ['tmp/assets/css/ft-print.css']
+            compress: {
+                options: {
+                    banner: '/* custom banner */',
+                    keepSpecialComments: 0
+                },
+                files: {
+                    'tmp/assets/css/ft-print.css': ['tmp/assets/css/ft-print.css']
+                }
             }
         },
         concat: {
@@ -91,43 +59,24 @@ module.exports = function (grunt) {
                     '*/\n\n',
                 footer: '\n\n\n/* Would it save you a lot of time if I just gave up and went mad now? ― Douglas Adams */'
             },
-          fortytwo: {
-              src: [
-                  'tmp/assets/css/ft-index.css',
-                  'tmp/assets/css/ft-reset.css',
-                  'tmp/assets/css/ft-core.css',
-                  'tmp/assets/css/ft-font-icon.css',
-                  'tmp/assets/css/ft-header.css',
-                  'tmp/assets/css/ft-navigation.css',
-                  'tmp/assets/css/ft-intro.css',
-                  'tmp/assets/css/ft-widgets.css',
-                  'tmp/assets/css/ft-content.css',
-                  'tmp/assets/css/ft-footer.css',
-                  'tmp/assets/css/ft-print.css'
-              ],
-              dest: 'style.css'
-          }
-        },
-        compress: {
-            dist: {
-                options: {
-                    archive: 'publish/<%= pkg.name %>.zip'
-                },
-                files: [
-                    { src: ['dist/**'] }
-                ]
+            fortytwo: {
+                src: [
+                    'tmp/assets/css/ft-index.css',
+                    'tmp/assets/css/ft-reset.css',
+                    'tmp/assets/css/ft-core.css',
+                    'tmp/assets/css/ft-font-icon.css',
+                    'tmp/assets/css/ft-header.css',
+                    'tmp/assets/css/ft-navigation.css',
+                    'tmp/assets/css/ft-intro.css',
+                    'tmp/assets/css/ft-widgets.css',
+                    'tmp/assets/css/ft-content.css',
+                    'tmp/assets/css/ft-footer.css',
+                    'tmp/assets/css/ft-print.css'
+                ],
+                dest: 'style.css'
             }
         }
     });
-
-    grunt.registerTask('build', [
-        'clean',
-        'less',
-        'cssmin',
-        'copy',
-        'compress'
-
-    ]);
 
     grunt.registerTask('stylesheet', [
         'clean',
