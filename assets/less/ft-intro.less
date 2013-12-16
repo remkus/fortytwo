@@ -1,11 +1,13 @@
-// Custom file for Forty Two slider
+/*!
+* 6.0 Intro
+*
+* FortyTwo Intro section which is used to house the home page slider as well as the sub headers
+*/
 
-//
-// Slider
-// --------------------------------------------------
+@import (reference) "scaffolding";
 
+/* Slider styling */
 .ft-responsive-slider {
-
 	.slides {
 		.clearfix();
 
@@ -25,7 +27,6 @@
 
 	.flex-control-nav,
 	.flex-direction-nav {
-
 		> li {
 			display: inline-block;
 			vertical-align: middle;
@@ -38,7 +39,6 @@
 	}
 
 	.flex-control-nav {
-
 		text-align: center;
 		position: absolute;
 		left: 50%;
@@ -62,7 +62,6 @@
 	}
 
 	.flex-direction-nav {
-
 		position: absolute;
 		top: 50%;
 		width: 100%;
@@ -79,7 +78,6 @@
 			}
 
 			> a {
-
 				.square(26px);
 				text-align: center;
 
@@ -100,14 +98,68 @@
 				&.flex-next:before {
 					content: "\f054";
 				}
-
 			}
 		}
-
 	}
 }
 
 .widget-container:hover .flex-direction-nav {
 	.transition(opacity .15s linear);
 	opacity: 1;
+}
+
+/* Subheader styling */
+.site-subheader {
+	padding-top: 40px;
+	padding-bottom: 40px;
+
+	background-color: #f9f9f9;
+	border-bottom: 1px solid #e8e8e8;
+
+	// For extra small devices like smartphones.
+	@screen-size: @screen-xs-min;
+	.make-column(~".subheader-area" 12 0 0);
+
+	// For the small device range, from phones to tablets.
+	@media (min-width: @screen-sm-min) {
+		@screen-size: @screen-sm-min;
+		.make-column(~".subheader-area" 12 0 0);
+	}
+
+	// For the desktop device range.
+	@media (min-width: @screen-md-min) {
+		@screen-size: @screen-md-min;
+		.make-column(~".subheader-area" 12 0 0);
+	}
+
+	// large desktop device range.
+	@media (min-width: @screen-lg-min) {
+		@screen-size: @screen-lg-min;
+		.make-column(~".subheader-area" 12 0 0);
+	}
+
+	.subheader {
+		.font-size(28);
+		font-weight: 300;
+		margin: 0;
+	}
+
+	.breadcrumb {
+		margin: 0;
+		padding: 10px 0 0;
+		color: @breadcrumb-active-color;
+
+		> a {
+			display: inline-block;
+			&:after {
+				padding: 0 5px;
+				color: @breadcrumb-color;
+			}
+		}
+	}
+
+}
+
+article.type-page > .entry-header {
+	.sr-only;
 }
