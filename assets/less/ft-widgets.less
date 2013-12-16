@@ -1,27 +1,64 @@
-// Custom file for FortyTwo Widgets
+/*!
+* 7.0 Widgets
+*
+* FortyTwo custom and WordPress default widget styling
+*/
 
-//
-// FortyTwo Tabbed Widget
-// --------------------------------------------------
+@import (reference) "badges";
+@import (reference) "buttons";
+@import (reference) "labels";
+@import (reference) "list-group";
+@import (reference) "tables";
+@import (reference) "type";
 
-.widget-container[data-widget-count='1'] {
+/*!
+* 7.1 FortyTwo Custom Widgets
+*/
+
+/* Widget Layouts */
+@screen-size: @screen-xs-min; // For extra small devices like smartphones.
+.widget-container {
 	.make-column(~".widget" 12 0 0);
 }
 
-.widget-container[data-widget-count='2'] {
-	.make-column(~".widget" 6 0 0);
+@media (min-width: @screen-sm-min) { // For the small device range, from phones to tablets.
+	@screen-size: @screen-sm-min;
+	.widget-container[data-widget-count='2'] {
+		.make-column(~".widget" 6 0 0);
+	}
 }
 
-.widget-container[data-widget-count='3'] {
-	.make-column(~".widget" 4 0 0);
+@media (min-width: @screen-md-min) { // For the desktop device range.
+	@screen-size: @screen-md-min;
+	.widget-container[data-widget-count='2'] {
+		.make-column(~".widget" 6 0 0);
+	}
+
+	.widget-container[data-widget-count='3'] {
+		.make-column(~".widget" 4 0 0);
+	}
+
+	.widget-container[data-widget-count='4'] {
+		.make-column(~".widget" 3 0 0);
+	}
 }
 
-.widget-container[data-widget-count='4'] {
-	.make-column(~".widget" 3 0 0);
+@media (min-width: @screen-lg-min) { // large desktop device range.
+	@screen-size: @screen-lg-min;
+	.widget-container[data-widget-count='2'] {
+		.make-column(~".widget" 6 0 0);
+	}
+
+	.widget-container[data-widget-count='3'] {
+		.make-column(~".widget" 4 0 0);
+	}
+
+	.widget-container[data-widget-count='4'] {
+		.make-column(~".widget" 3 0 0);
+	}
 }
 
 .widget {
-
 	word-wrap: break-word;
 
 	ul,
@@ -41,7 +78,6 @@
 		float: right;
 		border-radius: 0.25em;
 	}
-
 }
 
 .widget {
@@ -53,6 +89,7 @@
 	}
 }
 
+/* Tabbed Widget */
 .ft-featured-content {
 	i {
 		margin-right: 5px;
@@ -65,7 +102,6 @@
 }
 
 .ft-tabbed-content {
-
 	.widgettitle {
 		position: relative;
 	}
@@ -143,10 +179,7 @@
 	}
 }
 
-//
-// FortyTwo Testimonials Widget
-// --------------------------------------------------
-
+/* Testimonials Widget */
 .ft-testimonials {
 	blockquote {
 		background: #f9f9f9;
@@ -159,12 +192,11 @@
 	}
 }
 
-//
-// Sidebar Widgets
-// --------------------------------------------------
+/*!
+* 7.2 WordPress Default Widgets
+*/
 
 .sidebar {
-
 	.widget:first-child {
 		padding-top: 0;
 		border-top: none;
@@ -305,7 +337,6 @@
 			}
 
 			.rss-date {
-				.entry-time;
 				.font-size(12);
 				display: inline-block;
 				margin: 5px 0 0;
@@ -341,7 +372,6 @@
 
 	.widget_tag_cloud {
 		.tagcloud {
-
 			> ul {
 
 				> li {
