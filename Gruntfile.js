@@ -7,6 +7,24 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+
+        copy: {
+            dist: {
+                files: [
+                    // includes files within path
+                    {expand: true, cwd: 'app', src: ['_locales/**'], dest: 'dist/', filter: 'isFile'}
+
+                    // includes files within path and its sub-directories
+                    //{expand: true, src: ['path/**'], dest: 'dest/'},
+
+                    // makes all src relative to cwd
+                    //{expand: true, cwd: 'path/', src: ['**'], dest: 'dest/'},
+
+                    // flattens results to a single level
+                    //{expand: true, flatten: true, src: ['path/**'], dest: 'dest/', filter: 'isFile'}
+                ]
+            }
+        },
         clean: {
             tmp: {
                 src: [ 'tmp' ]
@@ -33,10 +51,10 @@ module.exports = function (grunt) {
         cssmin: {
             compress: {
                 options: {
-                    banner: '/* custom banner */',
-                    keepSpecialComments: 0
+                    keepSpecialComments: 1
                 },
                 files: {
+                    'tmp/assets/css/ft-reset.css': ['tmp/assets/css/ft-reset.css'],
                     'tmp/assets/css/ft-print.css': ['tmp/assets/css/ft-print.css']
                 }
             }
@@ -75,12 +93,32 @@ module.exports = function (grunt) {
                 ],
                 dest: 'style.css'
             }
+        },
+        compress: {
+            dist: {
+                options: {
+                    archive: 'publish/<%= pkg.name %>.zip'
+                },
+                files: [
+                    { src: ['dist/**'] }
+                ]
+            }
         }
     });
+
+    grunt.registerTask('build', [
+        'clean',
+        'less',
+        'cssmin',
+        'copy',
+        'compress'
+
+    ]);
 
     grunt.registerTask('stylesheet', [
         'clean',
         'less',
+        'cssmin',
         'concat'
     ]);
 };
