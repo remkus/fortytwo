@@ -94,7 +94,8 @@ module.exports = function (grunt) {
                   'tmp/assets/css/ft-navigation.css',
                   'tmp/assets/css/ft-intro.css',
                   'tmp/assets/css/ft-widgets.css',
-                  'tmp/assets/css/ft-content.css'
+                  'tmp/assets/css/ft-content.css',
+                  'tmp/assets/css/ft-footer.css'
 
               ],
               dest: 'style.css'
