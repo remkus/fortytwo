@@ -54,16 +54,23 @@ module.exports = function (grunt) {
                 files: [
                     {expand: true, flatten: true, cwd: 'assets/less', src: ['*.less', '!{ft-variables,ft-mixins,ft-reset,ft-font-icons}.less'], dest: 'tmp/assets/css/', ext: '.css'}
                 ]
+            },
+            print: {
+                options: {
+                    compress: true
+                },
+                files: {
+                    'tmp/assets/css/ft-print.css': ['assets/less/ft-print.less']
+                }
             }
         },
         cssmin: {
-            ftreset: {
-              options: {
+            options: {
                 keepSpecialComments: 1
-              },
-              files: {
-                'tmp/assets/css/ft-reset.css': ['tmp/assets/css/ft-reset.css']
-              }
+            },
+            files: {
+                'tmp/assets/css/ft-reset.css': ['tmp/assets/css/ft-reset.css'],
+                'tmp/assets/css/ft-print.css': ['tmp/assets/css/ft-print.css']
             }
         },
         concat: {
@@ -82,7 +89,7 @@ module.exports = function (grunt) {
                     '  License URI: <%= pkg.theme.licenseuri %>\n\n' +
                     '  Template: <%= pkg.theme.template %>\n' +
                     '*/\n\n',
-                footer: '\n/* Would it save you a lot of time if I just gave up and went mad now? ― Douglas Adams */'
+                footer: '\n\n\n/* Would it save you a lot of time if I just gave up and went mad now? ― Douglas Adams */'
             },
           fortytwo: {
               src: [
@@ -95,8 +102,8 @@ module.exports = function (grunt) {
                   'tmp/assets/css/ft-intro.css',
                   'tmp/assets/css/ft-widgets.css',
                   'tmp/assets/css/ft-content.css',
-                  'tmp/assets/css/ft-footer.css'
-
+                  'tmp/assets/css/ft-footer.css',
+                  'tmp/assets/css/ft-print.css'
               ],
               dest: 'style.css'
           }
@@ -125,7 +132,6 @@ module.exports = function (grunt) {
     grunt.registerTask('stylesheet', [
         'clean',
         'less',
-//        'cssmin',
         'concat'
     ]);
 };
