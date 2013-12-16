@@ -352,3 +352,55 @@ img {
 	}
 
 }
+
+/* Other - Sort Out */
+// Less file of randon styles which should be broken in to specific sections
+
+//
+// Button styling without adding classes to buttons
+// --------------------------------------------------
+
+.btn {
+	.btn-default;
+}
+
+// Default Section Padding
+.widget-container {
+	padding: 40px 0;
+	.clearfix();
+	+ .widget-container {
+		border-top: 1px solid #e8e8e8;
+	}
+}
+
+.content-sidebar-wrap {
+	padding: 40px 0;
+}
+// Removes top padding and margin from first element of .entry-content
+.content > article > .entry-content > :first-child {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+// adds default styling to all tables
+table {
+	max-width: 100%;
+	background-color: @table-bg;
+}
+
+th {
+	text-align: left;
+}
+
+table {
+	.table;
+}
+
+.site-intro {
+	background: #f9f9f9;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+.search-form:extend(.input-group all) {
+	.input-group-btn:extend(.input-group-btn all){}
+}
