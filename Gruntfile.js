@@ -79,7 +79,6 @@ module.exports = function (grunt) {
                     'tmp/assets/css/ft-reset.css',
                     'tmp/assets/css/ft-core.css',
                     'tmp/assets/css/ft-font-icons.css',
-                    'tmp/assets/css/ft-font-icon.css',
                     'tmp/assets/css/ft-header.css',
                     'tmp/assets/css/ft-navigation.css',
                     'tmp/assets/css/ft-intro.css',
@@ -89,6 +88,31 @@ module.exports = function (grunt) {
                     'tmp/assets/css/ft-print.css'
                 ],
                 dest: 'style.css'
+            }
+        },
+        cssbeautifier : {
+            files : ["tmp/assets/css/{ft-core,ft-font-icons,ft-header,ft-navigation,ft-intro,ft-widgets,ft-content,ft-footer}.css"],
+                options : {
+                    indent: '\t',
+                    openbrace: 'end-of-line',
+                    autosemicolon: true
+            }
+        },
+        csscomb: {
+            sort: {
+                options: {
+                    sortOrder: '.csscomb.json'
+                },
+                files: {
+                    'tmp/assets/css/ft-core.css': ['tmp/assets/css/ft-core.css'],
+                    'tmp/assets/css/ft-font-icons.css': ['tmp/assets/css/ft-font-icons.css'],
+                    'tmp/assets/css/ft-header.css': ['tmp/assets/css/ft-header.css'],
+                    'tmp/assets/css/ft-navigation.css': ['tmp/assets/css/ft-navigation.css'],
+                    'tmp/assets/css/ft-intro.css': ['tmp/assets/css/ft-intro.css'],
+                    'tmp/assets/css/ft-widgets.css': ['tmp/assets/css/ft-widgets.css'],
+                    'tmp/assets/css/ft-content.css': ['tmp/assets/css/ft-content.css'],
+                    'tmp/assets/css/ft-footer.css': ['tmp/assets/css/ft-footer.css']
+                }
             }
         },
         compress: {
@@ -115,6 +139,8 @@ module.exports = function (grunt) {
         'copy:font_icons',
         'less',
         'cssmin',
+        'cssbeautifier',
+        'csscomb',
         'concat',
         'clean'
     ]);
