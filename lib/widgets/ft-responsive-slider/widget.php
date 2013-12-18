@@ -53,7 +53,7 @@ class FT_Responsive_Slider extends WP_Widget {
 
 		parent::__construct(
 			'ft-responsive-slider',
-			__( 'FortyTwo - Responsive Slider', 'fortytwo' ),
+			__( '42&nbsp;&nbsp;- Responsive Slider', 'fortytwo' ),
 			array(
 				'classname' => 'ft-responsive-slider',
 				'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' )

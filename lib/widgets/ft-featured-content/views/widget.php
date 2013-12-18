@@ -5,7 +5,7 @@
 ?>
 
 <?php echo $before_title ?>
-	<i class="<?php echo esc_html( $instance['icon'] ) ?>"></i> <?php echo esc_html( $instance['title'] ) ?>
+	<i class="ft-ico <?php echo esc_html( $instance['icon'] ) ?>"></i> <?php echo esc_html( $instance['title'] ) ?>
 <?php echo $after_title ?>
 
 <p><?php echo esc_html( $instance['content'] ); ?></p>

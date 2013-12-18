@@ -41,7 +41,7 @@ class FT_Featured_Content extends WP_Widget {
 
 		parent::__construct(
 			'ft-featured-content',
-			__( 'FortyTwo - Featured Content', 'fortytwo' ),
+			__( '42&nbsp;&nbsp;- Featured Content', 'fortytwo' ),
 			array(
 				'classname'  => 'ft-featured-content',
 				'description' => __( 'Featured Content widget for the FortyTwo Theme.', 'fortytwo' )
@@ -168,7 +168,6 @@ class FT_Featured_Content extends WP_Widget {
 	public function register_admin_styles() {
 
 		wp_enqueue_style( 'ft-featured-content-admin-styles', $this->url( '/css/admin.css' ) );
-		wp_enqueue_style( 'font-awesome-more', FORTYTWO_URL . '/vendor/font-awesome/css/font-awesome.min.css' );
 		wp_enqueue_style( 'fontawesome_icon_selector_app', $this->url( '/css/fontawesome_icon_selector_app.css' ), array( 'font-awesome-more' ) );
 
 	} // end register_admin_styles
