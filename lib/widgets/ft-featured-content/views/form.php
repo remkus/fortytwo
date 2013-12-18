@@ -10,7 +10,7 @@
 	<tr>
 		<td class="<?php echo $this->get_field_id( "the-icon-selector" )?>">
 				<div >
-					<i class="icon-camera-retro icon-2x"></i>
+					<i class="ft-ico ft-ico-arrow-circle-right ft-ico-2x"></i>
 				</div>
 		</td>
 		<td>
