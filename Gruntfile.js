@@ -42,6 +42,14 @@ module.exports = function (grunt) {
                 files: [
                     {expand: true, flatten: true, cwd: 'assets/less', src: ['*.less', '!{ft-variables,ft-mixins,ft-font-icons}.less'], dest: 'tmp/assets/css/', ext: '.css'}
                 ]
+            },
+            admin_style: {
+                options: {
+                    imports: {reference: ['ft-variables.less', 'ft-mixins.less']}
+                },
+                files: {
+                    'tmp/assets/css/admin/ft-admin-style.css': ['assets/less/admin/ft-admin-style.less']
+                }
             }
         },
         cssmin: {
@@ -73,7 +81,7 @@ module.exports = function (grunt) {
                     '*/\n\n',
                 footer: '\n\n\n/* Would it save you a lot of time if I just gave up and went mad now? ― Douglas Adams */'
             },
-            fortytwo: {
+            fortytwo_style: {
                 src: [
                     'tmp/assets/css/ft-index.css',
                     'tmp/assets/css/ft-reset.css',
@@ -88,6 +96,17 @@ module.exports = function (grunt) {
                     'tmp/assets/css/ft-print.css'
                 ],
                 dest: 'style.css'
+            },
+            fortytwo_admin_style: {
+                options: {
+                    stripBanners: true,
+                    banner: ''
+                },
+                src: [
+                    'tmp/assets/css/admin/ft-admin-style.css',
+                    'tmp/assets/css/ft-font-icons.css'
+                ],
+                dest: 'lib/admin/css/ft-admin-style.css'
             }
         },
         cssbeautifier : {
