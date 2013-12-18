@@ -1,6 +1,6 @@
 <?php
 /*
- * FotyTwo: Structual realted functions
+ * FortyTwo: Structual realted functions
  *
  *
  * @since 1.0.0

@@ -1,6 +1,6 @@
 <?php
 /*
- * FotyTwo: overrides primary Genesis menu generation to conform to
+ * FortyTwo: overrides primary Genesis menu generation to conform to
  *            structure required for bootstrap menus
  *
  * Output can be filtered via 'genesis_do_nav'.

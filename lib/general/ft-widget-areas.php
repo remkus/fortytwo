@@ -1,6 +1,6 @@
 <?php
 /**
- * FotyTwo: Register widget areas for the theme
+ * FortyTwo: Register widget areas for the theme
  *
  * @since 1.0.0
  * @todo  Want the ability to read in from json settings files to determine what sidebars we need to register

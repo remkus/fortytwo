@@ -1,6 +1,6 @@
 <?php
 /*
- * FotyTwo: Default Widgets
+ * FortyTwo: Default Widgets
  *
  * This file modifies the WordPress default widgets to allow for our Bootstrap type
  * styling
