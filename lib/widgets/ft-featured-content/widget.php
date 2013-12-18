@@ -41,7 +41,7 @@ class FT_Featured_Content extends WP_Widget {
 
 		parent::__construct(
 			'ft-featured-content',
-			__( 'FortyTwo - Featured Content', 'fortytwo' ),
+			__( '42&nbsp;&nbsp;- Featured Content', 'fortytwo' ),
 			array(
 				'classname'  => 'ft-featured-content',
 				'description' => __( 'Featured Content widget for the FortyTwo Theme.', 'fortytwo' )
