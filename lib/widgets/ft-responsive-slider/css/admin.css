@@ -1,6 +1,22 @@
 /* This stylesheet is used to style the admin option form of the plugin. */
 
-.wp-dialog .ui-dialog-titlebar-close, 
+.wp-admin .ui-widget-header {
+	border: 1px solid #fff;
+	background: #fff;
+	border-bottom: 1px solid #ccc;
+	padding-left: 7px;
+}
+
+/* These don't work */
+.wp-admin .ui-state-active,
+.wp-admin .ui-widget-content .ui-state-active,
+.wp-admin .ui-widget-header .ui-state-active {
+	color: #555 !important;
+	border-color: #ccc !important ;
+	background: #e4e4e4 !important;
+}
+
+.wp-dialog .ui-dialog-titlebar-close,
 .wp-dialog .ui-dialog-titlebar {
   display: none;
 }
@@ -13,4 +29,3 @@
   font-size: 14px;
 	line-height: 1.5;
 }
-
