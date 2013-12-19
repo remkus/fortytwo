@@ -38,7 +38,7 @@ class FT_Jumbotron extends WP_Widget {
 
 		parent::__construct(
 			'widget-ft-jumbotron',
-			__( 'FortyTwo - Jumbotron', 'fortytwo' ),
+			__( '42&nbsp;&nbsp;- FortyTwo - Jumbotron', 'fortytwo' ),
 			array(
 				'classname'  => 'ft-jumbotron',
 				'description' => __( 'Jumbotron widget for the FortyTwo Theme.', 'fortytwo' )
@@ -54,10 +54,10 @@ class FT_Jumbotron extends WP_Widget {
 		//add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_scripts' ) );
 
 	} // end constructor
-	
+
 	/**
 	 * Returns an absolute URL to a file releative to the widget's folder
-	 * 
+	 *
 	 * @param string   file The file path (relative to the widgets folder)
 	 *
 	 * @return string
@@ -68,7 +68,7 @@ class FT_Jumbotron extends WP_Widget {
 
 	/**
 	 * Helper method to echo both the id= and name= attributes for a field input element
-	 * 
+	 *
 	 * @param string   field The field name
 	 *
 	 */
@@ -109,7 +109,7 @@ class FT_Jumbotron extends WP_Widget {
 
 	/**
 	 * Set a default value for an empty variable
-	 * 
+	 *
 	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
 	 * @param mixed   default The default value
 	 */

@@ -43,7 +43,7 @@ class FT_Testimonials extends WP_Widget {
 
 		parent::__construct(
 			'widget-ft-testimonials',
-			__( 'FortyTwo - Testimonials', 'fortytwo' ),
+			__( '42&nbsp;&nbsp;- FortyTwo - Testimonials', 'fortytwo' ),
 			array(
 				'classname'  => 'ft-testimonials',
 				'description' => __( 'Testimonials widget for the FortyTwo Theme.', 'fortytwo' )
@@ -62,7 +62,7 @@ class FT_Testimonials extends WP_Widget {
 
 	/**
 	 * Returns an absolute URL to a file releative to the widget's folder
-	 * 
+	 *
 	 * @param string   file The file path (relative to the widgets folder)
 	 *
 	 * @return string
@@ -73,7 +73,7 @@ class FT_Testimonials extends WP_Widget {
 
 	/**
 	 * Helper method to echo both the id= and name= attributes for a field input element
-	 * 
+	 *
 	 * @param string   field The field name
 	 *
 	 */
@@ -158,10 +158,10 @@ class FT_Testimonials extends WP_Widget {
 		echo $after_widget;
 
 	} // end widget
-	
+
 	/**
 	 * Set a default value for an empty variable
-	 * 
+	 *
 	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
 	 * @param mixed   default The default value
 	 */
@@ -171,7 +171,7 @@ class FT_Testimonials extends WP_Widget {
 
 	/**
 	 * Set a default value for an empty variable
-	 * 
+	 *
 	 * @return bool true|false depending on whether the testimonials_by_woothemes plugin is installed
 	 */
 	private function is_testimonials_by_woothemes_installed() {
