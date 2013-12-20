@@ -1,0 +1,275 @@
+/*!
+* 8.0 Content
+*
+* FortyTwo content styling
+*/
+
+@import (reference) "alerts";
+@import (reference) "buttons";
+@import (reference) "forms";
+
+/*!
+* 8.1
+*/
+
+.entry-time,
+.entry-comments-link,
+.entry-categories {
+	&:before {
+		font-family: FontAwesome;
+		font-weight: normal;
+		padding-right: 4px;
+	}
+}
+
+.entry-time:before {
+	content: "\f133";
+}
+
+.entry-comments-link:before {
+	content: "\f0e5";
+	margin-left: 5px;
+}
+
+.entry-categories:before {
+	content: "\f115";
+}
+
+.content {
+
+	article {
+		.clearfix();
+
+		padding: 20px 0 0;
+		border-top: 1px solid #e8e8e8;
+
+		&:first-child {
+			margin-top: 0;
+			padding-top: 0;
+			border-top: none;
+
+			.entry-title {
+				margin-top: 0;
+			}
+		}
+
+		.entry-title {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			line-height: 1.3;
+		}
+
+		.entry-content {
+			.clearfix();
+			word-wrap: break-word;
+		}
+
+		.entry-footer {
+			padding: 13px 0 (@line-height-computed);
+
+			p {
+				margin: 0;
+			}
+		}
+	}
+
+	.pagination > ul:extend(.pagination all) {
+		> .active > a,
+		> .active > span {
+			&,
+			&:hover,
+			&:focus {
+				border-color: @pagination-border;
+			}
+		}
+	}
+}
+
+/*!
+* 8.2 - Comments
+*/
+
+.entry-comments {
+	position: relative;
+	margin-bottom: 40px;
+}
+
+.comment + .comment-respond {
+	margin-left: 24px;
+}
+
+.entry-comments + .comment-respond {
+	margin-bottom: 40px;
+	margin-top: -40px;
+	margin-left: 24px;
+}
+
+.entry-comments {
+	> h3 {
+		.font-size(22);
+		font-weight: 300;
+		margin: 0;
+		margin-bottom: 40px;
+	}
+}
+
+.comment-list {
+	padding-left: 0; // reset padding because ul and ol
+	margin: 0;
+
+	.comment {
+		display: block;
+	}
+
+	> .comment {
+
+		margin-left: 24px;
+		padding: 40px 0 0 30px;
+		border-left: 1px dashed #e8e8e8;
+
+		&:first-child {
+			padding-top: 0;
+
+		}
+
+		> article {
+			border-bottom: 1px dashed #e8e8e8;
+			margin: 0;
+			padding: 0 0 40px 0;
+		}
+
+		> .children {
+			border-top: none;
+			border-bottom: 1px dashed #e8e8e8;
+			padding-bottom: 30px;
+			padding-top: 0;
+		}
+
+	}
+
+	article + .children {
+		border-top: 1px dashed #e8e8e8;
+		padding-top: 20px;
+		margin-top: 20px;
+	}
+
+	.children {
+		padding-left: 0;
+		position: relative;
+
+		.comment ~ .comment {
+			border-top: 1px dashed #e8e8e8;
+			margin: 20px 0 0 0;
+			padding: 20px 0 0 54px;
+		}
+
+		article {
+			margin: 0;
+		}
+
+		.comment {
+			margin-left: 24px;
+			padding-left: 30px;
+		}
+	}
+
+	.comment-header {
+		height: 48px;
+//		padding-left: 58px;
+	}
+
+	.comment-content {
+//		padding-left: 58px;
+	}
+
+	.comment-reply-link {
+		.btn;
+		.btn-default;
+		.btn-xs;
+		text-transform: uppercase;
+	}
+
+	.comment-author {
+		.font-size(16);
+		margin-bottom: 0;
+
+		> img {
+			position: absolute;
+			left: 0;
+			border-radius: 50%;
+		}
+	}
+
+	.comment-meta {
+		.font-size(12);
+	}
+
+}
+
+.comment-respond {
+	position: relative;
+	background: #f9f9f9;
+	padding: 30px;
+
+	.comment-reply-title {
+		margin: 0 0 20px;
+
+		> small > a {
+			.btn;
+			.btn-default;
+			.btn-xs;
+			margin: 0 0 5px 5px;
+			text-transform: uppercase;
+		}
+	}
+
+	.comment-notes {
+		.alert;
+		.alert-info;
+	}
+
+	.comment-form-author,
+	.comment-form-email,
+	.comment-form-url,
+	.comment-form-comment {
+		.form-group;
+	}
+
+	select,
+	input[type="text"],
+	input[type="password"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="week"],
+	input[type="number"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"] {
+		.form-control;
+		width: 50%;
+	}
+
+	textarea {
+		.form-control;
+		height: auto;
+	}
+
+	.form-allowed-tags {
+		.help-block;
+
+		code {
+			display: block;
+			white-space: normal;
+		}
+	}
+
+	input[type="submit"] {
+		.btn;
+		.btn-default;
+	}
+}

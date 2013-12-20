@@ -1,0 +1,421 @@
+/*!
+* 7.0 Widgets
+*
+* FortyTwo custom and WordPress default widget styling
+*/
+
+@import (reference) "badges";
+@import (reference) "buttons";
+@import (reference) "labels";
+@import (reference) "list-group";
+@import (reference) "tables";
+@import (reference) "type";
+
+/*!
+* 7.1 FortyTwo Custom Widgets
+*/
+
+/* Widget Layouts */
+@screen-size: @screen-xs-min; // For extra small devices like smartphones.
+.widget-container {
+	.make-column(~".widget" 12 0 0);
+}
+
+@media (min-width: @screen-sm-min) { // For the small device range, from phones to tablets.
+	@screen-size: @screen-sm-min;
+	.widget-container[data-widget-count='2'] {
+		.make-column(~".widget" 6 0 0);
+	}
+}
+
+@media (min-width: @screen-md-min) { // For the desktop device range.
+	@screen-size: @screen-md-min;
+	.widget-container[data-widget-count='2'] {
+		.make-column(~".widget" 6 0 0);
+	}
+
+	.widget-container[data-widget-count='3'] {
+		.make-column(~".widget" 4 0 0);
+	}
+
+	.widget-container[data-widget-count='4'] {
+		.make-column(~".widget" 3 0 0);
+	}
+}
+
+@media (min-width: @screen-lg-min) { // large desktop device range.
+	@screen-size: @screen-lg-min;
+	.widget-container[data-widget-count='2'] {
+		.make-column(~".widget" 6 0 0);
+	}
+
+	.widget-container[data-widget-count='3'] {
+		.make-column(~".widget" 4 0 0);
+	}
+
+	.widget-container[data-widget-count='4'] {
+		.make-column(~".widget" 3 0 0);
+	}
+}
+
+.widget {
+	word-wrap: break-word;
+
+	ul,
+	ol {
+		margin-bottom: 0;
+		padding-left: 0;
+	}
+
+	hr {
+		border-top: 1px dashed @hr-border;
+		border-bottom: 1px dashed #fff;
+		border-bottom: 1px dashed rgba(255, 255, 255, .5);
+	}
+
+	.badge {
+		.badge; //calling the Bootstrap .badge defaults before applying own rules.
+		float: right;
+		border-radius: 0.25em;
+	}
+}
+
+.widget {
+	h4 {
+		margin-top: 0;
+		.font-size(22);
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 300;
+	}
+}
+
+/* Tabbed Widget */
+.ft-featured-content {
+	i {
+		margin-right: 5px;
+		.font-size(21);
+	}
+
+	.btn {
+		padding: 0.5rem 1rem;
+	}
+}
+
+.ft-tabbed-content {
+	.widgettitle {
+		position: relative;
+	}
+
+	.tab-select:extend(.btn-group all) {
+		margin-left: 15px;
+		top: -4px;
+
+		.tab-select-btn {
+			> a:hover {
+				text-decoration: none;
+			}
+
+			&.active {
+				.box-shadow(none);
+			}
+		}
+	}
+
+	.tab-pane {
+		display: none;
+		> ul {
+			padding-left: 0;
+
+			> li {
+				.list-group-item;
+
+				padding: 20px 0;
+				border: none;
+				.clearfix();
+
+				&:first-child {
+					padding-top: 0;
+				}
+
+				+ li {
+					border-top: 1px dashed #e8e8e8;
+				}
+
+				h4 {
+					.font-size(20);
+				}
+
+				> .pull-left img {
+					margin-right: 10px;
+				}
+
+				> .pull-right img {
+					margin-left: 10px;
+				}
+			}
+		}
+		&.active {
+			display: block;
+		}
+	}
+
+
+	.wp-tag-cloud > li {
+		display: inline-block;
+		margin-bottom: 10px;
+		margin-right: 5px;
+	}
+
+	.tab-pane-comments {
+		.avatar {
+			border-radius: 30px;
+		}
+	}
+
+	.sidebar & {
+		.tab-select-btn {
+			.btn-sm();
+		}
+	}
+}
+
+/* Testimonials Widget */
+.ft-testimonials {
+	blockquote {
+		background: #f9f9f9;
+		border-left: 5px solid #e8e8e8;
+		> p {
+			.font-size(14);
+			font-weight: normal;
+			line-height: inherit;
+		}
+	}
+}
+
+/* Jumbotron Widget */
+.ft-jumbotron {
+	.font-size(16);
+	font-weight: 200;
+	background-color: @jumbotron-bg;
+
+	.ft-jumbotron-detail {
+		overflow: hidden;
+  		zoom: 1;
+
+		span {
+			.font-size(21);
+		}
+
+		p {
+			margin: 0;
+		}
+	}
+
+	.ft-jumbotron-action {
+		margin-top: 10px;
+	}
+}
+
+.ft-jumbotron > .widget-wrap {
+	overflow: hidden;
+	zoom: 1;
+}
+
+/*!
+* 7.2 WordPress Default Widgets
+*/
+
+.sidebar {
+	.widget:first-child {
+		padding-top: 0;
+		border-top: none;
+	}
+
+	.widget {
+		border-top: 1px solid #e8e8e8;
+		padding-bottom: 30px;
+		padding-top: 30px;
+	}
+
+	.widget_calendar {
+		caption {
+			text-transform: uppercase;
+			padding: 0 0 10px;
+		}
+
+		table {
+			.table;
+			border-collapse: separate;
+			border-spacing: 3px;
+			position: relative;
+			margin-bottom: 0;
+
+			thead > tr > th {
+				text-align: center;
+				font-weight: 600;
+				.font-size(13);
+				border: none;
+				background-color: #fafafa;
+			}
+
+			tbody > tr > td {
+				padding: 7px;
+				border: none;
+				text-align: center;
+				.font-size(13);
+				background: #fafafa;
+				border-radius: 0.2em;
+
+				&.pad {
+					background: none;
+				}
+			}
+
+			tfoot {
+
+				> tr > td {
+					padding-top: 0;
+					border-top: none;
+				}
+				position: absolute;
+				top: 0;
+				border-spacing: 0;
+
+				a {
+					white-space: nowrap;
+				}
+
+				.pad {
+					width: 100%;
+				}
+			}
+
+		}
+	}
+
+	.widget_pages,
+	.widget_categories,
+	.widget_archive,
+	.widget_meta,
+	.widget_recent_comments,
+	.widget_recent_entries,
+	.widget_nav_menu {
+
+		> .widget-wrap {
+
+			ul.children {
+				margin-top: 10px;
+			}
+		}
+
+		li {
+			.text-overflow();
+			position: relative;
+			display: block;
+			padding: 10px 0 0 20px;
+
+			&:before {
+				position: absolute;
+				left: 0;
+				font-size: 14px;
+				font-family: FontAwesome;
+				content: "\f105";
+			}
+
+			&:first-child {
+				padding-top: 0;
+			}
+
+			.icon {
+				line-height: @line-height-base;
+				float: left;
+				text-align: left;
+			}
+
+		}
+
+	}
+
+	.widget_rss {
+		> .widget-wrap {
+
+			> ul {
+
+				a.rsswidget {
+					.h3;
+					font-weight: 300;
+
+					&:after {
+						content: " ";
+						display: block;
+					}
+				}
+			}
+
+			li {
+				position: relative;
+				display: block;
+				padding: 15px 0 0;
+				margin: 15px 0 0;
+				border-top: 1px dashed #e8e8e8;
+
+				&:first-child {
+					padding-top: 0;
+					border-top: none;
+				}
+			}
+
+			.rss-date {
+				.font-size(12);
+				display: inline-block;
+				margin: 5px 0 0;
+
+				&:before {
+					font-family: FontAwesome;
+					content: "\f017";
+					.font-size(13);
+					padding: 0 5px 0 0;
+				}
+
+			}
+
+			.rssSummary {
+				margin: 5px 0 0;
+			}
+
+			cite {
+				.font-size(12);
+				display: inline-block;
+				margin: 5px 0 0;
+				color: #b6b6b6;
+
+				&:before {
+					font-family: FontAwesome;
+					content: "\2014 \00A0";
+					.font-size(13);
+				}
+			}
+
+		}
+	}
+
+	.widget_tag_cloud {
+		.tagcloud {
+			> ul {
+
+				> li {
+					.label;
+					.label-default;
+					display: inline-block;
+					margin: 0 0 5px 0;
+					font-size: 100%;
+					font-weight: normal;
+
+					> a {
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+}

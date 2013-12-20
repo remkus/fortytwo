@@ -5,15 +5,13 @@
 		</label>
 	</p>
 	<div class="dialog">
-
 		<div class="tabs">
-				<a class="media-modal-close" style="float:right" href="#" title="Close"><span class="media-modal-icon">X</span></a>
-				<ul>
-					<li><a href="#tabs-content-type">Content</a></li>
-					<li><a href="#tabs-transition">Transition settings</a></li>
-					<li><a href="#tabs-display">Display settings</a></li>
-					<li><a href="#tabs-content">Content settings</a></li>
-				</ul>
+			<ul class="nav-tab-wrapper">
+				<li><a href="#tabs-content-type">Content</a></li>
+				<li><a href="#tabs-transition">Transition settings</a></li>
+				<li><a href="#tabs-display">Display settings</a></li>
+				<li><a href="#tabs-content">Content settings</a></li>
+			</ul>
 			<div id="tabs-content-type">
 				  <p>
 				  	<label for="<?php echo $this->get_field_id( 'post_type' ); ?>">
@@ -187,8 +185,8 @@
 					<div class="slider"></div>
 				</p>
 		  </div>
-		</div>
-	</div>
+		</div> <!-- tabs -->
+	</div> <!-- dialog -->
 	<a href="#" class="openDialogButton"><?php _e('Advanced settings', 'fortytwo' )?></a>
 </div>
 <script>
@@ -204,27 +202,33 @@
 				theSliderValue = dialogContainer.find( "input.slider" );
 
 		var theDialog = theDialogEl.dialog({
+			dialogClass: "wp-dialog",
 			modal: true,
   		autoOpen: false,
+  		closeOnEscape: true,
   		appendTo: theForm,
-  		dialogClass: "ft-responsive-slider-container-dialog",
-  		title: "",
   		height: 600,
   		width: 750,
-  		show: { effect: "slide", direction: "right" }
+  		show: { effect: "slide", direction: "right" },
+  		buttons: {
+        "Save": function() {
+        		dialogContainer.parent().parent().parent().find(".widget-control-save").trigger("click");
+            $(this).dialog('close');
+        }
+      },
+      focus: function( event, ui ) {
+				theDialogEl.find(".ui-button-text").css("button-primary");
+			} 
 		});
 
-		// theDialogEl.on( "dialogopen", function( event, ui ) {
-		// 	var theOverlay = theForm.find('.ui-widget-overlay'),
-		// 			zIndex = theOverlay.css("z-index");
+		//Ensure the dialog's save button has WP Admin styling
+		theDialogEl.on( "dialogfocus", function( event, ui ) {
+			theDialogEl.find(".ui-button-text").css("button-primary");
+		} );
 
-		// 	theDialogEl.css('z-index', 9999999);
-		// 	theOverlay.appendTo('body');
-		// } );
-
-		theDialogEl.find( ".media-modal-close" ).on('click',function() {
-			theDialogEl.dialog("close");
-		});
+		// theDialogEl.find( ".media-modal-close" ).on('click',function() {
+		// 	theDialogEl.dialog("close");
+		// });
 
 		theSlider.slider({
       value: theSliderValue.val()||7,

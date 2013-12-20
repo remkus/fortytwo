@@ -53,7 +53,7 @@ class FT_Responsive_Slider extends WP_Widget {
 
 		parent::__construct(
 			'ft-responsive-slider',
-			__( 'FortyTwo - Responsive Slider', 'fortytwo' ),
+			__( '42&nbsp;&nbsp;- Responsive Slider', 'fortytwo' ),
 			array(
 				'classname' => 'ft-responsive-slider',
 				'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' )
@@ -487,12 +487,11 @@ class FT_Responsive_Slider extends WP_Widget {
 	 * Registers and enqueues admin-specific styles.
 	 */
 	function register_admin_styles() {
+		//TODO This custom style will need to be removed when jquery ui styles are included in WP - https://core.trac.wordpress.org/ticket/18909
+		wp_enqueue_style ( 'jquery-ui-styles-wp3.8', $this->url( '/css/wp-3-8-theme/jquery-ui-1.10.3.custom.min.css' ) );
 
+		//Custom overrides
 		wp_enqueue_style ( 'ft-responsive-slider-admin-css', $this->url( '/css/admin.css' ) );
-		//TODO These styles will need to be removed when jquery ui styles are included in WP 3.3 - https://core.trac.wordpress.org/ticket/18909
-		wp_enqueue_style ( 'jquery-ui-fresh', $this->url( '/css/jquery-ui-fresh.css' ) );
-		wp_enqueue_style ( 'jquery-ui-styles', $this->url( '/css/jquery-ui-styles.css' ) );
-
 	} // end register_admin_styles
 
 	/**
@@ -500,6 +499,7 @@ class FT_Responsive_Slider extends WP_Widget {
 	 */
 	function register_admin_scripts() {
 
+		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-slider' );
 		wp_enqueue_script( 'jquery-ui-dialog' );
 		wp_enqueue_script( 'jquery-ui-tabs' );

@@ -48,7 +48,7 @@ class FT_Tabbed_Content extends WP_Widget {
 		$this->fst_widget_cssclass = 'ft-tabbed-content';
 		$this->fst_widget_description = __( 'Tabbed content widget for the FortyTwo theme.', 'fortytwo' );
 		$this->fst_widget_idbase = 'widget-ft-tabbed-content';
-		$this->fst_widget_title = __( 'FortyTwo - Tabs', 'fortytwo' );
+		$this->fst_widget_title = __( '42&nbsp;&nbsp;- FortyTwo - Tabs', 'fortytwo' );
 
 		$this->available_tabs = array( 'latest', 'popular', "comments", "tags" );
 		// Allow child themes/plugins to filter here.
@@ -70,7 +70,7 @@ class FT_Tabbed_Content extends WP_Widget {
 
 	/**
 	 * Returns an absolute URL to a file releative to the widget's folder
-	 * 
+	 *
 	 * @param string   file The file path (relative to the widgets folder)
 	 *
 	 * @return string
@@ -280,8 +280,8 @@ class FT_Tabbed_Content extends WP_Widget {
 
 	/**
 	 * Return default content for the content tab
-	 * 
-	 * @return string 
+	 *
+	 * @return string
 	 */
 	function tab_content_default( $token = '' ) {
 		// Silence is golden.

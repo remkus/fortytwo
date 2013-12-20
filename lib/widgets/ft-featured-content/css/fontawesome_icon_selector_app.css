@@ -1,12 +1,12 @@
 .the-icon-selector-dialog {
 	padding: 0px 10px 0px 10px;
 	background-color: white;
-  -webkit-box-shadow: 0px 0px 16px rgba( 0,0,0,0.3 );
-  box-shadow: 0px 0px 16px rgba( 0,0,0,0.3 );
+	-webkit-box-shadow: 0px 0px 16px rgba( 0,0,0,0.3 );
+	box-shadow: 0px 0px 16px rgba( 0,0,0,0.3 );
 }
 
 .the-icon-selector-dialog .ui-dialog-titlebar-close {
-  display: none;
+	display: none;
 }
 
 .the-icon-selector-dialog .the-icon-selector-dropdown .the-icon-list {

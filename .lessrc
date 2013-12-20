@@ -1,0 +1,8 @@
+{
+	"paths": [
+		"assets/less",
+		"assets/less/admin",
+		"vendor/bootstrap/less",
+		"vendor/font-awesome/less"
+	]
+}
