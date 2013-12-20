@@ -10,7 +10,7 @@ require_once TEMPLATEPATH . '/lib/init.php';
 load_child_theme_textdomain( 'fortytwo', CHILD_DIR . '/lib/languages' );
 
 /**
-/** Add theme support for HTML5 with Semantic Markup
+ * Add theme support for HTML5 with Semantic Markup
  */
 add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list' ) );
 
