@@ -31,14 +31,15 @@
 			?>
 			<div class="slide-image <?php echo $hide_mobile['add_image_cols'] ?>">
 			<?php
+				$image_url = ( genesis_get_image( 'format=url' ) !== false ? genesis_get_image( 'format=url' ) : get_bloginfo('stylesheet_directory') . '/images/no-image.png');
 				if ( $no_image_link ) {
 			?>
-				<img src="<?php echo wpthumb( genesis_get_image( 'format=url' ), 'width='. $slide_image_width .'&height='. $slide_image_height .'&crop=1' ); ?>" alt="<?php the_title(); ?>"/>
+				<img src="<?php echo wpthumb( $image_url, array( 'width' => $slide_image_width, 'height' => $slide_image_height, 'crop' => true )); ?>" alt="<?php the_title(); ?>"/>
 			<?php
 				} else {
 			?>
 				<a href="<?php the_permalink() ?>" rel="bookmark">
-					<img src="<?php echo wpthumb( genesis_get_image( 'format=url' ), 'width='. $slide_image_width .'&height='. $slide_image_height .'&crop=1' ); ?>" alt="<?php the_title(); ?>"/>
+					<img src="<?php echo wpthumb( $image_url, array( 'width' => $slide_image_width, 'height' => $slide_image_height, 'crop' => true )); ?>" alt="<?php the_title(); ?>"/>
 				</a>
 			<?php
 				}
