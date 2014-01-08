@@ -43,7 +43,7 @@ class FT_Testimonials extends WP_Widget {
 
 		parent::__construct(
 			'widget-ft-testimonials',
-			__( '42&nbsp;&nbsp;- FortyTwo - Testimonials', 'fortytwo' ),
+			__( '42&nbsp;&nbsp;- Testimonials', 'fortytwo' ),
 			array(
 				'classname'  => 'ft-testimonials',
 				'description' => __( 'Testimonials widget for the FortyTwo Theme.', 'fortytwo' )

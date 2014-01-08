@@ -38,7 +38,7 @@ class FT_Jumbotron extends WP_Widget {
 
 		parent::__construct(
 			'widget-ft-jumbotron',
-			__( '42&nbsp;&nbsp;- FortyTwo - Jumbotron', 'fortytwo' ),
+			__( '42&nbsp;&nbsp;- Jumbotron', 'fortytwo' ),
 			array(
 				'classname'  => 'ft-jumbotron',
 				'description' => __( 'Jumbotron widget for the FortyTwo Theme.', 'fortytwo' )
