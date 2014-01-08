@@ -5272,6 +5272,26 @@ table > tfoot > .warning > th {
 * FortyTwo Intro section which is used to house the home page slider as well as the sub headers
 */
 /* Slider styling */
+.ft-responsive-slider .slide-excerpt {
+	position: relative;
+	float: left;
+	width: 58.333333333333336%;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	line-height: 1.5787854911295425;
+}
+
+.ft-responsive-slider .slide-image {
+	position: relative;
+	float: left;
+	width: 41.66666666666667%;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	line-height: 1.5016972120111247;
+}
+
 .ft-responsive-slider .slides:before,
 .ft-responsive-slider .slides:after {
 	content: " ";
@@ -5297,12 +5317,8 @@ table > tfoot > .warning > th {
 	display: block;
 }
 
-.ft-responsive-slider .slides .slide-image > img,
-.ft-responsive-slider .slides .slide-image > a > img {
-	display: block;
-	max-width: 100%;
-	height: auto;
-	line-height: 1;
+.ft-responsive-slider img {
+	margin: 0;
 }
 
 .ft-responsive-slider .flex-control-nav > li,

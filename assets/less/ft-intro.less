@@ -8,6 +8,11 @@
 
 /* Slider styling */
 .ft-responsive-slider {
+
+	@screen-size: @screen-sm-min;
+	.make-column(~".slide-excerpt" 7 0 0);
+	.make-column(~".slide-image" 5 0 0);
+
 	.slides {
 		.clearfix();
 
@@ -15,14 +20,10 @@
 			position: relative;
 			display: block;
 		}
+	}
 
-		.slide-image {
-			> img,
-			> a > img {
-				.img-responsive();
-				line-height: 1;
-			}
-		}
+	img {
+		margin: 0;
 	}
 
 	.flex-control-nav,

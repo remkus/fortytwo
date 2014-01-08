@@ -333,8 +333,8 @@ class FT_Responsive_Slider extends WP_Widget {
 			$controlnav = $instance['slideshow_pager'];
 			$directionnav = $instance['slideshow_arrows'];
 
-			$slide_excerpt_col = ( int ) $instance['slideshow_excerpt_width'];
-			$slide_image_col = 12 - $slide_excerpt_col;
+			$slide_image_width = $instance['slideshow_width'];
+			$slide_image_height = $instance['slideshow_height'];
 
 			if ( $instance['slideshow_hide_mobile'] == 1 ) {
 				$hide_mobile = array(
