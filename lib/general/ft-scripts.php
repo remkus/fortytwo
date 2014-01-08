@@ -24,16 +24,11 @@ add_action( 'wp_enqueue_scripts', 'fortytwo_add_scripts', 100 );
  * @uses CHILD_THEME_VERSION
  */
 function fortytwo_add_scripts() {
-
 	// Adding the fortytwo.js file
 	wp_enqueue_script( 'fortytwo', CHILD_URL . '/assets/js/fortytwo.js', array() , CHILD_THEME_VERSION, false );
 
-	// Polyfill for srcset which is part of our responsive images solution
-	wp_enqueue_script( 'srcset-polyfill', CHILD_URL . '/vendor/js/srcset.min.js', array() , CHILD_THEME_VERSION, false );
-
 	// Bootstrap js file
 	wp_enqueue_script( 'bootstrap', CHILD_URL . '/vendor/bootstrap/dist/js/bootstrap.min.js', array( 'jquery' ), '3.0.0', true );
-
 }
 
 add_action( 'wp_head', 'fortytwo_respond_ie_media_queries' );
