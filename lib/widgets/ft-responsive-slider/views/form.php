@@ -48,7 +48,6 @@
 										</optgroup>
 								<?php } ?>
 								</select>
-							</p>
 
 							<h4><?php _e( 'Include or Exclude by Taxonomy ID', 'fortytwo' ); ?>?</h4>
 
@@ -123,12 +122,12 @@
 
 		  <div id="tabs-display">
 		    <p>
-					<label for="<?php echo $this->get_field_id( 'slideshow_width' ); ?>"><?php _e( 'Maximum Slider Width (in pixels)', 'fortytwo' ); ?>:
+					<label for="<?php echo $this->get_field_id( 'slideshow_width' ); ?>"><?php _e( 'Maximum Image Width (in pixels)', 'fortytwo' ); ?>:
 					<input type="text" <?php $this->echo_field_id( "slideshow_width" ) ?> value="<?php echo $instance['slideshow_width']; ?>" size="5" /></label>
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'slideshow_height' ); ?>"><?php _e( 'Maximum Slider Height (in pixels)', 'fortytwo' ); ?>:
+					<label for="<?php echo $this->get_field_id( 'slideshow_height' ); ?>"><?php _e( 'Maximum Image Height (in pixels)', 'fortytwo' ); ?>:
 					<input type="text" <?php $this->echo_field_id( "slideshow_height" ) ?> value="<?php echo $instance['slideshow_height']; ?>" size="5" /></label>
 				</p>
 
@@ -179,11 +178,6 @@
 
 				<p><span class="description"><?php _e( 'Using this option will limit the text and strip all formatting from the text displayed. To use this option, choose "Display post content" in the select box above.', 'fortytwo' ); ?></span></p>
 
-				<p>
-					<label for="<?php echo $this->get_field_id( 'slideshow_excerpt_width' ); ?>"><?php _e( 'Slider Excerpt Width in Columns (1-12)', 'fortytwo' ); ?>:
-					<input type="text" class="slider" <?php $this->echo_field_id( "slideshow_excerpt_width" ) ?> value="<?php echo $instance['slideshow_excerpt_width']; ?>" size="5" /></label>
-					<div class="slider"></div>
-				</p>
 		  </div>
 		</div> <!-- tabs -->
 	</div> <!-- dialog -->
@@ -195,28 +189,28 @@
 	$(document).ready(function () {
 
 		var dialogContainer = $('#<?php echo $this->get_field_id( 'container' )?>'),
-				theForm = $(dialogContainer).closest("form"),
-				theDialogEl = dialogContainer.find('.dialog'),
-				theTabs = dialogContainer.find( ".tabs" ),
-				theSlider = dialogContainer.find( "div.slider" ),
-				theSliderValue = dialogContainer.find( "input.slider" );
+			theForm = $(dialogContainer).closest("form"),
+			theDialogEl = dialogContainer.find('.dialog'),
+			theTabs = dialogContainer.find( ".tabs" ),
+			theSlider = dialogContainer.find( "div.slider" ),
+			theSliderValue = dialogContainer.find( "input.slider" );
 
 		var theDialog = theDialogEl.dialog({
 			dialogClass: "wp-dialog",
 			modal: true,
-  		autoOpen: false,
-  		closeOnEscape: true,
-  		appendTo: theForm,
-  		height: 600,
-  		width: 750,
-  		show: { effect: "slide", direction: "right" },
-  		buttons: {
-        "Save": function() {
-        		dialogContainer.parent().parent().parent().find(".widget-control-save").trigger("click");
-            $(this).dialog('close');
-        }
-      },
-      focus: function( event, ui ) {
+			autoOpen: false,
+			closeOnEscape: true,
+			appendTo: theForm,
+			height: 600,
+			width: 750,
+			show: { effect: "slide", direction: "right" },
+			buttons: {
+				"Save": function() {
+					dialogContainer.parent().parent().parent().find(".widget-control-save").trigger("click");
+					$(this).dialog('close');
+				}
+			},
+			focus: function( event, ui ) {
 				theDialogEl.find(".ui-button-text").css("button-primary");
 			} 
 		});
@@ -230,20 +224,10 @@
 		// 	theDialogEl.dialog("close");
 		// });
 
-		theSlider.slider({
-      value: theSliderValue.val()||7,
-      min: 1,
-      max: 12,
-      step: 1,
-      slide: function( event, ui ) {
-        theSliderValue.val( ui.value );
-      }
-    });
-
-    theTabs.tabs();
+		theTabs.tabs();
 
 		dialogContainer.find('.openDialogButton').click(function(){
-		  theDialog.dialog('open');
+			theDialog.dialog('open');
 		});
 
 	});

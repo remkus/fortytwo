@@ -12,7 +12,6 @@ add_action( 'wp_enqueue_scripts', 'fortytwo_load_google_fonts' );
 function fortytwo_load_google_fonts() {
 	wp_enqueue_style( 'google-font-open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,600,300', array(), PARENT_THEME_VERSION );
 	wp_enqueue_style( 'google-font-droid-serif', '//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic', array(), PARENT_THEME_VERSION );
-	wp_enqueue_style( 'google-font-source-sans-pro', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700', array(), PARENT_THEME_VERSION );
 }
 
 add_action( 'wp_enqueue_scripts', 'fortytwo_add_scripts', 100 );
@@ -24,16 +23,11 @@ add_action( 'wp_enqueue_scripts', 'fortytwo_add_scripts', 100 );
  * @uses CHILD_THEME_VERSION
  */
 function fortytwo_add_scripts() {
-
 	// Adding the fortytwo.js file
 	wp_enqueue_script( 'fortytwo', CHILD_URL . '/assets/js/fortytwo.js', array() , CHILD_THEME_VERSION, false );
 
-	// Polyfill for srcset which is part of our responsive images solution
-	wp_enqueue_script( 'srcset-polyfill', CHILD_URL . '/vendor/js/srcset.min.js', array() , CHILD_THEME_VERSION, false );
-
 	// Bootstrap js file
-	wp_enqueue_script( 'bootstrap', CHILD_URL . '/vendor/bootstrap/dist/js/bootstrap.min.js', array( 'jquery' ), '3.0.0', true );
-
+	wp_enqueue_script( 'bootstrap', CHILD_URL . '/vendor/bootstrap/dist/js/bootstrap.min.js', array( 'jquery' ), '3.0.3', true );
 }
 
 add_action( 'wp_head', 'fortytwo_respond_ie_media_queries' );

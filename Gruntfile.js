@@ -157,6 +157,8 @@ module.exports = function (grunt) {
 		'copy:font_icons',
 		'less',
 		'cssmin',
+		'cssbeautifier',
+		'csscomb',
 		'concat',
 		'clean'
 	]);
