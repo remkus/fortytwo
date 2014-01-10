@@ -34,7 +34,7 @@
     "karma": "~0.10.4",
     "grunt-karma": "~0.6.2",
     "grunt-contrib-less": "~0.8.1",
-    "assemble-less": "~0.5.3",
+    "assemble-less": "~0.7.0",
     "grunt-jsbeautifier": "~0.2.3",
     "grunt-contrib-compress": "~0.5.2",
     "grunt-csscomb": "~1.1.0",

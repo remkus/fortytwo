@@ -5,8 +5,8 @@
 */
 
 .site-header {
-	padding-top: 40px;
-	padding-bottom: 40px;
+	padding-top: @site-header-padding-vertical;
+	padding-bottom: @site-header-padding-vertical;
 
 	// For extra small devices like smartphones.
 	@screen-size: @screen-xs-min;
@@ -34,40 +34,32 @@
 		.make-column(~".header-widget-area" 6 0 0);
 	}
 
-	.header-widget-area {
-		> .widget {
-			line-height: 55px;
-			float: right;
-		}
-	}
-
 	.site-title {
-		margin: 0 15px 0 0;
-		float: left;
+		border-right: 1px solid #e8e8e8;
+		display: table-cell;
+		margin: 0;
+		padding: 0 15px 0 0;
+		vertical-align: middle;
 
 		a {
+			.text-hide();
 			background: url('@{ft-images-path}/logo.png') no-repeat;
 			display: block;
-			float: left;
-			overflow: hidden;
-			text-indent: -9999px;
-			height: 55px;
-			width: 280px;
+			height: @site-header-logo-height;
+			width: @site-header-logo-width;
 		}
 	}
 
 	.site-description {
-		float: left;
-		border-left: 1px solid #e8e8e8;
-		padding: 6px 0 6px 15px;
+		display: table-cell;
+		height: @site-header-height;
 		margin: 0;
+		padding: 0 0 0 15px;
 		text-transform: uppercase;
-		width: 190px;
-		line-height: 21px;
-		.font-size(14);
+		vertical-align: middle;
 	}
-}
 
-#title a {
-	width: 100%;
+	.header-widget-area > .widget {
+		.pull-right();
+	}
 }
