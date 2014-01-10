@@ -21,12 +21,10 @@ module.exports = function (grunt) {
 			}
 		},
 		less: {
-			options: {
-				lessrc: '.lessrc'
-			},
 			fonticons: {
 				options: {
-					imports: {reference: ['ft-variables.less', 'vendor/font-awesome/less/mixins.less']}
+					paths: ['assets/less', 'vendor/font-awesome/less'],
+					imports: {reference: ['ft-variables.less', 'mixins.less']}
 				},
 				files: {
 					'tmp/assets/css/ft-font-icons.css': ['assets/less/ft-font-icons.less']
@@ -34,7 +32,10 @@ module.exports = function (grunt) {
 			},
 			fonticons_admin: {
 				options: {
-					imports: {reference: ['ft-variables.less', 'ft-admin-variables.less', 'vendor/font-awesome/less/mixins.less']}
+					paths: ['assets/less', 'assets/less/admin', 'vendor/font-awesome/less'],
+					imports: {
+						reference: ['ft-variables.less', 'ft-admin-variables.less', 'mixins.less']
+					}
 				},
 				files: {
 					'tmp/assets/css/admin/ft-admin-font-icons.css': ['assets/less/admin/ft-admin-font-icons.less']
@@ -42,9 +43,9 @@ module.exports = function (grunt) {
 			},
 			components: {
 				options: {
-					"imports": {
-						"less": ["ft-variables.less", "ft-mixins.less"],
-						"reference": ["mixins.less", "utilities.less"]
+					paths: ['assets/less', 'vendor/bootstrap/less'],
+					imports: {
+						reference: ['ft-variables.less', 'ft-mixins.less', 'mixins.less', 'utilities.less']
 					}
 				},
 				files: [
@@ -53,7 +54,10 @@ module.exports = function (grunt) {
 			},
 			fortytwo_admin_style: {
 				options: {
-					imports: {reference: ['ft-variables.less', 'ft-mixins.less', 'ft-admin-variables.less']}
+					paths: ['assets/less', 'assets/less/admin'],
+					imports: {
+						reference: ['ft-variables.less', 'ft-mixins.less', 'ft-admin-variables.less']
+					}
 				},
 				files: {
 					'tmp/assets/css/admin/ft-admin-core.css': ['assets/less/admin/ft-admin-core.less']
