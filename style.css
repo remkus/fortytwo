@@ -5389,6 +5389,35 @@ table > tfoot > .warning > th {
 .open > a {
 	outline: 0;
 }
+/* Menus Social Icons */
+.menu .ft-ico {
+	line-height: 55px;
+	padding-left: 15px;
+	line-height: 36px;
+	position: relative;
+	font-size: 23px;
+	font-size: 2.3rem;
+	color: #ffffff;
+	width: 36px;
+	height: 36px;
+	display: inline-block;
+	border-radius: 18px;
+	background: #424242;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.menu .ft-ico.no-label > a {
+	font: 0/0 a;
+	color: transparent;
+	text-shadow: none;
+	background-color: transparent;
+	border: 0;
+	position: absolute;
+	left: 0;
+	width: 36px;
+	height: 36px;
+}
 
 
 /*!
