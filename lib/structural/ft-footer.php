@@ -44,20 +44,18 @@ function fortytwo_insert_footer_widget() {
 
 }
 
-
-/** Customize the default footer */
-remove_action( 'genesis_footer', 'genesis_do_footer' );
-
-add_action( 'genesis_footer', 'fortytwo_custom_footer' );
-
-function fortytwo_custom_footer() {
-
-	$footer_output = <<<EOD
-		<div class="copyright-area">
-			<span>&copy; Copyright 2012 <a href="http://mydomain.com/">My Domain</a> &middot; All Rights Reserved &middot; Powered by <a href="http://wordpress.org/">WordPress</a> &middot; <a href="http://mydomain.com/wp-admin">Admin</a></span>
-		</div>
-EOD;
-
-	echo $footer_output;
-
+add_filter( 'genesis_footer_creds_text', 'fortytwo_footer_creds_text' );
+/**
+ * Custom FortyTwo Footer Text
+ * @since 1.0.0
+ *
+ */
+function fortytwo_footer_creds_text() {
+	echo '<div class="copyright-area">';
+	echo do_shortcode( '[footer_copyright before="Copyright "] ' );
+	echo do_shortcode( '[footer_childtheme_link before=" &middot; "]' );
+	echo ' &middot; ';
+	echo ' Built on the ';
+	echo do_shortcode( '[footer_genesis_link]' );
+	echo '</span></div>';
 }
