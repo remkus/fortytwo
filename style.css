@@ -5389,27 +5389,6 @@ table > tfoot > .warning > th {
 .open > a {
 	outline: 0;
 }
-/* Menus Social Icons */
-.menu .ft-ico-social > a {
-	display: inline-block;
-	font-family: FontAwesome;
-	font-style: normal;
-	font-weight: normal;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-.menu .ft-ico-social.no-label > a {
-	font: 0/0 a;
-	color: transparent;
-	text-shadow: none;
-	background-color: transparent;
-	border: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
 
 
 /*!
