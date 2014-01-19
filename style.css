@@ -2682,12 +2682,16 @@ table > tfoot > .warning > th {
 *
 * Font Awesome - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 */
+/*!
+ *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
 /* FONT PATH
  * -------------------------- */
 @font-face {
 	font-family: 'FontAwesome';
-	src: url('assets/fonts/fontawesome-webfont.eot?v=4.0.3');
-	src: url('assets/fonts/fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'), url('assets/fonts/fontawesome-webfont.woff?v=4.0.3') format('woff'), url('assets/fonts/fontawesome-webfont.ttf?v=4.0.3') format('truetype'), url('assets/fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg');
+	src: url('/content/themes/fortytwo/assets/fonts/fontawesome-webfont.eot?v=4.0.3');
+	src: url('/content/themes/fortytwo/assets/fonts/fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'), url('/content/themes/fortytwo/assets/fonts/fontawesome-webfont.woff?v=4.0.3') format('woff'), url('/content/themes/fortytwo/assets/fonts/fontawesome-webfont.ttf?v=4.0.3') format('truetype'), url('/content/themes/fortytwo/assets/fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -5367,31 +5371,25 @@ table > tfoot > .warning > th {
 	outline: 0;
 }
 /* Menus Social Icons */
-.menu .ft-ico {
-	line-height: 55px;
-	padding-left: 15px;
-	line-height: 36px;
-	position: relative;
-	font-size: 23px;
-	font-size: 2.3rem;
-	color: #ffffff;
-	width: 36px;
-	height: 36px;
+.menu .ft-ico-social > a {
 	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
-.menu .ft-ico.no-label > a {
+.menu .ft-ico-social.no-label > a {
 	font: 0/0 a;
 	color: transparent;
 	text-shadow: none;
 	background-color: transparent;
 	border: 0;
 	position: absolute;
+	top: 0;
 	left: 0;
-	width: 36px;
-	height: 36px;
 }
 
 
