@@ -11,7 +11,7 @@
 @import (reference) "ft-font-icons";
 
 .menu {
-	&:extend(.nav, .nav > li, .navbar-nav all);
+	&:extend(.nav, .nav > li);
 }
 
 .nav-collapse {
@@ -42,7 +42,7 @@
 
 	.menu {
 
-		&:extend(.nav all, .navbar-default .navbar-nav all);
+		&:extend(.nav all, .navbar-nav all, .navbar-default .navbar-nav all);
 
 		// Sub menus
 		// ---------------------------
@@ -179,28 +179,6 @@
 	}
 }
 
-//	> li[class^="icon-"] {
-//
-//		line-height: 36px;
-//		position: relative;
-//		.font-size(23);
-//		color: #fff;
-//		.square(36px);
-//		display: inline-block;
-//		border-radius: 18px;
-//		background: #424242;
-//		text-align: center;
-//		vertical-align: middle;
-//
-//		> a {
-//			position: absolute;
-//			left: 0;
-//			.text-hide;
-//			.square(36px);
-//		}
-//	}
-//}
-
 .caret {
 	&:extend(.caret);
 }
@@ -216,5 +194,16 @@
 
 	> a {
 		outline: 0;
+	}
+}
+
+/* Header Widget Area Nav Styling */
+.header-widget-area {
+	.widget_nav_menu {
+		li {
+			line-height: @site-header-height;
+			margin-right: 15px;
+			float: left;
+		}
 	}
 }
