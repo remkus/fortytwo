@@ -1,4 +1,9 @@
 //
+// Core FortyTwo variables that need to be called first.
+//
+@ft-theme-folder: "fortytwo";
+
+//
 // Bootstrap Variables
 //
 // All variables up to the "FortyTwo Variables" section
@@ -653,7 +658,7 @@
 // Variables from the Font Awesome variable file
 // --------------------------
 
-@fa-font-path:        "assets/fonts";
+@fa-font-path:        "/content/themes/@{ft-theme-folder}/assets/fonts";
 @fa-css-prefix:       ft-ico;
 @fa-version:          "4.0.3";
 @fa-border-color:     #eee;
@@ -1039,12 +1044,6 @@
 // FortyTwo Image Paths
 // -------------------------
 @ft-images-path:          "images";
-
-
-// FortyTwo Font Paths
-// -------------------------
-@FontAwesomePath:         "assets/fonts";
-@ft-fonts-path:           "assets/fonts";
 
 
 // FortyTwo Page Layouts
