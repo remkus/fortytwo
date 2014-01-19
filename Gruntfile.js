@@ -185,4 +185,16 @@ module.exports = function (grunt) {
 		'concat',
 		'clean'
 	]);
+
+	grunt.registerTask('testme', [
+		'clean',
+		'copy:fonticons',
+		'replace',
+		'less:fonticons',
+		'less:components',
+		'cssmin',
+		'cssbeautifier',
+		'csscomb',
+		'concat'
+	]);
 };

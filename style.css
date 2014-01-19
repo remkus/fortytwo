@@ -5390,31 +5390,25 @@ table > tfoot > .warning > th {
 	outline: 0;
 }
 /* Menus Social Icons */
-.menu .ft-ico {
-	line-height: 55px;
-	padding-left: 15px;
-	line-height: 36px;
-	position: relative;
-	font-size: 23px;
-	font-size: 2.3rem;
-	color: #ffffff;
-	width: 36px;
-	height: 36px;
+.menu .ft-ico-social > a {
 	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
-.menu .ft-ico.no-label > a {
+.menu .ft-ico-social.no-label > a {
 	font: 0/0 a;
 	color: transparent;
 	text-shadow: none;
 	background-color: transparent;
 	border: 0;
 	position: absolute;
+	top: 0;
 	left: 0;
-	width: 36px;
-	height: 36px;
 }
 
 
