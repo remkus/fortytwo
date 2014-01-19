@@ -8,10 +8,25 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		copy: {
-			font_icons: {
+			fonticons: {
 				files: [
 					{expand: true, flatten: true, src: ['vendor/bootstrap/dist/fonts/*'], dest: 'assets/fonts/', filter: 'isFile'},
 					{expand: true, flatten: true, src: ['vendor/font-awesome/fonts/*'], dest: 'assets/fonts/', filter: 'isFile'}
+				]
+			}
+		},
+		replace: {
+			fonticons: {
+				options: {
+					patterns: [
+						{
+							match: /variables/g,
+							replacement: 'ft-variables'
+						}
+					]
+				},
+				files: [
+					{expand: true, flatten: true, src: ['vendor/font-awesome/less/font-awesome.less'], dest: 'tmp/assets/less/'}
 				]
 			}
 		},
@@ -24,39 +39,29 @@ module.exports = function (grunt) {
 			fonticons: {
 				options: {
 					paths: ['assets/less', 'vendor/font-awesome/less'],
-					imports: {reference: ['ft-variables.less', 'mixins.less']}
+					imports: {reference: ['ft-variables.less']}
 				},
 				files: {
-					'tmp/assets/css/ft-font-icons.css': ['assets/less/ft-font-icons.less']
-				}
-			},
-			fonticons_admin: {
-				options: {
-					paths: ['assets/less', 'assets/less/admin', 'vendor/font-awesome/less'],
-					imports: {
-						reference: ['ft-variables.less', 'ft-admin-variables.less', 'mixins.less']
-					}
-				},
-				files: {
-					'tmp/assets/css/admin/ft-admin-font-icons.css': ['assets/less/admin/ft-admin-font-icons.less']
+					'tmp/assets/less/ft-font-awesome.less': ['tmp/assets/less/font-awesome.less'],
+					'tmp/assets/css/admin/ft-admin-font-awesome.css': ['tmp/assets/less/font-awesome.less']
 				}
 			},
 			components: {
 				options: {
-					paths: ['assets/less', 'vendor/bootstrap/less'],
+					paths: ['assets/less', 'vendor/bootstrap/less', 'tmp/assets/less'],
 					imports: {
 						reference: ['ft-variables.less', 'ft-mixins.less', 'mixins.less', 'utilities.less']
 					}
 				},
 				files: [
-					{expand: true, flatten: true, cwd: 'assets/less', src: ['*.less', '!{ft-variables,ft-mixins,ft-font-icons}.less'], dest: 'tmp/assets/css/', ext: '.css'}
+					{expand: true, flatten: true, cwd: 'assets/less', src: ['*.less', '!{ft-variables,ft-mixins}.less'], dest: 'tmp/assets/css/', ext: '.css'}
 				]
 			},
 			fortytwo_admin_style: {
 				options: {
 					paths: ['assets/less', 'assets/less/admin'],
 					imports: {
-						reference: ['ft-variables.less', 'ft-mixins.less', 'ft-admin-variables.less']
+						reference: ['ft-variables.less', 'ft-mixins.less']
 					}
 				},
 				files: {
@@ -115,7 +120,7 @@ module.exports = function (grunt) {
 				},
 				src: [
 					'tmp/assets/css/admin/ft-admin-core.css',
-					'tmp/assets/css/admin/ft-admin-font-icons.css'
+					'tmp/assets/css/admin/ft-admin-font-awesome.css'
 				],
 				dest: 'lib/admin/css/admin-style.css'
 			}
@@ -158,7 +163,9 @@ module.exports = function (grunt) {
 	});
 
 	grunt.registerTask('build', [
-		'copy:font_icons',
+		'clean',
+		'copy:fonticons',
+		'replace',
 		'less',
 		'cssmin',
 		'cssbeautifier',
@@ -168,12 +175,26 @@ module.exports = function (grunt) {
 	]);
 
 	grunt.registerTask('stylesheet', [
-		'copy:font_icons',
+		'clean',
+		'copy:fonticons',
+		'replace',
 		'less',
 		'cssmin',
 		'cssbeautifier',
 		'csscomb',
 		'concat',
 		'clean'
+	]);
+
+	grunt.registerTask('testme', [
+		'clean',
+		'copy:fonticons',
+		'replace',
+		'less:fonticons',
+		'less:components',
+		'cssmin',
+		'cssbeautifier',
+		'csscomb',
+		'concat'
 	]);
 };
