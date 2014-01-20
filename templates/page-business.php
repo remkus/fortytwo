@@ -56,7 +56,7 @@ function fortytwo_add_site_intro() {
 		echo '	<div class="site-intro">
 					<div class="wrap">
 						<div class="inner-wrap">
-							<div class="widget-container" data-widget-count="' . $data_widget_count . '">';
+							<div class="widget-area custom-widget-area" data-widget-count="' . $data_widget_count . '">';
 
 								dynamic_sidebar( 'page-business-section' );
 
@@ -84,7 +84,7 @@ function fortytwo_page_business_sections_in_loop() {
 
 		$data_widget_count = fortytwo_add_data_widget_attr( 'page-business-section-2' );
 
-		echo '<div class="widget-container" data-widget-count="' .$data_widget_count. '">';
+		echo '<div class="widget-area custom-widget-area" data-widget-count="' .$data_widget_count. '">';
 				dynamic_sidebar( 'page-business-section-2' );
 		echo '</div>';
 
@@ -94,7 +94,7 @@ function fortytwo_page_business_sections_in_loop() {
 
 		$data_widget_count = fortytwo_add_data_widget_attr( 'page-business-section-3' );
 
-		echo '<div class="widget-container" data-widget-count="' .$data_widget_count. '">';
+		echo '<div class="widget-area custom-widget-area" data-widget-count="' .$data_widget_count. '">';
 				dynamic_sidebar( 'page-business-section-3' );
 		echo '</div>';
 
@@ -104,7 +104,7 @@ function fortytwo_page_business_sections_in_loop() {
 
 		$data_widget_count = fortytwo_add_data_widget_attr( 'page-business-section-4' );
 
-		echo '<div class="widget-container" data-widget-count="' .$data_widget_count. '">';
+		echo '<div class="widget-area custom-widget-area" data-widget-count="' .$data_widget_count. '">';
 				dynamic_sidebar( 'page-business-section-4' );
 		echo '</div>';
 
