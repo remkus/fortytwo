@@ -30,7 +30,7 @@ function fortytwo_insert_footer_widget() {
 
 	echo '<div class="inner-wrap">';
 
-	echo '<div class="widget-container" data-widget-count="' .$data_widget_count. '">';
+	echo '<div class="sidebar sidebar-footer-columns widget-area custom-widget-area" data-widget-count="' .$data_widget_count. '">';
 
 	dynamic_sidebar( 'footer-columns' );
 
