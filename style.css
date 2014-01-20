@@ -17,27 +17,18 @@
 * Table of Contents:
 *
 *  1.0 - Reset
-*
 *  2.0 - Core
-*
 *  3.0 - Font Icons
-*
 *  4.0 - Header
-*
 *  5.0 - Navigation
-*
 *  6.0 - Intro
-*
 *  7.0 - Widgets
 *   7.1 - FortyTwo Custom Widgets
 *   7.2 - WordPress Default Widgets
-*
 *  8.0 - Content
 *   8.1 - Entry Meta
 *   8.2 - Comments
-*
 *  9.0 - Footer
-*
 *  10.0 - Print
 */
 
@@ -6022,6 +6013,10 @@ article.type-page > .entry-header {
 	text-align: left;
 }
 
+.sidebar .widget_rss > .widget-wrap .rsswidget img {
+	display: inline;
+}
+
 .sidebar .widget_rss > .widget-wrap > ul a.rsswidget {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 500;
@@ -6147,6 +6142,15 @@ article.type-page > .entry-header {
 	margin-left: 5px;
 }
 
+.entry-meta {
+	border-top: 1px solid #e8e8e8;
+	padding-top: 10px;
+}
+
+.entry-content .div.sharedaddy div.sd-block {
+	border-top: none;
+}
+
 .entry-categories:before {
 	content: "\f115";
 }
@@ -6222,6 +6226,31 @@ article.type-page > .entry-header {
 
 .content article .entry-footer p {
 	margin: 0;
+}
+
+.content .author-box {
+	background-color: #f9f9f9;
+	padding: 30px;
+	margin-bottom: 30px;
+}
+
+.content h1.author-box-title {
+	color: #333333;
+	font-size: 18px;
+	margin: 0 0 4px 0;
+}
+
+.content .author-box a {
+	border-bottom: 1px solid #dddddd;
+}
+
+.content .author-box p {
+	margin-bottom: 0;
+}
+
+.content .author-box .avatar {
+	float: left;
+	margin-right: 24px;
 }
 
 .content .pagination > ul > .active > a,
@@ -6967,7 +6996,7 @@ fieldset[disabled] .comment-respond input[type="submit"] {
 *  10.0 Print
 *
 *  FortyTwo print styles
-*/@media print{*{text-shadow:none!important;color:#000!important;background:transparent!important;box-shadow:none!important}a,a:visited{text-decoration:underline}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}a[href^="javascript:"]:after,a[href^="#"]:after{content:""}blockquote,pre{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}img,tr{page-break-inside:avoid}img{max-width:100%!important}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}select{background:#fff!important}.navbar{display:none}.table td,.table th{background-color:#fff!important}.btn>.caret,.dropup>.btn>.caret{border-top-color:#000!important}.label{border:1px solid #000}.table{border-collapse:collapse!important}.table-bordered td,.table-bordered th{border:1px solid #ddd!important}}
+*/@media print{*{text-shadow:none!important;color:#000!important;background:transparent!important;box-shadow:none!important}a,a:visited{text-decoration:underline}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}a[href^="javascript:"]:after,a[href^="#"]:after{content:""}blockquote,pre{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}img,tr{page-break-inside:avoid}img{max-width:100%!important}@page{margin:2cm .5cm}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}select{background:#fff!important}.navbar{display:none}.table td,.table th{background-color:#fff!important}.btn>.caret,.dropup>.btn>.caret{border-top-color:#000!important}.label{border:1px solid #000}.table{border-collapse:collapse!important}.table-bordered td,.table-bordered th{border:1px solid #ddd!important}}
 
 
 /* Would it save you a lot of time if I just gave up and went mad now? ― Douglas Adams */
