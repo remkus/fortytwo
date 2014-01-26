@@ -12,7 +12,7 @@
     "leading-zero": true,
     "remove-empty-rulesets": true,
     "rule-indent": "\t",
-    "stick-brace": true,
+    "stick-brace": 1,
     "strip-spaces": true,
     "unitless-zero": true,
     "vendor-prefix-align": false

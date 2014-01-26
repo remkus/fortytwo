@@ -108,21 +108,25 @@
 		margin-right: 24px;
 
 	}
-
-	.pagination > ul:extend(.pagination all) {
-		> .active > a,
-		> .active > span {
-			&,
-			&:hover,
-			&:focus {
-				border-color: @pagination-border;
-			}
-		}
-	}
 }
 
 /*!
-* 8.2 - Comments
+* 8.2 - Pagination
+*/
+
+@import (reference) "pagination";
+@import (reference) "pager";
+
+.pagination > ul {
+	&:extend(.pagination all);
+}
+
+.pagination > div[class^=pagination-] {
+	&:extend(.pager li all);
+}
+
+/*!
+* 8.3 - Comments
 */
 
 .entry-comments {

@@ -1,4 +1,9 @@
 //
+// Core FortyTwo variables that need to be called first.
+//
+@ft-theme-folder: "fortytwo";
+
+//
 // Bootstrap Variables
 //
 // All variables up to the "FortyTwo Variables" section
@@ -356,20 +361,19 @@
 // -------------------------
 
 @pagination-bg:                        #fff;
-@pagination-border:                    #ccc;
+@pagination-border:                    #ddd;
 
 @pagination-hover-bg:                  @gray-lighter;
 
-@pagination-active-bg:                 @gray-lighter;
-@pagination-active-color:              #424242;
+@pagination-active-bg:                 @brand-primary;
+@pagination-active-color:              #fff;
 
 @pagination-disabled-color:            @gray-light;
-
 
 // Pager
 // -------------------------
 
-@pager-border-radius:                  15px;
+@pager-border-radius:                  3px;
 @pager-disabled-color:                 @gray-light;
 
 
@@ -653,7 +657,7 @@
 // Variables from the Font Awesome variable file
 // --------------------------
 
-@fa-font-path:        "assets/fonts";
+@fa-font-path:        "/content/themes/@{ft-theme-folder}/assets/fonts";
 @fa-css-prefix:       ft-ico;
 @fa-version:          "4.0.3";
 @fa-border-color:     #eee;
@@ -1041,12 +1045,6 @@
 @ft-images-path:          "images";
 
 
-// FortyTwo Font Paths
-// -------------------------
-@FontAwesomePath:         "assets/fonts";
-@ft-fonts-path:           "assets/fonts";
-
-
 // FortyTwo Page Layouts
 // -------------------------
 @grid-columns-sidebar-primary:            3;
@@ -1090,10 +1088,31 @@
 @grayLighter:           #eee;
 
 
-// Pagination
+// FT Site Header
 // -------------------------
-@pagination-color:                     #333;
 
+// Basics of a site header
+@site-header-height:                    55px;
+@site-header-margin-bottom:             0;
+@site-header-border-radius:             0;
+@site-header-padding-horizontal:        floor(@grid-gutter-width / 2);
+@site-header-padding-vertical:          40px;
+@site-header-default-color:             #777;
+@site-header-default-bg:                #fff;
+@site-header-default-border:            darken(@site-header-default-bg, 6.5%);
+
+// Site header logo
+@site-header-logo-height:               55px;
+@site-header-logo-width:                280px;
+
+// Site header links
+@site-header-default-link-color:                #777;
+@site-header-default-link-hover-color:          #333;
+@site-header-default-link-hover-bg:             transparent;
+@site-header-default-link-active-color:         #555;
+@site-header-default-link-active-bg:            darken(@site-header-default-bg, 6.5%);
+@site-header-default-link-disabled-color:       #ccc;
+@site-header-default-link-disabled-bg:          transparent;
 
 // FT Responsive Slider
 // ------------------------

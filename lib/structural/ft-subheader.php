@@ -57,8 +57,10 @@ function fortytwo_insert_site_subheader() {
 		<div class="site-subheader">
 			<div class="wrap">
 				<div class="inner-wrap">
-					<div class="subheader-area">
-						<h1 class="subheader"><?php esc_attr_e( $ft_subheader_attr['title'], 'fortytwo' ); ?></h1>
+					<div class="subheader-title">
+						<h1><?php esc_attr_e( $ft_subheader_attr['title'], 'fortytwo' ); ?></h1>
+					</div>
+					<div class="subheader-breadcrumbs">
 						<?php if ( $ft_subheader_attr['breadcrumbs'] ) genesis_do_breadcrumbs(); ?>
 					</div>
 				</div>
@@ -82,8 +84,13 @@ function fortytwo_custom_site_subheader_title( $ft_subheader_attr ) {
 
 	global $post;
 
+	if ( is_attachment() ) {
+		$ft_subheader_attr['title'] = __( 'Article ', 'fortytwo' ) . ucwords($post->post_type);
+		return $ft_subheader_attr;
+	}
+
 	if ( is_single() ) {
-		$ft_subheader_attr['title'] = __( 'Article: ', 'fortytwo' ) . $ft_subheader_attr['title'];
+		$ft_subheader_attr['title'] = __( 'Blog', 'fortytwo' );
 		return $ft_subheader_attr;
 	}
 
