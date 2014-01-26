@@ -6173,10 +6173,6 @@ article.type-page > .entry-header {
 	display: inline;
 }
 
-.sidebar .widget_rss > .widget-wrap .rsswidget img {
-	display: inline;
-}
-
 .sidebar .widget_rss > .widget-wrap > ul a.rsswidget {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 500;
@@ -6319,11 +6315,7 @@ article.type-page > .entry-header {
 	padding-top: 10px;
 }
 
-<<<<<<< HEAD
 .entry-content .sharedaddy div.sd-block {
-=======
-.entry-content .div.sharedaddy div.sd-block {
->>>>>>> feature/general-tweaks-for-release
 	border-top: none;
 }
 
@@ -6404,7 +6396,6 @@ article.type-page > .entry-header {
 	margin: 0;
 }
 
-<<<<<<< HEAD
 .content .author-box {
 	background-color: #f9f9f9;
 	padding: 30px;
@@ -6412,20 +6403,11 @@ article.type-page > .entry-header {
 }
 
 .content h1.author-box-title {
-=======
-.content article .author-box {
-	background-color: #f9f9f9;
-	padding: 30px;
-}
-
-.content article h1.author-box-title {
->>>>>>> feature/general-tweaks-for-release
 	color: #333333;
 	font-size: 18px;
 	margin: 0 0 4px 0;
 }
 
-<<<<<<< HEAD
 .content .author-box a {
 	border-bottom: 1px solid #dddddd;
 }
@@ -6435,33 +6417,6 @@ article.type-page > .entry-header {
 }
 
 .content .author-box .avatar {
-	float: left;
-	margin-right: 24px;
-}
-
-.content .pagination > ul > .active > a,
-.content .pagination > ul > .active > span,
-.content .pagination > ul > .active > a:hover,
-.content .pagination > ul > .active > span:hover,
-.content .pagination > ul > .active > a:focus,
-.content .pagination > ul > .active > span:focus,
-.content .content .pagination > ul > ul > .active > a,
-.content .content .pagination > ul > ul > .active > span,
-.content .content .pagination > ul > ul > .active > a:hover,
-.content .content .pagination > ul > ul > .active > span:hover,
-.content .content .pagination > ul > ul > .active > a:focus,
-.content .content .pagination > ul > ul > .active > span:focus {
-	border-color: #cccccc;
-=======
-.content article .author-box a {
-	border-bottom: 1px solid #dddddd;
-}
-
-.content article .author-box p {
-	margin-bottom: 0;
-}
-
-.content article .author-box .avatar {
 	float: left;
 	margin-right: 24px;
 }
@@ -6558,7 +6513,6 @@ article.type-page > .entry-header {
 .pagination > ul > div[class^=pagination-] > a:focus {
 	text-decoration: none;
 	background-color: #eeeeee;
->>>>>>> feature/general-tweaks-for-release
 }
 /*!
 * 8.3 - Comments
@@ -7346,7 +7300,7 @@ fieldset[disabled] .comment-respond input[type="submit"].active {
 *  10.0 Print
 *
 *  FortyTwo print styles
-*/@media print{*{text-shadow:none!important;color:#000!important;background:transparent!important;box-shadow:none!important}a,a:visited{text-decoration:underline}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}a[href^="javascript:"]:after,a[href^="#"]:after{content:""}blockquote,pre{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}img,tr{page-break-inside:avoid}img{max-width:100%!important}@page{margin:2cm .5cm}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}select{background:#fff!important}.navbar{display:none}.table td,.table th{background-color:#fff!important}.btn>.caret,.dropup>.btn>.caret{border-top-color:#000!important}.label{border:1px solid #000}.table{border-collapse:collapse!important}.table-bordered td,.table-bordered th{border:1px solid #ddd!important}}
+*/@media print{*{text-shadow:none!important;color:#000!important;background:transparent!important;box-shadow:none!important}a,a:visited{text-decoration:underline}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}a[href^="javascript:"]:after,a[href^="#"]:after{content:""}blockquote,pre{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}img,tr{page-break-inside:avoid}img{max-width:100%!important}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}select{background:#fff!important}.navbar{display:none}.table td,.table th{background-color:#fff!important}.btn>.caret,.dropup>.btn>.caret{border-top-color:#000!important}.label{border:1px solid #000}.table{border-collapse:collapse!important}.table-bordered td,.table-bordered th{border:1px solid #ddd!important}}
 
 
 /* Would it save you a lot of time if I just gave up and went mad now? ― Douglas Adams */
