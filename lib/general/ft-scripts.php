@@ -17,6 +17,7 @@ function fortytwo_load_google_fonts() {
 add_action( 'wp_enqueue_scripts', 'fortytwo_add_scripts', 100 );
 /**
  * Load fortytwo required scripts
+ *
  * @since 1.0.0
  *
  * @uses CHILD_URL

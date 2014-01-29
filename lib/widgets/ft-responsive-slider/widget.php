@@ -55,12 +55,12 @@ class FT_Responsive_Slider extends WP_Widget {
 			'ft-responsive-slider',
 			__( '42&nbsp;&nbsp;- Responsive Slider', 'fortytwo' ),
 			array(
-				'classname' => 'ft-responsive-slider',
+				'classname'   => 'ft-responsive-slider',
 				'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' )
 			),
 			array(
-				'width' => 200,
-				'height' => 250,
+				'width'   => 200,
+				'height'  => 250,
 				'id_base' => 'ft-responsive-slider'
 			)
 		);
@@ -84,11 +84,11 @@ class FT_Responsive_Slider extends WP_Widget {
 		//TODO: Should this be called once / widget?
 		add_image_size( 'slider', ( int ) $this->get_value( 'slideshow_width' ), ( int ) $this->get_value( 'slideshow_height' ), TRUE );
 	}
-	
+
 	/**
 	 * Returns an absolute URL to a file releative to the widget's folder
-	 * 
-	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @param string  file The file path (relative to the widgets folder)
 	 *
 	 * @return string
 	 */
@@ -146,8 +146,8 @@ class FT_Responsive_Slider extends WP_Widget {
 	/**
 	 * Gets the value of a widget field setting
 	 *
-	 * @param string   field The name of the widget field you are wanting to get
-	 * @param bool     force_reload Whether to force refetching value from DB. By default a cached value is returned
+	 * @param string  field The name of the widget field you are wanting to get
+	 * @param bool    force_reload Whether to force refetching value from DB. By default a cached value is returned
 	 *
 	 * @return The fetched field setting value
 	 */
@@ -163,8 +163,8 @@ class FT_Responsive_Slider extends WP_Widget {
 	}
 
 	/**
-	 * Creates read more link after excerpt 
-	 * 
+	 * Creates read more link after excerpt
+	 *
 	 * @param mixed   moret  Not used
 	 *
 	 * @return An HTML fragment containing a "read more" link
@@ -201,8 +201,8 @@ class FT_Responsive_Slider extends WP_Widget {
 
 	/**
 	 * Helper method to echo both the id= and name= attributes for a field input element
-	 * 
-	 * @param string   field The field name
+	 *
+	 * @param string  field The field name
 	 *
 	 */
 	public function echo_field_id( $field ) {
@@ -231,28 +231,28 @@ class FT_Responsive_Slider extends WP_Widget {
 
 		foreach ( array(
 				'post_type'
-				,'posts_term'
-				,'exclude_terms'
-				,'include_exclude'
-				,'post_id'
-				,'posts_num'
-				,'posts_offset'
-				,'orderby'
-				,'slideshow_timer'
-				,'slideshow_delay'
-				,'slideshow_effect'
-				,'slideshow_width'
-				,'slideshow_height'
-				,'slideshow_arrows'
-				,'slideshow_pager'
-				,'slideshow_no_link'
-				,'slideshow_title_show'
-				,'slideshow_excerpt_show'
-				,'slideshow_hide_mobile'
-				,'slideshow_excerpt_content'
-				,'slideshow_more_text'
-				,'slideshow_excerpt_content_limit'
-				,'slideshow_excerpt_width' ) as $field_name ) {
+				, 'posts_term'
+				, 'exclude_terms'
+				, 'include_exclude'
+				, 'post_id'
+				, 'posts_num'
+				, 'posts_offset'
+				, 'orderby'
+				, 'slideshow_timer'
+				, 'slideshow_delay'
+				, 'slideshow_effect'
+				, 'slideshow_width'
+				, 'slideshow_height'
+				, 'slideshow_arrows'
+				, 'slideshow_pager'
+				, 'slideshow_no_link'
+				, 'slideshow_title_show'
+				, 'slideshow_excerpt_show'
+				, 'slideshow_hide_mobile'
+				, 'slideshow_excerpt_content'
+				, 'slideshow_more_text'
+				, 'slideshow_excerpt_content_limit'
+				, 'slideshow_excerpt_width' ) as $field_name ) {
 			$instance[$field_name] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
 		}
 
@@ -362,7 +362,7 @@ class FT_Responsive_Slider extends WP_Widget {
 	/**
 	 * Generates the administration form for the widget.
 	 *
-	 * @param array instance The array of keys and values for the widget.
+	 * @param array   instance The array of keys and values for the widget.
 	 */
 	function form( $instance ) {
 
@@ -452,29 +452,29 @@ class FT_Responsive_Slider extends WP_Widget {
 		$instance = array();
 		foreach ( array(
 				'title'
-				,'post_type'
-				,'posts_term'
-				,'exclude_terms'
-				,'include_exclude'
-				,'post_id'
-				,'posts_num'
-				,'posts_offset'
-				,'orderby'
-				,'slideshow_timer'
-				,'slideshow_delay'
-				,'slideshow_effect'
-				,'slideshow_width'
-				,'slideshow_height'
-				,'slideshow_arrows'
-				,'slideshow_pager'
-				,'slideshow_no_link'
-				,'slideshow_title_show'
-				,'slideshow_excerpt_show'
-				,'slideshow_hide_mobile'
-				,'slideshow_excerpt_content'
-				,'slideshow_more_text'
-				,'slideshow_excerpt_content_limit'
-				,'slideshow_excerpt_width'
+				, 'post_type'
+				, 'posts_term'
+				, 'exclude_terms'
+				, 'include_exclude'
+				, 'post_id'
+				, 'posts_num'
+				, 'posts_offset'
+				, 'orderby'
+				, 'slideshow_timer'
+				, 'slideshow_delay'
+				, 'slideshow_effect'
+				, 'slideshow_width'
+				, 'slideshow_height'
+				, 'slideshow_arrows'
+				, 'slideshow_pager'
+				, 'slideshow_no_link'
+				, 'slideshow_title_show'
+				, 'slideshow_excerpt_show'
+				, 'slideshow_hide_mobile'
+				, 'slideshow_excerpt_content'
+				, 'slideshow_more_text'
+				, 'slideshow_excerpt_content_limit'
+				, 'slideshow_excerpt_width'
 			) as $field_name ) {
 			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
 		}

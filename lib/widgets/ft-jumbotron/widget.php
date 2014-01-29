@@ -40,7 +40,7 @@ class FT_Jumbotron extends WP_Widget {
 			'widget-ft-jumbotron',
 			__( '42&nbsp;&nbsp;- Jumbotron', 'fortytwo' ),
 			array(
-				'classname'  => 'ft-jumbotron',
+				'classname'   => 'ft-jumbotron',
 				'description' => __( 'Jumbotron widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
@@ -49,16 +49,12 @@ class FT_Jumbotron extends WP_Widget {
 		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
 
-		// Register site styles and scripts
-		//add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_styles' ) );
-		//add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_scripts' ) );
-
 	} // end constructor
 
 	/**
 	 * Returns an absolute URL to a file releative to the widget's folder
 	 *
-	 * @param string   file The file path (relative to the widgets folder)
+	 * @param string  file The file path (relative to the widgets folder)
 	 *
 	 * @return string
 	 */
@@ -69,7 +65,7 @@ class FT_Jumbotron extends WP_Widget {
 	/**
 	 * Helper method to echo both the id= and name= attributes for a field input element
 	 *
-	 * @param string   field The field name
+	 * @param string  field The field name
 	 *
 	 */
 	public function echo_field_id( $field ) {
@@ -114,7 +110,9 @@ class FT_Jumbotron extends WP_Widget {
 	 * @param mixed   default The default value
 	 */
 	private function set_default( &$value, $default ) {
-		if ( empty ( $value ) ) $value = $default;
+		if ( empty ( $value ) ) {
+			$value = $default;
+		}
 	}
 
 	/**
@@ -127,7 +125,13 @@ class FT_Jumbotron extends WP_Widget {
 
 		$instance = $old_instance;
 
-		foreach ( array( 'title', 'content', 'button_text', 'button_link', 'button_alignment' ) as $field_name ) {
+		foreach ( array(
+			'title',
+			'content',
+			'button_text',
+			'button_link',
+			'button_alignment'
+			) as $field_name ) {
 			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
 		}
 
@@ -144,11 +148,11 @@ class FT_Jumbotron extends WP_Widget {
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
-				'title' => '',
-				'content' => '',
+				'title'            => '',
+				'content'          => '',
 				'button_alignment' => 'right',
-				'button_text' => '',
-				'button_link' => ''
+				'button_text'      => '',
+				'button_link'      => ''
 			)
 		);
 

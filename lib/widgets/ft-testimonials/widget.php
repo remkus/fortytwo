@@ -25,9 +25,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 /**
  * Required for use of is_plugin_active() -
+ *
  * @link http://codex.wordpress.org/Function_Reference/is_plugin_active#Usage
  */
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 class FT_Testimonials extends WP_Widget {
 
@@ -45,7 +46,7 @@ class FT_Testimonials extends WP_Widget {
 			'widget-ft-testimonials',
 			__( '42&nbsp;&nbsp;- Testimonials', 'fortytwo' ),
 			array(
-				'classname'  => 'ft-testimonials',
+				'classname'   => 'ft-testimonials',
 				'description' => __( 'Testimonials widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
@@ -54,16 +55,12 @@ class FT_Testimonials extends WP_Widget {
 		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
 
-		// Register site styles and scripts
-		//add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_styles' ) );
-		//add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_scripts' ) );
-
 	} // end constructor
 
 	/**
 	 * Returns an absolute URL to a file releative to the widget's folder
 	 *
-	 * @param string   file The file path (relative to the widgets folder)
+	 * @param string  file The file path (relative to the widgets folder)
 	 *
 	 * @return string
 	 */
@@ -74,7 +71,7 @@ class FT_Testimonials extends WP_Widget {
 	/**
 	 * Helper method to echo both the id= and name= attributes for a field input element
 	 *
-	 * @param string   field The field name
+	 * @param string  field The field name
 	 *
 	 */
 	public function echo_field_id( $field ) {
@@ -108,26 +105,26 @@ class FT_Testimonials extends WP_Widget {
 
 		switch ( $instance['datasource'] ) {
 		case "testimonials-by-woothemes":
-			if (!$this->is_testimonials_by_woothemes_installed()) break;
+			if ( !$this->is_testimonials_by_woothemes_installed() ) break;
 			$posts = woothemes_get_testimonials( array(
-					'limit' => $instance['limit'],
-					'orderby' => 'menu_order',
-					'order' => 'DESC',
+					'limit'          => $instance['limit'],
+					'orderby'        => 'menu_order',
+					'order'          => 'DESC',
 					'display_author' => true,
 					'display_avatar' => true,
-					'display_url' => true,
-					'effect' => 'fade', // Options: 'fade', 'none'
-					'pagination' => false,
-					'echo' => true,
-					'size' => 50,
+					'display_url'    => true,
+					'effect'         => 'fade', // Options: 'fade', 'none'
+					'pagination'     => false,
+					'echo'           => true,
+					'size'           => 50,
 				) );
 			foreach ( $posts as $post ) {
 				setup_postdata( $post );
 				$s = "";
-				if ($post->url)    $s.="<a href='".esc_url($post->url)."'>";
-				                   $s .= $post->post_title;
-				if ($post->byline) $s.= ", {$post->byline}";
-				if ($post->url)    $s.="</a>";
+				if ( $post->url )    $s.="<a href='".esc_url( $post->url )."'>";
+				$s .= $post->post_title;
+				if ( $post->byline ) $s.= ", {$post->byline}";
+				if ( $post->url )    $s.="</a>";
 				$instance['testimonials'][] = array (
 					'quote_source_formatted' => $s,
 					'content' => get_the_excerpt()
@@ -175,7 +172,7 @@ class FT_Testimonials extends WP_Widget {
 	 * @return bool true|false depending on whether the testimonials_by_woothemes plugin is installed
 	 */
 	private function is_testimonials_by_woothemes_installed() {
-			return is_plugin_active("testimonials-by-woothemes/woothemes-testimonials.php");
+		return is_plugin_active( "testimonials-by-woothemes/woothemes-testimonials.php" );
 	}
 
 	/**
@@ -204,18 +201,24 @@ class FT_Testimonials extends WP_Widget {
 	public function form( $instance ) {
 
 		$datasources = array();
-		$datasources[] = array('name' => 'Category', 'value' => 'category');
-		if ($this->is_testimonials_by_woothemes_installed()) {
-			$datasources[] = array( 'name' => 'Testimonials by WooThemes', 'value' => 'testimonials-by-woothemes' );
+		$datasources[] = array(
+			'name' => 'Category',
+			'value' => 'category'
+			);
+		if ( $this->is_testimonials_by_woothemes_installed() ) {
+			$datasources[] = array(
+				'name' => 'Testimonials by WooThemes',
+				'value' => 'testimonials-by-woothemes'
+				);
 		}
 
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
-				'title' => '',
-				'limit' => 5,
-				'datasource' => '',
-				'category' => '',
+				'title'       => '',
+				'limit'       => 5,
+				'datasource'  => '',
+				'category'    => '',
 				'datasources' => $datasources
 			)
 		);

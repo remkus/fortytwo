@@ -1,6 +1,7 @@
 <?php
 /**
  * FortyTwo Initializer File
+ *
  * @todo  This code needs better documentation
  *
  */

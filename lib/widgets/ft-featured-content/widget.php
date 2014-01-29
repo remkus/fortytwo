@@ -43,7 +43,7 @@ class FT_Featured_Content extends WP_Widget {
 			'ft-featured-content',
 			__( '42&nbsp;&nbsp;- Featured Content', 'fortytwo' ),
 			array(
-				'classname'  => 'ft-featured-content',
+				'classname'   => 'ft-featured-content',
 				'description' => __( 'Featured Content widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
@@ -88,7 +88,7 @@ class FT_Featured_Content extends WP_Widget {
 
 	/**
 	 * Set a default value for an empty variable
-	 * 
+	 *
 	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
 	 * @param mixed   default The default value
 	 */
@@ -98,8 +98,8 @@ class FT_Featured_Content extends WP_Widget {
 
 	/**
 	 * Helper method to echo both the id= and name= attributes for a field input element
-	 * 
-	 * @param string   field The field name
+	 *
+	 * @param string  field The field name
 	 *
 	 */
 	public function echo_field_id( $field ) {
@@ -108,8 +108,8 @@ class FT_Featured_Content extends WP_Widget {
 
 	/**
 	 * Returns an absolute URL to a file releative to the widget's folder
-	 * 
-	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @param string  file The file path (relative to the widgets folder)
 	 *
 	 * @return string
 	 */
@@ -126,7 +126,13 @@ class FT_Featured_Content extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = array();
-		foreach ( array( 'title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name ) {
+		foreach ( array(
+			'title',
+			'icon',
+			'content',
+			'button_text',
+			'button_link'
+			) as $field_name ) {
 			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
 		}
 
@@ -145,9 +151,9 @@ class FT_Featured_Content extends WP_Widget {
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
-				'title' => '',
-				'icon' => '',
-				'content' => '',
+				'title'       => '',
+				'icon'        => '',
+				'content'     => '',
 				'button_text' => '',
 				'button_link' => ''
 			)

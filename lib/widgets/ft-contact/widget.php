@@ -52,7 +52,7 @@ class FT_Contact_Widget extends WP_Widget {
 			'widget-ft-contact',
 			__( 'FortyTwo - Contact', 'fortytwo' ),
 			array(
-				'classname'  => 'ft-contact',
+				'classname'   => 'ft-contact',
 				'description' => __( 'A Schema.org compliant Contact Widget', 'fortytwo' )
 			)
 		);
@@ -61,10 +61,10 @@ class FT_Contact_Widget extends WP_Widget {
 		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
 
 	} // end constructor
-	
+
 	/**
 	 * Returns an absolute URL to a file releative to the widget's folder
-	 * 
+	 *
 	 * @param string   file The file path (relative to the widgets folder)
 	 *
 	 * @return string

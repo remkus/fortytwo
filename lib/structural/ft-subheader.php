@@ -18,13 +18,13 @@ add_filter( 'genesis_breadcrumb_args', 'fortytwo_breadcrumb_args' );
 function fortytwo_breadcrumb_args( $args ) {
 
 	$args['sep'] = ' / ';
-	$args['list_sep'] = ', '; // Genesis 1.5 and later
-	$args['heirarchial_attachments'] = true; // Genesis 1.5 and later
-	$args['heirarchial_categories'] = true; // Genesis 1.5 and later
+	$args['list_sep'] = ', ';
+	$args['heirarchial_attachments'] = true;
+	$args['heirarchial_categories'] = true;
 	$args['display'] = true;
 	$args['labels']['prefix'] = '';
 	$args['labels']['author'] = '';
-	$args['labels']['category'] = ''; // Genesis 1.6 and later
+	$args['labels']['category'] = '';
 	$args['labels']['tag'] = '';
 	$args['labels']['date'] = '';
 	$args['labels']['search'] = '';
@@ -52,7 +52,7 @@ function fortytwo_insert_site_subheader() {
 			'breadcrumbs' => true,
 			'widget'      => false
 		));
-?>
+		?>
 
 		<div class="site-subheader">
 			<div class="wrap">
@@ -67,7 +67,7 @@ function fortytwo_insert_site_subheader() {
 			</div>
 		</div>
 
-<?php
+	<?php
 	}
 }
 

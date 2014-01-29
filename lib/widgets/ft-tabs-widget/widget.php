@@ -45,10 +45,10 @@ class FT_Tabbed_Content extends WP_Widget {
 	function __construct() {
 
 		/* Widget variable settings. */
-		$this->fst_widget_cssclass = 'ft-tabbed-content';
+		$this->fst_widget_cssclass    = 'ft-tabbed-content';
 		$this->fst_widget_description = __( 'Tabbed content widget for the FortyTwo theme.', 'fortytwo' );
-		$this->fst_widget_idbase = 'widget-ft-tabbed-content';
-		$this->fst_widget_title = __( '42&nbsp;&nbsp;- Tabs', 'fortytwo' );
+		$this->fst_widget_idbase      = 'widget-ft-tabbed-content';
+		$this->fst_widget_title       = __( '42&nbsp;&nbsp;- Tabs', 'fortytwo' );
 
 		$this->available_tabs = array( 'latest', 'popular', "comments", "tags" );
 		// Allow child themes/plugins to filter here.
