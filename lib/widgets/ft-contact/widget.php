@@ -29,7 +29,7 @@ class FT_Contact_Widget extends WP_Widget {
 
 		parent::__construct(
 			'widget-ft-contact',
-			__( 'FortyTwo - Contact', 'fortytwo' ),
+			__( '42&nbsp;&nbsp;- Contact Information', 'fortytwo' ),
 			array(
 				'classname'   => 'ft-contact',
 				'description' => __( 'A Schema.org compliant Contact Widget', 'fortytwo' )

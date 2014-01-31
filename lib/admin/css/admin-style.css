@@ -8,6 +8,7 @@ div[id*="ft-jumbotron"] .in-widget-title:before,
 div[id*="ft-tabbed-content"] .in-widget-title:before,
 div[id*="ft-testimonials"] .in-widget-title:before,
 div[id*="ft-responsive-slider"] .in-widget-title:before,
+div[id*="ft-contact"] .in-widget-title:before,
 div[id*="ft-featured-content"] .in-widget-title:before {
   content: '42';
   left: 15px;
