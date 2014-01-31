@@ -1,32 +1,11 @@
 <?php
-/*
-Description: FortyTwo Contact Widget
-Author: Forsite Themes
-Author URI: http://forsitethemes.com
-Author Email: mail@forsitethemes.com
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-Copyright 2013 mail@forsitethemes.com
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as
-published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
-
 /**
- * Adds a Schema.org compliant contact widget.
+ * FortyTwo Theme: Adds a Schema.org compliant contact widget.
  *
- * @package Genesis
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 
 /**
@@ -34,7 +13,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * @package Genesis
  * @subpackage Widgets
- * @since 0.1
+ * @since 1.0.0
  */
 class FT_Contact_Widget extends WP_Widget {
 

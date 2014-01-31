@@ -1,3 +1,15 @@
+<?php
+/**
+ * FortyTwo Theme: Responsive Slider Widget
+ *
+ * Represents the widget for the Responsive Slider widget in the backend.
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
+ */
+?>
 <div class="<?php echo $this->get_field_id( 'container' )?> slider-inner invisible">
 	<ul class="slides">
 	<?php
@@ -50,7 +62,7 @@
 		endwhile;
 	?>
 	</ul>
-	<?php 
+	<?php
 		$controlsContainer = ".{$this->get_field_id( 'container' )}.slider-inner";
 		$timer = ( int ) $this->get_value( 'slideshow_timer' );
 		$duration = ( int ) $this->get_value( 'slideshow_delay' );

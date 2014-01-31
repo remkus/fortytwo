@@ -1,7 +1,13 @@
 <?php
 /**
- *  @todo  This code needs better documentation
+ * FortyTwo Theme: Tabs Widget Widget
  *
+ * Represents the widget for the Tabs Widget in the backend.
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 
 $html = '';

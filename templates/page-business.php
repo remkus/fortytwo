@@ -3,12 +3,10 @@
  * Template Name: Business
  * The file handles the default business layout of FortyTwo.
  *
- * @category FortyTwo
- * @package  Templates
- * @author   Forsite Themes
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link     http://www.forsitethemes.com/
- * @todo  This code needs better documentation
+ * @package FortyTwo\Templates
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  *
  */
 

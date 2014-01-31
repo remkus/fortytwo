@@ -1,9 +1,13 @@
 <?php
 /**
- * FortyTwo Initializer File
+ * FortyTwo Theme: Initializer File
  *
- * @todo  This code needs better documentation
+ * This file fires the whole FortyTwo Theme. The answer to the answer.
  *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 
 /* Child theme (do not remove) */

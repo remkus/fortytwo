@@ -1,3 +1,15 @@
+<?php
+/**
+ * FortyTwo Theme: Responsive Slider View
+ *
+ * Represents the view for the Responsive Slider widget form in the backend.
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
+ */
+?>
 <div id="<?php echo $this->get_field_id( 'container' )?>" class="ft-responsive-slider-container">
 	<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'fortytwo' ); ?>
@@ -212,7 +224,7 @@
 			},
 			focus: function( event, ui ) {
 				theDialogEl.find(".ui-button-text").css("button-primary");
-			} 
+			}
 		});
 
 		//Ensure the dialog's save button has WP Admin styling

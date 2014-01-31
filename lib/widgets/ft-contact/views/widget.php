@@ -1,3 +1,15 @@
+<?php
+/**
+ * FortyTwo Theme: Contact Widget
+ *
+ * This file provides the output of the Widget
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
+ */
+?>
 <div class="contact-us" itemscope itemtype="http://schema.org/Organization">
 <?php echo $before_title . ' ' . esc_html( $instance['title'] ) . ' ' . $after_title; ?>
 <?php

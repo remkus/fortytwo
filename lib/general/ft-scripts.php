@@ -1,6 +1,14 @@
 <?php
-/*
- * FortyTwo Enqueue Scripts: Used to enqueue all extra files
+/**
+ * FortyTwo Theme: Enqueue Scripts: Used to enqueue all extra files
+ *
+ * This file modifies the WordPress default widgets to allow for our Bootstrap type
+ * styling
+ *
+ * @package FortyTwo\General
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 
 add_action( 'wp_enqueue_scripts', 'fortytwo_load_google_fonts' );

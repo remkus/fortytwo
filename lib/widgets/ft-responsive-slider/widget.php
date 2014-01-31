@@ -1,33 +1,22 @@
 <?php
-/*
-	Description: A responsive featured slider for the Genesis Framework.
-	Author: Forsite Themes
-	Based on: Genesis Responsive Slider by StudioPress
-	Author URI: http://forsitethemes.com
-	Author Email: mail@forsitethemes.com
-	License: GPLv2 or later
-	License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License, version 2, as
-	published by the Free Software Foundation.
-
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
-
 /**
- * Thanks to Rafal Tomal, Nick Croft, Nathan Rice, Ron Rennick, Josh Byers and Brian Gardner for the original
- * responsive slider widget.
+ * FortyTwo Theme: Responsive Slider Widget
+ *
+ * This file creates the Responsive Slider Widget
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 
 /**
+ *
+ * Copyright & Thanks
+ *
+ * Thanks to Rafal Tomal, Nick Croft, Nathan Rice, Ron Rennick, Josh Byers and Brian Gardner for the original
+ * responsive slider widget.
+ *
  * Thanks to Tyler Smith for creating the awesome jquery FlexSlider plugin - http://flex.madebymufffin.com/.
  */
 

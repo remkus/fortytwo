@@ -1,11 +1,14 @@
 <?php
 /**
- * FortyTwo Insert Page Title: Adds the page title to all pages
- * @todo  $ft_site_subheader to be translated and possibly filterable
- * @todo  page title and breadcrumbs should have our own do action
- * @todo  This code needs better documentation
+ * FortyTwo Theme: Insert Page Title-  Adds the page title to all pages
+ *
+ * This file Adds and changes the Genesis structure
+ *
+ * @package FortyTwo\Structural
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
-
 
 /** Remove the default location of breadcrumbs as well call it when adding our subheader area */
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
@@ -37,6 +40,9 @@ function fortytwo_breadcrumb_args( $args ) {
 add_action( 'genesis_after_header', 'fortytwo_insert_site_subheader' );
 /**
  * Insert the site-subheader section
+ *
+ * @todo  $ft_site_subheader to be translated and possibly filterable
+ * @todo  page title and breadcrumbs should have our own do action
  * @todo  This code needs better documentation
  *
  */

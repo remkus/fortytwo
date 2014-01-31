@@ -1,4 +1,12 @@
 <?php
+/**
+ * FortyTwo Theme.
+ *
+ * @package FortyTwo\Admin
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
+ */
 
 add_action( 'after_setup_theme', 'fortytwo_register_additional_layouts' );
 /**

@@ -1,3 +1,15 @@
+<?php
+/**
+ * FortyTwo Theme: Contact Widget Form
+ *
+ * This file Adds and changes the Genesis structure
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
+ */
+?>
 <p>
 <label for="<?php echo $this->get_field_id( 'name' ); ?>"><?php _e( 'Company Name', 'fortytwo' ); ?>:</label><br />
 <input type="text" id="<?php echo $this->get_field_id( 'name' ); ?>" name="<?php echo $this->get_field_name( 'name' ); ?>" value="<?php echo esc_attr( $instance['name'] ); ?>" class="widefat" />

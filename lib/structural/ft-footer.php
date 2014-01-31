@@ -1,8 +1,14 @@
 <?php
 /**
- * FortyTwo Footer Widget Areas
+ * FortyTwo Theme: Footer Widget Areas
  *
- * @package FortyTwo
+ * This file modifies the WordPress default widgets to allow for our Bootstrap type
+ * styling
+ *
+ * @package FortyTwo\Structural
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 
 add_action( 'genesis_before_footer', 'fortytwo_insert_footer_widget' );

@@ -1,12 +1,15 @@
 <?php
-/*
- * FortyTwo: Default Widgets
+
+/**
+ * FortyTwo Theme: Default Widgets
  *
  * This file modifies the WordPress default widgets to allow for our Bootstrap type
  * styling
  *
- * @since 1.0.0
- *
+ * @package FortyTwo\General
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 
 add_filter( 'get_archives_link', 'fortytwo_modify_archives_link' );
