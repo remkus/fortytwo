@@ -165,7 +165,6 @@ class FT_Jumbotron extends WP_Widget {
 	 */
 	public function register_admin_scripts() {
 
-		wp_enqueue_script( 'ft-jumbotron-admin-script', $this->url( '/js/admin.js' ) );
 
 	} // end register_admin_scripts
 

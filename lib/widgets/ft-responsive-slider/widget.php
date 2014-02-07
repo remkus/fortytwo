@@ -494,7 +494,6 @@ class FT_Responsive_Slider extends WP_Widget {
 		wp_enqueue_script( 'jquery-ui-tabs' );
 		wp_enqueue_script( 'jquery-ui-position' );
 		wp_enqueue_script( 'wp-lists' );
-		wp_enqueue_script( 'ft_responsive_slider_admin_scripts', $this->url( '/js/admin.js' ), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, TRUE );
 
 	} // end register_admin_scripts
 
