@@ -5657,6 +5657,225 @@ article.type-page > .entry-header {
 *
 * FortyTwo custom and WordPress default widget styling
 */
+.sidebar .widget_search .search-text {
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.428571429;
+	color: #555555;
+	vertical-align: middle;
+	background-color: #ffffff;
+	background-image: none;
+	border: 1px solid #cccccc;
+	border-radius: 2px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.sidebar .widget_search .search-text:focus {
+	border-color: #66afe9;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.sidebar .widget_search .search-text:-moz-placeholder {
+	color: #999999;
+}
+
+.sidebar .widget_search .search-text::-moz-placeholder {
+	color: #999999;
+	opacity: 1;
+}
+
+.sidebar .widget_search .search-text:-ms-input-placeholder {
+	color: #999999;
+}
+
+.sidebar .widget_search .search-text::-webkit-input-placeholder {
+	color: #999999;
+}
+
+.sidebar .widget_search .search-text[disabled],
+.sidebar .widget_search .search-text[readonly],
+fieldset[disabled] .sidebar .widget_search .search-text {
+	cursor: not-allowed;
+	background-color: #eeeeee;
+}
+
+textarea.sidebar .widget_search .search-text {
+	height: auto;
+}
+
+.has-warning .sidebar .widget_search .search-text {
+	border-color: #c09853;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.has-warning .sidebar .widget_search .search-text:focus {
+	border-color: #a47e3c;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
+}
+
+.has-error .sidebar .widget_search .search-text {
+	border-color: #b94a48;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.has-error .sidebar .widget_search .search-text:focus {
+	border-color: #953b39;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+}
+
+.has-success .sidebar .widget_search .search-text {
+	border-color: #468847;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.has-success .sidebar .widget_search .search-text:focus {
+	border-color: #356635;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+}
+
+@media (min-width: 768px) {
+	.form-inline .sidebar .widget_search .search-text {
+		display: inline-block;
+	}
+
+	.form-inline select.sidebar .widget_search .search-text {
+		width: auto;
+	}
+}
+
+.sidebar .widget_search .search-form {
+	position: relative;
+	display: table;
+	border-collapse: separate;
+}
+
+.sidebar .widget_search .search-form[class*="col-"] {
+	float: none;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.sidebar .widget_search .search-form .form-control,
+.input-group .sidebar .widget_search .search-text {
+	width: 100%;
+	margin-bottom: 0;
+}
+
+.input-group-lg > .sidebar .widget_search .search-text,
+.input-group-lg > .sidebar .widget_search .search-button > .btn {
+	height: 46px;
+	padding: 10px 16px;
+	font-size: 18px;
+	line-height: 1.33;
+	border-radius: 2px;
+}
+
+select.input-group-lg > .sidebar .widget_search .search-text,
+select.input-group-lg > .sidebar .widget_search .search-button > .btn {
+	height: 46px;
+	line-height: 46px;
+}
+
+textarea.input-group-lg > .sidebar .widget_search .search-text,
+textarea.input-group-lg > .sidebar .widget_search .search-button > .btn {
+	height: auto;
+}
+
+.input-group-sm > .sidebar .widget_search .search-text,
+.input-group-sm > .sidebar .widget_search .search-button > .btn {
+	height: 30px;
+	padding: 5px 10px;
+	font-size: 12px;
+	line-height: 1.5;
+	border-radius: 2px;
+}
+
+select.input-group-sm > .sidebar .widget_search .search-text,
+select.input-group-sm > .sidebar .widget_search .search-button > .btn {
+	height: 30px;
+	line-height: 30px;
+}
+
+textarea.input-group-sm > .sidebar .widget_search .search-text,
+textarea.input-group-sm > .sidebar .widget_search .search-button > .btn {
+	height: auto;
+}
+
+.sidebar .widget_search .search-form .form-control,
+.input-group .sidebar .widget_search .search-text,
+.sidebar .widget_search .search-button {
+	display: table-cell;
+}
+
+.sidebar .widget_search .search-form .form-control:not(:first-child):not(:last-child),
+.input-group .sidebar .widget_search .search-text:not(:first-child):not(:last-child),
+.sidebar .widget_search .search-button:not(:first-child):not(:last-child) {
+	border-radius: 0;
+}
+
+.sidebar .widget_search .search-button {
+	width: 1%;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+
+.sidebar .widget_search .search-form .form-control:first-child,
+.input-group .sidebar .widget_search .search-text:first-child,
+.sidebar .widget_search .search-button:first-child > .btn,
+.sidebar .widget_search .search-button:first-child > .dropdown-toggle,
+.sidebar .widget_search .search-button:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.sidebar .widget_search .search-form .form-control:last-child,
+.input-group .sidebar .widget_search .search-text:last-child,
+.sidebar .widget_search .search-button:last-child > .btn,
+.sidebar .widget_search .search-button:last-child > .dropdown-toggle,
+.sidebar .widget_search .search-button:first-child > .btn:not(:first-child) {
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+}
+
+.sidebar .widget_search .search-button {
+	position: relative;
+	white-space: nowrap;
+}
+
+.sidebar .widget_search .search-button:first-child > .btn {
+	margin-right: -1px;
+}
+
+.sidebar .widget_search .search-button:last-child > .btn {
+	margin-left: -1px;
+}
+
+.sidebar .widget_search .search-button > .btn {
+	position: relative;
+}
+
+.sidebar .widget_search .search-button > .btn + .btn {
+	margin-left: -4px;
+}
+
+.sidebar .widget_search .search-button > .btn:hover,
+.sidebar .widget_search .search-button > .btn:active {
+	z-index: 2;
+}
 /*!
 * 7.1 FortyTwo Custom Widgets
 */

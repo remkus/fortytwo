@@ -10,6 +10,8 @@
 @import (reference) "list-group";
 @import (reference) "tables";
 @import (reference) "type";
+@import (reference) "forms";
+@import (reference) "input-groups";
 
 /*!
 * 7.1 FortyTwo Custom Widgets
@@ -448,6 +450,20 @@
 					}
 				}
 			}
+		}
+	}
+
+	.widget_search {
+		.search-form {
+			&:extend(.input-group all);
+		}
+
+		.search-text {
+			&:extend(.form-control all);
+		}
+
+		.search-button {
+			&:extend(.input-group-btn all);
 		}
 	}
 }
