@@ -79,8 +79,8 @@
 				controlNav: <?php echo $controlnav ?>,
 				animationSpeed: <?php echo $duration ?>,
 				slideshowSpeed: <?php echo $timer ?>,
-				prevText: "",
-				nextText: "",
+				prevText: "<i class='ft-ico ft-ico-prev'></i>",
+				nextText: "<i class='ft-ico ft-ico-next'></i>",
 				useCSS: false,
 				start: function(slider){
 					var arr = [ "slider-inner", "slider-nav" ];
