@@ -17,7 +17,7 @@ if ( count( $tabs ) > 0 ) {
 	$tab_links = '';
 
 	// Setup the various tabs.
-	$tab_links .= '<div class="tab-select">' . "\n";
+	$tab_links .= '<div class="tab-buttons"><ul>' . "\n";
 	$count = 0;
 	foreach ( $tabs as $tab ) {
 		$count++;
@@ -30,7 +30,7 @@ if ( count( $tabs ) > 0 ) {
 			$class = ' last';
 		}
 
-		$tab_links .= '<button type="button" class="tab-select-btn btn tab-heading-' . esc_attr( $tab ) . $class . '" data-target="#tab-pane-' . esc_attr( $tab ) . '" data-toggle="tab">' . __( $tab, 'fortytwo' ) . '</button>' . "\n";
+		$tab_links .= '<li class="' . $class . '"><button type="button" class="btn tab-heading-' . esc_attr( $tab ) . '" data-target="#tab-pane-' . esc_attr( $tab ) . '" data-toggle="tab">' . __( $tab, 'fortytwo' ) . '</button></li>' . "\n";
 
 		$tab_content .= '<div id="tab-pane-' . esc_attr( $tab ) . '" class="tab-pane tab-pane-' . esc_attr( $tab ) . $class . '">' . "\n";
 
@@ -42,15 +42,15 @@ if ( count( $tabs ) > 0 ) {
 			$tab_content .= $this->tab_content_default( $tab );
 		}
 
-		$tab_content .= '</div>' . "\n";
+		$tab_content .= '</ul></div>' . "\n";
 	}
 	$tab_links .= '</div>' . "\n";
 
 	/* Display the widget title if one was input (before and after defined by themes). */
 	if ( $title ) {
-		$html .= $before_title . $title . $tab_links . $after_title;
+		$html .= '<div class="tab-select">' . $before_title . $title . $after_title . $tab_links . '</div>';
 	} else {
-		$html .= $tab_links;
+		$html .= '<div class="tab-select">' . $tab_links . '</div>';
 	}
 
 	$html .= '<div class="tab-content image-align-' . $instance['image_alignment'] . '">' . "\n" . $tab_content . '</div>' . "\n";

@@ -5,7 +5,6 @@
 */
 
 @import (reference) "badges";
-@import (reference) "button-groups";
 @import (reference) "buttons";
 @import (reference) "labels";
 @import (reference) "list-group";
@@ -103,21 +102,51 @@
 }
 
 .ft-tabbed-content {
-	.widgettitle {
-		position: relative;
+	.tab-select {
+		display: inline-table;
+		margin-bottom: 20px;
 	}
 
-	.tab-select:extend(.btn-group all) {
-		margin-left: 15px;
-		top: -4px;
+	.widget-title,
+	.tab-buttons {
+		display: table-cell;
+		vertical-align: middle;
+	}
 
-		.tab-select-btn {
-			> a:hover {
-				text-decoration: none;
-			}
+	.tab-buttons {
+		padding-left: 15px;
 
-			&.active {
-				.box-shadow(none);
+		> ul {
+			padding-left: 0;
+
+			> li {
+				float: left;
+				position: relative;
+				display: block;
+				margin-left: -1px;
+
+				& .btn {
+					.btn-default();
+					border-radius: 0;
+
+					&:hover,
+					&:focus,
+					&:active,
+					&.active {
+						z-index: 2;
+					}
+					&:focus {
+						outline: none;
+					}
+				}
+
+				&.first .btn {
+					.border-left-radius(@border-radius-base);
+				}
+
+				&.last .btn {
+					.border-right-radius(@border-radius-base;);
+				}
 			}
 		}
 	}
@@ -174,8 +203,9 @@
 	}
 
 	.sidebar & {
-		.tab-select-btn {
+		.tab-buttons .btn {
 			.btn-sm();
+			border-radius: 0;
 		}
 	}
 }

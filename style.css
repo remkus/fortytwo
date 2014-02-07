@@ -5657,171 +5657,6 @@ article.type-page > .entry-header {
 *
 * FortyTwo custom and WordPress default widget styling
 */
-.ft-tabbed-content .tab-select {
-	position: relative;
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.ft-tabbed-content .tab-select > .btn {
-	position: relative;
-	float: left;
-}
-
-.ft-tabbed-content .tab-select > .btn:hover,
-.ft-tabbed-content .tab-select > .btn:focus,
-.ft-tabbed-content .tab-select > .btn:active,
-.ft-tabbed-content .tab-select > .btn.active {
-	z-index: 2;
-}
-
-.ft-tabbed-content .tab-select > .btn:focus {
-	outline: none;
-}
-
-.ft-tabbed-content .tab-select .btn + .btn,
-.ft-tabbed-content .tab-select .btn + .ft-tabbed-content .tab-select,
-.ft-tabbed-content .tab-select .ft-tabbed-content .tab-select + .btn,
-.ft-tabbed-content .tab-select .ft-tabbed-content .tab-select + .ft-tabbed-content .tab-select {
-	margin-left: -1px;
-}
-
-.btn-toolbar .ft-tabbed-content .tab-select {
-	float: left;
-}
-
-.btn-toolbar > .ft-tabbed-content .tab-select + .btn,
-.btn-toolbar > .btn + .ft-tabbed-content .tab-select,
-.btn-toolbar > .ft-tabbed-content .tab-select + .ft-tabbed-content .tab-select {
-	margin-left: 5px;
-}
-
-.ft-tabbed-content .tab-select > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
-	border-radius: 0;
-}
-
-.ft-tabbed-content .tab-select > .btn:first-child {
-	margin-left: 0;
-}
-
-.ft-tabbed-content .tab-select > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
-	border-bottom-right-radius: 0;
-	border-top-right-radius: 0;
-}
-
-.ft-tabbed-content .tab-select > .btn:last-child:not(:first-child),
-.ft-tabbed-content .tab-select > .dropdown-toggle:not(:first-child) {
-	border-bottom-left-radius: 0;
-	border-top-left-radius: 0;
-}
-
-.ft-tabbed-content .tab-select > .ft-tabbed-content .tab-select {
-	float: left;
-}
-
-.ft-tabbed-content .tab-select > .ft-tabbed-content .tab-select:not(:first-child):not(:last-child) > .btn {
-	border-radius: 0;
-}
-
-.ft-tabbed-content .tab-select > .ft-tabbed-content .tab-select:first-child > .btn:last-child,
-.ft-tabbed-content .tab-select > .ft-tabbed-content .tab-select:first-child > .dropdown-toggle {
-	border-bottom-right-radius: 0;
-	border-top-right-radius: 0;
-}
-
-.ft-tabbed-content .tab-select > .ft-tabbed-content .tab-select:last-child > .btn:first-child {
-	border-bottom-left-radius: 0;
-	border-top-left-radius: 0;
-}
-
-.ft-tabbed-content .tab-select .dropdown-toggle:active,
-.ft-tabbed-content .tab-select.open .dropdown-toggle {
-	outline: 0;
-}
-
-.ft-tabbed-content .tab-select > .btn + .dropdown-toggle {
-	padding-left: 8px;
-	padding-right: 8px;
-}
-
-.ft-tabbed-content .tab-select > .btn-lg + .dropdown-toggle {
-	padding-left: 12px;
-	padding-right: 12px;
-}
-
-.ft-tabbed-content .tab-select.open .dropdown-toggle {
-	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-	box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
-
-.ft-tabbed-content .tab-select.open .dropdown-toggle.btn-link {
-	-webkit-box-shadow: none;
-	box-shadow: none;
-}
-
-.btn-group-vertical > .ft-tabbed-content .tab-select,
-.btn-group-vertical > .ft-tabbed-content .tab-select > .btn {
-	display: block;
-	float: none;
-	width: 100%;
-	max-width: 100%;
-}
-
-.btn-group-vertical > .ft-tabbed-content .tab-select:before,
-.btn-group-vertical > .ft-tabbed-content .tab-select:after {
-	content: " ";
-	display: table;
-}
-
-.btn-group-vertical > .ft-tabbed-content .tab-select:after {
-	clear: both;
-}
-
-.btn-group-vertical > .ft-tabbed-content .tab-select:before,
-.btn-group-vertical > .ft-tabbed-content .tab-select:after {
-	content: " ";
-	display: table;
-}
-
-.btn-group-vertical > .ft-tabbed-content .tab-select:after {
-	clear: both;
-}
-
-.btn-group-vertical > .ft-tabbed-content .tab-select > .btn {
-	float: none;
-}
-
-.btn-group-vertical > .btn + .ft-tabbed-content .tab-select,
-.btn-group-vertical > .ft-tabbed-content .tab-select + .btn,
-.btn-group-vertical > .ft-tabbed-content .tab-select + .ft-tabbed-content .tab-select {
-	margin-top: -1px;
-	margin-left: 0;
-}
-
-.btn-group-vertical > .ft-tabbed-content .tab-select:not(:first-child):not(:last-child) > .btn {
-	border-radius: 0;
-}
-
-.btn-group-vertical > .ft-tabbed-content .tab-select:first-child > .btn:last-child,
-.btn-group-vertical > .ft-tabbed-content .tab-select:first-child > .dropdown-toggle {
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
-}
-
-.btn-group-vertical > .ft-tabbed-content .tab-select:last-child > .btn:first-child {
-	border-top-right-radius: 0;
-	border-top-left-radius: 0;
-}
-
-.btn-group-justified > .ft-tabbed-content .tab-select {
-	float: none;
-	display: table-cell;
-	width: 1%;
-}
-
-.btn-group-justified > .ft-tabbed-content .tab-select .btn {
-	width: 100%;
-}
 /*!
 * 7.1 FortyTwo Custom Widgets
 */
@@ -5972,22 +5807,98 @@ article.type-page > .entry-header {
 	padding: 0.5rem 1rem;
 }
 
-.ft-tabbed-content .widgettitle {
-	position: relative;
-}
-
 .ft-tabbed-content .tab-select {
-	margin-left: 15px;
-	top: -4px;
+	display: inline-table;
+	margin-bottom: 20px;
 }
 
-.ft-tabbed-content .tab-select .tab-select-btn > a:hover {
-	text-decoration: none;
+.ft-tabbed-content .widget-title,
+.ft-tabbed-content .tab-buttons {
+	display: table-cell;
+	vertical-align: middle;
 }
 
-.ft-tabbed-content .tab-select .tab-select-btn.active {
-	-webkit-box-shadow: none;
-	box-shadow: none;
+.ft-tabbed-content .tab-buttons {
+	padding-left: 15px;
+}
+
+.ft-tabbed-content .tab-buttons > ul {
+	padding-left: 0;
+}
+
+.ft-tabbed-content .tab-buttons > ul > li {
+	float: left;
+	position: relative;
+	display: block;
+	margin-left: -1px;
+}
+
+.ft-tabbed-content .tab-buttons > ul > li .btn {
+	color: #333333;
+	background-color: #ffffff;
+	border-color: #cccccc;
+	border-radius: 0;
+}
+
+.ft-tabbed-content .tab-buttons > ul > li .btn:hover,
+.ft-tabbed-content .tab-buttons > ul > li .btn:focus,
+.ft-tabbed-content .tab-buttons > ul > li .btn:active,
+.ft-tabbed-content .tab-buttons > ul > li .btn.active,
+.open .dropdown-toggle.ft-tabbed-content .tab-buttons > ul > li .btn {
+	color: #333333;
+	background-color: #ebebeb;
+	border-color: #adadad;
+}
+
+.ft-tabbed-content .tab-buttons > ul > li .btn:active,
+.ft-tabbed-content .tab-buttons > ul > li .btn.active,
+.open .dropdown-toggle.ft-tabbed-content .tab-buttons > ul > li .btn {
+	background-image: none;
+}
+
+.ft-tabbed-content .tab-buttons > ul > li .btn.disabled,
+.ft-tabbed-content .tab-buttons > ul > li .btn[disabled],
+fieldset[disabled] .ft-tabbed-content .tab-buttons > ul > li .btn,
+.ft-tabbed-content .tab-buttons > ul > li .btn.disabled:hover,
+.ft-tabbed-content .tab-buttons > ul > li .btn[disabled]:hover,
+fieldset[disabled] .ft-tabbed-content .tab-buttons > ul > li .btn:hover,
+.ft-tabbed-content .tab-buttons > ul > li .btn.disabled:focus,
+.ft-tabbed-content .tab-buttons > ul > li .btn[disabled]:focus,
+fieldset[disabled] .ft-tabbed-content .tab-buttons > ul > li .btn:focus,
+.ft-tabbed-content .tab-buttons > ul > li .btn.disabled:active,
+.ft-tabbed-content .tab-buttons > ul > li .btn[disabled]:active,
+fieldset[disabled] .ft-tabbed-content .tab-buttons > ul > li .btn:active,
+.ft-tabbed-content .tab-buttons > ul > li .btn.disabled.active,
+.ft-tabbed-content .tab-buttons > ul > li .btn[disabled].active,
+fieldset[disabled] .ft-tabbed-content .tab-buttons > ul > li .btn.active {
+	background-color: #ffffff;
+	border-color: #cccccc;
+}
+
+.ft-tabbed-content .tab-buttons > ul > li .btn .badge {
+	color: #ffffff;
+	background-color: #ffffff;
+}
+
+.ft-tabbed-content .tab-buttons > ul > li .btn:hover,
+.ft-tabbed-content .tab-buttons > ul > li .btn:focus,
+.ft-tabbed-content .tab-buttons > ul > li .btn:active,
+.ft-tabbed-content .tab-buttons > ul > li .btn.active {
+	z-index: 2;
+}
+
+.ft-tabbed-content .tab-buttons > ul > li .btn:focus {
+	outline: none;
+}
+
+.ft-tabbed-content .tab-buttons > ul > li.first .btn {
+	border-bottom-left-radius: 2px;
+	border-top-left-radius: 2px;
+}
+
+.ft-tabbed-content .tab-buttons > ul > li.last .btn {
+	border-bottom-right-radius: 2px;
+	border-top-right-radius: 2px;
 }
 
 .ft-tabbed-content .tab-pane {
@@ -6083,11 +5994,12 @@ article.type-page > .entry-header {
 	border-radius: 30px;
 }
 
-.sidebar .ft-tabbed-content .tab-select-btn {
+.sidebar .ft-tabbed-content .tab-buttons .btn {
 	padding: 5px 10px;
 	font-size: 12px;
 	line-height: 1.5;
 	border-radius: 2px;
+	border-radius: 0;
 }
 /* Testimonials Widget */
 .ft-testimonials blockquote {
