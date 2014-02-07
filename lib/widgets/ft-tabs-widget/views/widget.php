@@ -17,7 +17,7 @@ if ( count( $tabs ) > 0 ) {
 	$tab_links = '';
 
 	// Setup the various tabs.
-	$tab_links .= '<ul class="tab-select">' . "\n";
+	$tab_links .= '<div class="tab-select">' . "\n";
 	$count = 0;
 	foreach ( $tabs as $tab ) {
 		$count++;
@@ -44,7 +44,7 @@ if ( count( $tabs ) > 0 ) {
 
 		$tab_content .= '</div>' . "\n";
 	}
-	$tab_links .= '</ul>' . "\n";
+	$tab_links .= '</div>' . "\n";
 
 	/* Display the widget title if one was input (before and after defined by themes). */
 	if ( $title ) {
