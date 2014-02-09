@@ -76,7 +76,8 @@ module.exports = function (grunt) {
 				},
 				files: {
 					'tmp/assets/css/ft-reset.css': ['tmp/assets/css/ft-reset.css'],
-					'tmp/assets/css/ft-print.css': ['tmp/assets/css/ft-print.css']
+					'tmp/assets/css/ft-print.css': ['tmp/assets/css/ft-print.css'],
+					'tmp/assets/css/ft-font-icons.css': ['tmp/assets/css/ft-font-icons.css']
 				}
 			}
 		},
@@ -127,7 +128,7 @@ module.exports = function (grunt) {
 			}
 		},
 		cssbeautifier: {
-			files: ["tmp/assets/css/{ft-core,ft-font-icons,ft-header,ft-navigation,ft-intro,ft-widgets,ft-content,ft-footer,ft-custom}.css"],
+			files: ["tmp/assets/css/{ft-core,ft-header,ft-navigation,ft-intro,ft-widgets,ft-content,ft-footer,ft-custom}.css"],
 			options: {
 				indent: '\t',
 				openbrace: 'end-of-line',
@@ -141,7 +142,6 @@ module.exports = function (grunt) {
 				},
 				files: {
 					'tmp/assets/css/ft-core.css': ['tmp/assets/css/ft-core.css'],
-					'tmp/assets/css/ft-font-icons.css': ['tmp/assets/css/ft-font-icons.css'],
 					'tmp/assets/css/ft-header.css': ['tmp/assets/css/ft-header.css'],
 					'tmp/assets/css/ft-navigation.css': ['tmp/assets/css/ft-navigation.css'],
 					'tmp/assets/css/ft-intro.css': ['tmp/assets/css/ft-intro.css'],
