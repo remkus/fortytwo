@@ -28,7 +28,8 @@
 *  8.0 - Content
 *   8.1 - Entry Meta
 *   8.2 - Pagination
-*   8.2 - Comments
+*   8.3 - Comments
+*   8.4 - Post Formats
 *  9.0 - Footer
 *  10.0 - Print
 *  11.0 - Custom
@@ -4944,13 +4945,43 @@ fieldset[disabled] .ft-tabbed-content .tab-buttons > ul > li .btn.active {
 .form-horizontal .form-group:before,
 .form-horizontal .form-group:after,
 .pager:before,
-.pager:after {
+.pager:after,
+.gallery-columns-1:before,
+.gallery-columns-1:after,
+.gallery-columns-2:before,
+.gallery-columns-2:after,
+.gallery-columns-3:before,
+.gallery-columns-3:after,
+.gallery-columns-4:before,
+.gallery-columns-4:after,
+.gallery-columns-5:before,
+.gallery-columns-5:after,
+.gallery-columns-6:before,
+.gallery-columns-6:after,
+.gallery-columns-7:before,
+.gallery-columns-7:after,
+.gallery-columns-8:before,
+.gallery-columns-8:after,
+.gallery-columns-9:before,
+.gallery-columns-9:after,
+.gallery-columns-10:before,
+.gallery-columns-10:after {
 	content: " ";
 	display: table;
 }
 
 .form-horizontal .form-group:after,
-.pager:after {
+.pager:after,
+.gallery-columns-1:after,
+.gallery-columns-2:after,
+.gallery-columns-3:after,
+.gallery-columns-4:after,
+.gallery-columns-5:after,
+.gallery-columns-6:after,
+.gallery-columns-7:after,
+.gallery-columns-8:after,
+.gallery-columns-9:after,
+.gallery-columns-10:after {
 	clear: both;
 }
 /*!
@@ -5899,6 +5930,91 @@ fieldset[disabled] .comment-respond input[type="submit"].active {
 .comment-respond input[type="submit"] .badge {
 	color: #ffffff;
 	background-color: #333333;
+}
+/*!
+* 8.4 - Post Formats
+*/
+.gallery-columns-1,
+.gallery-columns-2,
+.gallery-columns-3,
+.gallery-columns-4,
+.gallery-columns-5,
+.gallery-columns-6,
+.gallery-columns-7,
+.gallery-columns-8,
+.gallery-columns-9,
+.gallery-columns-10 {
+	margin-left: -15px;
+	margin-right: -15px;
+	clear: both;
+}
+
+.gallery-caption {
+	font-size: 12px;
+}
+
+.gallery-columns-1 .gallery-item {
+	position: relative;
+	float: left;
+	width: 100%;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	line-height: 1.598057560909147;
+}
+
+.gallery-columns-2 .gallery-item {
+	position: relative;
+	float: left;
+	width: 50%;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	line-height: 1.4535170375621138;
+}
+
+.gallery-columns-3 .gallery-item {
+	position: relative;
+	float: left;
+	width: 33.33333333333333%;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	line-height: 1.4053368631131027;
+}
+
+.gallery-columns-4 .gallery-item {
+	position: relative;
+	float: left;
+	width: 25%;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	line-height: 1.3812467758885971;
+}
+
+.gallery-columns-5 .gallery-item,
+.gallery-columns-6 .gallery-item {
+	position: relative;
+	float: left;
+	width: 16.666666666666664%;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	line-height: 1.3571566886640916;
+}
+
+.gallery-columns-7 .gallery-item,
+.gallery-columns-8 .gallery-item,
+.gallery-columns-9 .gallery-item,
+.gallery-columns-10 .gallery-item {
+	position: relative;
+	float: left;
+	width: 8.333333333333332%;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	line-height: 1.333066601439586;
 }
 
 
