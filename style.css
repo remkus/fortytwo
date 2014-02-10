@@ -2843,6 +2843,8 @@ table .table {
 .form-horizontal .form-group:after,
 .menu:before,
 .menu:after,
+.nav-primary-header:before,
+.nav-primary-header:after,
 .nav-collapse:before,
 .nav-collapse:after,
 .nav-primary:before,
@@ -2859,6 +2861,7 @@ table .table {
 .navbar-collapse:after,
 .form-horizontal .form-group:after,
 .menu:after,
+.nav-primary-header:after,
 .nav-collapse:after,
 .nav-primary:after,
 .nav-primary .menu:after {
@@ -2953,6 +2956,12 @@ table .table {
 	}
 }
 
+@media (min-width: 768px) {
+	.nav-primary-header {
+		float: left;
+	}
+}
+
 .nav-collapse {
 	max-height: 340px;
 	overflow-x: visible;
@@ -2993,6 +3002,8 @@ table .table {
 	}
 }
 
+.container > .nav-primary-header,
+.container-fluid > .nav-primary-header,
 .container > .nav-collapse,
 .container-fluid > .nav-collapse {
 	margin-right: -15px;
@@ -3000,7 +3011,9 @@ table .table {
 }
 
 @media (min-width: 768px) {
-	.container > .nav-collapse,
+	.container > .nav-primary-header,
+  .container-fluid > .nav-primary-header,
+  .container > .nav-collapse,
   .container-fluid > .nav-collapse {
 		margin-right: 0;
 		margin-left: 0;
@@ -3536,6 +3549,32 @@ table .table {
 	}
 }
 
+.fade {
+	opacity: 0;
+	-webkit-transition: opacity 0.15s linear;
+	transition: opacity 0.15s linear;
+}
+
+.fade.in {
+	opacity: 1;
+}
+
+.collapse {
+	display: none;
+}
+
+.collapse.in {
+	display: block;
+}
+
+.collapsing {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	-webkit-transition: height 0.35s ease;
+	transition: height 0.35s ease;
+}
+
 .nav-primary .nav-title {
 	display: none !important;
 	visibility: hidden !important;
@@ -3637,6 +3676,17 @@ table .table {
 
 .open > a {
 	outline: 0;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
 }
 /* Header Widget Area Nav Styling */
 .header-widget-area .widget_nav_menu li {

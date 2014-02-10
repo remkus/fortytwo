@@ -4,14 +4,20 @@
 * FortyTwo Navigation
 */
 
+@import (reference) "scaffolding";
 @import (reference) "navs";
 @import (reference) "navbar";
 @import (reference) "dropdowns";
 @import (reference) "forms";
 @import (reference) "ft-font-icons";
+@import "component-animations";
 
 .menu {
 	&:extend(.nav, .nav > li);
+}
+
+.nav-primary-header {
+	&:extend(.navbar-header all);
 }
 
 .nav-collapse {
@@ -195,6 +201,10 @@
 	> a {
 		outline: 0;
 	}
+}
+
+.sr-only {
+	.sr-only;
 }
 
 /* Header Widget Area Nav Styling */
