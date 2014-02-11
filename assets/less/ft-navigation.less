@@ -4,10 +4,21 @@
 * FortyTwo Navigation
 */
 
+@import (reference) "scaffolding";
 @import (reference) "navs";
 @import (reference) "navbar";
 @import (reference) "dropdowns";
 @import (reference) "forms";
+@import (reference) "ft-font-icons";
+@import "component-animations";
+
+.menu {
+	&:extend(.nav, .nav > li);
+}
+
+.nav-primary-header {
+	&:extend(.navbar-header all);
+}
 
 .nav-collapse {
 	&:extend(.navbar-collapse all);
@@ -36,7 +47,66 @@
 	}
 
 	.menu {
-		&:extend(.navbar-default .navbar-nav all);
+
+		&:extend(.nav all, .navbar-nav all, .navbar-default .navbar-nav all);
+
+		// Sub menus
+		// ---------------------------
+		.dropdown-submenu {
+			position: relative;
+		}
+
+		// Default dropdowns
+		.dropdown-submenu > .sub-menu {
+			top: 0;
+			left: 100%;
+			margin-top: -6px;
+			margin-left: -1px;
+			border-top-left-radius: 0; // Nuke the closest corner as appropriate
+		}
+
+		.dropdown-submenu:hover > .sub-menu {
+			display: block;
+		}
+
+		// Dropups
+		.dropup .dropdown-submenu > .sub-menu {
+			top: auto;
+			bottom: 0;
+			margin-top: 0;
+			margin-bottom: -2px;
+			border-bottom-left-radius: 0; // Nuke the closest corner as appropriate
+		}
+
+		// Caret to indicate there is a submenu
+		.dropdown-submenu > a:after {
+			content: "";
+			width: 0;
+			height: 0;
+			border: @caret-width-base solid transparent;
+			border-left-color: @navbar-default-link-color;
+			position: absolute;
+			right: 12px; // This value is the links padding less ( @caret-width-base * 2 )
+			top: 14px; // This value is the links (( line-height + (pad-top-and-bottom) ) - ( @caret-width-base * 2 )) / 2
+		}
+
+		.dropdown-submenu:hover > a:after {
+			border-left-color: @dropdown-link-hover-color;
+		}
+
+		// Left aligned submenus
+		.dropdown-submenu.pull-left {
+			// Undo the float
+			// Yes, this is awkward since .pull-left adds a float, but it sticks to our conventions elsewhere.
+			float: none;
+
+			// Positioning the submenu
+			> .sub-menu {
+				left: -100%;
+				margin-left: 10px;
+				border-top-right-radius: 0; // Remove the rounded corner here
+			}
+		}
 
 		> li {
 			border-right: 1px solid @navbar-default-border;
@@ -115,87 +185,6 @@
 	}
 }
 
-.menu {
-	&:extend(.nav all, .navbar-nav all);
-
-	// Sub menus
-	// ---------------------------
-	.dropdown-submenu {
-		position: relative;
-	}
-	// Default dropdowns
-	.dropdown-submenu > .sub-menu {
-		top: 0;
-		left: 100%;
-		margin-top: -6px;
-		margin-left: -1px;
-		border-top-left-radius: 0; // Nuke the closest corner as appropriate
-	}
-	.dropdown-submenu:hover > .sub-menu {
-		display: block;
-	}
-
-	// Dropups
-	.dropup .dropdown-submenu > .sub-menu {
-		top: auto;
-		bottom: 0;
-		margin-top: 0;
-		margin-bottom: -2px;
-		border-bottom-left-radius: 0; // Nuke the closest corner as appropriate
-	}
-
-	// Caret to indicate there is a submenu
-	.dropdown-submenu > a:after {
-		content: "";
-		width: 0;
-		height: 0;
-		border: @caret-width-base solid transparent;
-		border-left-color: @navbar-default-link-color;
-		position: absolute;
-		right: 12px; // This value is the links padding less ( @caret-width-base * 2 )
-		top: 14px; // This value is the links (( line-height + (pad-top-and-bottom) ) - ( @caret-width-base * 2 )) / 2
-	}
-
-	.dropdown-submenu:hover > a:after {
-		border-left-color: @dropdown-link-hover-color;
-	}
-
-	// Left aligned submenus
-	.dropdown-submenu.pull-left {
-		// Undo the float
-		// Yes, this is awkward since .pull-left adds a float, but it sticks to our conventions elsewhere.
-		float: none;
-
-		// Positioning the submenu
-		> .sub-menu {
-			left: -100%;
-			margin-left: 10px;
-			border-top-right-radius: 0; // Remove the rounded corner here
-		}
-	}
-
-	> li[class^="icon-"] {
-
-		line-height: 36px;
-		position: relative;
-		.font-size(23);
-		color: #fff;
-		.square(36px);
-		display: inline-block;
-		border-radius: 18px;
-		background: #424242;
-		text-align: center;
-		vertical-align: middle;
-
-		> a {
-			position: absolute;
-			left: 0;
-			.text-hide;
-			.square(36px);
-		}
-	}
-}
-
 .caret {
 	&:extend(.caret);
 }
@@ -211,5 +200,20 @@
 
 	> a {
 		outline: 0;
+	}
+}
+
+.sr-only {
+	.sr-only;
+}
+
+/* Header Widget Area Nav Styling */
+.header-widget-area {
+	.widget_nav_menu {
+		li {
+			line-height: @site-header-height;
+			margin-right: 15px;
+			float: left;
+		}
 	}
 }

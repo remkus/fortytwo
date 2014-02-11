@@ -1,33 +1,22 @@
 <?php
-/*
-	Description: A responsive featured slider for the Genesis Framework.
-	Author: Forsite Themes
-	Based on: Genesis Responsive Slider by StudioPress
-	Author URI: http://forsitethemes.com
-	Author Email: mail@forsitethemes.com
-	License: GPLv2 or later
-	License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License, version 2, as
-	published by the Free Software Foundation.
-
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
-
 /**
- * Thanks to Rafal Tomal, Nick Croft, Nathan Rice, Ron Rennick, Josh Byers and Brian Gardner for the original
- * responsive slider widget.
+ * FortyTwo Theme: Responsive Slider Widget
+ *
+ * This file creates the Responsive Slider Widget
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 
 /**
+ *
+ * Copyright & Thanks
+ *
+ * Thanks to Rafal Tomal, Nick Croft, Nathan Rice, Ron Rennick, Josh Byers and Brian Gardner for the original
+ * responsive slider widget.
+ *
  * Thanks to Tyler Smith for creating the awesome jquery FlexSlider plugin - http://flex.madebymufffin.com/.
  */
 
@@ -55,12 +44,12 @@ class FT_Responsive_Slider extends WP_Widget {
 			'ft-responsive-slider',
 			__( '42&nbsp;&nbsp;- Responsive Slider', 'fortytwo' ),
 			array(
-				'classname' => 'ft-responsive-slider',
+				'classname'   => 'ft-responsive-slider',
 				'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' )
 			),
 			array(
-				'width' => 200,
-				'height' => 250,
+				'width'   => 200,
+				'height'  => 250,
 				'id_base' => 'ft-responsive-slider'
 			)
 		);
@@ -84,11 +73,11 @@ class FT_Responsive_Slider extends WP_Widget {
 		//TODO: Should this be called once / widget?
 		add_image_size( 'slider', ( int ) $this->get_value( 'slideshow_width' ), ( int ) $this->get_value( 'slideshow_height' ), TRUE );
 	}
-	
+
 	/**
 	 * Returns an absolute URL to a file releative to the widget's folder
-	 * 
-	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @param string  file The file path (relative to the widgets folder)
 	 *
 	 * @return string
 	 */
@@ -146,8 +135,8 @@ class FT_Responsive_Slider extends WP_Widget {
 	/**
 	 * Gets the value of a widget field setting
 	 *
-	 * @param string   field The name of the widget field you are wanting to get
-	 * @param bool     force_reload Whether to force refetching value from DB. By default a cached value is returned
+	 * @param string  field The name of the widget field you are wanting to get
+	 * @param bool    force_reload Whether to force refetching value from DB. By default a cached value is returned
 	 *
 	 * @return The fetched field setting value
 	 */
@@ -163,8 +152,8 @@ class FT_Responsive_Slider extends WP_Widget {
 	}
 
 	/**
-	 * Creates read more link after excerpt 
-	 * 
+	 * Creates read more link after excerpt
+	 *
 	 * @param mixed   moret  Not used
 	 *
 	 * @return An HTML fragment containing a "read more" link
@@ -201,8 +190,8 @@ class FT_Responsive_Slider extends WP_Widget {
 
 	/**
 	 * Helper method to echo both the id= and name= attributes for a field input element
-	 * 
-	 * @param string   field The field name
+	 *
+	 * @param string  field The field name
 	 *
 	 */
 	public function echo_field_id( $field ) {
@@ -231,28 +220,28 @@ class FT_Responsive_Slider extends WP_Widget {
 
 		foreach ( array(
 				'post_type'
-				,'posts_term'
-				,'exclude_terms'
-				,'include_exclude'
-				,'post_id'
-				,'posts_num'
-				,'posts_offset'
-				,'orderby'
-				,'slideshow_timer'
-				,'slideshow_delay'
-				,'slideshow_effect'
-				,'slideshow_width'
-				,'slideshow_height'
-				,'slideshow_arrows'
-				,'slideshow_pager'
-				,'slideshow_no_link'
-				,'slideshow_title_show'
-				,'slideshow_excerpt_show'
-				,'slideshow_hide_mobile'
-				,'slideshow_excerpt_content'
-				,'slideshow_more_text'
-				,'slideshow_excerpt_content_limit'
-				,'slideshow_excerpt_width' ) as $field_name ) {
+				, 'posts_term'
+				, 'exclude_terms'
+				, 'include_exclude'
+				, 'post_id'
+				, 'posts_num'
+				, 'posts_offset'
+				, 'orderby'
+				, 'slideshow_timer'
+				, 'slideshow_delay'
+				, 'slideshow_effect'
+				, 'slideshow_width'
+				, 'slideshow_height'
+				, 'slideshow_arrows'
+				, 'slideshow_pager'
+				, 'slideshow_no_link'
+				, 'slideshow_title_show'
+				, 'slideshow_excerpt_show'
+				, 'slideshow_hide_mobile'
+				, 'slideshow_excerpt_content'
+				, 'slideshow_more_text'
+				, 'slideshow_excerpt_content_limit'
+				, 'slideshow_excerpt_width' ) as $field_name ) {
 			$instance[$field_name] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
 		}
 
@@ -362,7 +351,7 @@ class FT_Responsive_Slider extends WP_Widget {
 	/**
 	 * Generates the administration form for the widget.
 	 *
-	 * @param array instance The array of keys and values for the widget.
+	 * @param array   instance The array of keys and values for the widget.
 	 */
 	function form( $instance ) {
 
@@ -452,29 +441,29 @@ class FT_Responsive_Slider extends WP_Widget {
 		$instance = array();
 		foreach ( array(
 				'title'
-				,'post_type'
-				,'posts_term'
-				,'exclude_terms'
-				,'include_exclude'
-				,'post_id'
-				,'posts_num'
-				,'posts_offset'
-				,'orderby'
-				,'slideshow_timer'
-				,'slideshow_delay'
-				,'slideshow_effect'
-				,'slideshow_width'
-				,'slideshow_height'
-				,'slideshow_arrows'
-				,'slideshow_pager'
-				,'slideshow_no_link'
-				,'slideshow_title_show'
-				,'slideshow_excerpt_show'
-				,'slideshow_hide_mobile'
-				,'slideshow_excerpt_content'
-				,'slideshow_more_text'
-				,'slideshow_excerpt_content_limit'
-				,'slideshow_excerpt_width'
+				, 'post_type'
+				, 'posts_term'
+				, 'exclude_terms'
+				, 'include_exclude'
+				, 'post_id'
+				, 'posts_num'
+				, 'posts_offset'
+				, 'orderby'
+				, 'slideshow_timer'
+				, 'slideshow_delay'
+				, 'slideshow_effect'
+				, 'slideshow_width'
+				, 'slideshow_height'
+				, 'slideshow_arrows'
+				, 'slideshow_pager'
+				, 'slideshow_no_link'
+				, 'slideshow_title_show'
+				, 'slideshow_excerpt_show'
+				, 'slideshow_hide_mobile'
+				, 'slideshow_excerpt_content'
+				, 'slideshow_more_text'
+				, 'slideshow_excerpt_content_limit'
+				, 'slideshow_excerpt_width'
 			) as $field_name ) {
 			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
 		}
@@ -505,7 +494,6 @@ class FT_Responsive_Slider extends WP_Widget {
 		wp_enqueue_script( 'jquery-ui-tabs' );
 		wp_enqueue_script( 'jquery-ui-position' );
 		wp_enqueue_script( 'wp-lists' );
-		wp_enqueue_script( 'ft_responsive_slider_admin_scripts', $this->url( '/js/admin.js' ), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, TRUE );
 
 	} // end register_admin_scripts
 

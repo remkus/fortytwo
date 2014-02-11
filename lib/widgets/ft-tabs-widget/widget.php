@@ -1,28 +1,22 @@
 <?php
 /**
- * Description: ForSite Themes Tabbed Content Widget
- * Author: Forsite Themes
- * Author URI: http://forsitethemes.com
- * Author Email: mail@forsitethemes.com
- * License: GPLv2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Copyright 2013 mail@forsitethemes.com
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as
- * published by the Free Software Foundation.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * FortyTwo Theme: Tabs Widget
  *
- * @package    FortyTwo
- * @subpackage Widgets
- * @since      0.1
+ * This file creates the Tabs Widget
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 
+/**
+ *
+ * Copyright & Thanks
+ *
+ * Thanks to Woothemes for the inspiration for out Tabs  Widget.
+ *
+ */
 
 class FT_Tabbed_Content extends WP_Widget {
 
@@ -45,10 +39,10 @@ class FT_Tabbed_Content extends WP_Widget {
 	function __construct() {
 
 		/* Widget variable settings. */
-		$this->fst_widget_cssclass = 'ft-tabbed-content';
+		$this->fst_widget_cssclass    = 'ft-tabbed-content';
 		$this->fst_widget_description = __( 'Tabbed content widget for the FortyTwo theme.', 'fortytwo' );
-		$this->fst_widget_idbase = 'widget-ft-tabbed-content';
-		$this->fst_widget_title = __( '42&nbsp;&nbsp;- Tabs', 'fortytwo' );
+		$this->fst_widget_idbase      = 'widget-ft-tabbed-content';
+		$this->fst_widget_title       = __( '42&nbsp;&nbsp;- Tabs', 'fortytwo' );
 
 		$this->available_tabs = array( 'latest', 'popular', "comments", "tags" );
 		// Allow child themes/plugins to filter here.

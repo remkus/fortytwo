@@ -1,9 +1,15 @@
 <?php
 /**
- * Represents the view for the featured content that gets output to site.
+ * FortyTwo Theme: Featured Content Widget
+ *
+ * Represents the widget for the featured content that gets output to site.
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 ?>
-
 <?php echo $before_title ?>
 	<i class="ft-ico <?php echo esc_html( $instance['icon'] ) ?>"></i> <?php echo esc_html( $instance['title'] ) ?>
 <?php echo $after_title ?>

@@ -1,9 +1,15 @@
 <?php
 /**
+ * FortyTwo Theme: Featured Content Widget View
+ *
  * Represents the view for the featured content widget form in the backend.
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 ?>
-
 <div class="ft-featured-content-admin">
 <input type="hidden" <?php $this->echo_field_id( "icon" ) ?> value="<?php echo esc_attr( $instance['icon'] ); ?>">
 <table style="width: 100%">

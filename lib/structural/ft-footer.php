@@ -1,8 +1,14 @@
 <?php
 /**
- * FortyTwo Footer Widget Areas
+ * FortyTwo Theme: Footer Widget Areas
  *
- * @package FortyTwo
+ * This file modifies the WordPress default widgets to allow for our Bootstrap type
+ * styling
+ *
+ * @package FortyTwo\Structural
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 
 add_action( 'genesis_before_footer', 'fortytwo_insert_footer_widget' );
@@ -10,6 +16,7 @@ add_action( 'genesis_before_footer', 'fortytwo_insert_footer_widget' );
  * Echo the markup necessary to facilitate the footer widget area.
  *
  * We are creating one widget area and columns are determined by no. widgets
+ *
  * @todo  This code needs better documentation
  */
 function fortytwo_insert_footer_widget() {
@@ -21,43 +28,36 @@ function fortytwo_insert_footer_widget() {
 	$data_widget_count = fortytwo_add_data_widget_attr( 'footer-columns' );
 
 	genesis_markup( array(
-		'html5'   => '<div %s>',
-		'xhtml'   => '<div id="footer-widgets">',
-		'context' => 'footer-widgets'
-	) );
+			'html5'   => '<div %s>',
+			'xhtml'   => '<div id="footer-widgets">',
+			'context' => 'footer-widgets'
+		) );
 
 	genesis_structural_wrap( 'footer-widgets', 'open' );
 
 	echo '<div class="inner-wrap">';
-
-	echo '<div class="widget-container" data-widget-count="' .$data_widget_count. '">';
-
-	dynamic_sidebar( 'footer-columns' );
-
+		echo '<div class="sidebar sidebar-footer-columns widget-area custom-widget-area" data-widget-count="' .$data_widget_count. '">';
+				dynamic_sidebar( 'footer-columns' );
+		echo '</div>';
 	echo '</div>';
-
-	echo '</div>';
-
 	genesis_structural_wrap( 'footer-widgets', 'close' );
-
 	echo '</div>';
 
 }
 
-
-/** Customize the default footer */
-remove_action( 'genesis_footer', 'genesis_do_footer' );
-
-add_action( 'genesis_footer', 'fortytwo_custom_footer' );
-
-function fortytwo_custom_footer() {
-
-	$footer_output = <<<EOD
-		<div class="copyright-area">
-			<span>&copy; Copyright 2012 <a href="http://mydomain.com/">My Domain</a> &middot; All Rights Reserved &middot; Powered by <a href="http://wordpress.org/">WordPress</a> &middot; <a href="http://mydomain.com/wp-admin">Admin</a></span>
-		</div>
-EOD;
-
-	echo $footer_output;
-
+add_filter( 'genesis_footer_creds_text', 'fortytwo_footer_creds_text' );
+/**
+ * Custom FortyTwo Footer Text
+ *
+ * @since 1.0.0
+ *
+ */
+function fortytwo_footer_creds_text() {
+	echo '<div class="copyright-area">';
+	echo do_shortcode( '[footer_copyright before="Copyright "] ' );
+	echo do_shortcode( '[footer_childtheme_link before=" &middot; "]' );
+	echo ' &middot; ';
+	echo ' Built on the ';
+	echo do_shortcode( '[footer_genesis_link]' );
+	echo '</span></div>';
 }

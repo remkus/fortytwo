@@ -1,10 +1,13 @@
 <?php
-/*
- * FortyTwo: Structual realted functions
+/**
+ * FortyTwo Theme: Structual related functions
  *
+ * This file Adds and changes the Genesis structure
  *
- * @since 1.0.0
- *
+ * @package FortyTwo\Structural
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 
 // Activating the Genesis Structural Wraps FortyTwo needs

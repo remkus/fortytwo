@@ -1,8 +1,13 @@
 <?php
 /**
- * FortyTwo Initializer File
- * @todo  This code needs better documentation
+ * FortyTwo Theme: Initializer File
  *
+ * This file fires the whole FortyTwo Theme. The answer to the answer.
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 
 /* Child theme (do not remove) */
@@ -23,9 +28,10 @@ define( 'FORTYTWO_WIDGETS_URL', FORTYTWO_LIB_URL . '/widgets' );
 require_once 'admin/ft-admin-style.php';
 require_once 'admin/ft-layouts.php';
 
+require_once 'general/ft-default-widgets.php';
+require_once 'general/ft-post-layouts.php';
 require_once 'general/ft-scripts.php';
 require_once 'general/ft-widget-areas.php';
-require_once 'general/ft-default-widgets.php';
 
 require_once 'structural/ft-structural.php';
 require_once 'structural/ft-nav.php';

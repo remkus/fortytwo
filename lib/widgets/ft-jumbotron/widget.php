@@ -1,28 +1,14 @@
 <?php
-/*
-
-Description: FortyTwo Jumbotron Widget
-Author: Forsite Themes
-Author URI: http://forsitethemes.com
-Author Email: mail@forsitethemes.com
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-Copyright 2013 mail@forsitethemes.com
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as
-published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+/**
+ * FortyTwo Theme: Jumbotron Widget
+ *
+ * This file creates the Jumbotron Widget
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
+ */
 
 class FT_Jumbotron extends WP_Widget {
 
@@ -40,7 +26,7 @@ class FT_Jumbotron extends WP_Widget {
 			'widget-ft-jumbotron',
 			__( '42&nbsp;&nbsp;- Jumbotron', 'fortytwo' ),
 			array(
-				'classname'  => 'ft-jumbotron',
+				'classname'   => 'ft-jumbotron',
 				'description' => __( 'Jumbotron widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
@@ -49,16 +35,12 @@ class FT_Jumbotron extends WP_Widget {
 		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
 
-		// Register site styles and scripts
-		//add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_styles' ) );
-		//add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_scripts' ) );
-
 	} // end constructor
 
 	/**
 	 * Returns an absolute URL to a file releative to the widget's folder
 	 *
-	 * @param string   file The file path (relative to the widgets folder)
+	 * @param string  file The file path (relative to the widgets folder)
 	 *
 	 * @return string
 	 */
@@ -69,7 +51,7 @@ class FT_Jumbotron extends WP_Widget {
 	/**
 	 * Helper method to echo both the id= and name= attributes for a field input element
 	 *
-	 * @param string   field The field name
+	 * @param string  field The field name
 	 *
 	 */
 	public function echo_field_id( $field ) {
@@ -114,7 +96,9 @@ class FT_Jumbotron extends WP_Widget {
 	 * @param mixed   default The default value
 	 */
 	private function set_default( &$value, $default ) {
-		if ( empty ( $value ) ) $value = $default;
+		if ( empty ( $value ) ) {
+			$value = $default;
+		}
 	}
 
 	/**
@@ -127,7 +111,13 @@ class FT_Jumbotron extends WP_Widget {
 
 		$instance = $old_instance;
 
-		foreach ( array( 'title', 'content', 'button_text', 'button_link', 'button_alignment' ) as $field_name ) {
+		foreach ( array(
+			'title',
+			'content',
+			'button_text',
+			'button_link',
+			'button_alignment'
+			) as $field_name ) {
 			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
 		}
 
@@ -144,11 +134,11 @@ class FT_Jumbotron extends WP_Widget {
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
-				'title' => '',
-				'content' => '',
+				'title'            => '',
+				'content'          => '',
 				'button_alignment' => 'right',
-				'button_text' => '',
-				'button_link' => ''
+				'button_text'      => '',
+				'button_link'      => ''
 			)
 		);
 
@@ -175,7 +165,6 @@ class FT_Jumbotron extends WP_Widget {
 	 */
 	public function register_admin_scripts() {
 
-		wp_enqueue_script( 'ft-jumbotron-admin-script', $this->url( '/js/admin.js' ) );
 
 	} // end register_admin_scripts
 

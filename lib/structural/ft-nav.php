@@ -1,24 +1,20 @@
 <?php
-/*
- * FortyTwo: overrides primary Genesis menu generation to conform to
- *            structure required for bootstrap menus
+/**
+ * FortyTwo Theme: Primary Navigation
  *
- * Output can be filtered via 'genesis_do_nav'.
+ * This file overrides primary Genesis menu generation to conform to
+ * structure required for bootstrap menus
  *
- * @since 1.0.0
- *
- * @uses genesis_get_option() Get theme setting value
- * @uses genesis_nav() Use old-style Genesis Pages or Categories menu
- * @uses genesis_structural_wrap() Adds optional internal wrap divs
+ * @package FortyTwo\Structural
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
 
-// Modify the display of the front-end menu
-//remove_action( 'genesis_after_header', 'genesis_do_nav' );
-//add_action( 'genesis_after_header', 'fortytwo_do_nav' );
 add_filter( 'genesis_do_nav', 'fortytwo_do_nav', 10, 3 );
 
 /**
- * [fortytwo_do_nav description]
+ * FortyTwo Navigation Amendmennts
  * @return [type] [description]
  * @todo  This code needs better documentation
  *

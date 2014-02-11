@@ -10,6 +10,8 @@
 @import (reference) "list-group";
 @import (reference) "tables";
 @import (reference) "type";
+@import (reference) "forms";
+@import (reference) "input-groups";
 
 /*!
 * 7.1 FortyTwo Custom Widgets
@@ -17,43 +19,43 @@
 
 /* Widget Layouts */
 @screen-size: @screen-xs-min; // For extra small devices like smartphones.
-.widget-container {
+.custom-widget-area[data-widget-count='1'] {
 	.make-column(~".widget" 12 0 0);
 }
 
 @media (min-width: @screen-sm-min) { // For the small device range, from phones to tablets.
 	@screen-size: @screen-sm-min;
-	.widget-container[data-widget-count='2'] {
+	.custom-widget-area[data-widget-count='2'] {
 		.make-column(~".widget" 6 0 0);
 	}
 }
 
 @media (min-width: @screen-md-min) { // For the desktop device range.
 	@screen-size: @screen-md-min;
-	.widget-container[data-widget-count='2'] {
+	.custom-widget-area[data-widget-count='2'] {
 		.make-column(~".widget" 6 0 0);
 	}
 
-	.widget-container[data-widget-count='3'] {
+	.custom-widget-area[data-widget-count='3'] {
 		.make-column(~".widget" 4 0 0);
 	}
 
-	.widget-container[data-widget-count='4'] {
+	.custom-widget-area[data-widget-count='4'] {
 		.make-column(~".widget" 3 0 0);
 	}
 }
 
 @media (min-width: @screen-lg-min) { // large desktop device range.
 	@screen-size: @screen-lg-min;
-	.widget-container[data-widget-count='2'] {
+	.custom-widget-area[data-widget-count='2'] {
 		.make-column(~".widget" 6 0 0);
 	}
 
-	.widget-container[data-widget-count='3'] {
+	.custom-widget-area[data-widget-count='3'] {
 		.make-column(~".widget" 4 0 0);
 	}
 
-	.widget-container[data-widget-count='4'] {
+	.custom-widget-area[data-widget-count='4'] {
 		.make-column(~".widget" 3 0 0);
 	}
 }
@@ -102,21 +104,51 @@
 }
 
 .ft-tabbed-content {
-	.widgettitle {
-		position: relative;
+	.tab-select {
+		display: inline-table;
+		margin-bottom: 20px;
 	}
 
-	.tab-select:extend(.btn-group all) {
-		margin-left: 15px;
-		top: -4px;
+	.widget-title,
+	.tab-buttons {
+		display: table-cell;
+		vertical-align: middle;
+	}
 
-		.tab-select-btn {
-			> a:hover {
-				text-decoration: none;
-			}
+	.tab-buttons {
+		padding-left: 15px;
 
-			&.active {
-				.box-shadow(none);
+		> ul {
+			padding-left: 0;
+
+			> li {
+				float: left;
+				position: relative;
+				display: block;
+				margin-left: -1px;
+
+				& .btn {
+					.btn-default();
+					border-radius: 0;
+
+					&:hover,
+					&:focus,
+					&:active,
+					&.active {
+						z-index: 2;
+					}
+					&:focus {
+						outline: none;
+					}
+				}
+
+				&.first .btn {
+					.border-left-radius(@border-radius-base);
+				}
+
+				&.last .btn {
+					.border-right-radius(@border-radius-base;);
+				}
 			}
 		}
 	}
@@ -173,8 +205,9 @@
 	}
 
 	.sidebar & {
-		.tab-select-btn {
+		.tab-buttons .btn {
 			.btn-sm();
+			border-radius: 0;
 		}
 	}
 }
@@ -225,7 +258,8 @@
 * 7.2 WordPress Default Widgets
 */
 
-.sidebar {
+.sidebar-primary,
+.sidebar-secondary {
 	.widget:first-child {
 		padding-top: 0;
 		border-top: none;
@@ -236,7 +270,9 @@
 		padding-bottom: 30px;
 		padding-top: 30px;
 	}
+}
 
+.sidebar {
 	.widget_calendar {
 		caption {
 			text-transform: uppercase;
@@ -326,18 +362,16 @@
 				padding-top: 0;
 			}
 
-			.icon {
-				line-height: @line-height-base;
-				float: left;
-				text-align: left;
-			}
-
 		}
 
 	}
 
 	.widget_rss {
 		> .widget-wrap {
+
+			.rsswidget img {
+				display: inline;
+			}
 
 			> ul {
 
@@ -416,6 +450,20 @@
 					}
 				}
 			}
+		}
+	}
+
+	.widget_search {
+		.search-form {
+			&:extend(.input-group all);
+		}
+
+		.search-text {
+			&:extend(.form-control all);
+		}
+
+		.search-button {
+			&:extend(.input-group-btn all);
 		}
 	}
 }

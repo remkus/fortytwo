@@ -8,6 +8,7 @@ div[id*="ft-jumbotron"] .in-widget-title:before,
 div[id*="ft-tabbed-content"] .in-widget-title:before,
 div[id*="ft-testimonials"] .in-widget-title:before,
 div[id*="ft-responsive-slider"] .in-widget-title:before,
+div[id*="ft-contact"] .in-widget-title:before,
 div[id*="ft-featured-content"] .in-widget-title:before {
   content: '42';
   left: 15px;
@@ -25,12 +26,16 @@ div[id*="ft-featured-content"] .in-widget-title:before {
 }
 
 
+/*!
+ *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
 /* FONT PATH
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../../../assets/fonts/fontawesome-webfont.eot?v=4.0.3');
-  src: url('../../../assets/fonts/fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'), url('../../../assets/fonts/fontawesome-webfont.woff?v=4.0.3') format('woff'), url('../../../assets/fonts/fontawesome-webfont.ttf?v=4.0.3') format('truetype'), url('../../../assets/fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg');
+  src: url('/content/themes/fortytwo/assets/fonts/fontawesome-webfont.eot?v=4.0.3');
+  src: url('/content/themes/fortytwo/assets/fonts/fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'), url('/content/themes/fortytwo/assets/fonts/fontawesome-webfont.woff?v=4.0.3') format('woff'), url('/content/themes/fortytwo/assets/fonts/fontawesome-webfont.ttf?v=4.0.3') format('truetype'), url('/content/themes/fortytwo/assets/fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }

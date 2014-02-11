@@ -1,3 +1,15 @@
+<?php
+/**
+ * FortyTwo Theme: Testimonials Widget View
+ *
+ * Represents the view for the Testimonials Widget in the backend.
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
+ */
+?>
 <div class="ft-testimonials-admin">
 <table style="width:100%">
 	<tr>

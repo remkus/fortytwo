@@ -1,28 +1,14 @@
 <?php
-/*
-
-Description: FortyTwo Featured Content Widget
-Author: Forsite Themes
-Author URI: http://forsitethemes.com
-Author Email: mail@forsitethemes.com
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-Copyright 2013 mail@forsitethemes.com
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as
-published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+/**
+ * FortyTwo Theme: Featured Content Widget
+ *
+ * This file creates the Featured Content Widget
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
+ */
 
 /**
  *  @todo  This code needs better documentation
@@ -43,7 +29,7 @@ class FT_Featured_Content extends WP_Widget {
 			'ft-featured-content',
 			__( '42&nbsp;&nbsp;- Featured Content', 'fortytwo' ),
 			array(
-				'classname'  => 'ft-featured-content',
+				'classname'   => 'ft-featured-content',
 				'description' => __( 'Featured Content widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
@@ -88,7 +74,7 @@ class FT_Featured_Content extends WP_Widget {
 
 	/**
 	 * Set a default value for an empty variable
-	 * 
+	 *
 	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
 	 * @param mixed   default The default value
 	 */
@@ -98,8 +84,8 @@ class FT_Featured_Content extends WP_Widget {
 
 	/**
 	 * Helper method to echo both the id= and name= attributes for a field input element
-	 * 
-	 * @param string   field The field name
+	 *
+	 * @param string  field The field name
 	 *
 	 */
 	public function echo_field_id( $field ) {
@@ -108,8 +94,8 @@ class FT_Featured_Content extends WP_Widget {
 
 	/**
 	 * Returns an absolute URL to a file releative to the widget's folder
-	 * 
-	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @param string  file The file path (relative to the widgets folder)
 	 *
 	 * @return string
 	 */
@@ -126,7 +112,13 @@ class FT_Featured_Content extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = array();
-		foreach ( array( 'title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name ) {
+		foreach ( array(
+			'title',
+			'icon',
+			'content',
+			'button_text',
+			'button_link'
+			) as $field_name ) {
 			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
 		}
 
@@ -145,9 +137,9 @@ class FT_Featured_Content extends WP_Widget {
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
-				'title' => '',
-				'icon' => '',
-				'content' => '',
+				'title'       => '',
+				'icon'        => '',
+				'content'     => '',
 				'button_text' => '',
 				'button_link' => ''
 			)
@@ -183,7 +175,6 @@ class FT_Featured_Content extends WP_Widget {
 		wp_enqueue_script( 'backbone' );
 		wp_enqueue_script( 'add_event_saved_widget', $this->url( '/js/add_event_saved_widget.js' ),  array( 'backbone' ) );
 		wp_enqueue_script( 'fontawesome_icon_selector_app', $this->url( '/js/fontawesome_icon_selector_app.js' ), array( 'backbone' ) );
-		wp_enqueue_script( 'ft-featured-content-admin-script', $this->url( '/js/admin.js' ),  array( 'fontawesome_icon_selector_app' ) );
 
 	} // end register_admin_scripts
 

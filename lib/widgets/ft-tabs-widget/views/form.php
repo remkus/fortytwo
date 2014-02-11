@@ -1,4 +1,15 @@
-<!-- Widget Title: Text Input -->
+<?php
+/**
+ * FortyTwo Theme: Tabs Widget View
+ *
+ * Represents the view for the Tabs Widget in the backend.
+ *
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
+ */
+?>
 <p>
   <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title (optional):', 'fortytwo' ); ?></label>
   <input type="text" name="<?php echo $this->get_field_name( 'title' ); ?>"  value="<?php echo $instance['title']; ?>" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" />
