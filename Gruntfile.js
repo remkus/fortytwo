@@ -82,7 +82,8 @@ module.exports = function (grunt) {
 					'  Author: <%= pkg.theme.author %>\n' +
 					'  Author URI: <%= pkg.theme.authoruri %>\n' +
 					'  Version: <%= pkg.theme.version %>\n' +
-					'  Tags: <%= pkg.theme.tags %>\n\n' +
+					'  Tags: <%= pkg.theme.tags %>\n' +
+					'  Text Domain: <%= pkg.theme.textdomain %>\n\n' +
 					'  License: <%= pkg.theme.license %>\n' +
 					'  License URI: <%= pkg.theme.licenseuri %>\n\n' +
 					'  Template: <%= pkg.theme.template %>\n' +
@@ -150,6 +151,14 @@ module.exports = function (grunt) {
 				files: [
 					{ src: ['dist/**'] }
 				]
+			}
+		},
+		makepot: {
+			target: {
+				options: {
+					domainPath: '/lib/languages',
+					type: 'wp-theme'
+				}
 			}
 		}
 	});
