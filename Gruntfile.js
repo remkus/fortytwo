@@ -11,8 +11,14 @@ module.exports = function (grunt) {
 			fonticons: {
 				files: [
 					{expand: true, flatten: true, src: ['vendor/bootstrap/dist/fonts/*'], dest: 'assets/fonts/', filter: 'isFile'},
-					{expand: true, flatten: true, src: ['vendor/font-awesome/fonts/*'], dest: 'assets/fonts/', filter: 'isFile'}
+					{expand: true, flatten: true, src: ['vendor/font-awesome/fonts/*'], dest: 'assets/fonts/', filter: 'isFile'},
+					{expand: true, flatten: true, src: ['vendor/font-awesome/fonts/*'], dest: 'lib/admin/assets/fonts/', filter: 'isFile'}
 				]
+			}
+		},
+		clean: {
+			tmp: {
+				src: [ 'tmp' ]
 			}
 		},
 		replace: {
@@ -30,43 +36,27 @@ module.exports = function (grunt) {
 				]
 			}
 		},
-		clean: {
-			tmp: {
-				src: [ 'tmp' ]
-			}
-		},
 		less: {
-			fonticons: {
+			font_awesome: {
 				options: {
 					paths: ['assets/less', 'vendor/font-awesome/less'],
 					imports: {reference: ['ft-variables.less']}
 				},
 				files: {
-					'tmp/assets/less/ft-font-awesome.less': ['tmp/assets/less/font-awesome.less'],
-					'tmp/assets/css/admin/ft-admin-font-awesome.css': ['tmp/assets/less/font-awesome.less']
+					'tmp/assets/css/font-awesome.css': 'tmp/assets/less/font-awesome.less'
 				}
 			},
 			components: {
 				options: {
-					paths: ['assets/less', 'vendor/bootstrap/less', 'tmp/assets/less'],
+					paths: ['assets/less', 'vendor/bootstrap/less', 'tmp/assets/css'],
 					imports: {
 						reference: ['ft-variables.less', 'ft-mixins.less', 'mixins.less', 'utilities.less']
 					}
 				},
 				files: [
-					{expand: true, flatten: true, cwd: 'assets/less', src: ['*.less', '!{ft-variables,ft-mixins}.less'], dest: 'tmp/assets/css/', ext: '.css'}
+					{expand: true, flatten: true, cwd: 'assets/less', src: ['*.less', '!{ft-variables,ft-mixins}.less'], dest: 'tmp/assets/css/', ext: '.css'},
+					{expand: true, flatten: true, cwd: 'assets/less/admin', src: ['*.less'], dest: 'tmp/assets/css/admin/', ext: '.css'}
 				]
-			},
-			fortytwo_admin_style: {
-				options: {
-					paths: ['assets/less', 'assets/less/admin'],
-					imports: {
-						reference: ['ft-variables.less', 'ft-mixins.less']
-					}
-				},
-				files: {
-					'tmp/assets/css/admin/ft-admin-core.css': ['assets/less/admin/ft-admin-core.less']
-				}
 			}
 		},
 		cssmin: {
@@ -77,7 +67,8 @@ module.exports = function (grunt) {
 				files: {
 					'tmp/assets/css/ft-reset.css': ['tmp/assets/css/ft-reset.css'],
 					'tmp/assets/css/ft-print.css': ['tmp/assets/css/ft-print.css'],
-					'tmp/assets/css/ft-font-icons.css': ['tmp/assets/css/ft-font-icons.css']
+					'tmp/assets/css/ft-font-icons.css': ['tmp/assets/css/ft-font-icons.css'],
+					'tmp/assets/css/admin/ft-admin-core.css': ['tmp/assets/css/admin/ft-admin-core.css']
 				}
 			}
 		},
@@ -121,10 +112,9 @@ module.exports = function (grunt) {
 					banner: ''
 				},
 				src: [
-					'tmp/assets/css/admin/ft-admin-core.css',
-					'tmp/assets/css/admin/ft-admin-font-awesome.css'
+					'tmp/assets/css/admin/ft-admin-core.css'
 				],
-				dest: 'lib/admin/css/admin-style.css'
+				dest: 'lib/admin/admin-style.css'
 			}
 		},
 		cssbeautifier: {
