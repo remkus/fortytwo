@@ -5,7 +5,7 @@
  *
  * This file modifies layouts of certain elements related to post layouts
  *
- * @package FortyTwo\General
+ * @package FortyTwo\Structural
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/
@@ -19,3 +19,4 @@ add_filter( 'use_default_gallery_style', '__return_false' );
  * @since 1.0.0
  *
  * */
+
