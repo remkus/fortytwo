@@ -4,6 +4,8 @@
 * FortyTwo header
 */
 
+@import (reference) "responsive-utilities";
+
 .site-header {
 	padding-top: @site-header-padding-vertical;
 	padding-bottom: @site-header-padding-vertical;
@@ -57,9 +59,11 @@
 		padding: 0 0 0 15px;
 		text-transform: uppercase;
 		vertical-align: middle;
+		.hidden-xs;
 	}
 
 	.header-widget-area > .widget {
 		.pull-right();
+		.hidden-xs;
 	}
 }
