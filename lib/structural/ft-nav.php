@@ -64,7 +64,6 @@ EOD;
 }
 
 /**
- * Custom Walker to change submenu class items from default "sub-menu" to "dropdown-menu"
  * @todo  This code needs better documentation
  *
  */

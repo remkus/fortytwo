@@ -117,11 +117,26 @@
 		}
 	}
 
+	.caret {
+		&:extend(.caret);
+	}
+
 	.sub-menu {
+		&:extend(.dropdown-menu all);
 		border-radius: @navbar-border-radius;
 
 		> li > a {
 			line-height: @navbar-submenu-height;
+		}
+	}
+
+	.open {
+		> .sub-menu {
+			display: block;
+		}
+
+		> a {
+			outline: 0;
 		}
 	}
 
@@ -183,28 +198,6 @@
 		}
 
 	}
-}
-
-.caret {
-	&:extend(.caret);
-}
-
-.sub-menu {
-	&:extend(.dropdown-menu all);
-}
-
-.open {
-	> .sub-menu {
-		display: block;
-	}
-
-	> a {
-		outline: 0;
-	}
-}
-
-.sr-only {
-	.sr-only;
 }
 
 /* Header Widget Area Nav Styling */
