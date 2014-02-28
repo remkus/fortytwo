@@ -2827,8 +2827,26 @@ table .table {
 	vertical-align: middle;
 }
 
+@media (max-width: 767px) {
+	.site-header .site-description,
+  tr.site-header .site-description,
+  th.site-header .site-description,
+  td.site-header .site-description {
+		display: none !important;
+	}
+}
+
 .site-header .header-widget-area > .widget {
 	float: right !important;
+}
+
+@media (max-width: 767px) {
+	.site-header .header-widget-area > .widget,
+  tr.site-header .header-widget-area > .widget,
+  th.site-header .header-widget-area > .widget,
+  td.site-header .header-widget-area > .widget {
+		display: none !important;
+	}
 }
 
 
@@ -3678,17 +3696,6 @@ table .table {
 .nav-primary.affix .menu > li:first-child {
 	border-left: 1px solid #080808;
 }
-
-.sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	margin: -1px;
-	padding: 0;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0;
-}
 /* Header Widget Area Nav Styling */
 .header-widget-area .widget_nav_menu li {
 	line-height: 55px;
@@ -4336,7 +4343,7 @@ select[multiple].input-group-sm > .sidebar .widget_search .search-button > .btn 
 * 7.1 FortyTwo Custom Widgets
 */
 /* Widget Layouts */
-.custom-widget-area[data-widget-count='1'] .widget {
+.custom-widget-area .widget {
 	position: relative;
 	float: left;
 	width: 100%;
@@ -4344,6 +4351,10 @@ select[multiple].input-group-sm > .sidebar .widget_search .search-button > .btn 
 	padding-left: 15px;
 	padding-right: 15px;
 	line-height: 1.598057560909147;
+}
+
+.custom-widget-area .widget:first-child {
+	margin-top: 0;
 }
 
 @media (min-width: 768px) {
@@ -4424,6 +4435,7 @@ select[multiple].input-group-sm > .sidebar .widget_search .search-button > .btn 
 
 .widget {
 	word-wrap: break-word;
+	margin-top: 30px;
 }
 
 .widget ul,
@@ -4494,6 +4506,15 @@ select[multiple].input-group-sm > .sidebar .widget_search .search-button > .btn 
 
 .ft-tabbed-content .tab-content h4.entry-title a:hover {
 	text-decoration: none;
+}
+
+@media (max-width: 767px) {
+	.ft-tabbed-content .widget-title,
+  tr.ft-tabbed-content .widget-title,
+  th.ft-tabbed-content .widget-title,
+  td.ft-tabbed-content .widget-title {
+		display: none !important;
+	}
 }
 
 .ft-tabbed-content .widget-title,

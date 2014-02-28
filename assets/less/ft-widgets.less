@@ -12,6 +12,9 @@
 @import (reference) "type";
 @import (reference) "forms";
 @import (reference) "input-groups";
+@import (reference) "responsive-utilities";
+
+
 
 /*!
 * 7.1 FortyTwo Custom Widgets
@@ -19,8 +22,12 @@
 
 /* Widget Layouts */
 @screen-size: @screen-xs-min; // For extra small devices like smartphones.
-.custom-widget-area[data-widget-count='1'] {
+.custom-widget-area {
 	.make-column(~".widget" 12 0 0);
+
+	.widget:first-child {
+		margin-top: 0;
+	}
 }
 
 @media (min-width: @screen-sm-min) { // For the small device range, from phones to tablets.
@@ -62,6 +69,7 @@
 
 .widget {
 	word-wrap: break-word;
+	margin-top: 30px;
 
 	ul,
 	ol {
@@ -113,6 +121,10 @@
 		h4.entry-title a:hover {
 			text-decoration: none;
 		}
+	}
+
+.widget-title {
+		.hidden-xs;
 	}
 
 	.widget-title,
