@@ -3971,7 +3971,9 @@ table .table {
 	float: right;
 }
 
-article.type-page > .entry-header {
+article.type-page > .entry-header,
+.woocommerce .page-title,
+.error404 .entry-title {
 	position: absolute;
 	width: 1px;
 	height: 1px;
