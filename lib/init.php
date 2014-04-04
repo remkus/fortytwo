@@ -29,11 +29,11 @@ require_once 'admin/ft-admin-style.php';
 require_once 'admin/ft-layouts.php';
 
 require_once 'general/ft-default-widgets.php';
-require_once 'general/ft-post-layouts.php';
 require_once 'general/ft-scripts.php';
 require_once 'general/ft-widget-areas.php';
 
 require_once 'structural/ft-structural.php';
+require_once 'structural/ft-post.php';
 require_once 'structural/ft-nav.php';
 require_once 'structural/ft-subheader.php';
 require_once 'structural/ft-footer.php';

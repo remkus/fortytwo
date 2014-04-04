@@ -804,7 +804,7 @@
 //##
 
 //** Horizontal line color.
-@hr-border:                   @gray-lighter;
+@hr-border:                   transparent;
 
 //** Horizontal offset for forms and lists.
 @component-offset-horizontal: 180px;
@@ -1274,7 +1274,7 @@
 @site-header-margin-bottom:             0;
 @site-header-border-radius:             0;
 @site-header-padding-horizontal:        floor(@grid-gutter-width / 2);
-@site-header-padding-vertical:          40px;
+@site-header-padding-vertical:          @grid-gutter-width;
 @site-header-default-color:             #777;
 @site-header-default-bg:                #fff;
 @site-header-default-border:            darken(@site-header-default-bg, 6.5%);

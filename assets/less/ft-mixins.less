@@ -48,15 +48,13 @@
 	@columns: extract(@arguments, 2);
 	@push: extract(@arguments, 3);
 	@pull: extract(@arguments, 4);
-	@gutter: @grid-gutter-width;
 
 	@{selector} {
 		position: relative;
 		float: left;
 		width: percentage((@columns / @grid-columns));
 		min-height: 1px;
-		padding-left:  (@gutter / 2);
-		padding-right: (@gutter / 2);
+		padding:  0 (@grid-gutter-width / 2);
 		.calc-line-height(@screen-size, @columns);
 		.render-column-push(@push);
 		.render-column-pull(@pull);

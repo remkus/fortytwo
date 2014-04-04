@@ -25,6 +25,7 @@ function fortytwo_breadcrumb_args( $args ) {
 	$args['heirarchial_attachments'] = true;
 	$args['heirarchial_categories'] = true;
 	$args['display'] = true;
+	$args['labels']['404'] = 'Not found';
 	$args['labels']['prefix'] = '';
 	$args['labels']['author'] = '';
 	$args['labels']['category'] = '';
@@ -53,8 +54,10 @@ function fortytwo_insert_site_subheader() {
 
 		global $post;
 
+		$subheader_title = ( $post === null ? '' : $post->post_title);
+
 		$ft_subheader_attr = apply_filters( 'fortytwo_site_subheader_attr', array(
-			'title'       => $post->post_title,
+			'title'       => $subheader_title,
 			'breadcrumbs' => true,
 			'widget'      => false
 		));
@@ -90,13 +93,18 @@ function fortytwo_custom_site_subheader_title( $ft_subheader_attr ) {
 
 	global $post;
 
-	if ( is_attachment() ) {
-		$ft_subheader_attr['title'] = __( 'Article ', 'fortytwo' ) . ucwords($post->post_type);
+	if ( is_404() ) {
+		$ft_subheader_attr['title'] = __( 'Error 404 - page not found', 'fortytwo' );
 		return $ft_subheader_attr;
 	}
 
-	if ( is_single() ) {
-		$ft_subheader_attr['title'] = __( 'Blog', 'fortytwo' );
+	if ( is_product() || is_shop() ) {
+		$ft_subheader_attr['title'] = __( 'Shop', 'fortytwo' );
+		return $ft_subheader_attr;
+	}
+
+	if ( is_attachment() ) {
+		$ft_subheader_attr['title'] = __( ucwords($post->post_type), 'fortytwo' );
 		return $ft_subheader_attr;
 	}
 
@@ -128,6 +136,11 @@ function fortytwo_custom_site_subheader_title( $ft_subheader_attr ) {
 
 	if ( is_archive() ) {
 		$ft_subheader_attr['title'] = __( 'Archive: ', 'fortytwo' ) . single_term_title( '', false );
+		return $ft_subheader_attr;
+	}
+
+	if ( is_single() ) {
+		$ft_subheader_attr['title'] = __( ucwords($post->post_type), 'fortytwo' );
 		return $ft_subheader_attr;
 	}
 
