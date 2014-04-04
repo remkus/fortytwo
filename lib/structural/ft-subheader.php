@@ -98,9 +98,14 @@ function fortytwo_custom_site_subheader_title( $ft_subheader_attr ) {
 		return $ft_subheader_attr;
 	}
 
-	if ( is_product() || is_shop() ) {
-		$ft_subheader_attr['title'] = __( 'Shop', 'fortytwo' );
-		return $ft_subheader_attr;
+	/**
+	 * Check if WooCommerce is active
+	 **/
+	if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+		if ( is_product() || is_shop() ) {
+			$ft_subheader_attr['title'] = __( 'Shop', 'fortytwo' );
+			return $ft_subheader_attr;
+		}
 	}
 
 	if ( is_attachment() ) {
