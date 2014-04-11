@@ -41,7 +41,7 @@
 			<?php
 				}
 			?>
-			<div class="slide-image <?php echo $hide_mobile['add_image_cols'] ?>">
+			<div class="slide-image">
 			<?php
 				$image_url = ( genesis_get_image( 'format=url' ) !== false ? genesis_get_image( 'format=url' ) : get_bloginfo('stylesheet_directory') . '/images/no-image.png');
 				if ( $no_image_link ) {

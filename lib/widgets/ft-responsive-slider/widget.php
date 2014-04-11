@@ -327,13 +327,11 @@ class FT_Responsive_Slider extends WP_Widget {
 
 			if ( $instance['slideshow_hide_mobile'] == 1 ) {
 				$hide_mobile = array(
-					'hide_excerpt'   => ' hidden-xs',
-					'add_image_cols' => ' col-xs-12'
+					'hide_excerpt'   => 'hide-on-mobile'
 				);
 			} else {
 				$hide_mobile = array(
-					'hide_excerpt'   => '',
-					'add_image_cols' => ''
+					'hide_excerpt'   => ''
 				);
 			}
 

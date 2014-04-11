@@ -40,16 +40,23 @@
 	}
 
 	.slide-excerpt {
-		h2 {
+		&.hide-on-mobile {
+			.responsive-invisibility();
 
+			& + .slide-image {
+				width: 100%;
+			}
+		}
+
+		h2 {
 			font-weight: 400;
 
 			a:hover {
 				text-decoration: none;
 			}
-
 		}
 	}
+
 	.slides {
 		.clearfix();
 		zoom: 1;

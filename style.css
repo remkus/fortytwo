@@ -3711,6 +3711,17 @@ table .table {
 	position: relative;
 }
 
+.ft-responsive-slider .slide-excerpt.hide-on-mobile,
+tr.ft-responsive-slider .slide-excerpt.hide-on-mobile,
+th.ft-responsive-slider .slide-excerpt.hide-on-mobile,
+td.ft-responsive-slider .slide-excerpt.hide-on-mobile {
+	display: none !important;
+}
+
+.ft-responsive-slider .slide-excerpt.hide-on-mobile + .slide-image {
+	width: 100%;
+}
+
 .ft-responsive-slider .slide-excerpt h2 {
 	font-weight: 400;
 }
