@@ -3,25 +3,26 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FortyTwo 1.0.0\n"
-"Report-Msgid-Bugs-To: http://my.forsitethemes.com\n"
-"POT-Creation-Date: 2014-02-14 11:11:11+00:00\n"
+"Report-Msgid-Bugs-To: http://forsitethemes.com\n"
+"POT-Creation-Date: 2014-04-11 13:19:44+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-02-14 11:11:11+00:00\n"
-"Last-Translator: Forsite Themes <translations@forsitethemes.com>\n"
-"Language-Team: Forsite Themes <translations@forsitethemes.com>\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Remkus de Vries <translations@forsitethemes.com>\n"
+"Language-Team: Forsite Translations <translations@forsitethemes.com>\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: CSL v1.x\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-Language: English\n"
 "X-Poedit-Country: UNITED STATES\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
-"X-Poedit-Basepath: ../../\n"
+"X-Poedit-Sourcecharset: utf-8\n"
+"X-Poedit-Keywordslist: "
+"__;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_"
+"x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
 "X-Poedit-Bookmarks: \n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Textdomain-Support: yes"
+"X-Poedit-Searchpath-0: .\n"
+"X-Textdomain-Support: yes\n"
 
 #: lib/admin/ft-layouts.php:21
 msgid "Primary-Content-Secondary"
@@ -59,39 +60,39 @@ msgstr ""
 msgid "This is the section inserted prior to the final footer"
 msgstr ""
 
-#: lib/structural/ft-subheader.php:94
-msgid "Article "
+#: lib/structural/ft-subheader.php:97
+msgid "Error 404 - page not found"
 msgstr ""
 
-#: lib/structural/ft-subheader.php:99
-msgid "Blog"
+#: lib/structural/ft-subheader.php:102
+msgid "Shop"
 msgstr ""
 
-#: lib/structural/ft-subheader.php:104
+#: lib/structural/ft-subheader.php:112
 msgid "Articles by Category: "
 msgstr ""
 
-#: lib/structural/ft-subheader.php:109
+#: lib/structural/ft-subheader.php:117
 msgid "Articles by Tag: "
 msgstr ""
 
-#: lib/structural/ft-subheader.php:114
+#: lib/structural/ft-subheader.php:122
 msgid "Articles by Author: "
 msgstr ""
 
-#: lib/structural/ft-subheader.php:119
+#: lib/structural/ft-subheader.php:127
 msgid "Articles by Day: "
 msgstr ""
 
-#: lib/structural/ft-subheader.php:122
+#: lib/structural/ft-subheader.php:130
 msgid "Articles by Month: "
 msgstr ""
 
-#: lib/structural/ft-subheader.php:125
+#: lib/structural/ft-subheader.php:133
 msgid "Articles by Year: "
 msgstr ""
 
-#: lib/structural/ft-subheader.php:130
+#: lib/structural/ft-subheader.php:138
 msgid "Archive: "
 msgstr ""
 
@@ -132,24 +133,24 @@ msgid "A Schema.org compliant Contact Widget"
 msgstr ""
 
 #: lib/widgets/ft-featured-content/views/form.php:23
-#: lib/widgets/ft-jumbotron/views/form.php:16
+#: lib/widgets/ft-jumbotron/views/form.php:17
 #: lib/widgets/ft-responsive-slider/views/form.php:15
 #: lib/widgets/ft-testimonials/views/form.php:17
 msgid "Title:"
 msgstr ""
 
 #: lib/widgets/ft-featured-content/views/form.php:28
-#: lib/widgets/ft-jumbotron/views/form.php:21
+#: lib/widgets/ft-jumbotron/views/form.php:24
 msgid "Content:"
 msgstr ""
 
 #: lib/widgets/ft-featured-content/views/form.php:33
-#: lib/widgets/ft-jumbotron/views/form.php:26
+#: lib/widgets/ft-jumbotron/views/form.php:32
 msgid "Button Text:"
 msgstr ""
 
 #: lib/widgets/ft-featured-content/views/form.php:35
-#: lib/widgets/ft-jumbotron/views/form.php:28
+#: lib/widgets/ft-jumbotron/views/form.php:36
 msgid "Button Link:"
 msgstr ""
 
@@ -175,10 +176,6 @@ msgstr ""
 
 #: lib/widgets/ft-featured-content/widget.php:66
 msgid "Click me!"
-msgstr ""
-
-#: lib/widgets/ft-jumbotron/views/form.php:30
-msgid "Button Alignment:"
 msgstr ""
 
 #: lib/widgets/ft-jumbotron/widget.php:27
@@ -499,12 +496,12 @@ msgstr ""
 msgid "Business"
 msgstr ""
 
-#: lib/structural/ft-subheader.php:122
+#: lib/structural/ft-subheader.php:130
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr ""
 
-#: lib/structural/ft-subheader.php:125
+#: lib/structural/ft-subheader.php:133
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr ""
