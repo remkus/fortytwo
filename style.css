@@ -1803,6 +1803,28 @@ input[type="button"].btn-block {
 	line-height: 1.598057560909147;
 }
 
+.first {
+	clear: both;
+}
+
+.one-half,
+.three-sixths,
+.two-fourths,
+.one-third,
+.two-sixths,
+.four-sixths,
+.two-thirds,
+.one-fourth,
+.three-fourths,
+.one-sixth,
+.five-sixths {
+	position: relative;
+	float: left;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
 .one-half,
 .three-sixths,
 .two-fourths {

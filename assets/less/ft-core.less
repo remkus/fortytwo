@@ -168,6 +168,32 @@ img {
 }
 
 // Column Classes - based on Genesis
+.row {
+	.make-row();
+}
+
+.first {
+	clear: both;
+}
+
+.one-half,
+.three-sixths,
+.two-fourths,
+.one-third,
+.two-sixths,
+.four-sixths,
+.two-thirds,
+.one-fourth,
+.three-fourths,
+.one-sixth,
+.five-sixths {
+	position: relative;
+	float: left;
+	min-height: 1px;
+	padding-left:  (@grid-gutter-width / 2);
+	padding-right: (@grid-gutter-width / 2);
+}
+
 .one-half,
 .three-sixths,
 .two-fourths {
