@@ -224,6 +224,18 @@ module.exports = function(grunt) {
 			all: [ '*.php', 'lib/**/*.php', 'templates/**/*.php' ]
 		},
 
+		// Lint .php files for code standards
+		phpcs: {
+			all: {
+				dir: [ '**/*.php' ]
+			},
+			options: {
+				standard: 'WordPress',
+				ignore: [ 'node_modules/' ],
+				reportFile: 'phpcs.txt'
+			}
+		},
+
 
 		// I18n
 		

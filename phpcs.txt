@@ -1,0 +1,2211 @@
+FILE: ...ess-develop/src/wp-content/themes/fortytwo/lib/admin/ft-admin-style.php
+--------------------------------------------------------------------------------
+FOUND 1 ERROR(S) AFFECTING 1 LINE(S)
+--------------------------------------------------------------------------------
+ 23 | ERROR | String "/admin/admin-style.css" does not require double quotes;
+    |       | use single quotes instead
+--------------------------------------------------------------------------------
+
+
+FILE: ...velop/src/wp-content/themes/fortytwo/lib/general/ft-default-widgets.php
+--------------------------------------------------------------------------------
+FOUND 19 ERROR(S) AND 1 WARNING(S) AFFECTING 17 LINE(S)
+--------------------------------------------------------------------------------
+  27 | ERROR   | String "/\<\/a\>&nbsp;\((\d+)\)/" does not require double
+     |         | quotes; use single quotes instead
+  29 | ERROR   | Detected usage of a non-sanitized input variable: $_SERVER
+  29 | ERROR   | Detected usage of a non-sanitized input variable: $_SERVER
+  54 | WARNING | extract() usage is highly discouraged, due to the complexity
+     |         | and unintended issues it might cause.
+  59 | ERROR   | Inline control structures are not allowed
+  61 | ERROR   | Inline control structures are not allowed
+  66 | ERROR   | Inline control structures are not allowed
+  66 | ERROR   | Expected 1 space after "!"; 0 found
+  71 | ERROR   | Expected 1 space after "!"; 0 found
+  71 | ERROR   | Expected 1 space after "!"; 0 found
+  74 | ERROR   | Inline control structures are not allowed
+  90 | ERROR   | Inline control structures are not allowed
+  92 | ERROR   | Inline control structures are not allowed
+  97 | ERROR   | Inline control structures are not allowed
+ 104 | ERROR   | Expected 1 space after "!"; 0 found
+ 106 | ERROR   | Inline control structures are not allowed
+ 107 | ERROR   | Expected 1 space after ".="; 2 found
+ 109 | ERROR   | Expected 1 space after ".="; 2 found
+ 111 | ERROR   | Expected 1 space after ".="; 2 found
+ 176 | ERROR   | Each line in an array declaration must end in a comma
+--------------------------------------------------------------------------------
+
+
+FILE: ...press-develop/src/wp-content/themes/fortytwo/lib/general/ft-scripts.php
+--------------------------------------------------------------------------------
+FOUND 2 ERROR(S) AFFECTING 2 LINE(S)
+--------------------------------------------------------------------------------
+ 56 | ERROR | Inline control structures are not allowed
+ 59 | ERROR | Expected a sanitizing function (see Codex for 'Data Validation'),
+    |       | but instead saw 'CHILD_URL'
+--------------------------------------------------------------------------------
+
+
+FILE: ...-develop/src/wp-content/themes/fortytwo/lib/general/ft-widget-areas.php
+--------------------------------------------------------------------------------
+FOUND 1 ERROR(S) AFFECTING 1 LINE(S)
+--------------------------------------------------------------------------------
+ 31 | ERROR | Each line in an array declaration must end in a comma
+--------------------------------------------------------------------------------
+
+
+FILE: ...ess-develop/src/wp-content/themes/fortytwo/lib/structural/ft-footer.php
+--------------------------------------------------------------------------------
+FOUND 6 ERROR(S) AFFECTING 6 LINE(S)
+--------------------------------------------------------------------------------
+ 25 | ERROR | Inline control structures are not allowed
+ 33 | ERROR | Each line in an array declaration must end in a comma
+ 39 | ERROR | Expected next thing to be a escaping function, not
+    |       | '$data_widget_count'
+ 57 | ERROR | Expected a sanitizing function (see Codex for 'Data Validation'),
+    |       | but instead saw 'do_shortcode'
+ 58 | ERROR | Expected a sanitizing function (see Codex for 'Data Validation'),
+    |       | but instead saw 'do_shortcode'
+ 61 | ERROR | Expected a sanitizing function (see Codex for 'Data Validation'),
+    |       | but instead saw 'do_shortcode'
+--------------------------------------------------------------------------------
+
+
+FILE: ...dpress-develop/src/wp-content/themes/fortytwo/lib/structural/ft-nav.php
+--------------------------------------------------------------------------------
+FOUND 11 ERROR(S) AND 5 WARNING(S) AFFECTING 12 LINE(S)
+--------------------------------------------------------------------------------
+  39 | ERROR   | Expected 1 space after "="; 2 found
+  39 | ERROR   | No space after opening parenthesis of function definition
+     |         | prohibited
+  39 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+ 132 | ERROR   | Expected 1 space after "!"; 0 found
+ 133 | ERROR   | Expected 1 space after "!"; 0 found
+ 134 | ERROR   | Expected 1 space after "!"; 0 found
+ 135 | ERROR   | Expected 1 space after "!"; 0 found
+ 161 | ERROR   | Expected 1 space after "!"; 0 found
+ 168 | ERROR   | Expected 1 space after "!"; 0 found
+ 168 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 170 | ERROR   | Expected 1 space after "!"; 0 found
+ 170 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 178 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 179 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 180 | ERROR   | Expected 1 space after "!"; 0 found
+ 187 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+--------------------------------------------------------------------------------
+
+
+FILE: ...develop/src/wp-content/themes/fortytwo/lib/structural/ft-structural.php
+--------------------------------------------------------------------------------
+FOUND 6 ERROR(S) AND 3 WARNING(S) AFFECTING 7 LINE(S)
+--------------------------------------------------------------------------------
+  20 | ERROR   | Comma required after last value in array declaration
+  97 | ERROR   | Space before opening parenthesis of function definition
+     |         | prohibited
+  97 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 116 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 119 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 120 | ERROR   | Inline control structures are not allowed
+ 127 | ERROR   | No space after opening parenthesis of function definition
+     |         | prohibited
+ 127 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+ 141 | ERROR   | Space before opening parenthesis of function definition
+     |         | prohibited
+--------------------------------------------------------------------------------
+
+
+FILE: ...-develop/src/wp-content/themes/fortytwo/lib/structural/ft-subheader.php
+--------------------------------------------------------------------------------
+FOUND 10 ERROR(S) AFFECTING 6 LINE(S)
+--------------------------------------------------------------------------------
+  53 | ERROR | Expected 1 space after "!"; 0 found
+  62 | ERROR | Each line in an array declaration must end in a comma
+  73 | ERROR | Inline control structures are not allowed
+ 107 | ERROR | Expected a sanitizing function (see Codex for 'Data
+     |       | Validation'), but instead saw 'ucwords'
+ 107 | ERROR | No space after opening parenthesis of function definition
+     |       | prohibited
+ 107 | ERROR | No space before closing parenthesis of function definition
+     |       | prohibited
+ 122 | ERROR | Expected a sanitizing function (see Codex for 'Data
+     |       | Validation'), but instead saw 'get_the_author_meta'
+ 143 | ERROR | Expected a sanitizing function (see Codex for 'Data
+     |       | Validation'), but instead saw 'ucwords'
+ 143 | ERROR | No space after opening parenthesis of function definition
+     |       | prohibited
+ 143 | ERROR | No space before closing parenthesis of function definition
+     |       | prohibited
+--------------------------------------------------------------------------------
+
+
+FILE: .../src/wp-content/themes/fortytwo/lib/widgets/ft-contact/views/widget.php
+--------------------------------------------------------------------------------
+FOUND 33 ERROR(S) AND 2 WARNING(S) AFFECTING 17 LINE(S)
+--------------------------------------------------------------------------------
+ 14 | ERROR   | Expected next thing to be a escaping function, not
+    |         | '$before_title'
+ 14 | ERROR   | Expected next thing to be a escaping function, not
+    |         | '$after_title'
+ 16 | ERROR   | Incorrect indentation; expected 0 space, found 2
+ 16 | ERROR   | Expected 1 space before "!="; 0 found
+ 16 | ERROR   | Expected 1 space after "!="; 0 found
+ 17 | ERROR   | Expected next thing to be a escaping function, not '$instance'
+ 22 | ERROR   | Incorrect indentation; expected 0 space, found 2
+ 22 | ERROR   | Expected 1 space before "!="; 0 found
+ 22 | ERROR   | Expected 1 space after "!="; 0 found
+ 23 | ERROR   | Expected next thing to be a escaping function, not '$instance'
+ 25 | WARNING | Line is indented with space not tab
+ 25 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 27 | ERROR   | Incorrect indentation; expected 0 space, found 2
+ 27 | ERROR   | Expected 1 space before "!="; 0 found
+ 27 | ERROR   | Expected 1 space after "!="; 0 found
+ 28 | ERROR   | Expected next thing to be a escaping function, not '$instance'
+ 30 | WARNING | Line is indented with space not tab
+ 30 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 32 | ERROR   | Incorrect indentation; expected 0 space, found 2
+ 32 | ERROR   | Expected 1 space before "!="; 0 found
+ 32 | ERROR   | Expected 1 space after "!="; 0 found
+ 33 | ERROR   | Expected next thing to be a escaping function, not '$instance'
+ 38 | ERROR   | Incorrect indentation; expected 0 space, found 2
+ 38 | ERROR   | Expected 1 space before "!="; 0 found
+ 38 | ERROR   | Expected 1 space after "!="; 0 found
+ 39 | ERROR   | Expected next thing to be a escaping function, not '$instance'
+ 43 | ERROR   | Incorrect indentation; expected 0 space, found 2
+ 43 | ERROR   | Expected 1 space before "!="; 0 found
+ 43 | ERROR   | Expected 1 space after "!="; 0 found
+ 44 | ERROR   | Expected next thing to be a escaping function, not '$instance'
+ 48 | ERROR   | Incorrect indentation; expected 0 space, found 2
+ 48 | ERROR   | Expected 1 space before "!="; 0 found
+ 48 | ERROR   | Expected 1 space after "!="; 0 found
+ 49 | ERROR   | Expected next thing to be a escaping function, not '$instance'
+ 49 | ERROR   | Expected next thing to be a escaping function, not '$instance'
+--------------------------------------------------------------------------------
+
+
+FILE: ...evelop/src/wp-content/themes/fortytwo/lib/widgets/ft-contact/widget.php
+--------------------------------------------------------------------------------
+FOUND 4 ERROR(S) AND 2 WARNING(S) AFFECTING 6 LINE(S)
+--------------------------------------------------------------------------------
+  22 | ERROR   | Line indented incorrectly; expected at least 1 spaces, found 0
+  62 | WARNING | extract() usage is highly discouraged, due to the complexity
+     |         | and unintended issues it might cause.
+  72 | ERROR   | Each line in an array declaration must end in a comma
+  76 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$before_widget'
+  78 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$after_widget'
+ 137 | WARNING | create_function is discouraged, please use Anonymous functions
+     |         | instead.
+--------------------------------------------------------------------------------
+
+
+FILE: ...-content/themes/fortytwo/lib/widgets/ft-featured-content/views/form.php
+--------------------------------------------------------------------------------
+FOUND 10 ERROR(S) AFFECTING 9 LINE(S)
+--------------------------------------------------------------------------------
+ 14 | ERROR | String "icon" does not require double quotes; use single quotes
+    |       | instead
+ 17 | ERROR | String "the-icon-selector" does not require double quotes; use
+    |       | single quotes instead
+ 24 | ERROR | String "title" does not require double quotes; use single quotes
+    |       | instead
+ 29 | ERROR | String "content" does not require double quotes; use single
+    |       | quotes instead
+ 34 | ERROR | String "button_text" does not require double quotes; use single
+    |       | quotes instead
+ 36 | ERROR | String "button_link" does not require double quotes; use single
+    |       | quotes instead
+ 45 | ERROR | String "icon" does not require double quotes; use single quotes
+    |       | instead
+ 46 | ERROR | Expected next thing to be a escaping function, not '$instance'
+ 46 | ERROR | String "icon" does not require double quotes; use single quotes
+    |       | instead
+ 47 | ERROR | String "the-icon-selector" does not require double quotes; use
+    |       | single quotes instead
+--------------------------------------------------------------------------------
+
+
+FILE: ...ontent/themes/fortytwo/lib/widgets/ft-featured-content/views/widget.php
+--------------------------------------------------------------------------------
+FOUND 2 ERROR(S) AFFECTING 2 LINE(S)
+--------------------------------------------------------------------------------
+ 13 | ERROR | Expected next thing to be a escaping function, not
+    |       | '$before_title'
+ 15 | ERROR | Expected next thing to be a escaping function, not '$after_title'
+--------------------------------------------------------------------------------
+
+
+FILE: ...c/wp-content/themes/fortytwo/lib/widgets/ft-featured-content/widget.php
+--------------------------------------------------------------------------------
+FOUND 14 ERROR(S) AND 6 WARNING(S) AFFECTING 17 LINE(S)
+--------------------------------------------------------------------------------
+  20 | ERROR   | Line indented incorrectly; expected at least 1 spaces, found 0
+  45 | ERROR   | Line indented incorrectly; expected at least 1 spaces, found 0
+  55 | WARNING | extract() usage is highly discouraged, due to the complexity
+     |         | and unintended issues it might cause.
+  57 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$before_widget'
+  60 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+  62 | ERROR   | String "The title" does not require double quotes; use single
+     |         | quotes instead
+  63 | ERROR   | String "icon-star" does not require double quotes; use single
+     |         | quotes instead
+  64 | ERROR   | String "And purely one near this hey therefore darn firefly
+     |         | had ducked overpaid wow irrespective some tearful and
+     |         | mandrill
+    yikes considering far above. Physically less
+     |         | snickered much and and while" does not require double quotes;
+     |         | use single quotes instead
+  66 | ERROR   | String "Click me!" does not require double quotes; use single
+     |         | quotes instead
+  67 | ERROR   | String "#" does not require double quotes; use single quotes
+     |         | instead
+  71 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$after_widget'
+  82 | ERROR   | Inline control structures are not allowed
+ 120 | ERROR   | Comma required after last value in array declaration
+ 122 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 122 | ERROR   | Expected 1 space after "!"; 0 found
+ 122 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 122 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 144 | ERROR   | Each line in an array declaration must end in a comma
+ 155 | ERROR   | Line indented incorrectly; expected at least 1 spaces, found 0
+ 201 | WARNING | create_function is discouraged, please use Anonymous functions
+     |         | instead.
+--------------------------------------------------------------------------------
+
+
+FILE: .../src/wp-content/themes/fortytwo/lib/widgets/ft-jumbotron/views/form.php
+--------------------------------------------------------------------------------
+FOUND 36 ERROR(S) AFFECTING 12 LINE(S)
+--------------------------------------------------------------------------------
+ 17 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 17 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 17 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 17 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 18 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 18 | ERROR | String "title" does not require double quotes; use single quotes
+    |       | instead
+ 18 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 19 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 19 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 24 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 24 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 24 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 24 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 25 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 25 | ERROR | String "content" does not require double quotes; use single
+    |       | quotes instead
+ 25 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 26 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 26 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 32 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 32 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 32 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 32 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 33 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 33 | ERROR | String "button_text" does not require double quotes; use single
+    |       | quotes instead
+ 33 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 34 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 34 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 36 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 36 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 36 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 36 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 37 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 37 | ERROR | String "button_link" does not require double quotes; use single
+    |       | quotes instead
+ 37 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 38 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 38 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+--------------------------------------------------------------------------------
+
+
+FILE: ...rc/wp-content/themes/fortytwo/lib/widgets/ft-jumbotron/views/widget.php
+--------------------------------------------------------------------------------
+FOUND 2 ERROR(S) AFFECTING 1 LINE(S)
+--------------------------------------------------------------------------------
+ 28 | ERROR | Expected next thing to be a escaping function, not
+    |       | '$action_button_link'
+ 28 | ERROR | Expected next thing to be a escaping function, not
+    |       | '$action_button_text'
+--------------------------------------------------------------------------------
+
+
+FILE: ...elop/src/wp-content/themes/fortytwo/lib/widgets/ft-jumbotron/widget.php
+--------------------------------------------------------------------------------
+FOUND 11 ERROR(S) AND 6 WARNING(S) AFFECTING 14 LINE(S)
+--------------------------------------------------------------------------------
+  17 | ERROR   | Line indented incorrectly; expected at least 1 spaces, found 0
+  63 | ERROR   | Line indented incorrectly; expected at least 1 spaces, found 0
+  73 | WARNING | extract() usage is highly discouraged, due to the complexity
+     |         | and unintended issues it might cause.
+  75 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$before_widget'
+  78 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+  83 | ERROR   | String "#" does not require double quotes; use single quotes
+     |         | instead
+  84 | ERROR   | String "right" does not require double quotes; use single
+     |         | quotes instead
+  88 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$after_widget'
+ 119 | ERROR   | Comma required after last value in array declaration
+ 121 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 121 | ERROR   | Expected 1 space after "!"; 0 found
+ 121 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 121 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 141 | ERROR   | Each line in an array declaration must end in a comma
+ 152 | ERROR   | Line indented incorrectly; expected at least 1 spaces, found 0
+ 167 | ERROR   | Functions must not contain multiple empty lines in a row;
+     |         | found 2 empty lines
+ 191 | WARNING | create_function is discouraged, please use Anonymous functions
+     |         | instead.
+--------------------------------------------------------------------------------
+
+
+FILE: ...content/themes/fortytwo/lib/widgets/ft-responsive-slider/views/form.php
+--------------------------------------------------------------------------------
+FOUND 37 ERROR(S) AFFECTING 31 LINE(S)
+--------------------------------------------------------------------------------
+  16 | ERROR | String "title" does not require double quotes; use single quotes
+     |       | instead
+  32 | ERROR | String "post_type" does not require double quotes; use single
+     |       | quotes instead
+  44 | ERROR | String "posts_term" does not require double quotes; use single
+     |       | quotes instead
+  47 | ERROR | Incorrect indentation; expected 0 space, found 11
+  49 | ERROR | Inline control structures are not allowed
+  49 | ERROR | Expected 1 space after "!"; 0 found
+  51 | ERROR | Inline control structures are not allowed
+  55 | ERROR | Expected next thing to be a escaping function, not '$taxonomy'
+  57 | ERROR | Incorrect indentation; expected 1 space, found 13
+  59 | ERROR | Expected next thing to be a escaping function, not '$term'
+  71 | ERROR | String "exclude_terms" does not require double quotes; use
+     |       | single quotes instead
+  82 | ERROR | String "include_exclude" does not require double quotes; use
+     |       | single quotes instead
+  89 | ERROR | Expected next thing to be a escaping function, not '$instance'
+  89 | ERROR | Expected a sanitizing function (see Codex for 'Data
+     |       | Validation'), but instead saw '__'
+  90 | ERROR | String "post_id" does not require double quotes; use single
+     |       | quotes instead
+  95 | ERROR | String "posts_num" does not require double quotes; use single
+     |       | quotes instead
+ 100 | ERROR | String "posts_offset" does not require double quotes; use single
+     |       | quotes instead
+ 105 | ERROR | String "orderby" does not require double quotes; use single
+     |       | quotes instead
+ 117 | ERROR | String "slideshow_timer" does not require double quotes; use
+     |       | single quotes instead
+ 117 | ERROR | Expected next thing to be a escaping function, not '$instance'
+ 122 | ERROR | String "slideshow_delay" does not require double quotes; use
+     |       | single quotes instead
+ 122 | ERROR | Expected next thing to be a escaping function, not '$instance'
+ 128 | ERROR | String "slideshow_effect" does not require double quotes; use
+     |       | single quotes instead
+ 138 | ERROR | String "slideshow_width" does not require double quotes; use
+     |       | single quotes instead
+ 138 | ERROR | Expected next thing to be a escaping function, not '$instance'
+ 143 | ERROR | String "slideshow_height" does not require double quotes; use
+     |       | single quotes instead
+ 143 | ERROR | Expected next thing to be a escaping function, not '$instance'
+ 147 | ERROR | String "slideshow_arrows" does not require double quotes; use
+     |       | single quotes instead
+ 151 | ERROR | String "slideshow_pager" does not require double quotes; use
+     |       | single quotes instead
+ 157 | ERROR | String "slideshow_no_link" does not require double quotes; use
+     |       | single quotes instead
+ 161 | ERROR | String "slideshow_title_show" does not require double quotes;
+     |       | use single quotes instead
+ 165 | ERROR | String "slideshow_excerpt_show" does not require double quotes;
+     |       | use single quotes instead
+ 169 | ERROR | String "slideshow_hide_mobile" does not require double quotes;
+     |       | use single quotes instead
+ 174 | ERROR | String "slideshow_excerpt_content" does not require double
+     |       | quotes; use single quotes instead
+ 182 | ERROR | String "slideshow_more_text" does not require double quotes; use
+     |       | single quotes instead
+ 187 | ERROR | String "slideshow_excerpt_content_limit" does not require double
+     |       | quotes; use single quotes instead
+ 196 | ERROR | No space after opening parenthesis of function definition
+     |       | prohibited
+--------------------------------------------------------------------------------
+
+
+FILE: ...ntent/themes/fortytwo/lib/widgets/ft-responsive-slider/views/widget.php
+--------------------------------------------------------------------------------
+FOUND 21 ERROR(S) AFFECTING 18 LINE(S)
+--------------------------------------------------------------------------------
+ 16 | ERROR | Incorrect indentation; expected 0 space, found 2
+ 20 | ERROR | Incorrect indentation; expected 1 space, found 3
+ 22 | ERROR | Expected next thing to be a escaping function, not '$hide_mobile'
+ 24 | ERROR | Incorrect indentation; expected 2 space, found 4
+ 32 | ERROR | Incorrect indentation; expected 2 space, found 4
+ 33 | ERROR | Inline control structures are not allowed
+ 36 | ERROR | Inline control structures are not allowed
+ 46 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 46 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 47 | ERROR | Incorrect indentation; expected 1 space, found 4
+ 49 | ERROR | Expected a sanitizing function (see Codex for 'Data Validation'),
+    |       | but instead saw 'wpthumb'
+ 49 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 51 | ERROR | Incorrect indentation; expected 1 space, found 4
+ 54 | ERROR | Expected a sanitizing function (see Codex for 'Data Validation'),
+    |       | but instead saw 'wpthumb'
+ 54 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 75 | ERROR | Expected next thing to be a escaping function, not
+    |       | '$controlsContainer'
+ 76 | ERROR | Expected next thing to be a escaping function, not
+    |       | '$controlsContainer'
+ 78 | ERROR | Expected next thing to be a escaping function, not
+    |       | '$directionnav'
+ 79 | ERROR | Expected next thing to be a escaping function, not '$controlnav'
+ 80 | ERROR | Expected next thing to be a escaping function, not '$duration'
+ 81 | ERROR | Expected next thing to be a escaping function, not '$timer'
+--------------------------------------------------------------------------------
+
+
+FILE: .../wp-content/themes/fortytwo/lib/widgets/ft-responsive-slider/widget.php
+--------------------------------------------------------------------------------
+FOUND 129 ERROR(S) AND 19 WARNING(S) AFFECTING 115 LINE(S)
+--------------------------------------------------------------------------------
+   1 | ERROR   | End of line character is invalid; expected "\n" but found
+     |         | "\r\n"
+  34 | ERROR   | Line indented incorrectly; expected at least 1 spaces, found 0
+  53 | ERROR   | Each line in an array declaration must end in a comma
+  65 | ERROR   | Space before opening parenthesis of function definition
+     |         | prohibited
+  74 | ERROR   | TRUE, FALSE and NULL must be lowercase; expected "true" but
+     |         | found "TRUE"
+ 102 | ERROR   | Comma required after last value in array declaration
+ 105 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 107 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 127 | ERROR   | Comma required after last value in array declaration
+ 129 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 145 | ERROR   | Expected 1 space before "=="; 0 found
+ 145 | ERROR   | Expected 1 space after "=="; 0 found
+ 147 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 150 | ERROR   | Inline control structures are not allowed
+ 150 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 151 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 151 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 165 | ERROR   | Inline control structures are not allowed
+ 168 | ERROR   | Inline control structures are not allowed
+ 168 | ERROR   | Expected 1 space after "!"; 0 found
+ 171 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$read_more'
+ 180 | ERROR   | TRUE, FALSE and NULL must be lowercase; expected "true" but
+     |         | found "TRUE"
+ 204 | ERROR   | Line indented incorrectly; expected at least 1 spaces, found 0
+ 213 | WARNING | extract() usage is highly discouraged, due to the complexity
+     |         | and unintended issues it might cause.
+ 215 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$before_widget'
+ 218 | ERROR   | Inline control structures are not allowed
+ 219 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$before_title'
+ 219 | ERROR   | Expected next thing to be a escaping function, not '$title'
+ 219 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$after_title'
+ 223 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 224 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 225 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 226 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 227 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 228 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 229 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 230 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 231 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 232 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 233 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 234 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 235 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 236 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 237 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 238 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 239 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 240 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 241 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 242 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 243 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 244 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 244 | ERROR   | Comma required after last value in array declaration
+ 245 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 248 | ERROR   | Empty array declaration must have no space between the
+     |         | parentheses
+ 256 | ERROR   | Inline control structures are not allowed
+ 257 | WARNING | Detected usage of 0, possible slow query.
+ 259 | ERROR   | Inline control structures are not allowed
+ 260 | WARNING | Detected usage of 0, possible slow query.
+ 262 | ERROR   | Inline control structures are not allowed
+ 263 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 263 | WARNING | Detected usage of 0, possible slow query.
+ 267 | ERROR   | Expected 1 space after "!"; 0 found
+ 269 | ERROR   | Inline control structures are not allowed
+ 275 | ERROR   | Inline control structures are not allowed
+ 286 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 298 | ERROR   | Inline control structures are not allowed
+ 300 | ERROR   | Inline control structures are not allowed
+ 330 | ERROR   | Each line in an array declaration must end in a comma
+ 334 | ERROR   | Each line in an array declaration must end in a comma
+ 336 | ERROR   | Blank line found after control structure
+ 343 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$after_widget'
+ 344 | WARNING | The use of function wp_reset_query() is discouraged; use
+     |         | wp_reset_postdata() instead
+ 357 | ERROR   | Each line in an array declaration must end in a comma
+ 358 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 358 | ERROR   | Each line in an array declaration must end in a comma
+ 359 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 359 | ERROR   | Each line in an array declaration must end in a comma
+ 360 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 360 | ERROR   | Each line in an array declaration must end in a comma
+ 361 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 361 | ERROR   | Each line in an array declaration must end in a comma
+ 362 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 362 | ERROR   | Each line in an array declaration must end in a comma
+ 363 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 363 | ERROR   | Each line in an array declaration must end in a comma
+ 364 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 364 | ERROR   | Each line in an array declaration must end in a comma
+ 365 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 365 | ERROR   | Each line in an array declaration must end in a comma
+ 366 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 366 | ERROR   | Each line in an array declaration must end in a comma
+ 367 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 367 | ERROR   | Each line in an array declaration must end in a comma
+ 368 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 368 | ERROR   | Each line in an array declaration must end in a comma
+ 369 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 369 | ERROR   | Each line in an array declaration must end in a comma
+ 370 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 370 | ERROR   | Each line in an array declaration must end in a comma
+ 371 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 371 | ERROR   | Each line in an array declaration must end in a comma
+ 372 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 372 | ERROR   | Each line in an array declaration must end in a comma
+ 373 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 373 | ERROR   | Each line in an array declaration must end in a comma
+ 374 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 374 | ERROR   | Each line in an array declaration must end in a comma
+ 375 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 375 | ERROR   | Each line in an array declaration must end in a comma
+ 376 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 376 | ERROR   | Each line in an array declaration must end in a comma
+ 377 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 377 | ERROR   | Each line in an array declaration must end in a comma
+ 378 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 379 | ERROR   | Each line in an array declaration must end in a comma
+ 380 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 380 | ERROR   | Each line in an array declaration must end in a comma
+ 442 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 443 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 444 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 445 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 446 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 447 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 448 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 449 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 450 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 451 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 452 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 453 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 454 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 455 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 456 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 457 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 458 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 459 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 460 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 461 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 462 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 463 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 464 | ERROR   | Expected 0 spaces between "
+" and comma; 4 found
+ 464 | ERROR   | Comma required after last value in array declaration
+ 466 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 466 | ERROR   | Expected 1 space after "!"; 0 found
+ 466 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 466 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 478 | ERROR   | Space before opening parenthesis of function definition
+     |         | prohibited
+ 481 | ERROR   | Space before opening parenthesis of function definition
+     |         | prohibited
+ 500 | WARNING | create_function is discouraged, please use Anonymous functions
+     |         | instead.
+--------------------------------------------------------------------------------
+
+
+FILE: ...rc/wp-content/themes/fortytwo/lib/widgets/ft-tabs-widget/views/form.php
+--------------------------------------------------------------------------------
+FOUND 6 ERROR(S) AND 2 WARNING(S) AFFECTING 6 LINE(S)
+--------------------------------------------------------------------------------
+ 15 | ERROR   | Expected next thing to be a escaping function, not '$instance'
+ 19 | ERROR   | No space before closing parenthesis of function definition
+    |         | prohibited
+ 33 | ERROR   | Expected next thing to be a escaping function, not '$instance'
+ 38 | ERROR   | Expected next thing to be a escaping function, not '$instance'
+ 53 | WARNING | Line is indented with space not tab
+ 53 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 55 | WARNING | Line is indented with space not tab
+ 55 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+--------------------------------------------------------------------------------
+
+
+FILE: .../wp-content/themes/fortytwo/lib/widgets/ft-tabs-widget/views/widget.php
+--------------------------------------------------------------------------------
+FOUND 2 ERROR(S) AFFECTING 2 LINE(S)
+--------------------------------------------------------------------------------
+ 33 | ERROR | Expected next thing to be a escaping function, not '$tab'
+ 60 | ERROR | Expected next thing to be a escaping function, not '$html'
+--------------------------------------------------------------------------------
+
+
+FILE: ...op/src/wp-content/themes/fortytwo/lib/widgets/ft-tabs-widget/widget.php
+--------------------------------------------------------------------------------
+FOUND 16 ERROR(S) AND 10 WARNING(S) AFFECTING 16 LINE(S)
+--------------------------------------------------------------------------------
+  33 | ERROR   | Line indented incorrectly; expected at least 1 spaces, found 0
+  47 | ERROR   | String "comments" does not require double quotes; use single
+     |         | quotes instead
+  47 | ERROR   | String "tags" does not require double quotes; use single
+     |         | quotes instead
+  85 | WARNING | extract() usage is highly discouraged, due to the complexity
+     |         | and unintended issues it might cause.
+  92 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$before_widget'
+  97 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$after_widget'
+ 127 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 153 | ERROR   | Each line in an array declaration must end in a comma
+ 182 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '"<p><select name='{$this->get_field_name( "tab_$position" )}'
+     |         | class='widefat' id='{$this->get_field_id( "tab_$position"
+     |         | )}'>"'
+ 183 | ERROR   | Expected a sanitizing function (see Codex for 'Data
+     |         | Validation'), but instead saw '__'
+ 185 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$available_tab'
+ 185 | ERROR   | Expected a sanitizing function (see Codex for 'Data
+     |         | Validation'), but instead saw 'selected'
+ 185 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 185 | ERROR   | Expected a sanitizing function (see Codex for 'Data
+     |         | Validation'), but instead saw '__'
+ 185 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$available_tab'
+ 185 | ERROR   | String "</option>" does not require double quotes; use single
+     |         | quotes instead
+ 187 | ERROR   | String "</select></p>" does not require double quotes; use
+     |         | single quotes instead
+ 214 | WARNING | The use of function wp_reset_query() is discouraged; use
+     |         | wp_reset_postdata() instead
+ 219 | WARNING | Line is indented with space not tab
+ 219 | WARNING | Line is indented with space not tab
+ 219 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 243 | WARNING | The use of function wp_reset_query() is discouraged; use
+     |         | wp_reset_postdata() instead
+ 248 | WARNING | Line is indented with space not tab
+ 248 | WARNING | Line is indented with space not tab
+ 248 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 306 | WARNING | create_function is discouraged, please use Anonymous functions
+     |         | instead.
+--------------------------------------------------------------------------------
+
+
+FILE: ...c/wp-content/themes/fortytwo/lib/widgets/ft-testimonials/views/form.php
+--------------------------------------------------------------------------------
+FOUND 22 ERROR(S) AFFECTING 14 LINE(S)
+--------------------------------------------------------------------------------
+ 18 | ERROR | String "title" does not require double quotes; use single quotes
+    |       | instead
+ 24 | ERROR | String "limit" does not require double quotes; use single quotes
+    |       | instead
+ 31 | ERROR | Inline control structures are not allowed
+ 32 | ERROR | No space after opening parenthesis is prohibited
+ 32 | ERROR | No space before closing parenthesis is prohibited
+ 33 | ERROR | Expected next thing to be a escaping function, not '$datasource'
+ 33 | ERROR | Inline control structures are not allowed
+ 34 | ERROR | Expected next thing to be a escaping function, not '$datasource'
+ 42 | ERROR | Expected 1 space before "=>"; 0 found
+ 42 | ERROR | Expected 1 space after "=>"; 0 found
+ 43 | ERROR | Expected 1 space before "=>"; 0 found
+ 43 | ERROR | Expected 1 space after "=>"; 0 found
+ 44 | ERROR | Expected 1 space before "=>"; 0 found
+ 44 | ERROR | Expected 1 space after "=>"; 0 found
+ 45 | ERROR | Expected 1 space before "=>"; 0 found
+ 45 | ERROR | Expected 1 space after "=>"; 0 found
+ 46 | ERROR | Expected 1 space before "=>"; 0 found
+ 46 | ERROR | Expected 1 space after "=>"; 0 found
+ 46 | ERROR | Each line in an array declaration must end in a comma
+ 74 | ERROR | String "datasource" does not require double quotes; use single
+    |       | quotes instead
+ 82 | ERROR | String "datasource" does not require double quotes; use single
+    |       | quotes instead
+ 87 | ERROR | Expected next thing to be a escaping function, not '$instance'
+--------------------------------------------------------------------------------
+
+
+FILE: ...wp-content/themes/fortytwo/lib/widgets/ft-testimonials/views/widget.php
+--------------------------------------------------------------------------------
+FOUND 3 ERROR(S) AFFECTING 3 LINE(S)
+--------------------------------------------------------------------------------
+ 13 | ERROR | Expected next thing to be a escaping function, not '$instance'
+ 17 | ERROR | Expected next thing to be a escaping function, not '$testimonial'
+ 18 | ERROR | Expected next thing to be a escaping function, not '$testimonial'
+--------------------------------------------------------------------------------
+
+
+FILE: ...p/src/wp-content/themes/fortytwo/lib/widgets/ft-testimonials/widget.php
+--------------------------------------------------------------------------------
+FOUND 49 ERROR(S) AND 6 WARNING(S) AFFECTING 39 LINE(S)
+--------------------------------------------------------------------------------
+  24 | ERROR   | Line indented incorrectly; expected at least 1 spaces, found 0
+  70 | ERROR   | Line indented incorrectly; expected at least 1 spaces, found 0
+  80 | WARNING | extract() usage is highly discouraged, due to the complexity
+     |         | and unintended issues it might cause.
+  82 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$before_widget'
+  85 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+  87 | ERROR   | String "Client Testimonials" does not require double quotes;
+     |         | use single quotes instead
+  94 | ERROR   | Incorrect indentation; expected 3 space, found 2
+  94 | ERROR   | String "testimonials-by-woothemes" does not require double
+     |         | quotes; use single quotes instead
+  95 | ERROR   | Inline control structures are not allowed
+  95 | ERROR   | Expected 1 space after "!"; 0 found
+  96 | ERROR   | Line indented incorrectly; expected at least 4 spaces, found 3
+ 108 | ERROR   | Incorrect indentation; expected 4 space, found 3
+ 109 | ERROR   | Line indented incorrectly; expected at least 5 spaces, found 4
+ 110 | ERROR   | Line indented incorrectly; expected at least 5 spaces, found 4
+ 110 | ERROR   | String "" does not require double quotes; use single quotes
+     |         | instead
+ 111 | ERROR   | Inline control structures are not allowed
+ 111 | ERROR   | Expected 1 space before ".="; 0 found
+ 111 | ERROR   | Expected 1 space after ".="; 0 found
+ 112 | ERROR   | Line indented incorrectly; expected at least 5 spaces, found 4
+ 113 | ERROR   | Inline control structures are not allowed
+ 113 | ERROR   | Expected 1 space before ".="; 0 found
+ 114 | ERROR   | Inline control structures are not allowed
+ 114 | ERROR   | Expected 1 space before ".="; 0 found
+ 114 | ERROR   | Expected 1 space after ".="; 0 found
+ 114 | ERROR   | String "</a>" does not require double quotes; use single
+     |         | quotes instead
+ 115 | ERROR   | Line indented incorrectly; expected at least 5 spaces, found 4
+ 115 | ERROR   | There must be no space between the Array keyword and the
+     |         | opening parenthesis
+ 118 | ERROR   | Line indented incorrectly; expected at least 5 spaces, found 4
+ 121 | ERROR   | Incorrect indentation; expected 3 space, found 2
+ 121 | ERROR   | String "category" does not require double quotes; use single
+     |         | quotes instead
+ 122 | ERROR   | Line indented incorrectly; expected at least 4 spaces, found 3
+ 124 | ERROR   | Each line in an array declaration must end in a comma
+ 125 | ERROR   | Line indented incorrectly; expected at least 4 spaces, found 3
+ 126 | ERROR   | Incorrect indentation; expected 4 space, found 3
+ 127 | ERROR   | Line indented incorrectly; expected at least 5 spaces, found 4
+ 128 | ERROR   | Line indented incorrectly; expected at least 5 spaces, found 4
+ 129 | ERROR   | Line indented incorrectly; expected at least 5 spaces, found 4
+ 130 | ERROR   | Line indented incorrectly; expected at least 5 spaces, found 4
+ 131 | ERROR   | Line indented incorrectly; expected at least 5 spaces, found 4
+ 131 | ERROR   | String "</a>" does not require double quotes; use single
+     |         | quotes instead
+ 132 | ERROR   | Line indented incorrectly; expected at least 5 spaces, found 4
+ 132 | ERROR   | There must be no space between the Array keyword and the
+     |         | opening parenthesis
+ 135 | ERROR   | Line indented incorrectly; expected at least 5 spaces, found 4
+ 142 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$after_widget'
+ 153 | ERROR   | Inline control structures are not allowed
+ 162 | ERROR   | String "testimonials-by-woothemes/woothemes-testimonials.php"
+     |         | does not require double quotes; use single quotes instead
+ 176 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 176 | ERROR   | Expected 1 space after "!"; 0 found
+ 176 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 176 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 193 | ERROR   | Each line in an array declaration must end in a comma
+ 198 | ERROR   | Each line in an array declaration must end in a comma
+ 209 | ERROR   | Each line in an array declaration must end in a comma
+ 220 | ERROR   | Line indented incorrectly; expected at least 1 spaces, found 0
+ 261 | WARNING | create_function is discouraged, please use Anonymous functions
+     |         | instead.
+--------------------------------------------------------------------------------
+
+
+FILE: ...ress-develop/src/wp-content/themes/fortytwo/templates/page-business.php
+--------------------------------------------------------------------------------
+FOUND 4 ERROR(S) AFFECTING 4 LINE(S)
+--------------------------------------------------------------------------------
+  57 | ERROR | Expected next thing to be a escaping function, not
+     |       | '$data_widget_count'
+  85 | ERROR | Expected next thing to be a escaping function, not
+     |       | '$data_widget_count'
+  95 | ERROR | Expected next thing to be a escaping function, not
+     |       | '$data_widget_count'
+ 105 | ERROR | Expected next thing to be a escaping function, not
+     |       | '$data_widget_count'
+--------------------------------------------------------------------------------
+
+
+FILE: ...content/themes/fortytwo/vendor/wpthumb/tests/backgroundFillAutoTest.php
+--------------------------------------------------------------------------------
+FOUND 36 ERROR(S) AFFECTING 36 LINE(S)
+--------------------------------------------------------------------------------
+  8 | ERROR | Function name "testBackgroundFillOnWhiteImage" is in camel caps
+    |       | format, try 'test_background_fill_on_white_image'
+  9 | ERROR | Whitespace found at end of line
+ 12 | ERROR | Whitespace found at end of line
+ 15 | ERROR | Whitespace found at end of line
+ 16 | ERROR | String
+    |       | "width=100&height=100&crop=1&cache=0&return=path&background_fill=auto"
+    |       | does not require double quotes; use single quotes instead
+ 17 | ERROR | Whitespace found at end of line
+ 19 | ERROR | Whitespace found at end of line
+ 22 | ERROR | Whitespace found at end of line
+ 24 | ERROR | Whitespace found at end of line
+ 27 | ERROR | Whitespace found at end of line
+ 29 | ERROR | Whitespace found at end of line
+ 30 | ERROR | Function name "testBackgroundFillOnMixedColourImage" is in camel
+    |       | caps format, try 'test_background_fill_on_mixed_colour_image'
+ 31 | ERROR | Whitespace found at end of line
+ 34 | ERROR | Whitespace found at end of line
+ 37 | ERROR | Whitespace found at end of line
+ 38 | ERROR | String "width=100&height=100&crop=1&cache=0&return=path" does not
+    |       | require double quotes; use single quotes instead
+ 39 | ERROR | Whitespace found at end of line
+ 41 | ERROR | Whitespace found at end of line
+ 44 | ERROR | Whitespace found at end of line
+ 46 | ERROR | Whitespace found at end of line
+ 49 | ERROR | Whitespace found at end of line
+ 51 | ERROR | Whitespace found at end of line
+ 52 | ERROR | String
+    |       | "width=400&height=100&crop=1&cache=0&return=path&background_fill=auto"
+    |       | does not require double quotes; use single quotes instead
+ 53 | ERROR | Whitespace found at end of line
+ 55 | ERROR | Whitespace found at end of line
+ 58 | ERROR | Whitespace found at end of line
+ 60 | ERROR | Whitespace found at end of line
+ 63 | ERROR | Whitespace found at end of line
+ 65 | ERROR | Whitespace found at end of line
+ 66 | ERROR | Function name "testBackgroundFillOnTransparentImage" is in camel
+    |       | caps format, try 'test_background_fill_on_transparent_image'
+ 67 | ERROR | Whitespace found at end of line
+ 70 | ERROR | Functions must not contain multiple empty lines in a row; found 2
+    |       | empty lines
+ 73 | ERROR | Whitespace found at end of line
+ 76 | ERROR | Whitespace found at end of line
+ 78 | ERROR | Whitespace found at end of line
+ 82 | ERROR | Whitespace found at end of line
+--------------------------------------------------------------------------------
+
+
+FILE: .../wp-content/themes/fortytwo/vendor/wpthumb/tests/backgroundFillTest.php
+--------------------------------------------------------------------------------
+FOUND 13 ERROR(S) AND 4 WARNING(S) AFFECTING 11 LINE(S)
+--------------------------------------------------------------------------------
+  8 | ERROR   | Function name "testBackgroundFillOnWhiteImage" is in camel caps
+    |         | format, try 'test_background_fill_on_white_image'
+  9 | ERROR   | Whitespace found at end of line
+ 12 | ERROR   | Whitespace found at end of line
+ 15 | ERROR   | Whitespace found at end of line
+ 16 | ERROR   | String
+    |         | "width=100&height=100&cache=0&return=path&background_fill=255255255"
+    |         | does not require double quotes; use single quotes instead
+ 17 | ERROR   | Whitespace found at end of line
+ 19 | ERROR   | Whitespace found at end of line
+ 22 | ERROR   | Whitespace found at end of line
+ 24 | ERROR   | Whitespace found at end of line
+ 27 | ERROR   | Whitespace found at end of line
+ 28 | WARNING | No space after opening parenthesis of array is bad style
+ 28 | ERROR   | Expected 1 space between comma and "1"; 0 found
+ 28 | WARNING | No space before closing parenthesis of array is bad style
+ 28 | WARNING | No space after opening parenthesis of array is bad style
+ 28 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 28 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 28 | WARNING | No space before closing parenthesis of array is bad style
+--------------------------------------------------------------------------------
+
+
+FILE: ...velop/src/wp-content/themes/fortytwo/vendor/wpthumb/tests/bootstrap.php
+--------------------------------------------------------------------------------
+FOUND 10 ERROR(S) AFFECTING 6 LINE(S)
+--------------------------------------------------------------------------------
+ 14 | ERROR | Function name "assertImageRGBAtPoint" is in camel caps format,
+    |       | try 'assert_image_r_g_b_at_point'
+ 17 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 17 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 19 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 19 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 25 | ERROR | Function name "assertImageAlphaAtPoint" is in camel caps format,
+    |       | try 'assert_image_alpha_at_point'
+ 28 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 28 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 30 | ERROR | No space after opening parenthesis of function definition
+    |       | prohibited
+ 30 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+--------------------------------------------------------------------------------
+
+
+FILE: ...p-content/themes/fortytwo/vendor/wpthumb/tests/cropFromPositionTest.php
+--------------------------------------------------------------------------------
+FOUND 122 ERROR(S) AND 88 WARNING(S) AFFECTING 78 LINE(S)
+--------------------------------------------------------------------------------
+   8 | ERROR   | Function name "testCropFromTopLeftNoResize" is in camel caps
+     |         | format, try 'test_crop_from_top_left_no_resize'
+   9 | ERROR   | Whitespace found at end of line
+  12 | ERROR   | Whitespace found at end of line
+  13 | ERROR   | Whitespace found at end of line
+  14 | ERROR   | Whitespace found at end of line
+  15 | ERROR   | Whitespace found at end of line
+  16 | ERROR   | Whitespace found at end of line
+  20 | ERROR   | Each line in an array declaration must end in a comma
+  21 | ERROR   | Whitespace found at end of line
+  23 | WARNING | No space after opening parenthesis of array is bad style
+  23 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  23 | WARNING | No space before closing parenthesis of array is bad style
+  23 | WARNING | No space after opening parenthesis of array is bad style
+  23 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  23 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  23 | WARNING | No space before closing parenthesis of array is bad style
+  24 | WARNING | No space after opening parenthesis of array is bad style
+  24 | ERROR   | Expected 1 space between comma and "4"; 0 found
+  24 | WARNING | No space before closing parenthesis of array is bad style
+  24 | WARNING | No space after opening parenthesis of array is bad style
+  24 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  24 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  24 | WARNING | No space before closing parenthesis of array is bad style
+  25 | WARNING | No space after opening parenthesis of array is bad style
+  25 | ERROR   | Expected 1 space between comma and "1"; 0 found
+  25 | WARNING | No space before closing parenthesis of array is bad style
+  25 | WARNING | No space after opening parenthesis of array is bad style
+  25 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  25 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  25 | WARNING | No space before closing parenthesis of array is bad style
+  28 | ERROR   | Function name "testCropFromTopLeftWithResize" is in camel caps
+     |         | format, try 'test_crop_from_top_left_with_resize'
+  29 | ERROR   | Whitespace found at end of line
+  32 | ERROR   | Whitespace found at end of line
+  33 | ERROR   | Whitespace found at end of line
+  34 | ERROR   | Whitespace found at end of line
+  35 | ERROR   | Whitespace found at end of line
+  36 | ERROR   | Whitespace found at end of line
+  40 | ERROR   | Each line in an array declaration must end in a comma
+  41 | ERROR   | Whitespace found at end of line
+  44 | WARNING | No space after opening parenthesis of array is bad style
+  44 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  44 | WARNING | No space before closing parenthesis of array is bad style
+  44 | WARNING | No space after opening parenthesis of array is bad style
+  44 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  44 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  44 | WARNING | No space before closing parenthesis of array is bad style
+  45 | WARNING | No space after opening parenthesis of array is bad style
+  45 | ERROR   | Expected 1 space between comma and "4"; 0 found
+  45 | WARNING | No space before closing parenthesis of array is bad style
+  45 | WARNING | No space after opening parenthesis of array is bad style
+  45 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  45 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  45 | WARNING | No space before closing parenthesis of array is bad style
+  46 | WARNING | No space after opening parenthesis of array is bad style
+  46 | ERROR   | Expected 1 space between comma and "1"; 0 found
+  46 | WARNING | No space before closing parenthesis of array is bad style
+  46 | WARNING | No space after opening parenthesis of array is bad style
+  46 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  46 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  46 | WARNING | No space before closing parenthesis of array is bad style
+  49 | ERROR   | Function name "testCropFromBottomRightNoResize" is in camel
+     |         | caps format, try 'test_crop_from_bottom_right_no_resize'
+  50 | ERROR   | Whitespace found at end of line
+  53 | ERROR   | Whitespace found at end of line
+  54 | ERROR   | Whitespace found at end of line
+  55 | ERROR   | Whitespace found at end of line
+  56 | ERROR   | Whitespace found at end of line
+  57 | ERROR   | Whitespace found at end of line
+  61 | ERROR   | Each line in an array declaration must end in a comma
+  62 | ERROR   | Whitespace found at end of line
+  64 | WARNING | No space after opening parenthesis of array is bad style
+  64 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  64 | WARNING | No space before closing parenthesis of array is bad style
+  64 | WARNING | No space after opening parenthesis of array is bad style
+  64 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  64 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  64 | WARNING | No space before closing parenthesis of array is bad style
+  65 | WARNING | No space after opening parenthesis of array is bad style
+  65 | ERROR   | Expected 1 space between comma and "4"; 0 found
+  65 | WARNING | No space before closing parenthesis of array is bad style
+  65 | WARNING | No space after opening parenthesis of array is bad style
+  65 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  65 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  65 | WARNING | No space before closing parenthesis of array is bad style
+  66 | WARNING | No space after opening parenthesis of array is bad style
+  66 | ERROR   | Expected 1 space between comma and "1"; 0 found
+  66 | WARNING | No space before closing parenthesis of array is bad style
+  66 | WARNING | No space after opening parenthesis of array is bad style
+  66 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  66 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  66 | WARNING | No space before closing parenthesis of array is bad style
+  69 | ERROR   | Function name "testCropFromBottomRightWithResize" is in camel
+     |         | caps format, try 'test_crop_from_bottom_right_with_resize'
+  70 | ERROR   | Whitespace found at end of line
+  73 | ERROR   | Whitespace found at end of line
+  74 | ERROR   | Whitespace found at end of line
+  75 | ERROR   | Whitespace found at end of line
+  76 | ERROR   | Whitespace found at end of line
+  77 | ERROR   | Whitespace found at end of line
+  81 | ERROR   | Each line in an array declaration must end in a comma
+  82 | ERROR   | Whitespace found at end of line
+  84 | ERROR   | Whitespace found at end of line
+  85 | WARNING | No space after opening parenthesis of array is bad style
+  85 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  85 | WARNING | No space before closing parenthesis of array is bad style
+  85 | WARNING | No space after opening parenthesis of array is bad style
+  85 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  85 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  85 | WARNING | No space before closing parenthesis of array is bad style
+  86 | WARNING | No space after opening parenthesis of array is bad style
+  86 | ERROR   | Expected 1 space between comma and "4"; 0 found
+  86 | WARNING | No space before closing parenthesis of array is bad style
+  86 | WARNING | No space after opening parenthesis of array is bad style
+  86 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  86 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  86 | WARNING | No space before closing parenthesis of array is bad style
+  87 | WARNING | No space after opening parenthesis of array is bad style
+  87 | ERROR   | Expected 1 space between comma and "1"; 0 found
+  87 | WARNING | No space before closing parenthesis of array is bad style
+  87 | WARNING | No space after opening parenthesis of array is bad style
+  87 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  87 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  87 | WARNING | No space before closing parenthesis of array is bad style
+  88 | WARNING | No space after opening parenthesis of array is bad style
+  88 | ERROR   | Expected 1 space between comma and "2"; 0 found
+  88 | WARNING | No space before closing parenthesis of array is bad style
+  88 | WARNING | No space after opening parenthesis of array is bad style
+  88 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  88 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  88 | WARNING | No space before closing parenthesis of array is bad style
+  91 | ERROR   | Function name "testCropFromCenterCenterWithResize" is in camel
+     |         | caps format, try 'test_crop_from_center_center_with_resize'
+  92 | ERROR   | Whitespace found at end of line
+  95 | ERROR   | Whitespace found at end of line
+  96 | ERROR   | Whitespace found at end of line
+  97 | ERROR   | Whitespace found at end of line
+  98 | ERROR   | Whitespace found at end of line
+  99 | ERROR   | Whitespace found at end of line
+ 103 | ERROR   | Each line in an array declaration must end in a comma
+ 104 | ERROR   | Whitespace found at end of line
+ 106 | ERROR   | Whitespace found at end of line
+ 107 | WARNING | No space after opening parenthesis of array is bad style
+ 107 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 107 | WARNING | No space before closing parenthesis of array is bad style
+ 107 | WARNING | No space after opening parenthesis of array is bad style
+ 107 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 107 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 107 | WARNING | No space before closing parenthesis of array is bad style
+ 108 | WARNING | No space after opening parenthesis of array is bad style
+ 108 | ERROR   | Expected 1 space between comma and "4"; 0 found
+ 108 | WARNING | No space before closing parenthesis of array is bad style
+ 108 | WARNING | No space after opening parenthesis of array is bad style
+ 108 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 108 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 108 | WARNING | No space before closing parenthesis of array is bad style
+ 109 | WARNING | No space after opening parenthesis of array is bad style
+ 109 | ERROR   | Expected 1 space between comma and "1"; 0 found
+ 109 | WARNING | No space before closing parenthesis of array is bad style
+ 109 | WARNING | No space after opening parenthesis of array is bad style
+ 109 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 109 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 109 | WARNING | No space before closing parenthesis of array is bad style
+ 110 | WARNING | No space after opening parenthesis of array is bad style
+ 110 | ERROR   | Expected 1 space between comma and "2"; 0 found
+ 110 | WARNING | No space before closing parenthesis of array is bad style
+ 110 | WARNING | No space after opening parenthesis of array is bad style
+ 110 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 110 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 110 | WARNING | No space before closing parenthesis of array is bad style
+ 113 | ERROR   | Function name "testCropFromTopCenterWithResize" is in camel
+     |         | caps format, try 'test_crop_from_top_center_with_resize'
+ 114 | ERROR   | Whitespace found at end of line
+ 117 | ERROR   | Whitespace found at end of line
+ 118 | ERROR   | Whitespace found at end of line
+ 119 | ERROR   | Whitespace found at end of line
+ 120 | ERROR   | Whitespace found at end of line
+ 121 | ERROR   | Whitespace found at end of line
+ 125 | ERROR   | Each line in an array declaration must end in a comma
+ 126 | ERROR   | Whitespace found at end of line
+ 129 | WARNING | No space after opening parenthesis of array is bad style
+ 129 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 129 | WARNING | No space before closing parenthesis of array is bad style
+ 129 | WARNING | No space after opening parenthesis of array is bad style
+ 129 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 129 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 129 | WARNING | No space before closing parenthesis of array is bad style
+ 130 | WARNING | No space after opening parenthesis of array is bad style
+ 130 | ERROR   | Expected 1 space between comma and "1"; 0 found
+ 130 | WARNING | No space before closing parenthesis of array is bad style
+ 130 | WARNING | No space after opening parenthesis of array is bad style
+ 130 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 130 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 130 | WARNING | No space before closing parenthesis of array is bad style
+ 131 | WARNING | No space after opening parenthesis of array is bad style
+ 131 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 131 | WARNING | No space before closing parenthesis of array is bad style
+ 131 | WARNING | No space after opening parenthesis of array is bad style
+ 131 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 131 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 131 | WARNING | No space before closing parenthesis of array is bad style
+ 132 | WARNING | No space after opening parenthesis of array is bad style
+ 132 | ERROR   | Expected 1 space between comma and "1"; 0 found
+ 132 | WARNING | No space before closing parenthesis of array is bad style
+ 132 | WARNING | No space after opening parenthesis of array is bad style
+ 132 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 132 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 132 | WARNING | No space before closing parenthesis of array is bad style
+ 133 | WARNING | No space after opening parenthesis of array is bad style
+ 133 | ERROR   | Expected 1 space between comma and "1"; 0 found
+ 133 | WARNING | No space before closing parenthesis of array is bad style
+ 133 | WARNING | No space after opening parenthesis of array is bad style
+ 133 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 133 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 133 | WARNING | No space before closing parenthesis of array is bad style
+--------------------------------------------------------------------------------
+
+
+FILE: .../src/wp-content/themes/fortytwo/vendor/wpthumb/tests/cropResizeTest.php
+--------------------------------------------------------------------------------
+FOUND 32 ERROR(S) AFFECTING 32 LINE(S)
+--------------------------------------------------------------------------------
+  8 | ERROR | Function name "testCropResizeStandard" is in camel caps format,
+    |       | try 'test_crop_resize_standard'
+  9 | ERROR | Whitespace found at end of line
+ 12 | ERROR | Whitespace found at end of line
+ 15 | ERROR | Whitespace found at end of line
+ 16 | ERROR | String "width=80&height=80&crop=1&cache=0&return=path" does not
+    |       | require double quotes; use single quotes instead
+ 17 | ERROR | Whitespace found at end of line
+ 19 | ERROR | Whitespace found at end of line
+ 22 | ERROR | Whitespace found at end of line
+ 24 | ERROR | Whitespace found at end of line
+ 27 | ERROR | Whitespace found at end of line
+ 29 | ERROR | Whitespace found at end of line
+ 30 | ERROR | Function name "testCropLargerThanSourceImage" is in camel caps
+    |       | format, try 'test_crop_larger_than_source_image'
+ 31 | ERROR | Whitespace found at end of line
+ 34 | ERROR | Whitespace found at end of line
+ 37 | ERROR | Whitespace found at end of line
+ 38 | ERROR | String "width=300&height=300&crop=1&cache=0&return=path" does not
+    |       | require double quotes; use single quotes instead
+ 39 | ERROR | Whitespace found at end of line
+ 41 | ERROR | Whitespace found at end of line
+ 44 | ERROR | Whitespace found at end of line
+ 46 | ERROR | Whitespace found at end of line
+ 49 | ERROR | Whitespace found at end of line
+ 51 | ERROR | Whitespace found at end of line
+ 52 | ERROR | Function name "testCropLargerThanSingleDimention" is in camel
+    |       | caps format, try 'test_crop_larger_than_single_dimention'
+ 53 | ERROR | Whitespace found at end of line
+ 56 | ERROR | Whitespace found at end of line
+ 59 | ERROR | Whitespace found at end of line
+ 60 | ERROR | String "width=200&height=300&crop=1&cache=0&return=path" does not
+    |       | require double quotes; use single quotes instead
+ 61 | ERROR | Whitespace found at end of line
+ 63 | ERROR | Whitespace found at end of line
+ 66 | ERROR | Whitespace found at end of line
+ 68 | ERROR | Whitespace found at end of line
+ 71 | ERROR | Whitespace found at end of line
+--------------------------------------------------------------------------------
+
+
+FILE: ...evelop/src/wp-content/themes/fortytwo/vendor/wpthumb/tests/cropTest.php
+--------------------------------------------------------------------------------
+FOUND 43 ERROR(S) AFFECTING 43 LINE(S)
+--------------------------------------------------------------------------------
+  8 | ERROR | Function name "testCropStandard" is in camel caps format, try
+    |       | 'test_crop_standard'
+  9 | ERROR | Whitespace found at end of line
+ 12 | ERROR | Whitespace found at end of line
+ 15 | ERROR | Whitespace found at end of line
+ 16 | ERROR | String "width=80&height=80&crop=1&resize=0&cache=0&return=path"
+    |       | does not require double quotes; use single quotes instead
+ 17 | ERROR | Whitespace found at end of line
+ 19 | ERROR | Whitespace found at end of line
+ 22 | ERROR | Whitespace found at end of line
+ 24 | ERROR | Whitespace found at end of line
+ 27 | ERROR | Whitespace found at end of line
+ 29 | ERROR | Whitespace found at end of line
+ 30 | ERROR | Function name "testCropStandardGif" is in camel caps format, try
+    |       | 'test_crop_standard_gif'
+ 31 | ERROR | Whitespace found at end of line
+ 34 | ERROR | Whitespace found at end of line
+ 37 | ERROR | Whitespace found at end of line
+ 38 | ERROR | String "width=80&height=80&crop=1&resize=0&cache=0&return=path"
+    |       | does not require double quotes; use single quotes instead
+ 39 | ERROR | Whitespace found at end of line
+ 41 | ERROR | Whitespace found at end of line
+ 44 | ERROR | Whitespace found at end of line
+ 46 | ERROR | Whitespace found at end of line
+ 49 | ERROR | Whitespace found at end of line
+ 51 | ERROR | Whitespace found at end of line
+ 52 | ERROR | Function name "testCropLargerThanSourceImage" is in camel caps
+    |       | format, try 'test_crop_larger_than_source_image'
+ 53 | ERROR | Whitespace found at end of line
+ 56 | ERROR | Whitespace found at end of line
+ 59 | ERROR | Whitespace found at end of line
+ 60 | ERROR | String "width=300&height=300&crop=1&resize=0&cache=0&return=path"
+    |       | does not require double quotes; use single quotes instead
+ 61 | ERROR | Whitespace found at end of line
+ 63 | ERROR | Whitespace found at end of line
+ 66 | ERROR | Whitespace found at end of line
+ 68 | ERROR | Whitespace found at end of line
+ 71 | ERROR | Whitespace found at end of line
+ 73 | ERROR | Whitespace found at end of line
+ 74 | ERROR | Function name "testCropLargerThanSingleDimention" is in camel
+    |       | caps format, try 'test_crop_larger_than_single_dimention'
+ 75 | ERROR | Whitespace found at end of line
+ 78 | ERROR | Whitespace found at end of line
+ 81 | ERROR | Whitespace found at end of line
+ 82 | ERROR | String "width=200&height=300&crop=1&resize=0&cache=0&return=path"
+    |       | does not require double quotes; use single quotes instead
+ 83 | ERROR | Whitespace found at end of line
+ 85 | ERROR | Whitespace found at end of line
+ 88 | ERROR | Whitespace found at end of line
+ 90 | ERROR | Whitespace found at end of line
+ 93 | ERROR | Whitespace found at end of line
+--------------------------------------------------------------------------------
+
+
+FILE: ...rc/wp-content/themes/fortytwo/vendor/wpthumb/tests/defaultImageTest.php
+--------------------------------------------------------------------------------
+FOUND 5 ERROR(S) AFFECTING 5 LINE(S)
+--------------------------------------------------------------------------------
+  8 | ERROR | Function name "testDefaultImageInFilePath" is in camel caps
+    |       | format, try 'test_default_image_in_file_path'
+  9 | ERROR | Whitespace found at end of line
+ 12 | ERROR | Whitespace found at end of line
+ 17 | ERROR | Whitespace found at end of line
+ 19 | ERROR | Whitespace found at end of line
+--------------------------------------------------------------------------------
+
+
+FILE: ...p/src/wp-content/themes/fortytwo/vendor/wpthumb/tests/fileNamesTest.php
+--------------------------------------------------------------------------------
+FOUND 17 ERROR(S) AFFECTING 17 LINE(S)
+--------------------------------------------------------------------------------
+   8 | ERROR | Function name "testFileURLWithQueryParam" is in camel caps
+     |       | format, try 'test_file_u_r_l_with_query_param'
+  22 | ERROR | Function name "testFileWithURL" is in camel caps format, try
+     |       | 'test_file_with_u_r_l'
+  33 | ERROR | Function name "testFileWithDoubleSlashUrl" is in camel caps
+     |       | format, try 'test_file_with_double_slash_url'
+  45 | ERROR | Function name "testFileURLWithNoExtension" is in camel caps
+     |       | format, try 'test_file_u_r_l_with_no_extension'
+  59 | ERROR | Function name "testFileURLWithSpecialChars" is in camel caps
+     |       | format, try 'test_file_u_r_l_with_special_chars'
+  72 | ERROR | Function name "testFileURLWithDotInPath" is in camel caps
+     |       | format, try 'test_file_u_r_l_with_dot_in_path'
+  85 | ERROR | Function name "testFileWithPath" is in camel caps format, try
+     |       | 'test_file_with_path'
+  98 | ERROR | Function name "testFileWithPathNoExtension" is in camel caps
+     |       | format, try 'test_file_with_path_no_extension'
+ 110 | ERROR | Whitespace found at end of line
+ 115 | ERROR | Function name "testFileWithLocalURL" is in camel caps format,
+     |       | try 'test_file_with_local_u_r_l'
+ 128 | ERROR | Function name "testGifIsConvertedToPNGInCacheFileName" is in
+     |       | camel caps format, try
+     |       | 'test_gif_is_converted_to_p_n_g_in_cache_file_name'
+ 141 | ERROR | Function name "testLocalFileCacheFilePath" is in camel caps
+     |       | format, try 'test_local_file_cache_file_path'
+ 150 | ERROR | Function name "testMultipleRemotePathCacheFileNames" is in camel
+     |       | caps format, try 'test_multiple_remote_path_cache_file_names'
+ 156 | ERROR | Comma required after last value in array declaration
+ 171 | ERROR | Function name "testNonExistingLocalPath" is in camel caps
+     |       | format, try 'test_non_existing_local_path'
+ 179 | ERROR | Function name "testFileNameWithUppercaseExtension" is in camel
+     |       | caps format, try 'test_file_name_with_uppercase_extension'
+ 188 | ERROR | Function name "testFileNameWithUppercaseFileName" is in camel
+     |       | caps format, try 'test_file_name_with_uppercase_file_name'
+--------------------------------------------------------------------------------
+
+
+FILE: .../src/wp-content/themes/fortytwo/vendor/wpthumb/tests/imageSizesTest.php
+--------------------------------------------------------------------------------
+FOUND 8 ERROR(S) AND 1 WARNING(S) AFFECTING 9 LINE(S)
+--------------------------------------------------------------------------------
+  8 | ERROR   | Function name "setUp" is in camel caps format, try 'set_up'
+ 10 | WARNING | No space before closing parenthesis of array is bad style
+ 12 | ERROR   | Filesystem writes are forbidden, you should not be using
+    |         | tempnam()
+ 31 | ERROR   | Function name "tearDown" is in camel caps format, try
+    |         | 'tear_down'
+ 42 | ERROR   | Function name "testThumbnailResize" is in camel caps format,
+    |         | try 'test_thumbnail_resize'
+ 55 | ERROR   | Function name "testMediumResize" is in camel caps format, try
+    |         | 'test_medium_resize'
+ 66 | ERROR   | Function name "testLargeResize" is in camel caps format, try
+    |         | 'test_large_resize'
+ 77 | ERROR   | Function name "testCustomImageResize" is in camel caps format,
+    |         | try 'test_custom_image_resize'
+ 90 | ERROR   | Function name "testResizedByArray" is in camel caps format, try
+    |         | 'test_resized_by_array'
+--------------------------------------------------------------------------------
+
+
+FILE: ...p-content/themes/fortytwo/vendor/wpthumb/tests/manual/default-image.php
+--------------------------------------------------------------------------------
+FOUND 2 ERROR(S) AFFECTING 2 LINE(S)
+--------------------------------------------------------------------------------
+ 14 | ERROR | Expected a sanitizing function (see Codex for 'Data Validation'),
+    |       | but instead saw 'wpthumb'
+ 17 | ERROR | Expected a sanitizing function (see Codex for 'Data Validation'),
+    |       | but instead saw 'wpthumb'
+--------------------------------------------------------------------------------
+
+
+FILE: ...c/wp-content/themes/fortytwo/vendor/wpthumb/tests/postThumbnailTest.php
+--------------------------------------------------------------------------------
+FOUND 4 ERROR(S) AFFECTING 4 LINE(S)
+--------------------------------------------------------------------------------
+  5 | ERROR | Function name "testPostThumbnailResize" is in camel caps format,
+    |       | try 'test_post_thumbnail_resize'
+  6 | ERROR | Whitespace found at end of line
+  9 | ERROR | Functions must not contain multiple empty lines in a row; found 2
+    |       | empty lines
+ 19 | ERROR | Inline control structures are not allowed
+--------------------------------------------------------------------------------
+
+
+FILE: ...src/wp-content/themes/fortytwo/vendor/wpthumb/tests/remoteImageTest.php
+--------------------------------------------------------------------------------
+FOUND 34 ERROR(S) AFFECTING 34 LINE(S)
+--------------------------------------------------------------------------------
+  5 | ERROR | Function name "testFetchRemoteImage" is in camel caps format, try
+    |       | 'test_fetch_remote_image'
+  6 | ERROR | Whitespace found at end of line
+  9 | ERROR | Whitespace found at end of line
+ 10 | ERROR | String "crop=0&return=path" does not require double quotes; use
+    |       | single quotes instead
+ 11 | ERROR | Whitespace found at end of line
+ 13 | ERROR | Whitespace found at end of line
+ 16 | ERROR | Whitespace found at end of line
+ 18 | ERROR | Whitespace found at end of line
+ 21 | ERROR | Whitespace found at end of line
+ 23 | ERROR | Whitespace found at end of line
+ 24 | ERROR | Function name "testResizeRemoteImage" is in camel caps format,
+    |       | try 'test_resize_remote_image'
+ 25 | ERROR | Whitespace found at end of line
+ 28 | ERROR | Whitespace found at end of line
+ 29 | ERROR | String "crop=1&return=path&width=80&height=80&cache=0" does not
+    |       | require double quotes; use single quotes instead
+ 30 | ERROR | Whitespace found at end of line
+ 32 | ERROR | Whitespace found at end of line
+ 35 | ERROR | Whitespace found at end of line
+ 37 | ERROR | Whitespace found at end of line
+ 40 | ERROR | Whitespace found at end of line
+ 42 | ERROR | Whitespace found at end of line
+ 43 | ERROR | Function name "testResizeRemote404Image" is in camel caps format,
+    |       | try 'test_resize_remote404_image'
+ 44 | ERROR | Whitespace found at end of line
+ 47 | ERROR | Whitespace found at end of line
+ 48 | ERROR | String "crop=1&return=path&width=80&height=80&cache=0" does not
+    |       | require double quotes; use single quotes instead
+ 49 | ERROR | Whitespace found at end of line
+ 51 | ERROR | Whitespace found at end of line
+ 54 | ERROR | Whitespace found at end of line
+ 56 | ERROR | Whitespace found at end of line
+ 57 | ERROR | Function name "testDifferentFileURLSWithSameArgs" is in camel
+    |       | caps format, try 'test_different_file_u_r_l_s_with_same_args'
+ 58 | ERROR | Whitespace found at end of line
+ 60 | ERROR | String "crop=1&return=path&width=80&height=80&cache=0" does not
+    |       | require double quotes; use single quotes instead
+ 63 | ERROR | String "crop=1&return=path&width=80&height=80&cache=0" does not
+    |       | require double quotes; use single quotes instead
+ 64 | ERROR | Whitespace found at end of line
+ 68 | ERROR | Whitespace found at end of line
+--------------------------------------------------------------------------------
+
+
+FILE: ...elop/src/wp-content/themes/fortytwo/vendor/wpthumb/tests/resizeTest.php
+--------------------------------------------------------------------------------
+FOUND 19 ERROR(S) AFFECTING 19 LINE(S)
+--------------------------------------------------------------------------------
+  5 | ERROR | Function name "testResizeProportional" is in camel caps format,
+    |       | try 'test_resize_proportional'
+  6 | ERROR | Whitespace found at end of line
+  9 | ERROR | Whitespace found at end of line
+ 12 | ERROR | Whitespace found at end of line
+ 14 | ERROR | Whitespace found at end of line
+ 16 | ERROR | Whitespace found at end of line
+ 18 | ERROR | Whitespace found at end of line
+ 21 | ERROR | Whitespace found at end of line
+ 23 | ERROR | Whitespace found at end of line
+ 27 | ERROR | Whitespace found at end of line
+ 28 | ERROR | Function name "testResizeProportionalLargeThanSourceImage" is in
+    |       | camel caps format, try
+    |       | 'test_resize_proportional_large_than_source_image'
+ 29 | ERROR | Whitespace found at end of line
+ 32 | ERROR | Whitespace found at end of line
+ 35 | ERROR | Whitespace found at end of line
+ 37 | ERROR | Whitespace found at end of line
+ 39 | ERROR | Whitespace found at end of line
+ 41 | ERROR | Whitespace found at end of line
+ 44 | ERROR | Whitespace found at end of line
+ 46 | ERROR | Whitespace found at end of line
+--------------------------------------------------------------------------------
+
+
+FILE: ...rc/wp-content/themes/fortytwo/vendor/wpthumb/tests/testCustomFilter.php
+--------------------------------------------------------------------------------
+FOUND 15 ERROR(S) AND 11 WARNING(S) AFFECTING 13 LINE(S)
+--------------------------------------------------------------------------------
+  5 | ERROR   | Function name "testmakeImageGreyScale" is in camel caps format,
+    |         | try 'testmake_image_grey_scale'
+  8 | ERROR   | Multi-line function definition not indented correctly; expected
+    |         | 3 spaces but found 1
+  9 | ERROR   | Inline control structures are not allowed
+ 11 | ERROR   | Multi-line function definition not indented correctly; expected
+    |         | 3 spaces but found 1
+ 13 | ERROR   | Multi-line function definition not indented correctly; expected
+    |         | 3 spaces but found 1
+ 15 | ERROR   | Multi-line function definition not indented correctly; expected
+    |         | 3 spaces but found 1
+ 21 | ERROR   | Functions must not contain multiple empty lines in a row; found
+    |         | 3 empty lines
+ 29 | WARNING | Line is indented with space not tab
+ 29 | WARNING | Line is indented with space not tab
+ 29 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 29 | ERROR   | Incorrect indentation; expected 0 space, found 4
+ 31 | WARNING | Line is indented with space not tab
+ 31 | WARNING | Line is indented with space not tab
+ 31 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 31 | ERROR   | Inline control structures are not allowed
+ 32 | WARNING | Line is indented with space not tab
+ 32 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 34 | WARNING | Line is indented with space not tab
+ 34 | WARNING | Line is indented with space not tab
+ 34 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 36 | WARNING | Line is indented with space not tab
+ 36 | WARNING | Line is indented with space not tab
+ 36 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 38 | WARNING | Line is indented with space not tab
+ 38 | WARNING | Line is indented with space not tab
+ 38 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+--------------------------------------------------------------------------------
+
+
+FILE: ...p/src/wp-content/themes/fortytwo/vendor/wpthumb/tests/watermarkTest.php
+--------------------------------------------------------------------------------
+FOUND 172 ERROR(S) AND 96 WARNING(S) AFFECTING 79 LINE(S)
+--------------------------------------------------------------------------------
+   5 | ERROR   | Function name "testWatermarkTopLeft" is in camel caps format,
+     |         | try 'test_watermark_top_left'
+   6 | ERROR   | Whitespace found at end of line
+  10 | ERROR   | Whitespace found at end of line
+  11 | ERROR   | The first index in a multi-value array must be on a new line
+  11 | ERROR   | The first index in a multi-value array must be on a new line
+  11 | ERROR   | The first index in a multi-value array must be on a new line
+  11 | ERROR   | The first index in a multi-value array must be on a new line
+  11 | ERROR   | The first index in a multi-value array must be on a new line
+  11 | ERROR   | The first value in a multi-value array must be on a new line
+  14 | ERROR   | Each line in an array declaration must end in a comma
+  16 | ERROR   | Whitespace found at end of line
+  19 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+  20 | WARNING | No space after opening parenthesis of array is bad style
+  20 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  20 | WARNING | No space before closing parenthesis of array is bad style
+  20 | WARNING | No space after opening parenthesis of array is bad style
+  20 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  20 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  20 | WARNING | No space before closing parenthesis of array is bad style
+  21 | WARNING | No space after opening parenthesis of array is bad style
+  21 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  21 | WARNING | No space before closing parenthesis of array is bad style
+  21 | WARNING | No space after opening parenthesis of array is bad style
+  21 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  21 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  21 | WARNING | No space before closing parenthesis of array is bad style
+  22 | WARNING | No space after opening parenthesis of array is bad style
+  22 | ERROR   | Expected 1 space between comma and "10"; 0 found
+  22 | WARNING | No space before closing parenthesis of array is bad style
+  22 | WARNING | No space after opening parenthesis of array is bad style
+  22 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  22 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  22 | WARNING | No space before closing parenthesis of array is bad style
+  25 | ERROR   | Function name "testWatermarkBottomLeft" is in camel caps
+     |         | format, try 'test_watermark_bottom_left'
+  26 | ERROR   | Whitespace found at end of line
+  30 | ERROR   | Whitespace found at end of line
+  31 | ERROR   | The first index in a multi-value array must be on a new line
+  31 | ERROR   | The first index in a multi-value array must be on a new line
+  31 | ERROR   | The first index in a multi-value array must be on a new line
+  31 | ERROR   | The first index in a multi-value array must be on a new line
+  31 | ERROR   | The first index in a multi-value array must be on a new line
+  31 | ERROR   | The first value in a multi-value array must be on a new line
+  34 | ERROR   | Each line in an array declaration must end in a comma
+  36 | ERROR   | Whitespace found at end of line
+  38 | WARNING | No space after opening parenthesis of array is bad style
+  38 | ERROR   | Expected 1 space between comma and "90"; 0 found
+  38 | WARNING | No space before closing parenthesis of array is bad style
+  38 | WARNING | No space after opening parenthesis of array is bad style
+  38 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  38 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  38 | WARNING | No space before closing parenthesis of array is bad style
+  39 | WARNING | No space after opening parenthesis of array is bad style
+  39 | ERROR   | Expected 1 space between comma and "90"; 0 found
+  39 | WARNING | No space before closing parenthesis of array is bad style
+  39 | WARNING | No space after opening parenthesis of array is bad style
+  39 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  39 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  39 | WARNING | No space before closing parenthesis of array is bad style
+  42 | ERROR   | Function name "testWatermarkBottomRight" is in camel caps
+     |         | format, try 'test_watermark_bottom_right'
+  43 | ERROR   | Whitespace found at end of line
+  47 | ERROR   | Whitespace found at end of line
+  48 | ERROR   | The first index in a multi-value array must be on a new line
+  48 | ERROR   | The first index in a multi-value array must be on a new line
+  48 | ERROR   | The first index in a multi-value array must be on a new line
+  48 | ERROR   | The first index in a multi-value array must be on a new line
+  48 | ERROR   | The first index in a multi-value array must be on a new line
+  48 | ERROR   | The first value in a multi-value array must be on a new line
+  51 | ERROR   | Each line in an array declaration must end in a comma
+  53 | ERROR   | Whitespace found at end of line
+  56 | WARNING | No space after opening parenthesis of array is bad style
+  56 | ERROR   | Expected 1 space between comma and "90"; 0 found
+  56 | WARNING | No space before closing parenthesis of array is bad style
+  56 | WARNING | No space after opening parenthesis of array is bad style
+  56 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  56 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  56 | WARNING | No space before closing parenthesis of array is bad style
+  57 | WARNING | No space after opening parenthesis of array is bad style
+  57 | ERROR   | Expected 1 space between comma and "90"; 0 found
+  57 | WARNING | No space before closing parenthesis of array is bad style
+  57 | WARNING | No space after opening parenthesis of array is bad style
+  57 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  57 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  57 | WARNING | No space before closing parenthesis of array is bad style
+  60 | ERROR   | Function name "testWatermarkTopRight" is in camel caps format,
+     |         | try 'test_watermark_top_right'
+  61 | ERROR   | Whitespace found at end of line
+  65 | ERROR   | Whitespace found at end of line
+  66 | ERROR   | The first index in a multi-value array must be on a new line
+  66 | ERROR   | The first index in a multi-value array must be on a new line
+  66 | ERROR   | The first index in a multi-value array must be on a new line
+  66 | ERROR   | The first index in a multi-value array must be on a new line
+  66 | ERROR   | The first index in a multi-value array must be on a new line
+  66 | ERROR   | The first value in a multi-value array must be on a new line
+  69 | ERROR   | Each line in an array declaration must end in a comma
+  71 | ERROR   | Whitespace found at end of line
+  74 | WARNING | No space after opening parenthesis of array is bad style
+  74 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  74 | WARNING | No space before closing parenthesis of array is bad style
+  74 | WARNING | No space after opening parenthesis of array is bad style
+  74 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  74 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  74 | WARNING | No space before closing parenthesis of array is bad style
+  75 | WARNING | No space after opening parenthesis of array is bad style
+  75 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  75 | WARNING | No space before closing parenthesis of array is bad style
+  75 | WARNING | No space after opening parenthesis of array is bad style
+  75 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  75 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  75 | WARNING | No space before closing parenthesis of array is bad style
+  76 | WARNING | No space after opening parenthesis of array is bad style
+  76 | ERROR   | Expected 1 space between comma and "11"; 0 found
+  76 | WARNING | No space before closing parenthesis of array is bad style
+  76 | WARNING | No space after opening parenthesis of array is bad style
+  76 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  76 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  76 | WARNING | No space before closing parenthesis of array is bad style
+  79 | ERROR   | Function name "testWatermarkPaddingTopLeft" is in camel caps
+     |         | format, try 'test_watermark_padding_top_left'
+  80 | ERROR   | Whitespace found at end of line
+  84 | ERROR   | Whitespace found at end of line
+  85 | ERROR   | The first index in a multi-value array must be on a new line
+  85 | ERROR   | The first index in a multi-value array must be on a new line
+  85 | ERROR   | The first index in a multi-value array must be on a new line
+  85 | ERROR   | The first index in a multi-value array must be on a new line
+  85 | ERROR   | The first index in a multi-value array must be on a new line
+  85 | ERROR   | The first value in a multi-value array must be on a new line
+  88 | ERROR   | Each line in an array declaration must end in a comma
+  90 | ERROR   | Whitespace found at end of line
+  93 | WARNING | No space after opening parenthesis of array is bad style
+  93 | ERROR   | Expected 1 space between comma and "10"; 0 found
+  93 | WARNING | No space before closing parenthesis of array is bad style
+  93 | WARNING | No space after opening parenthesis of array is bad style
+  93 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  93 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  93 | WARNING | No space before closing parenthesis of array is bad style
+  94 | WARNING | No space after opening parenthesis of array is bad style
+  94 | ERROR   | Expected 1 space between comma and "19"; 0 found
+  94 | WARNING | No space before closing parenthesis of array is bad style
+  94 | WARNING | No space after opening parenthesis of array is bad style
+  94 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  94 | ERROR   | Expected 1 space between comma and "255"; 0 found
+  94 | WARNING | No space before closing parenthesis of array is bad style
+  95 | WARNING | No space after opening parenthesis of array is bad style
+  95 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  95 | WARNING | No space before closing parenthesis of array is bad style
+  95 | WARNING | No space after opening parenthesis of array is bad style
+  95 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  95 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  95 | WARNING | No space before closing parenthesis of array is bad style
+  96 | WARNING | No space after opening parenthesis of array is bad style
+  96 | ERROR   | Expected 1 space between comma and "9"; 0 found
+  96 | WARNING | No space before closing parenthesis of array is bad style
+  96 | WARNING | No space after opening parenthesis of array is bad style
+  96 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  96 | ERROR   | Expected 1 space between comma and "0"; 0 found
+  96 | WARNING | No space before closing parenthesis of array is bad style
+  99 | ERROR   | Function name "testWatermarkPaddingBottomRight" is in camel
+     |         | caps format, try 'test_watermark_padding_bottom_right'
+ 100 | ERROR   | Whitespace found at end of line
+ 104 | ERROR   | Whitespace found at end of line
+ 105 | ERROR   | The first index in a multi-value array must be on a new line
+ 105 | ERROR   | The first index in a multi-value array must be on a new line
+ 105 | ERROR   | The first index in a multi-value array must be on a new line
+ 105 | ERROR   | The first index in a multi-value array must be on a new line
+ 105 | ERROR   | The first index in a multi-value array must be on a new line
+ 105 | ERROR   | The first value in a multi-value array must be on a new line
+ 108 | ERROR   | Each line in an array declaration must end in a comma
+ 110 | ERROR   | Whitespace found at end of line
+ 113 | WARNING | No space after opening parenthesis of array is bad style
+ 113 | ERROR   | Expected 1 space between comma and "80"; 0 found
+ 113 | WARNING | No space before closing parenthesis of array is bad style
+ 113 | WARNING | No space after opening parenthesis of array is bad style
+ 113 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 113 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 113 | WARNING | No space before closing parenthesis of array is bad style
+ 114 | WARNING | No space after opening parenthesis of array is bad style
+ 114 | ERROR   | Expected 1 space between comma and "89"; 0 found
+ 114 | WARNING | No space before closing parenthesis of array is bad style
+ 114 | WARNING | No space after opening parenthesis of array is bad style
+ 114 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 114 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 114 | WARNING | No space before closing parenthesis of array is bad style
+ 115 | WARNING | No space after opening parenthesis of array is bad style
+ 115 | ERROR   | Expected 1 space between comma and "90"; 0 found
+ 115 | WARNING | No space before closing parenthesis of array is bad style
+ 115 | WARNING | No space after opening parenthesis of array is bad style
+ 115 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 115 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 115 | WARNING | No space before closing parenthesis of array is bad style
+ 116 | WARNING | No space after opening parenthesis of array is bad style
+ 116 | ERROR   | Expected 1 space between comma and "99"; 0 found
+ 116 | WARNING | No space before closing parenthesis of array is bad style
+ 116 | WARNING | No space after opening parenthesis of array is bad style
+ 116 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 116 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 116 | WARNING | No space before closing parenthesis of array is bad style
+ 119 | ERROR   | Function name "testWatermarkPostResizeDefault" is in camel
+     |         | caps format, try 'test_watermark_post_resize_default'
+ 120 | ERROR   | Whitespace found at end of line
+ 124 | ERROR   | Whitespace found at end of line
+ 125 | ERROR   | The first index in a multi-value array must be on a new line
+ 125 | ERROR   | The first index in a multi-value array must be on a new line
+ 125 | ERROR   | The first index in a multi-value array must be on a new line
+ 125 | ERROR   | The first index in a multi-value array must be on a new line
+ 125 | ERROR   | The first index in a multi-value array must be on a new line
+ 125 | ERROR   | The first value in a multi-value array must be on a new line
+ 128 | ERROR   | Each line in an array declaration must end in a comma
+ 130 | ERROR   | Whitespace found at end of line
+ 133 | WARNING | No space after opening parenthesis of array is bad style
+ 133 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 133 | WARNING | No space before closing parenthesis of array is bad style
+ 133 | WARNING | No space after opening parenthesis of array is bad style
+ 133 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 133 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 133 | WARNING | No space before closing parenthesis of array is bad style
+ 134 | WARNING | No space after opening parenthesis of array is bad style
+ 134 | ERROR   | Expected 1 space between comma and "9"; 0 found
+ 134 | WARNING | No space before closing parenthesis of array is bad style
+ 134 | WARNING | No space after opening parenthesis of array is bad style
+ 134 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 134 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 134 | WARNING | No space before closing parenthesis of array is bad style
+ 137 | ERROR   | Function name "testWatermarkPreResize" is in camel caps
+     |         | format, try 'test_watermark_pre_resize'
+ 138 | ERROR   | Whitespace found at end of line
+ 142 | ERROR   | Whitespace found at end of line
+ 143 | ERROR   | The first index in a multi-value array must be on a new line
+ 143 | ERROR   | The first index in a multi-value array must be on a new line
+ 143 | ERROR   | The first index in a multi-value array must be on a new line
+ 143 | ERROR   | The first index in a multi-value array must be on a new line
+ 143 | ERROR   | The first index in a multi-value array must be on a new line
+ 143 | ERROR   | The first value in a multi-value array must be on a new line
+ 147 | ERROR   | Each line in an array declaration must end in a comma
+ 149 | ERROR   | Whitespace found at end of line
+ 152 | WARNING | No space after opening parenthesis of array is bad style
+ 152 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 152 | WARNING | No space before closing parenthesis of array is bad style
+ 152 | WARNING | No space after opening parenthesis of array is bad style
+ 152 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 152 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 152 | WARNING | No space before closing parenthesis of array is bad style
+ 153 | WARNING | No space after opening parenthesis of array is bad style
+ 153 | ERROR   | Expected 1 space between comma and "3"; 0 found
+ 153 | WARNING | No space before closing parenthesis of array is bad style
+ 153 | WARNING | No space after opening parenthesis of array is bad style
+ 153 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 153 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 153 | WARNING | No space before closing parenthesis of array is bad style
+ 156 | ERROR   | Function name "testWatermarkPostResize" is in camel caps
+     |         | format, try 'test_watermark_post_resize'
+ 157 | ERROR   | Whitespace found at end of line
+ 161 | ERROR   | Whitespace found at end of line
+ 162 | ERROR   | The first index in a multi-value array must be on a new line
+ 162 | ERROR   | The first index in a multi-value array must be on a new line
+ 162 | ERROR   | The first index in a multi-value array must be on a new line
+ 162 | ERROR   | The first index in a multi-value array must be on a new line
+ 162 | ERROR   | The first index in a multi-value array must be on a new line
+ 162 | ERROR   | The first value in a multi-value array must be on a new line
+ 166 | ERROR   | Each line in an array declaration must end in a comma
+ 168 | ERROR   | Whitespace found at end of line
+ 171 | WARNING | No space after opening parenthesis of array is bad style
+ 171 | ERROR   | Expected 1 space between comma and "0"; 0 found
+ 171 | WARNING | No space before closing parenthesis of array is bad style
+ 171 | WARNING | No space after opening parenthesis of array is bad style
+ 171 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 171 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 171 | WARNING | No space before closing parenthesis of array is bad style
+ 172 | WARNING | No space after opening parenthesis of array is bad style
+ 172 | ERROR   | Expected 1 space between comma and "9"; 0 found
+ 172 | WARNING | No space before closing parenthesis of array is bad style
+ 172 | WARNING | No space after opening parenthesis of array is bad style
+ 172 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 172 | ERROR   | Expected 1 space between comma and "255"; 0 found
+ 172 | WARNING | No space before closing parenthesis of array is bad style
+--------------------------------------------------------------------------------
+
+
+FILE: ...c/wp-content/themes/fortytwo/vendor/wpthumb/wpthumb.background-fill.php
+--------------------------------------------------------------------------------
+FOUND 8 ERROR(S) AND 4 WARNING(S) AFFECTING 7 LINE(S)
+--------------------------------------------------------------------------------
+ 29 | ERROR   | Inline control structures are not allowed
+ 32 | ERROR   | Inline control structures are not allowed
+ 67 | WARNING | Line is indented with space not tab
+ 67 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 72 | WARNING | Line is indented with space not tab
+ 72 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 79 | WARNING | Line is indented with space not tab
+ 79 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 84 | WARNING | Line is indented with space not tab
+ 84 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 99 | ERROR   | Inline control structures are not allowed
+ 99 | ERROR   | No space before closing parenthesis of function definition
+    |         | prohibited
+--------------------------------------------------------------------------------
+
+
+FILE: ...p-content/themes/fortytwo/vendor/wpthumb/wpthumb.crop-from-position.php
+--------------------------------------------------------------------------------
+FOUND 8 ERROR(S) AFFECTING 8 LINE(S)
+--------------------------------------------------------------------------------
+ 12 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 29 | ERROR | Inline control structures are not allowed
+ 34 | ERROR | Inline control structures are not allowed
+ 53 | ERROR | Each line in an array declaration must end in a comma
+ 72 | ERROR | Inline control structures are not allowed
+ 74 | ERROR | Whitespace found at end of line
+ 75 | ERROR | Inline control structures are not allowed
+ 78 | ERROR | Inline control structures are not allowed
+--------------------------------------------------------------------------------
+
+
+FILE: .../src/wp-content/themes/fortytwo/vendor/wpthumb/wpthumb.image-editor.php
+--------------------------------------------------------------------------------
+FOUND 2 ERROR(S) AFFECTING 2 LINE(S)
+--------------------------------------------------------------------------------
+ 14 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+ 29 | ERROR | No space before closing parenthesis of function definition
+    |       | prohibited
+--------------------------------------------------------------------------------
+
+
+FILE: ...press-develop/src/wp-content/themes/fortytwo/vendor/wpthumb/wpthumb.php
+--------------------------------------------------------------------------------
+FOUND 88 ERROR(S) AND 20 WARNING(S) AFFECTING 76 LINE(S)
+--------------------------------------------------------------------------------
+  64 | ERROR   | Function name "uploadDir" is in camel caps format, try
+     |         | 'upload_dir'
+  66 | ERROR   | Inline control structures are not allowed
+  85 | ERROR   | Inline control structures are not allowed
+  88 | ERROR   | Inline control structures are not allowed
+ 108 | ERROR   | Function name "setFilePath" is in camel caps format, try
+     |         | 'set_file_path'
+ 114 | WARNING | Line is indented with space not tab
+ 114 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 115 | WARNING | Line is indented with space not tab
+ 115 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 119 | ERROR   | Inline control structures are not allowed
+ 122 | ERROR   | Inline control structures are not allowed
+ 126 | ERROR   | Inline control structures are not allowed
+ 135 | ERROR   | Function name "setArgs" is in camel caps format, try
+     |         | 'set_args'
+ 137 | WARNING | Line is indented with space not tab
+ 137 | WARNING | Line is indented with space not tab
+ 137 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 153 | WARNING | Line is indented with space not tab
+ 153 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 153 | ERROR   | Each line in an array declaration must end in a comma
+ 159 | ERROR   | Inline control structures are not allowed
+ 160 | ERROR   | No space after opening parenthesis of function definition
+     |         | prohibited
+ 160 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+ 160 | ERROR   | No space after opening parenthesis of function definition
+     |         | prohibited
+ 160 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+ 160 | ERROR   | No space after opening parenthesis of function definition
+     |         | prohibited
+ 160 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+ 163 | ERROR   | No space after opening parenthesis of function definition
+     |         | prohibited
+ 163 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+ 163 | ERROR   | No space after opening parenthesis of function definition
+     |         | prohibited
+ 163 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+ 166 | ERROR   | No space after opening parenthesis of function definition
+     |         | prohibited
+ 166 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+ 166 | ERROR   | No space after opening parenthesis of function definition
+     |         | prohibited
+ 166 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+ 184 | ERROR   | Inline control structures are not allowed
+ 196 | ERROR   | Function name "getFilePath" is in camel caps format, try
+     |         | 'get_file_path'
+ 198 | ERROR   | Inline control structures are not allowed
+ 201 | ERROR   | Inline control structures are not allowed
+ 207 | WARNING | Line is indented with space not tab
+ 207 | WARNING | Line is indented with space not tab
+ 207 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 207 | ERROR   | Inline control structures are not allowed
+ 208 | WARNING | Line is indented with space not tab
+ 208 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 210 | WARNING | Line is indented with space not tab
+ 210 | WARNING | Line is indented with space not tab
+ 210 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 211 | WARNING | Line is indented with space not tab
+ 211 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 221 | ERROR   | Function name "getArgs" is in camel caps format, try
+     |         | 'get_args'
+ 232 | ERROR   | Function name "getArg" is in camel caps format, try 'get_arg'
+ 234 | ERROR   | Inline control structures are not allowed
+ 234 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 235 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 246 | ERROR   | Function name "getFileExtension" is in camel caps format, try
+     |         | 'get_file_extension'
+ 265 | ERROR   | Function name "getCacheFilePath" is in camel caps format, try
+     |         | 'get_cache_file_path'
+ 269 | ERROR   | Inline control structures are not allowed
+ 281 | ERROR   | Function name "getCacheFileDirectory" is in camel caps format,
+     |         | try 'get_cache_file_directory'
+ 283 | ERROR   | Inline control structures are not allowed
+ 288 | ERROR   | Inline control structures are not allowed
+ 307 | ERROR   | Opening brace should be on the same line as the declaration
+ 319 | ERROR   | Inline control structures are not allowed
+ 322 | ERROR   | Inline control structures are not allowed
+ 338 | ERROR   | Function name "getCacheFileName" is in camel caps format, try
+     |         | 'get_cache_file_name'
+ 340 | ERROR   | Inline control structures are not allowed
+ 345 | ERROR   | Inline control structures are not allowed
+ 352 | ERROR   | Inline control structures are not allowed
+ 359 | ERROR   | Function name "isRemote" is in camel caps format, try
+     |         | 'is_remote'
+ 370 | ERROR   | Function name "generateCacheFile" is in camel caps format, try
+     |         | 'generate_cache_file'
+ 376 | WARNING | Silencing errors is discouraged
+ 385 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+ 410 | WARNING | extract() usage is highly discouraged, due to the complexity
+     |         | and unintended issues it might cause.
+ 417 | ERROR   | Opening brace should be on the same line as the declaration
+ 467 | WARNING | Line is indented with space not tab
+ 467 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 470 | WARNING | Line is indented with space not tab
+ 470 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 479 | ERROR   | Inline control structures are not allowed
+ 481 | ERROR   | Inline control structures are not allowed
+ 484 | ERROR   | Inline control structures are not allowed
+ 486 | ERROR   | Inline control structures are not allowed
+ 488 | ERROR   | Functions must not contain multiple empty lines in a row;
+     |         | found 2 empty lines
+ 511 | ERROR   | Function name "returnImage" is in camel caps format, try
+     |         | 'return_image'
+ 522 | ERROR   | Inline control structures are not allowed
+ 533 | ERROR   | Function name "getCacheFileURL" is in camel caps format, try
+     |         | 'get_cache_file_u_r_l'
+ 543 | ERROR   | Function name "getFileURL" is in camel caps format, try
+     |         | 'get_file_u_r_l'
+ 553 | ERROR   | Function name "getFileURLForFilePath" is in camel caps format,
+     |         | try 'get_file_u_r_l_for_file_path'
+ 605 | ERROR   | Inline control structures are not allowed
+ 611 | ERROR   | Inline control structures are not allowed
+ 614 | ERROR   | Inline control structures are not allowed
+ 617 | ERROR   | Inline control structures are not allowed
+ 618 | WARNING | Line is indented with space not tab
+ 618 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
+ 620 | ERROR   | Inline control structures are not allowed
+ 630 | WARNING | extract() usage is highly discouraged, due to the complexity
+     |         | and unintended issues it might cause.
+ 638 | WARNING | Silencing errors is discouraged
+ 687 | ERROR   | Inline control structures are not allowed
+ 696 | ERROR   | Inline control structures are not allowed
+ 701 | ERROR   | Inline control structures are not allowed
+ 704 | ERROR   | Inline control structures are not allowed
+ 705 | ERROR   | Filesystem writes are forbidden, you should not be using
+     |         | unlink()
+ 711 | ERROR   | Filesystem writes are forbidden, you should not be using
+     |         | rmdir()
+ 726 | ERROR   | Inline control structures are not allowed
+ 726 | ERROR   | Expected 1 space after "!"; 0 found
+ 726 | ERROR   | Filesystem writes are forbidden, you should not be using
+     |         | is_writable()
+ 727 | ERROR   | Expected a sanitizing function (see Codex for 'Data
+     |         | Validation'), but instead saw '__'
+ 727 | ERROR   | Expected a sanitizing function (see Codex for 'Data
+     |         | Validation'), but instead saw 'sprintf'
+ 727 | ERROR   | Expected a sanitizing function (see Codex for 'Data
+     |         | Validation'), but instead saw 'sprintf'
+--------------------------------------------------------------------------------
+
+
+FILE: ...op/src/wp-content/themes/fortytwo/vendor/wpthumb/wpthumb.shortcodes.php
+--------------------------------------------------------------------------------
+FOUND 0 ERROR(S) AND 4 WARNING(S) AFFECTING 3 LINE(S)
+--------------------------------------------------------------------------------
+ 19 | WARNING | Array keys should be surrounded by spaces unless they contain a
+    |         | string or an integer.
+ 20 | WARNING | Array keys should be surrounded by spaces unless they contain a
+    |         | string or an integer.
+ 20 | WARNING | Array keys should be surrounded by spaces unless they contain a
+    |         | string or an integer.
+ 21 | WARNING | Array keys should be surrounded by spaces unless they contain a
+    |         | string or an integer.
+--------------------------------------------------------------------------------
+
+
+FILE: ...lop/src/wp-content/themes/fortytwo/vendor/wpthumb/wpthumb.watermark.php
+--------------------------------------------------------------------------------
+FOUND 53 ERROR(S) AND 2 WARNING(S) AFFECTING 46 LINE(S)
+--------------------------------------------------------------------------------
+  15 | ERROR   | Each line in an array declaration must end in a comma
+  29 | ERROR   | No space after opening parenthesis is prohibited
+  29 | ERROR   | No space before closing parenthesis is prohibited
+  43 | ERROR   | Inline control structures are not allowed
+  45 | ERROR   | Inline control structures are not allowed
+  47 | ERROR   | Functions must not contain multiple empty lines in a row;
+     |         | found 2 empty lines
+  49 | ERROR   | Inline control structures are not allowed
+  51 | ERROR   | Inline control structures are not allowed
+  54 | ERROR   | Whitespace found at end of line
+  66 | ERROR   | Whitespace found at end of line
+  74 | ERROR   | Inline control structures are not allowed
+  90 | ERROR   | Inline control structures are not allowed
+  90 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+  94 | ERROR   | Inline control structures are not allowed
+ 106 | ERROR   | Inline control structures are not allowed
+ 106 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+ 110 | ERROR   | Inline control structures are not allowed
+ 131 | ERROR   | Inline control structures are not allowed
+ 136 | ERROR   | Inline control structures are not allowed
+ 150 | ERROR   | Expected next thing to be a escaping function, not '$post'
+ 153 | ERROR   | Expected next thing to be a escaping function, not '$post'
+ 156 | ERROR   | Expected a sanitizing function (see Codex for 'Data
+     |         | Validation'), but instead saw 'wpthumb_wm_image_has_watermark'
+ 160 | ERROR   | Expected next thing to be a escaping function, not '$post'
+ 161 | ERROR   | Space after opening control structure is required
+ 161 | ERROR   | No space before opening parenthesis is prohibited
+ 162 | ERROR   | Expected next thing to be a escaping function, not '$mask_id'
+ 162 | ERROR   | Expected next thing to be a escaping function, not
+     |         | '$watermark_mask'
+ 169 | ERROR   | Expected next thing to be a escaping function, not '$post'
+ 170 | ERROR   | Expected next thing to be a escaping function, not '$post'
+ 171 | ERROR   | Expected next thing to be a escaping function, not '$post'
+ 172 | ERROR   | Expected next thing to be a escaping function, not '$post'
+ 177 | ERROR   | Expected a sanitizing function (see Codex for 'Data
+     |         | Validation'), but instead saw 'wpthumb_wm_padding'
+ 177 | ERROR   | Expected next thing to be a escaping function, not '$post'
+ 183 | ERROR   | Expected next thing to be a escaping function, not '$post'
+ 194 | ERROR   | Each line in an array declaration must end in a comma
+ 210 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+ 241 | ERROR   | Whitespace found at end of line
+ 243 | ERROR   | Whitespace found at end of line
+ 254 | ERROR   | Inline control structures are not allowed
+ 261 | ERROR   | Space after opening control structure is required
+ 261 | ERROR   | No space before opening parenthesis is prohibited
+ 261 | ERROR   | Expected 1 space after "!"; 0 found
+ 264 | ERROR   | Expected 1 space after "="; 2 found
+ 268 | ERROR   | No space after opening parenthesis of function definition
+     |         | prohibited
+ 268 | ERROR   | No space before closing parenthesis of function definition
+     |         | prohibited
+ 296 | ERROR   | Inline control structures are not allowed
+ 300 | ERROR   | Inline control structures are not allowed
+ 313 | ERROR   | Inline control structures are not allowed
+ 317 | ERROR   | Inline control structures are not allowed
+ 323 | ERROR   | Inline control structures are not allowed
+ 327 | ERROR   | Inline control structures are not allowed
+ 333 | ERROR   | Inline control structures are not allowed
+ 337 | ERROR   | Inline control structures are not allowed
+ 366 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+ 381 | WARNING | Array keys should be surrounded by spaces unless they contain
+     |         | a string or an integer.
+--------------------------------------------------------------------------------
