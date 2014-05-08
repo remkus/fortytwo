@@ -213,6 +213,14 @@ module.exports = function(grunt) {
             }
         },
 
+
+        // PHP
+
+        // Lint .php files for syntax errors
+        phplint: {
+            all: [ '*.php', 'lib/**/*.php', 'templates/**/*.php' ]
+        },
+
         // Build language .pot file
         makepot: {
             theme: {
@@ -242,6 +250,10 @@ module.exports = function(grunt) {
 
 
     // Register tasks
+    
+    grunt.registerTask( 'check', [
+        'phplint'
+    ]);
     
     grunt.registerTask('build:css', [
         'clean',
