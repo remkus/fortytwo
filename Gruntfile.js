@@ -2,7 +2,6 @@
 
 module.exports = function(grunt) {
 
-    require('time-grunt')(grunt);
     require('load-grunt-tasks')(grunt, {
         pattern: ['grunt-*', 'assemble-less']
     });
@@ -213,6 +212,8 @@ module.exports = function(grunt) {
                 }]
             }
         },
+
+        // Build language .pot file
         makepot: {
             theme: {
                 options: {
@@ -239,7 +240,10 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('build', [
+
+    // Register tasks
+    
+    grunt.registerTask('build:css', [
         'clean',
         'copy:fonticons',
         'replace',
@@ -251,15 +255,14 @@ module.exports = function(grunt) {
         'clean'
     ]);
 
-    grunt.registerTask('stylesheet', [
-        'clean',
-        'copy:fonticons',
-        'replace',
-        'less',
-        'cssmin',
-        'cssbeautifier',
-        'csscomb',
-        'concat',
-        'clean'
+    grunt.registerTask( 'build', [
+        'build:css',
+        'makepot'
     ]);
+
+    grunt.registerTask( 'default', [
+        'build'
+    ]);
+
+
 };
