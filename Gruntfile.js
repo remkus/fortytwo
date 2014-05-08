@@ -89,6 +89,36 @@ module.exports = function(grunt) {
                 }]
             }
         },
+
+        // Add vendor prefixes needed for specified browsers
+        autoprefixer: {
+            options: {
+                browsers: [
+                    'last 1 versions',
+                    'Explorer >= 8',
+                ]
+            },
+            all: {
+                src: [
+                    'tmp/assets/css/ft-index.css',
+                    'tmp/assets/css/ft-reset.css',
+                    'tmp/assets/css/ft-core.css',
+                    'tmp/assets/css/ft-font-icons.css',
+                    'tmp/assets/css/ft-header.css',
+                    'tmp/assets/css/ft-navigation.css',
+                    'tmp/assets/css/ft-intro.css',
+                    'tmp/assets/css/ft-widgets.css',
+                    'tmp/assets/css/ft-content.css',
+                    'tmp/assets/css/ft-footer.css',
+                    'tmp/assets/css/ft-print.css',
+                    'tmp/assets/css/ft-custom.css',
+                    'tmp/assets/css/admin/ft-admin-core.css'
+                ],
+                options: {
+                    // diff: 'tmp/autoprefixer.patch'
+                }
+            }
+        },
         cssmin: {
             compress: {
                 options: {
