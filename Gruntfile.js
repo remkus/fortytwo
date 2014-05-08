@@ -188,19 +188,19 @@ module.exports = function(grunt) {
                 options: {
                     domainPath: '/lib/languages',
                     processPot: function( pot, options ) {
-                        pot.headers['report-msgid-bugs-to'] = 'http://forsitethemes.com\n';
-                        pot.headers['plural-forms'] = 'nplurals=2; plural=n != 1;';
-                        pot.headers['last-translator'] = 'Remkus de Vries <translations@forsitethemes.com>\n';
-                        pot.headers['language-team'] = 'Forsite Translations <translations@forsitethemes.com>\n';
-                        pot.headers['x-generator'] = 'CSL v1.x\n';
-                        pot.headers['x-poedit-basepath'] = '.\n';
-                        pot.headers['x-poedit-language'] = 'English\n';
-                        pot.headers['x-poedit-country'] = 'UNITED STATES\n';
-                        pot.headers['x-poedit-sourcecharset'] = 'utf-8\n';
-                        pot.headers['x-poedit-keywordslist'] = '__;_e;_x:1,2c;_ex:1,2c;_n:1,2; _nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__; esc_html__;esc_attr_e; esc_html_e;esc_attr_x:1,2c; esc_html_x:1,2c;\n';
-                        pot.headers['x-poedit-bookmarks'] = '\n';
-                        pot.headers['x-poedit-searchpath-0'] = '.\n';
-                        pot.headers['x-textdomain-support'] = 'yes\n';
+                        pot.headers['report-msgid-bugs-to']   = 'http://forsitethemes.com';
+                        pot.headers['plural-forms']           = 'nplurals=2; plural=n != 1;';
+                        pot.headers['last-translator']        = 'Remkus de Vries <translations@forsitethemes.com>';
+                        pot.headers['language-team']          = 'Forsite Translations <translations@forsitethemes.com>';
+                        pot.headers['x-generator']            = 'grunt-wp-i18n 0.4.3';
+                        pot.headers['x-poedit-basepath']      = '.';
+                        pot.headers['x-poedit-language']      = 'English';
+                        pot.headers['x-poedit-country']       = 'UNITED STATES';
+                        pot.headers['x-poedit-sourcecharset'] = 'utf-8';
+                        pot.headers['x-poedit-keywordslist']  = '__;_e;_x:1,2c;_ex:1,2c;_n:1,2; _nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__; esc_html__;esc_attr_e; esc_html_e;esc_attr_x:1,2c; esc_html_x:1,2c;';
+                        pot.headers['x-poedit-bookmarks']     = '';
+                        pot.headers['x-poedit-searchpath-0']  = '.';
+                        pot.headers['x-textdomain-support']   = 'yes';
                         return pot;
                     },
                     type: 'wp-theme'
