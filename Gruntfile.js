@@ -184,10 +184,10 @@ module.exports = function(grunt) {
             }
         },
         makepot: {
-            target: {
+            theme: {
                 options: {
                     domainPath: '/lib/languages',
-                    processPot: function(pot, options) {
+                    processPot: function( pot, options ) {
                         pot.headers['report-msgid-bugs-to'] = 'http://forsitethemes.com\n';
                         pot.headers['plural-forms'] = 'nplurals=2; plural=n != 1;';
                         pot.headers['last-translator'] = 'Remkus de Vries <translations@forsitethemes.com>\n';
@@ -197,7 +197,7 @@ module.exports = function(grunt) {
                         pot.headers['x-poedit-language'] = 'English\n';
                         pot.headers['x-poedit-country'] = 'UNITED STATES\n';
                         pot.headers['x-poedit-sourcecharset'] = 'utf-8\n';
-                        pot.headers['x-poedit-keywordslist'] = '__;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n';
+                        pot.headers['x-poedit-keywordslist'] = '__;_e;_x:1,2c;_ex:1,2c;_n:1,2; _nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__; esc_html__;esc_attr_e; esc_html_e;esc_attr_x:1,2c; esc_html_x:1,2c;\n';
                         pot.headers['x-poedit-bookmarks'] = '\n';
                         pot.headers['x-poedit-searchpath-0'] = '.\n';
                         pot.headers['x-textdomain-support'] = 'yes\n';
