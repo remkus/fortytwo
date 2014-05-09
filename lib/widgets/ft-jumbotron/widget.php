@@ -10,7 +10,7 @@
  * @link    http://forsitethemes/themes/fortytwo/
  */
 
-class FT_Jumbotron extends FT_Widget {
+class FT_Widget_Jumbotron extends FT_Widget {
 
 	/**
 	 * Specifies the classname and description, instantiates the widget,
@@ -173,4 +173,4 @@ class FT_Jumbotron extends FT_Widget {
 
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Jumbotron");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Jumbotron");' ) );

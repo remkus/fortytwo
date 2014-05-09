@@ -15,7 +15,7 @@
  * @subpackage Widgets
  * @since 1.0.0
  */
-class FT_Contact_Widget extends FT_Widget {
+class FT_Widget_Contact extends FT_Widget {
 
 	/**
 	 * Specifies the classname and description, instantiates the widget,
@@ -128,4 +128,4 @@ class FT_Contact_Widget extends FT_Widget {
 
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Contact_Widget");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Contact");' ) );

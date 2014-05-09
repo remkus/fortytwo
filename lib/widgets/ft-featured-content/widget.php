@@ -13,7 +13,7 @@
 /**
  *  @todo  This code needs better documentation
  */
-class FT_Featured_Content extends FT_Widget {
+class FT_Widget_Featured_Content extends FT_Widget {
 
 	/**
 	 * Specifies the classname and description, instantiates the widget,
@@ -186,4 +186,4 @@ class FT_Featured_Content extends FT_Widget {
 
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Featured_Content");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Featured_Content");' ) );

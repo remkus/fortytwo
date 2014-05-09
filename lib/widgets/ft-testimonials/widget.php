@@ -17,7 +17,7 @@
  */
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-class FT_Testimonials extends FT_Widget {
+class FT_Widget_Testimonials extends FT_Widget {
 
 	/**
 	 * Specifies the classname and description, instantiates the widget,
@@ -116,14 +116,14 @@ class FT_Testimonials extends FT_Widget {
 			case 'category':
 				$posts = get_posts( array(
 						'posts_per_page' => $instance['limit'],
-						'category'       => $instance['category'] ),
+						'category'       => $instance['category'], )
 				);
 
 				foreach ( $posts as $post ) {
 					setup_postdata( $post );
 					$title = get_the_title( $post->ID );
-					$s  = '<a href="' . esc_url( get_permalink( $post->ID ) ) . '">';
-						. '<cite title="' . esc_attr( $title ) . '">' . $title . '</cite>';
+					$s  = '<a href="' . esc_url( get_permalink( $post->ID ) ) . '">'
+						. '<cite title="' . esc_attr( $title ) . '">' . $title . '</cite>'
 						. '</a>';
 
 					$instance['testimonials'][] = array(
@@ -265,4 +265,4 @@ class FT_Testimonials extends FT_Widget {
 
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Testimonials");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Testimonials");' ) );

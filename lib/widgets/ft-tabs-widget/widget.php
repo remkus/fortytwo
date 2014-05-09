@@ -18,7 +18,7 @@
  *
  */
 
-class FT_Tabbed_Content extends FT_Widget {
+class FT_Widget_Tabbed_Content extends FT_Widget {
 
 	/* Variable Declarations */
 	public $fst_widget_cssclass;
@@ -299,4 +299,4 @@ class FT_Tabbed_Content extends FT_Widget {
 
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Tabbed_Content");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Tabbed_Content");' ) );

@@ -25,7 +25,7 @@ define( 'FT_RESPONSIVE_SLIDER_VERSION', '0.10.0' );
 /**
  * Slideshow Widget Class
  */
-class FT_Responsive_Slider extends FT_Widget {
+class FT_Widget_Responsive_Slider extends FT_Widget {
 
 	public $all_widget_settings = array();
 
@@ -489,4 +489,4 @@ class FT_Responsive_Slider extends FT_Widget {
 
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Responsive_Slider");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Responsive_Slider");' ) );
