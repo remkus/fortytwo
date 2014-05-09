@@ -27,6 +27,13 @@ define( 'FT_RESPONSIVE_SLIDER_VERSION', '0.10.0' );
  */
 class FT_Widget_Responsive_Slider extends FT_Widget {
 
+	/**
+	 * Widget slug / directory name.
+	 *
+	 * @var string
+	 */
+	protected $slug = 'ft-responsive-slider';
+
 	public $all_widget_settings = array();
 
 	/**

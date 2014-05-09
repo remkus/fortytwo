@@ -13,6 +13,13 @@
 class FT_Widget_Jumbotron extends FT_Widget {
 
 	/**
+	 * Widget slug / directory name.
+	 *
+	 * @var string
+	 */
+	protected $slug = 'ft-jumbotron';
+
+	/**
 	 * Specifies the classname and description, instantiates the widget,
 	 * loads localization files, and includes necessary stylesheets and JavaScript.
 	 */

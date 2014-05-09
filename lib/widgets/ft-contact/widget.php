@@ -18,6 +18,13 @@
 class FT_Widget_Contact extends FT_Widget {
 
 	/**
+	 * Widget slug / directory name.
+	 *
+	 * @var string
+	 */
+	protected $slug = 'ft-contact';
+
+	/**
 	 * Specifies the classname and description, instantiates the widget,
 	 * loads localization files, and includes necessary stylesheets and JavaScript.
 	 */

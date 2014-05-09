@@ -16,6 +16,13 @@
 class FT_Widget_Featured_Content extends FT_Widget {
 
 	/**
+	 * Widget slug / directory name.
+	 *
+	 * @var string
+	 */
+	protected $slug = 'ft-featured-content';
+
+	/**
 	 * Specifies the classname and description, instantiates the widget,
 	 * loads localization files, and includes necessary stylesheets and JavaScript.
 	 */

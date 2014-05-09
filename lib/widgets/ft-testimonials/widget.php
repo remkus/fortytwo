@@ -20,6 +20,13 @@ include_once ABSPATH . 'wp-admin/includes/plugin.php';
 class FT_Widget_Testimonials extends FT_Widget {
 
 	/**
+	 * Widget slug / directory name.
+	 *
+	 * @var string
+	 */
+	protected $slug = 'ft-testimonials';
+
+	/**
 	 * Specifies the classname and description, instantiates the widget,
 	 * loads localization files, and includes necessary stylesheets and JavaScript.
 	 */

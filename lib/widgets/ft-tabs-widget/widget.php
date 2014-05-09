@@ -20,6 +20,13 @@
 
 class FT_Widget_Tabbed_Content extends FT_Widget {
 
+	/**
+	 * Widget slug / directory name.
+	 *
+	 * @var string
+	 */
+	protected $slug = 'ft-tabbed-content';
+
 	/* Variable Declarations */
 	public $fst_widget_cssclass;
 	public $fst_widget_description;
