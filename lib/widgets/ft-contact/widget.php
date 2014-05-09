@@ -120,19 +120,6 @@ class FT_Widget_Contact extends FT_Widget {
 		wp_enqueue_style( 'ft-contact-admin-styles', $this->url( 'css/admin.css' ) );
 
 	}
-
-	/**
-	 * Returns an absolute URL to a file releative to the widget's folder
-	 *
-	 * @param string   file The file path (relative to the widgets folder)
-	 *
-	 * @return string
-	 */
-	protected function url( $file ) {
-		return trailingslashit( FORTYTWO_WIDGETS_URL ) . 'ft-contact/' . $file;
-	}
-
-
 }
 
 add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Contact");' ) );

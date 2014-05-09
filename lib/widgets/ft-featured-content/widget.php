@@ -169,17 +169,6 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	}
 
 	/**
-	 * Returns an absolute URL to a file releative to the widget's folder
-	 *
-	 * @param string  file The file path (relative to the widgets folder)
-	 *
-	 * @return string
-	 */
-	protected function url( $file ) {
-		return trailingslashit( FORTYTWO_WIDGETS_URL ) . 'ft-featured-content/' . $file;
-	}
-
-	/**
 	 * Set a default value for an empty variable
 	 *
 	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()

@@ -415,17 +415,6 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	}
 
 	/**
-	 * Returns an absolute URL to a file releative to the widget's folder
-	 *
-	 * @param string  file The file path (relative to the widgets folder)
-	 *
-	 * @return string
-	 */
-	private function url( $file ) {
-		return trailingslashit( FORTYTWO_WIDGETS_URL ) . 'ft-responsive-slider/' . $file;
-	}
-
-	/**
 	 * Sanitizes the values of the widget's instance variables
 	 *
 	 * @param array   instance The array of keys and values for the widget.

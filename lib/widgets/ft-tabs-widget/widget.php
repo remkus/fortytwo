@@ -291,19 +291,6 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 		}
 		echo '</select></p>';
 	}
-
-
-	/**
-	 * Returns an absolute URL to a file releative to the widget's folder
-	 *
-	 * @param string   file The file path (relative to the widgets folder)
-	 *
-	 * @return string
-	 */
-	protected function url( $file ) {
-		return trailingslashit( FORTYTWO_WIDGETS_URL ) . 'ft-tabs-widget/' . $file;
-	}
-
 }
 
 add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Tabbed_Content");' ) );

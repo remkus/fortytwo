@@ -154,17 +154,6 @@ class FT_Widget_Jumbotron extends FT_Widget {
 
 	}
 
-		/**
-	 * Returns an absolute URL to a file releative to the widget's folder
-	 *
-	 * @param string  file The file path (relative to the widgets folder)
-	 *
-	 * @return string
-	 */
-	protected function url( $file ) {
-		return trailingslashit( FORTYTWO_WIDGETS_URL ) . 'ft-jumbotron/' . $file;
-	}
-
 	/**
 	 * Set a default value for an empty variable
 	 *
