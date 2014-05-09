@@ -17,7 +17,7 @@
  */
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-class FT_Testimonials extends WP_Widget {
+class FT_Testimonials extends FT_Widget {
 
 	/**
 	 * Specifies the classname and description, instantiates the widget,

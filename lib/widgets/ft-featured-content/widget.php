@@ -13,7 +13,7 @@
 /**
  *  @todo  This code needs better documentation
  */
-class FT_Featured_Content extends WP_Widget {
+class FT_Featured_Content extends FT_Widget {
 
 	/**
 	 * Specifies the classname and description, instantiates the widget,

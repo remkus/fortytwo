@@ -15,7 +15,7 @@
  * @subpackage Widgets
  * @since 1.0.0
  */
-class FT_Contact_Widget extends WP_Widget {
+class FT_Contact_Widget extends FT_Widget {
 
 	/**
 	 * Specifies the classname and description, instantiates the widget,

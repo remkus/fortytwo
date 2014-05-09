@@ -25,7 +25,7 @@ define( 'FT_RESPONSIVE_SLIDER_VERSION', '0.10.0' );
 /**
  * Slideshow Widget Class
  */
-class FT_Responsive_Slider extends WP_Widget {
+class FT_Responsive_Slider extends FT_Widget {
 
 	public $all_widget_settings = array();
 

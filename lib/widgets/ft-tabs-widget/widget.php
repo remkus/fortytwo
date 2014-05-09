@@ -18,7 +18,7 @@
  *
  */
 
-class FT_Tabbed_Content extends WP_Widget {
+class FT_Tabbed_Content extends FT_Widget {
 
 	/* Variable Declarations */
 	public $fst_widget_cssclass;
