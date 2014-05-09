@@ -20,20 +20,20 @@ add_filter( 'genesis_breadcrumb_args', 'fortytwo_breadcrumb_args' );
  */
 function fortytwo_breadcrumb_args( $args ) {
 
-	$args['sep'] = ' / ';
-	$args['list_sep'] = ', ';
+	$args['sep']                     = ' / ';
+	$args['list_sep']                = ', ';
 	$args['heirarchial_attachments'] = true;
-	$args['heirarchial_categories'] = true;
-	$args['display'] = true;
-	$args['labels']['404'] = 'Not found';
-	$args['labels']['prefix'] = '';
-	$args['labels']['author'] = '';
-	$args['labels']['category'] = '';
-	$args['labels']['tag'] = '';
-	$args['labels']['date'] = '';
-	$args['labels']['search'] = '';
-	$args['labels']['tax'] = '';
-	$args['labels']['post_type'] = '';
+	$args['heirarchial_categories']  = true;
+	$args['display']                 = true;
+	$args['labels']['404']           = __( 'Not found', 'fortytwo' );
+	$args['labels']['prefix']        = '';
+	$args['labels']['author']        = '';
+	$args['labels']['category']      = '';
+	$args['labels']['tag']           = '';
+	$args['labels']['date']          = '';
+	$args['labels']['search']        = '';
+	$args['labels']['tax']           = '';
+	$args['labels']['post_type']     = '';
 
 	return $args;
 }
@@ -50,7 +50,7 @@ add_action( 'genesis_after_header', 'fortytwo_insert_site_subheader' );
 function fortytwo_insert_site_subheader() {
 
 	/** do nothing when we're not on the front-page */
-	if ( !is_front_page() ) {
+	if ( ! is_front_page() ) {
 
 		global $post;
 
@@ -59,7 +59,7 @@ function fortytwo_insert_site_subheader() {
 		$ft_subheader_attr = apply_filters( 'fortytwo_site_subheader_attr', array(
 			'title'       => $subheader_title,
 			'breadcrumbs' => true,
-			'widget'      => false
+			'widget'      => false,
 		));
 		?>
 
@@ -70,7 +70,9 @@ function fortytwo_insert_site_subheader() {
 						<h1><?php esc_attr_e( $ft_subheader_attr['title'], 'fortytwo' ); ?></h1>
 					</div>
 					<div class="subheader-breadcrumbs">
-						<?php if ( $ft_subheader_attr['breadcrumbs'] ) genesis_do_breadcrumbs(); ?>
+						<?php if ( $ft_subheader_attr['breadcrumbs'] ) {
+							genesis_do_breadcrumbs();
+						} ?>
 					</div>
 				</div>
 			</div>
@@ -104,7 +106,7 @@ function fortytwo_custom_site_subheader_title( $ft_subheader_attr ) {
 	}
 
 	if ( is_attachment() ) {
-		$ft_subheader_attr['title'] = __( ucwords($post->post_type), 'fortytwo' );
+		$ft_subheader_attr['title'] = __( ucwords( $post->post_type ), 'fortytwo' );
 		return $ft_subheader_attr;
 	}
 
@@ -140,7 +142,7 @@ function fortytwo_custom_site_subheader_title( $ft_subheader_attr ) {
 	}
 
 	if ( is_single() ) {
-		$ft_subheader_attr['title'] = __( ucwords($post->post_type), 'fortytwo' );
+		$ft_subheader_attr['title'] = __( ucwords( $post->post_type ), 'fortytwo' );
 		return $ft_subheader_attr;
 	}
 

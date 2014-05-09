@@ -231,7 +231,7 @@ module.exports = function(grunt) {
 			},
 			options: {
 				standard: 'WordPress',
-				ignore: [ 'node_modules/' ],
+				ignore: [ 'node_modules/', 'vendor/' ],
 				reportFile: 'phpcs.txt'
 			}
 		},

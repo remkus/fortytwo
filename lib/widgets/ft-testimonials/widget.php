@@ -19,10 +19,6 @@ include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 class FT_Testimonials extends WP_Widget {
 
-	/*--------------------------------------------------*/
-	/* Constructor
-	/*--------------------------------------------------*/
-
 	/**
 	 * Specifies the classname and description, instantiates the widget,
 	 * loads localization files, and includes necessary stylesheets and JavaScript.
@@ -42,17 +38,6 @@ class FT_Testimonials extends WP_Widget {
 		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
 
-	} // end constructor
-
-	/**
-	 * Returns an absolute URL to a file releative to the widget's folder
-	 *
-	 * @param string  file The file path (relative to the widgets folder)
-	 *
-	 * @return string
-	 */
-	private function url( $file ) {
-		return FORTYTWO_WIDGETS_URL.'/ft-testimonials'.$file;
 	}
 
 	/**
@@ -65,10 +50,6 @@ class FT_Testimonials extends WP_Widget {
 		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
 	}
 
-	/*--------------------------------------------------*/
-	/* Widget API Functions
-	/*--------------------------------------------------*/
-
 	/**
 	 * Outputs the content of the widget.
 	 *
@@ -77,23 +58,25 @@ class FT_Testimonials extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		extract( $args, EXTR_SKIP );
-
-		echo $before_widget;
+		echo $args['before_widget'];
 
 		foreach ( array( 'title', 'limit', 'datasource', 'category' ) as $field_name ) {
-			$instance[$field_name] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
+			$instance[ $field_name ] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
 		}
-		$this->set_default( $instance['title'], __( "Client Testimonials", 'fortytwo' ) );
+
+		$this->set_default( $instance['title'], __( 'Client Testimonials', 'fortytwo' ) );
 		$this->set_default( $instance['limit'], 5 );
 		$this->set_default( $instance['datasource'], 'category' );
 		$this->set_default( $instance['category'], 1 );
 		$this->set_default( $instance['testimonials'], array() );
 
 		switch ( $instance['datasource'] ) {
-		case "testimonials-by-woothemes":
-			if ( !$this->is_testimonials_by_woothemes_installed() ) break;
-			$posts = woothemes_get_testimonials( array(
+			case 'testimonials-by-woothemes':
+				if ( ! $this->is_testimonials_by_woothemes_installed() ){
+					break;
+				}
+
+				$posts = woothemes_get_testimonials( array(
 					'limit'          => $instance['limit'],
 					'orderby'        => 'menu_order',
 					'order'          => 'DESC',
@@ -104,62 +87,57 @@ class FT_Testimonials extends WP_Widget {
 					'pagination'     => false,
 					'echo'           => true,
 					'size'           => 50,
-				) );
-			foreach ( $posts as $post ) {
-				setup_postdata( $post );
-				$s = "";
-				if ( $post->url )    $s.="<a href='".esc_url( $post->url )."'>";
-				$s .= $post->post_title;
-				if ( $post->byline ) $s.= ", {$post->byline}";
-				if ( $post->url )    $s.="</a>";
-				$instance['testimonials'][] = array (
-					'quote_source_formatted' => $s,
-					'content' => get_the_excerpt()
+					) );
+
+				foreach ( $posts as $post ) {
+					setup_postdata( $post );
+					$s = '';
+
+					if ( $post->url ) {
+						$s .= "<a href='" . esc_url( $post->url ) . "'>";
+					}
+
+					$s .= $post->post_title;
+
+					if ( $post->byline ) {
+						$s .= ', ' . $post->byline;
+					}
+
+					if ( $post->url ) {
+						$s .= '</a>';
+					}
+
+					$instance['testimonials'][] = array(
+						'quote_source_formatted' => $s,
+						'content'                => get_the_excerpt(),
+					);
+				}
+				break;
+			case 'category':
+				$posts = get_posts( array(
+						'posts_per_page' => $instance['limit'],
+						'category'       => $instance['category'] ),
 				);
-			}
-			break;
-		case "category":
-			$posts = get_posts( array(
-					'posts_per_page' => $instance['limit'],
-					'category' => $instance['category'] )
-			);
-			foreach ( $posts as $post ) {
-				setup_postdata( $post );
-				$s  = "<a href='".get_permalink( $post->ID )."'>";
-				$title = get_the_title( $post->ID );
-				$s .= "<cite title='$title'>$title</cite>";
-				$s .= "</a>";
-				$instance['testimonials'][] = array (
-					'quote_source_formatted' => $s,
-					'content' => get_the_excerpt()
-				);
-			}
-			break;
+
+				foreach ( $posts as $post ) {
+					setup_postdata( $post );
+					$title = get_the_title( $post->ID );
+					$s  = '<a href="' . esc_url( get_permalink( $post->ID ) ) . '">';
+						. '<cite title="' . esc_attr( $title ) . '">' . $title . '</cite>';
+						. '</a>';
+
+					$instance['testimonials'][] = array(
+						'quote_source_formatted' => $s,
+						'content'                => get_the_excerpt(),
+					);
+				}
+				break;
 		}
 
 		include dirname( __FILE__ ) . '/views/widget.php';
 
-		echo $after_widget;
+		echo $args['after_widget'];
 
-	} // end widget
-
-	/**
-	 * Set a default value for an empty variable
-	 *
-	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
-	 * @param mixed   default The default value
-	 */
-	private function set_default( &$value, $default ) {
-		if ( empty ( $value ) ) $value = $default;
-	}
-
-	/**
-	 * Set a default value for an empty variable
-	 *
-	 * @return bool true|false depending on whether the testimonials_by_woothemes plugin is installed
-	 */
-	private function is_testimonials_by_woothemes_installed() {
-		return is_plugin_active( "testimonials-by-woothemes/woothemes-testimonials.php" );
 	}
 
 	/**
@@ -173,12 +151,12 @@ class FT_Testimonials extends WP_Widget {
 		$instance = $old_instance;
 
 		foreach ( array( 'title', 'limit', 'datasource', 'category' ) as $field_name ) {
-			$instance[$field_name] = ( !empty( $new_instance[$field_name] ) ) ? strip_tags( $new_instance[$field_name] ) : '';
+			$instance[ $field_name ] = ( ! empty( $new_instance[ $field_name ] ) ) ? strip_tags( $new_instance[ $field_name ] ) : '';
 		}
 
 		return $instance;
 
-	} // end widget
+	}
 
 	/**
 	 * Generates the administration form for the widget.
@@ -190,13 +168,14 @@ class FT_Testimonials extends WP_Widget {
 		$datasources = array();
 		$datasources[] = array(
 			'name' => 'Category',
-			'value' => 'category'
-			);
+			'value' => 'category',
+		)
+		;
 		if ( $this->is_testimonials_by_woothemes_installed() ) {
 			$datasources[] = array(
 				'name' => 'Testimonials by WooThemes',
-				'value' => 'testimonials-by-woothemes'
-				);
+				'value' => 'testimonials-by-woothemes',
+			);
 		}
 
 		$instance = wp_parse_args(
@@ -206,18 +185,14 @@ class FT_Testimonials extends WP_Widget {
 				'limit'       => 5,
 				'datasource'  => '',
 				'category'    => '',
-				'datasources' => $datasources
+				'datasources' => $datasources,
 			)
 		);
 
 		// Display the admin form
 		include dirname( __FILE__ ) . '/views/form.php';
 
-	} // end form
-
-	/*--------------------------------------------------*/
-	/* Public Functions
-	/*--------------------------------------------------*/
+	}
 
 	/**
 	 * Registers and enqueues admin-specific styles.
@@ -225,37 +200,69 @@ class FT_Testimonials extends WP_Widget {
 	public function register_admin_styles() {
 
 		// TODO: Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'ft-testimonials-admin-styles',  $this->url( '/css/admin.css' ) );
+		wp_enqueue_style( 'ft-testimonials-admin-styles',  $this->url( 'css/admin.css' ) );
 
-	} // end register_admin_styles
+	}
 
 	/**
 	 * Registers and enqueues admin-specific JavaScript.
 	 */
 	public function register_admin_scripts() {
 
-		wp_enqueue_script( 'ft-testimonials-admin-script', $this->url( '/js/admin.js' ) );
+		wp_enqueue_script( 'ft-testimonials-admin-script', $this->url( 'js/admin.js' ) );
 
-	} // end register_admin_scripts
+	}
 
 	/**
 	 * Registers and enqueues widget-specific styles.
 	 */
 	public function register_widget_styles() {
 
-		wp_enqueue_style( 'ft-testimonials-widget-styles', $this->url( '/css/widget.css' ) );
+		wp_enqueue_style( 'ft-testimonials-widget-styles', $this->url( 'css/widget.css' ) );
 
-	} // end register_widget_styles
+	}
 
 	/**
 	 * Registers and enqueues widget-specific scripts.
 	 */
 	public function register_widget_scripts() {
 
-		wp_enqueue_script( 'ft-testimonials-script', $this->url( '/js/widget.js' ) );
+		wp_enqueue_script( 'ft-testimonials-script', $this->url( 'js/widget.js' ) );
 
-	} // end register_widget_scripts
+	}
 
-} // end class
+		/**
+	 * Returns an absolute URL to a file releative to the widget's folder
+	 *
+	 * @param string  file The file path (relative to the widgets folder)
+	 *
+	 * @return string
+	 */
+	protected function url( $file ) {
+		return trailingslashit( FORTYTWO_WIDGETS_URL ) . 'ft-testimonials/' . $file;
+	}
+
+	/**
+	 * Set a default value for an empty variable
+	 *
+	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
+	 * @param mixed   default The default value
+	 */
+	protected function set_default( &$value, $default ) {
+		if ( empty ( $value ) ) {
+			$value = $default;
+		}
+	}
+
+	/**
+	 * Set a default value for an empty variable
+	 *
+	 * @return bool true|false depending on whether the testimonials_by_woothemes plugin is installed
+	 */
+	private function is_testimonials_by_woothemes_installed() {
+		return is_plugin_active( 'testimonials-by-woothemes/woothemes-testimonials.php' );
+	}
+
+}
 
 add_action( 'widgets_init', create_function( '', 'register_widget("FT_Testimonials");' ) );

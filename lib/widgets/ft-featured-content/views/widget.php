@@ -10,11 +10,10 @@
  * @link    http://forsitethemes/themes/fortytwo/
  */
 ?>
-<?php echo $before_title ?>
+<?php echo $args['before_title']; ?>
 	<i class="ft-ico <?php echo esc_html( $instance['icon'] ) ?>"></i> <?php echo esc_html( $instance['title'] ) ?>
-<?php echo $after_title ?>
+<?php echo $args['after_title']; ?>
 
 <p><?php echo esc_html( $instance['content'] ); ?></p>
 
 <a class="btn" href="<?php echo esc_url( $instance['button_link'] ) ?>"><?php echo esc_html( $instance['button_text'] ) ?></a>
-

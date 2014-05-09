@@ -17,7 +17,7 @@ add_theme_support( 'genesis-structural-wraps', array(
 	'menu-secondary',
 	'site-inner',
 	'footer-widgets',
-	'footer'
+	'footer',
 ) );
 
 add_action( 'genesis_header', 'fortytwo_inner_structural_wrap_open', 6 );
@@ -94,7 +94,7 @@ function fortytwo_add_data_widget_attr( $id ) {
 
 	global $sidebars_widgets;
 
-	$data_widget_count = count ( $sidebars_widgets[$id] );
+	$data_widget_count = count( $sidebars_widgets[ $id ] );
 
 	return $data_widget_count;
 
@@ -113,18 +113,19 @@ function fortytwo_data_attribute_widget_count( $params ) {
 	global $wp_registered_widgets;
 	global $sidebars_widgets;
 
-	$data_widget_position = (array_search( $params[0]['widget_id'], $sidebars_widgets[$params[0]['id']] )) + 1;
+	$data_widget_position = ( array_search( $params[0]['widget_id'], $sidebars_widgets[ $params[0]['id'] ] ) ) + 1;
 
 	$classname_ = '';
-	foreach ( (array) $wp_registered_widgets[$params[0]['widget_id']]['classname'] as $cn ) {
-		if ( is_string( $cn ) )
+	foreach ( (array) $wp_registered_widgets[ $params[0]['widget_id'] ]['classname'] as $cn ) {
+		if ( is_string( $cn ) ) {
 			$classname_ .= '_' . $cn;
-		elseif ( is_object( $cn ) )
+		} elseif ( is_object( $cn ) ) {
 			$classname_ .= '_' . get_class( $cn );
+		}
 	}
 	$classname_ = ltrim( $classname_, '_' );
 
-	$params[0]['before_widget'] = sprintf('<section id="%1$s" class="widget %2$s" data-widget-position="%3$s"><div class="widget-wrap">', $params[0]['widget_id'], $classname_, $data_widget_position);
+	$params[0]['before_widget'] = sprintf( '<section id="%1$s" class="widget %2$s" data-widget-position="%3$s"><div class="widget-wrap">', $params[0]['widget_id'], $classname_, $data_widget_position );
 
 	return $params;
 }
@@ -138,6 +139,6 @@ function fortytwo_data_attribute_widget_count( $params ) {
  * @todo  This code needs better documentation
  *
  */
-function fortytwo_remove_genesis_markup () {
+function fortytwo_remove_genesis_markup() {
 	return true;
 }

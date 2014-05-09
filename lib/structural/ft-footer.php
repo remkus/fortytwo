@@ -22,21 +22,22 @@ add_action( 'genesis_before_footer', 'fortytwo_insert_footer_widget' );
 function fortytwo_insert_footer_widget() {
 
 	//* Check to see if footer-columns has widgets.
-	if ( ! is_active_sidebar( 'footer-columns' ) )
+	if ( ! is_active_sidebar( 'footer-columns' ) ) {
 		return;
+	}
 
 	$data_widget_count = fortytwo_add_data_widget_attr( 'footer-columns' );
 
 	genesis_markup( array(
 			'html5'   => '<div %s>',
 			'xhtml'   => '<div id="footer-widgets">',
-			'context' => 'footer-widgets'
+			'context' => 'footer-widgets',
 		) );
 
 	genesis_structural_wrap( 'footer-widgets', 'open' );
 
 	echo '<div class="inner-wrap">';
-		echo '<div class="sidebar sidebar-footer-columns widget-area custom-widget-area" data-widget-count="' .$data_widget_count. '">';
+		echo '<div class="sidebar sidebar-footer-columns widget-area custom-widget-area" data-widget-count="' . $data_widget_count . '">';
 				dynamic_sidebar( 'footer-columns' );
 		echo '</div>';
 	echo '</div>';

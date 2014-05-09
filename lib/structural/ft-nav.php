@@ -36,7 +36,7 @@ function fortytwo_do_nav( $nav_output, $nav, $args ) {
 	$nav_attr = genesis_attr( 'nav-primary' );
 
 	// Get the blog name and url to be used for our .nav-brand
-	$nav_brand =  esc_attr( get_bloginfo('name') );
+	$nav_brand     = esc_attr( get_bloginfo( 'name' ) );
 	$nav_brand_url = trailingslashit( home_url() );
 
 	$nav_output = <<<EOD
@@ -129,13 +129,13 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 		// build html
 		$output .= $indent . '<li id="nav-menu-item-' . sanitize_title( $item->title ) . '" class="' . $depth_class_names . ' ' . $class_names . '">';
 
-		$attributes = !empty( $item->attr_title ) ? ' title="' . esc_attr( $item->attr_title ) . '"' : '';
-		$attributes .= !empty( $item->target ) ? ' target="' . esc_attr( $item->target ) . '"' : '';
-		$attributes .= !empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) . '"' : '';
-		$attributes .= !empty( $item->url ) ? ' href="' . esc_attr( $item->url ) . '"' : '';
+		$attributes  = ! empty( $item->attr_title ) ? ' title="' . esc_attr( $item->attr_title ) . '"' : '';
+		$attributes .= ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) . '"' : '';
+		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) . '"' : '';
+		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) . '"' : '';
 		$attributes .= ( $depth < 1 && $args->has_children ) ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
 
-		$item_output = $args->before;
+		$item_output  = $args->before;
 		$item_output .= '<a' . $attributes . '>';
 		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 		$item_output .= ( $depth == 0 && $args->has_children ) ? ' <b class="caret"></b>' : '';
@@ -158,16 +158,16 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 *
 	 */
 	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
-		if ( !$element ) {
+		if ( ! $element ) {
 			return;
 		}
 
 		$id_field = $this->db_fields['id'];
 
 		if ( is_array( $args[0] ) ) {
-			$args[0]['has_children'] = !empty( $children_elements[$element->$id_field] );
+			$args[0]['has_children'] = ! empty( $children_elements[ $element->$id_field ] );
 		} elseif ( is_object( $args[0] ) ) {
-			$args[0]->has_children = !empty( $children_elements[$element->$id_field] );
+			$args[0]->has_children = ! empty( $children_elements[ $element->$id_field ] );
 		}
 
 		$cb_args = array_merge( array( &$output, $element, $depth ), $args );
@@ -175,16 +175,16 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 		$id = $element->$id_field;
 
-		if ( ( $max_depth == 0 || $max_depth > $depth + 1 ) && isset( $children_elements[$id] ) ) {
-			foreach ( $children_elements[$id] as $child ) {
-				if ( !isset( $newlevel ) ) {
+		if ( ( $max_depth == 0 || $max_depth > $depth + 1 ) && isset( $children_elements[ $id ] ) ) {
+			foreach ( $children_elements[ $id ] as $child ) {
+				if ( ! isset( $newlevel ) ) {
 					$newlevel = true;
 					$cb_args = array_merge( array( &$output, $depth ), $args );
 					call_user_func_array( array( &$this, 'start_lvl' ), $cb_args );
 				}
 				$this->display_element( $child, $children_elements, $max_depth, $depth + 1, $args, $output );
 			}
-			unset( $children_elements[$id] );
+			unset( $children_elements[ $id ] );
 		}
 
 		if ( isset( $newlevel ) && $newlevel ) {

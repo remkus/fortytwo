@@ -30,7 +30,7 @@ if ( count( $tabs ) > 0 ) {
 			$class = ' last';
 		}
 
-		$tab_links .= '<li class="' . $class . '"><button type="button" class="btn tab-heading-' . esc_attr( $tab ) . '" data-target="#tab-pane-' . esc_attr( $tab ) . '" data-toggle="tab">' . __( $tab, 'fortytwo' ) . '</button></li>' . "\n";
+		$tab_links .= '<li class="' . sanitize_html_class( $class ) . '"><button type="button" class="btn tab-heading-' . sanitize_html_class( $tab ) . '" data-target="#tab-pane-' . esc_attr( $tab ) . '" data-toggle="tab">' . $tab . '</button></li>' . "\n";
 
 		$tab_content .= '<div id="tab-pane-' . esc_attr( $tab ) . '" class="tab-pane tab-pane-' . esc_attr( $tab ) . $class . '">' . "\n";
 
@@ -48,7 +48,7 @@ if ( count( $tabs ) > 0 ) {
 
 	/* Display the widget title if one was input (before and after defined by themes). */
 	if ( $title ) {
-		$html .= '<div class="tab-select">' . $before_title . $title . $after_title . $tab_links . '</div>';
+		$html .= '<div class="tab-select">' . $args['before_title'] . $title . $args['after_title'] . $tab_links . '</div>';
 	} else {
 		$html .= '<div class="tab-select">' . $tab_links . '</div>';
 	}

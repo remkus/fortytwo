@@ -28,7 +28,7 @@ function fortytwo_register_widget_areas() {
 		'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-wrap">',
 		'after_widget'  => '</div></section>',
 		'before_title'  => '<h4 class="widget-title widgettitle">',
-		'after_title'   => '</h4>'
+		'after_title'   => '</h4>',
 	);
 	register_sidebars( 4, $page_business_widget_areas );
 }

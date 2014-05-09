@@ -17,10 +17,6 @@
  */
 class FT_Contact_Widget extends WP_Widget {
 
-	/*--------------------------------------------------*/
-	/* Constructor
-	/*--------------------------------------------------*/
-
 	/**
 	 * Specifies the classname and description, instantiates the widget,
 	 * loads localization files, and includes necessary stylesheets and JavaScript.
@@ -39,17 +35,6 @@ class FT_Contact_Widget extends WP_Widget {
 		// Register admin styles and scripts
 		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
 
-	} // end constructor
-
-	/**
-	 * Returns an absolute URL to a file releative to the widget's folder
-	 *
-	 * @param string   file The file path (relative to the widgets folder)
-	 *
-	 * @return string
-	 */
-	private function url( $file ) {
-		return FORTYTWO_WIDGETS_URL . '/ft-contact' . $file;
 	}
 
 	/**
@@ -58,9 +43,7 @@ class FT_Contact_Widget extends WP_Widget {
 	 * @param array   $args     Display arguments including before_title, after_title, before_widget, and after_widget.
 	 * @param array   $instance The settings for the particular instance of the widget
 	 */
-	function widget( $args, $instance ) {
-		extract( $args );
-
+	public function widget( $args, $instance ) {
 		$instance = wp_parse_args( (array) $instance, array(
 				'title'     => '',
 				'name'		=> '',
@@ -69,13 +52,13 @@ class FT_Contact_Widget extends WP_Widget {
 				'email'		=> '',
 				'address'	=> '',
 				'pc'		=> '',
-				'city'		=> ''
+				'city'		=> '',
 
 			) );
 
-		echo $before_widget;
+		echo $args['before_widget'];
 		include dirname( __FILE__ ) . '/views/widget.php';
-		echo $after_widget;
+		echo $args['after_widget'];
 	}
 
 	/**
@@ -88,7 +71,7 @@ class FT_Contact_Widget extends WP_Widget {
 	 * @param array   $old_instance Old settings for this instance
 	 * @return array Settings to save or bool false to cancel saving
 	 */
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 
 		$new_instance['name']		= strip_tags( $new_instance['name'] );
 		$new_instance['phone']		= strip_tags( $new_instance['phone'] );
@@ -106,7 +89,7 @@ class FT_Contact_Widget extends WP_Widget {
 	 *
 	 * @param array   $instance Current settings
 	 */
-	function form( $instance ) {
+	public function form( $instance ) {
 
 		$instance = wp_parse_args( (array) $instance, array(
 				'name'		=> '',
@@ -127,9 +110,20 @@ class FT_Contact_Widget extends WP_Widget {
 	 */
 	public function register_admin_styles() {
 
-		wp_enqueue_style( 'ft-contact-admin-styles', $this->url( '/css/admin.css' ) );
+		wp_enqueue_style( 'ft-contact-admin-styles', $this->url( 'css/admin.css' ) );
 
-	} // end register_admin_styles
+	}
+
+	/**
+	 * Returns an absolute URL to a file releative to the widget's folder
+	 *
+	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @return string
+	 */
+	protected function url( $file ) {
+		return trailingslashit( FORTYTWO_WIDGETS_URL ) . 'ft-contact/' . $file;
+	}
 
 
 }

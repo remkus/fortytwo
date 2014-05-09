@@ -53,9 +53,10 @@ add_action( 'wp_head', 'fortytwo_respond_ie_media_queries' );
 function fortytwo_respond_ie_media_queries() {
 	global $is_IE;
 
-	if ( ! $is_IE || ! genesis_html5() )
+	if ( ! $is_IE || ! genesis_html5() ) {
 		return;
+	}
 
-	echo '<!--[if lt IE 9]><script src="' . CHILD_URL . '/vendor/js/respond.min.js"></script><![endif]-->' . "\n";
+	echo '<!--[if lt IE 9]><script src="' . esc_url( CHILD_URL ) . '/vendor/js/respond.min.js"></script><![endif]-->' . "\n";
 
 }

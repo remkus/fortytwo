@@ -24,7 +24,7 @@ add_filter( 'get_archives_link', 'fortytwo_modify_archives_link' );
 function fortytwo_modify_archives_link( $link_html ) {
 
 	preg_match( "/href='(.+?)'/", $link_html, $url );
-	preg_match( "/\<\/a\>&nbsp;\((\d+)\)/", $link_html, $post_count );
+	preg_match( '/\<\/a\>&nbsp;\((\d+)\)/', $link_html, $post_count );
 
 	$requested = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
@@ -56,23 +56,26 @@ class FortyTwo_Walker_Category extends Walker_Category {
 		$cat_name = esc_attr( $category->name );
 		$cat_name = apply_filters( 'list_cats', $cat_name, $category );
 		$link = '<a href="' . esc_url( get_term_link( $category ) ) . '" ';
-		if ( $use_desc_for_title == 0 || empty( $category->description ) )
+		if ( $use_desc_for_title == 0 || empty( $category->description ) ) {
 			$link .= 'title="' . esc_attr( sprintf( __( 'View all posts filed under %s' ), $cat_name ) ) . '"';
-		else
+		} else {
 			$link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $category->description, $category ) ) ) . '"';
+		}
 		$link .= '>';
 		$link .= $cat_name;
 
-		if ( !empty( $show_count ) )
+		if ( ! empty( $show_count ) ) {
 			$link .= '<span class="badge">' . intval( $category->count ) . '</span>';
+		}
 
 		$link .= '</a>';
 
-		if ( !empty( $feed_image ) || !empty( $feed ) ) {
+		if ( ! empty( $feed_image ) || ! empty( $feed ) ) {
 			$link .= ' ';
 
-			if ( empty( $feed_image ) )
+			if ( empty( $feed_image ) ) {
 				$link .= '(';
+			}
 
 			$link .= '<a href="' . esc_url( get_term_feed_link( $category->term_id, $category->taxonomy, $feed_type ) ) . '"';
 
@@ -87,28 +90,31 @@ class FortyTwo_Walker_Category extends Walker_Category {
 
 			$link .= '>';
 
-			if ( empty( $feed_image ) )
+			if ( empty( $feed_image ) ) {
 				$link .= $name;
-			else
+			} else {
 				$link .= "<img src='$feed_image'$alt$title" . ' />';
+			}
 
 			$link .= '</a>';
 
-			if ( empty( $feed_image ) )
+			if ( empty( $feed_image ) ) {
 				$link .= ')';
+			}
 		}
 
 		if ( 'list' == $args['style'] ) {
 			$output .= "\t<li";
 			$class = 'cat-item cat-item-' . $category->term_id;
-			if ( !empty( $current_category ) ) {
+			if ( ! empty( $current_category ) ) {
 				$_current_category = get_term( $current_category, $category->taxonomy );
-				if ( $category->term_id == $current_category )
-					$class .=  ' current-cat';
-				elseif ( $category->term_id == $_current_category->parent )
-					$class .=  ' current-cat-parent';
+				if ( $category->term_id == $current_category ) {
+					$class .= ' current-cat';
+				} elseif ( $category->term_id == $_current_category->parent ) {
+					$class .= ' current-cat-parent';
+				}
 			}
-			$output .=  ' class="' . $class . '"';
+			$output .= ' class="' . $class . '"';
 			$output .= ">$link\n";
 		} else {
 			$output .= "\t$link<br />\n";
@@ -173,7 +179,7 @@ function fortytwo_tag_cloud_list_format( $args ) {
 		'format'   => 'list',
 		'unit'     => '%',
 		'smallest' => 100,
-		'largest'  => 100
+		'largest'  => 100,
 	);
 
 	// Parse incoming $args into an array and merge it with $defaults

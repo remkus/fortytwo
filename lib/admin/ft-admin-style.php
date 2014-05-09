@@ -20,6 +20,6 @@ add_action( 'admin_print_styles', 'fortytwo_load_admin_styles' );
  */
 function fortytwo_load_admin_styles() {
 
-	wp_enqueue_style( 'fortytwo_admin_css', FORTYTWO_LIB_URL . "/admin/admin-style.css", array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'fortytwo_admin_css', FORTYTWO_LIB_URL . '/admin/admin-style.css', array(), CHILD_THEME_VERSION );
 
 }

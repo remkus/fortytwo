@@ -21,22 +21,18 @@
 class FT_Tabbed_Content extends WP_Widget {
 
 	/* Variable Declarations */
-	var $fst_widget_cssclass;
-	var $fst_widget_description;
-	var $fst_widget_idbase;
-	var $fst_widget_title;
+	public $fst_widget_cssclass;
+	public $fst_widget_description;
+	public $fst_widget_idbase;
+	public $fst_widget_title;
 
-	var $available_tabs;
-
-	/*--------------------------------------------------*/
-	/* Constructor
-	/*--------------------------------------------------*/
+	public $available_tabs;
 
 	/**
 	 * Specifies the classname and description, instantiates the widget,
 	 * loads localization files, and includes necessary stylesheets and JavaScript.
 	 */
-	function __construct() {
+	public function __construct() {
 
 		/* Widget variable settings. */
 		$this->fst_widget_cssclass    = 'ft-tabbed-content';
@@ -44,7 +40,7 @@ class FT_Tabbed_Content extends WP_Widget {
 		$this->fst_widget_idbase      = 'widget-ft-tabbed-content';
 		$this->fst_widget_title       = __( '42&nbsp;&nbsp;- Tabs', 'fortytwo' );
 
-		$this->available_tabs = array( 'latest', 'popular', "comments", "tags" );
+		$this->available_tabs = array( 'latest', 'popular', 'comments', 'tags' );
 		// Allow child themes/plugins to filter here.
 		$this->available_tabs = apply_filters( 'ft_available_tabbed_content', $this->available_tabs );
 
@@ -60,17 +56,6 @@ class FT_Tabbed_Content extends WP_Widget {
 		// Register admin styles and scripts
 		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
 
-	} // End Constructor
-
-	/**
-	 * Returns an absolute URL to a file releative to the widget's folder
-	 *
-	 * @param string   file The file path (relative to the widgets folder)
-	 *
-	 * @return string
-	 */
-	private function url( $file ) {
-		return FORTYTWO_WIDGETS_URL . '/ft-tabs-widget' . $file;
 	}
 
 	/**
@@ -79,24 +64,22 @@ class FT_Tabbed_Content extends WP_Widget {
 	 * @param array   $args     Display arguments including before_title, after_title, before_widget, and after_widget.
 	 * @param array   $instance The settings for the particular instance of the widget
 	 */
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		$html = '';
-
-		extract( $args, EXTR_SKIP );
 
 		/* Our variables from the widget settings. */
 		$title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
 		$tabs = $instance['tabs'];
 
 		/* Before widget (defined by themes). */
-		echo $before_widget;
+		echo $args['before_widget'];
 
 		include dirname( __FILE__ ) . '/views/widget.php';
 
 		/* After widget (defined by themes). */
-		echo $after_widget;
+		echo $args['after_widget'];
 
-	} // End widget()
+	}
 
 	/**
 	 * Update a particular instance.
@@ -108,7 +91,7 @@ class FT_Tabbed_Content extends WP_Widget {
 	 * @param array   $old_instance Old settings for this instance
 	 * @return array Settings to save or bool false to cancel saving
 	 */
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
 		/* Strip tags for title and name to remove HTML (important for text inputs). */
@@ -134,14 +117,14 @@ class FT_Tabbed_Content extends WP_Widget {
 		$instance = apply_filters( $this->fst_widget_idbase . '_widget_save', $instance, $new_instance, $this );
 
 		return $instance;
-	} // End update()
+	}
 
 	/**
 	 * Echo the settings update form.
 	 *
 	 * @param array   $instance Current settings
 	 */
-	function form( $instance ) {
+	public function form( $instance ) {
 
 		/* Set up some default widget settings. */
 		/* Make sure all keys are added here, even with empty string values. */
@@ -150,7 +133,7 @@ class FT_Tabbed_Content extends WP_Widget {
 			'tabs'            => array_slice( $this->available_tabs, 0, 3 ), /* default to selecting the first 3, to suggest that it is possible to omit having a tab */
 			'limit'           => 5,
 			'image_dimension' => 45,
-			'image_alignment' => 'left'
+			'image_alignment' => 'left',
 		);
 
 		// Allow child themes/plugins to filter here.
@@ -160,31 +143,15 @@ class FT_Tabbed_Content extends WP_Widget {
 
 		include dirname( __FILE__ ) . '/views/form.php';
 
-	} // End form()
+	}
 
 	/**
 	 * Registers and enqueues admin-specific styles.
 	 */
 	public function register_admin_styles() {
 
-		wp_enqueue_style( 'ft-tabbed-content-admin-styles', $this->url( '/css/admin.css' ) );
+		wp_enqueue_style( 'ft-tabbed-content-admin-styles', $this->url( 'css/admin.css' ) );
 
-	} // end register_admin_styles
-
-	/**
-	 * Renders a tabs selection dropdown box
-	 *
-	 * @param array   $available_tabs An array of all the available tabs
-	 * @param array   $selected_tabs  An array of the tabs that are currently selected
-	 * @param int     $position       The position / order of the tab in the selected tabs
-	 */
-	private function render_tabs_dropdown( $available_tabs, $selected_tabs, $position ) {
-		echo "<p><select name='{$this->get_field_name( "tab_$position" )}' class='widefat' id='{$this->get_field_id( "tab_$position" )}'>";
-		echo '<option value="none">' . __( ' - None selected - ', 'fortytwo' ) . '</option>';
-		foreach ( $available_tabs as $available_tab ) {
-			echo '<option value="' . $available_tab . '"' . selected( $available_tab, $selected_tabs[$position], false ) . '>' . __( $available_tab, 'fortytwo' ) . "</option>";
-		}
-		echo "</select></p>";
 	}
 
 	/**
@@ -194,7 +161,7 @@ class FT_Tabbed_Content extends WP_Widget {
 	 * @param int $image_dimension
 	 * @param string $image_alignment The image alignment CSS class.  One of (???|???|???)
 	 */
-	function tab_content_latest( $limit, $image_dimension, $image_alignment ) {
+	public function tab_content_latest( $limit, $image_dimension, $image_alignment ) {
 		global $post;
 		$html = '';
 
@@ -214,16 +181,16 @@ class FT_Tabbed_Content extends WP_Widget {
 		wp_reset_query();
 
 		return $html;
-	} // End tab_content_latest()
+	}
 
-  /**
+	/**
 	 * Renders the popular content tab
 	 *
 	 * @param int $limit            The max number of content items to show
 	 * @param int $image_dimension
 	 * @param string $image_alignment The image alignment CSS class.  One of (???|???|???)
 	 */
-	function tab_content_popular( $limit, $image_dimension, $image_alignment ) {
+	public function tab_content_popular( $limit, $image_dimension, $image_alignment ) {
 		global $post;
 		$html = '';
 
@@ -243,16 +210,16 @@ class FT_Tabbed_Content extends WP_Widget {
 		wp_reset_query();
 
 		return $html;
-	} // End tab_content_popular()
+	}
 
-  /**
+	/**
 	 * Renders the comments tab
 	 *
 	 * @param int $limit            The max number of comment items to show
 	 * @param int $image_dimension
 	 * @param string $image_alignment The image alignment CSS class.  One of (???|???|???)
 	 */
-	function tab_content_comments( $limit, $image_dimension, $image_alignment ) {
+	public function tab_content_comments( $limit, $image_dimension, $image_alignment ) {
 		global $wpdb;
 		$html = '';
 
@@ -270,16 +237,16 @@ class FT_Tabbed_Content extends WP_Widget {
 		}
 
 		return $html;
-	} // End tab_content_comments()
+	}
 
 	/**
 	 * Return default content for the content tab
 	 *
 	 * @return string
 	 */
-	function tab_content_default( $token = '' ) {
-		// Silence is golden.
-	} // End tab_content_default()
+	public function tab_content_default( $token = '' ) {
+		// noop
+	}
 
 	/**
 	 * Returns an HTML fragment containing an <img> element for a post's image thumbnail
@@ -289,7 +256,7 @@ class FT_Tabbed_Content extends WP_Widget {
 	 *
 	 * @return string $html
 	 */
-	function get_image( $dimension, $post ) {
+	public function get_image( $dimension, $post ) {
 		// TODO: This could use post type icon if no post thumbnail is supported
 		//$html = '<img data-src="holder.js/' . $dimension . 'x' . $dimension .'" class="no-thumbnail wp-post-image hide">';
 
@@ -299,8 +266,37 @@ class FT_Tabbed_Content extends WP_Widget {
 
 		return $html;
 
-	} // End get_image()
+	}
 
-} // End Class
+
+	/**
+	 * Renders a tabs selection dropdown box
+	 *
+	 * @param array   $available_tabs An array of all the available tabs
+	 * @param array   $selected_tabs  An array of the tabs that are currently selected
+	 * @param int     $position       The position / order of the tab in the selected tabs
+	 */
+	protected function render_tabs_dropdown( $available_tabs, $selected_tabs, $position ) {
+		echo '<p><select name="' . $this->get_field_name( 'tab_$position' ) . '"" class="widefat" id="' . $this->get_field_id( 'tab_$position' ) . '">';
+		echo '<option value="none">' . __( ' - None selected - ', 'fortytwo' ) . '</option>';
+		foreach ( $available_tabs as $available_tab ) {
+			echo '<option value="' . esc_attr( $available_tab ) . '"' . selected( $available_tab, $selected_tabs[ $position ], false ) . '>' . __( $available_tab, 'fortytwo' ) . '</option>';
+		}
+		echo '</select></p>';
+	}
+
+
+	/**
+	 * Returns an absolute URL to a file releative to the widget's folder
+	 *
+	 * @param string   file The file path (relative to the widgets folder)
+	 *
+	 * @return string
+	 */
+	protected function url( $file ) {
+		return trailingslashit( FORTYTWO_WIDGETS_URL ) . 'ft-tabs-widget/' . $file;
+	}
+
+}
 
 add_action( 'widgets_init', create_function( '', 'register_widget("FT_Tabbed_Content");' ) );
