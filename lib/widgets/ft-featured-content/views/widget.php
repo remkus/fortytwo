@@ -11,7 +11,7 @@
  */
 ?>
 <?php echo $args['before_title']; ?>
-	<i class="ft-ico <?php echo esc_html( $instance['icon'] ) ?>"></i> <?php echo esc_html( $instance['title'] ) ?>
+	<i class="ft-ico <?php echo sanitize_html_class( $instance['icon'] ) ?>"></i> <?php echo esc_html( $instance['title'] ) ?>
 <?php echo $args['after_title']; ?>
 
 <p><?php echo esc_html( $instance['content'] ); ?></p>
