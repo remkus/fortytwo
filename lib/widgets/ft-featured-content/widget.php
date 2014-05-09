@@ -167,19 +167,6 @@ class FT_Widget_Featured_Content extends FT_Widget {
 		wp_enqueue_script( 'ft-featured-content-script', $this->url( 'js/widget.js' ) );
 
 	}
-
-	/**
-	 * Set a default value for an empty variable
-	 *
-	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
-	 * @param mixed   default The default value
-	 */
-	private function set_default( &$value, $default ) {
-		if ( empty ( $value ) ) {
-			$value = $default;
-		}
-	}
-
 }
 
 add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Featured_Content");' ) );

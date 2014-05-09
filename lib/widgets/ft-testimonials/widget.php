@@ -239,19 +239,7 @@ class FT_Widget_Testimonials extends FT_Widget {
 	}
 
 	/**
-	 * Set a default value for an empty variable
-	 *
-	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
-	 * @param mixed   default The default value
-	 */
-	protected function set_default( &$value, $default ) {
-		if ( empty ( $value ) ) {
-			$value = $default;
-		}
-	}
-
-	/**
-	 * Set a default value for an empty variable
+	 * Check if Testimonials by WooThemes plugin is active.
 	 *
 	 * @return bool true|false depending on whether the testimonials_by_woothemes plugin is installed
 	 */

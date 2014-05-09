@@ -24,4 +24,17 @@ abstract class FT_Widget extends WP_Widget {
 		// return trailingslashit( FORTYTWO_WIDGETS_URL ) . trailingslashit( $directory ) . $file;
 		return trailingslashit( FORTYTWO_WIDGETS_URL ) . trailingslashit( $this->slug ) . $file;
 	}
+
+	/**
+	 * Set a default value for an empty variable.
+	 *
+	 * @param mixed $value   The variable whose default should be set.
+	 *                       
+	 * @param mixed $default The default value.
+	 */
+	protected function set_default( &$value, $default ) {
+		if ( empty ( $value ) ) {
+			$value = $default;
+		}
+	}
 }
