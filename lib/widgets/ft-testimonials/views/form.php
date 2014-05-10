@@ -15,19 +15,19 @@
 	<tr>
 		<td>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'fortytwo' ); ?></label>
-			<input class="widefat" type="text" <?php $this->echo_field_id( 'title' ) ?> value="<?php echo esc_attr( $instance['title'] ); ?>">
+			<input class="widefat" type="text"<?php $this->id_name( 'title' ); ?> value="<?php echo esc_attr( $instance['title'] ); ?>">
 		</td>
   </tr>
 	<tr>
 		<td>
 			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:', 'fortytwo' ); ?></label>
-			<input class="widefat" type="text" <?php $this->echo_field_id( 'limit' ) ?> value="<?php echo esc_attr( $instance['limit'] ); ?>">
+			<input class="widefat" type="text"<?php $this->id_name( 'limit' ); ?> value="<?php echo esc_attr( $instance['limit'] ); ?>">
 		</td>
   </tr>
 	<tr>
 		<td>
 			<label for="<?php echo $this->get_field_id( 'datasource' ); ?>"><?php _e( 'Datasource:', 'fortytwo' ); ?></label>
-			<select class="widefat" <?php $this->echo_field_id( 'datasource' ) ?> >
+			<select class="widefat"<?php $this->id_name( 'datasource' ); ?> >
 				<option class="widefat" <?php if ( '' == $instance['datasource'] ) { echo 'selected="selected"'; } ?>>==&gt;&nbsp;<?php _e( 'Select', 'fortytwo' ); ?>&nbsp;&lt;==</option>
 				<?php foreach ( $instance['datasources'] as $datasource ) { ?>
 				<option class="widefat" value="<?php echo esc_attr( $datasource['value'] ); ?>" <?php if ( $datasource['value'] == $instance['datasource'] ) { echo 'selected="selected"'; } ?>>
