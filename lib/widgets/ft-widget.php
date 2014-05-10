@@ -37,4 +37,13 @@ abstract class FT_Widget extends WP_Widget {
 			$value = $default;
 		}
 	}
+
+	/**
+	 * Echo both the id and name attributes for a form field element.
+	 *
+	 * @param string $field The field name.
+	 */
+	public function echo_field_id( $field ) {
+		echo ' id="' . esc_attr( $this->get_field_id( $field ) ) . '" name="' . esc_attr( $this->get_field_name( $field ) ) . '" ';
+	}
 }

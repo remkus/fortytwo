@@ -472,17 +472,6 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 		wp_enqueue_script( 'flexslider', $this->url( 'js/jquery.flexslider-min.js' ), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, true );
 
 	}
-
-	/**
-	 * Helper method to echo both the id= and name= attributes for a field input element
-	 *
-	 * @param string  field The field name
-	 *
-	 */
-	public function echo_field_id( $field ) {
-		echo ' id="' . $this->get_field_id( $field ) . '" name="' . $this->get_field_name( $field ) . '" ';
-	}
-
 }
 
 add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Responsive_Slider");' ) );

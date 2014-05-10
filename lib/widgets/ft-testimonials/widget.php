@@ -82,7 +82,7 @@ class FT_Widget_Testimonials extends FT_Widget {
 		include dirname( __FILE__ ) . '/views/form.php';
 
 	}
-	
+
 	/**
 	 * Processes the widget's options to be saved.
 	 *
@@ -236,17 +236,6 @@ class FT_Widget_Testimonials extends FT_Widget {
 		wp_enqueue_script( 'ft-testimonials-script', $this->url( 'js/widget.js' ) );
 
 	}
-
-	/**
-	 * Helper method to echo both the id= and name= attributes for a field input element
-	 *
-	 * @param string  field The field name
-	 *
-	 */
-	public function echo_field_id( $field ) {
-		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
-	}
-
 }
 
 add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Testimonials");' ) );
