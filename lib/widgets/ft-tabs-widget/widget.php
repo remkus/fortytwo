@@ -121,7 +121,7 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 		}
 
 		// Allow child themes/plugins to act here.
-		$instance = apply_filters( $this->fst_widget_idbase . '_widget_save', $instance, $new_instance, $this );
+		$instance = apply_filters( "{$this->fst_widget_idbase}_widget_save", $instance, $new_instance, $this );
 
 		return $instance;
 	}
@@ -144,7 +144,7 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 		);
 
 		// Allow child themes/plugins to filter here.
-		$defaults = apply_filters( $this->fst_widget_idbase . '_widget_defaults', $defaults, $this );
+		$defaults = apply_filters( "{$this->fst_widget_idbase}_widget_defaults", $defaults, $this );
 		$instance = wp_parse_args( (array)$instance, $defaults );
 		$available_tabs = $this->available_tabs;
 

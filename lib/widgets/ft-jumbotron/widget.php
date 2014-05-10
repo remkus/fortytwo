@@ -61,7 +61,7 @@ class FT_Widget_Jumbotron extends FT_Widget {
 		echo $args['before_widget'];
 
 		foreach ( array( 'title', 'content', 'button_text', 'button_link', 'button_alignment' ) as $field_name ) {
-			$instance[ $field_name ] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
+			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
 		}
 		$this->set_default( $instance['title'], __( 'Announcing the most important product feature', 'fortytwo' ) );
 		$this->set_default( $instance['content'], __( 'And purely one near this hey therefore darn firefly had ducked overpaid wow!', 'fortytwo' ) );

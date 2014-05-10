@@ -54,7 +54,7 @@ class FT_Widget_Featured_Content extends FT_Widget {
 		echo $args['before_widget'];
 
 		foreach ( array( 'title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name ) {
-			$instance[ $field_name ] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
+			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
 		}
 		$this->set_default( $instance['title'], __( 'The title', 'fortytwo' ) );
 		$this->set_default( $instance['icon '], 'icon-star' );

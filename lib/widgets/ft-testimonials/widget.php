@@ -68,7 +68,7 @@ class FT_Widget_Testimonials extends FT_Widget {
 		echo $args['before_widget'];
 
 		foreach ( array( 'title', 'limit', 'datasource', 'category' ) as $field_name ) {
-			$instance[ $field_name ] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
+			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
 		}
 
 		$this->set_default( $instance['title'], __( 'Client Testimonials', 'fortytwo' ) );

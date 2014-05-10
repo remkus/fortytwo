@@ -165,7 +165,7 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 				'slideshow_more_text',
 				'slideshow_excerpt_content_limit',
 				'slideshow_excerpt_width', ) as $field_name ) {
-			$instance[ $field_name ] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
+			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
 		}
 
 		$term_args = array();
