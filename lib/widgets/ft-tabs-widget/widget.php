@@ -66,25 +66,28 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 	}
 
 	/**
-	 * Echo the widget content.
+	 * Echo the settings update form.
 	 *
-	 * @param array   $args     Display arguments including before_title, after_title, before_widget, and after_widget.
-	 * @param array   $instance The settings for the particular instance of the widget
+	 * @param array   $instance Current settings
 	 */
-	public function widget( $args, $instance ) {
-		$html = '';
+	public function form( $instance ) {
 
-		/* Our variables from the widget settings. */
-		$title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
-		$tabs = $instance['tabs'];
+		/* Set up some default widget settings. */
+		/* Make sure all keys are added here, even with empty string values. */
+		$defaults = array(
+			'title'           => __( 'Tabs', 'fortytwo' ),
+			'tabs'            => array_slice( $this->available_tabs, 0, 3 ), /* default to selecting the first 3, to suggest that it is possible to omit having a tab */
+			'limit'           => 5,
+			'image_dimension' => 45,
+			'image_alignment' => 'left',
+		);
 
-		/* Before widget (defined by themes). */
-		echo $args['before_widget'];
+		// Allow child themes/plugins to filter here.
+		$defaults = apply_filters( "{$this->fst_widget_idbase}_widget_defaults", $defaults, $this );
+		$instance = wp_parse_args( (array)$instance, $defaults );
+		$available_tabs = $this->available_tabs;
 
-		include dirname( __FILE__ ) . '/views/widget.php';
-
-		/* After widget (defined by themes). */
-		echo $args['after_widget'];
+		include dirname( __FILE__ ) . '/views/form.php';
 
 	}
 
@@ -127,40 +130,28 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 	}
 
 	/**
-	 * Echo the settings update form.
+	 * Echo the widget content.
 	 *
-	 * @param array   $instance Current settings
+	 * @param array   $args     Display arguments including before_title, after_title, before_widget, and after_widget.
+	 * @param array   $instance The settings for the particular instance of the widget
 	 */
-	public function form( $instance ) {
+	public function widget( $args, $instance ) {
+		$html = '';
 
-		/* Set up some default widget settings. */
-		/* Make sure all keys are added here, even with empty string values. */
-		$defaults = array(
-			'title'           => __( 'Tabs', 'fortytwo' ),
-			'tabs'            => array_slice( $this->available_tabs, 0, 3 ), /* default to selecting the first 3, to suggest that it is possible to omit having a tab */
-			'limit'           => 5,
-			'image_dimension' => 45,
-			'image_alignment' => 'left',
-		);
+		/* Our variables from the widget settings. */
+		$title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
+		$tabs = $instance['tabs'];
 
-		// Allow child themes/plugins to filter here.
-		$defaults = apply_filters( "{$this->fst_widget_idbase}_widget_defaults", $defaults, $this );
-		$instance = wp_parse_args( (array)$instance, $defaults );
-		$available_tabs = $this->available_tabs;
+		/* Before widget (defined by themes). */
+		echo $args['before_widget'];
 
-		include dirname( __FILE__ ) . '/views/form.php';
+		include dirname( __FILE__ ) . '/views/widget.php';
+
+		/* After widget (defined by themes). */
+		echo $args['after_widget'];
 
 	}
-
-	/**
-	 * Registers and enqueues admin-specific styles.
-	 */
-	public function register_admin_styles() {
-
-		wp_enqueue_style( 'ft-tabbed-content-admin-styles', $this->url( 'css/admin.css' ) );
-
-	}
-
+	
 	/**
 	 * Renders the latest content tab
 	 *
@@ -290,6 +281,15 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 			echo '<option value="' . esc_attr( $available_tab ) . '"' . selected( $available_tab, $selected_tabs[ $position ], false ) . '>' . __( $available_tab, 'fortytwo' ) . '</option>';
 		}
 		echo '</select></p>';
+	}
+
+	/**
+	 * Registers and enqueues admin-specific styles.
+	 */
+	public function register_admin_styles() {
+
+		wp_enqueue_style( 'ft-tabbed-content-admin-styles', $this->url( 'css/admin.css' ) );
+
 	}
 }
 

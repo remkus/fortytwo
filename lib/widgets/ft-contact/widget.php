@@ -45,27 +45,24 @@ class FT_Widget_Contact extends FT_Widget {
 	}
 
 	/**
-	 * Echo the widget content.
+	 * Echo the settings update form.
 	 *
-	 * @param array   $args     Display arguments including before_title, after_title, before_widget, and after_widget.
-	 * @param array   $instance The settings for the particular instance of the widget
+	 * @param array   $instance Current settings
 	 */
-	public function widget( $args, $instance ) {
+	public function form( $instance ) {
+
 		$instance = wp_parse_args( (array) $instance, array(
-				'title'     => '',
 				'name'		=> '',
 				'phone'		=> '',
-				'fax'		=> '',
 				'email'		=> '',
+				'fax'		=> '',
 				'address'	=> '',
 				'pc'		=> '',
 				'city'		=> '',
-
 			) );
 
-		echo $args['before_widget'];
-		include dirname( __FILE__ ) . '/views/widget.php';
-		echo $args['after_widget'];
+		include dirname( __FILE__ ) . '/views/form.php';
+
 	}
 
 	/**
@@ -92,24 +89,27 @@ class FT_Widget_Contact extends FT_Widget {
 	}
 
 	/**
-	 * Echo the settings update form.
+	 * Echo the widget content.
 	 *
-	 * @param array   $instance Current settings
+	 * @param array   $args     Display arguments including before_title, after_title, before_widget, and after_widget.
+	 * @param array   $instance The settings for the particular instance of the widget
 	 */
-	public function form( $instance ) {
-
+	public function widget( $args, $instance ) {
 		$instance = wp_parse_args( (array) $instance, array(
+				'title'     => '',
 				'name'		=> '',
 				'phone'		=> '',
-				'email'		=> '',
 				'fax'		=> '',
+				'email'		=> '',
 				'address'	=> '',
 				'pc'		=> '',
 				'city'		=> '',
+
 			) );
 
-		include dirname( __FILE__ ) . '/views/form.php';
-
+		echo $args['before_widget'];
+		include dirname( __FILE__ ) . '/views/widget.php';
+		echo $args['after_widget'];
 	}
 
 	/**

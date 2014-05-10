@@ -41,37 +41,24 @@ class FT_Widget_Jumbotron extends FT_Widget {
 	}
 
 	/**
-	 * Helper method to echo both the id= and name= attributes for a field input element
+	 * Generates the administration form for the widget.
 	 *
-	 * @param string  field The field name
-	 *
+	 * @param array   instance The array of keys and values for the widget.
 	 */
-	public function echo_field_id( $field ) {
-		echo ' id="' . $this->get_field_id( $field ). '" name="' . $this->get_field_name( $field ) . '" ';
-	}
+	public function form( $instance ) {
+		$instance = wp_parse_args(
+			(array) $instance,
+			array(
+				'title'            => '',
+				'content'          => '',
+				'button_alignment' => 'right',
+				'button_text'      => '',
+				'button_link'      => '',
+			)
+		);
 
-	/**
-	 * Outputs the content of the widget.
-	 *
-	 * @param array   args  The array of form elements
-	 * @param array   instance The current instance of the widget
-	 */
-	public function widget( $args, $instance ) {
-
-		echo $args['before_widget'];
-
-		foreach ( array( 'title', 'content', 'button_text', 'button_link', 'button_alignment' ) as $field_name ) {
-			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
-		}
-		$this->set_default( $instance['title'], __( 'Announcing the most important product feature', 'fortytwo' ) );
-		$this->set_default( $instance['content'], __( 'And purely one near this hey therefore darn firefly had ducked overpaid wow!', 'fortytwo' ) );
-		$this->set_default( $instance['button_text'], __( 'Purchase Today !', 'fortytwo' ) );
-		$this->set_default( $instance['button_link'], '#' );
-		$this->set_default( $instance['button_alignment'], 'right' );
-
-		include dirname( __FILE__ ) . '/views/widget.php';
-
-		echo $args['after_widget'];
+		// Display the admin form
+		include dirname( __FILE__ )  . '/views/form.php';
 
 	}
 
@@ -100,24 +87,27 @@ class FT_Widget_Jumbotron extends FT_Widget {
 	}
 
 	/**
-	 * Generates the administration form for the widget.
+	 * Outputs the content of the widget.
 	 *
-	 * @param array   instance The array of keys and values for the widget.
+	 * @param array   args  The array of form elements
+	 * @param array   instance The current instance of the widget
 	 */
-	public function form( $instance ) {
-		$instance = wp_parse_args(
-			(array) $instance,
-			array(
-				'title'            => '',
-				'content'          => '',
-				'button_alignment' => 'right',
-				'button_text'      => '',
-				'button_link'      => '',
-			)
-		);
+	public function widget( $args, $instance ) {
 
-		// Display the admin form
-		include dirname( __FILE__ )  . '/views/form.php';
+		echo $args['before_widget'];
+
+		foreach ( array( 'title', 'content', 'button_text', 'button_link', 'button_alignment' ) as $field_name ) {
+			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
+		}
+		$this->set_default( $instance['title'], __( 'Announcing the most important product feature', 'fortytwo' ) );
+		$this->set_default( $instance['content'], __( 'And purely one near this hey therefore darn firefly had ducked overpaid wow!', 'fortytwo' ) );
+		$this->set_default( $instance['button_text'], __( 'Purchase Today !', 'fortytwo' ) );
+		$this->set_default( $instance['button_link'], '#' );
+		$this->set_default( $instance['button_alignment'], 'right' );
+
+		include dirname( __FILE__ ) . '/views/widget.php';
+
+		echo $args['after_widget'];
 
 	}
 
@@ -152,6 +142,17 @@ class FT_Widget_Jumbotron extends FT_Widget {
 
 		wp_enqueue_script( 'ft-jumbotron-script', modules_url( 'ft-jumbotron/js/widget.js' ) );
 
+	}
+
+
+	/**
+	 * Helper method to echo both the id= and name= attributes for a field input element
+	 *
+	 * @param string  field The field name
+	 *
+	 */
+	public function echo_field_id( $field ) {
+		echo ' id="' . $this->get_field_id( $field ). '" name="' . $this->get_field_name( $field ) . '" ';
 	}
 }
 

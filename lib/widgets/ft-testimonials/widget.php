@@ -48,13 +48,57 @@ class FT_Widget_Testimonials extends FT_Widget {
 	}
 
 	/**
-	 * Helper method to echo both the id= and name= attributes for a field input element
+	 * Generates the administration form for the widget.
 	 *
-	 * @param string  field The field name
-	 *
+	 * @param array   instance The array of keys and values for the widget.
 	 */
-	public function echo_field_id( $field ) {
-		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
+	public function form( $instance ) {
+
+		$datasources = array();
+		$datasources[] = array(
+			'name' => 'Category',
+			'value' => 'category',
+		)
+		;
+		if ( $this->is_testimonials_by_woothemes_installed() ) {
+			$datasources[] = array(
+				'name' => 'Testimonials by WooThemes',
+				'value' => 'testimonials-by-woothemes',
+			);
+		}
+
+		$instance = wp_parse_args(
+			(array) $instance,
+			array(
+				'title'       => '',
+				'limit'       => 5,
+				'datasource'  => '',
+				'category'    => '',
+				'datasources' => $datasources,
+			)
+		);
+
+		// Display the admin form
+		include dirname( __FILE__ ) . '/views/form.php';
+
+	}
+	
+	/**
+	 * Processes the widget's options to be saved.
+	 *
+	 * @param array   new_instance The previous instance of values before the update.
+	 * @param array   old_instance The new instance of values to be generated via the update.
+	 */
+	public function update( $new_instance, $old_instance ) {
+
+		$instance = $old_instance;
+
+		foreach ( array( 'title', 'limit', 'datasource', 'category' ) as $field_name ) {
+			$instance[ $field_name ] = ( ! empty( $new_instance[ $field_name ] ) ) ? strip_tags( $new_instance[ $field_name ] ) : '';
+		}
+
+		return $instance;
+
 	}
 
 	/**
@@ -148,57 +192,12 @@ class FT_Widget_Testimonials extends FT_Widget {
 	}
 
 	/**
-	 * Processes the widget's options to be saved.
+	 * Check if Testimonials by WooThemes plugin is active.
 	 *
-	 * @param array   new_instance The previous instance of values before the update.
-	 * @param array   old_instance The new instance of values to be generated via the update.
+	 * @return bool true|false depending on whether the testimonials_by_woothemes plugin is installed
 	 */
-	public function update( $new_instance, $old_instance ) {
-
-		$instance = $old_instance;
-
-		foreach ( array( 'title', 'limit', 'datasource', 'category' ) as $field_name ) {
-			$instance[ $field_name ] = ( ! empty( $new_instance[ $field_name ] ) ) ? strip_tags( $new_instance[ $field_name ] ) : '';
-		}
-
-		return $instance;
-
-	}
-
-	/**
-	 * Generates the administration form for the widget.
-	 *
-	 * @param array   instance The array of keys and values for the widget.
-	 */
-	public function form( $instance ) {
-
-		$datasources = array();
-		$datasources[] = array(
-			'name' => 'Category',
-			'value' => 'category',
-		)
-		;
-		if ( $this->is_testimonials_by_woothemes_installed() ) {
-			$datasources[] = array(
-				'name' => 'Testimonials by WooThemes',
-				'value' => 'testimonials-by-woothemes',
-			);
-		}
-
-		$instance = wp_parse_args(
-			(array) $instance,
-			array(
-				'title'       => '',
-				'limit'       => 5,
-				'datasource'  => '',
-				'category'    => '',
-				'datasources' => $datasources,
-			)
-		);
-
-		// Display the admin form
-		include dirname( __FILE__ ) . '/views/form.php';
-
+	private function is_testimonials_by_woothemes_installed() {
+		return is_plugin_active( 'testimonials-by-woothemes/woothemes-testimonials.php' );
 	}
 
 	/**
@@ -239,12 +238,13 @@ class FT_Widget_Testimonials extends FT_Widget {
 	}
 
 	/**
-	 * Check if Testimonials by WooThemes plugin is active.
+	 * Helper method to echo both the id= and name= attributes for a field input element
 	 *
-	 * @return bool true|false depending on whether the testimonials_by_woothemes plugin is installed
+	 * @param string  field The field name
+	 *
 	 */
-	private function is_testimonials_by_woothemes_installed() {
-		return is_plugin_active( 'testimonials-by-woothemes/woothemes-testimonials.php' );
+	public function echo_field_id( $field ) {
+		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
 	}
 
 }

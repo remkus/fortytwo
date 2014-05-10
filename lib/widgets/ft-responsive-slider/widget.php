@@ -70,60 +70,91 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	}
 
 	/**
-	 * Add new image size
+	 * Generates the administration form for the widget.
+	 *
+	 * @param array   instance The array of keys and values for the widget.
 	 */
-	public function register_slider_image_size() {
-		//TODO: Should this be called once / widget?
-		add_image_size( 'slider', (int) $this->get_value( 'slideshow_width' ), (int) $this->get_value( 'slideshow_height' ), true );
+	function form( $instance ) {
+
+		$instance = wp_parse_args( (array) $instance, array(
+				'title'                           => '',
+				'post_type'                       => 'post',
+				'posts_term'                      => '',
+				'exclude_terms'                   => '',
+				'include_exclude'                 => 'include',
+				'post_id'                         => '',
+				'posts_num'                       => 3,
+				'posts_offset'                    => 0,
+				'orderby'                         => 'date',
+				'slideshow_timer'                 => 4000,
+				'slideshow_delay'                 => 800,
+				'slideshow_effect'                => 'slide',
+				'slideshow_width'                 => 1170,
+				'slideshow_height'                => 420,
+				'slideshow_arrows'                => 1,
+				'slideshow_pager'                 => 0,
+				'slideshow_no_link'               => 0,
+				'slideshow_title_show'            => 1,
+				'slideshow_excerpt_show'          => 1,
+				'slideshow_hide_mobile'           => 0,
+				'slideshow_excerpt_content'       => 'excerpts',
+				'slideshow_more_text'             => __( 'Read More', 'fortytwo' ),
+				'slideshow_excerpt_content_limit' => 300,
+				'slideshow_excerpt_width'         => 7,
+			) );
+
+		$post_types = get_post_types( array( 'public' => true ), 'names', 'and' );
+		$instance['post_types'] = array_filter( $post_types, array( &$this, 'ft_responsive_slider_exclude_post_types' ) );
+
+		$taxonomies = get_taxonomies( array( 'public' => true ), 'objects' );
+		$instance['taxonomies'] = array_filter( $taxonomies, array( &$this, 'ft_responsive_slider_exclude_taxonomies' ) );
+
+		$instance['test'] = get_taxonomies( array( 'public' => true ), 'objects' );
+
+		// Display the admin form
+		include dirname( __FILE__ ) . '/views/form.php';
 	}
 
 	/**
-	 * Creates read more link after excerpt
+	 * Processes the widget's options to be saved.
 	 *
-	 * @param mixed   moret  Not used
-	 *
-	 * @return An HTML fragment containing a "read more" link
+	 * @param array   old_instance The previous instance of values before the update.
+	 * @param array   new_instance The new instance of values to be generated via the update.
 	 */
-	public function ft_responsive_slider_excerpt_more( $moret ) {
-		global $post;
-		static $read_more = null;
+	public function update( $new_instance, $old_instance ) {
 
-		if ( $read_more === null ) {
-			$read_more = $this->get_value( 'slideshow_more_text' );
+		$instance = array();
+		foreach ( array(
+				'title',
+				'post_type',
+				'posts_term',
+				'exclude_terms',
+				'include_exclude',
+				'post_id',
+				'posts_num',
+				'posts_offset',
+				'orderby',
+				'slideshow_timer',
+				'slideshow_delay',
+				'slideshow_effect',
+				'slideshow_width',
+				'slideshow_height',
+				'slideshow_arrows',
+				'slideshow_pager',
+				'slideshow_no_link',
+				'slideshow_title_show',
+				'slideshow_excerpt_show',
+				'slideshow_hide_mobile',
+				'slideshow_excerpt_content',
+				'slideshow_more_text',
+				'slideshow_excerpt_content_limit',
+				'slideshow_excerpt_width',
+			) as $field_name ) {
+			$instance[ $field_name ] = ( ! empty( $new_instance[ $field_name ] ) ) ? strip_tags( $new_instance[ $field_name ] ) : '';
 		}
 
-		if ( ! $read_more ) {
-			return '';
-		}
+		return $this->sanitization_values( $instance );
 
-		return '&hellip; <a href="'. esc_url( get_permalink( $post->ID ) ) . '">' . $read_more . '</a>';
-	}
-
-	/**
-	 * Load the script files
-	 */
-	public function register_widget_scripts() {
-
-		/* easySlider JavaScript code */
-		wp_enqueue_script( 'flexslider', $this->url( 'js/jquery.flexslider-min.js' ), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, true );
-
-	}
-
-	/**
-	 * Load the style files
-	 */
-	public function register_widget_styles() {
-		//no-op
-	}
-
-	/**
-	 * Helper method to echo both the id= and name= attributes for a field input element
-	 *
-	 * @param string  field The field name
-	 *
-	 */
-	public function echo_field_id( $field ) {
-		echo ' id="' . $this->get_field_id( $field ) . '" name="' . $this->get_field_name( $field ) . '" ';
 	}
 
 	/**
@@ -266,52 +297,6 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	}
 
 	/**
-	 * Generates the administration form for the widget.
-	 *
-	 * @param array   instance The array of keys and values for the widget.
-	 */
-	function form( $instance ) {
-
-		$instance = wp_parse_args( (array) $instance, array(
-				'title'                           => '',
-				'post_type'                       => 'post',
-				'posts_term'                      => '',
-				'exclude_terms'                   => '',
-				'include_exclude'                 => 'include',
-				'post_id'                         => '',
-				'posts_num'                       => 3,
-				'posts_offset'                    => 0,
-				'orderby'                         => 'date',
-				'slideshow_timer'                 => 4000,
-				'slideshow_delay'                 => 800,
-				'slideshow_effect'                => 'slide',
-				'slideshow_width'                 => 1170,
-				'slideshow_height'                => 420,
-				'slideshow_arrows'                => 1,
-				'slideshow_pager'                 => 0,
-				'slideshow_no_link'               => 0,
-				'slideshow_title_show'            => 1,
-				'slideshow_excerpt_show'          => 1,
-				'slideshow_hide_mobile'           => 0,
-				'slideshow_excerpt_content'       => 'excerpts',
-				'slideshow_more_text'             => __( 'Read More', 'fortytwo' ),
-				'slideshow_excerpt_content_limit' => 300,
-				'slideshow_excerpt_width'         => 7,
-			) );
-
-		$post_types = get_post_types( array( 'public' => true ), 'names', 'and' );
-		$instance['post_types'] = array_filter( $post_types, array( &$this, 'ft_responsive_slider_exclude_post_types' ) );
-
-		$taxonomies = get_taxonomies( array( 'public' => true ), 'objects' );
-		$instance['taxonomies'] = array_filter( $taxonomies, array( &$this, 'ft_responsive_slider_exclude_taxonomies' ) );
-
-		$instance['test'] = get_taxonomies( array( 'public' => true ), 'objects' );
-
-		// Display the admin form
-		include dirname( __FILE__ ) . '/views/form.php';
-	}
-
-	/**
 	 * Used to exclude taxonomies and related terms from list of available terms/taxonomies in widget form().
 	 *
 	 * @since 0.9
@@ -344,73 +329,6 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 		$filters = apply_filters( 'ft_responsive_slider_exclude_post_types', $filters );
 
 		return ! in_array( $type, $filters );
-
-	}
-
-	/**
-	 * Processes the widget's options to be saved.
-	 *
-	 * @param array   old_instance The previous instance of values before the update.
-	 * @param array   new_instance The new instance of values to be generated via the update.
-	 */
-	public function update( $new_instance, $old_instance ) {
-
-		$instance = array();
-		foreach ( array(
-				'title',
-				'post_type',
-				'posts_term',
-				'exclude_terms',
-				'include_exclude',
-				'post_id',
-				'posts_num',
-				'posts_offset',
-				'orderby',
-				'slideshow_timer',
-				'slideshow_delay',
-				'slideshow_effect',
-				'slideshow_width',
-				'slideshow_height',
-				'slideshow_arrows',
-				'slideshow_pager',
-				'slideshow_no_link',
-				'slideshow_title_show',
-				'slideshow_excerpt_show',
-				'slideshow_hide_mobile',
-				'slideshow_excerpt_content',
-				'slideshow_more_text',
-				'slideshow_excerpt_content_limit',
-				'slideshow_excerpt_width',
-			) as $field_name ) {
-			$instance[ $field_name ] = ( ! empty( $new_instance[ $field_name ] ) ) ? strip_tags( $new_instance[ $field_name ] ) : '';
-		}
-
-		return $this->sanitization_values( $instance );
-
-	}
-
-	/**
-	 * Registers and enqueues admin-specific styles.
-	 */
-	public function register_admin_styles() {
-		//TODO This custom style will need to be removed when jquery ui styles are included in WP - https://core.trac.wordpress.org/ticket/18909
-		wp_enqueue_style( 'jquery-ui-styles-wp3.8', $this->url( 'css/wp-3-8-theme/jquery-ui-1.10.3.custom.min.css' ) );
-
-		//Custom overrides
-		wp_enqueue_style( 'ft-responsive-slider-admin-css', $this->url( 'css/admin.css' ) );
-	}
-
-	/**
-	 * Registers and enqueues admin-specific JavaScript.
-	 */
-	public function register_admin_scripts() {
-
-		wp_enqueue_script( 'jquery-ui-core' );
-		wp_enqueue_script( 'jquery-ui-slider' );
-		wp_enqueue_script( 'jquery-ui-dialog' );
-		wp_enqueue_script( 'jquery-ui-tabs' );
-		wp_enqueue_script( 'jquery-ui-position' );
-		wp_enqueue_script( 'wp-lists' );
 
 	}
 
@@ -464,6 +382,36 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	}
 
 	/**
+	 * Add new image size
+	 */
+	public function register_slider_image_size() {
+		//TODO: Should this be called once / widget?
+		add_image_size( 'slider', (int) $this->get_value( 'slideshow_width' ), (int) $this->get_value( 'slideshow_height' ), true );
+	}
+
+	/**
+	 * Creates read more link after excerpt
+	 *
+	 * @param mixed   moret  Not used
+	 *
+	 * @return An HTML fragment containing a "read more" link
+	 */
+	public function ft_responsive_slider_excerpt_more( $moret ) {
+		global $post;
+		static $read_more = null;
+
+		if ( $read_more === null ) {
+			$read_more = $this->get_value( 'slideshow_more_text' );
+		}
+
+		if ( ! $read_more ) {
+			return '';
+		}
+
+		return '&hellip; <a href="'. esc_url( get_permalink( $post->ID ) ) . '">' . $read_more . '</a>';
+	}
+
+	/**
 	 * Gets the value of a widget field setting
 	 *
 	 * @param string  field The name of the widget field you are wanting to get
@@ -481,6 +429,58 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 		if ( isset( $this->all_widget_settings[ $this->number ] ) ) {
 			return $this->all_widget_settings[ $this->number ][ $field ];
 		}
+	}
+
+	/**
+	 * Registers and enqueues admin-specific styles.
+	 */
+	public function register_admin_styles() {
+		//TODO This custom style will need to be removed when jquery ui styles are included in WP - https://core.trac.wordpress.org/ticket/18909
+		wp_enqueue_style( 'jquery-ui-styles-wp3.8', $this->url( 'css/wp-3-8-theme/jquery-ui-1.10.3.custom.min.css' ) );
+
+		//Custom overrides
+		wp_enqueue_style( 'ft-responsive-slider-admin-css', $this->url( 'css/admin.css' ) );
+	}
+
+	/**
+	 * Registers and enqueues admin-specific JavaScript.
+	 */
+	public function register_admin_scripts() {
+
+		wp_enqueue_script( 'jquery-ui-core' );
+		wp_enqueue_script( 'jquery-ui-slider' );
+		wp_enqueue_script( 'jquery-ui-dialog' );
+		wp_enqueue_script( 'jquery-ui-tabs' );
+		wp_enqueue_script( 'jquery-ui-position' );
+		wp_enqueue_script( 'wp-lists' );
+
+	}
+
+	/**
+	 * Load the style files
+	 */
+	public function register_widget_styles() {
+		//no-op
+	}
+
+	/**
+	 * Load the script files
+	 */
+	public function register_widget_scripts() {
+
+		/* easySlider JavaScript code */
+		wp_enqueue_script( 'flexslider', $this->url( 'js/jquery.flexslider-min.js' ), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, true );
+
+	}
+
+	/**
+	 * Helper method to echo both the id= and name= attributes for a field input element
+	 *
+	 * @param string  field The field name
+	 *
+	 */
+	public function echo_field_id( $field ) {
+		echo ' id="' . $this->get_field_id( $field ) . '" name="' . $this->get_field_name( $field ) . '" ';
 	}
 
 }

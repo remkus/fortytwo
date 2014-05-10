@@ -44,39 +44,27 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	}
 
 	/**
-	 * Outputs the content of the widget.
+	 * Generates the administration form for the widget.
 	 *
-	 * @param array   args  The array of form elements
-	 * @param array   instance The current instance of the widget
+	 * @param array   instance The array of keys and values for the widget.
 	 */
-	public function widget( $args, $instance ) {
+	public function form( $instance ) {
 
-		echo $args['before_widget'];
+		// Default values for variables
+		$instance = wp_parse_args(
+			(array) $instance,
+			array(
+				'title'       => '',
+				'icon'        => '',
+				'content'     => '',
+				'button_text' => '',
+				'button_link' => '',
+			)
+		);
 
-		foreach ( array( 'title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name ) {
-			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
-		}
-		$this->set_default( $instance['title'], __( 'The title', 'fortytwo' ) );
-		$this->set_default( $instance['icon '], 'icon-star' );
-		$this->set_default( $instance['content'], __( 'And purely one near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill
-    yikes considering far above. Physically less snickered much and and while', 'fortytwo' ) );
-		$this->set_default( $instance['button_text'], __( 'Click me!', 'fortytwo' ) );
-		$this->set_default( $instance['button_link'], '#' );
+		// Display the admin form
+		include dirname( __FILE__ ) . '/views/form.php';
 
-		include dirname( __FILE__ )  . '/views/widget.php';
-
-		echo $args['after_widget'];
-
-	}
-
-	/**
-	 * Helper method to echo both the id= and name= attributes for a field input element
-	 *
-	 * @param string  field The field name
-	 *
-	 */
-	public function echo_field_id( $field ) {
-		echo ' id="' . $this->get_field_id( $field ) . '" name="' . $this->get_field_name( $field ) . '" ';
 	}
 
 	/**
@@ -103,26 +91,28 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	}
 
 	/**
-	 * Generates the administration form for the widget.
+	 * Outputs the content of the widget.
 	 *
-	 * @param array   instance The array of keys and values for the widget.
+	 * @param array   args  The array of form elements
+	 * @param array   instance The current instance of the widget
 	 */
-	public function form( $instance ) {
+	public function widget( $args, $instance ) {
 
-		// Default values for variables
-		$instance = wp_parse_args(
-			(array) $instance,
-			array(
-				'title'       => '',
-				'icon'        => '',
-				'content'     => '',
-				'button_text' => '',
-				'button_link' => '',
-			)
-		);
+		echo $args['before_widget'];
 
-		// Display the admin form
-		include dirname( __FILE__ ) . '/views/form.php';
+		foreach ( array( 'title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name ) {
+			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
+		}
+		$this->set_default( $instance['title'], __( 'The title', 'fortytwo' ) );
+		$this->set_default( $instance['icon '], 'icon-star' );
+		$this->set_default( $instance['content'], __( 'And purely one near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill
+    yikes considering far above. Physically less snickered much and and while', 'fortytwo' ) );
+		$this->set_default( $instance['button_text'], __( 'Click me!', 'fortytwo' ) );
+		$this->set_default( $instance['button_link'], '#' );
+
+		include dirname( __FILE__ )  . '/views/widget.php';
+
+		echo $args['after_widget'];
 
 	}
 
@@ -166,6 +156,16 @@ class FT_Widget_Featured_Content extends FT_Widget {
 
 		wp_enqueue_script( 'ft-featured-content-script', $this->url( 'js/widget.js' ) );
 
+	}
+
+	/**
+	 * Helper method to echo both the id= and name= attributes for a field input element
+	 *
+	 * @param string  field The field name
+	 *
+	 */
+	public function echo_field_id( $field ) {
+		echo ' id="' . $this->get_field_id( $field ) . '" name="' . $this->get_field_name( $field ) . '" ';
 	}
 }
 
