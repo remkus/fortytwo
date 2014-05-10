@@ -80,7 +80,7 @@
 			});
 		};
 
-		$( '#<?php echo $this->get_field_id( "datasource" )?>' ).change( function() {
+		$( '#<?php echo $this->get_field_id( "datasource" ); ?>' ).change( function() {
 			var active_datasource = $(this).attr( 'value' );
 			display_active_datasource( active_datasource );
 		});

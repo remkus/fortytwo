@@ -17,10 +17,10 @@
 <div class="genesis-widget-column">
   <div class="genesis-widget-column-box genesis-widget-column-box-top">
 	<p><span class="description"><?php _e( 'Choose up to 4 tabs to display', 'fortytwo' ); ?></span></p>
-	<p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 0 ) ?></p>
-	<p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 1 ) ?></p>
-	<p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 2 ) ?></p>
-	<p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 3 ) ?></p>
+	<p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 0 ); ?></p>
+	<p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 1 ); ?></p>
+	<p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 2 ); ?></p>
+	<p><?php $this->render_tabs_dropdown( $this->available_tabs, $instance['tabs'], 3 ); ?></p>
   </div>
 </div>
 
