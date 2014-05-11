@@ -37,17 +37,16 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	public $all_widget_settings = array();
 
 	/**
-	 * Specifies the classname and description, instantiates the widget,
-	 * loads localization files, and includes necessary stylesheets and JavaScript.
+	 * Instantiate the widget class.
 	 */
 	public function __construct() {
 		global $_ft_responsive_slider_settings_pagehook;
 
 		parent::__construct(
-			'widget-' . $this->slug,
-			__( '42&nbsp;&nbsp;- Responsive Slider', 'fortytwo' ),
+			$this->slug,
+			__( '42 - Responsive Slider', 'fortytwo' ),
 			array(
-				'classname'   => $this->slug,
+				'classname'   => 'widget-' . $this->slug,
 				'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' ),
 			),
 			array(
@@ -97,10 +96,10 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 			) );
 
 		$post_types = get_post_types( array( 'public' => true ), 'names', 'and' );
-		$instance['post_types'] = array_filter( $post_types, array( &$this, 'ft_responsive_slider_exclude_post_types' ) );
+		$instance['post_types'] = array_filter( $post_types, array( &$this, 'exclude_post_types' ) );
 
 		$taxonomies = get_taxonomies( array( 'public' => true ), 'objects' );
-		$instance['taxonomies'] = array_filter( $taxonomies, array( &$this, 'ft_responsive_slider_exclude_taxonomies' ) );
+		$instance['taxonomies'] = array_filter( $taxonomies, array( &$this, 'exclude_taxonomies' ) );
 
 		$instance['test'] = get_taxonomies( array( 'public' => true ), 'objects' );
 
@@ -252,7 +251,7 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 			) );
 
 		$query_args = apply_filters( 'ft_responsive_slider_query_args', $query_args );
-		add_filter( 'excerpt_more', array( $this, 'ft_responsive_slider_excerpt_more' ) );
+		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
 
 		$slider_posts = new WP_Query( $query_args );
 		if ( $slider_posts->have_posts() ) {
@@ -285,7 +284,7 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 
 		echo $args['after_widget'];
 		wp_reset_query(); // Needed?
-		remove_filter( 'excerpt_more', array( &$this, 'ft_responsive_slider_excerpt_more' ) );
+		remove_filter( 'excerpt_more', array( &$this, 'excerpt_more' ) );
 
 	}
 
@@ -298,7 +297,7 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	 * @param string  $taxonomy 'taxonomy' being tested
 	 * @return string
 	 */
-	function ft_responsive_slider_exclude_taxonomies( $taxonomy ) {
+	function exclude_taxonomies( $taxonomy ) {
 
 		$filters = array( '', 'nav_menu' );
 		$filters = apply_filters( 'ft_responsive_slider_exclude_taxonomies', $filters );
@@ -316,7 +315,7 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	 * @param string  $type 'post_type' being tested
 	 * @return string
 	 */
-	function ft_responsive_slider_exclude_post_types( $type ) {
+	function exclude_post_types( $type ) {
 
 		$filters = array( '', 'attachment' );
 		$filters = apply_filters( 'ft_responsive_slider_exclude_post_types', $filters );
@@ -389,7 +388,7 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	 *
 	 * @return An HTML fragment containing a "read more" link
 	 */
-	public function ft_responsive_slider_excerpt_more( $moret ) {
+	public function excerpt_more( $moret ) {
 		global $post;
 		static $read_more = null;
 

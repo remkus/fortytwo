@@ -27,16 +27,15 @@ class FT_Widget_Testimonials extends FT_Widget {
 	protected $slug = 'ft-testimonials';
 
 	/**
-	 * Specifies the classname and description, instantiates the widget,
-	 * loads localization files, and includes necessary stylesheets and JavaScript.
+	 * Instantiate the widget class.
 	 */
 	public function __construct() {
 
 		parent::__construct(
-			'widget-' . $this->slug,
-			__( '42&nbsp;&nbsp;- Testimonials', 'fortytwo' ),
+			$this->slug,
+			__( '42 - Testimonials', 'fortytwo' ),
 			array(
-				'classname'   => $this->slug,
+				'classname'   => 'widget-' . $this->slug,
 				'description' => __( 'Testimonials widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);

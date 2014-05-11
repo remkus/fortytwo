@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FortyTwo 1.0.0\n"
 "Report-Msgid-Bugs-To: http://forsitethemes.com\n"
-"POT-Creation-Date: 2014-05-08 11:51:26+00:00\n"
+"POT-Creation-Date: 2014-05-11 22:54:04+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -40,7 +40,7 @@ msgstr ""
 msgid "View all posts filed under %s"
 msgstr ""
 
-#: lib/general/ft-default-widgets.php:80
+#: lib/general/ft-default-widgets.php:83
 msgid "Feed for all posts filed under %s"
 msgstr ""
 
@@ -60,39 +60,43 @@ msgstr ""
 msgid "This is the section inserted prior to the final footer"
 msgstr ""
 
-#: lib/structural/ft-subheader.php:97
+#: lib/structural/ft-subheader.php:28
+msgid "Not found"
+msgstr ""
+
+#: lib/structural/ft-subheader.php:99
 msgid "Error 404 - page not found"
 msgstr ""
 
-#: lib/structural/ft-subheader.php:102
+#: lib/structural/ft-subheader.php:104
 msgid "Shop"
 msgstr ""
 
-#: lib/structural/ft-subheader.php:112
+#: lib/structural/ft-subheader.php:114
 msgid "Articles by Category: "
 msgstr ""
 
-#: lib/structural/ft-subheader.php:117
+#: lib/structural/ft-subheader.php:119
 msgid "Articles by Tag: "
 msgstr ""
 
-#: lib/structural/ft-subheader.php:122
+#: lib/structural/ft-subheader.php:124
 msgid "Articles by Author: "
 msgstr ""
 
-#: lib/structural/ft-subheader.php:127
+#: lib/structural/ft-subheader.php:129
 msgid "Articles by Day: "
 msgstr ""
 
-#: lib/structural/ft-subheader.php:130
+#: lib/structural/ft-subheader.php:132
 msgid "Articles by Month: "
 msgstr ""
 
-#: lib/structural/ft-subheader.php:133
+#: lib/structural/ft-subheader.php:135
 msgid "Articles by Year: "
 msgstr ""
 
-#: lib/structural/ft-subheader.php:138
+#: lib/structural/ft-subheader.php:140
 msgid "Archive: "
 msgstr ""
 
@@ -124,11 +128,11 @@ msgstr ""
 msgid "Fax"
 msgstr ""
 
-#: lib/widgets/ft-contact/widget.php:32
-msgid "42&nbsp;&nbsp;- Contact Information"
+#: lib/widgets/ft-contact/widget.php:33
+msgid "42 - Contact Information"
 msgstr ""
 
-#: lib/widgets/ft-contact/widget.php:35
+#: lib/widgets/ft-contact/widget.php:36
 msgid "A Schema.org compliant Contact Widget"
 msgstr ""
 
@@ -140,33 +144,33 @@ msgid "Title:"
 msgstr ""
 
 #: lib/widgets/ft-featured-content/views/form.php:28
-#: lib/widgets/ft-jumbotron/views/form.php:24
+#: lib/widgets/ft-jumbotron/views/form.php:23
 msgid "Content:"
 msgstr ""
 
-#: lib/widgets/ft-featured-content/views/form.php:33
-#: lib/widgets/ft-jumbotron/views/form.php:32
+#: lib/widgets/ft-featured-content/views/form.php:32
+#: lib/widgets/ft-jumbotron/views/form.php:29
 msgid "Button Text:"
 msgstr ""
 
-#: lib/widgets/ft-featured-content/views/form.php:35
-#: lib/widgets/ft-jumbotron/views/form.php:36
+#: lib/widgets/ft-featured-content/views/form.php:34
+#: lib/widgets/ft-jumbotron/views/form.php:31
 msgid "Button Link:"
 msgstr ""
 
-#: lib/widgets/ft-featured-content/widget.php:30
-msgid "42&nbsp;&nbsp;- Featured Content"
+#: lib/widgets/ft-featured-content/widget.php:32
+msgid "42 - Featured Content"
 msgstr ""
 
-#: lib/widgets/ft-featured-content/widget.php:33
+#: lib/widgets/ft-featured-content/widget.php:35
 msgid "Featured Content widget for the FortyTwo Theme."
 msgstr ""
 
-#: lib/widgets/ft-featured-content/widget.php:62
+#: lib/widgets/ft-featured-content/widget.php:101
 msgid "The title"
 msgstr ""
 
-#: lib/widgets/ft-featured-content/widget.php:64
+#: lib/widgets/ft-featured-content/widget.php:103
 msgid ""
 "And purely one near this hey therefore darn firefly had ducked overpaid wow "
 "irrespective some tearful and mandrill\n"
@@ -174,27 +178,27 @@ msgid ""
 "while"
 msgstr ""
 
-#: lib/widgets/ft-featured-content/widget.php:66
+#: lib/widgets/ft-featured-content/widget.php:105
 msgid "Click me!"
 msgstr ""
 
-#: lib/widgets/ft-jumbotron/widget.php:27
-msgid "42&nbsp;&nbsp;- Jumbotron"
+#: lib/widgets/ft-jumbotron/widget.php:29
+msgid "42 - Jumbotron"
 msgstr ""
 
-#: lib/widgets/ft-jumbotron/widget.php:30
+#: lib/widgets/ft-jumbotron/widget.php:32
 msgid "Jumbotron widget for the FortyTwo Theme."
 msgstr ""
 
-#: lib/widgets/ft-jumbotron/widget.php:80
+#: lib/widgets/ft-jumbotron/widget.php:97
 msgid "Announcing the most important product feature"
 msgstr ""
 
-#: lib/widgets/ft-jumbotron/widget.php:81
+#: lib/widgets/ft-jumbotron/widget.php:98
 msgid "And purely one near this hey therefore darn firefly had ducked overpaid wow!"
 msgstr ""
 
-#: lib/widgets/ft-jumbotron/widget.php:82
+#: lib/widgets/ft-jumbotron/widget.php:99
 msgid "Purchase Today !"
 msgstr ""
 
@@ -214,162 +218,162 @@ msgstr ""
 msgid "All Taxonomies and Terms"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:64
+#: lib/widgets/ft-responsive-slider/views/form.php:70
 msgid "Include or Exclude by Taxonomy ID"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:67
+#: lib/widgets/ft-responsive-slider/views/form.php:73
 msgid ""
 "List which category, tag or other taxonomy IDs to exclude. (1,2,3,4 for "
 "example)"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:78
+#: lib/widgets/ft-responsive-slider/views/form.php:84
 msgid "Include or Exclude by %s ID"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:83
+#: lib/widgets/ft-responsive-slider/views/form.php:89
 msgid "Include"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:84
+#: lib/widgets/ft-responsive-slider/views/form.php:90
 msgid "Exclude"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:85
+#: lib/widgets/ft-responsive-slider/views/form.php:91
 msgid "slides using their post / page ID in a comma-separated list."
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:89
-#: lib/widgets/ft-responsive-slider/views/form.php:108
+#: lib/widgets/ft-responsive-slider/views/form.php:95
+#: lib/widgets/ft-responsive-slider/views/form.php:114
 msgid "ID"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:89
+#: lib/widgets/ft-responsive-slider/views/form.php:95
 msgid "to include / exclude."
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:94
+#: lib/widgets/ft-responsive-slider/views/form.php:100
 msgid "Number of Slides to Show"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:99
+#: lib/widgets/ft-responsive-slider/views/form.php:105
 msgid "Number of Posts to Offset"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:104
+#: lib/widgets/ft-responsive-slider/views/form.php:110
 msgid "Order By"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:106
+#: lib/widgets/ft-responsive-slider/views/form.php:112
 msgid "Date"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:107
+#: lib/widgets/ft-responsive-slider/views/form.php:113
 msgid "Title"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:109
+#: lib/widgets/ft-responsive-slider/views/form.php:115
 msgid "Random"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:116
+#: lib/widgets/ft-responsive-slider/views/form.php:122
 msgid "Time Between Slides (in milliseconds)"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:121
+#: lib/widgets/ft-responsive-slider/views/form.php:127
 msgid "Slide Transition Speed (in milliseconds)"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:126
+#: lib/widgets/ft-responsive-slider/views/form.php:132
 msgid "Slider Effect"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:127
-#: lib/widgets/ft-responsive-slider/views/form.php:173
+#: lib/widgets/ft-responsive-slider/views/form.php:133
+#: lib/widgets/ft-responsive-slider/views/form.php:179
 msgid "Select one of the following:"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:129
+#: lib/widgets/ft-responsive-slider/views/form.php:135
 msgid "Slide"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:130
+#: lib/widgets/ft-responsive-slider/views/form.php:136
 msgid "Fade"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:137
+#: lib/widgets/ft-responsive-slider/views/form.php:143
 msgid "Maximum Image Width (in pixels)"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:142
+#: lib/widgets/ft-responsive-slider/views/form.php:148
 msgid "Maximum Image Height (in pixels)"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:147
+#: lib/widgets/ft-responsive-slider/views/form.php:153
 msgid "Display Next / Previous Arrows in Slider?"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:151
+#: lib/widgets/ft-responsive-slider/views/form.php:157
 msgid "Display Pagination in Slider?"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:157
+#: lib/widgets/ft-responsive-slider/views/form.php:163
 msgid "Do not link Slider image to Post/Page."
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:161
+#: lib/widgets/ft-responsive-slider/views/form.php:167
 msgid "Display Post/Page Title in Slider?"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:165
+#: lib/widgets/ft-responsive-slider/views/form.php:171
 msgid "Display Content in Slider?"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:169
+#: lib/widgets/ft-responsive-slider/views/form.php:175
 msgid "Hide Title & Content on Mobile Devices"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:175
+#: lib/widgets/ft-responsive-slider/views/form.php:181
 msgid "Display post content"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:176
+#: lib/widgets/ft-responsive-slider/views/form.php:182
 msgid "Display post excerpts"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:181
+#: lib/widgets/ft-responsive-slider/views/form.php:187
 msgid "More Text (if applicable)"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:186
+#: lib/widgets/ft-responsive-slider/views/form.php:192
 msgid "Limit content to"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:188
+#: lib/widgets/ft-responsive-slider/views/form.php:194
 msgid "characters"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:191
+#: lib/widgets/ft-responsive-slider/views/form.php:197
 msgid ""
 "Using this option will limit the text and strip all formatting from the "
 "text displayed. To use this option, choose \"Display post content\" in the "
 "select box above."
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/views/form.php:196
+#: lib/widgets/ft-responsive-slider/views/form.php:202
 msgid "Advanced settings"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/widget.php:45
-msgid "42&nbsp;&nbsp;- Responsive Slider"
+#: lib/widgets/ft-responsive-slider/widget.php:47
+msgid "42 - Responsive Slider"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/widget.php:48
+#: lib/widgets/ft-responsive-slider/widget.php:50
 msgid "Displays a slideshow inside a widget area"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/widget.php:378
+#: lib/widgets/ft-responsive-slider/widget.php:93
 msgid "Read More"
 msgstr ""
 
@@ -381,55 +385,55 @@ msgstr ""
 msgid "Choose up to 4 tabs to display"
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/views/form.php:32
+#: lib/widgets/ft-tabs-widget/views/form.php:31
 #: lib/widgets/ft-testimonials/views/form.php:23
 msgid "Limit:"
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/views/form.php:37
+#: lib/widgets/ft-tabs-widget/views/form.php:35
 msgid "Image Dimension:"
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/views/form.php:42
+#: lib/widgets/ft-tabs-widget/views/form.php:39
 msgid "Image Alignment:"
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/views/form.php:44
+#: lib/widgets/ft-tabs-widget/views/form.php:41
 msgid "Left"
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/views/form.php:45
+#: lib/widgets/ft-tabs-widget/views/form.php:42
 msgid "Right"
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/views/form.php:53
+#: lib/widgets/ft-tabs-widget/views/form.php:50
 msgid "The \"featured image\" will be used as thumbnails."
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/views/form.php:55
+#: lib/widgets/ft-tabs-widget/views/form.php:52
 msgid ""
 "Post thumbnails are not supported by your theme. Thumbnails will not be "
 "displayed."
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/widget.php:43
-msgid "Tabbed content widget for the FortyTwo theme."
+#: lib/widgets/ft-tabs-widget/widget.php:42
+msgid "42 - Tabs"
 msgstr ""
 
 #: lib/widgets/ft-tabs-widget/widget.php:45
-msgid "42&nbsp;&nbsp;- Tabs"
+msgid "Tabbed content widget for the FortyTwo Theme."
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/widget.php:149
+#: lib/widgets/ft-tabs-widget/widget.php:65
 msgid "Tabs"
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/widget.php:183
-msgid " - None selected - "
+#: lib/widgets/ft-tabs-widget/widget.php:217
+msgid "on"
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/widget.php:265
-msgid "on"
+#: lib/widgets/ft-tabs-widget/widget.php:267
+msgid " - None selected - "
 msgstr ""
 
 #: lib/widgets/ft-testimonials/views/form.php:29
@@ -444,15 +448,15 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: lib/widgets/ft-testimonials/widget.php:34
-msgid "42&nbsp;&nbsp;- Testimonials"
+#: lib/widgets/ft-testimonials/widget.php:36
+msgid "42 - Testimonials"
 msgstr ""
 
-#: lib/widgets/ft-testimonials/widget.php:37
+#: lib/widgets/ft-testimonials/widget.php:39
 msgid "Testimonials widget for the FortyTwo Theme."
 msgstr ""
 
-#: lib/widgets/ft-testimonials/widget.php:87
+#: lib/widgets/ft-testimonials/widget.php:113
 msgid "Client Testimonials"
 msgstr ""
 
@@ -496,12 +500,12 @@ msgstr ""
 msgid "Business"
 msgstr ""
 
-#: lib/structural/ft-subheader.php:130
+#: lib/structural/ft-subheader.php:132
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr ""
 
-#: lib/structural/ft-subheader.php:133
+#: lib/structural/ft-subheader.php:135
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr ""

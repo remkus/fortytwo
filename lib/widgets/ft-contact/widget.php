@@ -11,9 +11,8 @@
 /**
  * ForSite Themes Contact widget class.
  *
- * @package Genesis
- * @subpackage Widgets
- * @since 1.0.0
+ * @package FortyTwo\Widgets
+ * @author  Forsite Themes
  */
 class FT_Widget_Contact extends FT_Widget {
 
@@ -25,16 +24,15 @@ class FT_Widget_Contact extends FT_Widget {
 	protected $slug = 'ft-contact';
 
 	/**
-	 * Specifies the classname and description, instantiates the widget,
-	 * loads localization files, and includes necessary stylesheets and JavaScript.
+	 * Instantiate the widget class.
 	 */
 	public function __construct() {
 
 		parent::__construct(
-			'widget-' . $this->slug,
-			__( '42&nbsp;&nbsp;- Contact Information', 'fortytwo' ),
+			$this->slug,
+			__( '42 - Contact Information', 'fortytwo' ),
 			array(
-				'classname'   => $this->slug,
+				'classname'   => 'widget-' . $this->slug,
 				'description' => __( 'A Schema.org compliant Contact Widget', 'fortytwo' )
 			)
 		);

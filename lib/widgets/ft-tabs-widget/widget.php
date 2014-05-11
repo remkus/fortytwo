@@ -27,38 +27,28 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 	 */
 	protected $slug = 'ft-tabbed-content';
 
-	/* Variable Declarations */
-	public $fst_widget_cssclass;
-	public $fst_widget_description;
-	public $fst_widget_idbase;
-	public $fst_widget_title;
-
 	public $available_tabs;
 
 	/**
-	 * Specifies the classname and description, instantiates the widget,
-	 * loads localization files, and includes necessary stylesheets and JavaScript.
+	 * Instantiate the widget class.
 	 */
 	public function __construct() {
 
-		/* Widget variable settings. */
-		$this->fst_widget_cssclass    = $this->slug;
-		$this->fst_widget_description = __( 'Tabbed content widget for the FortyTwo theme.', 'fortytwo' );
-		$this->fst_widget_idbase      = 'widget-' . $this->slug;
-		$this->fst_widget_title       = __( '42&nbsp;&nbsp;- Tabs', 'fortytwo' );
-
 		$this->available_tabs = array( 'latest', 'popular', 'comments', 'tags' );
-		// Allow child themes/plugins to filter here.
 		$this->available_tabs = apply_filters( 'ft_available_tabbed_content', $this->available_tabs );
 
-		/* Widget settings. */
-		$widget_ops = array( 'classname' => $this->fst_widget_cssclass, 'description' => $this->fst_widget_description );
-
-		/* Widget control settings. */
-		$control_ops = array( 'width' => 505, 'height' => 350, 'id_base' => $this->fst_widget_idbase );
-
-		/* Create the widget. */
-		parent::__construct( $this->fst_widget_idbase, $this->fst_widget_title, $widget_ops, $control_ops );
+		parent::__construct(
+			$this->slug,
+			__( '42 - Tabs', 'fortytwo' ),
+			array(
+				'classname'   => 'widget-' . $this->slug,
+				'description' => __( 'Tabbed content widget for the FortyTwo Theme.', 'fortytwo' )
+			),
+			array(
+				'width' => 505,
+				'height' => 350,
+			)
+		);
 
 	}
 
@@ -80,7 +70,7 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 		);
 
 		// Allow child themes/plugins to filter here.
-		$defaults = apply_filters( "{$this->fst_widget_idbase}_widget_defaults", $defaults, $this );
+		$defaults = apply_filters( "{$this->slug}_widget_defaults", $defaults, $this );
 		$instance = wp_parse_args( (array)$instance, $defaults );
 		$available_tabs = $this->available_tabs;
 
@@ -121,7 +111,7 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 		}
 
 		// Allow child themes/plugins to act here.
-		$instance = apply_filters( "{$this->fst_widget_idbase}_widget_save", $instance, $new_instance, $this );
+		$instance = apply_filters( "{$this->slug}_widget_save", $instance, $new_instance, $this );
 
 		return $instance;
 	}
@@ -252,6 +242,7 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 	 * @return string $html
 	 */
 	public function get_image( $dimension, $post ) {
+		$html = '';
 		// TODO: This could use post type icon if no post thumbnail is supported
 		//$html = '<img data-src="holder.js/' . $dimension . 'x' . $dimension .'" class="no-thumbnail wp-post-image hide">';
 

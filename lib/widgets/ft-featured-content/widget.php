@@ -23,16 +23,15 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	protected $slug = 'ft-featured-content';
 
 	/**
-	 * Specifies the classname and description, instantiates the widget,
-	 * loads localization files, and includes necessary stylesheets and JavaScript.
+	 * Instantiate the widget class.
 	 */
 	public function __construct() {
 
 		parent::__construct(
-			'widget-' . $this->slug,
-			__( '42&nbsp;&nbsp;- Featured Content', 'fortytwo' ),
+			$this->slug,
+			__( '42 - Featured Content', 'fortytwo' ),
 			array(
-				'classname'   => $this->slug,
+				'classname'   => 'widget-' . $this->slug,
 				'description' => __( 'Featured Content widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);

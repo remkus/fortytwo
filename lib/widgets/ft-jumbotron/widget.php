@@ -20,16 +20,15 @@ class FT_Widget_Jumbotron extends FT_Widget {
 	protected $slug = 'ft-jumbotron';
 
 	/**
-	 * Specifies the classname and description, instantiates the widget,
-	 * loads localization files, and includes necessary stylesheets and JavaScript.
+	 * Instantiate the widget class.
 	 */
 	public function __construct() {
 
 		parent::__construct(
-			'widget-' . $this->slug,
-			__( '42&nbsp;&nbsp;- Jumbotron', 'fortytwo' ),
+			$this->slug,
+			__( '42 - Jumbotron', 'fortytwo' ),
 			array(
-				'classname'   => $this->slug,
+				'classname'   => 'widget-' . $this->slug,
 				'description' => __( 'Jumbotron widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
