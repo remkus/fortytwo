@@ -33,10 +33,10 @@ class FT_Widget_Testimonials extends FT_Widget {
 	public function __construct() {
 
 		parent::__construct(
-			'widget-ft-testimonials',
+			'widget-' . $this->slug,
 			__( '42&nbsp;&nbsp;- Testimonials', 'fortytwo' ),
 			array(
-				'classname'   => 'ft-testimonials',
+				'classname'   => $this->slug,
 				'description' => __( 'Testimonials widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
@@ -201,28 +201,28 @@ class FT_Widget_Testimonials extends FT_Widget {
 	 */
 	public function admin_styles() {
 		// TODO: Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'ft-testimonials-admin-styles',  $this->url( 'css/admin.css' ) );
+		wp_enqueue_style( $this->slug . '-admin',  $this->url( 'css/admin.css' ) );
 	}
 
 	/**
 	 * Registers and enqueues admin-specific JavaScript.
 	 */
 	public function admin_scripts() {
-		wp_enqueue_script( 'ft-testimonials-admin-script', $this->url( 'js/admin.js' ) );
+		wp_enqueue_script( $this->slug . '-admin', $this->url( 'js/admin.js' ) );
 	}
 
 	/**
 	 * Registers and enqueues widget-specific styles.
 	 */
 	public function widget_styles() {
-		wp_enqueue_style( 'ft-testimonials-widget-styles', $this->url( 'css/widget.css' ) );
+		wp_enqueue_style( $this->slug, $this->url( 'css/widget.css' ) );
 	}
 
 	/**
 	 * Registers and enqueues widget-specific scripts.
 	 */
 	public function widget_scripts() {
-		wp_enqueue_script( 'ft-testimonials-script', $this->url( 'js/widget.js' ) );
+		wp_enqueue_script( $this->slug, $this->url( 'js/widget.js' ) );
 	}
 }
 

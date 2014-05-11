@@ -29,10 +29,10 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	public function __construct() {
 
 		parent::__construct(
-			'ft-featured-content',
+			'widget-' . $this->slug,
 			__( '42&nbsp;&nbsp;- Featured Content', 'fortytwo' ),
 			array(
-				'classname'   => 'ft-featured-content',
+				'classname'   => $this->slug,
 				'description' => __( 'Featured Content widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
@@ -116,8 +116,8 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	 * Registers and enqueues admin-specific styles.
 	 */
 	public function admin_styles() {
-		wp_enqueue_style( 'ft-featured-content-admin-styles', $this->url( 'css/admin.css' ) );
-		wp_enqueue_style( 'fontawesome_icon_selector_app', $this->url( 'css/fontawesome_icon_selector_app.css' ), array( 'font-awesome-more' ) );
+		wp_enqueue_style( $this->slug . 'admin', $this->url( 'css/admin.css' ) );
+		wp_enqueue_style( 'fontawesome-icon-selector-app', $this->url( 'css/fontawesome_icon_selector_app.css' ), array( 'font-awesome-more' ) );
 	}
 
 	/**
@@ -128,22 +128,22 @@ class FT_Widget_Featured_Content extends FT_Widget {
 		wp_enqueue_script( 'jquery-ui-position' );
 		wp_enqueue_script( 'jquery-effects-slide' );
 		wp_enqueue_script( 'backbone' );
-		wp_enqueue_script( 'add_event_saved_widget', $this->url( 'js/add_event_saved_widget.js' ),  array( 'backbone' ) );
-		wp_enqueue_script( 'fontawesome_icon_selector_app', $this->url( 'js/fontawesome_icon_selector_app.js' ), array( 'backbone' ) );
+		wp_enqueue_script( 'add-event-saved-widget', $this->url( 'js/add_event_saved_widget.js' ),  array( 'backbone' ) );
+		wp_enqueue_script( 'fontawesome-icon-selector-app', $this->url( 'js/fontawesome_icon_selector_app.js' ), array( 'backbone' ) );
 	}
 
 	/**
 	 * Registers and enqueues widget-specific styles.
 	 */
 	public function widget_styles() {
-		wp_enqueue_style( 'ft-featured-content-widget-styles', $this->url( 'css/widget.css' ) );
+		wp_enqueue_style( $this->slug, $this->url( 'css/widget.css' ) );
 	}
 
 	/**
 	 * Registers and enqueues widget-specific scripts.
 	 */
 	public function widget_scripts() {
-		wp_enqueue_script( 'ft-featured-content-script', $this->url( 'js/widget.js' ) );
+		wp_enqueue_script( $this->slug, $this->url( 'js/widget.js' ) );
 	}
 }
 

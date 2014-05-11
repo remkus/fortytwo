@@ -44,16 +44,16 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 		global $_ft_responsive_slider_settings_pagehook;
 
 		parent::__construct(
-			'ft-responsive-slider',
+			'widget-' . $this->slug,
 			__( '42&nbsp;&nbsp;- Responsive Slider', 'fortytwo' ),
 			array(
-				'classname'   => 'ft-responsive-slider',
+				'classname'   => $this->slug,
 				'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' ),
 			),
 			array(
 				'width'   => 200,
 				'height'  => 250,
-				'id_base' => 'ft-responsive-slider',
+				'id_base' => $this->slug,
 			)
 		);
 
@@ -432,7 +432,7 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 		wp_enqueue_style( 'jquery-ui-styles-wp3.8', $this->url( 'css/wp-3-8-theme/jquery-ui-1.10.3.custom.min.css' ) );
 
 		//Custom overrides
-		wp_enqueue_style( 'ft-responsive-slider-admin-css', $this->url( 'css/admin.css' ) );
+		wp_enqueue_style( $this->slug . '-admin', $this->url( 'css/admin.css' ) );
 	}
 
 	/**
@@ -451,7 +451,6 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	 * Load the script files
 	 */
 	public function widget_scripts() {
-		/* easySlider JavaScript code */
 		wp_enqueue_script( 'flexslider', $this->url( 'js/jquery.flexslider-min.js' ), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, true );
 	}
 }

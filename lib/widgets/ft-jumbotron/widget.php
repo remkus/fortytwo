@@ -26,10 +26,10 @@ class FT_Widget_Jumbotron extends FT_Widget {
 	public function __construct() {
 
 		parent::__construct(
-			'widget-ft-jumbotron',
+			'widget-' . $this->slug,
 			__( '42&nbsp;&nbsp;- Jumbotron', 'fortytwo' ),
 			array(
-				'classname'   => 'ft-jumbotron',
+				'classname'   => $this->slug,
 				'description' => __( 'Jumbotron widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
@@ -111,21 +111,21 @@ class FT_Widget_Jumbotron extends FT_Widget {
 	 * Registers and enqueues admin-specific styles.
 	 */
 	public function admin_styles() {
-		wp_enqueue_style( 'ft-jumbotron-admin-styles', $this->url( 'css/admin.css' ) );
+		wp_enqueue_style( $this->slug . '-admin', $this->url( 'css/admin.css' ) );
 	}
 
 	/**
 	 * Registers and enqueues widget-specific styles.
 	 */
 	public function widget_styles() {
-		wp_enqueue_style( 'ft-jumbotron-widget-styles', $this->url( 'css/widget.css' ) );
+		wp_enqueue_style( $this->slug, $this->url( 'css/widget.css' ) );
 	}
 
 	/**
 	 * Registers and enqueues widget-specific scripts.
 	 */
 	public function widget_scripts() {
-		wp_enqueue_script( 'ft-jumbotron-script', modules_url( 'ft-jumbotron/js/widget.js' ) );
+		wp_enqueue_script( $this->slug, $this->url( 'js/widget.js' ) );
 	}
 }
 

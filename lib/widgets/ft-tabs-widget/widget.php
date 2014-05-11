@@ -42,9 +42,9 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 	public function __construct() {
 
 		/* Widget variable settings. */
-		$this->fst_widget_cssclass    = 'ft-tabbed-content';
+		$this->fst_widget_cssclass    = $this->slug;
 		$this->fst_widget_description = __( 'Tabbed content widget for the FortyTwo theme.', 'fortytwo' );
-		$this->fst_widget_idbase      = 'widget-ft-tabbed-content';
+		$this->fst_widget_idbase      = 'widget-' . $this->slug;
 		$this->fst_widget_title       = __( '42&nbsp;&nbsp;- Tabs', 'fortytwo' );
 
 		$this->available_tabs = array( 'latest', 'popular', 'comments', 'tags' );
@@ -284,7 +284,7 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 	 * Registers and enqueues admin-specific styles.
 	 */
 	public function admin_styles() {
-		wp_enqueue_style( 'ft-tabbed-content-admin-styles', $this->url( 'css/admin.css' ) );
+		wp_enqueue_style( $this->slug . '-admin', $this->url( 'css/admin.css' ) );
 	}
 }
 

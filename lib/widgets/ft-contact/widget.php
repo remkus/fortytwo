@@ -31,16 +31,13 @@ class FT_Widget_Contact extends FT_Widget {
 	public function __construct() {
 
 		parent::__construct(
-			'widget-ft-contact',
+			'widget-' . $this->slug,
 			__( '42&nbsp;&nbsp;- Contact Information', 'fortytwo' ),
 			array(
-				'classname'   => 'ft-contact',
+				'classname'   => $this->slug,
 				'description' => __( 'A Schema.org compliant Contact Widget', 'fortytwo' )
 			)
 		);
-
-		// Register admin styles and scripts
-		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
 
 	}
 
@@ -115,10 +112,8 @@ class FT_Widget_Contact extends FT_Widget {
 	/**
 	 * Registers and enqueues admin-specific styles.
 	 */
-	public function register_admin_styles() {
-
-		wp_enqueue_style( 'ft-contact-admin-styles', $this->url( 'css/admin.css' ) );
-
+	public function admin_styles() {
+		wp_enqueue_style( $this->slug . '-admin', $this->url( 'css/admin.css' ) );
 	}
 }
 
