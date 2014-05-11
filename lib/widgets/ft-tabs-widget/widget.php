@@ -275,7 +275,7 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 	 * @param int     $position       The position / order of the tab in the selected tabs
 	 */
 	protected function render_tabs_dropdown( $available_tabs, $selected_tabs, $position ) {
-		echo '<p><select name="' . $this->get_field_name( 'tab_$position' ) . '"" class="widefat" id="' . $this->get_field_id( 'tab_$position' ) . '">';
+		echo '<p><select' . $this->get_id_name( "tab_{$position}", false ) . ' class="widefat">';
 		echo '<option value="none">' . __( ' - None selected - ', 'fortytwo' ) . '</option>';
 		foreach ( $available_tabs as $available_tab ) {
 			echo '<option value="' . esc_attr( $available_tab ) . '"' . selected( $available_tab, $selected_tabs[ $position ], false ) . '>' . __( $available_tab, 'fortytwo' ) . '</option>';
