@@ -57,15 +57,8 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 			)
 		);
 
-		add_action( 'admin_print_styles', array( &$this, 'register_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( &$this, 'register_admin_scripts' ) );
-
-		// Register site styles and scripts
-		add_action( 'wp_enqueue_scripts', array( &$this, 'register_widget_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( &$this, 'register_widget_scripts' ) );
-
 		//TODO: Which action should this be attached to?  It needs to be after $this->number is populated
-		add_action( 'wp_enqueue_scripts', array( &$this, 'register_slider_image_size' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_slider_image_size' ) );
 
 	}
 
@@ -434,7 +427,7 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	/**
 	 * Registers and enqueues admin-specific styles.
 	 */
-	public function register_admin_styles() {
+	public function admin_styles() {
 		//TODO This custom style will need to be removed when jquery ui styles are included in WP - https://core.trac.wordpress.org/ticket/18909
 		wp_enqueue_style( 'jquery-ui-styles-wp3.8', $this->url( 'css/wp-3-8-theme/jquery-ui-1.10.3.custom.min.css' ) );
 
@@ -445,32 +438,21 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	/**
 	 * Registers and enqueues admin-specific JavaScript.
 	 */
-	public function register_admin_scripts() {
-
+	public function admin_scripts() {
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-slider' );
 		wp_enqueue_script( 'jquery-ui-dialog' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
 		wp_enqueue_script( 'jquery-ui-position' );
 		wp_enqueue_script( 'wp-lists' );
-
-	}
-
-	/**
-	 * Load the style files
-	 */
-	public function register_widget_styles() {
-		//no-op
 	}
 
 	/**
 	 * Load the script files
 	 */
-	public function register_widget_scripts() {
-
+	public function widget_scripts() {
 		/* easySlider JavaScript code */
 		wp_enqueue_script( 'flexslider', $this->url( 'js/jquery.flexslider-min.js' ), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, true );
-
 	}
 }
 

@@ -41,10 +41,6 @@ class FT_Widget_Testimonials extends FT_Widget {
 			)
 		);
 
-		// Register admin styles and scripts
-		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
-
 	}
 
 	/**
@@ -203,38 +199,30 @@ class FT_Widget_Testimonials extends FT_Widget {
 	/**
 	 * Registers and enqueues admin-specific styles.
 	 */
-	public function register_admin_styles() {
-
+	public function admin_styles() {
 		// TODO: Change 'widget-name' to the name of your plugin
 		wp_enqueue_style( 'ft-testimonials-admin-styles',  $this->url( 'css/admin.css' ) );
-
 	}
 
 	/**
 	 * Registers and enqueues admin-specific JavaScript.
 	 */
-	public function register_admin_scripts() {
-
+	public function admin_scripts() {
 		wp_enqueue_script( 'ft-testimonials-admin-script', $this->url( 'js/admin.js' ) );
-
 	}
 
 	/**
 	 * Registers and enqueues widget-specific styles.
 	 */
-	public function register_widget_styles() {
-
+	public function widget_styles() {
 		wp_enqueue_style( 'ft-testimonials-widget-styles', $this->url( 'css/widget.css' ) );
-
 	}
 
 	/**
 	 * Registers and enqueues widget-specific scripts.
 	 */
-	public function register_widget_scripts() {
-
+	public function widget_scripts() {
 		wp_enqueue_script( 'ft-testimonials-script', $this->url( 'js/widget.js' ) );
-
 	}
 }
 

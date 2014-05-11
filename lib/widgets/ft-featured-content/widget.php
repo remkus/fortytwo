@@ -37,10 +37,6 @@ class FT_Widget_Featured_Content extends FT_Widget {
 			)
 		);
 
-		// Register admin styles and scripts
-		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
-
 	}
 
 	/**
@@ -119,43 +115,35 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	/**
 	 * Registers and enqueues admin-specific styles.
 	 */
-	public function register_admin_styles() {
-
+	public function admin_styles() {
 		wp_enqueue_style( 'ft-featured-content-admin-styles', $this->url( 'css/admin.css' ) );
 		wp_enqueue_style( 'fontawesome_icon_selector_app', $this->url( 'css/fontawesome_icon_selector_app.css' ), array( 'font-awesome-more' ) );
-
 	}
 
 	/**
 	 * Registers and enqueues admin-specific JavaScript.
 	 */
-	public function register_admin_scripts() {
-
+	public function admin_scripts() {
 		wp_enqueue_script( 'jquery-ui-dialog' );
 		wp_enqueue_script( 'jquery-ui-position' );
 		wp_enqueue_script( 'jquery-effects-slide' );
 		wp_enqueue_script( 'backbone' );
 		wp_enqueue_script( 'add_event_saved_widget', $this->url( 'js/add_event_saved_widget.js' ),  array( 'backbone' ) );
 		wp_enqueue_script( 'fontawesome_icon_selector_app', $this->url( 'js/fontawesome_icon_selector_app.js' ), array( 'backbone' ) );
-
 	}
 
 	/**
 	 * Registers and enqueues widget-specific styles.
 	 */
-	public function register_widget_styles() {
-
+	public function widget_styles() {
 		wp_enqueue_style( 'ft-featured-content-widget-styles', $this->url( 'css/widget.css' ) );
-
 	}
 
 	/**
 	 * Registers and enqueues widget-specific scripts.
 	 */
-	public function register_widget_scripts() {
-
+	public function widget_scripts() {
 		wp_enqueue_script( 'ft-featured-content-script', $this->url( 'js/widget.js' ) );
-
 	}
 }
 

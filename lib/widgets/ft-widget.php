@@ -11,6 +11,24 @@
  */
 
 abstract class FT_Widget extends WP_Widget {
+
+	public function __construct( $id_base, $name, $widget_options = array(), $control_options = array() ) {
+		$hooks = array(
+			'admin_enqueue_scripts' => array( 'admin_styles', 'admin_scripts', ),
+			'wp_enqueue_scripts'    => array( 'widget_styles', 'widget_scripts', ),
+		);
+
+		foreach ( $hooks as $hook => $methods ) {
+			foreach ( $methods as $method ) {
+				if ( method_exists( $this, $method ) ) {
+					add_action( $hook, array( $this, $method ) );
+				}	
+			}
+		}
+
+		parent::__construct( $id_base, $name, $widget_options, $control_options );
+	}
+
 	/**
 	 * Return an absolute URL to a file relative to the widget's folder
 	 *

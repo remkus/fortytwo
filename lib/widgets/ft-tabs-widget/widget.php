@@ -58,10 +58,7 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 		$control_ops = array( 'width' => 505, 'height' => 350, 'id_base' => $this->fst_widget_idbase );
 
 		/* Create the widget. */
-		$this->WP_Widget( $this->fst_widget_idbase, $this->fst_widget_title, $widget_ops, $control_ops );
-
-		// Register admin styles and scripts
-		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
+		parent::__construct( $this->fst_widget_idbase, $this->fst_widget_title, $widget_ops, $control_ops );
 
 	}
 
@@ -286,10 +283,8 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 	/**
 	 * Registers and enqueues admin-specific styles.
 	 */
-	public function register_admin_styles() {
-
+	public function admin_styles() {
 		wp_enqueue_style( 'ft-tabbed-content-admin-styles', $this->url( 'css/admin.css' ) );
-
 	}
 }
 
