@@ -10,37 +10,70 @@
  * @link    http://forsitethemes/themes/fortytwo/
  */
 
-class FT_Jumbotron extends WP_Widget {
+class FT_Widget_Jumbotron extends FT_Widget {
 
 	/**
-	 * Specifies the classname and description, instantiates the widget,
-	 * loads localization files, and includes necessary stylesheets and JavaScript.
+	 * Widget slug / directory name.
+	 *
+	 * @var string
+	 */
+	protected $slug = 'ft-jumbotron';
+
+	/**
+	 * Instantiate the widget class.
 	 */
 	public function __construct() {
+		$this->defaults = array(
+			'title'            => '',
+			'content'          => '',
+			'button_alignment' => 'right',
+			'button_text'      => '',
+			'button_link'      => '',
+		);
 
 		parent::__construct(
-			'widget-ft-jumbotron',
-			__( '42&nbsp;&nbsp;- Jumbotron', 'fortytwo' ),
+			$this->slug,
+			__( '42 - Jumbotron', 'fortytwo' ),
 			array(
-				'classname'   => 'ft-jumbotron',
+				'classname'   => 'widget-' . $this->slug,
 				'description' => __( 'Jumbotron widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
-
-		// Register admin styles and scripts
-		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
-
 	}
 
 	/**
-	 * Helper method to echo both the id= and name= attributes for a field input element
+	 * Echo the settings update form.
 	 *
-	 * @param string  field The field name
-	 *
+	 * @param array $instance Current settings.
 	 */
-	public function echo_field_id( $field ) {
-		echo ' id="' . $this->get_field_id( $field ). '" name="' . $this->get_field_name( $field ) . '" ';
+	public function form( $instance ) {
+		$instance = wp_parse_args( $instance, $this->defaults );
+
+		include dirname( __FILE__ )  . '/views/form.php';
+	}
+
+	/**
+	 * Update a particular instance.
+	 * 
+	 * This function should check that $new_instance is set correctly.
+	 * The newly calculated value of $instance should be returned.
+	 * If "false" is returned, the instance won't be saved/updated.
+	 *
+	 * @param array $new_instance New settings for this instance as input by the user via form().
+	 * @param array $old_instance Old settings for this instance.
+	 * 
+	 * @return array Settings to save or bool false to cancel saving.
+	 */
+	public function update( $new_instance, $old_instance ) {
+
+		$instance = $old_instance;
+
+		foreach ( $this->get_fields() as $field ) {
+			$instance[ $field ] = ( ! empty( $new_instance[ $field ] ) ) ? strip_tags( $new_instance[ $field ] ) : '';
+		}
+
+		return $instance;
+
 	}
 
 	/**
@@ -50,127 +83,41 @@ class FT_Jumbotron extends WP_Widget {
 	 * @param array   instance The current instance of the widget
 	 */
 	public function widget( $args, $instance ) {
-
-		echo $args['before_widget'];
-
 		foreach ( array( 'title', 'content', 'button_text', 'button_link', 'button_alignment' ) as $field_name ) {
-			$instance[ $field_name ] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
+			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
 		}
+
 		$this->set_default( $instance['title'], __( 'Announcing the most important product feature', 'fortytwo' ) );
 		$this->set_default( $instance['content'], __( 'And purely one near this hey therefore darn firefly had ducked overpaid wow!', 'fortytwo' ) );
 		$this->set_default( $instance['button_text'], __( 'Purchase Today !', 'fortytwo' ) );
 		$this->set_default( $instance['button_link'], '#' );
 		$this->set_default( $instance['button_alignment'], 'right' );
 
+		echo $args['before_widget'];
 		include dirname( __FILE__ ) . '/views/widget.php';
-
 		echo $args['after_widget'];
-
-	}
-
-	/**
-	 * Processes the widget's options to be saved.
-	 *
-	 * @param array   new_instance The previous instance of values before the update.
-	 * @param array   old_instance The new instance of values to be generated via the update.
-	 */
-	public function update( $new_instance, $old_instance ) {
-
-		$instance = $old_instance;
-
-		foreach ( array(
-			'title',
-			'content',
-			'button_text',
-			'button_link',
-			'button_alignment',
-			) as $field_name ) {
-			$instance[ $field_name ] = ( ! empty( $new_instance[ $field_name ] ) ) ? strip_tags( $new_instance[ $field_name ] ) : '';
-		}
-
-		return $instance;
-
-	}
-
-	/**
-	 * Generates the administration form for the widget.
-	 *
-	 * @param array   instance The array of keys and values for the widget.
-	 */
-	public function form( $instance ) {
-		$instance = wp_parse_args(
-			(array) $instance,
-			array(
-				'title'            => '',
-				'content'          => '',
-				'button_alignment' => 'right',
-				'button_text'      => '',
-				'button_link'      => '',
-			)
-		);
-
-		// Display the admin form
-		include dirname( __FILE__ )  . '/views/form.php';
-
 	}
 
 	/**
 	 * Registers and enqueues admin-specific styles.
 	 */
-	public function register_admin_styles() {
-
-		wp_enqueue_style( 'ft-jumbotron-admin-styles', $this->url( 'css/admin.css' ) );
-
-	}
-
-	/**
-	 * Registers and enqueues admin-specific JavaScript.
-	 */
-	public function register_admin_scripts() {
+	public function admin_styles() {
+		wp_enqueue_style( $this->slug . '-admin', $this->url( 'css/admin.css' ) );
 	}
 
 	/**
 	 * Registers and enqueues widget-specific styles.
 	 */
-	public function register_widget_styles() {
-
-		wp_enqueue_style( 'ft-jumbotron-widget-styles', $this->url( 'css/widget.css' ) );
-
+	public function widget_styles() {
+		wp_enqueue_style( $this->slug, $this->url( 'css/widget.css' ) );
 	}
 
 	/**
 	 * Registers and enqueues widget-specific scripts.
 	 */
-	public function register_widget_scripts() {
-
-		wp_enqueue_script( 'ft-jumbotron-script', modules_url( 'ft-jumbotron/js/widget.js' ) );
-
+	public function widget_scripts() {
+		wp_enqueue_script( $this->slug, $this->url( 'js/widget.js' ) );
 	}
-
-		/**
-	 * Returns an absolute URL to a file releative to the widget's folder
-	 *
-	 * @param string  file The file path (relative to the widgets folder)
-	 *
-	 * @return string
-	 */
-	protected function url( $file ) {
-		return trailingslashit( FORTYTWO_WIDGETS_URL ) . 'ft-jumbotron/' . $file;
-	}
-
-	/**
-	 * Set a default value for an empty variable
-	 *
-	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
-	 * @param mixed   default The default value
-	 */
-	protected function set_default( &$value, $default ) {
-		if ( empty ( $value ) ) {
-			$value = $default;
-		}
-	}
-
-
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Jumbotron");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Jumbotron");' ) );

@@ -13,27 +13,67 @@
 /**
  *  @todo  This code needs better documentation
  */
-class FT_Featured_Content extends WP_Widget {
+class FT_Widget_Featured_Content extends FT_Widget {
 
 	/**
-	 * Specifies the classname and description, instantiates the widget,
-	 * loads localization files, and includes necessary stylesheets and JavaScript.
+	 * Widget slug / directory name.
+	 *
+	 * @var string
+	 */
+	protected $slug = 'ft-featured-content';
+
+	/**
+	 * Instantiate the widget class.
 	 */
 	public function __construct() {
+		$this->defaults = array(
+			'title'       => '',
+			'icon'        => '',
+			'content'     => '',
+			'button_text' => '',
+			'button_link' => '',
+		);
 
 		parent::__construct(
-			'ft-featured-content',
-			__( '42&nbsp;&nbsp;- Featured Content', 'fortytwo' ),
+			$this->slug,
+			__( '42 - Featured Content', 'fortytwo' ),
 			array(
-				'classname'   => 'ft-featured-content',
+				'classname'   => 'widget-' . $this->slug,
 				'description' => __( 'Featured Content widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
+	}
 
-		// Register admin styles and scripts
-		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
+	/**
+	 * Echo the settings update form.
+	 *
+	 * @param array $instance Current settings.
+	 */
+	public function form( $instance ) {
+		$instance = wp_parse_args( $instance, $this->defaults );
 
+		include dirname( __FILE__ ) . '/views/form.php';
+	}
+
+	/**
+	 * Update a particular instance.
+	 * 
+	 * This function should check that $new_instance is set correctly.
+	 * The newly calculated value of $instance should be returned.
+	 * If "false" is returned, the instance won't be saved/updated.
+	 *
+	 * @param array $new_instance New settings for this instance as input by the user via form().
+	 * @param array $old_instance Old settings for this instance.
+	 * 
+	 * @return array Settings to save or bool false to cancel saving.
+	 */
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		foreach ( array_keys( $this->defaults ) as $field ) {
+			$instance[ $field ] = ( ! empty( $new_instance[ $field ] ) ) ? strip_tags( $new_instance[ $field ] ) : '';
+		}
+
+		return $instance;
 	}
 
 	/**
@@ -43,11 +83,10 @@ class FT_Featured_Content extends WP_Widget {
 	 * @param array   instance The current instance of the widget
 	 */
 	public function widget( $args, $instance ) {
+		$instance = wp_parse_args( $instance, $this->defaults );
 
-		echo $args['before_widget'];
-
-		foreach ( array( 'title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name ) {
-			$instance[ $field_name ] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
+		foreach ( $this->get_fields() as $field ) {
+			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ] );
 		}
 		$this->set_default( $instance['title'], __( 'The title', 'fortytwo' ) );
 		$this->set_default( $instance['icon '], 'icon-star' );
@@ -56,134 +95,44 @@ class FT_Featured_Content extends WP_Widget {
 		$this->set_default( $instance['button_text'], __( 'Click me!', 'fortytwo' ) );
 		$this->set_default( $instance['button_link'], '#' );
 
+		echo $args['before_widget'];
 		include dirname( __FILE__ )  . '/views/widget.php';
-
 		echo $args['after_widget'];
-
-	}
-
-	/**
-	 * Helper method to echo both the id= and name= attributes for a field input element
-	 *
-	 * @param string  field The field name
-	 *
-	 */
-	public function echo_field_id( $field ) {
-		echo ' id="' . $this->get_field_id( $field ) . '" name="' . $this->get_field_name( $field ) . '" ';
-	}
-
-	/**
-	 * Processes the widget's options to be saved.
-	 *
-	 * @param array   old_instance The previous instance of values before the update.
-	 * @param array   new_instance The new instance of values to be generated via the update.
-	 */
-	public function update( $new_instance, $old_instance ) {
-
-		$instance = array();
-		foreach ( array(
-			'title',
-			'icon',
-			'content',
-			'button_text',
-			'button_link',
-			) as $field_name ) {
-			$instance[ $field_name ] = ( ! empty( $new_instance[ $field_name ] ) ) ? strip_tags( $new_instance[ $field_name ] ) : '';
-		}
-
-		return $instance;
-
-	}
-
-	/**
-	 * Generates the administration form for the widget.
-	 *
-	 * @param array   instance The array of keys and values for the widget.
-	 */
-	public function form( $instance ) {
-
-		// Default values for variables
-		$instance = wp_parse_args(
-			(array) $instance,
-			array(
-				'title'       => '',
-				'icon'        => '',
-				'content'     => '',
-				'button_text' => '',
-				'button_link' => '',
-			)
-		);
-
-		// Display the admin form
-		include dirname( __FILE__ ) . '/views/form.php';
-
 	}
 
 	/**
 	 * Registers and enqueues admin-specific styles.
 	 */
-	public function register_admin_styles() {
-
-		wp_enqueue_style( 'ft-featured-content-admin-styles', $this->url( 'css/admin.css' ) );
-		wp_enqueue_style( 'fontawesome_icon_selector_app', $this->url( 'css/fontawesome_icon_selector_app.css' ), array( 'font-awesome-more' ) );
-
+	public function admin_styles() {
+		wp_enqueue_style( $this->slug . 'admin', $this->url( 'css/admin.css' ) );
+		wp_enqueue_style( 'fontawesome-icon-selector-app', $this->url( 'css/fontawesome_icon_selector_app.css' ), array( 'font-awesome-more' ) );
 	}
 
 	/**
 	 * Registers and enqueues admin-specific JavaScript.
 	 */
-	public function register_admin_scripts() {
-
+	public function admin_scripts() {
 		wp_enqueue_script( 'jquery-ui-dialog' );
 		wp_enqueue_script( 'jquery-ui-position' );
 		wp_enqueue_script( 'jquery-effects-slide' );
 		wp_enqueue_script( 'backbone' );
-		wp_enqueue_script( 'add_event_saved_widget', $this->url( 'js/add_event_saved_widget.js' ),  array( 'backbone' ) );
-		wp_enqueue_script( 'fontawesome_icon_selector_app', $this->url( 'js/fontawesome_icon_selector_app.js' ), array( 'backbone' ) );
-
+		wp_enqueue_script( 'add-event-saved-widget', $this->url( 'js/add_event_saved_widget.js' ),  array( 'backbone' ) );
+		wp_enqueue_script( 'fontawesome-icon-selector-app', $this->url( 'js/fontawesome_icon_selector_app.js' ), array( 'backbone' ) );
 	}
 
 	/**
 	 * Registers and enqueues widget-specific styles.
 	 */
-	public function register_widget_styles() {
-
-		wp_enqueue_style( 'ft-featured-content-widget-styles', $this->url( 'css/widget.css' ) );
-
+	public function widget_styles() {
+		wp_enqueue_style( $this->slug, $this->url( 'css/widget.css' ) );
 	}
 
 	/**
 	 * Registers and enqueues widget-specific scripts.
 	 */
-	public function register_widget_scripts() {
-
-		wp_enqueue_script( 'ft-featured-content-script', $this->url( 'js/widget.js' ) );
-
+	public function widget_scripts() {
+		wp_enqueue_script( $this->slug, $this->url( 'js/widget.js' ) );
 	}
-
-	/**
-	 * Returns an absolute URL to a file releative to the widget's folder
-	 *
-	 * @param string  file The file path (relative to the widgets folder)
-	 *
-	 * @return string
-	 */
-	protected function url( $file ) {
-		return trailingslashit( FORTYTWO_WIDGETS_URL ) . 'ft-featured-content/' . $file;
-	}
-
-	/**
-	 * Set a default value for an empty variable
-	 *
-	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
-	 * @param mixed   default The default value
-	 */
-	private function set_default( &$value, $default ) {
-		if ( empty ( $value ) ) {
-			$value = $default;
-		}
-	}
-
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Featured_Content");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Featured_Content");' ) );

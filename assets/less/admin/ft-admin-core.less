@@ -10,27 +10,18 @@
 
 /* FortyTwo Widget Icon Styling */
 
-div[id*="ft-jumbotron"],
-div[id*="ft-tabbed-content"],
-div[id*="ft-testimonials"],
-div[id*="ft-responsive-slider"],
-div[id*="ft-contact"],
-div[id*="ft-featured-content"] {
-
-	& .in-widget-title:before {
-		content: '42';
-		left: 15px;
-		position: absolute;
-		background: #424242;
-		border-radius: 10px;
-		height: 18px;
-		width: 18px;
-		float: left;
-		color: #fff;
-		top: 13px;
-		line-height: 18px;
-		text-align: center;
-		font-size: 11px;
-	}
-
+div[id*="_ft-"] .widget-title > h4:before {
+	content: '42';
+	left: 13px;
+	position: absolute;
+	background: #424242;
+	border-radius: 10px;
+	height: 18px;
+	width: 18px;
+	display: inline-block;
+	color: #fff;
+	top: 15px;
+	line-height: 18px;
+	text-align: center;
+	font-size: 11px;
 }

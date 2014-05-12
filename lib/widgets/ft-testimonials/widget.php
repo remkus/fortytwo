@@ -17,37 +17,73 @@
  */
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-class FT_Testimonials extends WP_Widget {
+class FT_Widget_Testimonials extends FT_Widget {
 
 	/**
-	 * Specifies the classname and description, instantiates the widget,
-	 * loads localization files, and includes necessary stylesheets and JavaScript.
+	 * Widget slug / directory name.
+	 *
+	 * @var string
+	 */
+	protected $slug = 'ft-testimonials';
+
+	/**
+	 * Instantiate the widget class.
 	 */
 	public function __construct() {
+		$this->defaults = array(
+			'title'      => '',
+			'limit'      => 5,
+			'datasource' => '',
+			'category'   => '',
+		);
 
 		parent::__construct(
-			'widget-ft-testimonials',
-			__( '42&nbsp;&nbsp;- Testimonials', 'fortytwo' ),
+			$this->slug,
+			__( '42 - Testimonials', 'fortytwo' ),
 			array(
-				'classname'   => 'ft-testimonials',
+				'classname'   => 'widget-' . $this->slug,
 				'description' => __( 'Testimonials widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
 
-		// Register admin styles and scripts
-		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
-
 	}
 
 	/**
-	 * Helper method to echo both the id= and name= attributes for a field input element
+	 * Generates the administration form for the widget.
 	 *
-	 * @param string  field The field name
-	 *
+	 * @param array   instance The array of keys and values for the widget.
 	 */
-	public function echo_field_id( $field ) {
-		echo ' id="'.$this->get_field_id( $field ). '" name="' .$this->get_field_name( $field ) . '" ';
+	public function form( $instance ) {
+		$defaults = $this->defaults;
+		$defaults['datasources'] = $this->get_datasources();
+
+		$instance = wp_parse_args( $instance, $defaults );
+
+		include dirname( __FILE__ ) . '/views/form.php';
+	}
+
+	/**
+	 * Update a particular instance.
+	 * 
+	 * This function should check that $new_instance is set correctly.
+	 * The newly calculated value of $instance should be returned.
+	 * If "false" is returned, the instance won't be saved/updated.
+	 *
+	 * @param array $new_instance New settings for this instance as input by the user via form().
+	 * @param array $old_instance Old settings for this instance.
+	 * 
+	 * @return array Settings to save or bool false to cancel saving.
+	 */
+	public function update( $new_instance, $old_instance ) {
+
+		$instance = $old_instance;
+
+		foreach ( $this->get_fields() as $field ) {
+			$instance[ $field ] = ( ! empty( $new_instance[ $field ] ) ) ? strip_tags( $new_instance[ $field ] ) : '';
+		}
+
+		return $instance;
+
 	}
 
 	/**
@@ -61,7 +97,7 @@ class FT_Testimonials extends WP_Widget {
 		echo $args['before_widget'];
 
 		foreach ( array( 'title', 'limit', 'datasource', 'category' ) as $field_name ) {
-			$instance[ $field_name ] = apply_filters( 'widget_$field_name', $instance[ $field_name ] );
+			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
 		}
 
 		$this->set_default( $instance['title'], __( 'Client Testimonials', 'fortytwo' ) );
@@ -116,14 +152,14 @@ class FT_Testimonials extends WP_Widget {
 			case 'category':
 				$posts = get_posts( array(
 						'posts_per_page' => $instance['limit'],
-						'category'       => $instance['category'] ),
+						'category'       => $instance['category'], )
 				);
 
 				foreach ( $posts as $post ) {
 					setup_postdata( $post );
 					$title = get_the_title( $post->ID );
-					$s  = '<a href="' . esc_url( get_permalink( $post->ID ) ) . '">';
-						. '<cite title="' . esc_attr( $title ) . '">' . $title . '</cite>';
+					$s  = '<a href="' . esc_url( get_permalink( $post->ID ) ) . '">'
+						. '<cite title="' . esc_attr( $title ) . '">' . $title . '</cite>'
 						. '</a>';
 
 					$instance['testimonials'][] = array(
@@ -141,121 +177,29 @@ class FT_Testimonials extends WP_Widget {
 	}
 
 	/**
-	 * Processes the widget's options to be saved.
+	 * Get datasources.
 	 *
-	 * @param array   new_instance The previous instance of values before the update.
-	 * @param array   old_instance The new instance of values to be generated via the update.
+	 * @return array Datasources for testimonials.
 	 */
-	public function update( $new_instance, $old_instance ) {
-
-		$instance = $old_instance;
-
-		foreach ( array( 'title', 'limit', 'datasource', 'category' ) as $field_name ) {
-			$instance[ $field_name ] = ( ! empty( $new_instance[ $field_name ] ) ) ? strip_tags( $new_instance[ $field_name ] ) : '';
-		}
-
-		return $instance;
-
-	}
-
-	/**
-	 * Generates the administration form for the widget.
-	 *
-	 * @param array   instance The array of keys and values for the widget.
-	 */
-	public function form( $instance ) {
-
+	protected function get_datasources() {
 		$datasources = array();
 		$datasources[] = array(
-			'name' => 'Category',
+			'name'  => __( 'Category', 'fortytwo' ),
 			'value' => 'category',
-		)
-		;
+		);
+
 		if ( $this->is_testimonials_by_woothemes_installed() ) {
 			$datasources[] = array(
-				'name' => 'Testimonials by WooThemes',
+				'name'  => __( 'Testimonials by WooThemes', 'fortytwo' ),
 				'value' => 'testimonials-by-woothemes',
 			);
 		}
 
-		$instance = wp_parse_args(
-			(array) $instance,
-			array(
-				'title'       => '',
-				'limit'       => 5,
-				'datasource'  => '',
-				'category'    => '',
-				'datasources' => $datasources,
-			)
-		);
-
-		// Display the admin form
-		include dirname( __FILE__ ) . '/views/form.php';
-
+		return apply_filters( "{$this->slug}_datasources", $datasources );
 	}
 
 	/**
-	 * Registers and enqueues admin-specific styles.
-	 */
-	public function register_admin_styles() {
-
-		// TODO: Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'ft-testimonials-admin-styles',  $this->url( 'css/admin.css' ) );
-
-	}
-
-	/**
-	 * Registers and enqueues admin-specific JavaScript.
-	 */
-	public function register_admin_scripts() {
-
-		wp_enqueue_script( 'ft-testimonials-admin-script', $this->url( 'js/admin.js' ) );
-
-	}
-
-	/**
-	 * Registers and enqueues widget-specific styles.
-	 */
-	public function register_widget_styles() {
-
-		wp_enqueue_style( 'ft-testimonials-widget-styles', $this->url( 'css/widget.css' ) );
-
-	}
-
-	/**
-	 * Registers and enqueues widget-specific scripts.
-	 */
-	public function register_widget_scripts() {
-
-		wp_enqueue_script( 'ft-testimonials-script', $this->url( 'js/widget.js' ) );
-
-	}
-
-		/**
-	 * Returns an absolute URL to a file releative to the widget's folder
-	 *
-	 * @param string  file The file path (relative to the widgets folder)
-	 *
-	 * @return string
-	 */
-	protected function url( $file ) {
-		return trailingslashit( FORTYTWO_WIDGETS_URL ) . 'ft-testimonials/' . $file;
-	}
-
-	/**
-	 * Set a default value for an empty variable
-	 *
-	 * @param mixed   value The variable whoes default should be set.  NB!  This variable's value is set to default if empty()
-	 * @param mixed   default The default value
-	 */
-	protected function set_default( &$value, $default ) {
-		if ( empty ( $value ) ) {
-			$value = $default;
-		}
-	}
-
-	/**
-	 * Set a default value for an empty variable
+	 * Check if Testimonials by WooThemes plugin is active.
 	 *
 	 * @return bool true|false depending on whether the testimonials_by_woothemes plugin is installed
 	 */
@@ -263,6 +207,34 @@ class FT_Testimonials extends WP_Widget {
 		return is_plugin_active( 'testimonials-by-woothemes/woothemes-testimonials.php' );
 	}
 
+	/**
+	 * Registers and enqueues admin-specific styles.
+	 */
+	public function admin_styles() {
+		// TODO: Change 'widget-name' to the name of your plugin
+		wp_enqueue_style( $this->slug . '-admin',  $this->url( 'css/admin.css' ) );
+	}
+
+	/**
+	 * Registers and enqueues admin-specific JavaScript.
+	 */
+	public function admin_scripts() {
+		wp_enqueue_script( $this->slug . '-admin', $this->url( 'js/admin.js' ) );
+	}
+
+	/**
+	 * Registers and enqueues widget-specific styles.
+	 */
+	public function widget_styles() {
+		wp_enqueue_style( $this->slug, $this->url( 'css/widget.css' ) );
+	}
+
+	/**
+	 * Registers and enqueues widget-specific scripts.
+	 */
+	public function widget_scripts() {
+		wp_enqueue_script( $this->slug, $this->url( 'js/widget.js' ) );
+	}
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Testimonials");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Testimonials");' ) );

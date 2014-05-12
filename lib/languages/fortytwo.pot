@@ -128,11 +128,11 @@ msgstr ""
 msgid "Fax"
 msgstr ""
 
-#: lib/widgets/ft-contact/widget.php:28
-msgid "42&nbsp;&nbsp;- Contact Information"
+#: lib/widgets/ft-contact/widget.php:33
+msgid "42 - Contact Information"
 msgstr ""
 
-#: lib/widgets/ft-contact/widget.php:31
+#: lib/widgets/ft-contact/widget.php:36
 msgid "A Schema.org compliant Contact Widget"
 msgstr ""
 
@@ -144,33 +144,33 @@ msgid "Title:"
 msgstr ""
 
 #: lib/widgets/ft-featured-content/views/form.php:28
-#: lib/widgets/ft-jumbotron/views/form.php:24
+#: lib/widgets/ft-jumbotron/views/form.php:23
 msgid "Content:"
 msgstr ""
 
-#: lib/widgets/ft-featured-content/views/form.php:33
-#: lib/widgets/ft-jumbotron/views/form.php:32
+#: lib/widgets/ft-featured-content/views/form.php:32
+#: lib/widgets/ft-jumbotron/views/form.php:29
 msgid "Button Text:"
 msgstr ""
 
-#: lib/widgets/ft-featured-content/views/form.php:35
-#: lib/widgets/ft-jumbotron/views/form.php:36
+#: lib/widgets/ft-featured-content/views/form.php:34
+#: lib/widgets/ft-jumbotron/views/form.php:31
 msgid "Button Link:"
 msgstr ""
 
-#: lib/widgets/ft-featured-content/widget.php:26
-msgid "42&nbsp;&nbsp;- Featured Content"
+#: lib/widgets/ft-featured-content/widget.php:32
+msgid "42 - Featured Content"
 msgstr ""
 
-#: lib/widgets/ft-featured-content/widget.php:29
+#: lib/widgets/ft-featured-content/widget.php:35
 msgid "Featured Content widget for the FortyTwo Theme."
 msgstr ""
 
-#: lib/widgets/ft-featured-content/widget.php:52
+#: lib/widgets/ft-featured-content/widget.php:101
 msgid "The title"
 msgstr ""
 
-#: lib/widgets/ft-featured-content/widget.php:54
+#: lib/widgets/ft-featured-content/widget.php:103
 msgid ""
 "And purely one near this hey therefore darn firefly had ducked overpaid wow "
 "irrespective some tearful and mandrill\n"
@@ -178,27 +178,27 @@ msgid ""
 "while"
 msgstr ""
 
-#: lib/widgets/ft-featured-content/widget.php:56
+#: lib/widgets/ft-featured-content/widget.php:105
 msgid "Click me!"
 msgstr ""
 
-#: lib/widgets/ft-jumbotron/widget.php:23
-msgid "42&nbsp;&nbsp;- Jumbotron"
+#: lib/widgets/ft-jumbotron/widget.php:29
+msgid "42 - Jumbotron"
 msgstr ""
 
-#: lib/widgets/ft-jumbotron/widget.php:26
+#: lib/widgets/ft-jumbotron/widget.php:32
 msgid "Jumbotron widget for the FortyTwo Theme."
 msgstr ""
 
-#: lib/widgets/ft-jumbotron/widget.php:59
+#: lib/widgets/ft-jumbotron/widget.php:97
 msgid "Announcing the most important product feature"
 msgstr ""
 
-#: lib/widgets/ft-jumbotron/widget.php:60
+#: lib/widgets/ft-jumbotron/widget.php:98
 msgid "And purely one near this hey therefore darn firefly had ducked overpaid wow!"
 msgstr ""
 
-#: lib/widgets/ft-jumbotron/widget.php:61
+#: lib/widgets/ft-jumbotron/widget.php:99
 msgid "Purchase Today !"
 msgstr ""
 
@@ -365,15 +365,15 @@ msgstr ""
 msgid "Advanced settings"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/widget.php:41
-msgid "42&nbsp;&nbsp;- Responsive Slider"
+#: lib/widgets/ft-responsive-slider/widget.php:47
+msgid "42 - Responsive Slider"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/widget.php:44
+#: lib/widgets/ft-responsive-slider/widget.php:50
 msgid "Displays a slideshow inside a widget area"
 msgstr ""
 
-#: lib/widgets/ft-responsive-slider/widget.php:290
+#: lib/widgets/ft-responsive-slider/widget.php:93
 msgid "Read More"
 msgstr ""
 
@@ -416,23 +416,23 @@ msgid ""
 "displayed."
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/widget.php:39
-msgid "Tabbed content widget for the FortyTwo theme."
+#: lib/widgets/ft-tabs-widget/widget.php:42
+msgid "42 - Tabs"
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/widget.php:41
-msgid "42&nbsp;&nbsp;- Tabs"
+#: lib/widgets/ft-tabs-widget/widget.php:45
+msgid "Tabbed content widget for the FortyTwo Theme."
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/widget.php:132
+#: lib/widgets/ft-tabs-widget/widget.php:65
 msgid "Tabs"
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/widget.php:232
+#: lib/widgets/ft-tabs-widget/widget.php:217
 msgid "on"
 msgstr ""
 
-#: lib/widgets/ft-tabs-widget/widget.php:281
+#: lib/widgets/ft-tabs-widget/widget.php:267
 msgid " - None selected - "
 msgstr ""
 
@@ -448,15 +448,15 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: lib/widgets/ft-testimonials/widget.php:30
-msgid "42&nbsp;&nbsp;- Testimonials"
+#: lib/widgets/ft-testimonials/widget.php:36
+msgid "42 - Testimonials"
 msgstr ""
 
-#: lib/widgets/ft-testimonials/widget.php:33
+#: lib/widgets/ft-testimonials/widget.php:39
 msgid "Testimonials widget for the FortyTwo Theme."
 msgstr ""
 
-#: lib/widgets/ft-testimonials/widget.php:67
+#: lib/widgets/ft-testimonials/widget.php:113
 msgid "Client Testimonials"
 msgstr ""
 

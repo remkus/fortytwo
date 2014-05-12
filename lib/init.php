@@ -40,6 +40,7 @@ require_once 'structural/ft-footer.php';
 
 
 //Require all theme widgets
+require_once FORTYTWO_WIDGETS_DIR . '/ft-widget.php';
 require_once FORTYTWO_WIDGETS_DIR . '/ft-responsive-slider/widget.php';
 require_once FORTYTWO_WIDGETS_DIR . '/ft-featured-content/widget.php';
 require_once FORTYTWO_WIDGETS_DIR . '/ft-jumbotron/widget.php';

@@ -25,7 +25,7 @@
 				if ( $show_title == 1 ) {
 			?>
 				<h2>
-					<a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a>
+					<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 				</h2>
 			<?php
 				}
@@ -53,7 +53,7 @@
 			<?php
 				} else {
 			?>
-				<a href="<?php the_permalink() ?>" rel="bookmark">
+				<a href="<?php the_permalink(); ?>" rel="bookmark">
 					<img src="<?php echo esc_url( wpthumb( $image_url, array( 'width' => $slide_image_width, 'height' => $slide_image_height, 'crop' => true, ) ) ); ?>" alt="<?php esc_attr( the_title() ); ?>"/>
 				</a>
 			<?php
@@ -76,13 +76,13 @@
 	<script>
 		jQuery( document ).ready( function( $ ) {
 			'use strict';
-			$( '<?php echo $controlsContainer ?>' ).flexslider({
-				controlsContainer: '<?php echo $controlsContainer ?>',
-				animation: '<?php echo esc_js( $effect ) ?>',
-				directionNav: '<?php echo $directionnav ?>',
-				controlNav: '<?php echo $controlnav ?>',
-				animationSpeed: '<?php echo $duration ?>',
-				slideshowSpeed: '<?php echo $timer ?>',
+			$( '<?php echo $controlsContainer; ?>' ).flexslider({
+				controlsContainer: '<?php echo $controlsContainer; ?>',
+				animation: '<?php echo esc_js( $effect ); ?>',
+				directionNav: '<?php echo $directionnav; ?>',
+				controlNav: '<?php echo $controlnav; ?>',
+				animationSpeed: '<?php echo $duration; ?>',
+				slideshowSpeed: '<?php echo $timer; ?>',
 				prevText: '<i class="ft-ico ft-ico-prev"></i>',
 				nextText: '<i class="ft-ico ft-ico-next"></i>',
 				useCSS: false,
