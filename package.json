@@ -29,7 +29,7 @@
     "grunt-replace": "~0.5.1",
     "grunt-svgmin": "~0.2.0",
     "grunt-usemin": "~0.1.10",
-    "grunt-wp-i18n": "~0.4.3",
+    "grunt-wp-i18n": "https://github.com/blazersix/grunt-wp-i18n/archive/addtd-format.tar.gz",
     "load-grunt-tasks": "~0.2.0"
   },
   "engines": {

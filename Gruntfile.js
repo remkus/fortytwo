@@ -239,6 +239,21 @@ module.exports = function(grunt) {
 
 		// I18n
 		
+		addtextdomain: {
+			options: {
+				// textdomain: 'fortytwo'
+			},
+			php: {
+				files: {
+					src: [
+						'*.php',
+						'lib/**/*.php',
+						'templates/**/*.php'
+					],
+				}
+			}
+		},
+
 		checktextdomain: {
 			options: {
 				// text_domain: '<%= pkg.theme.textdomain %>',
@@ -335,7 +350,7 @@ module.exports = function(grunt) {
 	] );
 
 	grunt.registerTask( 'build:i18n', [
-		// 'addtextdomain',
+		'addtextdomain',
 		'makepot'
 	] );
 
