@@ -12,7 +12,10 @@
 ?>
 <div class="contact-us" itemscope itemtype="http://schema.org/Organization">
 <?php
-echo $args['before_title'] . ' ' . esc_html( $instance['title'] ) . ' ' . $args['after_title'];
+if ( $instance['title'] ) {
+	echo $args['before_title'] . ' ' . esc_html( $instance['title'] ) . ' ' . $args['after_title'];
+}
+
 if ( $instance['name'] ) {
 	echo '<span class="company-name" itemprop="name">' . $instance['name'] . '</span>';
 }

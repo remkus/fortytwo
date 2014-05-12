@@ -28,6 +28,7 @@ class FT_Widget_Contact extends FT_Widget {
 	 */
 	public function __construct() {
 		$this->defaults = array(
+			'title'   => '',
 			'name'    => '',
 			'phone'   => '',
 			'email'   => '',

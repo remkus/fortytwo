@@ -11,6 +11,11 @@
  */
 ?>
 <p>
+<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'fortytwo' ); ?>:</label><br />
+<input type="text"<?php $this->id_name( 'title' ); ?> value="<?php echo esc_attr( $instance['title'] ); ?>" class="widefat" />
+</p>
+
+<p>
 <label for="<?php echo $this->get_field_id( 'name' ); ?>"><?php _e( 'Company Name', 'fortytwo' ); ?>:</label><br />
 <input type="text"<?php $this->id_name( 'name' ); ?> value="<?php echo esc_attr( $instance['name'] ); ?>" class="widefat" />
 </p>
