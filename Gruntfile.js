@@ -260,12 +260,14 @@ module.exports = function(grunt) {
 					'esc_html_x:1,2c,3d'
 				]
 			},
-			php: [{
+			files: {
 				src: [
-					'*.php', 'lib/**/*.php', 'templates/**/*.php'
+				'*.php',
+				'lib/**/*.php',
+				'templates/**/*.php'
 				],
 				expand: true
-			}]
+			}
 		},
 
 
@@ -316,11 +318,11 @@ module.exports = function(grunt) {
 	// Register tasks
 	
 	grunt.registerTask( 'check', [
-		'phplint'//,
-		// 'checktextdomain'
-	]);
+		'phplint',
+		'checktextdomain'
+	] );
 	
-	grunt.registerTask('build:css', [
+	grunt.registerTask( 'build:css', [
 		'clean',
 		'copy:fonticons',
 		'replace',
@@ -330,16 +332,21 @@ module.exports = function(grunt) {
 		'csscomb',
 		'concat',
 		'clean'
-	]);
+	] );
+
+	grunt.registerTask( 'build:i18n', [
+		// 'addtextdomain',
+		'makepot'
+	] );
 
 	grunt.registerTask( 'build', [
 		'build:css',
-		'makepot'
-	]);
+		'build:i18n'
+	] );
 
 	grunt.registerTask( 'default', [
 		'build'
-	]);
+	] );
 
 
 };

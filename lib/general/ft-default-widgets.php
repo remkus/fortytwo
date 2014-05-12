@@ -57,7 +57,7 @@ class FortyTwo_Walker_Category extends Walker_Category {
 		$cat_name = apply_filters( 'list_cats', $cat_name, $category );
 		$link = '<a href="' . esc_url( get_term_link( $category ) ) . '" ';
 		if ( $use_desc_for_title == 0 || empty( $category->description ) ) {
-			$link .= 'title="' . esc_attr( sprintf( __( 'View all posts filed under %s' ), $cat_name ) ) . '"';
+			$link .= 'title="' . esc_attr( sprintf( __( 'View all posts filed under %s', 'fortytwo' ), $cat_name ) ) . '"';
 		} else {
 			$link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $category->description, $category ) ) ) . '"';
 		}
@@ -80,7 +80,7 @@ class FortyTwo_Walker_Category extends Walker_Category {
 			$link .= '<a href="' . esc_url( get_term_feed_link( $category->term_id, $category->taxonomy, $feed_type ) ) . '"';
 
 			if ( empty( $feed ) ) {
-				$alt = ' alt="' . sprintf( __( 'Feed for all posts filed under %s' ), $cat_name ) . '"';
+				$alt = ' alt="' . sprintf( __( 'Feed for all posts filed under %s', 'fortytwo' ), $cat_name ) . '"';
 			} else {
 				$title = ' title="' . $feed . '"';
 				$alt = ' alt="' . $feed . '"';
