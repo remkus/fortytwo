@@ -12,6 +12,13 @@
 
 abstract class FT_Widget extends WP_Widget {
 
+	/**
+	 * Holds widget settings defaults.
+	 *
+	 * @var array
+	 */
+	protected $defaults;
+
 	public function __construct( $id_base, $name, $widget_options = array(), $control_options = array() ) {
 		$hooks = array(
 			'admin_enqueue_scripts' => array( 'admin_styles', 'admin_scripts', ),
@@ -22,9 +29,11 @@ abstract class FT_Widget extends WP_Widget {
 			foreach ( $methods as $method ) {
 				if ( method_exists( $this, $method ) ) {
 					add_action( $hook, array( $this, $method ) );
-				}	
+				}
 			}
 		}
+
+		$this->defaults = apply_filters( "{$this->slug}_widget_defaults", $this->defaults );
 
 		parent::__construct( $id_base, $name, $widget_options, $control_options );
 	}
@@ -38,7 +47,7 @@ abstract class FT_Widget extends WP_Widget {
 	 */
 	protected function url( $file ) {
 		// $reflection = new ReflectionClass( $this );
-    	// $directory  = basename( dirname( $reflection->getFileName() ) );
+		// $directory  = basename( dirname( $reflection->getFileName() ) );
 		// return trailingslashit( FORTYTWO_WIDGETS_URL ) . trailingslashit( $directory ) . $file;
 		return trailingslashit( FORTYTWO_WIDGETS_URL ) . trailingslashit( $this->slug ) . $file;
 	}
@@ -74,5 +83,9 @@ abstract class FT_Widget extends WP_Widget {
 	 */
 	public function id_name( $field ) {
 		echo $this->get_id_name( $field );
+	}
+
+	public function get_fields() {
+		return array_keys( $this->defaults );
 	}
 }

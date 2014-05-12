@@ -33,9 +33,16 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 	 * Instantiate the widget class.
 	 */
 	public function __construct() {
-
 		$this->available_tabs = array( 'latest', 'popular', 'comments', 'tags' );
 		$this->available_tabs = apply_filters( 'ft_available_tabbed_content', $this->available_tabs );
+
+		$this->defaults = array(
+			'title'           => __( 'Tabs', 'fortytwo' ),
+			'tabs'            => array_slice( $this->available_tabs, 0, 3 ), /* default to selecting the first 3, to suggest that it is possible to omit having a tab */
+			'limit'           => 5,
+			'image_dimension' => 45,
+			'image_alignment' => 'left',
+		);
 
 		parent::__construct(
 			$this->slug,
@@ -49,7 +56,6 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 				'height' => 350,
 			)
 		);
-
 	}
 
 	/**
@@ -58,35 +64,23 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 	 * @param array   $instance Current settings
 	 */
 	public function form( $instance ) {
-
-		/* Set up some default widget settings. */
-		/* Make sure all keys are added here, even with empty string values. */
-		$defaults = array(
-			'title'           => __( 'Tabs', 'fortytwo' ),
-			'tabs'            => array_slice( $this->available_tabs, 0, 3 ), /* default to selecting the first 3, to suggest that it is possible to omit having a tab */
-			'limit'           => 5,
-			'image_dimension' => 45,
-			'image_alignment' => 'left',
-		);
-
-		// Allow child themes/plugins to filter here.
-		$defaults = apply_filters( "{$this->slug}_widget_defaults", $defaults, $this );
-		$instance = wp_parse_args( (array)$instance, $defaults );
+		$instance = wp_parse_args( (array)$instance, $this->defaults );
 		$available_tabs = $this->available_tabs;
 
 		include dirname( __FILE__ ) . '/views/form.php';
-
 	}
 
 	/**
 	 * Update a particular instance.
+	 * 
 	 * This function should check that $new_instance is set correctly.
 	 * The newly calculated value of $instance should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
 	 *
-	 * @param array   $new_instance New settings for this instance as input by the user via form()
-	 * @param array   $old_instance Old settings for this instance
-	 * @return array Settings to save or bool false to cancel saving
+	 * @param array $new_instance New settings for this instance as input by the user via form().
+	 * @param array $old_instance Old settings for this instance.
+	 * 
+	 * @return array Settings to save or bool false to cancel saving.
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
@@ -98,7 +92,7 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 		$instance['image_alignment'] = esc_attr( $new_instance['image_alignment'] );
 
 		/* Escape the text string and convert to an integer. */
-		$instance['limit'] = intval( strip_tags( $new_instance['limit'] ) );
+		$instance['limit']           = intval( strip_tags( $new_instance['limit'] ) );
 		$instance['image_dimension'] = intval( strip_tags( $new_instance['image_dimension'] ) );
 
 		/* Convert multiple tab_$position fields into tabs array */
@@ -136,9 +130,8 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 
 		/* After widget (defined by themes). */
 		echo $args['after_widget'];
-
 	}
-	
+
 	/**
 	 * Renders the latest content tab
 	 *

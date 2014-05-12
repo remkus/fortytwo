@@ -40,7 +40,32 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	 * Instantiate the widget class.
 	 */
 	public function __construct() {
-		global $_ft_responsive_slider_settings_pagehook;
+		$this->defaults = array(
+			'title'                           => '',
+			'post_type'                       => 'post',
+			'posts_term'                      => '',
+			'exclude_terms'                   => '',
+			'include_exclude'                 => 'include',
+			'post_id'                         => '',
+			'posts_num'                       => 3,
+			'posts_offset'                    => 0,
+			'orderby'                         => 'date',
+			'slideshow_timer'                 => 4000,
+			'slideshow_delay'                 => 800,
+			'slideshow_effect'                => 'slide',
+			'slideshow_width'                 => 1170,
+			'slideshow_height'                => 420,
+			'slideshow_arrows'                => 1,
+			'slideshow_pager'                 => 0,
+			'slideshow_no_link'               => 0,
+			'slideshow_title_show'            => 1,
+			'slideshow_excerpt_show'          => 1,
+			'slideshow_hide_mobile'           => 0,
+			'slideshow_excerpt_content'       => 'excerpts',
+			'slideshow_more_text'             => __( 'Read More', 'fortytwo' ),
+			'slideshow_excerpt_content_limit' => 300,
+			'slideshow_excerpt_width'         => 7,
+		);
 
 		parent::__construct(
 			$this->slug,
@@ -58,42 +83,15 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 
 		//TODO: Which action should this be attached to?  It needs to be after $this->number is populated
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_slider_image_size' ) );
-
 	}
 
 	/**
-	 * Generates the administration form for the widget.
+	 * Echo the settings update form.
 	 *
-	 * @param array   instance The array of keys and values for the widget.
+	 * @param array $instance Current settings.
 	 */
 	function form( $instance ) {
-
-		$instance = wp_parse_args( (array) $instance, array(
-				'title'                           => '',
-				'post_type'                       => 'post',
-				'posts_term'                      => '',
-				'exclude_terms'                   => '',
-				'include_exclude'                 => 'include',
-				'post_id'                         => '',
-				'posts_num'                       => 3,
-				'posts_offset'                    => 0,
-				'orderby'                         => 'date',
-				'slideshow_timer'                 => 4000,
-				'slideshow_delay'                 => 800,
-				'slideshow_effect'                => 'slide',
-				'slideshow_width'                 => 1170,
-				'slideshow_height'                => 420,
-				'slideshow_arrows'                => 1,
-				'slideshow_pager'                 => 0,
-				'slideshow_no_link'               => 0,
-				'slideshow_title_show'            => 1,
-				'slideshow_excerpt_show'          => 1,
-				'slideshow_hide_mobile'           => 0,
-				'slideshow_excerpt_content'       => 'excerpts',
-				'slideshow_more_text'             => __( 'Read More', 'fortytwo' ),
-				'slideshow_excerpt_content_limit' => 300,
-				'slideshow_excerpt_width'         => 7,
-			) );
+		$instance = wp_parse_args( $instance, $this->defaults );
 
 		$post_types = get_post_types( array( 'public' => true ), 'names', 'and' );
 		$instance['post_types'] = array_filter( $post_types, array( &$this, 'exclude_post_types' ) );
@@ -108,45 +106,68 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	}
 
 	/**
-	 * Processes the widget's options to be saved.
+	 * Update a particular instance.
+	 * 
+	 * This function should check that $new_instance is set correctly.
+	 * The newly calculated value of $instance should be returned.
+	 * If "false" is returned, the instance won't be saved/updated.
 	 *
-	 * @param array   old_instance The previous instance of values before the update.
-	 * @param array   new_instance The new instance of values to be generated via the update.
+	 * @param array $new_instance New settings for this instance as input by the user via form().
+	 * @param array $old_instance Old settings for this instance.
+	 * 
+	 * @return array Settings to save or bool false to cancel saving.
 	 */
 	public function update( $new_instance, $old_instance ) {
-
 		$instance = array();
-		foreach ( array(
-				'title',
-				'post_type',
-				'posts_term',
-				'exclude_terms',
-				'include_exclude',
-				'post_id',
-				'posts_num',
-				'posts_offset',
-				'orderby',
-				'slideshow_timer',
-				'slideshow_delay',
-				'slideshow_effect',
-				'slideshow_width',
-				'slideshow_height',
-				'slideshow_arrows',
-				'slideshow_pager',
-				'slideshow_no_link',
-				'slideshow_title_show',
-				'slideshow_excerpt_show',
-				'slideshow_hide_mobile',
-				'slideshow_excerpt_content',
-				'slideshow_more_text',
-				'slideshow_excerpt_content_limit',
-				'slideshow_excerpt_width',
-			) as $field_name ) {
-			$instance[ $field_name ] = ( ! empty( $new_instance[ $field_name ] ) ) ? strip_tags( $new_instance[ $field_name ] ) : '';
+		foreach ( $this->get_fields() as $field ) {
+			$instance[ $field ] = ( ! empty( $new_instance[ $field ] ) ) ? strip_tags( $new_instance[ $field ] ) : '';
 		}
 
-		return $this->sanitization_values( $instance );
+		$bool_fields = array(
+			'slideshow_arrows',
+			'slideshow_excerpt_show',
+			'slideshow_title_show',
+			'slideshow_loop',
+			'slideshow_hide_mobile',
+			'slideshow_no_link',
+			'slideshow_pager',
+		);
 
+		$text_fields = array(
+			'post_type',
+			'posts_term',
+			'exclude_terms',
+			'include_exclude',
+			'post_id',
+			'posts_num',
+			'posts_offset',
+			'orderby',
+			'slideshow_timer',
+			'slideshow_delay',
+			'slideshow_height',
+			'slideshow_width',
+			'slideshow_effect',
+			'slideshow_excerpt_content',
+			'slideshow_excerpt_content_limit',
+			'slideshow_more_text',
+			'slideshow_excerpt_width',
+		);
+
+		foreach ( $instance as $field => $value ) {
+			if ( in_array( $field, $bool_fields ) ) {
+				if ( 1 == (int) $value ) {
+					$instance[ $field ] = 1;
+				} else {
+					$instance[ $field ] = 0;
+				}
+			}
+
+			if ( in_array( $field, $text_fields ) ) {
+				$instance[ $field ] = wp_filter_nohtml_kses( $value );
+			}
+		}
+
+		return $instance;
 	}
 
 	/**
@@ -157,38 +178,8 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		echo $args['before_widget'];
-
-		$title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
-		if ( $title ) {
-			echo $args['before_title'] . $title . $args['after_title'];
-		}
-
-		foreach ( array(
-				'post_type',
-				'posts_term',
-				'exclude_terms',
-				'include_exclude',
-				'post_id',
-				'posts_num',
-				'posts_offset',
-				'orderby',
-				'slideshow_timer',
-				'slideshow_delay',
-				'slideshow_effect',
-				'slideshow_width',
-				'slideshow_height',
-				'slideshow_arrows',
-				'slideshow_pager',
-				'slideshow_no_link',
-				'slideshow_title_show',
-				'slideshow_excerpt_show',
-				'slideshow_hide_mobile',
-				'slideshow_excerpt_content',
-				'slideshow_more_text',
-				'slideshow_excerpt_content_limit',
-				'slideshow_excerpt_width', ) as $field_name ) {
-			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
+		foreach ( $this->get_fields() as $field ) {
+			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ] );
 		}
 
 		$term_args = array();
@@ -279,7 +270,13 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 			}
 		}
 
-		// Display the widget frontend
+		echo $args['before_widget'];
+
+		$title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
+		if ( $title ) {
+			echo $args['before_title'] . $title . $args['after_title'];
+		}
+
 		include dirname( __FILE__ ) . '/views/widget.php';
 
 		echo $args['after_widget'];
@@ -325,55 +322,6 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	}
 
 	/**
-	 * Sanitizes the values of the widget's instance variables
-	 *
-	 * @param array   instance The array of keys and values for the widget.
-	 */
-	protected function sanitization_values( $instance ) {
-		foreach ( $instance as $field => $value ) {
-			if ( in_array( $field, array(
-						'slideshow_arrows',
-						'slideshow_excerpt_show',
-						'slideshow_title_show',
-						'slideshow_loop',
-						'slideshow_hide_mobile',
-						'slideshow_no_link',
-						'slideshow_pager',
-					) ) ) {
-				if ( 1 == (int) $value ) {
-					$instance[ $field ] = 1;
-				} else {
-					$instance[ $field ] = 0;
-				}
-			}
-
-			if ( in_array( $field, array(
-						'post_type',
-						'posts_term',
-						'exclude_terms',
-						'include_exclude',
-						'post_id',
-						'posts_num',
-						'posts_offset',
-						'orderby',
-						'slideshow_timer',
-						'slideshow_delay',
-						'slideshow_height',
-						'slideshow_width',
-						'slideshow_effect',
-						'slideshow_excerpt_content',
-						'slideshow_excerpt_content_limit',
-						'slideshow_more_text',
-						'slideshow_excerpt_width',
-					) ) ) {
-				$instance[ $field ] = wp_filter_nohtml_kses( $value );
-			}
-		}
-
-		return $instance;
-	}
-
-	/**
 	 * Add new image size
 	 */
 	public function register_slider_image_size() {
@@ -414,10 +362,9 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	protected function get_value( $field, $force_reload = false ) {
 		//Cache sanitized widget values
 		if ( 0 == count( $this->all_widget_settings ) || $force_reload ) {
-			foreach ( $this->get_settings() as $key => $value ) {
-				$this->all_widget_settings[ $key ] = $this->sanitization_values( $value );
-			}
+			$this->all_widget_settings = $this->get_settings();
 		}
+		
 		if ( isset( $this->all_widget_settings[ $this->number ] ) ) {
 			return $this->all_widget_settings[ $this->number ][ $field ];
 		}

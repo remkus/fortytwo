@@ -26,6 +26,13 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	 * Instantiate the widget class.
 	 */
 	public function __construct() {
+		$this->defaults = array(
+			'title'       => '',
+			'icon'        => '',
+			'content'     => '',
+			'button_text' => '',
+			'button_link' => '',
+		);
 
 		parent::__construct(
 			$this->slug,
@@ -35,54 +42,38 @@ class FT_Widget_Featured_Content extends FT_Widget {
 				'description' => __( 'Featured Content widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
-
 	}
 
 	/**
-	 * Generates the administration form for the widget.
+	 * Echo the settings update form.
 	 *
-	 * @param array   instance The array of keys and values for the widget.
+	 * @param array $instance Current settings.
 	 */
 	public function form( $instance ) {
+		$instance = wp_parse_args( $instance, $this->defaults );
 
-		// Default values for variables
-		$instance = wp_parse_args(
-			(array) $instance,
-			array(
-				'title'       => '',
-				'icon'        => '',
-				'content'     => '',
-				'button_text' => '',
-				'button_link' => '',
-			)
-		);
-
-		// Display the admin form
 		include dirname( __FILE__ ) . '/views/form.php';
-
 	}
 
 	/**
-	 * Processes the widget's options to be saved.
+	 * Update a particular instance.
+	 * 
+	 * This function should check that $new_instance is set correctly.
+	 * The newly calculated value of $instance should be returned.
+	 * If "false" is returned, the instance won't be saved/updated.
 	 *
-	 * @param array   old_instance The previous instance of values before the update.
-	 * @param array   new_instance The new instance of values to be generated via the update.
+	 * @param array $new_instance New settings for this instance as input by the user via form().
+	 * @param array $old_instance Old settings for this instance.
+	 * 
+	 * @return array Settings to save or bool false to cancel saving.
 	 */
 	public function update( $new_instance, $old_instance ) {
-
 		$instance = array();
-		foreach ( array(
-			'title',
-			'icon',
-			'content',
-			'button_text',
-			'button_link',
-			) as $field_name ) {
-			$instance[ $field_name ] = ( ! empty( $new_instance[ $field_name ] ) ) ? strip_tags( $new_instance[ $field_name ] ) : '';
+		foreach ( array_keys( $this->defaults ) as $field ) {
+			$instance[ $field ] = ( ! empty( $new_instance[ $field ] ) ) ? strip_tags( $new_instance[ $field ] ) : '';
 		}
 
 		return $instance;
-
 	}
 
 	/**
@@ -92,11 +83,10 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	 * @param array   instance The current instance of the widget
 	 */
 	public function widget( $args, $instance ) {
+		$instance = wp_parse_args( $instance, $this->defaults );
 
-		echo $args['before_widget'];
-
-		foreach ( array( 'title', 'icon', 'content', 'button_text', 'button_link' ) as $field_name ) {
-			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
+		foreach ( $this->get_fields() as $field ) {
+			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ] );
 		}
 		$this->set_default( $instance['title'], __( 'The title', 'fortytwo' ) );
 		$this->set_default( $instance['icon '], 'icon-star' );
@@ -105,10 +95,9 @@ class FT_Widget_Featured_Content extends FT_Widget {
 		$this->set_default( $instance['button_text'], __( 'Click me!', 'fortytwo' ) );
 		$this->set_default( $instance['button_link'], '#' );
 
+		echo $args['before_widget'];
 		include dirname( __FILE__ )  . '/views/widget.php';
-
 		echo $args['after_widget'];
-
 	}
 
 	/**

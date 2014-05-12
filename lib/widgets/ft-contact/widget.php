@@ -27,6 +27,15 @@ class FT_Widget_Contact extends FT_Widget {
 	 * Instantiate the widget class.
 	 */
 	public function __construct() {
+		$this->defaults = array(
+			'name'    => '',
+			'phone'   => '',
+			'email'   => '',
+			'fax'     => '',
+			'address' => '',
+			'pc'      => '',
+			'city'    => '',
+		);
 
 		parent::__construct(
 			$this->slug,
@@ -36,49 +45,35 @@ class FT_Widget_Contact extends FT_Widget {
 				'description' => __( 'A Schema.org compliant Contact Widget', 'fortytwo' )
 			)
 		);
-
 	}
 
 	/**
 	 * Echo the settings update form.
 	 *
-	 * @param array   $instance Current settings
+	 * @param array $instance Current settings.
 	 */
 	public function form( $instance ) {
-
-		$instance = wp_parse_args( (array) $instance, array(
-				'name'		=> '',
-				'phone'		=> '',
-				'email'		=> '',
-				'fax'		=> '',
-				'address'	=> '',
-				'pc'		=> '',
-				'city'		=> '',
-			) );
+		$instance = wp_parse_args( $instance, $this->defaults );
 
 		include dirname( __FILE__ ) . '/views/form.php';
-
 	}
 
 	/**
 	 * Update a particular instance.
+	 * 
 	 * This function should check that $new_instance is set correctly.
 	 * The newly calculated value of $instance should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
 	 *
-	 * @param array   $new_instance New settings for this instance as input by the user via form()
-	 * @param array   $old_instance Old settings for this instance
-	 * @return array Settings to save or bool false to cancel saving
+	 * @param array $new_instance New settings for this instance as input by the user via form().
+	 * @param array $old_instance Old settings for this instance.
+	 * 
+	 * @return array Settings to save or bool false to cancel saving.
 	 */
 	public function update( $new_instance, $old_instance ) {
-
-		$new_instance['name']		= strip_tags( $new_instance['name'] );
-		$new_instance['phone']		= strip_tags( $new_instance['phone'] );
-		$new_instance['email']		= strip_tags( $new_instance['email'] );
-		$new_instance['address']	= strip_tags( $new_instance['address'] );
-		$new_instance['pc']			= strip_tags( $new_instance['pc'] );
-		$new_instance['cityl']		= strip_tags( $new_instance['city'] );
-		$new_instance['fax']		= strip_tags( $new_instance['fax'] );
+		foreach ( $this->get_fields() as $field ) {
+			$new_instance[ $field ] = strip_tags( $new_instance[ $field ] );
+		}
 
 		return $new_instance;
 	}
@@ -90,17 +85,7 @@ class FT_Widget_Contact extends FT_Widget {
 	 * @param array   $instance The settings for the particular instance of the widget
 	 */
 	public function widget( $args, $instance ) {
-		$instance = wp_parse_args( (array) $instance, array(
-				'title'     => '',
-				'name'		=> '',
-				'phone'		=> '',
-				'fax'		=> '',
-				'email'		=> '',
-				'address'	=> '',
-				'pc'		=> '',
-				'city'		=> '',
-
-			) );
+		$instance = wp_parse_args( $instance, $this->defaults );
 
 		echo $args['before_widget'];
 		include dirname( __FILE__ ) . '/views/widget.php';

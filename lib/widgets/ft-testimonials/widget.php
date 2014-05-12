@@ -30,6 +30,12 @@ class FT_Widget_Testimonials extends FT_Widget {
 	 * Instantiate the widget class.
 	 */
 	public function __construct() {
+		$this->defaults = array(
+			'title'      => '',
+			'limit'      => 5,
+			'datasource' => '',
+			'category'   => '',
+		);
 
 		parent::__construct(
 			$this->slug,
@@ -48,48 +54,32 @@ class FT_Widget_Testimonials extends FT_Widget {
 	 * @param array   instance The array of keys and values for the widget.
 	 */
 	public function form( $instance ) {
+		$defaults = $this->defaults;
+		$defaults['datasources'] = $this->get_datasources();
 
-		$datasources = array();
-		$datasources[] = array(
-			'name' => 'Category',
-			'value' => 'category',
-		)
-		;
-		if ( $this->is_testimonials_by_woothemes_installed() ) {
-			$datasources[] = array(
-				'name' => 'Testimonials by WooThemes',
-				'value' => 'testimonials-by-woothemes',
-			);
-		}
+		$instance = wp_parse_args( $instance, $defaults );
 
-		$instance = wp_parse_args(
-			(array) $instance,
-			array(
-				'title'       => '',
-				'limit'       => 5,
-				'datasource'  => '',
-				'category'    => '',
-				'datasources' => $datasources,
-			)
-		);
-
-		// Display the admin form
 		include dirname( __FILE__ ) . '/views/form.php';
-
 	}
 
 	/**
-	 * Processes the widget's options to be saved.
+	 * Update a particular instance.
+	 * 
+	 * This function should check that $new_instance is set correctly.
+	 * The newly calculated value of $instance should be returned.
+	 * If "false" is returned, the instance won't be saved/updated.
 	 *
-	 * @param array   new_instance The previous instance of values before the update.
-	 * @param array   old_instance The new instance of values to be generated via the update.
+	 * @param array $new_instance New settings for this instance as input by the user via form().
+	 * @param array $old_instance Old settings for this instance.
+	 * 
+	 * @return array Settings to save or bool false to cancel saving.
 	 */
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
 
-		foreach ( array( 'title', 'limit', 'datasource', 'category' ) as $field_name ) {
-			$instance[ $field_name ] = ( ! empty( $new_instance[ $field_name ] ) ) ? strip_tags( $new_instance[ $field_name ] ) : '';
+		foreach ( $this->get_fields() as $field ) {
+			$instance[ $field ] = ( ! empty( $new_instance[ $field ] ) ) ? strip_tags( $new_instance[ $field ] ) : '';
 		}
 
 		return $instance;
@@ -184,6 +174,26 @@ class FT_Widget_Testimonials extends FT_Widget {
 
 		echo $args['after_widget'];
 
+	}
+
+	/**
+	 * Get datasources.
+	 *
+	 * @return array Datasources for testimonials.
+	 */
+	protected function get_datasources() {
+		$datasources = array();
+		$datasources[] = array(
+			'category' => __( 'Category', 'fortytwo' ),
+		);
+
+		if ( $this->is_testimonials_by_woothemes_installed() ) {
+			$datasources[] = array(
+				'testimonials-by-woothemes' => 'Testimonials by WooThemes',
+			);
+		}
+
+		return apply_filters( "{$this->slug}_datasources", $datasources );
 	}
 
 	/**

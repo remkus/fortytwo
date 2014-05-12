@@ -23,6 +23,13 @@ class FT_Widget_Jumbotron extends FT_Widget {
 	 * Instantiate the widget class.
 	 */
 	public function __construct() {
+		$this->defaults = array(
+			'title'            => '',
+			'content'          => '',
+			'button_alignment' => 'right',
+			'button_text'      => '',
+			'button_link'      => '',
+		);
 
 		parent::__construct(
 			$this->slug,
@@ -32,49 +39,37 @@ class FT_Widget_Jumbotron extends FT_Widget {
 				'description' => __( 'Jumbotron widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
-
 	}
 
 	/**
-	 * Generates the administration form for the widget.
+	 * Echo the settings update form.
 	 *
-	 * @param array   instance The array of keys and values for the widget.
+	 * @param array $instance Current settings.
 	 */
 	public function form( $instance ) {
-		$instance = wp_parse_args(
-			(array) $instance,
-			array(
-				'title'            => '',
-				'content'          => '',
-				'button_alignment' => 'right',
-				'button_text'      => '',
-				'button_link'      => '',
-			)
-		);
+		$instance = wp_parse_args( $instance, $this->defaults );
 
-		// Display the admin form
 		include dirname( __FILE__ )  . '/views/form.php';
-
 	}
 
 	/**
-	 * Processes the widget's options to be saved.
+	 * Update a particular instance.
+	 * 
+	 * This function should check that $new_instance is set correctly.
+	 * The newly calculated value of $instance should be returned.
+	 * If "false" is returned, the instance won't be saved/updated.
 	 *
-	 * @param array   new_instance The previous instance of values before the update.
-	 * @param array   old_instance The new instance of values to be generated via the update.
+	 * @param array $new_instance New settings for this instance as input by the user via form().
+	 * @param array $old_instance Old settings for this instance.
+	 * 
+	 * @return array Settings to save or bool false to cancel saving.
 	 */
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
 
-		foreach ( array(
-			'title',
-			'content',
-			'button_text',
-			'button_link',
-			'button_alignment',
-			) as $field_name ) {
-			$instance[ $field_name ] = ( ! empty( $new_instance[ $field_name ] ) ) ? strip_tags( $new_instance[ $field_name ] ) : '';
+		foreach ( $this->get_fields() as $field ) {
+			$instance[ $field ] = ( ! empty( $new_instance[ $field ] ) ) ? strip_tags( $new_instance[ $field ] ) : '';
 		}
 
 		return $instance;
@@ -88,22 +83,19 @@ class FT_Widget_Jumbotron extends FT_Widget {
 	 * @param array   instance The current instance of the widget
 	 */
 	public function widget( $args, $instance ) {
-
-		echo $args['before_widget'];
-
 		foreach ( array( 'title', 'content', 'button_text', 'button_link', 'button_alignment' ) as $field_name ) {
 			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
 		}
+
 		$this->set_default( $instance['title'], __( 'Announcing the most important product feature', 'fortytwo' ) );
 		$this->set_default( $instance['content'], __( 'And purely one near this hey therefore darn firefly had ducked overpaid wow!', 'fortytwo' ) );
 		$this->set_default( $instance['button_text'], __( 'Purchase Today !', 'fortytwo' ) );
 		$this->set_default( $instance['button_link'], '#' );
 		$this->set_default( $instance['button_alignment'], 'right' );
 
+		echo $args['before_widget'];
 		include dirname( __FILE__ ) . '/views/widget.php';
-
 		echo $args['after_widget'];
-
 	}
 
 	/**
