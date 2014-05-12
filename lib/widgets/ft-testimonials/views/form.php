@@ -28,10 +28,10 @@
 		<td>
 			<label for="<?php echo $this->get_field_id( 'datasource' ); ?>"><?php _e( 'Datasource:', 'fortytwo' ); ?></label>
 			<select class="widefat"<?php $this->id_name( 'datasource' ); ?> >
-				<option class="widefat" <?php if ( '' == $instance['datasource'] ) { echo 'selected="selected"'; } ?>>==&gt;&nbsp;<?php _e( 'Select', 'fortytwo' ); ?>&nbsp;&lt;==</option>
-				<?php foreach ( $instance['datasources'] as $datasource_value => $datasource_name ) { ?>
-				<option class="widefat" value="<?php echo esc_attr( $datasource_value ); ?>" <?php if ( $datasource_value == $instance['datasource'] ) { echo 'selected="selected"'; } ?>>
-					<?php echo $datasource_name; ?>
+				<option class="widefat"<?php selected( $instance['datasource'], '' ); ?>><?php _e( ' - Select - ', 'fortytwo' ); ?></option>
+				<?php foreach ( $instance['datasources'] as $datasource ) { ?>
+				<option class="widefat" value="<?php echo esc_attr( $datasource['value'] ); ?>"<?php selected( $instance['datasource'], $datasource['value'] ); ?>>
+					<?php echo $datasource['name']; ?>
 				</option>
 				<?php } ?>
 			</select>

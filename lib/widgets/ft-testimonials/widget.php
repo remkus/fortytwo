@@ -184,12 +184,14 @@ class FT_Widget_Testimonials extends FT_Widget {
 	protected function get_datasources() {
 		$datasources = array();
 		$datasources[] = array(
-			'category' => __( 'Category', 'fortytwo' ),
+			'name'  => __( 'Category', 'fortytwo' ),
+			'value' => 'category',
 		);
 
 		if ( $this->is_testimonials_by_woothemes_installed() ) {
 			$datasources[] = array(
-				'testimonials-by-woothemes' => 'Testimonials by WooThemes',
+				'name'  => __( 'Testimonials by WooThemes', 'fortytwo' ),
+				'value' => 'testimonials-by-woothemes',
 			);
 		}
 
