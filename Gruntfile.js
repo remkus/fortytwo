@@ -199,10 +199,13 @@ module.exports = function(grunt) {
 
 		// Order properties consistently
 		csscomb: {
-			sort: {
-				options: {
-					sortOrder: '.csscomb.json'
-				},
+			less: {
+				expand: true,
+				cwd: 'assets/less/',
+				src: ['**/*.less'],
+				dest: 'assets/less/'
+			},
+			css: {
 				files: {
 					'tmp/assets/css/ft-core.css': ['tmp/assets/css/ft-core.css'],
 					'tmp/assets/css/ft-header.css': ['tmp/assets/css/ft-header.css'],
