@@ -9,6 +9,9 @@
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/
  */
+if ( $instance['title'] ) {
+	echo $args['before_title'] . $instance['title'] . $args['after_title'];
+}
 ?>
 <div class="<?php echo $this->get_field_id( 'container' )?> slider-inner invisible">
 	<ul class="slides">

@@ -12,21 +12,21 @@
 
 $html = '';
 
-if ( count( $tabs ) > 0 ) {
+if ( count( $instance['tabs'] ) > 0 ) {
 	$tab_content = '';
 	$tab_links = '';
 
 	// Setup the various tabs.
 	$tab_links .= '<div class="tab-buttons"><ul>' . "\n";
 	$count = 0;
-	foreach ( $tabs as $tab ) {
+	foreach ( $instance['tabs'] as $tab ) {
 		$count++;
 		$class = '';
 
 		if ( $count == 1 ) {
 			$class = ' first active';
 		}
-		if ( $count == count( $tabs ) ) {
+		if ( $count == count( $instance['tabs'] ) ) {
 			$class = ' last';
 		}
 
@@ -47,8 +47,8 @@ if ( count( $tabs ) > 0 ) {
 	$tab_links .= '</div>' . "\n";
 
 	/* Display the widget title if one was input (before and after defined by themes). */
-	if ( $title ) {
-		$html .= '<div class="tab-select">' . $args['before_title'] . $title . $args['after_title'] . $tab_links . '</div>';
+	if ( $instance['title'] ) {
+		$html .= '<div class="tab-select">' . $args['before_title'] . $instance['title'] . $args['after_title'] . $tab_links . '</div>';
 	} else {
 		$html .= '<div class="tab-select">' . $tab_links . '</div>';
 	}

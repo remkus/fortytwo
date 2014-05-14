@@ -123,18 +123,8 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ], $instance, $this->id_base );
 		}
 		
-		$html = '';
-
-		/* Our variables from the widget settings. */
-		$title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
-		$tabs = $instance['tabs'];
-
-		/* Before widget (defined by themes). */
 		echo $args['before_widget'];
-
 		include dirname( __FILE__ ) . '/views/widget.php';
-
-		/* After widget (defined by themes). */
 		echo $args['after_widget'];
 	}
 

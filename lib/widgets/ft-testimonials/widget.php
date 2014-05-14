@@ -95,8 +95,6 @@ class FT_Widget_Testimonials extends FT_Widget {
 	public function widget( $args, $instance ) {
 		$instance = wp_parse_args( $instance, $this->defaults );
 
-		echo $args['before_widget'];
-
 		foreach ( $this->get_fields() as $field ) {
 			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ], $instance, $this->id_base );
 		}
@@ -171,10 +169,9 @@ class FT_Widget_Testimonials extends FT_Widget {
 				break;
 		}
 
+		echo $args['before_widget'];
 		include dirname( __FILE__ ) . '/views/widget.php';
-
 		echo $args['after_widget'];
-
 	}
 
 	/**

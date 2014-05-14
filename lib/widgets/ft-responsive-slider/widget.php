@@ -272,17 +272,11 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 		}
 
 		echo $args['before_widget'];
-
-		if ( $instance['title'] ) {
-			echo $args['before_title'] . $instance['title'] . $args['after_title'];
-		}
-
 		include dirname( __FILE__ ) . '/views/widget.php';
-
 		echo $args['after_widget'];
+
 		wp_reset_query(); // Needed?
 		remove_filter( 'excerpt_more', array( &$this, 'excerpt_more' ) );
-
 	}
 
 	/**
