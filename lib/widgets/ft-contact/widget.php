@@ -80,24 +80,6 @@ class FT_Widget_Contact extends FT_Widget {
 	}
 
 	/**
-	 * Echo the widget content.
-	 *
-	 * @param array   $args     Display arguments including before_title, after_title, before_widget, and after_widget.
-	 * @param array   $instance The settings for the particular instance of the widget
-	 */
-	public function widget( $args, $instance ) {
-		$instance = wp_parse_args( $instance, $this->defaults );
-
-		foreach ( $this->get_fields() as $field ) {
-			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ], $instance, $this->id_base );
-		}
-
-		echo $args['before_widget'];
-		include dirname( __FILE__ ) . '/views/widget.php';
-		echo $args['after_widget'];
-	}
-
-	/**
 	 * Registers and enqueues admin-specific styles.
 	 */
 	public function admin_styles() {

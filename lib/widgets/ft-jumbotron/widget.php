@@ -77,24 +77,6 @@ class FT_Widget_Jumbotron extends FT_Widget {
 	}
 
 	/**
-	 * Outputs the content of the widget.
-	 *
-	 * @param array   args  The array of form elements
-	 * @param array   instance The current instance of the widget
-	 */
-	public function widget( $args, $instance ) {
-		$instance = wp_parse_args( $instance, $this->defaults );
-
-		foreach ( $this->get_fields() as $field ) {
-			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ], $instance, $this->id_base );
-		}
-
-		echo $args['before_widget'];
-		include dirname( __FILE__ ) . '/views/widget.php';
-		echo $args['after_widget'];
-	}
-
-	/**
 	 * Registers and enqueues admin-specific styles.
 	 */
 	public function admin_styles() {
