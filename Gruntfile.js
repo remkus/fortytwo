@@ -199,12 +199,12 @@ module.exports = function(grunt) {
 
 		// Order properties consistently
 		csscomb: {
-			less: {
-				expand: true,
-				cwd: 'assets/less/',
-				src: ['**/*.less'],
-				dest: 'assets/less/'
-			},
+			// less: {
+			// 	expand: true,
+			// 	cwd: 'assets/less/',
+			// 	src: ['**/*.less'],
+			// 	dest: 'assets/less/'
+			// },
 			css: {
 				files: {
 					'tmp/assets/css/ft-core.css': ['tmp/assets/css/ft-core.css'],
