@@ -60,4 +60,4 @@ if ( current_theme_supports( 'post-thumbnails' ) ) {
 <?php
 
 // Allow child themes/plugins to act here.
-do_action( $this->fst_widget_idbase . '_widget_settings', $instance, $this );
+do_action( "{$this->slug}_widget_settings", $instance, $this );
