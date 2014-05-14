@@ -16,4 +16,4 @@
 
 <p><?php echo esc_html( $instance['content'] ); ?></p>
 
-<a class="btn" href="<?php echo esc_url( $instance['button_link'] ); ?>"><?php echo esc_html( $instance['button_text'] ); ?></a>
+<a class="btn" href="<?php echo esc_url( $instance['link_url'] ); ?>"><?php echo esc_html( $instance['link_text'] ); ?></a>

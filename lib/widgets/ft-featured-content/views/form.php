@@ -20,19 +20,19 @@
 				</div>
 		</td>
 		<td>
-			<label for="<?php echo $this->get_field_id( 'button_text' ); ?>"><?php _e( 'Title:', 'fortytwo' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'link_text' ); ?>"><?php _e( 'Title:', 'fortytwo' ); ?></label>
 			<input class="widefat" type="text"<?php $this->id_name( 'title' ); ?> value="<?php echo esc_attr( $instance['title'] ); ?>">
 		</td>
   </tr>
 	<tr><td colspan="2">
-			<label for="<?php echo $this->get_field_id( 'button_text' ); ?>"><?php _e( 'Content:', 'fortytwo' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'link_text' ); ?>"><?php _e( 'Content:', 'fortytwo' ); ?></label>
 		  <textarea class="widefat"<?php $this->id_name( 'content' ); ?>><?php echo esc_textarea( $instance['content'] ); ?></textarea>
   </td></tr>
 	<tr><td colspan="2">
-			<label for="<?php echo $this->get_field_id( 'button_text' ); ?>"><?php _e( 'Button Text:', 'fortytwo' ); ?></label>
-			<input class="widefat" type="text"<?php $this->id_name( 'button_text' ); ?> value="<?php echo esc_attr( $instance['button_text'] ); ?>"><br />
-		  <label for="<?php echo $this->get_field_id( 'button_text' ); ?>"><?php _e( 'Button Link:', 'fortytwo' ); ?></label>
-		  <input class="widefat" type="text"<?php $this->id_name( 'button_link' ); ?> value="<?php echo esc_attr( $instance['button_link'] ); ?>">
+			<label for="<?php echo $this->get_field_id( 'link_text' ); ?>"><?php _e( 'Link Text:', 'fortytwo' ); ?></label>
+			<input class="widefat" type="text"<?php $this->id_name( 'link_text' ); ?> value="<?php echo esc_attr( $instance['link_text'] ); ?>"><br />
+		  <label for="<?php echo $this->get_field_id( 'link_text' ); ?>"><?php _e( 'Link URL:', 'fortytwo' ); ?></label>
+		  <input class="widefat" type="text"<?php $this->id_name( 'link_url' ); ?> value="<?php echo esc_attr( $instance['link_url'] ); ?>">
 		</td>
 	</tr>
 </table>

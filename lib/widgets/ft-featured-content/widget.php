@@ -30,8 +30,8 @@ class FT_Widget_Featured_Content extends FT_Widget {
 			'title'       => '',
 			'icon'        => '',
 			'content'     => '',
-			'button_text' => '',
-			'button_link' => '',
+			'link_text'   => '',
+			'link_url'    => '',
 		);
 
 		parent::__construct(
