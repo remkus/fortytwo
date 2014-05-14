@@ -88,13 +88,6 @@ class FT_Widget_Featured_Content extends FT_Widget {
 		foreach ( $this->get_fields() as $field ) {
 			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ], $instance, $this->id_base );
 		}
-		
-		$this->set_default( $instance['title'], __( 'The title', 'fortytwo' ) );
-		$this->set_default( $instance['icon '], 'icon-star' );
-		$this->set_default( $instance['content'], __( 'And purely one near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill
-    yikes considering far above. Physically less snickered much and and while', 'fortytwo' ) );
-		$this->set_default( $instance['button_text'], __( 'Click me!', 'fortytwo' ) );
-		$this->set_default( $instance['button_link'], '#' );
 
 		echo $args['before_widget'];
 		include dirname( __FILE__ )  . '/views/widget.php';

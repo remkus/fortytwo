@@ -53,19 +53,6 @@ abstract class FT_Widget extends WP_Widget {
 	}
 
 	/**
-	 * Set a default value for an empty variable.
-	 *
-	 * @param mixed $value   The variable whose default should be set.
-	 *                       
-	 * @param mixed $default The default value.
-	 */
-	protected function set_default( &$value, $default ) {
-		if ( empty ( $value ) ) {
-			$value = $default;
-		}
-	}
-
-	/**
 	 * Return both the id and name attributes for a form field element.
 	 *
 	 * @param string $field The field name.

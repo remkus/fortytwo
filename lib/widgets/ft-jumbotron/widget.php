@@ -89,12 +89,6 @@ class FT_Widget_Jumbotron extends FT_Widget {
 			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ], $instance, $this->id_base );
 		}
 
-		$this->set_default( $instance['title'], __( 'Announcing the most important product feature', 'fortytwo' ) );
-		$this->set_default( $instance['content'], __( 'And purely one near this hey therefore darn firefly had ducked overpaid wow!', 'fortytwo' ) );
-		$this->set_default( $instance['button_text'], __( 'Purchase Today !', 'fortytwo' ) );
-		$this->set_default( $instance['button_link'], '#' );
-		$this->set_default( $instance['button_alignment'], 'right' );
-
 		echo $args['before_widget'];
 		include dirname( __FILE__ ) . '/views/widget.php';
 		echo $args['after_widget'];

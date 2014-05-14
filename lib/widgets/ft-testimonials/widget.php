@@ -99,12 +99,6 @@ class FT_Widget_Testimonials extends FT_Widget {
 			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ], $instance, $this->id_base );
 		}
 
-		$this->set_default( $instance['title'], __( 'Client Testimonials', 'fortytwo' ) );
-		$this->set_default( $instance['limit'], 5 );
-		$this->set_default( $instance['datasource'], 'category' );
-		$this->set_default( $instance['category'], 1 );
-		$this->set_default( $instance['testimonials'], array() );
-
 		switch ( $instance['datasource'] ) {
 			case 'testimonials-by-woothemes':
 				if ( ! $this->is_testimonials_by_woothemes_installed() ){
