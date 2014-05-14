@@ -220,6 +220,19 @@ module.exports = function(grunt) {
 		},
 
 
+		// JavaScript
+		
+		// Lint JS code standards
+		jshint: {
+			grunt: {
+				options: {
+					jshintrc: '.gruntjshintrc'
+				},
+				src: ['Gruntfile.js']
+			}
+		},
+
+
 		// PHP
 
 		// Lint .php files for syntax errors
