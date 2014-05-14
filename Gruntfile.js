@@ -229,6 +229,19 @@ module.exports = function(grunt) {
 					jshintrc: '.gruntjshintrc'
 				},
 				src: ['Gruntfile.js']
+			},
+			theme: {
+				options: {
+					jshintrc: true
+				},
+				expand: true,
+				src: [
+					'**/*.js',
+					'!Gruntfile.js',
+					'!node_modules/**',
+					'!vendor/**',
+					'!lib/widgets/ft-responsive-slider/js/jquery.flexslider-min.js'
+				]
 			}
 		},
 
