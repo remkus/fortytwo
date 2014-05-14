@@ -93,11 +93,12 @@ class FT_Widget_Testimonials extends FT_Widget {
 	 * @param array   instance The current instance of the widget
 	 */
 	public function widget( $args, $instance ) {
+		$instance = wp_parse_args( $instance, $this->defaults );
 
 		echo $args['before_widget'];
 
-		foreach ( array( 'title', 'limit', 'datasource', 'category' ) as $field_name ) {
-			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
+		foreach ( $this->get_fields() as $field ) {
+			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ], $instance, $this->id_base );
 		}
 
 		$this->set_default( $instance['title'], __( 'Client Testimonials', 'fortytwo' ) );

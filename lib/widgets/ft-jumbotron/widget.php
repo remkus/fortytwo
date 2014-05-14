@@ -83,8 +83,10 @@ class FT_Widget_Jumbotron extends FT_Widget {
 	 * @param array   instance The current instance of the widget
 	 */
 	public function widget( $args, $instance ) {
-		foreach ( array( 'title', 'content', 'button_text', 'button_link', 'button_alignment' ) as $field_name ) {
-			$instance[ $field_name ] = apply_filters( "widget_{$field_name}", $instance[ $field_name ] );
+		$instance = wp_parse_args( $instance, $this->defaults );
+
+		foreach ( $this->get_fields() as $field ) {
+			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ], $instance, $this->id_base );
 		}
 
 		$this->set_default( $instance['title'], __( 'Announcing the most important product feature', 'fortytwo' ) );

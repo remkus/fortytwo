@@ -177,9 +177,10 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	 * @param array   instance The current instance of the widget
 	 */
 	public function widget( $args, $instance ) {
+		$instance = wp_parse_args( $instance, $this->defaults );
 
 		foreach ( $this->get_fields() as $field ) {
-			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ] );
+			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ], $instance, $this->id_base );
 		}
 
 		$term_args = array();
@@ -272,9 +273,8 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 
 		echo $args['before_widget'];
 
-		$title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
-		if ( $title ) {
-			echo $args['before_title'] . $title . $args['after_title'];
+		if ( $instance['title'] ) {
+			echo $args['before_title'] . $instance['title'] . $args['after_title'];
 		}
 
 		include dirname( __FILE__ ) . '/views/widget.php';
