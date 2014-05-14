@@ -45,17 +45,6 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	}
 
 	/**
-	 * Echo the settings update form.
-	 *
-	 * @param array $instance Current settings.
-	 */
-	public function form( $instance ) {
-		$instance = wp_parse_args( $instance, $this->defaults );
-
-		include dirname( __FILE__ ) . '/views/form.php';
-	}
-
-	/**
 	 * Update a particular instance.
 	 * 
 	 * This function should check that $new_instance is set correctly.

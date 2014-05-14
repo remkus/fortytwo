@@ -49,20 +49,6 @@ class FT_Widget_Testimonials extends FT_Widget {
 	}
 
 	/**
-	 * Generates the administration form for the widget.
-	 *
-	 * @param array   instance The array of keys and values for the widget.
-	 */
-	public function form( $instance ) {
-		$defaults = $this->defaults;
-		$defaults['datasources'] = $this->get_datasources();
-
-		$instance = wp_parse_args( $instance, $defaults );
-
-		include dirname( __FILE__ ) . '/views/form.php';
-	}
-
-	/**
 	 * Update a particular instance.
 	 * 
 	 * This function should check that $new_instance is set correctly.

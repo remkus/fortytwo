@@ -29,7 +29,7 @@
 			<label for="<?php echo $this->get_field_id( 'datasource' ); ?>"><?php _e( 'Datasource:', 'fortytwo' ); ?></label>
 			<select class="widefat"<?php $this->id_name( 'datasource' ); ?> >
 				<option class="widefat"<?php selected( $instance['datasource'], '' ); ?>><?php _e( ' - Select - ', 'fortytwo' ); ?></option>
-				<?php foreach ( $instance['datasources'] as $datasource ) { ?>
+				<?php foreach ( $this->get_datasources() as $datasource ) { ?>
 				<option class="widefat" value="<?php echo esc_attr( $datasource['value'] ); ?>"<?php selected( $instance['datasource'], $datasource['value'] ); ?>>
 					<?php echo $datasource['name']; ?>
 				</option>

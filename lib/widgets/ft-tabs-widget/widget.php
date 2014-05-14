@@ -59,18 +59,6 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 	}
 
 	/**
-	 * Echo the settings update form.
-	 *
-	 * @param array   $instance Current settings
-	 */
-	public function form( $instance ) {
-		$instance = wp_parse_args( (array)$instance, $this->defaults );
-		$available_tabs = $this->available_tabs;
-
-		include dirname( __FILE__ ) . '/views/form.php';
-	}
-
-	/**
 	 * Update a particular instance.
 	 * 
 	 * This function should check that $new_instance is set correctly.

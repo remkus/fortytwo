@@ -39,6 +39,17 @@ abstract class FT_Widget extends WP_Widget {
 	}
 
 	/**
+	 * Echo the settings update form.
+	 *
+	 * @param array $instance Current settings.
+	 */
+	public function form( $instance ) {
+		$instance = wp_parse_args( $instance, $this->defaults );
+
+		include trailingslashit( dirname( __FILE__ ) ) . $this->slug . '/views/form.php';
+	}
+
+	/**
 	 * Echo the widget content.
 	 *
 	 * @param array   $args     Display arguments including before_title, after_title, before_widget, and after_widget.
