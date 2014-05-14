@@ -99,7 +99,7 @@ module.exports = function(grunt) {
 			options: {
 				browsers: [
 					'last 1 versions',
-					'Explorer >= 8',
+					'Explorer >= 8'
 				]
 			},
 			all: {
@@ -189,7 +189,7 @@ module.exports = function(grunt) {
 
 		// Make the CSS look good
 		cssbeautifier: {
-			files: ["tmp/assets/css/{ft-core,ft-header,ft-navigation,ft-intro,ft-widgets,ft-content,ft-footer,ft-custom}.css"],
+			files: ['tmp/assets/css/{ft-core,ft-header,ft-navigation,ft-intro,ft-widgets,ft-content,ft-footer,ft-custom}.css'],
 			options: {
 				indent: '\t',
 				openbrace: 'end-of-line',
@@ -265,7 +265,7 @@ module.exports = function(grunt) {
 						'*.php',
 						'lib/**/*.php',
 						'templates/**/*.php'
-					],
+					]
 				}
 			}
 		},
@@ -307,7 +307,7 @@ module.exports = function(grunt) {
 			theme: {
 				options: {
 					domainPath: '/lib/languages',
-					processPot: function( pot, options ) {
+					processPot: function( pot ) {
 						pot.headers['report-msgid-bugs-to']   = 'http://forsitethemes.com';
 						pot.headers['plural-forms']           = 'nplurals=2; plural=n != 1;';
 						pot.headers['last-translator']        = 'Remkus de Vries <translations@forsitethemes.com>';
@@ -350,7 +350,8 @@ module.exports = function(grunt) {
 	
 	grunt.registerTask( 'check', [
 		'phplint',
-		'checktextdomain'
+		'checktextdomain',
+		'jshint'
 	] );
 	
 	grunt.registerTask( 'build:css', [
