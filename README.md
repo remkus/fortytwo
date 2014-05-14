@@ -1,3 +1,3 @@
 # FortyTwo
 
-A Genesis child theme with Bootstrap goodness developed by Forsite Themes.
+A Genesis Child Theme to answer all your child theme requirements. Built with Bootstrap goodness by Forsite Themes.
