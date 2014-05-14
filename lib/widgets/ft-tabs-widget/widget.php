@@ -18,14 +18,14 @@
  *
  */
 
-class FT_Widget_Tabbed_Content extends FT_Widget {
+class FT_Widget_Tabs_Widget extends FT_Widget {
 
 	/**
 	 * Widget slug / directory name.
 	 *
 	 * @var string
 	 */
-	protected $slug = 'ft-tabbed-content';
+	protected $slug = 'ft-tabs-widget';
 
 	public $available_tabs;
 
@@ -34,7 +34,7 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 	 */
 	public function __construct() {
 		$this->available_tabs = array( 'latest', 'popular', 'comments', 'tags' );
-		$this->available_tabs = apply_filters( 'ft_available_tabbed_content', $this->available_tabs );
+		$this->available_tabs = apply_filters( 'ft_tabs_widget_available', $this->available_tabs );
 
 		$this->defaults = array(
 			'title'           => __( 'Tabs', 'fortytwo' ),
@@ -268,4 +268,4 @@ class FT_Widget_Tabbed_Content extends FT_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Tabbed_Content");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Tabs_Widget");' ) );
