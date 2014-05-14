@@ -100,7 +100,7 @@ function fortytwo_custom_site_subheader_title( $ft_subheader_attr ) {
 		return $ft_subheader_attr;
 	}
 
-	if ( is_product() || is_shop() ) {
+	if ( ( function_exists( 'is_product' ) && is_product() ) || ( function_exists( 'is_shop' ) && is_shop() ) ) {
 		$ft_subheader_attr['title'] = __( 'Shop', 'fortytwo' );
 		return $ft_subheader_attr;
 	}
