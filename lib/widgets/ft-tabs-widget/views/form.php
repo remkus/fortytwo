@@ -32,8 +32,8 @@
 	  <input type="text"<?php $this->id_name( 'limit' ); ?> value="<?php echo $instance['limit']; ?>" class="widefat" />
 	</p>
 	<p>
-	  <label for="<?php echo $this->get_field_id( 'image_dimension' ); ?>"><?php _e( 'Image Dimension:', 'fortytwo' ); ?></label>
-	  <input type="text"<?php $this->id_name( 'image_dimension' ); ?> value="<?php echo $instance['image_dimension']; ?>" class="widefat" />
+	  <label for="<?php echo $this->get_field_id( 'image_size' ); ?>"><?php _e( 'Image Size (px):', 'fortytwo' ); ?></label>
+	  <input type="text"<?php $this->id_name( 'image_size' ); ?> value="<?php echo $instance['image_size']; ?>" class="widefat" />
 	</p>
 	<p>
 	  <label for="<?php echo $this->get_field_id( 'image_alignment' ); ?>"><?php _e( 'Image Alignment:', 'fortytwo' ); ?></label>

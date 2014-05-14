@@ -34,7 +34,7 @@ if ( count( $instance['tabs'] ) > 0 ) {
 
 		$tab_content .= '<div id="tab-pane-' . esc_attr( $tab ) . '" class="tab-pane tab-pane-' . esc_attr( $tab ) . $class . '">' . "\n";
 
-		$tab_args = array( 'limit' => intval( $instance['limit'] ), 'image_dimension' => intval( $instance['image_dimension'] ), 'image_alignment' => strval( $instance['image_alignment'] ) );
+		$tab_args = array( 'limit' => intval( $instance['limit'] ), 'image_size' => intval( $instance['image_size'] ), 'image_alignment' => strval( $instance['image_alignment'] ) );
 
 		if ( method_exists( $this, 'tab_content_' . esc_attr( $tab ) ) ) {
 			$tab_content .= call_user_func_array( array( $this, 'tab_content_' . esc_attr( $tab ) ), $tab_args );

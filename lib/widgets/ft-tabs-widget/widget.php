@@ -40,7 +40,7 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 			'title'           => __( 'Tabs', 'fortytwo' ),
 			'tabs'            => array_slice( $this->available_tabs, 0, 3 ), /* default to selecting the first 3, to suggest that it is possible to omit having a tab */
 			'limit'           => 5,
-			'image_dimension' => 45,
+			'image_size'      => 45,
 			'image_alignment' => 'left',
 		);
 
@@ -81,7 +81,7 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 
 		/* Escape the text string and convert to an integer. */
 		$instance['limit']           = intval( strip_tags( $new_instance['limit'] ) );
-		$instance['image_dimension'] = intval( strip_tags( $new_instance['image_dimension'] ) );
+		$instance['image_size'] = intval( strip_tags( $new_instance['image_size'] ) );
 
 		/* Convert multiple tab_$position fields into tabs array */
 		$instance['tabs'] = array();
@@ -102,10 +102,10 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 	 * Renders the latest content tab
 	 *
 	 * @param int $limit            The max number of content items to show
-	 * @param int $image_dimension
+	 * @param int $image_size
 	 * @param string $image_alignment The image alignment CSS class.  One of (???|???|???)
 	 */
-	public function tab_content_latest( $limit, $image_dimension, $image_alignment ) {
+	public function tab_content_latest( $limit, $image_size, $image_alignment ) {
 		global $post;
 		$html = '';
 
@@ -114,8 +114,8 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 		foreach ( $latest as $post ) {
 			setup_postdata( $post );
 			$html .= '<li>' . "\n";
-			if ( $image_dimension > 0 ) {
-				$html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
+			if ( $image_size > 0 ) {
+				$html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_size, $post ) . '</a>' . "\n";
 			}
 			$html .= '<h4 class="entry-title"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
 			$html .= get_the_excerpt() . ' <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
@@ -131,10 +131,10 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 	 * Renders the popular content tab
 	 *
 	 * @param int $limit            The max number of content items to show
-	 * @param int $image_dimension
+	 * @param int $image_size
 	 * @param string $image_alignment The image alignment CSS class.  One of (???|???|???)
 	 */
-	public function tab_content_popular( $limit, $image_dimension, $image_alignment ) {
+	public function tab_content_popular( $limit, $image_size, $image_alignment ) {
 		global $post;
 		$html = '';
 
@@ -143,8 +143,8 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 		foreach ( $popular as $post ) {
 			setup_postdata( $post );
 			$html .= '<li>' . "\n";
-			if ( $image_dimension > 0 ) {
-				$html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_dimension, $post ) . '</a>' . "\n";
+			if ( $image_size > 0 ) {
+				$html .= '<a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '" class="pull-' . $image_alignment . '">' . $this->get_image( $image_size, $post ) . '</a>' . "\n";
 			}
 			$html .= '<h4 class="entry-title"><a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">' . get_the_title() . '</a></h4>' . "\n";
 			$html .= get_the_excerpt() . ' <a title="' . the_title_attribute( array( 'echo' => false ) ) . '" href="' . esc_url( get_permalink( $post ) ) . '">Read more</a>' . "\n";
@@ -160,10 +160,10 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 	 * Renders the comments tab
 	 *
 	 * @param int $limit            The max number of comment items to show
-	 * @param int $image_dimension
+	 * @param int $image_size
 	 * @param string $image_alignment The image alignment CSS class.  One of (???|???|???)
 	 */
-	public function tab_content_comments( $limit, $image_dimension, $image_alignment ) {
+	public function tab_content_comments( $limit, $image_size, $image_alignment ) {
 		global $wpdb;
 		$html = '';
 
@@ -195,18 +195,18 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 	/**
 	 * Returns an HTML fragment containing an <img> element for a post's image thumbnail
 	 *
-	 * @param int $image_dimension
+	 * @param int $image_size
 	 * @param object $post  The post whose image thumbnail is being fetched
 	 *
 	 * @return string $html
 	 */
-	public function get_image( $dimension, $post ) {
+	public function get_image( $size, $post ) {
 		$html = '';
 		// TODO: This could use post type icon if no post thumbnail is supported
-		//$html = '<img data-src="holder.js/' . $dimension . 'x' . $dimension .'" class="no-thumbnail wp-post-image hide">';
+		//$html = '<img data-src="holder.js/' . $size . 'x' . $size .'" class="no-thumbnail wp-post-image hide">';
 
 		if ( current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID ) ) {
-			$html = get_the_post_thumbnail( $post->ID, array( 'width' => $dimension, 'height' => $dimension, 'crop' => true ), array( 'class' => 'has-thumbnail' ) );
+			$html = get_the_post_thumbnail( $post->ID, array( 'width' => $size, 'height' => $size, 'crop' => true ), array( 'class' => 'has-thumbnail' ) );
 		}
 
 		return $html;
