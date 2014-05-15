@@ -50,101 +50,96 @@ add_action( 'genesis_after_header', 'fortytwo_insert_site_subheader' );
 function fortytwo_insert_site_subheader() {
 
 	/** do nothing when we're not on the front-page */
-	if ( ! is_front_page() ) {
+	if ( is_front_page() ) {
+		return;
+	}
 
-		global $post;
-
-		$subheader_title = ( $post === null ? '' : $post->post_title);
-
-		$ft_subheader_attr = apply_filters( 'fortytwo_site_subheader_attr', array(
-			'title'       => $subheader_title,
-			'breadcrumbs' => true,
-			'widget'      => false,
-		));
-		?>
-
-		<div class="site-subheader">
-			<div class="wrap">
-				<div class="inner-wrap">
-					<div class="subheader-title">
-						<h1><?php esc_attr_e( $ft_subheader_attr['title'], 'fortytwo' ); ?></h1>
-					</div>
-					<div class="subheader-breadcrumbs">
-						<?php if ( $ft_subheader_attr['breadcrumbs'] ) {
-							genesis_do_breadcrumbs();
-						} ?>
-					</div>
+	$site_subheader_title = apply_filters( 'fortytwo_site_subheader_title', '' );
+	$site_subheader_widget = apply_filters( 'fortytwo_site_subheader_widget', false );
+	$site_subheader_breadcrumbs = apply_filters( 'fortytwo_site_subheader_breadcrumbs', true );
+	?>
+	<div class="site-subheader">
+		<div class="wrap">
+			<div class="inner-wrap">
+				<div class="subheader-title">
+					<?php echo $site_subheader_title; ?>
 				</div>
+				<?php
+				if ( $site_subheader_breadcrumbs ) {
+				?>
+				<div class="subheader-breadcrumbs">
+					<?php
+					if ( true === $site_subheader_breadcrumbs ) {
+						genesis_do_breadcrumbs();
+					} else {
+						$site_subheader_breadcrumbs;
+					}
+					?>
+				</div>
+				<?php } ?>
 			</div>
 		</div>
-
+	</div>
 	<?php
-	}
 }
 
-add_filter( 'fortytwo_site_subheader_attr', 'fortytwo_custom_site_subheader_title' );
+add_filter( 'fortytwo_site_subheader_title', 'fortytwo_do_site_subheader_title' );
 /**
- * We are altering the title attribute of the site subheader using the fortytwo_site_subheader_attr filter
+ * Populate the site subheader title.
  *
  * We alter this based on the type of page being viewed
- *
- * @todo  This code needs better documentation
- *
  */
-function fortytwo_custom_site_subheader_title( $ft_subheader_attr ) {
+function fortytwo_do_site_subheader_title( $title ) {
 
 	global $post;
 
-	if ( is_404() ) {
-		$ft_subheader_attr['title'] = __( 'Error 404 - page not found', 'fortytwo' );
-		return $ft_subheader_attr;
+	$title = $label = '';
+
+	if ( is_singular() ) { // Post, Page, CPT entry or attachment
+		if (
+			( function_exists( 'is_product' ) && is_product() ) ||
+			( function_exists( 'is_shop' ) && is_shop() )
+		) { // Special case where label is preferred over title
+			$label = __( 'Shop', 'fortytwo' );
+		} else {
+			$title = get_the_title();
+			if ( empty( $title ) ) { // No title, so fallback
+				if ( is_attachment() ) {
+					$mime_type = get_post_mime_type();
+					$label = ucwords( substr( $mime_type, 0, strpos( $mime_type, '/' ) ) );
+				} elseif ( is_singular( 'post' ) && $format = get_post_format() ) { // Post with post format
+					$label = ucwords( $format );
+				} else { // Post (no post format), Page, CPT entry
+					$obj = get_post_type_object( get_post_type() );
+					$label = $obj->labels->singular_name;
+				}
+			}
+		}
+	} elseif ( is_archive() ) {
+		if ( is_post_type_archive() ) {
+			$label = post_type_archive_title();
+		} elseif ( is_category() ) {
+			$label = __( 'Articles by Category: ', 'fortytwo' ) . single_term_title( '', false );
+		} elseif ( is_tag() ) {
+			$label = __( 'Articles by Tag: ', 'fortytwo' ) . single_term_title( '', false );
+		} elseif ( is_author() ) {
+			$label = __( 'Articles by Author: ', 'fortytwo' ) . get_the_author_meta( 'display_name', $post->post_author );
+		} elseif ( is_day() ) {
+			$label = __( 'Articles by Day: ', 'fortytwo' ) . get_the_date();
+		} elseif ( is_month() ) {
+			$label = __( 'Articles by Month: ', 'fortytwo' ) . get_the_date( _x( 'F Y', 'monthly archives date format', 'fortytwo' ) );
+		} elseif ( is_year() ) {
+			$label = __( 'Articles by Year: ', 'fortytwo' ) . get_the_date( _x( 'Y', 'yearly archives date format', 'fortytwo' ) );
+		}
+	} elseif ( is_search() ) {
+		$label = __( 'Search Results for: ', 'fortytwo' ) . get_search_query();
+	} elseif ( is_404() ) {
+		$label = __( 'Error 404 - page not found', 'fortytwo' );
 	}
 
-	if ( ( function_exists( 'is_product' ) && is_product() ) || ( function_exists( 'is_shop' ) && is_shop() ) ) {
-		$ft_subheader_attr['title'] = __( 'Shop', 'fortytwo' );
-		return $ft_subheader_attr;
+	if ( $title ) {
+		return '<h1 id="entry-title">' . $title . '</h1>';
 	}
 
-	if ( is_attachment() ) {
-		$ft_subheader_attr['title'] = __( ucwords( $post->post_type ), 'fortytwo' );
-		return $ft_subheader_attr;
-	}
-
-	if ( is_category() ) {
-		$ft_subheader_attr['title'] = __( 'Articles by Category: ', 'fortytwo' ) . single_term_title( '', false );
-		return $ft_subheader_attr;
-	}
-
-	if ( is_tag() ) {
-		$ft_subheader_attr['title'] = __( 'Articles by Tag: ', 'fortytwo' ) . single_term_title( '', false );
-		return $ft_subheader_attr;
-	}
-
-	if ( is_author() ) {
-		$ft_subheader_attr['title'] = __( 'Articles by Author: ', 'fortytwo' ) . get_the_author_meta( 'display_name', $post->post_author );
-		return $ft_subheader_attr;
-	}
-
-	if ( is_day() ) {
-		$ft_subheader_attr['title'] = __( 'Articles by Day: ', 'fortytwo' ) . get_the_date();
-		return $ft_subheader_attr;
-	} elseif ( is_month() ) {
-		$ft_subheader_attr['title'] = __( 'Articles by Month: ', 'fortytwo' ) . get_the_date( _x( 'F Y', 'monthly archives date format', 'fortytwo' ) );
-		return $ft_subheader_attr;
-	} elseif ( is_year() ) {
-		$ft_subheader_attr['title'] = __( 'Articles by Year: ', 'fortytwo' ) . get_the_date( _x( 'Y', 'yearly archives date format', 'fortytwo' ) );
-		return $ft_subheader_attr;
-	}
-
-	if ( is_archive() ) {
-		$ft_subheader_attr['title'] = __( 'Archive: ', 'fortytwo' ) . single_term_title( '', false );
-		return $ft_subheader_attr;
-	}
-
-	if ( is_single() ) {
-		$ft_subheader_attr['title'] = __( ucwords( $post->post_type ), 'fortytwo' );
-		return $ft_subheader_attr;
-	}
-
-	return $ft_subheader_attr;
+	return '<h1>' . $label . '</h1>';
 }
