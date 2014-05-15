@@ -86,7 +86,7 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 		/* Convert multiple tab_$position fields into tabs array */
 		$instance['tabs'] = array();
 		for ( $i = 0; $i < count( $this->available_tabs ); $i++ ) {
-			$tab_value = $new_instance["tab_$i"];
+			$tab_value = $new_instance[ 'tab_' . $i ];
 			if ( $tab_value != 'none' ) {
 				$instance['tabs'][] = $tab_value;
 			}

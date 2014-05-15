@@ -41,10 +41,10 @@
 (function ($) {
 	'use strict';
 	$( document ).ready( function () {
-		var iconSaveInputElement = '#<?php echo $this->get_field_id( "icon" )?>',
-			selectedIcon         = '<?php echo $instance["icon"]; ?>',
-			iconSelectorElement  = '.<?php echo $this->get_field_id( "the-icon-selector" )?>';
-		window.FontAwesomeIconSelectorApp.attachApp(selectedIcon, iconSelectorElement, iconSaveInputElement);
+		var iconSaveInputElement = '#<?php echo $this->get_field_id( 'icon' )?>',
+			selectedIcon         = '<?php echo $instance['icon']; ?>',
+			iconSelectorElement  = '.<?php echo $this->get_field_id( 'the-icon-selector' )?>';
+		window.FontAwesomeIconSelectorApp.attachApp( selectedIcon, iconSelectorElement, iconSaveInputElement );
 	});
 }(jQuery));
 </script>

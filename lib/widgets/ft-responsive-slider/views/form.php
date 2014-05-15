@@ -204,10 +204,10 @@ foreach ( $instance['taxonomies'] as $taxonomy ) {
 <script>
 (function ($) {
 	'use strict';
-	$(document).ready(function () {
+	$(function () {
 
-		var dialogContainer = $('#<?php echo $this->get_field_id( "container" )?>'),
-			theForm         = $(dialogContainer).closest( 'form' ),
+		var dialogContainer = $( '#<?php echo $this->get_field_id( 'container' )?>' ),
+			theForm         = $( dialogContainer ).closest( 'form' ),
 			theDialogEl     = dialogContainer.find('.dialog'),
 			theTabs         = dialogContainer.find( '.tabs' ),
 			theSlider       = dialogContainer.find( 'div.slider' ),
@@ -228,7 +228,7 @@ foreach ( $instance['taxonomies'] as $taxonomy ) {
 					$(this).dialog( 'close' );
 				}
 			},
-			focus: function( event, ui ) {
+			focus: function() {
 				theDialogEl.find( '.ui-button-text' ).css( 'button-primary' );
 			}
 		});

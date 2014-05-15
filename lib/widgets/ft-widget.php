@@ -61,7 +61,7 @@ abstract class FT_Widget extends WP_Widget {
 		foreach ( $this->get_fields() as $field ) {
 			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ], $instance, $this->id_base );
 		}
-		
+
 		echo $args['before_widget'];
 		include trailingslashit( dirname( __FILE__ ) ) . $this->slug . '/views/widget.php';
 		echo $args['after_widget'];

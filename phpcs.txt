@@ -1,249 +1,47 @@
 FILE: ...velop/src/wp-content/themes/fortytwo/lib/general/ft-default-widgets.php
 --------------------------------------------------------------------------------
-FOUND 2 ERROR(S) AND 1 WARNING(S) AFFECTING 2 LINE(S)
+FOUND 2 ERROR(S) AFFECTING 1 LINE(S)
 --------------------------------------------------------------------------------
- 29 | ERROR   | Detected usage of a non-sanitized input variable: $_SERVER
- 29 | ERROR   | Detected usage of a non-sanitized input variable: $_SERVER
- 54 | WARNING | extract() usage is highly discouraged, due to the complexity
-    |         | and unintended issues it might cause.
---------------------------------------------------------------------------------
-
-
-FILE: ...ess-develop/src/wp-content/themes/fortytwo/lib/structural/ft-footer.php
---------------------------------------------------------------------------------
-FOUND 4 ERROR(S) AFFECTING 4 LINE(S)
---------------------------------------------------------------------------------
- 40 | ERROR | Expected next thing to be a escaping function, not
-    |       | '$data_widget_count'
- 58 | ERROR | Expected a sanitizing function (see Codex for 'Data Validation'),
-    |       | but instead saw 'do_shortcode'
- 59 | ERROR | Expected a sanitizing function (see Codex for 'Data Validation'),
-    |       | but instead saw 'do_shortcode'
- 62 | ERROR | Expected a sanitizing function (see Codex for 'Data Validation'),
-    |       | but instead saw 'do_shortcode'
---------------------------------------------------------------------------------
-
-
-FILE: ...-develop/src/wp-content/themes/fortytwo/lib/structural/ft-subheader.php
---------------------------------------------------------------------------------
-FOUND 3 ERROR(S) AFFECTING 3 LINE(S)
---------------------------------------------------------------------------------
- 109 | ERROR | Expected a sanitizing function (see Codex for 'Data
-     |       | Validation'), but instead saw 'ucwords'
- 124 | ERROR | Expected a sanitizing function (see Codex for 'Data
-     |       | Validation'), but instead saw 'get_the_author_meta'
- 145 | ERROR | Expected a sanitizing function (see Codex for 'Data
-     |       | Validation'), but instead saw 'ucwords'
---------------------------------------------------------------------------------
-
-
-FILE: .../src/wp-content/themes/fortytwo/lib/widgets/ft-contact/views/widget.php
---------------------------------------------------------------------------------
-FOUND 9 ERROR(S) AFFECTING 8 LINE(S)
---------------------------------------------------------------------------------
- 15 | ERROR | Expected next thing to be a escaping function, not '$args'
- 15 | ERROR | Expected next thing to be a escaping function, not '$args'
- 17 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 23 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 27 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 31 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 37 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 41 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 45 | ERROR | Expected next thing to be a escaping function, not '$instance'
---------------------------------------------------------------------------------
-
-
-FILE: ...evelop/src/wp-content/themes/fortytwo/lib/widgets/ft-contact/widget.php
---------------------------------------------------------------------------------
-FOUND 2 ERROR(S) AND 1 WARNING(S) AFFECTING 3 LINE(S)
---------------------------------------------------------------------------------
-  59 | ERROR   | Expected next thing to be a escaping function, not '$args'
-  61 | ERROR   | Expected next thing to be a escaping function, not '$args'
- 131 | WARNING | create_function is discouraged, please use Anonymous functions
-     |         | instead.
---------------------------------------------------------------------------------
-
-
-FILE: ...-content/themes/fortytwo/lib/widgets/ft-featured-content/views/form.php
---------------------------------------------------------------------------------
-FOUND 4 ERROR(S) AFFECTING 3 LINE(S)
---------------------------------------------------------------------------------
- 45 | ERROR | String "icon" does not require double quotes; use single quotes
-    |       | instead
- 46 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 46 | ERROR | String "icon" does not require double quotes; use single quotes
-    |       | instead
- 47 | ERROR | String "the-icon-selector" does not require double quotes; use
-    |       | single quotes instead
---------------------------------------------------------------------------------
-
-
-FILE: ...ontent/themes/fortytwo/lib/widgets/ft-featured-content/views/widget.php
---------------------------------------------------------------------------------
-FOUND 2 ERROR(S) AFFECTING 2 LINE(S)
---------------------------------------------------------------------------------
- 13 | ERROR | Expected next thing to be a escaping function, not '$args'
- 15 | ERROR | Expected next thing to be a escaping function, not '$args'
---------------------------------------------------------------------------------
-
-
-FILE: ...c/wp-content/themes/fortytwo/lib/widgets/ft-featured-content/widget.php
---------------------------------------------------------------------------------
-FOUND 2 ERROR(S) AND 1 WARNING(S) AFFECTING 3 LINE(S)
---------------------------------------------------------------------------------
-  47 | ERROR   | Expected next thing to be a escaping function, not '$args'
-  61 | ERROR   | Expected next thing to be a escaping function, not '$args'
- 189 | WARNING | create_function is discouraged, please use Anonymous functions
-     |         | instead.
---------------------------------------------------------------------------------
-
-
-FILE: ...elop/src/wp-content/themes/fortytwo/lib/widgets/ft-jumbotron/widget.php
---------------------------------------------------------------------------------
-FOUND 2 ERROR(S) AND 1 WARNING(S) AFFECTING 3 LINE(S)
---------------------------------------------------------------------------------
-  54 | ERROR   | Expected next thing to be a escaping function, not '$args'
-  67 | ERROR   | Expected next thing to be a escaping function, not '$args'
- 176 | WARNING | create_function is discouraged, please use Anonymous functions
-     |         | instead.
---------------------------------------------------------------------------------
-
-
-FILE: ...content/themes/fortytwo/lib/widgets/ft-responsive-slider/views/form.php
---------------------------------------------------------------------------------
-FOUND 9 ERROR(S) AFFECTING 8 LINE(S)
---------------------------------------------------------------------------------
-  56 | ERROR | Expected next thing to be a escaping function, not '$taxonomy'
-  61 | ERROR | Expected next thing to be a escaping function, not '$term'
-  95 | ERROR | Expected next thing to be a escaping function, not '$instance'
-  95 | ERROR | Expected a sanitizing function (see Codex for 'Data
-     |       | Validation'), but instead saw '__'
- 123 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 128 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 144 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 149 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 209 | ERROR | String "container" does not require double quotes; use single
-     |       | quotes instead
+ 29 | ERROR | Detected usage of a non-sanitized input variable: $_SERVER
+ 29 | ERROR | Detected usage of a non-sanitized input variable: $_SERVER
 --------------------------------------------------------------------------------
 
 
 FILE: ...ntent/themes/fortytwo/lib/widgets/ft-responsive-slider/views/widget.php
 --------------------------------------------------------------------------------
-FOUND 15 ERROR(S) AFFECTING 15 LINE(S)
+FOUND 9 ERROR(S) AFFECTING 9 LINE(S)
 --------------------------------------------------------------------------------
- 16 | ERROR | Incorrect indentation; expected 0 space, found 2
- 21 | ERROR | Incorrect indentation; expected 1 space, found 3
- 25 | ERROR | Incorrect indentation; expected 2 space, found 4
- 33 | ERROR | Incorrect indentation; expected 2 space, found 4
- 34 | ERROR | Incorrect indentation; expected 3 space, found 5
- 36 | ERROR | Incorrect indentation; expected 3 space, found 5
- 38 | ERROR | Incorrect indentation; expected 3 space, found 5
- 50 | ERROR | Incorrect indentation; expected 1 space, found 4
- 54 | ERROR | Incorrect indentation; expected 1 space, found 4
- 79 | ERROR | Expected next thing to be a escaping function, not
-    |       | '$controlsContainer'
- 80 | ERROR | Expected next thing to be a escaping function, not
-    |       | '$controlsContainer'
- 82 | ERROR | Expected next thing to be a escaping function, not
-    |       | '$directionnav'
- 83 | ERROR | Expected next thing to be a escaping function, not '$controlnav'
- 84 | ERROR | Expected next thing to be a escaping function, not '$duration'
- 85 | ERROR | Expected next thing to be a escaping function, not '$timer'
+ 19 | ERROR | Incorrect indentation; expected 0 space, found 2
+ 24 | ERROR | Incorrect indentation; expected 1 space, found 3
+ 28 | ERROR | Incorrect indentation; expected 2 space, found 4
+ 36 | ERROR | Incorrect indentation; expected 2 space, found 4
+ 37 | ERROR | Incorrect indentation; expected 3 space, found 5
+ 39 | ERROR | Incorrect indentation; expected 3 space, found 5
+ 41 | ERROR | Incorrect indentation; expected 3 space, found 5
+ 53 | ERROR | Incorrect indentation; expected 1 space, found 4
+ 57 | ERROR | Incorrect indentation; expected 1 space, found 4
 --------------------------------------------------------------------------------
 
 
 FILE: .../wp-content/themes/fortytwo/lib/widgets/ft-responsive-slider/widget.php
 --------------------------------------------------------------------------------
-FOUND 5 ERROR(S) AND 5 WARNING(S) AFFECTING 8 LINE(S)
+FOUND 1 ERROR(S) AND 4 WARNING(S) AFFECTING 5 LINE(S)
 --------------------------------------------------------------------------------
- 130 | ERROR   | Expected next thing to be a escaping function, not '$args'
- 134 | ERROR   | Expected next thing to be a escaping function, not '$args'
- 134 | ERROR   | Expected next thing to be a escaping function, not '$title'
- 134 | ERROR   | Expected next thing to be a escaping function, not '$args'
- 171 | WARNING | Detected usage of 0, possible slow query.
- 175 | WARNING | Detected usage of 0, possible slow query.
- 179 | WARNING | Detected usage of 0, possible slow query.
- 255 | ERROR   | Expected next thing to be a escaping function, not '$args'
- 256 | WARNING | The use of function wp_reset_query() is discouraged; use
+ 193 | WARNING | Detected usage of 0, possible slow query.
+ 197 | WARNING | Detected usage of 0, possible slow query.
+ 201 | WARNING | Detected usage of 0, possible slow query.
+ 278 | WARNING | The use of function wp_reset_query() is discouraged; use
      |         | wp_reset_postdata() instead
- 492 | WARNING | create_function is discouraged, please use Anonymous functions
-     |         | instead.
---------------------------------------------------------------------------------
-
-
-FILE: ...rc/wp-content/themes/fortytwo/lib/widgets/ft-tabs-widget/views/form.php
---------------------------------------------------------------------------------
-FOUND 2 ERROR(S) AFFECTING 2 LINE(S)
---------------------------------------------------------------------------------
- 32 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 36 | ERROR | Expected next thing to be a escaping function, not '$instance'
---------------------------------------------------------------------------------
-
-
-FILE: .../wp-content/themes/fortytwo/lib/widgets/ft-tabs-widget/views/widget.php
---------------------------------------------------------------------------------
-FOUND 1 ERROR(S) AFFECTING 1 LINE(S)
---------------------------------------------------------------------------------
- 60 | ERROR | Expected next thing to be a escaping function, not '$html'
+ 361 | ERROR   | Whitespace found at end of line
 --------------------------------------------------------------------------------
 
 
 FILE: ...op/src/wp-content/themes/fortytwo/lib/widgets/ft-tabs-widget/widget.php
 --------------------------------------------------------------------------------
-FOUND 6 ERROR(S) AND 4 WARNING(S) AFFECTING 8 LINE(S)
+FOUND 0 ERROR(S) AND 2 WARNING(S) AFFECTING 2 LINE(S)
 --------------------------------------------------------------------------------
-  75 | ERROR   | Expected next thing to be a escaping function, not '$args'
-  80 | ERROR   | Expected next thing to be a escaping function, not '$args'
- 110 | WARNING | Array keys should be surrounded by spaces unless they contain
-     |         | a string or an integer.
- 181 | WARNING | The use of function wp_reset_query() is discouraged; use
+ 125 | WARNING | The use of function wp_reset_query() is discouraged; use
      |         | wp_reset_postdata() instead
- 210 | WARNING | The use of function wp_reset_query() is discouraged; use
+ 154 | WARNING | The use of function wp_reset_query() is discouraged; use
      |         | wp_reset_postdata() instead
- 281 | ERROR   | Expected a sanitizing function (see Codex for 'Data
-     |         | Validation'), but instead saw '__'
- 283 | ERROR   | Expected a sanitizing function (see Codex for 'Data
-     |         | Validation'), but instead saw 'selected'
- 283 | ERROR   | Expected a sanitizing function (see Codex for 'Data
-     |         | Validation'), but instead saw '__'
- 283 | ERROR   | Expected next thing to be a escaping function, not
-     |         | '$available_tab'
- 302 | WARNING | create_function is discouraged, please use Anonymous functions
-     |         | instead.
---------------------------------------------------------------------------------
-
-
-FILE: ...c/wp-content/themes/fortytwo/lib/widgets/ft-testimonials/views/form.php
---------------------------------------------------------------------------------
-FOUND 5 ERROR(S) AFFECTING 4 LINE(S)
---------------------------------------------------------------------------------
- 34 | ERROR | Expected next thing to be a escaping function, not '$datasource'
- 74 | ERROR | String "datasource" does not require double quotes; use single
-    |       | quotes instead
- 83 | ERROR | String "datasource" does not require double quotes; use single
-    |       | quotes instead
- 87 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 87 | ERROR | String "datasource" does not require double quotes; use single
-    |       | quotes instead
---------------------------------------------------------------------------------
-
-
-FILE: ...wp-content/themes/fortytwo/lib/widgets/ft-testimonials/views/widget.php
---------------------------------------------------------------------------------
-FOUND 3 ERROR(S) AFFECTING 3 LINE(S)
---------------------------------------------------------------------------------
- 13 | ERROR | Expected next thing to be a escaping function, not '$instance'
- 17 | ERROR | Expected next thing to be a escaping function, not '$testimonial'
- 18 | ERROR | Expected next thing to be a escaping function, not '$testimonial'
---------------------------------------------------------------------------------
-
-
-FILE: ...p/src/wp-content/themes/fortytwo/lib/widgets/ft-testimonials/widget.php
---------------------------------------------------------------------------------
-FOUND 2 ERROR(S) AND 1 WARNING(S) AFFECTING 3 LINE(S)
---------------------------------------------------------------------------------
-  61 | ERROR   | Expected next thing to be a escaping function, not '$args'
- 139 | ERROR   | Expected next thing to be a escaping function, not '$args'
- 268 | WARNING | create_function is discouraged, please use Anonymous functions
-     |         | instead.
 --------------------------------------------------------------------------------
