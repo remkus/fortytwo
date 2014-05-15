@@ -265,6 +265,15 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// PHP Unit and Integration Tests
+		phpunit: {
+			all: {
+				dir: 'tests/',
+				cmd: 'phpunit',
+				args: ['-c', 'phpunit.xml']
+			}
+		},
+
 
 		// I18n
 		
