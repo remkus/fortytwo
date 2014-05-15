@@ -87,4 +87,10 @@ class FT_Widget_Jumbotron extends FT_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Jumbotron");' ) );
+add_action( 'widgets_init', 'ft_register_widget_jumbotron' );
+/**
+ * Register the FT Jumbotron widget.
+ */
+function ft_register_widget_jumbotron() {
+	register_widget( 'FT_Widget_Jumbotron' );
+}

@@ -395,4 +395,10 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Responsive_Slider");' ) );
+add_action( 'widgets_init', 'ft_register_widget_response_slider' );
+/**
+ * Register the FT Responsive Slider widget.
+ */
+function ft_register_widget_response_slider() {
+	register_widget( 'FT_Widget_Responsive_Slider' );
+}

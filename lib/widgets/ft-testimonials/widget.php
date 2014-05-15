@@ -215,4 +215,10 @@ class FT_Widget_Testimonials extends FT_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Testimonials");' ) );
+add_action( 'widgets_init', 'ft_register_widget_testimonials' );
+/**
+ * Register the FT Testimonials widget.
+ */
+function ft_register_widget_testimonials() {
+	register_widget( 'FT_Widget_Testimonials' );
+}

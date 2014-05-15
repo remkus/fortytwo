@@ -238,4 +238,10 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Tabs_Widget");' ) );
+add_action( 'widgets_init', 'ft_register_widget_tabs_widget' );
+/**
+ * Register the FT Tabs Widget widget.
+ */
+function ft_register_widget_tabs_widget() {
+	register_widget( 'FT_Widget_Tabs_Widget' );
+}

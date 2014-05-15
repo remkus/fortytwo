@@ -100,4 +100,10 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Featured_Content");' ) );
+add_action( 'widgets_init', 'ft_register_widget_featured_content' );
+/**
+ * Register the FT Featured Content widget.
+ */
+function ft_register_widget_featured_content() {
+	register_widget( 'FT_Widget_Featured_Content' );
+}

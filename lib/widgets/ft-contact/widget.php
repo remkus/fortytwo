@@ -76,4 +76,10 @@ class FT_Widget_Contact extends FT_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("FT_Widget_Contact");' ) );
+add_action( 'widgets_init', 'ft_register_widget_contact' );
+/**
+ * Register the FT Contact widget.
+ */
+function ft_register_widget_contact() {
+	register_widget( 'FT_Widget_Contact' );
+}
