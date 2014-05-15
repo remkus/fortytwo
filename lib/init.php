@@ -27,6 +27,7 @@ define( 'FORTYTWO_WIDGETS_URL', FORTYTWO_LIB_URL . '/widgets' );
 /* Load Initializer Components */
 require_once 'admin/ft-admin-style.php';
 require_once 'admin/ft-layouts.php';
+require_once 'admin/ft-templates.php';
 
 require_once 'general/ft-default-widgets.php';
 require_once 'general/ft-scripts.php';
