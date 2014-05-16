@@ -49,24 +49,47 @@ function fortytwo_modify_archives_link( $link_html ) {
  * @todo  This code needs a lot more and better documentation
  */
 class FortyTwo_Walker_Category extends Walker_Category {
-
+	/**
+	 * Start the element output.
+	 *
+	 * @see Walker::start_el()
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param string $output   Passed by reference. Used to append additional content.
+	 * @param object $category Category data object.
+	 * @param int    $depth    Depth of category in reference to parents. Default 0.
+	 * @param array  $args     An array of arguments. @see wp_list_categories()
+	 * @param int    $id       ID of the current category.
+	 */
 	function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
+		/** This filter is documented in wp-includes/category-template.php */
+		$cat_name = apply_filters(
+			'list_cats',
+			esc_attr( $category->name ),
+			$category
+		);
 
-		$cat_name = esc_attr( $category->name );
-		$cat_name = apply_filters( 'list_cats', $cat_name, $category );
 		$link = '<a href="' . esc_url( get_term_link( $category ) ) . '" ';
 		if ( $args['use_desc_for_title'] == 0 || empty( $category->description ) ) {
-			$link .= 'title="' . esc_attr( sprintf( __( 'View all posts filed under %s', 'fortytwo' ), $cat_name ) ) . '"';
+			$link .= '';
 		} else {
+			/**
+			 * Filter the category description for display.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $description Category description.
+			 * @param object $category    Category object.
+			 */
 			$link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $category->description, $category ) ) ) . '"';
 		}
+
 		$link .= '>';
 		$link .= $cat_name;
-
 		if ( ! empty( $args['show_count'] ) ) {
 			$link .= '<span class="badge">' . intval( $category->count ) . '</span>';
 		}
-
 		$link .= '</a>';
 
 		if ( ! empty( $args['feed_image'] ) || ! empty( $args['feed'] ) ) {
@@ -79,12 +102,11 @@ class FortyTwo_Walker_Category extends Walker_Category {
 			$link .= '<a href="' . esc_url( get_term_feed_link( $category->term_id, $category->taxonomy, $args['feed_type'] ) ) . '"';
 
 			if ( empty( $args['feed'] ) ) {
-				$alt = ' alt="' . sprintf( __( 'Feed for all posts filed under %s', 'fortytwo' ), $cat_name ) . '"';
+				$alt = ' alt="' . esc_attr( sprintf( __( 'Feed for all posts filed under %s' ), $cat_name ) ) . '"';
 			} else {
-				$title = ' title="' . esc_attr( $args['feed'] ) . '"';
 				$alt = ' alt="' . esc_attr( $args['feed'] ) . '"';
 				$name = $args['feed'];
-				$link .= $title;
+				$link .= empty( $args['title'] ) ? '' : $args['title'];
 			}
 
 			$link .= '>';
@@ -92,9 +114,8 @@ class FortyTwo_Walker_Category extends Walker_Category {
 			if ( empty( $args['feed_image'] ) ) {
 				$link .= $name;
 			} else {
-				$link .= '<img src="' . esc_url( $args['feed_image'] ) . '"' . $alt . $title . ' />';
+				$link .= "<img src='" . esc_url( $args['feed_image'] ) . "'$alt" . ' />';
 			}
-
 			$link .= '</a>';
 
 			if ( empty( $args['feed_image'] ) ) {
@@ -102,24 +123,23 @@ class FortyTwo_Walker_Category extends Walker_Category {
 			}
 		}
 
-		if ( 'list' === $args['style'] ) {
+		if ( 'list' == $args['style'] ) {
 			$output .= "\t<li";
 			$class = 'cat-item cat-item-' . $category->term_id;
 			if ( ! empty( $args['current_category'] ) ) {
 				$_current_category = get_term( $args['current_category'], $category->taxonomy );
 				if ( $category->term_id == $args['current_category'] ) {
-					$class .= ' current-cat';
+					$class .=  ' current-cat';
 				} elseif ( $category->term_id == $_current_category->parent ) {
-					$class .= ' current-cat-parent';
+					$class .=  ' current-cat-parent';
 				}
 			}
-			$output .= ' class="' . $class . '"';
+			$output .=  ' class="' . $class . '"';
 			$output .= ">$link\n";
 		} else {
 			$output .= "\t$link<br />\n";
 		}
 	}
-
 }
 
 add_filter( 'widget_categories_args', 'fortytwo_modify_widget_categories_args', 10, 1 );
