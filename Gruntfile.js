@@ -60,7 +60,7 @@ module.exports = function(grunt) {
 		less: {
 			font_awesome: {
 				options: {
-					paths: ['assets/less', 'vendor/font-awesome/less'],
+					paths: ['assets/css/less', 'vendor/font-awesome/less'],
 					imports: {
 						reference: ['ft-variables.less']
 					}
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
 			},
 			components: {
 				options: {
-					paths: ['assets/less', 'vendor/bootstrap/less', 'tmp/assets/css'],
+					paths: ['assets/css/less', 'vendor/bootstrap/less', 'tmp/assets/css'],
 					imports: {
 						reference: ['ft-variables.less', 'ft-mixins.less', 'mixins.less', 'utilities.less']
 					}
@@ -79,14 +79,14 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					flatten: true,
-					cwd: 'assets/less',
+					cwd: 'assets/css/less',
 					src: ['*.less', '!{ft-variables,ft-mixins}.less'],
 					dest: 'tmp/assets/css/',
 					ext: '.css'
 				}, {
 					expand: true,
 					flatten: true,
-					cwd: 'assets/less/admin',
+					cwd: 'assets/css/less/admin',
 					src: ['*.less'],
 					dest: 'tmp/assets/css/admin/',
 					ext: '.css'
@@ -293,7 +293,6 @@ module.exports = function(grunt) {
 
 		checktextdomain: {
 			options: {
-				// text_domain: '<%= pkg.theme.textdomain %>',
 				text_domain: 'fortytwo',
 				keywords: [
 					'__:1,2d',
@@ -314,9 +313,9 @@ module.exports = function(grunt) {
 			},
 			files: {
 				src: [
-				'*.php',
-				'lib/**/*.php',
-				'templates/**/*.php'
+					'*.php',
+					'lib/**/*.php',
+					'templates/**/*.php'
 				],
 				expand: true
 			}
