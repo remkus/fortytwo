@@ -187,17 +187,7 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// Make the CSS look good
-		cssbeautifier: {
-			files: ['tmp/assets/css/{ft-core,ft-header,ft-navigation,ft-intro,ft-widgets,ft-content,ft-footer,ft-custom}.css'],
-			options: {
-				indent: '\t',
-				openbrace: 'end-of-line',
-				autosemicolon: true
-			}
-		},
-
-		// Order properties consistently
+		// Tidy the CSS
 		csscomb: {
 			// less: {
 			// 	expand: true,
@@ -380,7 +370,6 @@ module.exports = function(grunt) {
 		'replace',
 		'less',
 		'cssmin',
-		'cssbeautifier',
 		'csscomb',
 		'concat',
 		'clean'
