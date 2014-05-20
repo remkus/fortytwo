@@ -117,7 +117,7 @@ function fortytwo_do_site_subheader_title( $title ) {
 		}
 	} elseif ( is_archive() ) {
 		if ( is_post_type_archive() ) {
-			$label = post_type_archive_title();
+			$label = post_type_archive_title( '', false );
 		} elseif ( is_category() ) {
 			$label = __( 'Articles by Category: ', 'fortytwo' ) . single_term_title( '', false );
 		} elseif ( is_tag() ) {
