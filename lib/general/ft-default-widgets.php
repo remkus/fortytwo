@@ -102,7 +102,7 @@ class FortyTwo_Walker_Category extends Walker_Category {
 			$link .= '<a href="' . esc_url( get_term_feed_link( $category->term_id, $category->taxonomy, $args['feed_type'] ) ) . '"';
 
 			if ( empty( $args['feed'] ) ) {
-				$alt = ' alt="' . esc_attr( sprintf( __( 'Feed for all posts filed under %s' ), $cat_name ) ) . '"';
+				$alt = ' alt="' . esc_attr( sprintf( __( 'Feed for all posts filed under %s', 'fortytwo' ), $cat_name ) ) . '"';
 			} else {
 				$alt = ' alt="' . esc_attr( $args['feed'] ) . '"';
 				$name = $args['feed'];
