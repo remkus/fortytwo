@@ -22,11 +22,11 @@ add_action( 'genesis_before_footer', 'fortytwo_insert_footer_widget' );
 function fortytwo_insert_footer_widget() {
 
 	//* Check to see if footer-columns has widgets.
-	if ( ! is_active_sidebar( 'footer-columns' ) ) {
+	if ( ! is_active_sidebar( 'ft_footer-columns' ) ) {
 		return;
 	}
 
-	$data_widget_count = fortytwo_add_data_widget_attr( 'footer-columns' );
+	$data_widget_count = fortytwo_add_data_widget_attr( 'ft_footer-columns' );
 
 	genesis_markup( array(
 			'html5'   => '<div %s>',
@@ -38,7 +38,7 @@ function fortytwo_insert_footer_widget() {
 
 	echo '<div class="inner-wrap">';
 		echo '<div class="sidebar sidebar-footer-columns widget-area custom-widget-area" data-widget-count="' . $data_widget_count . '">';
-				dynamic_sidebar( 'footer-columns' );
+				dynamic_sidebar( 'ft_footer-columns' );
 		echo '</div>';
 	echo '</div>';
 	genesis_structural_wrap( 'footer-widgets', 'close' );

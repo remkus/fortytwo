@@ -23,7 +23,7 @@ add_action( 'after_setup_theme', 'fortytwo_register_widget_areas' );
 function fortytwo_register_widget_areas() {
 	$page_business_widget_areas = array(
 		'name'          => __( 'Business > Section %d', 'fortytwo' ),
-		'id'            => 'page-business-section',
+		'id'            => 'ft_page-business-section',
 		'description'   => __( 'Widgets  areas for sections of the Business Page Template', 'fortytwo' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-wrap">',
 		'after_widget'  => '</div></section>',
@@ -37,7 +37,7 @@ function fortytwo_register_widget_areas() {
 // Registering the sidebar for our footer columns
 genesis_register_sidebar(
 	array(
-		'id'               => 'footer-columns',
+		'id'               => 'ft_footer-columns',
 		'name'             => __( 'Footer Columns', 'fortytwo' ),
 		'description'      => __( 'This is the section inserted prior to the final footer', 'fortytwo' ),
 	)

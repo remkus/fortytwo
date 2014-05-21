@@ -47,16 +47,16 @@ add_action( 'genesis_after_header', 'fortytwo_add_site_intro' );
  */
 function fortytwo_add_site_intro() {
 
-	if ( is_active_sidebar( 'page-business-section' ) ) {
+	if ( is_active_sidebar( 'ft_page-business-section' ) ) {
 
-		$data_widget_count = fortytwo_add_data_widget_attr( 'page-business-section' );
+		$data_widget_count = fortytwo_add_data_widget_attr( 'ft_page-business-section' );
 
 		echo '	<div class="site-intro">
 					<div class="wrap">
 						<div class="inner-wrap">
 							<div class="widget-area custom-widget-area" data-widget-count="' . esc_attr( $data_widget_count ) . '">';
 
-								dynamic_sidebar( 'page-business-section' );
+								dynamic_sidebar( 'ft_page-business-section' );
 
 		echo '				</div>
 						</div>
@@ -78,32 +78,32 @@ function fortytwo_page_business_sections_in_loop() {
 
 	echo '<div class="inner-wrap">';
 
-	if ( is_active_sidebar( 'page-business-section-2' ) ) {
+	if ( is_active_sidebar( 'ft_page-business-section-2' ) ) {
 
-		$data_widget_count = fortytwo_add_data_widget_attr( 'page-business-section-2' );
+		$data_widget_count = fortytwo_add_data_widget_attr( 'ft_page-business-section-2' );
 
 		echo '<div class="widget-area custom-widget-area" data-widget-count="' . esc_attr( $data_widget_count ) . '">';
-				dynamic_sidebar( 'page-business-section-2' );
+				dynamic_sidebar( 'ft_page-business-section-2' );
 		echo '</div>';
 
 	}
 
-	if ( is_active_sidebar( 'page-business-section-3' ) ) {
+	if ( is_active_sidebar( 'ft_page-business-section-3' ) ) {
 
-		$data_widget_count = fortytwo_add_data_widget_attr( 'page-business-section-3' );
+		$data_widget_count = fortytwo_add_data_widget_attr( 'ft_page-business-section-3' );
 
 		echo '<div class="widget-area custom-widget-area" data-widget-count="' . esc_attr( $data_widget_count ) . '">';
-				dynamic_sidebar( 'page-business-section-3' );
+				dynamic_sidebar( 'ft_page-business-section-3' );
 		echo '</div>';
 
 	}
 
-	if ( is_active_sidebar( 'page-business-section-4' ) ) {
+	if ( is_active_sidebar( 'ft_page-business-section-4' ) ) {
 
-		$data_widget_count = fortytwo_add_data_widget_attr( 'page-business-section-4' );
+		$data_widget_count = fortytwo_add_data_widget_attr( 'ft_page-business-section-4' );
 
 		echo '<div class="widget-area custom-widget-area" data-widget-count="' . esc_attr( $data_widget_count ) . '">';
-				dynamic_sidebar( 'page-business-section-4' );
+				dynamic_sidebar( 'ft_page-business-section-4' );
 		echo '</div>';
 
 	}
