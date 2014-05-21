@@ -172,7 +172,7 @@ foreach ( $instance['taxonomies'] as $taxonomy ) {
 				</p>
 
 				<p>
-					<input type="checkbox"<?php $this->id_name( 'slideshow_hide_mobile' ); ?> value="1" <?php checked( 1, $instance['slideshow_hide_mobile'] ); ?> /> <label for="<?php echo $this->get_field_id( 'slideshow_hide_mobile' ); ?>"><?php _e( 'Hide Title & Content on Mobile Devices', 'fortytwo' ); ?></label>
+					<input type="checkbox"<?php $this->id_name( 'slideshow_hide_mobile' ); ?> value="1" <?php checked( 1, $instance['slideshow_hide_mobile'] ); ?> /> <label for="<?php echo $this->get_field_id( 'slideshow_hide_mobile' ); ?>"><?php _e( 'Hide Title &amp; Content on Mobile Devices', 'fortytwo' ); ?></label>
 				</p>
 
 				<p>
