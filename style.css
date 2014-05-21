@@ -137,8 +137,7 @@ img.alignright {
 /* WordPress Core Generated Classes */
 .wp-caption {
 	max-width: 100%;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin: 10px 0;
 }
 .wp-caption.alignleft {
 	margin-right: 14px;
@@ -5243,6 +5242,9 @@ fieldset[disabled] .comment-respond input[type="submit"].active {
 /*!
 * 8.4 - Post Formats
 */
+.gallery-item {
+	margin: 1em 0;
+}
 .gallery-columns-1,
 .gallery-columns-2,
 .gallery-columns-3,

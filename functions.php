@@ -12,7 +12,7 @@ load_child_theme_textdomain( 'fortytwo', CHILD_DIR . '/lib/languages' );
 /**
  * Add theme support for HTML5 with Semantic Markup
  */
-add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list' ) );
+add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 
 /** Adds responsive viewport */
 add_theme_support( 'genesis-responsive-viewport' );
