@@ -62,7 +62,11 @@ abstract class FT_Widget extends WP_Widget {
 			$instance[ $field ] = apply_filters( "widget_{$field}", $instance[ $field ], $instance, $this->id_base );
 		}
 
-		echo $args['before_widget'];
+		if ( ! $this->has_value( $instance ) ) {
+			return;
+		}
+
+		echo $args['before_widget']; 
 		include trailingslashit( dirname( __FILE__ ) ) . $this->slug . '/views/widget.php';
 		echo $args['after_widget'];
 	}
@@ -103,5 +107,21 @@ abstract class FT_Widget extends WP_Widget {
 
 	public function get_fields() {
 		return array_keys( $this->defaults );
+	}
+
+	public function has_value( $instance ) {
+		$has_value = false;
+		foreach ( $instance as $field ) {
+			if ( $field ) {
+				$has_value = true;
+				continue;
+			}
+		}
+
+		if ( ! $has_value ) {
+			return false;
+		}
+
+		return true;
 	}
 }
