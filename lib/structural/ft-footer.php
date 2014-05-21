@@ -56,8 +56,8 @@ add_filter( 'genesis_footer_creds_text', 'fortytwo_footer_creds_text' );
 function fortytwo_footer_creds_text() {
 	echo '<div class="copyright-area">';
 	echo do_shortcode( '[footer_copyright before="Copyright "] ' );
-	echo do_shortcode( '[footer_childtheme_link before=" &middot; "]' );
-	echo ' &middot; ';
+	echo do_shortcode( '[footer_childtheme_link before=" &#xb7; "]' );
+	echo ' &#xb7; ';
 	echo ' Built on the ';
 	echo do_shortcode( '[footer_genesis_link]' );
 	echo '</span></div>';

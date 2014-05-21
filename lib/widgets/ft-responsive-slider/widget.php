@@ -342,7 +342,7 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 			return '';
 		}
 
-		return '&hellip; <a href="'. esc_url( get_permalink( $post->ID ) ) . '">' . $read_more . '</a>';
+		return '&#x2026; <a href="'. esc_url( get_permalink( $post->ID ) ) . '">' . $read_more . '</a>';
 	}
 
 	/**
