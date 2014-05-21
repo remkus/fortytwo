@@ -24,11 +24,11 @@ class FT_Widget_Jumbotron extends FT_Widget {
 	 */
 	public function __construct() {
 		$this->defaults = array(
-			'title'            => '',
-			'content'          => '',
-			'button_alignment' => 'right',
-			'button_text'      => '',
-			'button_link'      => '',
+			'title'          => '',
+			'content'        => '',
+			'link_alignment' => 'right',
+			'link_text'      => '',
+			'link_url'       => '',
 		);
 
 		parent::__construct(

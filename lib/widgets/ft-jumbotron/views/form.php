@@ -26,10 +26,10 @@
 		</tr>
 		<tr>
 			<td>
-				<label for="<?php echo $this->get_field_id( 'button_text' ); ?>"><?php _e( 'Button Text:', 'fortytwo' ); ?></label>
-				<input class="widefat" type="text"<?php $this->id_name( 'button_text' ); ?> value="<?php echo esc_attr( $instance['button_text'] ); ?>"><br/>
-				<label for="<?php echo $this->get_field_id( 'button_link' ); ?>"><?php _e( 'Button Link:', 'fortytwo' ); ?></label>
-				<input class="widefat" type="text"<?php $this->id_name( 'button_link' ); ?> value="<?php echo esc_attr( $instance['button_link'] ); ?>"><br/>
+				<label for="<?php echo $this->get_field_id( 'link_text' ); ?>"><?php _e( 'Link Text:', 'fortytwo' ); ?></label>
+				<input class="widefat" type="text"<?php $this->id_name( 'link_text' ); ?> value="<?php echo esc_attr( $instance['link_text'] ); ?>"><br/>
+				<label for="<?php echo $this->get_field_id( 'link_url' ); ?>"><?php _e( 'Link URL:', 'fortytwo' ); ?></label>
+				<input class="widefat" type="text"<?php $this->id_name( 'link_url' ); ?> value="<?php echo esc_attr( $instance['link_url'] ); ?>"><br/>
 			</td>
 		</tr>
 	</table>

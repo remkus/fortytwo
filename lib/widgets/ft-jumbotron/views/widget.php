@@ -14,4 +14,4 @@
 	<span><?php echo esc_html( $instance['title'] ); ?></span>
 	<p><?php echo esc_html( $instance['content'] ); ?></p>
 </div>
-<a class="btn ft-jumbotron-action" href="<?php echo esc_url( $instance['button_link'] ); ?>"><?php echo esc_html( $instance['button_text'] ); ?></a>
+<a class="btn ft-jumbotron-action" href="<?php echo esc_url( $instance['link_url'] ); ?>"><?php echo esc_html( $instance['link_text'] ); ?></a>
