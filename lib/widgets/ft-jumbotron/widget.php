@@ -26,7 +26,6 @@ class FT_Widget_Jumbotron extends FT_Widget {
 		$this->defaults = array(
 			'title'          => '',
 			'content'        => '',
-			'link_alignment' => 'right',
 			'link_text'      => '',
 			'link_url'       => '',
 		);
