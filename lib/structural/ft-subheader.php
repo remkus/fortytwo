@@ -49,8 +49,8 @@ add_action( 'genesis_after_header', 'fortytwo_insert_site_subheader' );
  */
 function fortytwo_insert_site_subheader() {
 
-	/** do nothing when we're not on the front-page */
-	if ( is_front_page() ) {
+	// Do nothing when we're on the front-page
+	if ( is_front_page()  || ( is_home() && get_option( 'page_for_posts' ) && ! get_option( 'page_on_front' ) && ! get_queried_object() ) ) {
 		return;
 	}
 
