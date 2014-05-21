@@ -140,7 +140,7 @@ function fortytwo_do_site_subheader_title( $title ) {
 	}
 
 	if ( $title ) {
-		return '<h1 id="entry-title">' . $title . '</h1>';
+		return '<h1 id="entry-title" itemprop="headline">' . $title . '</h1>';
 	}
 
 	return '<h1>' . $label . '</h1>';
