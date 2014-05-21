@@ -95,7 +95,9 @@ function fortytwo_do_site_subheader_title( $title ) {
 
 	$title = $label = '';
 
-	if ( is_singular() ) { // Post, Page, CPT entry or attachment
+	if ( is_home() ) { // Static blog page
+		$label = get_the_title( get_option( 'page_for_posts', true ) );
+	} elseif ( is_singular() ) { // Post, Page, CPT entry or attachment
 		if (
 			( function_exists( 'is_product' ) && is_product() ) ||
 			( function_exists( 'is_shop' ) && is_shop() )
