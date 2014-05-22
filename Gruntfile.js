@@ -235,6 +235,24 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// Lint .js files for syntax errors
+		jsvalidate: {
+			all: {
+				options: {
+					verbose: true
+				},
+				files: {
+					src: [
+						'**/*.js',
+						'!Gruntfile.js',
+						'!node_modules/**',
+						'!vendor/**',
+						'!lib/widgets/ft-responsive-slider/js/jquery.flexslider-min.js'
+					]
+				}
+			}
+		},
+
 
 		// PHP
 
@@ -361,7 +379,8 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'check', [
 		'phplint',
 		'checktextdomain',
-		'jshint'
+		'jshint',
+		'jsvalidate'
 	] );
 	
 	grunt.registerTask( 'build:css', [
