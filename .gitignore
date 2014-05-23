@@ -2,8 +2,13 @@
 stackato.yml
 .phptidy-cache
 
-/vendor/bower_components/
+assets/bower/
+assets/composer/*
+!assets/composer/wpthumb/
+assets/composer/wpthumb/*
+!assets/composer/wpthumb/*.php
 
 /node_modules/
+/dist/
 
 /tmp/
