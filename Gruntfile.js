@@ -402,6 +402,18 @@ module.exports = function(grunt) {
 					}
 				]
 			}
+		},
+
+		styledocco: {
+			dist: {
+				options: {
+					name: '<%= pkg.theme.name %> <%= pkg.version %>'
+				},
+				files: {
+					'docs/css/style': 'theme/style.css',
+					'docs/css/admin-style': 'theme/admin-style.css',
+				}
+			}
 		}
 
 	});

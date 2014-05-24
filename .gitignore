@@ -10,5 +10,6 @@ assets/composer/wpthumb/*
 
 /node_modules/
 /dist/
+/docs/
 
 /tmp/
