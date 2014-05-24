@@ -1,8 +1,14 @@
 <?php
 /**
- * Start the engine
+ * FortyTwo Theme
+ *
+ * This file fires the whole FortyTwo Theme. The answer to the answer.
+ *
+ * @package FortyTwo
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ * @link    http://forsitethemes/themes/fortytwo/
  */
-require_once TEMPLATEPATH . '/lib/init.php';
 
 /**
  * Localization
@@ -18,6 +24,6 @@ add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list'
 add_theme_support( 'genesis-responsive-viewport' );
 
 /**
- * Add support for footer widgets
+ * Include the rest of the theme files
  */
 require_once 'lib/init.php';
