@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// Copy dependencies out of assets/ and into src/
+		// Copy dependencies out of assets/ and into theme/
 		// CSS (Less) and images are transferred during other tasks
 		copy: {
 			fonts: {
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 						expand: true,
 						flatten: true,
 						src: ['assets/bower/fonts/**/*', '!assets/bower/fonts/**/*.otf'],
-						dest: 'src/fonts/',
+						dest: 'theme/fonts/',
 						filter: 'isFile'
 					}
 				]
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 						flatten: true,
 						// holder.js is not yet in use
 						src: ['assets/**/js/**/*', '!assets/bower/js/holderjs/holder.js'],
-						dest: 'src/js/',
+						dest: 'theme/js/',
 						filter: 'isFile'
 					}
 				]
@@ -62,7 +62,7 @@ module.exports = function(grunt) {
 						expand: true,
 						flatten: true,
 						src: ['assets/composer/wpthumb/wpthumb.*'],
-						dest: 'src/lib/wpthumb/',
+						dest: 'theme/lib/wpthumb/',
 						filter: 'isFile'
 					}
 				]
@@ -205,7 +205,7 @@ module.exports = function(grunt) {
 					'tmp/assets/css/ft-print.css',
 					'tmp/assets/css/ft-custom.css'
 				],
-				dest: 'src/style.css'
+				dest: 'theme/style.css'
 			},
 			admin_style: {
 				options: {
@@ -214,7 +214,7 @@ module.exports = function(grunt) {
 				src: [
 					'tmp/assets/css/admin/ft-admin-core.css'
 				],
-				dest: 'src/admin-style.css'
+				dest: 'theme/admin-style.css'
 			}
 		},
 
@@ -228,7 +228,7 @@ module.exports = function(grunt) {
 						expand: true,
 						cwd: 'assets/forsitethemes/images/',
 						src: ['*.*'],
-						dest: 'src/images'
+						dest: 'theme/images'
 					}
 				]
 			},
@@ -238,7 +238,7 @@ module.exports = function(grunt) {
 						expand: true,
 						cwd: 'assets/forsitethemes/images/layouts/',
 						src: ['*.*'],
-						dest: 'src/lib/admin/images/layouts'
+						dest: 'theme/lib/admin/images/layouts'
 					}
 				]
 			}
@@ -262,8 +262,8 @@ module.exports = function(grunt) {
 				expand: true,
 				src: [
 					'assets/forsitethemes/*.js',
-					'src/lib/widgets/**/*.js',
-					'!src/lib/widgets/ft-responsive-slider/js/jquery.flexslider-min.js'
+					'theme/lib/widgets/**/*.js',
+					'!theme/lib/widgets/ft-responsive-slider/js/jquery.flexslider-min.js'
 				]
 			}
 		},
@@ -276,7 +276,7 @@ module.exports = function(grunt) {
 				},
 				files: {
 					src: [
-						'src/**/*.js'
+						'theme/**/*.js'
 					]
 				}
 			}
@@ -287,13 +287,13 @@ module.exports = function(grunt) {
 
 		// Lint .php files for syntax errors
 		phplint: {
-			all: [ 'src/**/*.php' ]
+			all: [ 'theme/**/*.php' ]
 		},
 
 		// Lint .php files for code standards
 		phpcs: {
 			all: {
-				dir: [ 'src/**/*.php' ]
+				dir: [ 'theme/**/*.php' ]
 			},
 			options: {
 				standard: 'ruleset.xml',
@@ -320,8 +320,8 @@ module.exports = function(grunt) {
 			php: {
 				files: {
 					src: [
-						'src/**/*.php',
-						'!src/lib/wpthumb/*.php'
+						'theme/**/*.php',
+						'!theme/lib/wpthumb/*.php'
 					],
 				}
 			}
@@ -350,8 +350,8 @@ module.exports = function(grunt) {
 			files: {
 				expand: true,
 				src: [
-					'src/**/*.php',
-					'!src/lib/wpthumb/*.php'
+					'theme/**/*.php',
+					'!theme/lib/wpthumb/*.php'
 				]
 			}
 		},
@@ -361,7 +361,7 @@ module.exports = function(grunt) {
 		makepot: {
 			theme: {
 				options: {
-					cwd: 'src',
+					cwd: 'theme',
 					exclude: ['lib/wpthumb/.*'],
 					domainPath: '/lib/languages',
 					processPot: function( pot ) {
@@ -396,7 +396,7 @@ module.exports = function(grunt) {
 				files: [
 					{
 						expand: true,
-						cwd: 'src',
+						cwd: 'theme',
 						src: ['**/*'], // Take this...
 						dest: '<%= pkg.name %>' // ...put it into this, then zip that up as ^^^
 					}

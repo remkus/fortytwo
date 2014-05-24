@@ -47,5 +47,5 @@
     "template": "genesis",
     "textdomain": "fortytwo"
   },
-  "changelog": "src/CHANGELOG.md"
+  "changelog": "theme/CHANGELOG.md"
 }
