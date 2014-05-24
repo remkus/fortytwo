@@ -1,13 +1,13 @@
 /*!
-*  2.0 Core
-*
-*  FortyTwo core aims to contain less(css) that is used repeatedly throughout the remainder
-*  of the less(css) files.
+# Core
+
+FortyTwo core aims to contain less(css) that is used repeatedly throughout the
+remainder of the less(css) files.
 */
 
 @import (reference) "scaffolding";
 
-/* Scaffolding */
+/* ## Scaffolding */
 * {
 	&:extend(* all);
 }
@@ -54,7 +54,7 @@ img {
 	}
 }
 
-/* WordPress Core Generated Classes */
+/* ## WordPress Core Generated Classes */
 .wp-caption {
 	margin: 10px 0;
 	max-width: 100%;
@@ -76,22 +76,22 @@ img {
 	.pull-right;
 }
 
-/* Typography */
+/* ## Typography */
 @import "type";  // Making use of Bootstrap type via import of file
 
-/* Code */
+/* ## Code */
 @import "code"; // Making use of Bootstrap code via import of file
 
-/* Tables */
+/* ## Tables */
 @import "tables"; // Making use of Bootstrap tables via import of file
 
-/* Forms */
+/* ## Forms */
 @import "forms"; // Making use of Bootstrap forms via import of file
 
-/* Buttons */
+/* ## Buttons */
 @import "buttons"; // Making use of Bootstrap buttons via import of file
 
-/* Layout */
+/* ## Layout */
 .wrap {
 	.container-fixed();
 
@@ -419,8 +419,8 @@ img {
 
 }
 
-/* Other - Sort Out */
-// Less file of randon styles which should be broken in to specific sections
+/* ## Other - Sort Out */
+// Less file of random styles which should be broken in to specific sections
 
 //
 // Button styling without adding classes to buttons
