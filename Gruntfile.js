@@ -84,6 +84,28 @@ module.exports = function(grunt) {
 					src: ['font-awesome.less'],
 					dest: 'assets/bower/less/font-awesome/'
 				}]
+			},
+			// style is run after style.css is generated to fix comments
+			style: {
+				options: {
+					patterns: [
+						{ // Remove ! in comments as they interfer with styledocco appearance
+							match: /\/\*!/g,
+							replacement: '/*'
+						},
+						{ // Avoid minified code following immediately after closing comment delimiter
+							match: /\*\/(?=\S)/g,
+							replacement: '*/\n\n'
+						},
+						{ // Add some code standards white space
+							match: /^\}/gm,
+							replacement: '}\n'	
+						}
+					]
+				},
+				files: {
+					'theme/style.css': ['theme/style.css']
+				}
 			}
 		},
 
@@ -444,7 +466,9 @@ module.exports = function(grunt) {
 		'csscomb',
 		'cssmin',
 		'concat',
-		'clean:tmp'
+		'clean:tmp',
+		'replace:style',
+		'styledocco'
 	] );
 
 	grunt.registerTask( 'build:i18n', [
