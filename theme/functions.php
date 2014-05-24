@@ -7,7 +7,7 @@ require_once TEMPLATEPATH . '/lib/init.php';
 /**
  * Localization
  */
-load_child_theme_textdomain( 'fortytwo', CHILD_DIR . '/lib/languages' );
+load_child_theme_textdomain( 'fortytwo', get_stylesheet_directory() . '/lib/languages' );
 
 /**
  * Add theme support for HTML5 with Semantic Markup

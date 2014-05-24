@@ -15,11 +15,11 @@ define( 'CHILD_THEME_NAME', 'FortyTwo Theme' );
 define( 'CHILD_THEME_URL', 'http://forsitethemes.com/themes/fortytwo' );
 define( 'CHILD_THEME_VERSION', '1.0.0-RC4' );
 
-define( 'FORTYTWO_DIR', CHILD_DIR );
-define( 'FORTYTWO_URL', CHILD_URL );
+define( 'FORTYTWO_DIR', get_stylesheet_directory() );
+define( 'FORTYTWO_URL', get_stylesheet_directory_uri() );
 
-define( 'FORTYTWO_LIB_DIR', CHILD_DIR . '/lib' );
-define( 'FORTYTWO_LIB_URL', CHILD_URL . '/lib' );
+define( 'FORTYTWO_LIB_DIR', FORTYTWO_DIR . '/lib' );
+define( 'FORTYTWO_LIB_URL', FORTYTWO_URL . '/lib' );
 
 define( 'FORTYTWO_WIDGETS_DIR', FORTYTWO_LIB_DIR . '/widgets' );
 define( 'FORTYTWO_WIDGETS_URL', FORTYTWO_LIB_URL . '/widgets' );
