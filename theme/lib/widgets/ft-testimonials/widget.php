@@ -37,10 +37,10 @@ class FT_Widget_Testimonials extends FT_Widget {
 
 		parent::__construct(
 			$this->slug,
-			__( '42 - Testimonials', 'fortytwo', 'fortytwo-dev' ),
+			__( '42 - Testimonials', 'fortytwo' ),
 			array(
 				'classname'   => 'widget-' . $this->slug,
-				'description' => __( 'Testimonials widget for the FortyTwo Theme.', 'fortytwo', 'fortytwo-dev' )
+				'description' => __( 'Testimonials widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
 
@@ -160,13 +160,13 @@ class FT_Widget_Testimonials extends FT_Widget {
 	protected function get_datasources() {
 		$datasources = array();
 		$datasources[] = array(
-			'name'  => __( 'Category', 'fortytwo', 'fortytwo-dev' ),
+			'name'  => __( 'Category', 'fortytwo' ),
 			'value' => 'category',
 		);
 
 		if ( $this->is_testimonials_by_woothemes_installed() ) {
 			$datasources[] = array(
-				'name'  => __( 'Testimonials by WooThemes', 'fortytwo', 'fortytwo-dev' ),
+				'name'  => __( 'Testimonials by WooThemes', 'fortytwo' ),
 				'value' => 'testimonials-by-woothemes',
 			);
 		}

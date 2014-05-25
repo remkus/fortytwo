@@ -12,21 +12,21 @@
 <table style="width:100%">
 	<tr>
 		<td>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'fortytwo', 'fortytwo-dev' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'fortytwo' ); ?></label>
 			<input class="widefat" type="text"<?php $this->id_name( 'title' ); ?> value="<?php echo esc_attr( $instance['title'] ); ?>">
 		</td>
   </tr>
 	<tr>
 		<td>
-			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:', 'fortytwo', 'fortytwo-dev' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:', 'fortytwo' ); ?></label>
 			<input class="widefat" type="text"<?php $this->id_name( 'limit' ); ?> value="<?php echo esc_attr( $instance['limit'] ); ?>">
 		</td>
   </tr>
 	<tr>
 		<td>
-			<label for="<?php echo $this->get_field_id( 'datasource' ); ?>"><?php _e( 'Datasource:', 'fortytwo', 'fortytwo-dev' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'datasource' ); ?>"><?php _e( 'Datasource:', 'fortytwo' ); ?></label>
 			<select class="widefat"<?php $this->id_name( 'datasource' ); ?> >
-				<option class="widefat"<?php selected( $instance['datasource'], '' ); ?>><?php _e( ' - Select - ', 'fortytwo', 'fortytwo-dev' ); ?></option>
+				<option class="widefat"<?php selected( $instance['datasource'], '' ); ?>><?php _e( ' - Select - ', 'fortytwo' ); ?></option>
 				<?php foreach ( $this->get_datasources() as $datasource ) { ?>
 				<option class="widefat" value="<?php echo esc_attr( $datasource['value'] ); ?>"<?php selected( $instance['datasource'], $datasource['value'] ); ?>>
 					<?php echo $datasource['name']; ?>
@@ -35,7 +35,7 @@
 			</select>
 			<div class="<?php echo sanitize_html_class( $this->get_field_id( 'datasource' ) ); ?>">
 				<div class="category datasource_block">
-					<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e( 'Category', 'fortytwo', 'fortytwo-dev' ); ?></label>
+					<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e( 'Category', 'fortytwo' ); ?></label>
 					<?php wp_dropdown_categories(array(
 						'id'           => $this->get_field_id( 'category' ),
 						'name'         => $this->get_field_name( 'category' ),

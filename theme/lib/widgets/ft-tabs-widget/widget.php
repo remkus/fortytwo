@@ -35,7 +35,7 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 		$this->available_tabs = apply_filters( 'ft_tabs_widget_available', $this->available_tabs );
 
 		$this->defaults = array(
-			'title'           => __( 'Tabs', 'fortytwo', 'fortytwo-dev' ),
+			'title'           => __( 'Tabs', 'fortytwo' ),
 			'tabs'            => array_slice( $this->available_tabs, 0, 3 ), /* default to selecting the first 3, to suggest that it is possible to omit having a tab */
 			'limit'           => 5,
 			'image_size'      => 45,
@@ -44,10 +44,10 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 
 		parent::__construct(
 			$this->slug,
-			__( '42 - Tabs', 'fortytwo', 'fortytwo-dev' ),
+			__( '42 - Tabs', 'fortytwo' ),
 			array(
 				'classname'   => 'widget-' . $this->slug,
-				'description' => __( 'Tabbed content widget for the FortyTwo Theme.', 'fortytwo', 'fortytwo-dev' )
+				'description' => __( 'Tabbed content widget for the FortyTwo Theme.', 'fortytwo' )
 			),
 			array(
 				'width' => 505,
@@ -171,7 +171,7 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 			foreach ( $comments as $c ) {
 				$html .= '<li>' . "\n";
 				$html .= '<span class="pull-' . $image_alignment . '">' . get_avatar( $c, 60 ) . '</span>';
-				$html .= '<h4 class="entry-title"><a title="' . esc_attr( $c->comment_author . ' ' . __( 'on', 'fortytwo', 'fortytwo-dev' ) . ' ' . get_the_title( $c->comment_post_ID ) ) . '" href="' . esc_url( get_comment_link( $c->comment_ID ) ) . '">' . esc_html( $c->comment_author ) . '</a></h4>' . "\n";
+				$html .= '<h4 class="entry-title"><a title="' . esc_attr( $c->comment_author . ' ' . __( 'on', 'fortytwo' ) . ' ' . get_the_title( $c->comment_post_ID ) ) . '" href="' . esc_url( get_comment_link( $c->comment_ID ) ) . '">' . esc_html( $c->comment_author ) . '</a></h4>' . "\n";
 				$html .= '<span">' . stripslashes( substr( esc_html( $c->comment_content ), 0, 50 ) ) . '</span>' . "\n";
 				$html .= '</li>' . "\n";
 			}
@@ -221,9 +221,9 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 	 */
 	protected function render_tabs_dropdown( $available_tabs, $selected_tabs, $position ) {
 		echo '<p><select' . $this->get_id_name( "tab_{$position}", false ) . ' class="widefat">';
-		echo '<option value="none">' . __( ' - None selected - ', 'fortytwo', 'fortytwo-dev' ) . '</option>';
+		echo '<option value="none">' . __( ' - None selected - ', 'fortytwo' ) . '</option>';
 		foreach ( $available_tabs as $available_tab ) {
-			echo '<option value="' . esc_attr( $available_tab ) . '"' . selected( $available_tab, $selected_tabs[ $position ], false ) . '>' . __( $available_tab, 'fortytwo', 'fortytwo-dev' ) . '</option>';
+			echo '<option value="' . esc_attr( $available_tab ) . '"' . selected( $available_tab, $selected_tabs[ $position ], false ) . '>' . __( $available_tab, 'fortytwo' ) . '</option>';
 		}
 		echo '</select></p>';
 	}

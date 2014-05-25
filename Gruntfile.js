@@ -337,7 +337,7 @@ module.exports = function(grunt) {
 		
 		addtextdomain: {
 			options: {
-				// textdomain: 'fortytwo'
+				textdomain: 'fortytwo'
 			},
 			php: {
 				files: {

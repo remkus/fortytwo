@@ -60,17 +60,17 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 			'slideshow_excerpt_show'          => 1,
 			'slideshow_hide_mobile'           => 0,
 			'slideshow_excerpt_content'       => 'excerpts',
-			'slideshow_more_text'             => __( 'Read More', 'fortytwo', 'fortytwo-dev' ),
+			'slideshow_more_text'             => __( 'Read More', 'fortytwo' ),
 			'slideshow_excerpt_content_limit' => 300,
 			'slideshow_excerpt_width'         => 7,
 		);
 
 		parent::__construct(
 			$this->slug,
-			__( '42 - Responsive Slider', 'fortytwo', 'fortytwo-dev' ),
+			__( '42 - Responsive Slider', 'fortytwo' ),
 			array(
 				'classname'   => 'widget-' . $this->slug,
-				'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo', 'fortytwo-dev' ),
+				'description' => __( 'Displays a slideshow inside a widget area', 'fortytwo' ),
 			),
 			array(
 				'width'   => 200,

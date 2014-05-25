@@ -34,10 +34,10 @@ class FT_Widget_Featured_Content extends FT_Widget {
 
 		parent::__construct(
 			$this->slug,
-			__( '42 - Featured Content', 'fortytwo', 'fortytwo-dev' ),
+			__( '42 - Featured Content', 'fortytwo' ),
 			array(
 				'classname'   => 'widget-' . $this->slug,
-				'description' => __( 'Featured Content widget for the FortyTwo Theme.', 'fortytwo', 'fortytwo-dev' )
+				'description' => __( 'Featured Content widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
 	}

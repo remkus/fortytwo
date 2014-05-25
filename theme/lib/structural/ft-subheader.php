@@ -23,7 +23,7 @@ function fortytwo_breadcrumb_args( $args ) {
 	$args['heirarchial_attachments'] = true;
 	$args['heirarchial_categories']  = true;
 	$args['display']                 = true;
-	$args['labels']['404']           = __( 'Not found', 'fortytwo', 'fortytwo-dev' );
+	$args['labels']['404']           = __( 'Not found', 'fortytwo' );
 	$args['labels']['prefix']        = '';
 	$args['labels']['author']        = '';
 	$args['labels']['category']      = '';
@@ -100,7 +100,7 @@ function fortytwo_do_site_subheader_title( $title ) {
 			( function_exists( 'is_product' ) && is_product() ) ||
 			( function_exists( 'is_shop' ) && is_shop() )
 		) { // Special case where label is preferred over title
-			$label = __( 'Shop', 'fortytwo', 'fortytwo-dev' );
+			$label = __( 'Shop', 'fortytwo' );
 		} else {
 			$title = get_the_title();
 			if ( empty( $title ) ) { // No title, so fallback
@@ -119,22 +119,22 @@ function fortytwo_do_site_subheader_title( $title ) {
 		if ( is_post_type_archive() ) {
 			$label = post_type_archive_title( '', false );
 		} elseif ( is_category() ) {
-			$label = __( 'Articles by Category: ', 'fortytwo', 'fortytwo-dev' ) . single_term_title( '', false );
+			$label = __( 'Articles by Category: ', 'fortytwo' ) . single_term_title( '', false );
 		} elseif ( is_tag() ) {
-			$label = __( 'Articles by Tag: ', 'fortytwo', 'fortytwo-dev' ) . single_term_title( '', false );
+			$label = __( 'Articles by Tag: ', 'fortytwo' ) . single_term_title( '', false );
 		} elseif ( is_author() ) {
-			$label = __( 'Articles by Author: ', 'fortytwo', 'fortytwo-dev' ) . get_the_author_meta( 'display_name', $post->post_author );
+			$label = __( 'Articles by Author: ', 'fortytwo' ) . get_the_author_meta( 'display_name', $post->post_author );
 		} elseif ( is_day() ) {
-			$label = __( 'Articles by Day: ', 'fortytwo', 'fortytwo-dev' ) . get_the_date();
+			$label = __( 'Articles by Day: ', 'fortytwo' ) . get_the_date();
 		} elseif ( is_month() ) {
-			$label = __( 'Articles by Month: ', 'fortytwo', 'fortytwo-dev' ) . get_the_date( _x( 'F Y', 'monthly archives date format', 'fortytwo', 'fortytwo-dev' ) );
+			$label = __( 'Articles by Month: ', 'fortytwo' ) . get_the_date( _x( 'F Y', 'monthly archives date format', 'fortytwo' ) );
 		} elseif ( is_year() ) {
-			$label = __( 'Articles by Year: ', 'fortytwo', 'fortytwo-dev' ) . get_the_date( _x( 'Y', 'yearly archives date format', 'fortytwo', 'fortytwo-dev' ) );
+			$label = __( 'Articles by Year: ', 'fortytwo' ) . get_the_date( _x( 'Y', 'yearly archives date format', 'fortytwo' ) );
 		}
 	} elseif ( is_search() ) {
-		$label = __( 'Search Results for: ', 'fortytwo', 'fortytwo-dev' ) . get_search_query();
+		$label = __( 'Search Results for: ', 'fortytwo' ) . get_search_query();
 	} elseif ( is_404() ) {
-		$label = __( 'Error 404 - page not found', 'fortytwo', 'fortytwo-dev' );
+		$label = __( 'Error 404 - page not found', 'fortytwo' );
 	}
 
 	if ( $title ) {

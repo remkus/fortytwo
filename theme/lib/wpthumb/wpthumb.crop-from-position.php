@@ -48,7 +48,7 @@ function wpthumb_media_form_crop_position( $fields, $post ) {
 	$html .= '</div>';
 
 	$fields['crop-from-position'] = array(
-		'label' => __( 'Crop Position', 'wpthumb', 'fortytwo-dev' ),
+		'label' => __( 'Crop Position', 'wpthumb' ),
 		'input' => 'html',
 		'html' => $html
 	);

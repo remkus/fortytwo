@@ -40,10 +40,10 @@ class FT_Widget_Contact extends FT_Widget {
 
 		parent::__construct(
 			$this->slug,
-			__( '42 - Contact Information', 'fortytwo', 'fortytwo-dev' ),
+			__( '42 - Contact Information', 'fortytwo' ),
 			array(
 				'classname'   => 'widget-' . $this->slug,
-				'description' => __( 'A Schema.org compliant Contact Widget', 'fortytwo', 'fortytwo-dev' )
+				'description' => __( 'A Schema.org compliant Contact Widget', 'fortytwo' )
 			)
 		);
 	}

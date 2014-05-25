@@ -30,10 +30,10 @@ class FT_Widget_Jumbotron extends FT_Widget {
 
 		parent::__construct(
 			$this->slug,
-			__( '42 - Jumbotron', 'fortytwo', 'fortytwo-dev' ),
+			__( '42 - Jumbotron', 'fortytwo' ),
 			array(
 				'classname'   => 'widget-' . $this->slug,
-				'description' => __( 'Jumbotron widget for the FortyTwo Theme.', 'fortytwo', 'fortytwo-dev' )
+				'description' => __( 'Jumbotron widget for the FortyTwo Theme.', 'fortytwo' )
 			)
 		);
 	}

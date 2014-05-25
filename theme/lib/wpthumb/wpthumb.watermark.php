@@ -189,7 +189,7 @@ function wpthumb_media_form_watermark_position( $fields, $post ) {
 	$html = ob_get_clean();
 
 	$fields['watermark-position'] = array(
-		'label' => __( 'Watermark', 'wpthumb', 'fortytwo-dev' ),
+		'label' => __( 'Watermark', 'wpthumb' ),
 		'input' => 'html',
 		'html' => $html
 	);
