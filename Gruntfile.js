@@ -290,6 +290,30 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// Lint JS for code standards
+		jscs: {
+			options: {
+				config: '.jscsrc'
+			},
+			all: {
+				files: {
+					src: [
+						'.bowerrc',
+						'.csscomb.json',
+						'.gruntjshintrc',
+						'.jshintrc',
+						'.lessrc',
+						'bower.json',
+						'Gruntfile.js',
+						'package.json',
+						'assets/forsitethemes/*.js',
+						'theme/lib/widgets/**/*.js',
+						'!theme/lib/widgets/ft-responsive-slider/js/jquery.flexslider-min.js'
+					]
+				}
+			}
+		},
+
 		// Lint .js files for syntax errors
 		jsvalidate: {
 			all: {
