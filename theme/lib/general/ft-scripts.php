@@ -30,10 +30,10 @@ add_action( 'wp_enqueue_scripts', 'fortytwo_add_scripts', 100 );
  */
 function fortytwo_add_scripts() {
 	// Adding the fortytwo.js file
-	wp_enqueue_script( 'fortytwo', CHILD_URL . '/js/fortytwo.js', array() , CHILD_THEME_VERSION, false );
+	wp_enqueue_script( 'fortytwo', FORTYTWO_URL . '/js/fortytwo.js', array() , CHILD_THEME_VERSION, false );
 
 	// Bootstrap js file
-	wp_enqueue_script( 'bootstrap', CHILD_URL . '/js/bootstrap.min.js', array( 'jquery' ), '3.1.1', true );
+	wp_enqueue_script( 'bootstrap', FORTYTWO_URL . '/js/bootstrap.min.js', array( 'jquery' ), '3.1.1', true );
 }
 
 add_action( 'wp_head', 'fortytwo_respond_ie_media_queries' );
@@ -54,6 +54,6 @@ function fortytwo_respond_ie_media_queries() {
 		return;
 	}
 
-	echo '<!--[if lt IE 9]><script src="' . esc_url( CHILD_URL ) . '/js/respond.min.js"></script><![endif]-->' . "\n";
+	echo '<!--[if lt IE 9]><script src="' . esc_url( FORTYTWO_URL ) . '/js/respond.min.js"></script><![endif]-->' . "\n";
 
 }
