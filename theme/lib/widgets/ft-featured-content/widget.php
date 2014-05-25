@@ -67,7 +67,6 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	 * Registers and enqueues admin-specific styles.
 	 */
 	public function admin_styles() {
-		wp_enqueue_style( $this->slug . 'admin', $this->url( 'css/admin.css' ) );
 		wp_enqueue_style( 'fontawesome-icon-selector-app', $this->url( 'css/fontawesome_icon_selector_app.css' ), array( 'font-awesome-more' ) );
 	}
 
@@ -81,20 +80,6 @@ class FT_Widget_Featured_Content extends FT_Widget {
 		wp_enqueue_script( 'backbone' );
 		wp_enqueue_script( 'add-event-saved-widget', $this->url( 'js/add_event_saved_widget.js' ),  array( 'backbone' ) );
 		wp_enqueue_script( 'fontawesome-icon-selector-app', $this->url( 'js/fontawesome_icon_selector_app.js' ), array( 'backbone' ) );
-	}
-
-	/**
-	 * Registers and enqueues widget-specific styles.
-	 */
-	public function widget_styles() {
-		wp_enqueue_style( $this->slug, $this->url( 'css/widget.css' ) );
-	}
-
-	/**
-	 * Registers and enqueues widget-specific scripts.
-	 */
-	public function widget_scripts() {
-		wp_enqueue_script( $this->slug, $this->url( 'js/widget.js' ) );
 	}
 }
 

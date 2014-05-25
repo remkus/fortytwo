@@ -67,13 +67,6 @@ class FT_Widget_Contact extends FT_Widget {
 
 		return $new_instance;
 	}
-
-	/**
-	 * Registers and enqueues admin-specific styles.
-	 */
-	public function admin_styles() {
-		wp_enqueue_style( $this->slug . '-admin', $this->url( 'css/admin.css' ) );
-	}
 }
 
 add_action( 'widgets_init', 'ft_register_widget_contact' );

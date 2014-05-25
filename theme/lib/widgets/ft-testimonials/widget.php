@@ -190,27 +190,6 @@ class FT_Widget_Testimonials extends FT_Widget {
 		// TODO: Change 'widget-name' to the name of your plugin
 		wp_enqueue_style( $this->slug . '-admin',  $this->url( 'css/admin.css' ) );
 	}
-
-	/**
-	 * Registers and enqueues admin-specific JavaScript.
-	 */
-	public function admin_scripts() {
-		wp_enqueue_script( $this->slug . '-admin', $this->url( 'js/admin.js' ) );
-	}
-
-	/**
-	 * Registers and enqueues widget-specific styles.
-	 */
-	public function widget_styles() {
-		wp_enqueue_style( $this->slug, $this->url( 'css/widget.css' ) );
-	}
-
-	/**
-	 * Registers and enqueues widget-specific scripts.
-	 */
-	public function widget_scripts() {
-		wp_enqueue_script( $this->slug, $this->url( 'js/widget.js' ) );
-	}
 }
 
 add_action( 'widgets_init', 'ft_register_widget_testimonials' );

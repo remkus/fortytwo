@@ -10,15 +10,15 @@
 
 add_filter( 'get_archives_link', 'fortytwo_modify_archives_link' );
 /**
- * Filter to change the structure of the archive link
+ * Change the structure of the archive link.
  *
- * @package FortyTwo
- * @since 1.0.0
- * @todo  This code needs better documentation
+ * @since @@release
  *
- * */
+ * @param string $link_html Existing link markup.
+ *
+ * @return string Amended link markup.
+ */
 function fortytwo_modify_archives_link( $link_html ) {
-
 	preg_match( "/href='(.+?)'/", $link_html, $url );
 	preg_match( '/\<\/a\>&nbsp;\((\d+)\)/', $link_html, $post_count );
 
@@ -33,16 +33,15 @@ function fortytwo_modify_archives_link( $link_html ) {
 	}
 
 	return $link_html;
-
 }
 
 /**
  * Modify HTML list of categories.
  *
  * @package FortyTwo
- * @since 1.0.0
- * @uses Walker_Category
- * @todo  This code needs a lot more and better documentation
+ * @author  Forsite Themes
+ *
+ * @since @@release
  */
 class FortyTwo_Walker_Category extends Walker_Category {
 	/**
@@ -50,12 +49,12 @@ class FortyTwo_Walker_Category extends Walker_Category {
 	 *
 	 * @see Walker::start_el()
 	 *
-	 * @since 2.1.0
+	 * @since @@release
 	 *
 	 * @param string $output   Passed by reference. Used to append additional content.
 	 * @param object $category Category data object.
 	 * @param int    $depth    Depth of category in reference to parents. Default 0.
-	 * @param array  $args     An array of arguments. @see wp_list_categories()
+	 * @param array  $args     An array of arguments {@see wp_list_categories()}.
 	 * @param int    $id       ID of the current category.
 	 */
 	function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
@@ -73,7 +72,7 @@ class FortyTwo_Walker_Category extends Walker_Category {
 			/**
 			 * Filter the category description for display.
 			 *
-			 * @since 1.2.0
+			 * @since @@release
 			 *
 			 * @param string $description Category description.
 			 * @param object $category    Category object.
@@ -140,15 +139,16 @@ class FortyTwo_Walker_Category extends Walker_Category {
 
 add_filter( 'widget_categories_args', 'fortytwo_modify_widget_categories_args', 10, 1 );
 /**
- * Filter to change widget_categories_args to add our own walker
+ * Change widget_categories_args to use the FortyTwo custom walker.
  *
- * @todo  This code needs better documentation
+ * @since @@release
  *
- * */
+ * @param array $cat_args Existing categories widget arguments.
+ *
+ * @return array Amended categories widget arguments.
+ */
 function fortytwo_modify_widget_categories_args( $cat_args ) {
-	$FortyTwo_Walker_Category = new FortyTwo_Walker_Category();
-
-	$cat_args['walker'] = $FortyTwo_Walker_Category;
+	$cat_args['walker'] = new FortyTwo_Walker_Category();
 
 	return $cat_args;
 }
@@ -157,14 +157,13 @@ add_filter( 'get_search_form', 'fortytwo_search_form' );
 /**
  * Modify default search form.
  *
- * @package FortyTwo
- * @since 1.0.0
- * @todo  This code needs better documentation
+ * @since @@release
  *
+ * @param string $form Existing form markup.
+ *
+ * @return string Amended form markup.
  */
 function fortytwo_search_form( $form ) {
-
-	// create form action
 	$form_action = home_url( '/' );
 	// get the search query
 	$search_query = get_search_query();
@@ -183,11 +182,20 @@ EOD;
 
 add_filter( 'widget_tag_cloud_args', 'fortytwo_tag_cloud_list_format' );
 /**
- * Modify default tag cloud to display as a list.
+ * 
  *
  * @package FortyTwo
  * @since 1.0.0
  * @todo  This code needs better documentation
+ */
+/**
+ * Modify default tag cloud to display as a list.
+ *
+ * @since @@release
+ *
+ * @param array $args Existing tag cloud arguments.
+ *
+ * @return array Amended tag cloud arguments.
  */
 function fortytwo_tag_cloud_list_format( $args ) {
 	$defaults = array(
@@ -197,7 +205,6 @@ function fortytwo_tag_cloud_list_format( $args ) {
 		'largest'  => 100,
 	);
 
-	// Parse incoming $args into an array and merge it with $defaults
 	$args = wp_parse_args( $args, $defaults );
 
 	return $args;

@@ -211,7 +211,6 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 
 	}
 
-
 	/**
 	 * Renders a tabs selection dropdown box
 	 *
@@ -226,13 +225,6 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 			echo '<option value="' . esc_attr( $available_tab ) . '"' . selected( $available_tab, $selected_tabs[ $position ], false ) . '>' . __( $available_tab, 'fortytwo' ) . '</option>';
 		}
 		echo '</select></p>';
-	}
-
-	/**
-	 * Registers and enqueues admin-specific styles.
-	 */
-	public function admin_styles() {
-		wp_enqueue_style( $this->slug . '-admin', $this->url( 'css/admin.css' ) );
 	}
 }
 
