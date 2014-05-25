@@ -8,15 +8,12 @@
  * @link    http://forsitethemes/themes/fortytwo/
  */
 
-add_action( 'admin_print_styles', 'fortytwo_load_admin_styles' );
+add_action( 'admin_enqueue_scripts', 'fortytwo_enqueue_admin_styles' );
 /**
  * Enqueue FortyTwo admin styles.
  *
- * @since 1.0.0
- *
+ * @since @@release
  */
-function fortytwo_load_admin_styles() {
-
+function fortytwo_enqueue_admin_styles() {
 	wp_enqueue_style( 'fortytwo_admin_css', CHILD_URL . '/admin-style.css', array(), CHILD_THEME_VERSION );
-
 }
