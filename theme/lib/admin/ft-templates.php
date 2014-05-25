@@ -1,8 +1,8 @@
 <?php
 /**
- * FortyTwo Theme.
+ * FortyTwo Theme
  *
- * @package FortyTwo\Admin
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/

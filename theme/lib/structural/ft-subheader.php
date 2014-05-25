@@ -1,10 +1,8 @@
 <?php
 /**
- * FortyTwo Theme: Insert Page Title-  Adds the page title to all pages
+ * FortyTwo Theme
  *
- * This file Adds and changes the Genesis structure
- *
- * @package FortyTwo\Structural
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/

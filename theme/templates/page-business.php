@@ -1,15 +1,14 @@
 <?php
 /**
- * Template Name: Business
- * The file handles the default business layout of FortyTwo.
+ * FortyTwo Theme
  *
- * @package FortyTwo\Templates
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/
- *
  */
 
+// Template Name: Business
 
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );

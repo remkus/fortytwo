@@ -1,6 +1,6 @@
 <?php
 /**
- * FortyTwo Theme: Initializer File
+ * FortyTwo Theme
  *
  * This file fires the whole FortyTwo Theme. The answer to the answer.
  *

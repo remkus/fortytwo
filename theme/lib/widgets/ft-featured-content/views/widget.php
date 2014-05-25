@@ -1,10 +1,8 @@
 <?php
 /**
- * FortyTwo Theme: Featured Content Widget
+ * FortyTwo Theme
  *
- * Represents the widget for the featured content that gets output to site.
- *
- * @package FortyTwo\Widgets
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/

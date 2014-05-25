@@ -2,8 +2,6 @@
 /**
  * FortyTwo Theme
  *
- * This file fires the whole FortyTwo Theme. The answer to the answer.
- *
  * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+

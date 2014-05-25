@@ -1,12 +1,8 @@
 <?php
-
 /**
- * FortyTwo Theme: Default Widgets
+ * FortyTwo Theme
  *
- * This file modifies the WordPress default widgets to allow for our Bootstrap type
- * styling
- *
- * @package FortyTwo\General
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/

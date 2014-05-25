@@ -1,11 +1,8 @@
 <?php
 /**
- * FortyTwo Theme: Footer Widget Areas
+ * FortyTwo Theme
  *
- * This file modifies the WordPress default widgets to allow for our Bootstrap type
- * styling
- *
- * @package FortyTwo\Structural
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/

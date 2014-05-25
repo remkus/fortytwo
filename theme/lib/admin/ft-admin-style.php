@@ -1,10 +1,8 @@
 <?php
 /**
- * FortyTwo Theme: Load Admin Styles
+ * FortyTwo Theme
  *
- * We load admin styles that are used in widgets, settings etc.
- *
- * @package FortyTwo\Admin
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/

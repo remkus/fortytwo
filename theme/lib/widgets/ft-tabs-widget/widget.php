@@ -1,10 +1,8 @@
 <?php
 /**
- * FortyTwo Theme: Tabs Widget
+ * FortyTwo Theme
  *
- * This file creates the Tabs Widget
- *
- * @package FortyTwo\Widgets
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/

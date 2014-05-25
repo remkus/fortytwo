@@ -1,10 +1,8 @@
 <?php
 /**
- * FortyTwo Theme: Contact Widget Form
+ * FortyTwo Theme
  *
- * This file Adds and changes the Genesis structure
- *
- * @package FortyTwo\Widgets
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/

@@ -1,10 +1,8 @@
 <?php
 /**
- * FortyTwo Theme: Responsive Slider Widget
+ * FortyTwo Theme
  *
- * This file creates the Responsive Slider Widget
- *
- * @package FortyTwo\Widgets
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/

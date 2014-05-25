@@ -1,11 +1,8 @@
 <?php
-
 /**
- * FortyTwo Theme: Post Layouts
+ * FortyTwo Theme
  *
- * This file modifies layouts of certain elements related to post layouts
- *
- * @package FortyTwo\Structural
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/

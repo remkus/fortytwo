@@ -1,8 +1,8 @@
 <?php
 /**
- * FortyTwo Theme: Adds a Schema.org compliant contact widget.
+ * FortyTwo Theme
  *
- * @package FortyTwo\Widgets
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/

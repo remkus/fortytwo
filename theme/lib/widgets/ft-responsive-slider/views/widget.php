@@ -1,10 +1,8 @@
 <?php
 /**
- * FortyTwo Theme: Responsive Slider Widget
+ * FortyTwo Theme
  *
- * Represents the widget for the Responsive Slider widget in the backend.
- *
- * @package FortyTwo\Widgets
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/

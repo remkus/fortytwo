@@ -1,11 +1,8 @@
 <?php
 /**
- * FortyTwo Theme: Primary Navigation
+ * FortyTwo Theme
  *
- * This file overrides primary Genesis menu generation to conform to
- * structure required for bootstrap menus
- *
- * @package FortyTwo\Structural
+ * @package FortyTwo
  * @author  Forsite Themes
  * @license GPL-2.0+
  * @link    http://forsitethemes/themes/fortytwo/
