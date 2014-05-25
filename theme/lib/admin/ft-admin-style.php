@@ -10,7 +10,7 @@
 
 add_action( 'admin_enqueue_scripts', 'fortytwo_enqueue_admin_styles' );
 /**
- * Enqueue FortyTwo admin styles.
+ * Enqueue admin styles.
  *
  * @since @@release
  */
