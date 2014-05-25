@@ -16,7 +16,7 @@ add_action( 'after_setup_theme', 'fortytwo_register_genesis_layouts' );
  */
 function fortytwo_register_genesis_layouts() {
 	genesis_register_layout(
-		'primary-content-secondary',
+		'ft-primary-content-secondary',
 		array(
 			'label' => __( 'Primary-Content-Secondary', 'fortytwo' ),
 			'img'   => FORTYTWO_URL . '/lib/admin/images/layouts/pcs.png',
@@ -24,7 +24,7 @@ function fortytwo_register_genesis_layouts() {
 	);
 
 	genesis_register_layout(
-		'primary-secondary-content',
+		'ft-primary-secondary-content',
 		array(
 			'label' => __( 'Primary-Secondary-Content', 'fortytwo' ),
 			'img'   => FORTYTWO_URL . '/lib/admin/images/layouts/psc.png',
@@ -32,7 +32,7 @@ function fortytwo_register_genesis_layouts() {
 	);
 
 	genesis_register_layout(
-		'content-secondary-primary',
+		'ft-content-secondary-primary',
 		array(
 			'label' => __( 'Content-Secondary-Primary', 'fortytwo' ),
 			'img'   => FORTYTWO_URL . '/lib/admin/images/layouts/csp.png',
