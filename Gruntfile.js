@@ -2,15 +2,14 @@
 module.exports = function(grunt) {
 	'use strict';
 
-	require('load-grunt-tasks')(grunt, {
+	require( 'load-grunt-tasks' )(grunt, {
 		pattern: ['grunt-*', 'assemble-less']
 	});
 
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
+		pkg: grunt.file.readJSON( 'package.json' ),
 
 		// Clean
-		// 
 		clean: {
 			dist: {
 				src: ['dist']
@@ -99,7 +98,7 @@ module.exports = function(grunt) {
 						},
 						{ // Add some code standards white space
 							match: /^\}/gm,
-							replacement: '}\n'	
+							replacement: '}\n'
 						}
 					]
 				},
@@ -109,12 +108,11 @@ module.exports = function(grunt) {
 			}
 		},
 
-
 		// CSS
 
 		// Build .less files into .css files
 		less: {
-			font_awesome: {
+			fontAwesome: {
 				options: {
 					paths: ['assets/forsitethemes/less', 'assets/bower/less/font-awesome'],
 					imports: {
@@ -229,7 +227,7 @@ module.exports = function(grunt) {
 				],
 				dest: 'theme/style.css'
 			},
-			admin_style: {
+			adminStyle: {
 				options: {
 					footer: '\n\n\n/* Would it save you a lot of time if I just gave up and went mad now? ― Douglas Adams */'
 				},
@@ -266,10 +264,9 @@ module.exports = function(grunt) {
 			}
 		},
 
-
 		// JavaScript
-		
-		// Lint JS code standards
+
+		// Lint JS code practices
 		jshint: {
 			grunt: {
 				options: {
@@ -328,18 +325,17 @@ module.exports = function(grunt) {
 			}
 		},
 
-
 		// PHP
 
 		// Lint .php files for syntax errors
 		phplint: {
-			all: [ 'theme/**/*.php' ]
+			all: ['theme/**/*.php']
 		},
 
 		// Lint .php files for code standards
 		phpcs: {
 			all: {
-				dir: [ 'theme/**/*.php' ]
+				dir: ['theme/**/*.php']
 			},
 			options: {
 				standard: 'ruleset.xml',
@@ -356,9 +352,8 @@ module.exports = function(grunt) {
 		// 	}
 		// },
 
-
 		// I18n
-		
+
 		addtextdomain: {
 			options: {
 				textdomain: 'fortytwo'
@@ -368,7 +363,7 @@ module.exports = function(grunt) {
 					src: [
 						'theme/**/*.php',
 						'!theme/lib/wpthumb/*.php'
-					],
+					]
 				}
 			}
 		},
@@ -381,15 +376,15 @@ module.exports = function(grunt) {
 					'_e:1,2d',
 					'_x:1,2c,3d',
 					'_ex:1,2c,3d',
-					'_n:1,2,4d', 
+					'_n:1,2,4d',
 					'_nx:1,2,4c,5d',
 					'_n_noop:1,2,3d',
 					'_nx_noop:1,2,3c,4d',
-					'esc_attr__:1,2d', 
+					'esc_attr__:1,2d',
 					'esc_html__:1,2d',
-					'esc_attr_e:1,2d', 
+					'esc_attr_e:1,2d',
 					'esc_html_e:1,2d',
-					'esc_attr_x:1,2c,3d', 
+					'esc_attr_x:1,2c,3d',
 					'esc_html_x:1,2c,3d'
 				]
 			},
@@ -401,7 +396,6 @@ module.exports = function(grunt) {
 				]
 			}
 		},
-
 
 		// Build language .pot file
 		makepot: {
@@ -431,9 +425,8 @@ module.exports = function(grunt) {
 			}
 		},
 
-
 		// Prepare for release
-		
+
 		compress: {
 			dist: {
 				options: {
@@ -457,16 +450,15 @@ module.exports = function(grunt) {
 				},
 				files: {
 					'docs/css/style': 'theme/style.css',
-					'docs/css/admin-style': 'theme/admin-style.css',
+					'docs/css/admin-style': 'theme/admin-style.css'
 				}
 			}
 		}
 
 	});
 
-
 	// Register tasks
-	
+
 	grunt.registerTask( 'check', [
 		'phplint',
 		'checktextdomain',
@@ -479,7 +471,7 @@ module.exports = function(grunt) {
 		'copy',
 		'replace'
 	] );
-	
+
 	grunt.registerTask( 'build', [
 		'build:css'
 	] );
@@ -499,7 +491,6 @@ module.exports = function(grunt) {
 		'addtextdomain',
 		'makepot'
 	] );
-
 
 	grunt.registerTask( 'package', [
 		'clean:dist',
@@ -533,7 +524,7 @@ module.exports = function(grunt) {
 		var semver = require( 'semver' ),
 			pkg,
 			changelog,
-			newVersion = semver.inc( grunt.config.get( 'pkg' ).version, releaseType),
+			newVersion = semver.inc( grunt.config.get( 'pkg' ).version, releaseType ),
 			regex = new RegExp( '^## ' + newVersion, 'gm' ); // Match the version number (e.g., "## 1.2.3")
 
 		if ( 'major' !== releaseType && 'minor' !== releaseType && 'patch' !== releaseType ) {
@@ -554,6 +545,4 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'default', [
 		'build'
 	] );
-
-
 };
