@@ -27,9 +27,7 @@ module.exports = function(grunt) {
 			},
 			js: {
 				files: [
-					'assets/forsitethemes/js/*.js',
-					'theme/lib/widgets/**/*.js',
-					'!theme/lib/widgets/ft-responsive-slider/js/jquery.flexslider-min.js'
+					'assets/forsitethemes/js/*.js'
 				],
 				tasks: ['jshint:theme', 'jsvalidate', 'jscs']
 			},
@@ -46,6 +44,9 @@ module.exports = function(grunt) {
 			},
 			tmp: {
 				src: ['tmp']
+			},
+			js: {
+				src: ['theme/js']
 			}
 		},
 
@@ -327,9 +328,7 @@ module.exports = function(grunt) {
 				},
 				expand: true,
 				src: [
-					'assets/forsitethemes/js/*.js',
-					'theme/lib/widgets/**/*.js',
-					'!theme/lib/widgets/ft-responsive-slider/js/jquery.flexslider-min.js'
+					'assets/forsitethemes/js/*.js'
 				]
 			}
 		},
@@ -350,9 +349,7 @@ module.exports = function(grunt) {
 						'bower.json',
 						'Gruntfile.js',
 						'package.json',
-						'assets/forsitethemes/js/*.js',
-						'theme/lib/widgets/**/*.js',
-						'!theme/lib/widgets/ft-responsive-slider/js/jquery.flexslider-min.js'
+						'assets/forsitethemes/js/*.js'
 					]
 				}
 			}
@@ -391,12 +388,20 @@ module.exports = function(grunt) {
 		uglify: {
 			fortytwo: {
 				options: {
-					preserveComments: 'all',
+					preserveComments: 'some',
 					report: 'gzip'
 				},
-				files: {
-					'theme/js/fortytwo.min.js': 'theme/js/fortytwo.js'
-				}
+				files: [
+					{
+						expand: true,
+						cwd: 'theme/js',
+						src: ['*.js', '!*.min.js'],
+						dest: 'theme/js',
+						ext: '.min.js',
+						extDot: 'first',
+						isFile: true
+					}
+				]
 			}
 		},
 
@@ -568,6 +573,7 @@ module.exports = function(grunt) {
 	] );
 
 	grunt.registerTask( 'build:js', [
+		'clean:js',
 		'copy:js',
 		'uglify'
 	] );

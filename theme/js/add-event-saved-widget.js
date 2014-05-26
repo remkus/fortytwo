@@ -1,3 +1,10 @@
+/**!
+ * FortyTwo Theme {@link http://forsitethemes/themes/fortytwo/}
+ *
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ */
+
 /* With thanks to http://wordpress.stackexchange.com/questions/5515/update-widget-form-after-drag-and-drop-wp-save-bug */
 /* global wpWidgets */
 (function( $ ) {

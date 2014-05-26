@@ -1,3 +1,10 @@
+/**!
+ * FortyTwo Theme {@link http://forsitethemes/themes/fortytwo/}
+ *
+ * @author  Forsite Themes
+ * @license GPL-2.0+
+ */
+
 /* global _, Backbone */
 (function( $ ) {
 	'use strict';

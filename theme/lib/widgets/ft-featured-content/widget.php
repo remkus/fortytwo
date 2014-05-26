@@ -86,12 +86,14 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	 * @since @@release
 	 */
 	public function admin_scripts() {
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
 		wp_enqueue_script( 'jquery-ui-dialog' );
 		wp_enqueue_script( 'jquery-ui-position' );
 		wp_enqueue_script( 'jquery-effects-slide' );
 		wp_enqueue_script( 'backbone' );
-		wp_enqueue_script( 'add-event-saved-widget', $this->url( 'js/add_event_saved_widget.js' ),  array( 'backbone' ) );
-		wp_enqueue_script( 'fontawesome-icon-selector-app', $this->url( 'js/fontawesome_icon_selector_app.js' ), array( 'backbone' ) );
+		wp_enqueue_script( 'add-event-saved-widget', FORTYTWO_URL . "/js/add-event-saved-widget$suffix.js",  array( 'backbone' ) );
+		wp_enqueue_script( 'fontawesome-icon-selector-app', FORTYTWO_URL . "/js/fontawesome-icon-selector-app$suffix.js", array( 'backbone' ) );
 	}
 }
 
