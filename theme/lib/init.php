@@ -29,7 +29,7 @@ require_once 'admin/ft-layouts.php';
 require_once 'admin/ft-templates.php';
 
 require_once 'general/ft-default-widgets.php';
-require_once 'general/ft-scripts.php';
+require_once 'general/ft-enqueue.php';
 require_once 'general/ft-widget-areas.php';
 
 require_once 'structural/ft-structural.php';
