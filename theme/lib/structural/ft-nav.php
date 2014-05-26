@@ -103,8 +103,8 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 		$atts['target']       = ! empty( $item->target )     ? $item->target     : '';
 		$atts['rel']          = ! empty( $item->xfn )        ? $item->xfn        : '';
 		$atts['href']         = ! empty( $item->url )        ? $item->url        : '';
-		$atts['class']        = ( $depth < 1 && isset( $args->has_children ) && $args->has_children ) ? 'dropdown-toggle' : '';
-		$atts['data-toggle']  = ( $depth < 1 && isset( $args->has_children ) && $args->has_children ) ? 'dropdown' : '';
+		$atts['class']        = ( $depth < 1 && $args->has_children ) ? 'dropdown-toggle' : '';
+		$atts['data-toggle']  = ( $depth < 1 && $args->has_children ) ? 'dropdown' : '';
 
 		/** This filter is documented in wp-includes/nav-menu-template.php */
 		$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
@@ -128,16 +128,28 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * [display_element description]
-	 * @param  [type]  $element           [description]
-	 * @param  [type]  $children_elements [description]
-	 * @param  [type]  $max_depth         [description]
-	 * @param  integer $depth             [description]
-	 * @param  [type]  $args              [description]
-	 * @param  [type]  $output            [description]
-	 * @return [type]                     [description]
-	 * @todo  This code needs better documentation
+	 * Traverse elements to create list from elements.
 	 *
+	 * Display one element if the element doesn't have any children otherwise,
+	 * display the element and its children. Will only traverse up to the max
+	 * depth and no ignore elements under that depth. It is possible to set the
+	 * max depth to include all depths, see walk() method.
+	 *
+	 * This method should not be called directly, use the walk() method instead.
+	 *
+	 * For this theme, the has_children property is set and the parent method
+	 * handles the rest of the details.
+	 *
+	 * @since @@release
+	 *
+	 * @param object $element           Data object.
+	 * @param array  $children_elements List of elements to continue traversing.
+	 * @param int    $max_depth         Max depth to traverse.
+	 * @param int    $depth             Depth of current element.
+	 * @param array  $args              An array of arguments.
+	 * @param string $output            Passed by reference. Used to append additional content.
+	 * 
+	 * @return null Null on failure with no changes to parameters.
 	 */
 	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 		if ( ! $element ) {
@@ -146,35 +158,10 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 		$id_field = $this->db_fields['id'];
 
-		if ( is_array( $args[0] ) ) {
-			$args[0]['has_children'] = ! empty( $children_elements[ $element->$id_field ] );
-		} elseif ( is_object( $args[0] ) ) {
+		if ( is_object( $args[0] ) ) {
 			$args[0]->has_children = ! empty( $children_elements[ $element->$id_field ] );
 		}
 
-		$cb_args = array_merge( array( &$output, $element, $depth ), $args );
-		call_user_func_array( array( &$this, 'start_el' ), $cb_args );
-
-		$id = $element->$id_field;
-
-		if ( ( $max_depth == 0 || $max_depth > $depth + 1 ) && isset( $children_elements[ $id ] ) ) {
-			foreach ( $children_elements[ $id ] as $child ) {
-				if ( ! isset( $newlevel ) ) {
-					$newlevel = true;
-					$cb_args = array_merge( array( &$output, $depth ), $args );
-					call_user_func_array( array( &$this, 'start_lvl' ), $cb_args );
-				}
-				$this->display_element( $child, $children_elements, $max_depth, $depth + 1, $args, $output );
-			}
-			unset( $children_elements[ $id ] );
-		}
-
-		if ( isset( $newlevel ) && $newlevel ) {
-			$cb_args = array_merge( array( &$output, $depth ), $args );
-			call_user_func_array( array( &$this, 'end_lvl' ), $cb_args );
-		}
-
-		$cb_args = array_merge( array( &$output, $element, $depth ), $args );
-		call_user_func_array( array( &$this, 'end_el' ), $cb_args );
+		parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
 	}
 }
