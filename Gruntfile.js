@@ -299,7 +299,7 @@ module.exports = function(grunt) {
 				},
 				expand: true,
 				src: [
-					'assets/forsitethemes/*.js',
+					'assets/forsitethemes/js/*.js',
 					'theme/lib/widgets/**/*.js',
 					'!theme/lib/widgets/ft-responsive-slider/js/jquery.flexslider-min.js'
 				]
@@ -322,7 +322,7 @@ module.exports = function(grunt) {
 						'bower.json',
 						'Gruntfile.js',
 						'package.json',
-						'assets/forsitethemes/*.js',
+						'assets/forsitethemes/js/*.js',
 						'theme/lib/widgets/**/*.js',
 						'!theme/lib/widgets/ft-responsive-slider/js/jquery.flexslider-min.js'
 					]

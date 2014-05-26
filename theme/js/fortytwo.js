@@ -1,17 +1,18 @@
-/**
- * Main fortytwo js file
+/**!
+ * FortyTwo Theme {@link http://forsitethemes/themes/fortytwo/}
+ *
+ * @author  Forsite Themes
+ * @license GPL-2.0+
  */
-(function ($) {
+(function( $ ) {
 	'use strict';
-	setTimeout( function () {
-		var $navbar = $( '.nav-primary' );
-
-		$navbar.affix( {
+	setTimeout( function() {
+		$( '.nav-primary' ).affix( {
 			offset: {
-				top: function () {
-					return ( this.top = $( '.site-header' ).outerHeight(true) );
+				top: function() {
+					return ( this.top = $( '.site-header' ).outerHeight( true ) );
 				}
 			}
 		} );
 	}, 100 );
-}( jQuery ) );
+})( jQuery );
