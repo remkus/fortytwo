@@ -118,7 +118,7 @@ module.exports = function(grunt) {
 				files: [
 					{
 						expand: true,
-						src: ['**/*'],
+						src: ['**/*']
 					}
 				]
 			}
@@ -335,6 +335,14 @@ module.exports = function(grunt) {
 				},
 				files: {
 					src: [
+						'.bowerrc',
+						'.csscomb.json',
+						'.gruntjshintrc',
+						'.jshintrc',
+						'.lessrc',
+						'bower.json',
+						'Gruntfile.js',
+						'package.json',
 						'theme/**/*.js'
 					]
 				}
@@ -479,6 +487,7 @@ module.exports = function(grunt) {
 		'phplint',
 		'checktextdomain',
 		'jshint',
+		'jscs',
 		'jsvalidate'
 	] );
 
