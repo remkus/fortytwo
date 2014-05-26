@@ -360,6 +360,18 @@ module.exports = function(grunt) {
 			}
 		},
 
+		uglify: {
+			fortytwo: {
+				options: {
+					preserveComments: 'all',
+					report: 'gzip'
+				},
+				files: {
+					'theme/js/fortytwo.min.js': 'theme/js/fortytwo.js'
+				}
+			}
+		},
+
 		// PHP
 
 		// Lint .php files for syntax errors
@@ -512,7 +524,8 @@ module.exports = function(grunt) {
 	] );
 
 	grunt.registerTask( 'build', [
-		'build:css'
+		'build:css',
+		'build:js'
 	] );
 
 	grunt.registerTask( 'build:css', [
@@ -524,6 +537,11 @@ module.exports = function(grunt) {
 		'clean:tmp',
 		'replace:style',
 		'styledocco'
+	] );
+
+	grunt.registerTask( 'build:js', [
+		'copy:js',
+		'uglify'
 	] );
 
 	grunt.registerTask( 'build:i18n', [

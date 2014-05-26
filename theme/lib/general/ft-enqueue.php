@@ -28,7 +28,9 @@ add_action( 'wp_enqueue_scripts', 'fortytwo_enqueue_scripts', 100 );
  * @uses CHILD_THEME_VERSION
  */
 function fortytwo_enqueue_scripts() {
-	wp_enqueue_script( 'fortytwo', FORTYTWO_URL . '/js/fortytwo.js', array() , CHILD_THEME_VERSION, false );
+	$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+	wp_enqueue_script( 'fortytwo', FORTYTWO_URL . "/js/fortytwo$suffix.js", array() , CHILD_THEME_VERSION, false );
 	wp_enqueue_script( 'bootstrap', FORTYTWO_URL . '/js/bootstrap.min.js', array( 'jquery' ), '3.1.1', true );
 }
 
