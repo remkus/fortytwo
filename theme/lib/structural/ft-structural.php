@@ -100,7 +100,6 @@ add_filter( 'dynamic_sidebar_params', 'fortytwo_add_widget_position_attribute' )
  * @return string Amended params.
  */
 function fortytwo_add_widget_position_attribute( $params ) {
-
 	global $wp_registered_widgets;
 	global $sidebars_widgets;
 

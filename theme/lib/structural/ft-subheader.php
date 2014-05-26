@@ -8,16 +8,20 @@
  * @link    http://forsitethemes/themes/fortytwo/
  */
 
-/** Remove the default location of breadcrumbs as well call it when adding our subheader area */
+// Remove the default location of breadcrumbs as it is added to the subheader area
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 
 add_filter( 'genesis_breadcrumb_args', 'fortytwo_breadcrumb_args' );
 /**
- * Modifying the default breadcrumb
- * @todo  This code needs better documentation
+ * Modifying the default breadcrumb arguments.
+ *
+ * @since @@release
+ *
+ * @param array $args Existing breadcrumb arguments.
+ *
+ * @return array Amended breadcrumb arguments.
  */
 function fortytwo_breadcrumb_args( $args ) {
-
 	$args['sep']                     = ' / ';
 	$args['list_sep']                = ', ';
 	$args['heirarchial_attachments'] = true;
@@ -38,12 +42,9 @@ function fortytwo_breadcrumb_args( $args ) {
 
 add_action( 'genesis_after_header', 'fortytwo_insert_site_subheader' );
 /**
- * Insert the site-subheader section
+ * Insert the site-subheader section.
  *
- * @todo  $ft_site_subheader to be translated and possibly filterable
- * @todo  page title and breadcrumbs should have our own do action
- * @todo  This code needs better documentation
- *
+ * @since @@release
  */
 function fortytwo_insert_site_subheader() {
 
@@ -85,7 +86,11 @@ add_filter( 'fortytwo_site_subheader_title', 'fortytwo_do_site_subheader_title' 
 /**
  * Populate the site subheader title.
  *
- * We alter this based on the type of page being viewed
+ * Based on the type of page being viewed.
+ *
+ * @since @@release
+ *
+ * @param string $title Site subheader title (default is empty string).
  */
 function fortytwo_do_site_subheader_title( $title ) {
 
