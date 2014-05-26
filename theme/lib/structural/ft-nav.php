@@ -9,27 +9,27 @@
  */
 
 add_filter( 'genesis_do_nav', 'fortytwo_do_nav', 10, 3 );
-
 /**
- * FortyTwo Navigation Amendmennts
- * @return [type] [description]
- * @todo  This code needs better documentation
+ * Apply navigation amendments.
  *
+ * @since @@release
+ *
+ * @param string $nav_output Navigation and wrapping markup.
+ * @param string $nav        Navigation markup, without wrapping markup.
+ * @param array  $args       Navigation arguments.
+ *
+ * @return string Navigation markup, with wrapping.
  */
 function fortytwo_do_nav( $nav_output, $nav, $args ) {
-
-	// Setting our $defaults which is enabling our custom walker to be used
+	// Set the custom walker
 	$defaults = array(
 		'walker' => new FortyTwo_Walker_Nav_Menu()
 	);
 
-	// We merge $args with our $defaults
 	$args = wp_parse_args( $args, $defaults );
 
-	// Load the navigation arguments
 	$nav = wp_nav_menu( $args );
 
-	// Get the Genesis attributes for navigation
 	$nav_attr = genesis_attr( 'nav-primary' );
 
 	// Get the blog name and url to be used for our .nav-brand
