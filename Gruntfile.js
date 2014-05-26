@@ -6,6 +6,8 @@ module.exports = function(grunt) {
 		pattern: ['grunt-*', 'assemble-less']
 	});
 
+	require('time-grunt')(grunt);
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON( 'package.json' ),
 
