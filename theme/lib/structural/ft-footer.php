@@ -24,7 +24,7 @@ function fortytwo_insert_footer_widget() {
 		return;
 	}
 
-	$data_widget_count = fortytwo_add_data_widget_attr( 'ft_footer-columns' );
+	$data_widget_count = fortytwo_count_widgets( 'ft_footer-columns' );
 
 	genesis_markup(
 		array(
@@ -37,7 +37,7 @@ function fortytwo_insert_footer_widget() {
 	genesis_structural_wrap( 'footer-widgets', 'open' );
 
 	echo '<div class="inner-wrap">';
-		echo '<div class="sidebar sidebar-footer-columns widget-area custom-widget-area" data-widget-count="' . $data_widget_count . '">';
+		echo '<div class="sidebar sidebar-footer-columns widget-area custom-widget-area" data-widget-count="' . esc_attr( $data_widget_count ) . '">';
 				dynamic_sidebar( 'ft_footer-columns' );
 		echo '</div>';
 	echo '</div>';

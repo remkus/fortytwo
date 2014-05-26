@@ -9,26 +9,18 @@
  */
 
 
+ // Filter prevent inline css being generated for post gallery
 add_filter( 'use_default_gallery_style', '__return_false' );
-/**
- * Filter prevent inline css being generated for post gallery
- *
- * @since 1.0.0
- */
-
 
 add_action( 'genesis_before_loop', 'fortytwo_modify_default_post_structure' );
 /**
- * Initiate the custom modifications to default post structure
+ * Initiate the custom modifications to default post structure.
  *
- * @since 1.0.0
+ * @since @@release
  */
 function fortytwo_modify_default_post_structure() {
-
-	// Remove post meta from default location
-	remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
-
 	// Relocate post meta before title
+	remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 	add_action( 'genesis_entry_header', 'genesis_post_meta', 8 );
 
 	// Filter what post meta displays
@@ -36,29 +28,30 @@ function fortytwo_modify_default_post_structure() {
 
 	// Filter what post info displays
 	add_filter( 'genesis_post_info', 'fortytwo_filter_post_info' );
-
 }
 
 /**
- * Filter post meta to display categories only and remove before text
+ * Filter post meta to display categories only and remove before text.
  *
- * @since 1.0.0
+ * @since @@release
+ *
+ * @param string $post_meta Existing post meta content.
+ *
+ * @return string Amended post meta content.
  */
 function fortytwo_filter_post_meta( $post_meta ) {
-
-	$post_meta = '[post_categories before=""]';
-	return $post_meta;
-
+	return '[post_categories before=""]';
 }
 
 /**
- * Filter post info
+ * Filter post info.
  *
- * @since 1.0.0
+ * @since @@release
+ *
+ * @param string $post_meta Existing post info content.
+ *
+ * @return string Amended post info content.
  */
 function fortytwo_filter_post_info( $post_info ) {
-
-	$post_info = '[post_date before="Date: "] [post_author_posts_link before="Author: "] [post_comments before="Comments: " more="(%)" one="(1)" zero="(0)"] [post_edit]';
-	return $post_info;
-
+	return '[post_date before="Date: "] [post_author_posts_link before="Author: "] [post_comments before="Comments: " more="(%)" one="(1)" zero="(0)"] [post_edit]';
 }
