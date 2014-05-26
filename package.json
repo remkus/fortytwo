@@ -23,6 +23,7 @@
     "grunt-csscomb": "~2.0.1",
     "grunt-jsbeautifier": "^0.2.6",
     "grunt-jscs-checker": "^0.4.4",
+    "grunt-jsonlint": "^1.0.4",
     "grunt-jsvalidate": "^0.2.2",
     "grunt-lesslint": "^1.1.2",
     "grunt-phpcs": "^0.2.2",

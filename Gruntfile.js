@@ -329,6 +329,21 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// Lint JSON files for syntax errors
+		jsonlint: {
+			all: {
+				src: [
+					'.bowerrc',
+					'.csscomb.json',
+					'.gruntjshintrc',
+					'.jshintrc',
+					'.lessrc',
+					'bower.json',
+					'package.json'
+				]
+			}
+		},
+
 		// Lint .js files for syntax errors
 		jsvalidate: {
 			all: {
@@ -337,14 +352,7 @@ module.exports = function(grunt) {
 				},
 				files: {
 					src: [
-						'.bowerrc',
-						'.csscomb.json',
-						'.gruntjshintrc',
-						'.jshintrc',
-						'.lessrc',
-						'bower.json',
 						'Gruntfile.js',
-						'package.json',
 						'theme/**/*.js'
 					]
 				}
@@ -486,11 +494,13 @@ module.exports = function(grunt) {
 	// Register tasks
 
 	grunt.registerTask( 'check', [
+		'jshint',
+		'jsonlint',
+		'jsvalidate',
+		'jscs',
 		'phplint',
 		'checktextdomain',
-		'jshint',
-		'jscs',
-		'jsvalidate'
+		'phpcs'
 	] );
 
 	grunt.registerTask( 'dependencies', [
