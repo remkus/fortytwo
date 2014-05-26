@@ -99,13 +99,14 @@ module.exports = function(grunt) {
 							replacement: '*/\n\n'
 						},
 						{ // Add some code standards white space
-							match: /^\}/gm,
+							match: /^\}(?=\n[^\n])/gm,
 							replacement: '}\n'
 						}
 					]
 				},
 				files: {
-					'theme/style.css': ['theme/style.css']
+					'theme/style.css': ['theme/style.css'],
+					'theme/admin-style.css': ['theme/admin-style.css']
 				}
 			},
 			release: {

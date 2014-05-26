@@ -2599,7 +2599,6 @@ table .table {
 }
 
 
-
 /*
  *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -2740,7 +2739,6 @@ FortyTwo site header.
 .site-header .header-widget-area > .widget .widget-wrap {
 	padding: 0;
 }
-
 
 
 .nav:before,
@@ -3584,7 +3582,6 @@ FortyTwo navigation.
 }
 
 
-
 /*
 # Intro
 
@@ -3970,7 +3967,6 @@ article.type-page > .entry-header,
 	padding: 0;
 	border: 0;
 }
-
 
 
 .form-horizontal .form-group:before,
@@ -4918,7 +4914,6 @@ fieldset[disabled] .widget-ft-tabs-widget .tab-buttons > ul > li .btn.active {
 		line-height: 1.38124678;
 	}
 }
-
 
 
 .form-horizontal .form-group:before,
@@ -6001,7 +5996,6 @@ fieldset[disabled] .comment-respond input[type="submit"].active {
 }
 
 
-
 /*
 # Footer
 
@@ -6063,7 +6057,6 @@ FortyTwo footer section.
 .site-footer .copyright-area {
 	text-align: center;
 }
-
 
 
 /*
