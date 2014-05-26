@@ -14,6 +14,8 @@ add_filter( 'theme_page_templates', 'ft_remove_page_templates' );
  *
  * This hides them from the Page Template dropdowns.
  *
+ * @since @@release
+ *
  * @param array $templates Existing templates filenames.
  *
  * @return array Amended template filenames.

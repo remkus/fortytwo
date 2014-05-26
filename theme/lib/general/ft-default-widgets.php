@@ -69,14 +69,7 @@ class FortyTwo_Walker_Category extends Walker_Category {
 		if ( $args['use_desc_for_title'] == 0 || empty( $category->description ) ) {
 			$link .= '';
 		} else {
-			/**
-			 * Filter the category description for display.
-			 *
-			 * @since @@release
-			 *
-			 * @param string $description Category description.
-			 * @param object $category    Category object.
-			 */
+			/** This filter is documented in wp-includes/category-template.php */
 			$link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $category->description, $category ) ) ) . '"';
 		}
 
@@ -181,13 +174,6 @@ EOD;
 }
 
 add_filter( 'widget_tag_cloud_args', 'fortytwo_tag_cloud_list_format' );
-/**
- * 
- *
- * @package FortyTwo
- * @since 1.0.0
- * @todo  This code needs better documentation
- */
 /**
  * Modify default tag cloud to display as a list.
  *
