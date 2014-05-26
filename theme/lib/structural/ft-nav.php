@@ -9,6 +9,7 @@
  */
 
 add_filter( 'genesis_do_nav', 'fortytwo_do_nav', 10, 3 );
+add_filter( 'genesis_do_subnav', 'fortytwo_do_nav', 10, 3 );
 /**
  * Apply navigation amendments.
  *
@@ -21,6 +22,12 @@ add_filter( 'genesis_do_nav', 'fortytwo_do_nav', 10, 3 );
  * @return string Navigation markup, with wrapping.
  */
 function fortytwo_do_nav( $nav_output, $nav, $args ) {
+	if ( 'genesis_do_nav' === current_filter() ) {
+		$nav_id = 'nav-primary';
+	} else {
+		$nav_id = 'nav-secondary';
+	}
+
 	// Set the custom walker
 	$defaults = array(
 		'walker' => new FortyTwo_Walker_Nav_Menu()
@@ -30,18 +37,18 @@ function fortytwo_do_nav( $nav_output, $nav, $args ) {
 
 	$nav = wp_nav_menu( $args );
 
-	$nav_attr = genesis_attr( 'nav-primary' );
+	$nav_attr = genesis_attr( $nav_id );
 
 	// Get the blog name and url to be used for our .nav-brand
 	$nav_brand     = esc_attr( get_bloginfo( 'name' ) );
 	$nav_brand_url = trailingslashit( home_url() );
 
 	$nav_output = <<<EOD
-		<nav class="nav-primary" {$nav_attr}>
+		<nav class="{$nav_id} site-nav" {$nav_attr}>
 			<div class="wrap">
 				<div class="inner-wrap">
-					<div class="nav-primary-header">
-						<button type="button" class="nav-toggle" data-toggle="collapse" data-target=".nav-primary-collapse">
+					<div class="{$nav_id}-header">
+						<button type="button" class="nav-toggle" data-toggle="collapse" data-target=".{$nav_id}-collapse">
 							<span class="sr-only">Toggle Navigation</span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -49,7 +56,7 @@ function fortytwo_do_nav( $nav_output, $nav, $args ) {
 						</button>
 						<a class="nav-title" href="{$nav_brand_url}">{$nav_brand}</a>
 					</div>
-					<div class="collapse nav-collapse nav-primary-collapse">
+					<div class="collapse nav-collapse {$nav_id}-collapse">
 					  {$nav}
 					</div>
 				</div>
