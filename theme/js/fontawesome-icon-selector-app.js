@@ -567,7 +567,8 @@
 			iconSaveInputElement = '#widget-' + widgetId + '-icon',
 			iconSelectorElement = '.widget-' + widgetId + '-the-icon-selector',
 			selectedIcon = $( iconSaveInputElement ).val();
-
-		window.FontAwesomeIconSelectorApp.attachApp( selectedIcon, iconSelectorElement, iconSaveInputElement );
+		if ( widgetId && widgetId.indexOf( 'featured-content' ) > -1 ) {
+			window.FontAwesomeIconSelectorApp.attachApp( selectedIcon, iconSelectorElement, iconSaveInputElement );
+		}
 	});
 })( jQuery );
