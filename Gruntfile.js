@@ -105,6 +105,22 @@ module.exports = function(grunt) {
 				files: {
 					'theme/style.css': ['theme/style.css']
 				}
+			},
+			release: {
+				options: {
+					patterns: [
+						{
+							match: 'release',
+							replacement: '<%= pkg.version %>'
+						}
+					]
+				},
+				files: [
+					{
+						expand: true,
+						src: ['**/*'],
+					}
+				]
 			}
 		},
 
@@ -504,6 +520,9 @@ module.exports = function(grunt) {
 		} else {
 			// Check to make sure the log exists
 			grunt.task.run( 'log:' + releaseType );
+
+			// Replace release version placeholders
+			grunt.task.run( 'replace:release' );
 
 			// Build everything
 			grunt.task.run( 'build' );
