@@ -61,76 +61,61 @@ EOD;
 }
 
 /**
- * @todo  This code needs better documentation
+ * Custom navigation walker.
  *
- */
+ * @package FortyTwo
+ * @author  Forsite Themes
+ * */
 class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
-
 	/**
-	 * replacing the class with our version
-	 * @param  [type]  $output [description]
-	 * @param  integer $depth  [description]
-	 * @param  array   $args   [description]
-	 * @return [type]          [description]
-	 * @todo  This code needs better documentation
+	 * Start the element output.
 	 *
-	 */
-	function start_lvl( &$output, $depth = 0, $args = array() ) {
-
-		// depth dependent classes
-		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
-		$classes = array(
-			'sub-menu'
-		);
-		$class_names = implode( ' ', $classes );
-
-		// build html
-		$output .= "\n" . $indent . '<ul class="' . $class_names . '">' . "\n";
-	}
-
-	/**
-	 * building the HTML output
-	 * @param  [type]  $output [description]
-	 * @param  [type]  $item   [description]
-	 * @param  integer $depth  [description]
-	 * @param  array   $args   [description]
-	 * @param  integer $id     [description]
-	 * @return [type]          [description]
-	 * @todo  This code needs better documentation
+	 * @see Walker::start_el()
 	 *
+	 * @since @@release
+	 *
+	 * @param string $output Passed by reference. Used to append additional content.
+	 * @param object $item   Menu item data object.
+	 * @param int    $depth  Depth of menu item. Used for padding.
+	 * @param array  $args   An array of arguments. {@see wp_nav_menu()}
+	 * @param int    $id     Current item ID.
 	 */
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		global $wp_query;
+		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
-		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
+		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 
-		$classes = empty( $item->classes ) ? array() : (array)$item->classes;
+		// Depth dependent class
+		$classes[] = ( $depth >= 1 && $args->has_children ) ? 'dropdown-submenu' : 'dropdown';
 
-		// depth dependent classes
-		$depth_classes = array(
-			( $depth >= 1 && $args->has_children ? 'dropdown-submenu' : 'dropdown' )
-		);
-		$depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
+		/** This filter is documented in wp-includes/nav-menu-template.php */
+		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
-		// passed classes
-		$classes = empty( $item->classes ) ? array() : (array)$item->classes;
+		/** This filter is documented in wp-includes/nav-menu-template.php */
+		$id = apply_filters( 'nav_menu_item_id', 'nav-menu-item-'. $item->ID, $item, $args );
+		$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
-		if ( $custom_classes = get_post_meta( $item->ID, '_menu_item_classes', true ) ) {
-			foreach ( $custom_classes as $custom_class ) {
-				$classes[] = $custom_class;
+		$output .= $indent . '<li' . $id . $class_names .'>';
+
+		$atts = array();
+		$atts['title']        = ! empty( $item->attr_title ) ? $item->attr_title : '';
+		$atts['target']       = ! empty( $item->target )     ? $item->target     : '';
+		$atts['rel']          = ! empty( $item->xfn )        ? $item->xfn        : '';
+		$atts['href']         = ! empty( $item->url )        ? $item->url        : '';
+		$atts['class']        = ( $depth < 1 && $args->has_children ) ? 'dropdown-toggle' : '';
+		$atts['data-toggle']  = ( $depth < 1 && $args->has_children ) ? 'dropdown' : '';
+
+		/** This filter is documented in wp-includes/nav-menu-template.php */
+		$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
+
+		$attributes = '';
+		foreach ( $atts as $attr => $value ) {
+			if ( ! empty( $value ) ) {
+				$value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+				$attributes .= ' ' . $attr . '="' . $value . '"';
 			}
 		}
-
-		$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
-
-		// build html
-		$output .= $indent . '<li id="nav-menu-item-' . sanitize_title( $item->title ) . '" class="' . $depth_class_names . ' ' . $class_names . '">';
-
-		$attributes  = ! empty( $item->attr_title ) ? ' title="' . esc_attr( $item->attr_title ) . '"' : '';
-		$attributes .= ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) . '"' : '';
-		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) . '"' : '';
-		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) . '"' : '';
-		$attributes .= ( $depth < 1 && $args->has_children ) ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
 
 		$item_output  = $args->before;
 		$item_output .= '<a' . $attributes . '>';
