@@ -11,6 +11,34 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON( 'package.json' ),
 
+		// Watch source files
+		watch: {
+			gruntfile: {
+				files: ['Gruntfile.js'],
+				tasks: ['jshint:grunt', 'jsvalidate', 'jscs']
+			},
+			less: {
+				files: ['assets/**/*.less'],
+				tasks: ['build:css']
+			},
+			php: {
+				files: ['theme/**/*.php'],
+				tasks: ['phplint']
+			},
+			js: {
+				files: [
+					'assets/forsitethemes/js/*.js',
+					'theme/lib/widgets/**/*.js',
+					'!theme/lib/widgets/ft-responsive-slider/js/jquery.flexslider-min.js'
+				],
+				tasks: ['jshint:theme', 'jsvalidate', 'jscs']
+			},
+			jsfortytwo: {
+				files: ['assets/forsitethemes/js/*.js'],
+				tasks: ['build:js']
+			}
+		},
+
 		// Clean
 		clean: {
 			dist: {
