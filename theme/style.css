@@ -5006,6 +5006,10 @@ FortyTwo content styling.
 	font-weight: normal;
 }
 
+.entry-meta *:last-child {
+	border-right: 0;
+}
+
 .post-edit-link {
 	border-right-color: transparent;
 	color: #ccc;
