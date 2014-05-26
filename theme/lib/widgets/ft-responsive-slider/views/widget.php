@@ -16,7 +16,7 @@ if ( $instance['title'] ) {
 	<?php
 		while ( $slider_posts->have_posts() ):
 			$slider_posts->the_post();
-	?>
+			?>
 		<li class="slide-<?php the_ID(); ?>">
 		<?php
 			if ( $show_excerpt == 1 || $show_title == 1 ) {

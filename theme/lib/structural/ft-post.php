@@ -9,7 +9,7 @@
  */
 
 
- // Filter prevent inline css being generated for post gallery
+// Filter prevent inline css being generated for post gallery
 add_filter( 'use_default_gallery_style', '__return_false' );
 
 add_action( 'genesis_before_loop', 'fortytwo_modify_default_post_structure' );

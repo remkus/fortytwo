@@ -25,12 +25,12 @@ function fortytwo_register_widget_areas() {
 		'after_title'   => '</h4>',
 	);
 	register_sidebars( 4, $page_business_widget_areas );
-	
+
 	genesis_register_sidebar(
 		array(
-			'id'               => 'ft_footer-columns',
-			'name'             => __( 'Footer Columns', 'fortytwo' ),
-			'description'      => __( 'This is the section inserted prior to the final footer', 'fortytwo' ),
+			'id'          => 'ft_footer-columns',
+			'name'        => __( 'Footer Columns', 'fortytwo' ),
+			'description' => __( 'This is the section inserted prior to the final footer', 'fortytwo' ),
 		)
 	);
 }

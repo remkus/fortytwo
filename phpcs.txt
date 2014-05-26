@@ -1,361 +1,67 @@
-FILE: ...c/wp-content/themes/fortytwo-dev/src/lib/general/ft-default-widgets.php
+FILE: ...wp-content/themes/fortytwo-dev/theme/lib/general/ft-default-widgets.php
 --------------------------------------------------------------------------------
-FOUND 5 ERROR(S) AFFECTING 4 LINE(S)
+FOUND 2 ERROR(S) AFFECTING 1 LINE(S)
 --------------------------------------------------------------------------------
-  29 | ERROR | Detected usage of a non-sanitized input variable: $_SERVER
-  29 | ERROR | Detected usage of a non-sanitized input variable: $_SERVER
- 132 | ERROR | Expected 1 space after ".="; 2 found
- 134 | ERROR | Expected 1 space after ".="; 2 found
- 137 | ERROR | Expected 1 space after ".="; 2 found
+ 25 | ERROR | Detected usage of a non-sanitized input variable: $_SERVER
+ 25 | ERROR | Detected usage of a non-sanitized input variable: $_SERVER
 --------------------------------------------------------------------------------
 
 
-FILE: .../src/wp-content/themes/fortytwo-dev/src/lib/structural/ft-subheader.php
+FILE: ...rc/wp-content/themes/fortytwo-dev/theme/lib/structural/ft-subheader.php
 --------------------------------------------------------------------------------
 FOUND 3 ERROR(S) AFFECTING 3 LINE(S)
 --------------------------------------------------------------------------------
- 68 | ERROR | Incorrect indentation; expected 1 space, found 4
- 72 | ERROR | Incorrect indentation; expected 2 space, found 5
- 74 | ERROR | Incorrect indentation; expected 2 space, found 5
+ 67 | ERROR | Incorrect indentation; expected 1 space, found 4
+ 71 | ERROR | Incorrect indentation; expected 2 space, found 5
+ 73 | ERROR | Incorrect indentation; expected 2 space, found 5
 --------------------------------------------------------------------------------
 
 
-FILE: ...hemes/fortytwo-dev/src/lib/widgets/ft-featured-content/views/widget.php
+FILE: ...mes/fortytwo-dev/theme/lib/widgets/ft-featured-content/views/widget.php
 --------------------------------------------------------------------------------
 FOUND 4 ERROR(S) AFFECTING 4 LINE(S)
 --------------------------------------------------------------------------------
- 17 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
- 18 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
- 20 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
- 21 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
---------------------------------------------------------------------------------
-
-
-FILE: ...ntent/themes/fortytwo-dev/src/lib/widgets/ft-jumbotron/views/widget.php
---------------------------------------------------------------------------------
-FOUND 6 ERROR(S) AFFECTING 6 LINE(S)
---------------------------------------------------------------------------------
- 14 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
  15 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
+ 16 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
  18 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
  19 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
- 21 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
- 22 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
 --------------------------------------------------------------------------------
 
 
-FILE: ...emes/fortytwo-dev/src/lib/widgets/ft-responsive-slider/views/widget.php
+FILE: ...es/fortytwo-dev/theme/lib/widgets/ft-responsive-slider/views/widget.php
 --------------------------------------------------------------------------------
 FOUND 9 ERROR(S) AFFECTING 9 LINE(S)
 --------------------------------------------------------------------------------
- 19 | ERROR | Incorrect indentation; expected 0 space, found 2
- 24 | ERROR | Incorrect indentation; expected 1 space, found 3
- 28 | ERROR | Incorrect indentation; expected 2 space, found 4
- 36 | ERROR | Incorrect indentation; expected 2 space, found 4
+ 17 | ERROR | Incorrect indentation; expected 0 space, found 2
+ 22 | ERROR | Incorrect indentation; expected 1 space, found 3
+ 26 | ERROR | Incorrect indentation; expected 2 space, found 4
+ 34 | ERROR | Incorrect indentation; expected 2 space, found 4
+ 35 | ERROR | Incorrect indentation; expected 3 space, found 5
  37 | ERROR | Incorrect indentation; expected 3 space, found 5
  39 | ERROR | Incorrect indentation; expected 3 space, found 5
- 41 | ERROR | Incorrect indentation; expected 3 space, found 5
- 53 | ERROR | Incorrect indentation; expected 1 space, found 4
- 57 | ERROR | Incorrect indentation; expected 1 space, found 4
+ 51 | ERROR | Incorrect indentation; expected 1 space, found 4
+ 55 | ERROR | Incorrect indentation; expected 1 space, found 4
 --------------------------------------------------------------------------------
 
 
-FILE: ...ent/themes/fortytwo-dev/src/lib/widgets/ft-responsive-slider/widget.php
+FILE: ...t/themes/fortytwo-dev/theme/lib/widgets/ft-responsive-slider/widget.php
 --------------------------------------------------------------------------------
-FOUND 1 ERROR(S) AND 4 WARNING(S) AFFECTING 5 LINE(S)
+FOUND 0 ERROR(S) AND 4 WARNING(S) AFFECTING 4 LINE(S)
 --------------------------------------------------------------------------------
- 193 | WARNING | Detected usage of 0, possible slow query.
- 197 | WARNING | Detected usage of 0, possible slow query.
- 201 | WARNING | Detected usage of 0, possible slow query.
- 278 | WARNING | The use of function wp_reset_query() is discouraged; use
+ 202 | WARNING | Detected usage of 0, possible slow query.
+ 206 | WARNING | Detected usage of 0, possible slow query.
+ 210 | WARNING | Detected usage of 0, possible slow query.
+ 287 | WARNING | The use of function wp_reset_query() is discouraged; use
      |         | wp_reset_postdata() instead
- 361 | ERROR   | Whitespace found at end of line
 --------------------------------------------------------------------------------
 
 
-FILE: ...p-content/themes/fortytwo-dev/src/lib/widgets/ft-tabs-widget/widget.php
+FILE: ...content/themes/fortytwo-dev/theme/lib/widgets/ft-tabs-widget/widget.php
 --------------------------------------------------------------------------------
 FOUND 0 ERROR(S) AND 2 WARNING(S) AFFECTING 2 LINE(S)
 --------------------------------------------------------------------------------
- 125 | WARNING | The use of function wp_reset_query() is discouraged; use
+ 137 | WARNING | The use of function wp_reset_query() is discouraged; use
      |         | wp_reset_postdata() instead
- 154 | WARNING | The use of function wp_reset_query() is discouraged; use
+ 168 | WARNING | The use of function wp_reset_query() is discouraged; use
      |         | wp_reset_postdata() instead
---------------------------------------------------------------------------------
-
-
-FILE: ...evelop/src/wp-content/themes/fortytwo-dev/src/lib/widgets/ft-widget.php
---------------------------------------------------------------------------------
-FOUND 1 ERROR(S) AFFECTING 1 LINE(S)
---------------------------------------------------------------------------------
- 69 | ERROR | Whitespace found at end of line
---------------------------------------------------------------------------------
-
-
-FILE: ...content/themes/fortytwo-dev/src/lib/wpthumb/wpthumb.background-fill.php
---------------------------------------------------------------------------------
-FOUND 8 ERROR(S) AND 4 WARNING(S) AFFECTING 7 LINE(S)
---------------------------------------------------------------------------------
- 29 | ERROR   | Inline control structures are not allowed
- 32 | ERROR   | Inline control structures are not allowed
- 67 | WARNING | Line is indented with space not tab
- 67 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 72 | WARNING | Line is indented with space not tab
- 72 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 79 | WARNING | Line is indented with space not tab
- 79 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 84 | WARNING | Line is indented with space not tab
- 84 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 99 | ERROR   | Inline control structures are not allowed
- 99 | ERROR   | No space before closing parenthesis of function definition
-    |         | prohibited
---------------------------------------------------------------------------------
-
-
-FILE: ...tent/themes/fortytwo-dev/src/lib/wpthumb/wpthumb.crop-from-position.php
---------------------------------------------------------------------------------
-FOUND 8 ERROR(S) AFFECTING 8 LINE(S)
---------------------------------------------------------------------------------
- 12 | ERROR | No space before closing parenthesis of function definition
-    |       | prohibited
- 29 | ERROR | Inline control structures are not allowed
- 34 | ERROR | Inline control structures are not allowed
- 53 | ERROR | Each line in an array declaration must end in a comma
- 72 | ERROR | Inline control structures are not allowed
- 74 | ERROR | Whitespace found at end of line
- 75 | ERROR | Inline control structures are not allowed
- 78 | ERROR | Inline control structures are not allowed
---------------------------------------------------------------------------------
-
-
-FILE: ...wp-content/themes/fortytwo-dev/src/lib/wpthumb/wpthumb.image-editor.php
---------------------------------------------------------------------------------
-FOUND 2 ERROR(S) AFFECTING 2 LINE(S)
---------------------------------------------------------------------------------
- 14 | ERROR | No space before closing parenthesis of function definition
-    |       | prohibited
- 29 | ERROR | No space before closing parenthesis of function definition
-    |       | prohibited
---------------------------------------------------------------------------------
-
-
-FILE: ...-develop/src/wp-content/themes/fortytwo-dev/src/lib/wpthumb/wpthumb.php
---------------------------------------------------------------------------------
-FOUND 85 ERROR(S) AND 20 WARNING(S) AFFECTING 75 LINE(S)
---------------------------------------------------------------------------------
-  64 | ERROR   | Function name "uploadDir" is in camel caps format, try
-     |         | 'upload_dir'
-  66 | ERROR   | Inline control structures are not allowed
-  85 | ERROR   | Inline control structures are not allowed
-  88 | ERROR   | Inline control structures are not allowed
- 108 | ERROR   | Function name "setFilePath" is in camel caps format, try
-     |         | 'set_file_path'
- 114 | WARNING | Line is indented with space not tab
- 114 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 115 | WARNING | Line is indented with space not tab
- 115 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 119 | ERROR   | Inline control structures are not allowed
- 122 | ERROR   | Inline control structures are not allowed
- 126 | ERROR   | Inline control structures are not allowed
- 135 | ERROR   | Function name "setArgs" is in camel caps format, try
-     |         | 'set_args'
- 137 | WARNING | Line is indented with space not tab
- 137 | WARNING | Line is indented with space not tab
- 137 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 153 | WARNING | Line is indented with space not tab
- 153 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 153 | ERROR   | Each line in an array declaration must end in a comma
- 159 | ERROR   | Inline control structures are not allowed
- 160 | ERROR   | No space after opening parenthesis of function definition
-     |         | prohibited
- 160 | ERROR   | No space before closing parenthesis of function definition
-     |         | prohibited
- 160 | ERROR   | No space after opening parenthesis of function definition
-     |         | prohibited
- 160 | ERROR   | No space before closing parenthesis of function definition
-     |         | prohibited
- 160 | ERROR   | No space after opening parenthesis of function definition
-     |         | prohibited
- 160 | ERROR   | No space before closing parenthesis of function definition
-     |         | prohibited
- 163 | ERROR   | No space after opening parenthesis of function definition
-     |         | prohibited
- 163 | ERROR   | No space before closing parenthesis of function definition
-     |         | prohibited
- 163 | ERROR   | No space after opening parenthesis of function definition
-     |         | prohibited
- 163 | ERROR   | No space before closing parenthesis of function definition
-     |         | prohibited
- 166 | ERROR   | No space after opening parenthesis of function definition
-     |         | prohibited
- 166 | ERROR   | No space before closing parenthesis of function definition
-     |         | prohibited
- 166 | ERROR   | No space after opening parenthesis of function definition
-     |         | prohibited
- 166 | ERROR   | No space before closing parenthesis of function definition
-     |         | prohibited
- 184 | ERROR   | Inline control structures are not allowed
- 196 | ERROR   | Function name "getFilePath" is in camel caps format, try
-     |         | 'get_file_path'
- 198 | ERROR   | Inline control structures are not allowed
- 201 | ERROR   | Inline control structures are not allowed
- 207 | WARNING | Line is indented with space not tab
- 207 | WARNING | Line is indented with space not tab
- 207 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 207 | ERROR   | Inline control structures are not allowed
- 208 | WARNING | Line is indented with space not tab
- 208 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 210 | WARNING | Line is indented with space not tab
- 210 | WARNING | Line is indented with space not tab
- 210 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 211 | WARNING | Line is indented with space not tab
- 211 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 221 | ERROR   | Function name "getArgs" is in camel caps format, try
-     |         | 'get_args'
- 232 | ERROR   | Function name "getArg" is in camel caps format, try 'get_arg'
- 234 | ERROR   | Inline control structures are not allowed
- 234 | WARNING | Array keys should be surrounded by spaces unless they contain
-     |         | a string or an integer.
- 235 | WARNING | Array keys should be surrounded by spaces unless they contain
-     |         | a string or an integer.
- 246 | ERROR   | Function name "getFileExtension" is in camel caps format, try
-     |         | 'get_file_extension'
- 265 | ERROR   | Function name "getCacheFilePath" is in camel caps format, try
-     |         | 'get_cache_file_path'
- 269 | ERROR   | Inline control structures are not allowed
- 281 | ERROR   | Function name "getCacheFileDirectory" is in camel caps format,
-     |         | try 'get_cache_file_directory'
- 283 | ERROR   | Inline control structures are not allowed
- 288 | ERROR   | Inline control structures are not allowed
- 307 | ERROR   | Opening brace should be on the same line as the declaration
- 319 | ERROR   | Inline control structures are not allowed
- 322 | ERROR   | Inline control structures are not allowed
- 338 | ERROR   | Function name "getCacheFileName" is in camel caps format, try
-     |         | 'get_cache_file_name'
- 340 | ERROR   | Inline control structures are not allowed
- 345 | ERROR   | Inline control structures are not allowed
- 352 | ERROR   | Inline control structures are not allowed
- 359 | ERROR   | Function name "isRemote" is in camel caps format, try
-     |         | 'is_remote'
- 370 | ERROR   | Function name "generateCacheFile" is in camel caps format, try
-     |         | 'generate_cache_file'
- 376 | WARNING | Silencing errors is discouraged
- 385 | ERROR   | No space before closing parenthesis of function definition
-     |         | prohibited
- 410 | WARNING | extract() usage is highly discouraged, due to the complexity
-     |         | and unintended issues it might cause.
- 417 | ERROR   | Opening brace should be on the same line as the declaration
- 467 | WARNING | Line is indented with space not tab
- 467 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 470 | WARNING | Line is indented with space not tab
- 470 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 479 | ERROR   | Inline control structures are not allowed
- 481 | ERROR   | Inline control structures are not allowed
- 484 | ERROR   | Inline control structures are not allowed
- 486 | ERROR   | Inline control structures are not allowed
- 488 | ERROR   | Functions must not contain multiple empty lines in a row;
-     |         | found 2 empty lines
- 511 | ERROR   | Function name "returnImage" is in camel caps format, try
-     |         | 'return_image'
- 522 | ERROR   | Inline control structures are not allowed
- 533 | ERROR   | Function name "getCacheFileURL" is in camel caps format, try
-     |         | 'get_cache_file_u_r_l'
- 543 | ERROR   | Function name "getFileURL" is in camel caps format, try
-     |         | 'get_file_u_r_l'
- 553 | ERROR   | Function name "getFileURLForFilePath" is in camel caps format,
-     |         | try 'get_file_u_r_l_for_file_path'
- 605 | ERROR   | Inline control structures are not allowed
- 611 | ERROR   | Inline control structures are not allowed
- 614 | ERROR   | Inline control structures are not allowed
- 617 | ERROR   | Inline control structures are not allowed
- 618 | WARNING | Line is indented with space not tab
- 618 | ERROR   | Tabs must be used to indent lines; spaces are not allowed
- 620 | ERROR   | Inline control structures are not allowed
- 630 | WARNING | extract() usage is highly discouraged, due to the complexity
-     |         | and unintended issues it might cause.
- 638 | WARNING | Silencing errors is discouraged
- 687 | ERROR   | Inline control structures are not allowed
- 696 | ERROR   | Inline control structures are not allowed
- 701 | ERROR   | Inline control structures are not allowed
- 704 | ERROR   | Inline control structures are not allowed
- 705 | ERROR   | Filesystem writes are forbidden, you should not be using
-     |         | unlink()
- 711 | ERROR   | Filesystem writes are forbidden, you should not be using
-     |         | rmdir()
- 726 | ERROR   | Inline control structures are not allowed
- 726 | ERROR   | Expected 1 space after "!"; 0 found
- 726 | ERROR   | Filesystem writes are forbidden, you should not be using
-     |         | is_writable()
---------------------------------------------------------------------------------
-
-
-FILE: ...c/wp-content/themes/fortytwo-dev/src/lib/wpthumb/wpthumb.shortcodes.php
---------------------------------------------------------------------------------
-FOUND 0 ERROR(S) AND 4 WARNING(S) AFFECTING 3 LINE(S)
---------------------------------------------------------------------------------
- 19 | WARNING | Array keys should be surrounded by spaces unless they contain a
-    |         | string or an integer.
- 20 | WARNING | Array keys should be surrounded by spaces unless they contain a
-    |         | string or an integer.
- 20 | WARNING | Array keys should be surrounded by spaces unless they contain a
-    |         | string or an integer.
- 21 | WARNING | Array keys should be surrounded by spaces unless they contain a
-    |         | string or an integer.
---------------------------------------------------------------------------------
-
-
-FILE: ...rc/wp-content/themes/fortytwo-dev/src/lib/wpthumb/wpthumb.watermark.php
---------------------------------------------------------------------------------
-FOUND 40 ERROR(S) AND 2 WARNING(S) AFFECTING 35 LINE(S)
---------------------------------------------------------------------------------
-  15 | ERROR   | Each line in an array declaration must end in a comma
-  29 | ERROR   | No space after opening parenthesis is prohibited
-  29 | ERROR   | No space before closing parenthesis is prohibited
-  43 | ERROR   | Inline control structures are not allowed
-  45 | ERROR   | Inline control structures are not allowed
-  47 | ERROR   | Functions must not contain multiple empty lines in a row;
-     |         | found 2 empty lines
-  49 | ERROR   | Inline control structures are not allowed
-  51 | ERROR   | Inline control structures are not allowed
-  54 | ERROR   | Whitespace found at end of line
-  66 | ERROR   | Whitespace found at end of line
-  74 | ERROR   | Inline control structures are not allowed
-  90 | ERROR   | Inline control structures are not allowed
-  90 | ERROR   | No space before closing parenthesis of function definition
-     |         | prohibited
-  94 | ERROR   | Inline control structures are not allowed
- 106 | ERROR   | Inline control structures are not allowed
- 106 | ERROR   | No space before closing parenthesis of function definition
-     |         | prohibited
- 110 | ERROR   | Inline control structures are not allowed
- 131 | ERROR   | Inline control structures are not allowed
- 136 | ERROR   | Inline control structures are not allowed
- 161 | ERROR   | Space after opening control structure is required
- 161 | ERROR   | No space before opening parenthesis is prohibited
- 194 | ERROR   | Each line in an array declaration must end in a comma
- 210 | ERROR   | No space before closing parenthesis of function definition
-     |         | prohibited
- 241 | ERROR   | Whitespace found at end of line
- 243 | ERROR   | Whitespace found at end of line
- 254 | ERROR   | Inline control structures are not allowed
- 261 | ERROR   | Space after opening control structure is required
- 261 | ERROR   | No space before opening parenthesis is prohibited
- 261 | ERROR   | Expected 1 space after "!"; 0 found
- 264 | ERROR   | Expected 1 space after "="; 2 found
- 268 | ERROR   | No space after opening parenthesis of function definition
-     |         | prohibited
- 268 | ERROR   | No space before closing parenthesis of function definition
-     |         | prohibited
- 296 | ERROR   | Inline control structures are not allowed
- 300 | ERROR   | Inline control structures are not allowed
- 313 | ERROR   | Inline control structures are not allowed
- 317 | ERROR   | Inline control structures are not allowed
- 323 | ERROR   | Inline control structures are not allowed
- 327 | ERROR   | Inline control structures are not allowed
- 333 | ERROR   | Inline control structures are not allowed
- 337 | ERROR   | Inline control structures are not allowed
- 366 | WARNING | Array keys should be surrounded by spaces unless they contain
-     |         | a string or an integer.
- 381 | WARNING | Array keys should be surrounded by spaces unless they contain
-     |         | a string or an integer.
 --------------------------------------------------------------------------------

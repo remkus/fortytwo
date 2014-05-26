@@ -90,7 +90,7 @@ abstract class FT_Widget extends WP_Widget {
 			return;
 		}
 
-		echo $args['before_widget']; 
+		echo $args['before_widget'];
 		include trailingslashit( dirname( __FILE__ ) ) . $this->slug . '/views/widget.php';
 		echo $args['after_widget'];
 	}

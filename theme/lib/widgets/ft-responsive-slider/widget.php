@@ -371,7 +371,7 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 		if ( 0 == count( $this->all_widget_settings ) || $force_reload ) {
 			$this->all_widget_settings = $this->get_settings();
 		}
-		
+
 		if ( isset( $this->all_widget_settings[ $this->number ] ) ) {
 			return $this->all_widget_settings[ $this->number ][ $field ];
 		}

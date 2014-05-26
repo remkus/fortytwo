@@ -369,7 +369,7 @@ module.exports = function(grunt) {
 		// Lint .php files for code standards
 		phpcs: {
 			all: {
-				dir: ['theme/**/*.php']
+				dir: ['theme/**/*.php', '!theme/lib/wpthumb/**/*']
 			},
 			options: {
 				standard: 'ruleset.xml',

@@ -117,12 +117,12 @@ class FortyTwo_Walker_Category extends Walker_Category {
 			if ( ! empty( $args['current_category'] ) ) {
 				$_current_category = get_term( $args['current_category'], $category->taxonomy );
 				if ( $category->term_id == $args['current_category'] ) {
-					$class .=  ' current-cat';
+					$class .= ' current-cat';
 				} elseif ( $category->term_id == $_current_category->parent ) {
-					$class .=  ' current-cat-parent';
+					$class .= ' current-cat-parent';
 				}
 			}
-			$output .=  ' class="' . $class . '"';
+			$output .= ' class="' . $class . '"';
 			$output .= ">$link\n";
 		} else {
 			$output .= "\t$link<br />\n";

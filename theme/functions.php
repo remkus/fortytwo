@@ -20,7 +20,7 @@ add_theme_support(
 		'comment-form',
 		'comment-list',
 		'gallery',
-		'caption'
+		'caption',
 	)
 );
 
