@@ -373,7 +373,8 @@ module.exports = function(grunt) {
 			},
 			options: {
 				standard: 'ruleset.xml',
-				reportFile: 'phpcs.txt'
+				reportFile: 'phpcs.txt',
+				ignoreExitCode: true
 			}
 		},
 
