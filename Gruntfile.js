@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 				files: [
 					'assets/forsitethemes/js/*.js'
 				],
-				tasks: ['jshint:theme', 'jsvalidate', 'jscs']
+				tasks: ['build:js', 'jshint:theme', 'jsvalidate', 'jscs']
 			},
 			jsfortytwo: {
 				files: ['assets/forsitethemes/js/*.js'],
