@@ -9,26 +9,36 @@
  */
 
 /**
- *
- * Copyright & Thanks
+ * Tabs Widget.
  *
  * Thanks to Woothemes for the inspiration for out Tabs  Widget.
- *
+ * 
+ * @package FortyTwo
+ * @author  Forsite Themes
  */
-
 class FT_Widget_Tabs_Widget extends FT_Widget {
-
 	/**
 	 * Widget slug / directory name.
+	 *
+	 * @since @@release
 	 *
 	 * @var string
 	 */
 	protected $slug = 'ft-tabs-widget';
 
+	/**
+	 * Hold the available tabs.
+	 *
+	 * @since @@release
+	 *
+	 * @var array
+	 */
 	public $available_tabs;
 
 	/**
 	 * Instantiate the widget class.
+	 *
+	 * @since @@release
 	 */
 	public function __construct() {
 		$this->available_tabs = array( 'latest', 'popular', 'comments', 'tags' );
@@ -62,6 +72,8 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 	 * This function should check that $new_instance is set correctly.
 	 * The newly calculated value of $instance should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
+	 *
+	 * @since @@release
 	 *
 	 * @param array $new_instance New settings for this instance as input by the user via form().
 	 * @param array $old_instance Old settings for this instance.
@@ -97,11 +109,13 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 	}
 
 	/**
-	 * Renders the latest content tab
+	 * Renders the latest content tab.
 	 *
-	 * @param int $limit            The max number of content items to show
-	 * @param int $image_size
-	 * @param string $image_alignment The image alignment CSS class.  One of (???|???|???)
+	 * @since @@release
+	 *
+	 * @param int    $limit           The maximum number of content items to show.
+	 * @param int    $image_size      The image size.
+	 * @param string $image_alignment The image alignment CSS class.
 	 */
 	public function tab_content_latest( $limit, $image_size, $image_alignment ) {
 		global $post;
@@ -126,11 +140,13 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 	}
 
 	/**
-	 * Renders the popular content tab
+	 * Renders the popular content tab.
 	 *
-	 * @param int $limit            The max number of content items to show
-	 * @param int $image_size
-	 * @param string $image_alignment The image alignment CSS class.  One of (???|???|???)
+	 * @since @@release
+	 *
+	 * @param int    $limit           The maximum number of content items to show.
+	 * @param int    $image_size      The image size.
+	 * @param string $image_alignment The image alignment CSS class.
 	 */
 	public function tab_content_popular( $limit, $image_size, $image_alignment ) {
 		global $post;
@@ -155,14 +171,15 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 	}
 
 	/**
-	 * Renders the comments tab
+	 * Renders the comments tab.
 	 *
-	 * @param int $limit            The max number of comment items to show
-	 * @param int $image_size
-	 * @param string $image_alignment The image alignment CSS class.  One of (???|???|???)
+	 * @since @@release
+	 *
+	 * @param int    $limit           The maximum number of content items to show.
+	 * @param int    $image_size      The image size.
+	 * @param string $image_alignment The image alignment CSS class.
 	 */
 	public function tab_content_comments( $limit, $image_size, $image_alignment ) {
-		global $wpdb;
 		$html = '';
 
 		$comments = get_comments( array( 'number' => $limit, 'status' => 'approve' ) );
@@ -182,16 +199,9 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 	}
 
 	/**
-	 * Return default content for the content tab
+	 * Return an HTML fragment containing an <img> element for a post's image thumbnail.
 	 *
-	 * @return string
-	 */
-	public function tab_content_default( $token = '' ) {
-		// noop
-	}
-
-	/**
-	 * Returns an HTML fragment containing an <img> element for a post's image thumbnail
+	 * @since @@release
 	 *
 	 * @param int $image_size
 	 * @param object $post  The post whose image thumbnail is being fetched
@@ -208,15 +218,16 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 		}
 
 		return $html;
-
 	}
 
 	/**
-	 * Renders a tabs selection dropdown box
+	 * Render a tabs selection dropdown box.
 	 *
-	 * @param array   $available_tabs An array of all the available tabs
-	 * @param array   $selected_tabs  An array of the tabs that are currently selected
-	 * @param int     $position       The position / order of the tab in the selected tabs
+	 * @since @@release
+	 *
+	 * @param array   $available_tabs An array of all the available tabs.
+	 * @param array   $selected_tabs  An array of the tabs that are currently selected.
+	 * @param int     $position       The position / order of the tab in the selected tabs.
 	 */
 	protected function render_tabs_dropdown( $available_tabs, $selected_tabs, $position ) {
 		echo '<p><select' . $this->get_id_name( "tab_{$position}", false ) . ' class="widefat">';
@@ -231,6 +242,8 @@ class FT_Widget_Tabs_Widget extends FT_Widget {
 add_action( 'widgets_init', 'ft_register_widget_tabs_widget' );
 /**
  * Register the FT Tabs Widget widget.
+ *
+ * @since @@release
  */
 function ft_register_widget_tabs_widget() {
 	register_widget( 'FT_Widget_Tabs_Widget' );

@@ -8,8 +8,7 @@
  * @link    http://forsitethemes/themes/fortytwo/
  */
 
-/**
- *
+/*
  * Copyright & Thanks
  *
  * Thanks to Rafal Tomal, Nick Croft, Nathan Rice, Ron Rennick, Josh Byers and Brian Gardner for the original
@@ -21,12 +20,16 @@
 define( 'FT_RESPONSIVE_SLIDER_VERSION', '0.10.0' );
 
 /**
- * Slideshow Widget Class
+ * Slideshow Widget.
+ *
+ * @package FortyTwo
+ * @author  Forsite Themes
  */
 class FT_Widget_Responsive_Slider extends FT_Widget {
-
 	/**
 	 * Widget slug / directory name.
+	 *
+	 * @since @@release
 	 *
 	 * @var string
 	 */
@@ -36,6 +39,8 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 
 	/**
 	 * Instantiate the widget class.
+	 *
+	 * @since @@release
 	 */
 	public function __construct() {
 		$this->defaults = array(
@@ -86,9 +91,11 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	/**
 	 * Echo the settings update form.
 	 *
+	 * @since @@release
+	 *
 	 * @param array $instance Current settings.
 	 */
-	function form( $instance ) {
+	public function form( $instance ) {
 		$instance = wp_parse_args( $instance, $this->defaults );
 
 		$post_types = get_post_types( array( 'public' => true ), 'names', 'and' );
@@ -109,6 +116,8 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	 * This function should check that $new_instance is set correctly.
 	 * The newly calculated value of $instance should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
+	 *
+	 * @since @@release
 	 *
 	 * @param array $new_instance New settings for this instance as input by the user via form().
 	 * @param array $old_instance Old settings for this instance.
@@ -169,10 +178,12 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	}
 
 	/**
-	 * Outputs the content of the widget.
+	 * Echo the widget content.
 	 *
-	 * @param array   args  The array of form elements
-	 * @param array   instance The current instance of the widget
+	 * @since @@release
+	 *
+	 * @param array   $args     Display arguments including before_title, after_title, before_widget, and after_widget.
+	 * @param array   $instance The settings for the particular instance of the widget.
 	 */
 	public function widget( $args, $instance ) {
 		$instance = wp_parse_args( $instance, $this->defaults );
@@ -278,43 +289,44 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	}
 
 	/**
-	 * Used to exclude taxonomies and related terms from list of available terms/taxonomies in widget form().
+	 * Used to exclude taxonomies and related terms from list of
+	 * available terms/taxonomies in widget form().
 	 *
-	 * @since 0.9
+	 * @since @@release
 	 * @author Nick Croft
 	 *
-	 * @param string  $taxonomy 'taxonomy' being tested
-	 * @return string
+	 * @param string $taxonomy Taxonomy being tested.
+	 * 
+	 * @return bool
 	 */
-	function exclude_taxonomies( $taxonomy ) {
-
+	protected function exclude_taxonomies( $taxonomy ) {
 		$filters = array( '', 'nav_menu' );
 		$filters = apply_filters( 'ft_responsive_slider_exclude_taxonomies', $filters );
 
 		return ! in_array( $taxonomy->name, $filters );
-
 	}
 
 	/**
 	 * Used to exclude post types from list of available post_types in widget form().
 	 *
-	 * @since 0.9
+	 * @since @@release
 	 * @author Nick Croft
 	 *
-	 * @param string  $type 'post_type' being tested
-	 * @return string
+	 * @param string $type Post type being tested.
+	 * 
+	 * @return bool
 	 */
-	function exclude_post_types( $type ) {
-
+	protected function exclude_post_types( $type ) {
 		$filters = array( '', 'attachment' );
 		$filters = apply_filters( 'ft_responsive_slider_exclude_post_types', $filters );
 
 		return ! in_array( $type, $filters );
-
 	}
 
 	/**
-	 * Add new image size
+	 * Add new image size.
+	 *
+	 * @since @@release
 	 */
 	public function register_slider_image_size() {
 		//TODO: Should this be called once / widget?
@@ -322,14 +334,15 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	}
 
 	/**
-	 * Creates read more link after excerpt
+	 * Construct read more link.
 	 *
-	 * @param mixed   moret  Not used
+	 * @since @@release
 	 *
-	 * @return An HTML fragment containing a "read more" link
+	 * @param string $more Existing more link.
+	 *
+	 * @return string An HTML fragment containing a "read more" link
 	 */
-	public function excerpt_more( $moret ) {
-		global $post;
+	public function excerpt_more( $more ) {
 		static $read_more = null;
 
 		if ( $read_more === null ) {
@@ -340,16 +353,18 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 			return '';
 		}
 
-		return '&#x2026; <a href="'. esc_url( get_permalink( $post->ID ) ) . '">' . $read_more . '</a>';
+		return '&#x2026; <a href="'. esc_url( get_permalink( get_the_ID() ) ) . '">' . $read_more . '</a>';
 	}
 
 	/**
-	 * Gets the value of a widget field setting
+	 * Get the value of a widget field setting.
 	 *
-	 * @param string  field The name of the widget field you are wanting to get
-	 * @param bool    force_reload Whether to force refetching value from DB. By default a cached value is returned
+	 * @since @@release
 	 *
-	 * @return The fetched field setting value
+	 * @param string $field The name of the widget field you are wanting to get
+	 * @param bool   $force_reload Whether to force refetching value from DB. By default a cached value is returned
+	 *
+	 * @return The fetched field setting value.
 	 */
 	protected function get_value( $field, $force_reload = false ) {
 		//Cache sanitized widget values
@@ -363,7 +378,9 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	}
 
 	/**
-	 * Registers and enqueues admin-specific styles.
+	 * Enqueue admin styles.
+	 *
+	 * @since @@release
 	 */
 	public function admin_styles() {
 		//TODO This custom style will need to be removed when jquery ui styles are included in WP - https://core.trac.wordpress.org/ticket/18909
@@ -374,7 +391,9 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	}
 
 	/**
-	 * Registers and enqueues admin-specific JavaScript.
+	 * Enqueue admin scripts.
+	 *
+	 * @since @@release
 	 */
 	public function admin_scripts() {
 		wp_enqueue_script( 'jquery-ui-core' );
@@ -386,7 +405,9 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 	}
 
 	/**
-	 * Load the script files
+	 * Enqueue widget scripts.
+	 *
+	 * @since @@release
 	 */
 	public function widget_scripts() {
 		wp_enqueue_script( 'flexslider', $this->url( 'js/jquery.flexslider-min.js' ), array( 'jquery' ), FT_RESPONSIVE_SLIDER_VERSION, true );
@@ -396,6 +417,8 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 add_action( 'widgets_init', 'ft_register_widget_response_slider' );
 /**
  * Register the FT Responsive Slider widget.
+ *
+ * @since @@release
  */
 function ft_register_widget_response_slider() {
 	register_widget( 'FT_Widget_Responsive_Slider' );

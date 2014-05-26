@@ -9,12 +9,16 @@
  */
 
 /**
- *  @todo  This code needs better documentation
+ * Featured Content Widget.
+ *
+ * @package FortyTwo
+ * @author  Forsite Themes
  */
 class FT_Widget_Featured_Content extends FT_Widget {
-
 	/**
 	 * Widget slug / directory name.
+	 *
+	 * @since @@release
 	 *
 	 * @var string
 	 */
@@ -22,6 +26,8 @@ class FT_Widget_Featured_Content extends FT_Widget {
 
 	/**
 	 * Instantiate the widget class.
+	 *
+	 * @since @@release
 	 */
 	public function __construct() {
 		$this->defaults = array(
@@ -49,6 +55,8 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	 * The newly calculated value of $instance should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
 	 *
+	 * @since @@release
+	 *
 	 * @param array $new_instance New settings for this instance as input by the user via form().
 	 * @param array $old_instance Old settings for this instance.
 	 * 
@@ -64,14 +72,18 @@ class FT_Widget_Featured_Content extends FT_Widget {
 	}
 
 	/**
-	 * Registers and enqueues admin-specific styles.
+	 * Enqueues admin styles.
+	 *
+	 * @since @@release
 	 */
 	public function admin_styles() {
 		wp_enqueue_style( 'fontawesome-icon-selector-app', $this->url( 'css/fontawesome_icon_selector_app.css' ), array( 'font-awesome-more' ) );
 	}
 
 	/**
-	 * Registers and enqueues admin-specific JavaScript.
+	 * Enqueue admin scripts.
+	 *
+	 * @since @@release
 	 */
 	public function admin_scripts() {
 		wp_enqueue_script( 'jquery-ui-dialog' );
@@ -86,6 +98,8 @@ class FT_Widget_Featured_Content extends FT_Widget {
 add_action( 'widgets_init', 'ft_register_widget_featured_content' );
 /**
  * Register the FT Featured Content widget.
+ *
+ * @since @@release
  */
 function ft_register_widget_featured_content() {
 	register_widget( 'FT_Widget_Featured_Content' );

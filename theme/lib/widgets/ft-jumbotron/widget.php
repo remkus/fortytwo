@@ -8,10 +8,17 @@
  * @link    http://forsitethemes/themes/fortytwo/
  */
 
+/**
+ * Jumbotron Widget.
+ *
+ * @package FortyTwo
+ * @author  Forsite Themes
+ */
 class FT_Widget_Jumbotron extends FT_Widget {
-
 	/**
 	 * Widget slug / directory name.
+	 *
+	 * @since @@release
 	 *
 	 * @var string
 	 */
@@ -19,6 +26,8 @@ class FT_Widget_Jumbotron extends FT_Widget {
 
 	/**
 	 * Instantiate the widget class.
+	 *
+	 * @since @@release
 	 */
 	public function __construct() {
 		$this->defaults = array(
@@ -45,6 +54,8 @@ class FT_Widget_Jumbotron extends FT_Widget {
 	 * The newly calculated value of $instance should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
 	 *
+	 * @since @@release
+	 *
 	 * @param array $new_instance New settings for this instance as input by the user via form().
 	 * @param array $old_instance Old settings for this instance.
 	 * 
@@ -66,6 +77,8 @@ class FT_Widget_Jumbotron extends FT_Widget {
 add_action( 'widgets_init', 'ft_register_widget_jumbotron' );
 /**
  * Register the FT Jumbotron widget.
+ *
+ * @since @@release
  */
 function ft_register_widget_jumbotron() {
 	register_widget( 'FT_Widget_Jumbotron' );

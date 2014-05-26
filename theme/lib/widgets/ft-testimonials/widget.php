@@ -15,10 +15,17 @@
  */
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
+/**
+ * Testimonials Widget.
+ *
+ * @package FortyTwo
+ * @author  Forsite Themes
+ */
 class FT_Widget_Testimonials extends FT_Widget {
-
 	/**
 	 * Widget slug / directory name.
+	 *
+	 * @since @@release
 	 *
 	 * @var string
 	 */
@@ -26,6 +33,8 @@ class FT_Widget_Testimonials extends FT_Widget {
 
 	/**
 	 * Instantiate the widget class.
+	 *
+	 * @since @@release
 	 */
 	public function __construct() {
 		$this->defaults = array(
@@ -53,13 +62,14 @@ class FT_Widget_Testimonials extends FT_Widget {
 	 * The newly calculated value of $instance should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
 	 *
+	 * @since @@release
+	 *
 	 * @param array $new_instance New settings for this instance as input by the user via form().
 	 * @param array $old_instance Old settings for this instance.
 	 * 
 	 * @return array Settings to save or bool false to cancel saving.
 	 */
 	public function update( $new_instance, $old_instance ) {
-
 		$instance = $old_instance;
 
 		foreach ( $this->get_fields() as $field ) {
@@ -67,14 +77,15 @@ class FT_Widget_Testimonials extends FT_Widget {
 		}
 
 		return $instance;
-
 	}
 
 	/**
-	 * Outputs the content of the widget.
+	 * Echo the widget content.
 	 *
-	 * @param array   args  The array of form elements
-	 * @param array   instance The current instance of the widget
+	 * @since @@release
+	 *
+	 * @param array   $args     Display arguments including before_title, after_title, before_widget, and after_widget.
+	 * @param array   $instance The settings for the particular instance of the widget.
 	 */
 	public function widget( $args, $instance ) {
 		$instance = wp_parse_args( $instance, $this->defaults );
@@ -155,6 +166,8 @@ class FT_Widget_Testimonials extends FT_Widget {
 	/**
 	 * Get datasources.
 	 *
+	 * @since @@release
+	 *
 	 * @return array Datasources for testimonials.
 	 */
 	protected function get_datasources() {
@@ -177,6 +190,8 @@ class FT_Widget_Testimonials extends FT_Widget {
 	/**
 	 * Check if Testimonials by WooThemes plugin is active.
 	 *
+	 * @since @@release
+	 *
 	 * @return bool true|false depending on whether the testimonials_by_woothemes plugin is installed
 	 */
 	private function is_testimonials_by_woothemes_installed() {
@@ -184,7 +199,9 @@ class FT_Widget_Testimonials extends FT_Widget {
 	}
 
 	/**
-	 * Registers and enqueues admin-specific styles.
+	 * Enqueue admin styles.
+	 *
+	 * @since @@release
 	 */
 	public function admin_styles() {
 		// TODO: Change 'widget-name' to the name of your plugin
@@ -195,6 +212,8 @@ class FT_Widget_Testimonials extends FT_Widget {
 add_action( 'widgets_init', 'ft_register_widget_testimonials' );
 /**
  * Register the FT Testimonials widget.
+ *
+ * @since @@release
  */
 function ft_register_widget_testimonials() {
 	register_widget( 'FT_Widget_Testimonials' );
