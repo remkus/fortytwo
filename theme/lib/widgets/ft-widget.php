@@ -40,18 +40,7 @@ abstract class FT_Widget extends WP_Widget {
 	 *	 - height: currently not used but may be needed in the future
 	 */
 	public function __construct( $id_base, $name, $widget_options = array(), $control_options = array() ) {
-		$hooks = array(
-			'admin_enqueue_scripts' => array( 'admin_styles', 'admin_scripts', ),
-			'wp_enqueue_scripts'    => array( 'widget_styles', 'widget_scripts', ),
-		);
-
-		foreach ( $hooks as $hook => $methods ) {
-			foreach ( $methods as $method ) {
-				if ( method_exists( $this, $method ) ) {
-					add_action( $hook, array( $this, $method ) );
-				}
-			}
-		}
+		$this->hooks();
 
 		$this->defaults = apply_filters( "{$this->slug}_widget_defaults", $this->defaults );
 
@@ -93,6 +82,30 @@ abstract class FT_Widget extends WP_Widget {
 		echo $args['before_widget'];
 		include trailingslashit( dirname( __FILE__ ) ) . $this->slug . '/views/widget.php';
 		echo $args['after_widget'];
+	}
+
+	/**
+	 * Apply automatic hooks for known method names.
+	 *
+	 * @since @@release
+	 */
+	protected function hooks() {
+		global $pagenow;
+		$hooks = array(
+			'wp_enqueue_scripts' => array( 'widget_styles', 'widget_scripts', ),
+		);
+
+		if ( is_admin() && 'widgets.php' === $pagenow ) {
+			$hooks['admin_enqueue_scripts'] = array( 'admin_styles', 'admin_scripts', );
+		}
+
+		foreach ( $hooks as $hook => $methods ) {
+			foreach ( $methods as $method ) {
+				if ( method_exists( $this, $method ) ) {
+					add_action( $hook, array( $this, $method ) );
+				}
+			}
+		}
 	}
 
 	/**
