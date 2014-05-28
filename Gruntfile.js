@@ -100,7 +100,7 @@ module.exports = function(grunt) {
 		},
 
 		replace: {
-			fonticons: {
+			variables: {
 				options: {
 					patterns: [{
 						match: /\"variables.less\"/g,
@@ -114,6 +114,25 @@ module.exports = function(grunt) {
 					src: ['font-awesome.less'],
 					dest: 'assets/bower/less/font-awesome/'
 				}]
+			},
+			fonticons: {
+				options: {
+					patterns: [{
+						match: /\'@@fonticonclasses\'/,
+						replacement: function() {
+							grunt.log.ok( 'Replacing font icon classes in .js file' );
+							var icons = grunt.file.read( 'assets/bower/less/font-awesome/icons.less' );
+							icons = icons.replace( /\.@\{fa-css-prefix\}/gm, '\t\t\t\'ft-ico' );
+							icons = icons.replace( /:before.*$/gm, '\',' );
+							icons = icons.replace( /\/\*.*\*\//gm, '' );
+							icons = icons.substring( icons.indexOf( '\'' ), icons.lastIndexOf( ',' ) );
+							return icons;
+						}
+					}]
+				},
+				files: {
+					'theme/js/fontawesome-icon-selector-app.js': ['theme/js/fontawesome-icon-selector-app.js']
+				}
 			},
 			// style is run after style.css is generated to fix comments
 			style: {
@@ -553,9 +572,18 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'dependencies', [
 		'bower',
 		'copy',
-		'replace:fonticons',
+		'replace:variables',
 		'build'
 	] );
+
+	grunt.registerTask( 'fontawesomeselector', function() {
+		grunt.log.ok( 'Replacing font icon classes in .js file' );
+		var icons = grunt.file.read( 'assets/bower/less/font-awesome/icons.less' );
+		icons = icons.replace( /\.@\{fa-css-prefix\}/gm, '\t\t\t\'ft-ico' );
+		icons = icons.replace( /:before.*$/gm, '\',' );
+		icons = icons.replace( /\/\*.*\*\//gm, '' );
+		grunt.log.ok(icons);
+	} );
 
 	grunt.registerTask( 'build', [
 		'build:css',
@@ -576,6 +604,7 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'build:js', [
 		'clean:js',
 		'copy:js',
+		'replace:fonticons',
 		'uglify'
 	] );
 
