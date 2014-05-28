@@ -36,7 +36,7 @@ add_filter( 'genesis_markup_content-sidebar-wrap', '__return_null' );
 /** Removing the main.content on our Business Page Template */
 add_filter( 'genesis_markup_content', '__return_null' );
 
-add_action( 'genesis_after_header', 'fortytwo_add_site_intro' );
+add_action( 'genesis_after_header', 'fortytwo_add_site_intro', 14 );
 /**
  * This adds the page-business-section to the business page template if the widget area has widgets
  *

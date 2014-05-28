@@ -40,7 +40,7 @@ function fortytwo_breadcrumb_args( $args ) {
 	return $args;
 }
 
-add_action( 'genesis_after_header', 'fortytwo_insert_site_subheader' );
+add_action( 'genesis_after_header', 'fortytwo_insert_site_subheader', 12 );
 /**
  * Insert the site-subheader section.
  *
