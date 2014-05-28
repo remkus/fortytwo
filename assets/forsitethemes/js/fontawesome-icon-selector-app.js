@@ -176,8 +176,8 @@
 		$( iconSelectorElement ).data( 'FontAwesomeIconSelectorApp', true );
 	};
 
-	// The placeholder is replaced with the full list via the grunt replace:fonticons task
 	AdminApp.getFontAwesomeIcons = function() {
+		// The placeholder is replaced with the full list via the grunt replace:fonticons task
 		var iconModels, iconClasses = [
 			'@@fonticonclasses'
 		];
