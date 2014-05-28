@@ -120,7 +120,7 @@ module.exports = function(grunt) {
 					patterns: [{
 						match: /\'@@fonticonclasses\'/,
 						replacement: function() {
-							grunt.log.write( 'Replacing font icon classes placeholder in .js file' );
+							grunt.log.writeln( 'Replacing font icon classes placeholder in .js file' );
 							var icons = grunt.file.read( 'assets/bower/less/font-awesome/icons.less' );
 							// Get rid of stuff before class name
 							icons = icons.replace( /\.@\{fa-css-prefix\}/gm, '\t\t\t\'ft-ico' );
