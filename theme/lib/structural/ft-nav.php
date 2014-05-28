@@ -108,10 +108,10 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 		$atts = array();
 		$atts['href']         = ! empty( $item->url )        ? $item->url        : '';
 		$atts['title']        = ! empty( $item->attr_title ) ? $item->attr_title : '';
-		$atts['class']        = ( $depth < 1 && $args->has_children ) ? 'dropdown-toggle' : '';
 		$atts['target']       = ! empty( $item->target )     ? $item->target     : '';
 		$atts['rel']          = ! empty( $item->xfn )        ? $item->xfn        : '';
 		$atts['data-toggle']  = ( $depth < 1 && $args->has_children ) ? 'dropdown' : '';
+		$atts['class']        = ( $depth < 1 && $args->has_children ) ? 'dropdown-toggle' : '';
 
 		/** This filter is documented in wp-includes/nav-menu-template.php */
 		$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
