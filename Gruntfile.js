@@ -578,15 +578,6 @@ module.exports = function(grunt) {
 		'build'
 	] );
 
-	grunt.registerTask( 'fontawesomeselector', function() {
-		grunt.log.ok( 'Replacing font icon classes in .js file' );
-		var icons = grunt.file.read( 'assets/bower/less/font-awesome/icons.less' );
-		icons = icons.replace( /\.@\{fa-css-prefix\}/gm, '\t\t\t\'ft-ico' );
-		icons = icons.replace( /:before.*$/gm, '\',' );
-		icons = icons.replace( /\/\*.*\*\//gm, '' );
-		grunt.log.ok(icons);
-	} );
-
 	grunt.registerTask( 'build', [
 		'build:css',
 		'build:js'
