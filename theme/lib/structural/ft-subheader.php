@@ -53,6 +53,11 @@ function fortytwo_insert_site_subheader() {
 		return;
 	}
 
+	// Do nothing if on a page with a template assigned.
+	if ( get_page_template_slug() ) {
+		return;
+	}
+
 	$site_subheader_title = apply_filters( 'fortytwo_site_subheader_title', '' );
 	$site_subheader_widget = apply_filters( 'fortytwo_site_subheader_widget', false );
 	$site_subheader_breadcrumbs = apply_filters( 'fortytwo_site_subheader_breadcrumbs', true );
