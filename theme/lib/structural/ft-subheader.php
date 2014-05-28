@@ -8,8 +8,17 @@
  * @link    http://forsitethemes/themes/fortytwo/
  */
 
-// Remove the default location of breadcrumbs as it is added to the subheader area
-remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
+add_action( 'genesis_setup', 'fortytwo_remove_default_breadcrumbs' );
+/**
+ * Remove the default location of breadcrumbs as it is added to the subheader area.
+ *
+ * Must run after Genesis has had a chance to add them in the first place.
+ *
+ * @since @@release
+ */
+function fortytwo_remove_default_breadcrumbs() {
+	remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
+}
 
 add_filter( 'genesis_breadcrumb_args', 'fortytwo_breadcrumb_args' );
 /**
