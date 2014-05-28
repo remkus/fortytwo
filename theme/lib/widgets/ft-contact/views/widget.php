@@ -47,4 +47,3 @@ if ( $instance['email'] ) {
 }
 ?>
 </div>
-</div>

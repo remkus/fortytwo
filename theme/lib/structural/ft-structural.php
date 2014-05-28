@@ -69,7 +69,7 @@ function fortytwo_attributes_content_sidebar_wrap( $attributes ) {
 
 // Relocates the Genesis alt sidebar in order to be part of the site-inner columns
 remove_action( 'genesis_after_content_sidebar_wrap', 'genesis_get_sidebar_alt' );
-add_action( 'genesis_after_content', 'genesis_get_sidebar_alt' );
+add_action( 'genesis_after_content', 'genesis_get_sidebar_alt', 11 );
 
 /**
  * Count the number of widgets in a widget area.
