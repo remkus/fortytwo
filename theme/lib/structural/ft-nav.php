@@ -106,11 +106,11 @@ class FortyTwo_Walker_Nav_Menu extends Walker_Nav_Menu {
 		$output .= $indent . '<li' . $id . $class_names .'>';
 
 		$atts = array();
+		$atts['href']         = ! empty( $item->url )        ? $item->url        : '';
 		$atts['title']        = ! empty( $item->attr_title ) ? $item->attr_title : '';
+		$atts['class']        = ( $depth < 1 && $args->has_children ) ? 'dropdown-toggle' : '';
 		$atts['target']       = ! empty( $item->target )     ? $item->target     : '';
 		$atts['rel']          = ! empty( $item->xfn )        ? $item->xfn        : '';
-		$atts['href']         = ! empty( $item->url )        ? $item->url        : '';
-		$atts['class']        = ( $depth < 1 && $args->has_children ) ? 'dropdown-toggle' : '';
 		$atts['data-toggle']  = ( $depth < 1 && $args->has_children ) ? 'dropdown' : '';
 
 		/** This filter is documented in wp-includes/nav-menu-template.php */
