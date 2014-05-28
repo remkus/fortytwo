@@ -103,8 +103,8 @@ module.exports = function(grunt) {
 			fonticons: {
 				options: {
 					patterns: [{
-						match: /\"variables\"/g,
-						replacement: '"ft-variables"'
+						match: /\"variables.less\"/g,
+						replacement: '"ft-variables.less"'
 					}]
 				},
 				files: [{
@@ -553,7 +553,8 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'dependencies', [
 		'bower',
 		'copy',
-		'replace:fonticons'
+		'replace:fonticons',
+		'build'
 	] );
 
 	grunt.registerTask( 'build', [
