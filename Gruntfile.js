@@ -553,7 +553,7 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'dependencies', [
 		'bower',
 		'copy',
-		'replace'
+		'replace:fonticons'
 	] );
 
 	grunt.registerTask( 'build', [
