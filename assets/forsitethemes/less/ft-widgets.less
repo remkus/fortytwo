@@ -438,20 +438,19 @@ FortyTwo custom and WordPress default widget styling.
 			}
 		}
 	}
+}
 
-	.widget_search {
-		.search-form {
-			&:extend(.input-group all);
-		}
+.search-form {
+	&:extend(.input-group all);
+	max-width: 400px;
+}
 
-		.search-text {
-			&:extend(.form-control all);
-		}
+.search-text {
+	&:extend(.form-control all);
+}
 
-		.search-button {
-			&:extend(.input-group-btn all);
-		}
-	}
+.search-button {
+	&:extend(.input-group-btn all);
 }
 
 @media (min-width: @screen-sm-min) { // For the small device range, from phones to tablets.
