@@ -146,33 +146,6 @@ function fortytwo_modify_widget_categories_args( $cat_args ) {
 	return $cat_args;
 }
 
-add_filter( 'get_search_form', 'fortytwo_search_form' );
-/**
- * Modify default search form.
- *
- * @since @@release
- *
- * @param string $form Existing form markup.
- *
- * @return string Amended form markup.
- */
-function fortytwo_search_form( $form ) {
-	$form_action = home_url( '/' );
-	// get the search query
-	$search_query = get_search_query();
-
-	$form = <<<EOD
-        <form method="get" id="searchform" class="search-form" action="{$form_action}" role="search">
-            <input type="text" value="{$search_query}" class="search-text" name="s" id="s" />
-            <span class="search-button">
-                <button class="btn" type="submit">Search</button>
-            </span>
-        </form>
-EOD;
-
-	return $form;
-}
-
 add_filter( 'widget_tag_cloud_args', 'fortytwo_tag_cloud_list_format' );
 /**
  * Modify default tag cloud to display as a list.

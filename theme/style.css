@@ -2598,6 +2598,17 @@ table .table {
 	background: #f9f9f9;
 }
 
+.screen-reader-text {
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+}
+
 
 /*
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
