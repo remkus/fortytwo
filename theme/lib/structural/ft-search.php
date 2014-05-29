@@ -43,7 +43,7 @@ function fortytwo_search_form() {
 
 	$form = sprintf(
 		'<form method="get" class="search-form" action="%s" role="search">
-			%s<input type="search" name="s" id="%s" %s="%s" />
+			%s<input type="search" name="s" class="search-text" id="%s" %s="%s" />
 			<span class="search-button">
 				<button class="btn" type="submit">%s</button>
 			</span>
