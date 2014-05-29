@@ -4318,8 +4318,15 @@ select[multiple].input-group-sm > .search-button > .btn {
 
 .widget-ft-tabs-widget .widget-title,
 .widget-ft-tabs-widget .tab-buttons {
-	display: table-cell;
+	display: block;
 	vertical-align: middle;
+}
+
+@media (min-width: 992px) {
+	.widget-ft-tabs-widget .widget-title,
+  .widget-ft-tabs-widget .tab-buttons {
+		display: table-cell;
+	}
 }
 
 .widget-ft-tabs-widget .tab-buttons {

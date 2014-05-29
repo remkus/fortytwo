@@ -91,8 +91,12 @@ FortyTwo custom and WordPress default widget styling.
 
 	.widget-title,
 	.tab-buttons {
-		display: table-cell;
+		display: block;
 		vertical-align: middle;
+
+		@media (min-width: @screen-md-min) {
+			display: table-cell;
+		}
 	}
 
 	.tab-buttons {
