@@ -37,7 +37,7 @@ class FT_Widget_Contact extends FT_Widget {
 			'email'   => '',
 			'fax'     => '',
 			'address' => '',
-			'pc'      => '',
+			'zip'     => '',
 			'city'    => '',
 		);
 
