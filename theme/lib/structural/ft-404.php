@@ -15,10 +15,12 @@ add_action( 'genesis_loop', 'fortytwo_remove_404_loop', 8 );
  * @since @@release
  */
 function fortytwo_remove_404_loop() {
-	remove_action( 'genesis_loop', 'genesis_404' );
+	if ( is_404() ) {
+		remove_action( 'genesis_loop', 'genesis_404' );
+		add_action( 'genesis_loop', 'fortytwo_404' );
+	}
 }
 
-add_action( 'genesis_loop', 'fortytwo_404' );
 /**
  * Echo content for page not found.
  *
