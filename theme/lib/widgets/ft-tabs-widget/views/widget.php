@@ -28,9 +28,11 @@ if ( count( $instance['tabs'] ) > 0 ) {
 			$class = ' last';
 		}
 
-		$tab_links .= '<li class="' . sanitize_html_class( $class ) . '"><button type="button" class="btn tab-heading-' . sanitize_html_class( $tab ) . '" data-target="#tab-pane-' . esc_attr( $tab ) . '" data-toggle="tab">' . $tab . '</button></li>' . "\n";
+		$tab_id = uniqid( $tab . '-' );
 
-		$tab_content .= '<div id="tab-pane-' . esc_attr( $tab ) . '" class="tab-pane tab-pane-' . esc_attr( $tab ) . $class . '">' . "\n";
+		$tab_links .= '<li class="' . sanitize_html_class( $class ) . '"><button type="button" class="btn tab-heading-' . sanitize_html_class( $tab ) . '" data-target="#tab-pane-' . esc_attr( $tab_id ) . '" data-toggle="tab">' . $tab . '</button></li>' . "\n";
+
+		$tab_content .= '<div id="tab-pane-' . esc_attr( $tab_id ) . '" class="tab-pane tab-pane-' . esc_attr( $tab ) . $class . '">' . "\n";
 
 		$tab_args = array( 'limit' => intval( $instance['limit'] ), 'image_size' => intval( $instance['image_size'] ), 'image_alignment' => strval( $instance['image_alignment'] ) );
 
