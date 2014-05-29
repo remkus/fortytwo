@@ -233,50 +233,43 @@ the sub headers.
 
 	// For extra small devices like smartphones.
 	@screen-size: @screen-xs-min;
-	.make-column(~".subheader-title" 6 0 0);
-	.make-column(~".subheader-breadcrumbs" 6 0 0);
+	.make-column(~".site-subheader-title-area" 6 0 0);
+	.make-column(~".site-subheader-breadcrumbs" 6 0 0);
 
 	// For the small device range, from phones to tablets.
 	@media (min-width: @screen-sm-min) {
 		@screen-size: @screen-sm-min;
-		.make-column(~".subheader-title" 6 0 0);
-		.make-column(~".subheader-breadcrumbs" 6 0 0);
+		.make-column(~".site-subheader-title-area" 6 0 0);
+		.make-column(~".site-subheader-breadcrumbs" 6 0 0);
 	}
 
 	// For the desktop device range.
 	@media (min-width: @screen-md-min) {
 		@screen-size: @screen-md-min;
-		.make-column(~".subheader-title" 6 0 0);
-		.make-column(~".subheader-breadcrumbs" 6 0 0);
+		.make-column(~".site-subheader-title-area" 6 0 0);
+		.make-column(~".site-subheader-breadcrumbs" 6 0 0);
 	}
 
 	// large desktop device range.
 	@media (min-width: @screen-lg-min) {
 		@screen-size: @screen-lg-min;
-		.make-column(~".subheader-title" 6 0 0);
-		.make-column(~".subheader-breadcrumbs" 6 0 0);
+		.make-column(~".site-subheader-title-area" 6 0 0);
+		.make-column(~".site-subheader-breadcrumbs" 6 0 0);
 	}
-
-	.subheader-title > h1 {
-		.font-size(28);
-		font-weight: 300;
-		margin: 0;
-		line-height: 40px;
-	}
-
-	.subheader-breadcrumbs {
-		color: @breadcrumb-active-color;
-		line-height: 40px;
-
-		> .breadcrumb {
-			float: right;
-		}
-	}
-
 }
 
-article.type-page > .entry-header,
-.woocommerce .page-title,
-.error404 .entry-title {
-	.sr-only;
+.site-subheader-title {
+	.font-size(28);
+	font-weight: 300;
+	margin: 0;
+	line-height: 40px;
+}
+
+.site-subheader-breadcrumbs {
+	color: @breadcrumb-active-color;
+	line-height: 40px;
+
+	> .breadcrumb {
+		float: right;
+	}
 }

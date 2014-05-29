@@ -63,8 +63,18 @@ function fortytwo_insert_site_subheader() {
 	}
 
 	// Do nothing if on a page with a template assigned.
-	if ( get_page_template_slug() ) {
+	if ( ! is_search() && ! is_404() && get_page_template_slug() ) {
 		return;
+	}
+
+	// Remove single entry titles from article header
+	if ( is_singular() ) {
+		remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
+	}
+
+	// Remove search results page header
+	if ( is_search() ) {
+		remove_action( 'genesis_before_loop', 'genesis_do_search_title' );
 	}
 
 	$site_subheader_title = apply_filters( 'fortytwo_site_subheader_title', '' );
@@ -74,13 +84,13 @@ function fortytwo_insert_site_subheader() {
 	<div class="site-subheader">
 		<div class="wrap">
 			<div class="inner-wrap">
-				<div class="subheader-title">
+				<div class="site-subheader-title-area">
 					<?php echo $site_subheader_title; ?>
 				</div>
 				<?php
 				if ( $site_subheader_breadcrumbs ) {
 				?>
-				<div class="subheader-breadcrumbs">
+				<div class="site-subheader-breadcrumbs">
 					<?php
 					if ( true === $site_subheader_breadcrumbs ) {
 						genesis_do_breadcrumbs();
@@ -151,14 +161,14 @@ function fortytwo_do_site_subheader_title( $title ) {
 			$label = __( 'Articles by Year: ', 'fortytwo' ) . get_the_date( _x( 'Y', 'yearly archives date format', 'fortytwo' ) );
 		}
 	} elseif ( is_search() ) {
-		$label = __( 'Search Results for: ', 'fortytwo' ) . get_search_query();
+		$label = apply_filters( 'genesis_search_title_text', __( 'Search Results for: ', 'fortytwo' ) ) . get_search_query();
 	} elseif ( is_404() ) {
 		$label = __( 'Error 404 - page not found', 'fortytwo' );
 	}
 
 	if ( $title ) {
-		return '<h1 id="entry-title" itemprop="headline">' . $title . '</h1>';
+		return '<h1 class="site-subheader-title" itemprop="headline">' . $title . '</h1>';
 	}
 
-	return '<h1>' . $label . '</h1>';
+	return '<h1 class="site-subheader-title">' . $label . '</h1>';
 }

@@ -38,6 +38,7 @@ require_once 'structural/ft-nav.php';
 require_once 'structural/ft-subheader.php';
 require_once 'structural/ft-footer.php';
 require_once 'structural/ft-search.php';
+require_once 'structural/ft-404.php';
 
 add_action( 'widgets_init', 'ft_widgets_require', 5 );
 /**

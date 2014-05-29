@@ -3873,7 +3873,7 @@ the sub headers.
 	background-color: #f9f9f9;
 }
 
-.site-subheader .subheader-title {
+.site-subheader .site-subheader-title-area {
 	float: left;
 	position: relative;
 	width: 50%;
@@ -3882,7 +3882,7 @@ the sub headers.
 	line-height: 1.45351704;
 }
 
-.site-subheader .subheader-breadcrumbs {
+.site-subheader .site-subheader-breadcrumbs {
 	float: left;
 	position: relative;
 	width: 50%;
@@ -3892,7 +3892,7 @@ the sub headers.
 }
 
 @media (min-width: 768px) {
-	.site-subheader .subheader-title {
+	.site-subheader .site-subheader-title-area {
 		float: left;
 		position: relative;
 		width: 50%;
@@ -3900,7 +3900,7 @@ the sub headers.
 		padding: 0 15px;
 		line-height: 1.54024135;
 	}
-	.site-subheader .subheader-breadcrumbs {
+	.site-subheader .site-subheader-breadcrumbs {
 		float: left;
 		position: relative;
 		width: 50%;
@@ -3911,7 +3911,7 @@ the sub headers.
 }
 
 @media (min-width: 992px) {
-	.site-subheader .subheader-title {
+	.site-subheader .site-subheader-title-area {
 		float: left;
 		position: relative;
 		width: 50%;
@@ -3919,7 +3919,7 @@ the sub headers.
 		padding: 0 15px;
 		line-height: 1.6076936;
 	}
-	.site-subheader .subheader-breadcrumbs {
+	.site-subheader .site-subheader-breadcrumbs {
 		float: left;
 		position: relative;
 		width: 50%;
@@ -3930,7 +3930,7 @@ the sub headers.
 }
 
 @media (min-width: 1200px) {
-	.site-subheader .subheader-title {
+	.site-subheader .site-subheader-title-area {
 		float: left;
 		position: relative;
 		width: 50%;
@@ -3938,7 +3938,7 @@ the sub headers.
 		padding: 0 15px;
 		line-height: 1.67032782;
 	}
-	.site-subheader .subheader-breadcrumbs {
+	.site-subheader .site-subheader-breadcrumbs {
 		float: left;
 		position: relative;
 		width: 50%;
@@ -3948,7 +3948,7 @@ the sub headers.
 	}
 }
 
-.site-subheader .subheader-title > h1 {
+.site-subheader-title {
 	margin: 0;
 	font-size: 28px;
 	font-size: 2.8rem;
@@ -3956,26 +3956,13 @@ the sub headers.
 	line-height: 40px;
 }
 
-.site-subheader .subheader-breadcrumbs {
+.site-subheader-breadcrumbs {
 	color: #999;
 	line-height: 40px;
 }
 
-.site-subheader .subheader-breadcrumbs > .breadcrumb {
+.site-subheader-breadcrumbs > .breadcrumb {
 	float: right;
-}
-
-article.type-page > .entry-header,
-.woocommerce .page-title,
-.error404 .entry-title {
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	margin: -1px;
-	padding: 0;
-	border: 0;
 }
 
 
