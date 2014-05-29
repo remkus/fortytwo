@@ -24,8 +24,8 @@ if ( $instance['address'] ) {
 	echo '<span class="address" itemprop="streetAddress">' . $instance['address'] . '</span>';
 }
 
-if ( $instance['pc'] ) {
-	echo '<span class="postalcode" itemprop="postalCode">' . $instance['pc'] . '</span>';
+if ( $instance['zip'] ) {
+	echo '<span class="postalcode" itemprop="postalCode">' . $instance['zip'] . '</span>';
 }
 
 if ( $instance['city'] ) {
