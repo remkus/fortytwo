@@ -15,7 +15,7 @@ add_action( 'wp_enqueue_scripts', 'fortytwo_enqueue_fonts' );
  * @since @@release
  */
 function fortytwo_enqueue_fonts() {
-	wp_enqueue_style( 'google-font-open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,600,300|Droid+Serif:400,700,400italic,700italic', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'google-font-open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,600,300,700|Droid+Serif:400,700,400italic,700italic', array(), CHILD_THEME_VERSION );
 }
 
 add_action( 'wp_enqueue_scripts', 'fortytwo_enqueue_scripts', 100 );
