@@ -1,7 +1,7 @@
 {
     "name": "fortytwo",
     "description": "Development files for the FortyTwo theme",
-    "version": "0.9.0",
+    "version": "1.0.0-RC6",
     "dependencies": {},
     "devDependencies": {
         "assemble-less": "~0.7.0",
