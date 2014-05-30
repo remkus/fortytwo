@@ -1,0 +1,67 @@
+FILE: ...wp-content/themes/fortytwo-dev/theme/lib/general/ft-default-widgets.php
+--------------------------------------------------------------------------------
+FOUND 2 ERROR(S) AFFECTING 1 LINE(S)
+--------------------------------------------------------------------------------
+ 25 | ERROR | Detected usage of a non-sanitized input variable: $_SERVER
+ 25 | ERROR | Detected usage of a non-sanitized input variable: $_SERVER
+--------------------------------------------------------------------------------
+
+
+FILE: ...rc/wp-content/themes/fortytwo-dev/theme/lib/structural/ft-subheader.php
+--------------------------------------------------------------------------------
+FOUND 3 ERROR(S) AFFECTING 3 LINE(S)
+--------------------------------------------------------------------------------
+ 67 | ERROR | Incorrect indentation; expected 1 space, found 4
+ 71 | ERROR | Incorrect indentation; expected 2 space, found 5
+ 73 | ERROR | Incorrect indentation; expected 2 space, found 5
+--------------------------------------------------------------------------------
+
+
+FILE: ...mes/fortytwo-dev/theme/lib/widgets/ft-featured-content/views/widget.php
+--------------------------------------------------------------------------------
+FOUND 4 ERROR(S) AFFECTING 4 LINE(S)
+--------------------------------------------------------------------------------
+ 15 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
+ 16 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
+ 18 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
+ 19 | ERROR | Line indented incorrectly; expected at least 1 spaces, found 0
+--------------------------------------------------------------------------------
+
+
+FILE: ...es/fortytwo-dev/theme/lib/widgets/ft-responsive-slider/views/widget.php
+--------------------------------------------------------------------------------
+FOUND 9 ERROR(S) AFFECTING 9 LINE(S)
+--------------------------------------------------------------------------------
+ 17 | ERROR | Incorrect indentation; expected 0 space, found 2
+ 22 | ERROR | Incorrect indentation; expected 1 space, found 3
+ 26 | ERROR | Incorrect indentation; expected 2 space, found 4
+ 34 | ERROR | Incorrect indentation; expected 2 space, found 4
+ 35 | ERROR | Incorrect indentation; expected 3 space, found 5
+ 37 | ERROR | Incorrect indentation; expected 3 space, found 5
+ 39 | ERROR | Incorrect indentation; expected 3 space, found 5
+ 51 | ERROR | Incorrect indentation; expected 1 space, found 4
+ 55 | ERROR | Incorrect indentation; expected 1 space, found 4
+--------------------------------------------------------------------------------
+
+
+FILE: ...t/themes/fortytwo-dev/theme/lib/widgets/ft-responsive-slider/widget.php
+--------------------------------------------------------------------------------
+FOUND 0 ERROR(S) AND 4 WARNING(S) AFFECTING 4 LINE(S)
+--------------------------------------------------------------------------------
+ 202 | WARNING | Detected usage of 0, possible slow query.
+ 206 | WARNING | Detected usage of 0, possible slow query.
+ 210 | WARNING | Detected usage of 0, possible slow query.
+ 287 | WARNING | The use of function wp_reset_query() is discouraged; use
+     |         | wp_reset_postdata() instead
+--------------------------------------------------------------------------------
+
+
+FILE: ...content/themes/fortytwo-dev/theme/lib/widgets/ft-tabs-widget/widget.php
+--------------------------------------------------------------------------------
+FOUND 0 ERROR(S) AND 2 WARNING(S) AFFECTING 2 LINE(S)
+--------------------------------------------------------------------------------
+ 137 | WARNING | The use of function wp_reset_query() is discouraged; use
+     |         | wp_reset_postdata() instead
+ 168 | WARNING | The use of function wp_reset_query() is discouraged; use
+     |         | wp_reset_postdata() instead
+--------------------------------------------------------------------------------

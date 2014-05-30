@@ -1,0 +1,76 @@
+/*!
+# Header
+
+FortyTwo site header.
+*/
+
+@import (reference) "responsive-utilities";
+
+.site-header {
+	padding-top: @site-header-padding-vertical;
+	padding-bottom: @site-header-padding-vertical;
+
+	// For extra small devices like smartphones.
+	@screen-size: @screen-xs-min;
+	.make-column(~".title-area" 6 0 0);
+	.make-column(~".header-widget-area" 6 0 0);
+
+	// For the small device range, from phones to tablets.
+	@media (min-width: @screen-sm-min) {
+		@screen-size: @screen-sm-min;
+		.make-column(~".title-area" 6 0 0);
+		.make-column(~".header-widget-area" 6 0 0);
+	}
+
+	// For the desktop device range.
+	@media (min-width: @screen-md-min) {
+		@screen-size: @screen-md-min;
+		.make-column(~".title-area" 6 0 0);
+		.make-column(~".header-widget-area" 6 0 0);
+	}
+
+	// large desktop device range.
+	@media (min-width: @screen-lg-min) {
+		@screen-size: @screen-lg-min;
+		.make-column(~".title-area" 6 0 0);
+		.make-column(~".header-widget-area" 6 0 0);
+	}
+
+	.site-title {
+		border-right: 1px solid #e8e8e8;
+		display: table-cell;
+		margin: 0;
+		padding: 0 15px 0 0;
+		vertical-align: middle;
+		font-size: 36px;
+		line-height: 1.1;
+
+		.header-image & a {
+			.text-hide();
+			background: url('@{ft-images-path}/logo.png') no-repeat;
+			display: block;
+			height: @site-header-logo-height;
+			width: @site-header-logo-width;
+		}
+	}
+
+	.site-description {
+		display: table-cell;
+		margin: 0;
+		padding: 0 0 0 15px;
+		text-transform: uppercase;
+		vertical-align: middle;
+		font-size: 30px;
+		line-height: 1.1;
+		.hidden-xs;
+	}
+
+	.header-widget-area > .widget {
+		.pull-right();
+		.hidden-xs;
+
+		.widget-wrap {
+			padding: 0;
+		}
+	}
+}

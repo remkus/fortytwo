@@ -2,7 +2,26 @@
 	"name": "fortytwo",
 	"version": "1.0.0",
 	"dependencies": {
-		"font-awesome": "~4.0.3",
-		"bootstrap": "~3.1.0"
-	}
+		"bootstrap": "~3.1.1",
+		"font-awesome": "~4.1.0",
+		"holderjs": "~2.3.2",
+		"respond": "~1.4.2"
+	},
+	"exportsOverride": {
+	    "bootstrap": {
+	    	"less": "less/*",
+	    	"fonts": "fonts/*",
+	    	"js": "dist/js/bootstrap.min.js"
+	    },
+	    "font-awesome": {
+	    	"less": "less/*",
+	    	"fonts": "fonts/*"
+	    },
+	    "holderjs": {
+	    	"js": "holder.js"
+	    },
+	    "respond": {
+	    	"js": "dest/respond.min.js"
+	    }
+  	}
 }

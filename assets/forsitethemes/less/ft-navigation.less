@@ -1,0 +1,208 @@
+/*!
+# Navigation
+
+FortyTwo navigation.
+*/
+
+@import (reference) "scaffolding";
+@import (reference) "navs";
+@import (reference) "navbar";
+@import (reference) "dropdowns";
+@import (reference) "forms";
+@import (reference) "ft-font-icons";
+@import "component-animations";
+
+.menu {
+	&:extend(.nav, .nav > li);
+}
+
+.nav-primary-header {
+	&:extend(.navbar-header all);
+}
+
+.nav-collapse {
+	&:extend(.navbar-collapse all);
+}
+
+.nav-title {
+	&:extend(.navbar-brand all);
+}
+
+.nav-toggle {
+	&:extend(.navbar-toggle all);
+}
+
+.site-nav {
+
+	&:extend(.navbar);
+	&:extend(.navbar-default);
+
+	.nav-title {
+		&:extend(.navbar-default .navbar-brand all);
+		.hidden;
+	}
+
+	.nav-text {
+		&:extend(.navbar-default .navbar-text all);
+	}
+
+	.menu {
+
+		&:extend(.nav all, .navbar-nav all, .navbar-default .navbar-nav all);
+
+		// Sub menus
+		// ---------------------------
+		.dropdown-submenu {
+			position: relative;
+		}
+
+		// Default dropdowns
+		.dropdown-submenu > .sub-menu {
+			top: 0;
+			left: 100%;
+			margin-top: -6px;
+			margin-left: -1px;
+			border-top-left-radius: 0; // Nuke the closest corner as appropriate
+		}
+
+		.dropdown-submenu:hover > .sub-menu {
+			display: block;
+		}
+
+		// Dropups
+		.dropup .dropdown-submenu > .sub-menu {
+			top: auto;
+			bottom: 0;
+			margin-top: 0;
+			margin-bottom: -2px;
+			border-bottom-left-radius: 0; // Nuke the closest corner as appropriate
+		}
+
+		// Caret to indicate there is a submenu
+		.dropdown-submenu > a:after {
+			content: "";
+			width: 0;
+			height: 0;
+			border: @caret-width-base solid transparent;
+			border-left-color: @navbar-default-link-color;
+			position: absolute;
+			right: 12px; // This value is the links padding less ( @caret-width-base * 2 )
+			top: 14px; // This value is the links (( line-height + (pad-top-and-bottom) ) - ( @caret-width-base * 2 )) / 2
+		}
+
+		.dropdown-submenu:hover > a:after {
+			border-left-color: @dropdown-link-hover-color;
+		}
+
+		// Left aligned submenus
+		.dropdown-submenu.pull-left {
+			// Undo the float
+			// Yes, this is awkward since .pull-left adds a float, but it sticks to our conventions elsewhere.
+			float: none;
+
+			// Positioning the submenu
+			> .sub-menu {
+				left: -100%;
+				margin-left: 10px;
+				border-top-right-radius: 0; // Remove the rounded corner here
+			}
+		}
+
+		> li {
+			border-right: 1px solid @navbar-default-border;
+
+			&:first-child {
+				border-left: 1px solid @navbar-default-border;
+			}
+		}
+	}
+
+	.caret {
+		&:extend(.caret);
+	}
+
+	.sub-menu {
+		&:extend(.dropdown-menu all);
+		border-radius: @navbar-border-radius;
+
+		> li > a {
+			line-height: @navbar-submenu-height;
+		}
+	}
+
+	.open {
+		> .sub-menu {
+			display: block;
+		}
+
+		> a {
+			outline: 0;
+		}
+	}
+
+	.nav-toggle {
+		&:extend(.navbar-default .navbar-toggle all);
+	}
+
+	.nav-collapse {
+		&:extend(.navbar-default .navbar-collapse all);
+	}
+
+	// Navbar fixed to the top when the .affix-top class becomes .affix which is controlled by fortytwo.js
+	&.affix {
+
+		& + * {
+			margin-top: (@navbar-height + 2);
+		}
+
+		// This is used to add extra space from the top if the .wpadminbar is visible
+		.admin-bar & {
+			top: 28px;
+			border-top: 1px solid @navbar-inverse-border;
+		}
+
+		&:extend(.navbar-fixed-top);
+		&:extend(.navbar-inverse);
+
+		.nav-title {
+			&:extend(.navbar-inverse .navbar-brand all);
+		}
+
+		.nav-text {
+			&:extend(.navbar-inverse .navbar-text all);
+			.show;
+		}
+
+		.menu {
+			&:extend(.navbar-inverse .navbar-nav all);
+
+			> li {
+				border-right: 1px solid @navbar-inverse-border;
+
+				&:first-child {
+					border-left: 1px solid @navbar-inverse-border;
+				}
+			}
+		}
+
+		.nav-toggle {
+			&:extend(.navbar-inverse .navbar-toggle all);
+		}
+
+		.nav-collapse {
+			&:extend(.navbar-inverse .navbar-collapse all);
+		}
+
+	}
+}
+
+/* ## Header Widget Area Nav Styling */
+.header-widget-area {
+	.widget_nav_menu {
+		li {
+			line-height: @site-header-height;
+			margin-right: 15px;
+			float: left;
+		}
+	}
+}

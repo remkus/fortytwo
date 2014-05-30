@@ -1,68 +1,254 @@
-'use strict';
+/* global require */
+module.exports = function(grunt) {
+	'use strict';
 
-module.exports = function (grunt) {
+	require( 'load-grunt-tasks' )(grunt, {
+		pattern: ['grunt-*', 'assemble-less']
+	});
 
 	require('time-grunt')(grunt);
-	require('load-grunt-tasks')(grunt, {pattern: ['grunt-*', 'assemble-less']});
 
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
-		copy: {
-			fonticons: {
+		pkg: grunt.file.readJSON( 'package.json' ),
+
+		// Watch source files
+		watch: {
+			gruntfile: {
+				files: ['Gruntfile.js'],
+				tasks: ['jshint:grunt', 'jsvalidate', 'jscs']
+			},
+			less: {
+				files: ['assets/**/*.less'],
+				tasks: ['build:css']
+			},
+			php: {
+				files: ['theme/**/*.php'],
+				tasks: ['phplint']
+			},
+			js: {
 				files: [
-					{expand: true, flatten: true, src: ['vendor/bootstrap/dist/fonts/*'], dest: 'assets/fonts/', filter: 'isFile'},
-					{expand: true, flatten: true, src: ['vendor/font-awesome/fonts/*'], dest: 'assets/fonts/', filter: 'isFile'},
-					{expand: true, flatten: true, src: ['vendor/font-awesome/fonts/*'], dest: 'lib/admin/assets/fonts/', filter: 'isFile'}
+					'assets/forsitethemes/js/*.js'
+				],
+				tasks: ['build:js', 'jshint:theme', 'jsvalidate', 'jscs']
+			},
+			jsfortytwo: {
+				files: ['assets/forsitethemes/js/*.js'],
+				tasks: ['build:js']
+			}
+		},
+
+		// Clean
+		clean: {
+			dist: {
+				src: ['dist']
+			},
+			tmp: {
+				src: ['tmp']
+			},
+			js: {
+				src: ['theme/js']
+			}
+		},
+
+		// Retrieve dependencies (set in bower.json)
+		bower: {
+			install: {
+				options: {
+					targetDir: 'assets/bower',
+					cleanup: true
+				}
+			}
+		},
+
+		// Copy dependencies out of assets/ and into theme/
+		// CSS (Less) and images are transferred during other tasks
+		copy: {
+			fonts: {
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['assets/bower/fonts/**/*', '!assets/bower/fonts/**/*.otf'],
+						dest: 'theme/fonts/',
+						filter: 'isFile'
+					}
+				]
+			},
+			js: {
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						// holder.js is not yet in use
+						src: ['assets/**/js/**/*', '!assets/bower/js/holderjs/holder.js'],
+						dest: 'theme/js/',
+						filter: 'isFile'
+					}
+				]
+			},
+			php: {
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['assets/composer/wpthumb/wpthumb.*'],
+						dest: 'theme/lib/wpthumb/',
+						filter: 'isFile'
+					}
 				]
 			}
 		},
-		clean: {
-			tmp: {
-				src: [ 'tmp' ]
-			}
-		},
+
 		replace: {
+			variables: {
+				options: {
+					patterns: [{
+						match: /\"variables.less\"/g,
+						replacement: '"ft-variables.less"'
+					}]
+				},
+				files: [{
+					expand: true,
+					flatten: true,
+					cwd: 'assets/bower/less/font-awesome/',
+					src: ['font-awesome.less'],
+					dest: 'assets/bower/less/font-awesome/'
+				}]
+			},
 			fonticons: {
+				options: {
+					patterns: [{
+						match: /\'@@fonticonclasses\'/,
+						replacement: function() {
+							grunt.log.writeln( 'Replacing font icon classes placeholder in .js file' );
+							var icons = grunt.file.read( 'assets/bower/less/font-awesome/icons.less' );
+							// Get rid of stuff before class name
+							icons = icons.replace( /\.@\{fa-css-prefix\}/gm, '\t\t\t\'ft-ico' );
+							// Get rid of stuff after class name
+							icons = icons.replace( /:before.*$/gm, '\',' );
+							// Get rid of leading comment and trailing comma
+							icons = icons.substring( icons.indexOf( '\'' ), icons.lastIndexOf( ',' ) );
+							return icons;
+						}
+					}]
+				},
+				files: {
+					'theme/js/fontawesome-icon-selector-app.js': ['theme/js/fontawesome-icon-selector-app.js']
+				}
+			},
+			// style is run after style.css is generated to fix comments
+			style: {
+				options: {
+					patterns: [
+						{ // Remove ! in comments as they interfer with styledocco appearance
+							match: /\/\*!/g,
+							replacement: '/*'
+						},
+						{ // Avoid minified code following immediately after closing comment delimiter
+							match: /\*\/(?=\S)/g,
+							replacement: '*/\n\n'
+						},
+						{ // Add some code standards white space
+							match: /^\}(?=\n[^\n])/gm,
+							replacement: '}\n'
+						}
+					]
+				},
+				files: {
+					'theme/style.css': ['theme/style.css'],
+					'theme/admin-style.css': ['theme/admin-style.css']
+				}
+			},
+			release: {
 				options: {
 					patterns: [
 						{
-							match: /variables/g,
-							replacement: 'ft-variables'
+							match: 'release',
+							replacement: '<%= pkg.version %>'
 						}
 					]
 				},
 				files: [
-					{expand: true, flatten: true, src: ['vendor/font-awesome/less/font-awesome.less'], dest: 'tmp/assets/less/'}
+					{
+						expand: true,
+						src: ['**/*']
+					}
 				]
 			}
 		},
+
+		// CSS
+
+		// Build .less files into .css files
 		less: {
-			font_awesome: {
+			fontAwesome: {
 				options: {
-					paths: ['assets/less', 'vendor/font-awesome/less'],
-					imports: {reference: ['ft-variables.less']}
+					paths: ['assets/forsitethemes/less', 'assets/bower/less/font-awesome'],
+					imports: {
+						reference: ['ft-variables.less']
+					}
 				},
 				files: {
-					'tmp/assets/css/font-awesome.css': 'tmp/assets/less/font-awesome.less'
+					'tmp/assets/css/font-awesome.css': 'assets/bower/less/font-awesome/font-awesome.less'
 				}
 			},
 			components: {
 				options: {
-					paths: ['assets/less', 'vendor/bootstrap/less', 'tmp/assets/css'],
+					paths: ['tmp/assets/css', 'assets/forsitethemes/less', 'assets/bower/less/bootstrap'],
 					imports: {
 						reference: ['ft-variables.less', 'ft-mixins.less', 'mixins.less', 'utilities.less']
 					}
 				},
-				files: [
-					{expand: true, flatten: true, cwd: 'assets/less', src: ['*.less', '!{ft-variables,ft-mixins}.less'], dest: 'tmp/assets/css/', ext: '.css'},
-					{expand: true, flatten: true, cwd: 'assets/less/admin', src: ['*.less'], dest: 'tmp/assets/css/admin/', ext: '.css'}
-				]
+				files: [{
+					expand: true,
+					flatten: true,
+					cwd: 'assets/forsitethemes/less',
+					src: ['*.less', '!{ft-variables,ft-mixins}.less'],
+					dest: 'tmp/assets/css/',
+					ext: '.css'
+				}, {
+					expand: true,
+					flatten: true,
+					cwd: 'assets/forsitethemes/less/admin',
+					src: ['*.less'],
+					dest: 'tmp/assets/css/admin/',
+					ext: '.css'
+				}]
 			}
 		},
+
+		// Add vendor prefixes needed for specified browsers
+		autoprefixer: {
+			options: {
+				browsers: [
+					'last 1 versions',
+					'Explorer >= 8'
+				]
+			},
+			all: {
+				src: [
+					'tmp/assets/css/**/*.css'
+				],
+				options: {
+					// diff: 'tmp/autoprefixer.patch'
+				}
+			}
+		},
+
+		// Tidy the CSS
+		csscomb: {
+			css: {
+				expand: true,
+				src: ['tmp/assets/css/**/*.css']
+			}
+		},
+
+		// Minify some parts of the CSS
 		cssmin: {
 			compress: {
 				options: {
-					keepSpecialComments: 1
+					keepSpecialComments: 1,
+					report: 'gzip'
 				},
 				files: {
 					'tmp/assets/css/ft-reset.css': ['tmp/assets/css/ft-reset.css'],
@@ -72,25 +258,28 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+
+		// Merge files into final .css files and add a banner to style.css
 		concat: {
 			options: {
-				separator: '\n\n',
-				banner: '/*!\n' +
-					'  Theme Name: <%= pkg.theme.name %>\n' +
-					'  Theme URI: <%= pkg.theme.uri %>\n' +
-					'  Description: <%= pkg.theme.description %>\n' +
-					'  Author: <%= pkg.theme.author %>\n' +
-					'  Author URI: <%= pkg.theme.authoruri %>\n' +
-					'  Version: <%= pkg.theme.version %>\n' +
-					'  Tags: <%= pkg.theme.tags %>\n' +
-					'  Text Domain: <%= pkg.theme.textdomain %>\n\n' +
-					'  License: <%= pkg.theme.license %>\n' +
-					'  License URI: <%= pkg.theme.licenseuri %>\n\n' +
-					'  Template: <%= pkg.theme.template %>\n' +
-					'*/\n\n',
-				footer: '\n\n\n/* Would it save you a lot of time if I just gave up and went mad now? ― Douglas Adams */'
+				separator: '\n\n'
 			},
-			fortytwo_style: {
+			style: {
+				options: {
+					banner: '/* # FortyTwo\n' +
+						' * Theme Name: <%= pkg.theme.name %>\n' +
+						' * Theme URI: <%= pkg.theme.uri %>\n' +
+						' * Description: <%= pkg.theme.description %>\n' +
+						' * Author: <%= pkg.theme.author %>\n' +
+						' * Author URI: <%= pkg.theme.authoruri %>\n' +
+						' * Version: <%= pkg.version %>\n' +
+						' * Tags: <%= pkg.theme.tags %>\n' +
+						' * Text Domain: <%= pkg.theme.textdomain %>\n' +
+						' * License: <%= pkg.theme.license %>\n' +
+						' * License URI: <%= pkg.theme.licenseuri %>\n' +
+						' * Template: <%= pkg.theme.template %>\n' +
+						'*/\n\n'
+				},
 				src: [
 					'tmp/assets/css/ft-index.css',
 					'tmp/assets/css/ft-reset.css',
@@ -105,85 +294,372 @@ module.exports = function (grunt) {
 					'tmp/assets/css/ft-print.css',
 					'tmp/assets/css/ft-custom.css'
 				],
-				dest: 'style.css'
+				dest: 'theme/style.css'
 			},
-			fortytwo_admin_style: {
+			adminStyle: {
 				options: {
-					stripBanners: true,
-					banner: ''
+					footer: '\n\n\n/* Would it save you a lot of time if I just gave up and went mad now? ― Douglas Adams */'
 				},
 				src: [
 					'tmp/assets/css/admin/ft-admin-core.css'
 				],
-				dest: 'lib/admin/admin-style.css'
+				dest: 'theme/admin-style.css'
 			}
 		},
-		cssbeautifier: {
-			files: ["tmp/assets/css/{ft-core,ft-header,ft-navigation,ft-intro,ft-widgets,ft-content,ft-footer,ft-custom}.css"],
-			options: {
-				indent: '\t',
-				openbrace: 'end-of-line',
-				autosemicolon: true
-			}
-		},
-		csscomb: {
-			sort: {
-				options: {
-					sortOrder: '.csscomb.json'
-				},
-				files: {
-					'tmp/assets/css/ft-core.css': ['tmp/assets/css/ft-core.css'],
-					'tmp/assets/css/ft-header.css': ['tmp/assets/css/ft-header.css'],
-					'tmp/assets/css/ft-navigation.css': ['tmp/assets/css/ft-navigation.css'],
-					'tmp/assets/css/ft-intro.css': ['tmp/assets/css/ft-intro.css'],
-					'tmp/assets/css/ft-widgets.css': ['tmp/assets/css/ft-widgets.css'],
-					'tmp/assets/css/ft-content.css': ['tmp/assets/css/ft-content.css'],
-					'tmp/assets/css/ft-footer.css': ['tmp/assets/css/ft-footer.css'],
-					'tmp/assets/css/ft-custom.css': ['tmp/assets/css/ft-custom.css']
-				}
-			}
-		},
-		compress: {
-			dist: {
-				options: {
-					archive: 'publish/<%= pkg.name %>.zip'
-				},
+
+		// Images
+
+		// Optimize images to save bytes
+		imagemin: {
+			images: {
 				files: [
-					{ src: ['dist/**'] }
+					{
+						expand: true,
+						cwd: 'assets/forsitethemes/images/',
+						src: ['*.*'],
+						dest: 'theme/images'
+					}
+				]
+			},
+			layouts: {
+				files: [
+					{
+						expand: true,
+						cwd: 'assets/forsitethemes/images/layouts/',
+						src: ['*.*'],
+						dest: 'theme/lib/admin/images/layouts'
+					}
 				]
 			}
 		},
-		makepot: {
-			target: {
+
+		// JavaScript
+
+		// Lint JS code practices
+		jshint: {
+			grunt: {
 				options: {
+					jshintrc: '.gruntjshintrc'
+				},
+				src: ['Gruntfile.js']
+			},
+			theme: {
+				options: {
+					jshintrc: true
+				},
+				expand: true,
+				src: [
+					'assets/forsitethemes/js/*.js'
+				]
+			}
+		},
+
+		// Lint JS for code standards
+		jscs: {
+			options: {
+				config: '.jscsrc'
+			},
+			all: {
+				files: {
+					src: [
+						'.bowerrc',
+						'.csscomb.json',
+						'.gruntjshintrc',
+						'.jshintrc',
+						'.lessrc',
+						'bower.json',
+						'Gruntfile.js',
+						'package.json',
+						'assets/forsitethemes/js/*.js'
+					]
+				}
+			}
+		},
+
+		// Lint JSON files for syntax errors
+		jsonlint: {
+			all: {
+				src: [
+					'.bowerrc',
+					'.csscomb.json',
+					'.gruntjshintrc',
+					'.jshintrc',
+					'.lessrc',
+					'bower.json',
+					'package.json'
+				]
+			}
+		},
+
+		// Lint .js files for syntax errors
+		jsvalidate: {
+			all: {
+				options: {
+					verbose: true
+				},
+				files: {
+					src: [
+						'Gruntfile.js',
+						'theme/**/*.js'
+					]
+				}
+			}
+		},
+
+		uglify: {
+			fortytwo: {
+				options: {
+					preserveComments: 'some',
+					report: 'gzip'
+				},
+				files: [
+					{
+						expand: true,
+						cwd: 'theme/js',
+						src: ['*.js', '!*.min.js'],
+						dest: 'theme/js',
+						ext: '.min.js',
+						extDot: 'first',
+						isFile: true
+					}
+				]
+			}
+		},
+
+		// PHP
+
+		// Lint .php files for syntax errors
+		phplint: {
+			all: ['theme/**/*.php']
+		},
+
+		// Lint .php files for code standards
+		phpcs: {
+			all: {
+				dir: ['theme/**/*.php', '!theme/lib/wpthumb/**/*']
+			},
+			options: {
+				standard: 'ruleset.xml',
+				reportFile: 'phpcs.txt',
+				ignoreExitCode: true
+			}
+		},
+
+		// PHP Unit and Integration Tests
+		// phpunit: {
+		// 	all: {
+		// 		dir: 'tests/',
+		// 		cmd: 'phpunit',
+		// 		args: ['-c', 'phpunit.xml']
+		// 	}
+		// },
+
+		// I18n
+
+		addtextdomain: {
+			options: {
+				textdomain: 'fortytwo'
+			},
+			php: {
+				files: {
+					src: [
+						'theme/**/*.php',
+						'!theme/lib/wpthumb/*.php'
+					]
+				}
+			}
+		},
+
+		checktextdomain: {
+			options: {
+				text_domain: 'fortytwo',
+				keywords: [
+					'__:1,2d',
+					'_e:1,2d',
+					'_x:1,2c,3d',
+					'_ex:1,2c,3d',
+					'_n:1,2,4d',
+					'_nx:1,2,4c,5d',
+					'_n_noop:1,2,3d',
+					'_nx_noop:1,2,3c,4d',
+					'esc_attr__:1,2d',
+					'esc_html__:1,2d',
+					'esc_attr_e:1,2d',
+					'esc_html_e:1,2d',
+					'esc_attr_x:1,2c,3d',
+					'esc_html_x:1,2c,3d'
+				]
+			},
+			files: {
+				expand: true,
+				src: [
+					'theme/**/*.php',
+					'!theme/lib/wpthumb/*.php'
+				]
+			}
+		},
+
+		// Build language .pot file
+		makepot: {
+			theme: {
+				options: {
+					cwd: 'theme',
+					exclude: ['lib/wpthumb/.*'],
 					domainPath: '/lib/languages',
+					processPot: function( pot ) {
+						pot.headers['report-msgid-bugs-to']   = 'http://forsitethemes.com';
+						pot.headers['plural-forms']           = 'nplurals=2; plural=n != 1;';
+						pot.headers['last-translator']        = 'Remkus de Vries <translations@forsitethemes.com>';
+						pot.headers['language-team']          = 'Forsite Translations <translations@forsitethemes.com>';
+						pot.headers['x-generator']            = 'grunt-wp-i18n 0.4.3';
+						pot.headers['x-poedit-basepath']      = '.';
+						pot.headers['x-poedit-language']      = 'English';
+						pot.headers['x-poedit-country']       = 'UNITED STATES';
+						pot.headers['x-poedit-sourcecharset'] = 'utf-8';
+						pot.headers['x-poedit-keywordslist']  = '__;_e;_x:1,2c;_ex:1,2c;_n:1,2; _nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__; esc_html__;esc_attr_e; esc_html_e;esc_attr_x:1,2c; esc_html_x:1,2c;';
+						pot.headers['x-poedit-bookmarks']     = '';
+						pot.headers['x-poedit-searchpath-0']  = '.';
+						pot.headers['x-textdomain-support']   = 'yes';
+						return pot;
+					},
 					type: 'wp-theme'
 				}
 			}
+		},
+
+		// Prepare for release
+
+		compress: {
+			dist: {
+				options: {
+					archive: 'dist/<%= pkg.name %>-<%= pkg.version %>.zip'
+				},
+				files: [
+					{
+						expand: true,
+						cwd: 'theme',
+						src: ['**/*'], // Take this...
+						dest: '<%= pkg.name %>' // ...put it into this, then zip that up as ^^^
+					}
+				]
+			}
+		},
+
+		styledocco: {
+			dist: {
+				options: {
+					name: '<%= pkg.theme.name %> <%= pkg.version %>'
+				},
+				files: {
+					'docs/css/style': 'theme/style.css',
+					'docs/css/admin-style': 'theme/admin-style.css'
+				}
+			}
 		}
+
 	});
 
-	grunt.registerTask('build', [
-		'clean',
-		'copy:fonticons',
-		'replace',
-		'less',
-		'cssmin',
-		'cssbeautifier',
-		'csscomb',
-		'concat',
-		'clean'
-	]);
+	// Register tasks
 
-	grunt.registerTask('stylesheet', [
-		'clean',
-		'copy:fonticons',
-		'replace',
+	grunt.registerTask( 'check', [
+		'jshint',
+		'jsonlint',
+		'jsvalidate',
+		'jscs',
+		'phplint',
+		'checktextdomain',
+		'phpcs'
+	] );
+
+	grunt.registerTask( 'dependencies', [
+		'bower',
+		'copy',
+		'replace:variables',
+		'build'
+	] );
+
+	grunt.registerTask( 'build', [
+		'build:css',
+		'build:js'
+	] );
+
+	grunt.registerTask( 'build:css', [
+		'clean:tmp',
 		'less',
-		'cssmin',
-		'cssbeautifier',
 		'csscomb',
+		'cssmin',
 		'concat',
-		'clean'
-	]);
+		'clean:tmp',
+		'replace:style',
+		'styledocco'
+	] );
+
+	grunt.registerTask( 'build:js', [
+		'clean:js',
+		'copy:js',
+		'replace:fonticons',
+		'uglify'
+	] );
+
+	grunt.registerTask( 'build:i18n', [
+		'addtextdomain',
+		'makepot'
+	] );
+
+	grunt.registerTask( 'package', [
+		'clean:dist',
+		'compress'
+	] );
+
+	// Top level function to build a new release
+	grunt.registerTask( 'release', function( releaseType ) {
+		if ( 'major' !== releaseType && 'minor' !== releaseType && 'patch' !== releaseType ) {
+			grunt.fail.fatal( 'Please specify the release type (major, minor, or patch), e.g., "grunt release:patch"' );
+		} else {
+			// Check to make sure the log exists
+			grunt.task.run( 'log:' + releaseType );
+
+			// Replace release version placeholders
+			grunt.task.run( 'replace:release' );
+
+			// Build everything
+			grunt.task.run( 'build' );
+
+			// Create the .pot file
+			grunt.task.run( 'build:i18n' );
+
+			// Optimize images
+			grunt.task.run( 'imagemin' );
+
+			// Zip it up
+			grunt.task.run( 'package' );
+		}
+	} );
+
+	// Prompt for the changelog
+	grunt.registerTask( 'log', function( releaseType ) {
+		var semver = require( 'semver' ),
+			pkg,
+			changelog,
+			newVersion = semver.inc( grunt.config.get( 'pkg' ).version, releaseType ),
+			regex = new RegExp( '^## ' + newVersion, 'gm' ); // Match the version number (e.g., "## 1.2.3")
+
+		if ( 'major' !== releaseType && 'minor' !== releaseType && 'patch' !== releaseType ) {
+			grunt.fail.fatal( 'Please specify the release type (major, minor, or patch), e.g., "grunt release:patch"' );
+		} else {
+			pkg = grunt.file.readJSON('package.json');
+			// Get the new version
+			changelog = grunt.file.read( pkg.changelog );
+
+			if ( changelog.match( regex ) ) {
+				grunt.log.ok( 'v' + newVersion + ' changlelog entry found' );
+			} else {
+				grunt.fail.fatal( 'Please enter a changelog entry for v' + newVersion );
+			}
+		}
+	} );
+
+	grunt.registerTask( 'default', [
+		'build'
+	] );
 };

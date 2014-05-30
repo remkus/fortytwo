@@ -1,0 +1,27 @@
+/*!
+*  Admin Styles
+*
+*  Styles added here will get loaded in the admin area when FortyTwo is active. During the grunt build
+*  a file called admin-style.css will get added to /lib/admin/css
+*/
+
+@import (less) "font-awesome.css";
+
+
+/* FortyTwo Widget Icon Styling */
+
+div[id*="_ft-"] .widget-title > h4:before {
+	display: inline-block;
+	position: absolute;
+	top: 15px;
+	left: 13px;
+	width: 18px;
+	height: 18px;
+	border-radius: 10px;
+	color: #fff;
+	background: #424242;
+	font-size: 11px;
+	line-height: 18px;
+	text-align: center;
+	content: "42";
+}

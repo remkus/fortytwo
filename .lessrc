@@ -1,8 +1,7 @@
 {
 	"paths": [
-		"assets/less",
-		"assets/less/admin",
-		"vendor/bootstrap/less",
-		"vendor/font-awesome/less"
+		"assets/bower/less/botstrap",
+		"assets/bower/less/font-awesome",
+		"assets/forsitethemes/less"
 	]
 }

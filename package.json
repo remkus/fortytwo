@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"name": "fortytwo",
 	"description": "Delvelopment files for the FortyTwo theme",
 	"dependencies": {},
@@ -59,3 +60,56 @@
 		"textdomain": "fortytwo"
 	}
 }
+=======
+    "name": "fortytwo",
+    "description": "Development files for the FortyTwo theme",
+    "version": "1.0.0-RC6",
+    "dependencies": {},
+    "devDependencies": {
+        "assemble-less": "~0.7.0",
+        "grunt": "^0.4.5",
+        "grunt-autoprefixer": "^0.7.3",
+        "grunt-bower-task": "^0.3.4",
+        "grunt-bump": "0.0.14",
+        "grunt-checktextdomain": "^0.1.1",
+        "grunt-concurrent": "^0.5.0",
+        "grunt-contrib-clean": "~0.5.0",
+        "grunt-contrib-compress": "^0.8.0",
+        "grunt-contrib-concat": "^0.3.0",
+        "grunt-contrib-copy": "^0.5.0",
+        "grunt-contrib-cssmin": "^0.9.0",
+        "grunt-contrib-imagemin": "^0.7.0",
+        "grunt-contrib-jshint": "^0.10.0",
+        "grunt-contrib-uglify": "^0.4.0",
+        "grunt-contrib-watch": "^0.6.1",
+        "grunt-csscomb": "~2.0.1",
+        "grunt-jsbeautifier": "^0.2.6",
+        "grunt-jscs-checker": "^0.4.4",
+        "grunt-jsonlint": "^1.0.4",
+        "grunt-jsvalidate": "^0.2.2",
+        "grunt-lesslint": "^1.1.2",
+        "grunt-phpcs": "^0.2.2",
+        "grunt-phplint": "0.0.5",
+        "grunt-phpunit": "^0.3.3",
+        "grunt-replace": "^0.7.7",
+        "grunt-styledocco": "^0.1.4",
+        "grunt-wp-i18n": "^0.4.4",
+        "load-grunt-tasks": "^0.4.0",
+        "semver": "^2.3.0",
+        "time-grunt": "^0.3.1"
+    },
+    "theme": {
+        "name": "FortyTwo",
+        "uri": "http://forsitethemes.com/themes/fortytwo",
+        "description": "FortyTwo, the answer to all you child theme requirements",
+        "author": "Forsite Themes",
+        "authoruri": "http://forsitethemes.com",
+        "tags": "white, blue, one-column, two-columns, three-columns, left-sidebar, right-sidebar, fixed-width, custom-menu, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready",
+        "license": "GPL-2.0+",
+        "licenseuri": "http://www.gnu.org/licenses/gpl-2.0.html",
+        "template": "genesis",
+        "textdomain": "fortytwo"
+    },
+    "changelog": "theme/CHANGELOG.md"
+}
+>>>>>>> release/1.0.0-RC6
