@@ -80,7 +80,7 @@ module.exports = function(grunt) {
 						expand: true,
 						flatten: true,
 						// holder.js is not yet in use
-						src: ['assets/**/js/**/*', '!assets/bower/js/holderjs/holder.js'],
+						src: ['assets/**/js/**/*', '!assets/composer/**/*', '!assets/bower/js/holderjs/holder.js'],
 						dest: 'theme/js/',
 						filter: 'isFile'
 					}
