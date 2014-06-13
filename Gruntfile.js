@@ -539,7 +539,7 @@ module.exports = function(grunt) {
 						expand: true,
 						cwd: 'theme',
 						src: ['**/*'], // Take this...
-						dest: '<%= pkg.name %>' // ...put it into this, then zip that up as ^^^
+						dest: '<%= pkg.name %>-<%= pkg.version %>' // ...put it into this, then zip that up as ^^^
 					}
 				]
 			}
