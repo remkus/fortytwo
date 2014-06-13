@@ -40,6 +40,12 @@ require_once 'structural/ft-footer.php';
 require_once 'structural/ft-search.php';
 require_once 'structural/ft-404.php';
 
+// load metaboxes if it exists
+if ( file_exists( 'metaboxes.php' ) ) {
+	require_once 'metaboxes.php';
+}
+
+
 add_action( 'widgets_init', 'ft_widgets_require', 5 );
 /**
  * Require theme widget files.
