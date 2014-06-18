@@ -271,7 +271,7 @@ class FT_Widget_Responsive_Slider extends FT_Widget {
 
 			if ( 1 == $instance['slideshow_hide_mobile'] ) {
 				$hide_mobile = array(
-					'hide_excerpt'   => 'hide-on-mobile',
+					'hide_excerpt'   => 'hidden-sm',
 				);
 			} else {
 				$hide_mobile = array(

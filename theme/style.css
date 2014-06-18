@@ -3666,12 +3666,13 @@ the sub headers.
 	position: relative;
 }
 
-.widget-ft-responsive-slider .slide-excerpt.hide-on-mobile {
-	display: none !important;
-}
-
-.widget-ft-responsive-slider .slide-excerpt.hide-on-mobile + .slide-image {
-	width: 100%;
+@media (max-width: 991px) {
+	.widget-ft-responsive-slider .slide-excerpt.hidden-sm {
+		display: none !important;
+	}
+	.widget-ft-responsive-slider .slide-excerpt.hidden-sm + .slide-image {
+		width: 100%;
+	}
 }
 
 .widget-ft-responsive-slider .slide-excerpt h2 {

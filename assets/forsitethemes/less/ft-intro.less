@@ -41,11 +41,13 @@ the sub headers.
 	}
 
 	.slide-excerpt {
-		&.hide-on-mobile {
-			.responsive-invisibility();
+		&.hidden-sm {
+			@media (max-width: @screen-sm-max) {
+				.responsive-invisibility();
 
-			& + .slide-image {
-				width: 100%;
+				& + .slide-image {
+					width: 100%;
+				}
 			}
 		}
 
