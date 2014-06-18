@@ -2773,8 +2773,10 @@ FortyTwo site header.
 .nav-collapse:after,
 .site-nav:before,
 .site-nav:after,
-.site-nav .menu:before,
-.site-nav .menu:after {
+.site-header nav:before,
+.site-header nav:after,
+.genesis-nav-menu:before,
+.genesis-nav-menu:after {
 	display: table;
 	content: " ";
 }
@@ -2788,7 +2790,8 @@ FortyTwo site header.
 .nav-primary-header:after,
 .nav-collapse:after,
 .site-nav:after,
-.site-nav .menu:after {
+.site-header nav:after,
+.genesis-nav-menu:after {
 	clear: both;
 }
 
@@ -2798,77 +2801,81 @@ FortyTwo site header.
 FortyTwo navigation.
 */
 .menu,
-.site-nav .menu {
+.genesis-nav-menu {
 	margin-bottom: 0;
 	padding-left: 0;
 	list-style: none;
 }
 
 .menu,
-.site-nav .menu > li {
+.genesis-nav-menu > li {
 	display: block;
 	position: relative;
 }
 
-.site-nav .menu > li > a {
+.genesis-nav-menu > li > a {
 	display: block;
 	position: relative;
 	padding: 10px 15px;
 }
 
-.site-nav .menu > li > a:hover,
-.site-nav .menu > li > a:focus {
+.genesis-nav-menu > li > a:hover,
+.genesis-nav-menu > li > a:focus {
 	background-color: #eee;
 	text-decoration: none;
 }
 
-.site-nav .menu > li.disabled > a {
+.genesis-nav-menu > li.disabled > a {
 	color: #999;
 }
 
-.site-nav .menu > li.disabled > a:hover,
-.site-nav .menu > li.disabled > a:focus {
+.genesis-nav-menu > li.disabled > a:hover,
+.genesis-nav-menu > li.disabled > a:focus {
 	color: #999;
 	background-color: transparent;
 	text-decoration: none;
 	cursor: not-allowed;
 }
 
-.site-nav .menu .open > a,
-.site-nav .menu .open > a:hover,
-.site-nav .menu .open > a:focus {
+.genesis-nav-menu .open > a,
+.genesis-nav-menu .open > a:hover,
+.genesis-nav-menu .open > a:focus {
 	border-color: #428bca;
 	background-color: #eee;
 }
 
-.site-nav .menu .nav-divider {
+.genesis-nav-menu .nav-divider {
 	overflow: hidden;
 	height: 1px;
 	margin: 9px 0;
 	background-color: #e5e5e5;
 }
 
-.site-nav .menu > li > a > img {
+.genesis-nav-menu > li > a > img {
 	max-width: none;
 }
 
-.nav-tabs.nav-justified > .dropdown .site-nav .sub-menu {
+.nav-tabs.nav-justified > .dropdown .site-nav .sub-menu,
+.nav-tabs.nav-justified > .dropdown .site-header nav .sub-menu {
 	top: auto;
 	left: auto;
 }
 
-.nav-justified > .dropdown .site-nav .sub-menu {
+.nav-justified > .dropdown .site-nav .sub-menu,
+.nav-justified > .dropdown .site-header nav .sub-menu {
 	top: auto;
 	left: auto;
 }
 
-.nav-tabs .site-nav .sub-menu {
+.nav-tabs .site-nav .sub-menu,
+.nav-tabs .site-header nav .sub-menu {
 	margin-top: -1px;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
 
-.site-nav {
+.site-nav,
+.site-header nav {
 	position: relative;
 	min-height: 46px;
 	margin-bottom: 0;
@@ -2876,7 +2883,8 @@ FortyTwo navigation.
 }
 
 @media (min-width: 768px) {
-	.site-nav {
+	.site-nav,
+  .site-header nav {
 		border-radius: 0;
 	}
 }
@@ -2943,7 +2951,8 @@ FortyTwo navigation.
 	}
 }
 
-.site-nav.affix {
+.site-nav.affix,
+.site-header nav.affix {
 	position: fixed;
 	z-index: 1030;
 	right: 0;
@@ -2951,12 +2960,14 @@ FortyTwo navigation.
 }
 
 @media (min-width: 768px) {
-	.site-nav.affix {
+	.site-nav.affix,
+  .site-header nav.affix {
 		border-radius: 0;
 	}
 }
 
-.site-nav.affix {
+.site-nav.affix,
+.site-header nav.affix {
 	top: 0;
 	border-width: 0 0 1px;
 }
@@ -3015,19 +3026,20 @@ FortyTwo navigation.
 	}
 }
 
-.site-nav .menu {
+.genesis-nav-menu {
 	margin: 6.5px -15px;
 }
 
-.site-nav .menu > li > a {
+.genesis-nav-menu > li > a {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	line-height: 20px;
 }
 
 @media (max-width: 767px) {
-	.site-nav .menu .open .dropdown-menu,
-  .navbar-nav .open .site-nav .sub-menu {
+	.navbar-nav .open .site-nav .sub-menu,
+  .navbar-nav .open .site-header nav .sub-menu,
+  .genesis-nav-menu .open .dropdown-menu {
 		float: none;
 		position: static;
 		width: auto;
@@ -3036,321 +3048,392 @@ FortyTwo navigation.
 		background-color: transparent;
 		box-shadow: none;
 	}
-	.site-nav .menu .open .dropdown-menu > li > a,
-  .site-nav .menu .open .dropdown-menu .dropdown-header,
-  .navbar-nav .open .site-nav .sub-menu > li > a,
-  .navbar-nav .open .site-nav .sub-menu .dropdown-header {
+	.navbar-nav .open .site-nav .sub-menu > li > a,
+  .navbar-nav .open .site-nav .sub-menu .dropdown-header,
+  .navbar-nav .open .site-header nav .sub-menu > li > a,
+  .navbar-nav .open .site-header nav .sub-menu .dropdown-header,
+  .genesis-nav-menu .open .dropdown-menu > li > a,
+  .genesis-nav-menu .open .dropdown-menu .dropdown-header {
 		padding: 5px 15px 5px 25px;
 	}
-	.site-nav .menu .open .dropdown-menu > li > a,
-  .navbar-nav .open .site-nav .sub-menu > li > a {
+	.navbar-nav .open .site-nav .sub-menu > li > a,
+  .navbar-nav .open .site-header nav .sub-menu > li > a,
+  .genesis-nav-menu .open .dropdown-menu > li > a {
 		line-height: 20px;
 	}
-	.site-nav .menu .open .dropdown-menu > li > a:hover,
-  .site-nav .menu .open .dropdown-menu > li > a:focus,
-  .navbar-nav .open .site-nav .sub-menu > li > a:hover,
-  .navbar-nav .open .site-nav .sub-menu > li > a:focus {
+	.navbar-nav .open .site-nav .sub-menu > li > a:hover,
+  .navbar-nav .open .site-nav .sub-menu > li > a:focus,
+  .navbar-nav .open .site-header nav .sub-menu > li > a:hover,
+  .navbar-nav .open .site-header nav .sub-menu > li > a:focus,
+  .genesis-nav-menu .open .dropdown-menu > li > a:hover,
+  .genesis-nav-menu .open .dropdown-menu > li > a:focus {
 		background-image: none;
 	}
 }
 
 @media (min-width: 768px) {
-	.site-nav .menu {
+	.genesis-nav-menu {
 		float: left;
 		margin: 0;
 	}
-	.site-nav .menu > li {
+	.genesis-nav-menu > li {
 		float: left;
 	}
-	.site-nav .menu > li > a {
+	.genesis-nav-menu > li > a {
 		padding-top: 13px;
 		padding-bottom: 13px;
 	}
-	.site-nav .menu.navbar-right:last-child {
+	.genesis-nav-menu.navbar-right:last-child {
 		margin-right: -15px;
 	}
 }
 
-.site-nav .menu > li > .dropdown-menu,
-.navbar-nav > li > .site-nav .sub-menu {
+.navbar-nav > li > .site-nav .sub-menu,
+.navbar-nav > li > .site-header nav .sub-menu,
+.genesis-nav-menu > li > .dropdown-menu {
 	margin-top: 0;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
 
-.navbar-fixed-bottom .site-nav .menu > li > .dropdown-menu,
-.navbar-fixed-bottom .navbar-nav > li > .site-nav .sub-menu {
+.navbar-fixed-bottom .navbar-nav > li > .site-nav .sub-menu,
+.navbar-fixed-bottom .navbar-nav > li > .site-header nav .sub-menu,
+.navbar-fixed-bottom .genesis-nav-menu > li > .dropdown-menu {
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 }
 
-.site-nav {
+.site-nav,
+.site-header nav {
 	border-color: #eee;
 	background-color: #fff;
 }
 
 .navbar-default .nav-title,
-.site-nav .nav-title {
+.site-nav .nav-title,
+.site-header nav .nav-title {
 	color: #777;
 }
 
 .navbar-default .nav-title:hover,
 .navbar-default .nav-title:focus,
 .site-nav .nav-title:hover,
-.site-nav .nav-title:focus {
+.site-nav .nav-title:focus,
+.site-header nav .nav-title:hover,
+.site-header nav .nav-title:focus {
 	color: #5e5e5e;
 	background-color: transparent;
 }
 
-.site-nav .nav-text {
+.site-nav .nav-text,
+.site-header nav .nav-text {
 	color: #777;
 }
 
-.navbar-default .site-nav .menu > li > a,
-.site-nav .menu > li > a {
+.navbar-default .genesis-nav-menu > li > a,
+.genesis-nav-menu > li > a {
 	color: #777;
 }
 
-.navbar-default .site-nav .menu > li > a:hover,
-.navbar-default .site-nav .menu > li > a:focus,
-.site-nav .menu > li > a:hover,
-.site-nav .menu > li > a:focus {
+.navbar-default .genesis-nav-menu > li > a:hover,
+.navbar-default .genesis-nav-menu > li > a:focus,
+.genesis-nav-menu > li > a:hover,
+.genesis-nav-menu > li > a:focus {
 	color: #333;
 	background-color: transparent;
 }
 
-.navbar-default .site-nav .menu > .active > a,
-.navbar-default .site-nav .menu > .active > a:hover,
-.navbar-default .site-nav .menu > .active > a:focus,
-.site-nav .menu > .active > a,
-.site-nav .menu > .active > a:hover,
-.site-nav .menu > .active > a:focus {
+.navbar-default .genesis-nav-menu > .active > a,
+.navbar-default .genesis-nav-menu > .active > a:hover,
+.navbar-default .genesis-nav-menu > .active > a:focus,
+.genesis-nav-menu > .active > a,
+.genesis-nav-menu > .active > a:hover,
+.genesis-nav-menu > .active > a:focus {
 	color: #555;
 	background-color: #eee;
 }
 
-.navbar-default .site-nav .menu > .disabled > a,
-.navbar-default .site-nav .menu > .disabled > a:hover,
-.navbar-default .site-nav .menu > .disabled > a:focus,
-.site-nav .menu > .disabled > a,
-.site-nav .menu > .disabled > a:hover,
-.site-nav .menu > .disabled > a:focus {
+.navbar-default .genesis-nav-menu > .disabled > a,
+.navbar-default .genesis-nav-menu > .disabled > a:hover,
+.navbar-default .genesis-nav-menu > .disabled > a:focus,
+.genesis-nav-menu > .disabled > a,
+.genesis-nav-menu > .disabled > a:hover,
+.genesis-nav-menu > .disabled > a:focus {
 	color: #ccc;
 	background-color: transparent;
 }
 
 .navbar-default .nav-toggle,
-.site-nav .nav-toggle {
+.site-nav .nav-toggle,
+.site-header nav .nav-toggle {
 	border-color: #ddd;
 }
 
 .navbar-default .nav-toggle:hover,
 .navbar-default .nav-toggle:focus,
 .site-nav .nav-toggle:hover,
-.site-nav .nav-toggle:focus {
+.site-nav .nav-toggle:focus,
+.site-header nav .nav-toggle:hover,
+.site-header nav .nav-toggle:focus {
 	background-color: #ddd;
 }
 
 .navbar-default .nav-toggle .icon-bar,
-.site-nav .nav-toggle .icon-bar {
+.site-nav .nav-toggle .icon-bar,
+.site-header nav .nav-toggle .icon-bar {
 	background-color: #888;
 }
 
 .navbar-default .nav-collapse,
-.site-nav .nav-collapse {
+.site-nav .nav-collapse,
+.site-header nav .nav-collapse {
 	border-color: #eee;
 }
 
-.navbar-default .site-nav .menu > .open > a,
-.navbar-default .site-nav .menu > .open > a:hover,
-.navbar-default .site-nav .menu > .open > a:focus,
-.site-nav .menu > .open > a,
-.site-nav .menu > .open > a:hover,
-.site-nav .menu > .open > a:focus {
+.navbar-default .genesis-nav-menu > .open > a,
+.navbar-default .genesis-nav-menu > .open > a:hover,
+.navbar-default .genesis-nav-menu > .open > a:focus,
+.genesis-nav-menu > .open > a,
+.genesis-nav-menu > .open > a:hover,
+.genesis-nav-menu > .open > a:focus {
 	color: #555;
 	background-color: #eee;
 }
 
 @media (max-width: 767px) {
-	.navbar-default .site-nav .menu .open .dropdown-menu > li > a,
-  .site-nav .menu .open .dropdown-menu > li > a,
-  .navbar-default .navbar-nav .open .site-nav .sub-menu > li > a {
+	.navbar-default .navbar-nav .open .site-nav .sub-menu > li > a,
+  .navbar-default .navbar-nav .open .site-header nav .sub-menu > li > a,
+  .navbar-default .genesis-nav-menu .open .dropdown-menu > li > a,
+  .genesis-nav-menu .open .dropdown-menu > li > a {
 		color: #777;
 	}
-	.navbar-default .site-nav .menu .open .dropdown-menu > li > a:hover,
-  .navbar-default .site-nav .menu .open .dropdown-menu > li > a:focus,
-  .site-nav .menu .open .dropdown-menu > li > a:hover,
-  .site-nav .menu .open .dropdown-menu > li > a:focus,
-  .navbar-default .navbar-nav .open .site-nav .sub-menu > li > a:hover,
-  .navbar-default .navbar-nav .open .site-nav .sub-menu > li > a:focus {
+	.navbar-default .navbar-nav .open .site-nav .sub-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .site-nav .sub-menu > li > a:focus,
+  .navbar-default .navbar-nav .open .site-header nav .sub-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .site-header nav .sub-menu > li > a:focus,
+  .navbar-default .genesis-nav-menu .open .dropdown-menu > li > a:hover,
+  .navbar-default .genesis-nav-menu .open .dropdown-menu > li > a:focus,
+  .genesis-nav-menu .open .dropdown-menu > li > a:hover,
+  .genesis-nav-menu .open .dropdown-menu > li > a:focus {
 		color: #333;
 		background-color: transparent;
 	}
-	.navbar-default .site-nav .menu .open .dropdown-menu > .active > a,
-  .navbar-default .site-nav .menu .open .dropdown-menu > .active > a:hover,
-  .navbar-default .site-nav .menu .open .dropdown-menu > .active > a:focus,
-  .site-nav .menu .open .dropdown-menu > .active > a,
-  .site-nav .menu .open .dropdown-menu > .active > a:hover,
-  .site-nav .menu .open .dropdown-menu > .active > a:focus,
-  .navbar-default .navbar-nav .open .site-nav .sub-menu > .active > a,
+	.navbar-default .navbar-nav .open .site-nav .sub-menu > .active > a,
   .navbar-default .navbar-nav .open .site-nav .sub-menu > .active > a:hover,
-  .navbar-default .navbar-nav .open .site-nav .sub-menu > .active > a:focus {
+  .navbar-default .navbar-nav .open .site-nav .sub-menu > .active > a:focus,
+  .navbar-default .navbar-nav .open .site-header nav .sub-menu > .active > a,
+  .navbar-default .navbar-nav .open .site-header nav .sub-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .site-header nav .sub-menu > .active > a:focus,
+  .navbar-default .genesis-nav-menu .open .dropdown-menu > .active > a,
+  .navbar-default .genesis-nav-menu .open .dropdown-menu > .active > a:hover,
+  .navbar-default .genesis-nav-menu .open .dropdown-menu > .active > a:focus,
+  .genesis-nav-menu .open .dropdown-menu > .active > a,
+  .genesis-nav-menu .open .dropdown-menu > .active > a:hover,
+  .genesis-nav-menu .open .dropdown-menu > .active > a:focus {
 		color: #555;
 		background-color: #eee;
 	}
-	.navbar-default .site-nav .menu .open .dropdown-menu > .disabled > a,
-  .navbar-default .site-nav .menu .open .dropdown-menu > .disabled > a:hover,
-  .navbar-default .site-nav .menu .open .dropdown-menu > .disabled > a:focus,
-  .site-nav .menu .open .dropdown-menu > .disabled > a,
-  .site-nav .menu .open .dropdown-menu > .disabled > a:hover,
-  .site-nav .menu .open .dropdown-menu > .disabled > a:focus,
-  .navbar-default .navbar-nav .open .site-nav .sub-menu > .disabled > a,
+	.navbar-default .navbar-nav .open .site-nav .sub-menu > .disabled > a,
   .navbar-default .navbar-nav .open .site-nav .sub-menu > .disabled > a:hover,
-  .navbar-default .navbar-nav .open .site-nav .sub-menu > .disabled > a:focus {
+  .navbar-default .navbar-nav .open .site-nav .sub-menu > .disabled > a:focus,
+  .navbar-default .navbar-nav .open .site-header nav .sub-menu > .disabled > a,
+  .navbar-default .navbar-nav .open .site-header nav .sub-menu > .disabled > a:hover,
+  .navbar-default .navbar-nav .open .site-header nav .sub-menu > .disabled > a:focus,
+  .navbar-default .genesis-nav-menu .open .dropdown-menu > .disabled > a,
+  .navbar-default .genesis-nav-menu .open .dropdown-menu > .disabled > a:hover,
+  .navbar-default .genesis-nav-menu .open .dropdown-menu > .disabled > a:focus,
+  .genesis-nav-menu .open .dropdown-menu > .disabled > a,
+  .genesis-nav-menu .open .dropdown-menu > .disabled > a:hover,
+  .genesis-nav-menu .open .dropdown-menu > .disabled > a:focus {
 		color: #ccc;
 		background-color: transparent;
 	}
 }
 
-.site-nav.affix {
+.site-nav.affix,
+.site-header nav.affix {
 	border-color: #080808;
 	background-color: #222;
 }
 
 .navbar-inverse .nav-title,
-.site-nav.affix .nav-title {
+.site-nav.affix .nav-title,
+.site-header nav.affix .nav-title {
 	color: #999;
 }
 
 .navbar-inverse .nav-title:hover,
 .navbar-inverse .nav-title:focus,
 .site-nav.affix .nav-title:hover,
-.site-nav.affix .nav-title:focus {
+.site-nav.affix .nav-title:focus,
+.site-header nav.affix .nav-title:hover,
+.site-header nav.affix .nav-title:focus {
 	color: #fff;
 	background-color: transparent;
 }
 
-.site-nav.affix .nav-text {
+.site-nav.affix .nav-text,
+.site-header nav.affix .nav-text {
 	color: #999;
 }
 
-.navbar-inverse .site-nav .menu > li > a,
-.site-nav.affix .menu > li > a {
+.site-nav.affix .menu > li > a,
+.site-header nav.affix .menu > li > a,
+.navbar-inverse .genesis-nav-menu > li > a {
 	color: #999;
 }
 
-.navbar-inverse .site-nav .menu > li > a:hover,
-.navbar-inverse .site-nav .menu > li > a:focus,
 .site-nav.affix .menu > li > a:hover,
-.site-nav.affix .menu > li > a:focus {
+.site-nav.affix .menu > li > a:focus,
+.site-header nav.affix .menu > li > a:hover,
+.site-header nav.affix .menu > li > a:focus,
+.navbar-inverse .genesis-nav-menu > li > a:hover,
+.navbar-inverse .genesis-nav-menu > li > a:focus {
 	color: #fff;
 	background-color: transparent;
 }
 
-.navbar-inverse .site-nav .menu > .active > a,
-.navbar-inverse .site-nav .menu > .active > a:hover,
-.navbar-inverse .site-nav .menu > .active > a:focus,
 .site-nav.affix .menu > .active > a,
 .site-nav.affix .menu > .active > a:hover,
-.site-nav.affix .menu > .active > a:focus {
+.site-nav.affix .menu > .active > a:focus,
+.site-header nav.affix .menu > .active > a,
+.site-header nav.affix .menu > .active > a:hover,
+.site-header nav.affix .menu > .active > a:focus,
+.navbar-inverse .genesis-nav-menu > .active > a,
+.navbar-inverse .genesis-nav-menu > .active > a:hover,
+.navbar-inverse .genesis-nav-menu > .active > a:focus {
 	color: #fff;
 	background-color: #080808;
 }
 
-.navbar-inverse .site-nav .menu > .disabled > a,
-.navbar-inverse .site-nav .menu > .disabled > a:hover,
-.navbar-inverse .site-nav .menu > .disabled > a:focus,
 .site-nav.affix .menu > .disabled > a,
 .site-nav.affix .menu > .disabled > a:hover,
-.site-nav.affix .menu > .disabled > a:focus {
+.site-nav.affix .menu > .disabled > a:focus,
+.site-header nav.affix .menu > .disabled > a,
+.site-header nav.affix .menu > .disabled > a:hover,
+.site-header nav.affix .menu > .disabled > a:focus,
+.navbar-inverse .genesis-nav-menu > .disabled > a,
+.navbar-inverse .genesis-nav-menu > .disabled > a:hover,
+.navbar-inverse .genesis-nav-menu > .disabled > a:focus {
 	color: #444;
 	background-color: transparent;
 }
 
 .navbar-inverse .nav-toggle,
-.site-nav.affix .nav-toggle {
+.site-nav.affix .nav-toggle,
+.site-header nav.affix .nav-toggle {
 	border-color: #333;
 }
 
 .navbar-inverse .nav-toggle:hover,
 .navbar-inverse .nav-toggle:focus,
 .site-nav.affix .nav-toggle:hover,
-.site-nav.affix .nav-toggle:focus {
+.site-nav.affix .nav-toggle:focus,
+.site-header nav.affix .nav-toggle:hover,
+.site-header nav.affix .nav-toggle:focus {
 	background-color: #333;
 }
 
 .navbar-inverse .nav-toggle .icon-bar,
-.site-nav.affix .nav-toggle .icon-bar {
+.site-nav.affix .nav-toggle .icon-bar,
+.site-header nav.affix .nav-toggle .icon-bar {
 	background-color: #fff;
 }
 
 .navbar-inverse .nav-collapse,
-.site-nav.affix .nav-collapse {
+.site-nav.affix .nav-collapse,
+.site-header nav.affix .nav-collapse {
 	border-color: #101010;
 }
 
-.navbar-inverse .site-nav .menu > .open > a,
-.navbar-inverse .site-nav .menu > .open > a:hover,
-.navbar-inverse .site-nav .menu > .open > a:focus,
 .site-nav.affix .menu > .open > a,
 .site-nav.affix .menu > .open > a:hover,
-.site-nav.affix .menu > .open > a:focus {
+.site-nav.affix .menu > .open > a:focus,
+.site-header nav.affix .menu > .open > a,
+.site-header nav.affix .menu > .open > a:hover,
+.site-header nav.affix .menu > .open > a:focus,
+.navbar-inverse .genesis-nav-menu > .open > a,
+.navbar-inverse .genesis-nav-menu > .open > a:hover,
+.navbar-inverse .genesis-nav-menu > .open > a:focus {
 	color: #fff;
 	background-color: #080808;
 }
 
 @media (max-width: 767px) {
-	.navbar-inverse .site-nav .menu .open .dropdown-menu > .dropdown-header,
-  .navbar-inverse .navbar-nav .open .site-nav .sub-menu > .dropdown-header,
-  .site-nav.affix .menu .open .dropdown-menu > .dropdown-header {
+	.navbar-inverse .navbar-nav .open .site-nav .sub-menu > .dropdown-header,
+  .navbar-inverse .navbar-nav .open .site-header nav .sub-menu > .dropdown-header,
+  .site-nav.affix .menu .open .dropdown-menu > .dropdown-header,
+  .site-header nav.affix .menu .open .dropdown-menu > .dropdown-header,
+  .navbar-inverse .genesis-nav-menu .open .dropdown-menu > .dropdown-header {
 		border-color: #080808;
 	}
-	.navbar-inverse .site-nav .menu .open .dropdown-menu .divider,
-  .navbar-inverse .navbar-nav .open .site-nav .sub-menu .divider,
-  .site-nav.affix .menu .open .dropdown-menu .divider {
+	.navbar-inverse .navbar-nav .open .site-nav .sub-menu .divider,
+  .navbar-inverse .navbar-nav .open .site-header nav .sub-menu .divider,
+  .site-nav.affix .menu .open .dropdown-menu .divider,
+  .site-header nav.affix .menu .open .dropdown-menu .divider,
+  .navbar-inverse .genesis-nav-menu .open .dropdown-menu .divider {
 		background-color: #080808;
 	}
-	.navbar-inverse .site-nav .menu .open .dropdown-menu > li > a,
-  .navbar-inverse .navbar-nav .open .site-nav .sub-menu > li > a,
-  .site-nav.affix .menu .open .dropdown-menu > li > a {
+	.navbar-inverse .navbar-nav .open .site-nav .sub-menu > li > a,
+  .navbar-inverse .navbar-nav .open .site-header nav .sub-menu > li > a,
+  .site-nav.affix .menu .open .dropdown-menu > li > a,
+  .site-header nav.affix .menu .open .dropdown-menu > li > a,
+  .navbar-inverse .genesis-nav-menu .open .dropdown-menu > li > a {
 		color: #999;
 	}
-	.navbar-inverse .site-nav .menu .open .dropdown-menu > li > a:hover,
-  .navbar-inverse .site-nav .menu .open .dropdown-menu > li > a:focus,
-  .navbar-inverse .navbar-nav .open .site-nav .sub-menu > li > a:hover,
+	.navbar-inverse .navbar-nav .open .site-nav .sub-menu > li > a:hover,
   .navbar-inverse .navbar-nav .open .site-nav .sub-menu > li > a:focus,
+  .navbar-inverse .navbar-nav .open .site-header nav .sub-menu > li > a:hover,
+  .navbar-inverse .navbar-nav .open .site-header nav .sub-menu > li > a:focus,
   .site-nav.affix .menu .open .dropdown-menu > li > a:hover,
-  .site-nav.affix .menu .open .dropdown-menu > li > a:focus {
+  .site-nav.affix .menu .open .dropdown-menu > li > a:focus,
+  .site-header nav.affix .menu .open .dropdown-menu > li > a:hover,
+  .site-header nav.affix .menu .open .dropdown-menu > li > a:focus,
+  .navbar-inverse .genesis-nav-menu .open .dropdown-menu > li > a:hover,
+  .navbar-inverse .genesis-nav-menu .open .dropdown-menu > li > a:focus {
 		color: #fff;
 		background-color: transparent;
 	}
-	.navbar-inverse .site-nav .menu .open .dropdown-menu > .active > a,
-  .navbar-inverse .site-nav .menu .open .dropdown-menu > .active > a:hover,
-  .navbar-inverse .site-nav .menu .open .dropdown-menu > .active > a:focus,
-  .navbar-inverse .navbar-nav .open .site-nav .sub-menu > .active > a,
+	.navbar-inverse .navbar-nav .open .site-nav .sub-menu > .active > a,
   .navbar-inverse .navbar-nav .open .site-nav .sub-menu > .active > a:hover,
   .navbar-inverse .navbar-nav .open .site-nav .sub-menu > .active > a:focus,
+  .navbar-inverse .navbar-nav .open .site-header nav .sub-menu > .active > a,
+  .navbar-inverse .navbar-nav .open .site-header nav .sub-menu > .active > a:hover,
+  .navbar-inverse .navbar-nav .open .site-header nav .sub-menu > .active > a:focus,
   .site-nav.affix .menu .open .dropdown-menu > .active > a,
   .site-nav.affix .menu .open .dropdown-menu > .active > a:hover,
-  .site-nav.affix .menu .open .dropdown-menu > .active > a:focus {
+  .site-nav.affix .menu .open .dropdown-menu > .active > a:focus,
+  .site-header nav.affix .menu .open .dropdown-menu > .active > a,
+  .site-header nav.affix .menu .open .dropdown-menu > .active > a:hover,
+  .site-header nav.affix .menu .open .dropdown-menu > .active > a:focus,
+  .navbar-inverse .genesis-nav-menu .open .dropdown-menu > .active > a,
+  .navbar-inverse .genesis-nav-menu .open .dropdown-menu > .active > a:hover,
+  .navbar-inverse .genesis-nav-menu .open .dropdown-menu > .active > a:focus {
 		color: #fff;
 		background-color: #080808;
 	}
-	.navbar-inverse .site-nav .menu .open .dropdown-menu > .disabled > a,
-  .navbar-inverse .site-nav .menu .open .dropdown-menu > .disabled > a:hover,
-  .navbar-inverse .site-nav .menu .open .dropdown-menu > .disabled > a:focus,
-  .navbar-inverse .navbar-nav .open .site-nav .sub-menu > .disabled > a,
+	.navbar-inverse .navbar-nav .open .site-nav .sub-menu > .disabled > a,
   .navbar-inverse .navbar-nav .open .site-nav .sub-menu > .disabled > a:hover,
   .navbar-inverse .navbar-nav .open .site-nav .sub-menu > .disabled > a:focus,
+  .navbar-inverse .navbar-nav .open .site-header nav .sub-menu > .disabled > a,
+  .navbar-inverse .navbar-nav .open .site-header nav .sub-menu > .disabled > a:hover,
+  .navbar-inverse .navbar-nav .open .site-header nav .sub-menu > .disabled > a:focus,
   .site-nav.affix .menu .open .dropdown-menu > .disabled > a,
   .site-nav.affix .menu .open .dropdown-menu > .disabled > a:hover,
-  .site-nav.affix .menu .open .dropdown-menu > .disabled > a:focus {
+  .site-nav.affix .menu .open .dropdown-menu > .disabled > a:focus,
+  .site-header nav.affix .menu .open .dropdown-menu > .disabled > a,
+  .site-header nav.affix .menu .open .dropdown-menu > .disabled > a:hover,
+  .site-header nav.affix .menu .open .dropdown-menu > .disabled > a:focus,
+  .navbar-inverse .genesis-nav-menu .open .dropdown-menu > .disabled > a,
+  .navbar-inverse .genesis-nav-menu .open .dropdown-menu > .disabled > a:hover,
+  .navbar-inverse .genesis-nav-menu .open .dropdown-menu > .disabled > a:focus {
 		color: #444;
 		background-color: transparent;
 	}
 }
 
-.site-nav .caret {
+.site-nav .caret,
+.site-header nav .caret {
 	display: inline-block;
 	width: 0;
 	height: 0;
@@ -3361,7 +3444,8 @@ FortyTwo navigation.
 	vertical-align: middle;
 }
 
-.site-nav .sub-menu {
+.site-nav .sub-menu,
+.site-header nav .sub-menu {
 	display: none;
 	float: left;
 	position: absolute;
@@ -3382,19 +3466,22 @@ FortyTwo navigation.
 	list-style: none;
 }
 
-.site-nav .sub-menu.pull-right {
+.site-nav .sub-menu.pull-right,
+.site-header nav .sub-menu.pull-right {
 	right: 0;
 	left: auto;
 }
 
-.site-nav .sub-menu .divider {
+.site-nav .sub-menu .divider,
+.site-header nav .sub-menu .divider {
 	overflow: hidden;
 	height: 1px;
 	margin: 9px 0;
 	background-color: #e5e5e5;
 }
 
-.site-nav .sub-menu > li > a {
+.site-nav .sub-menu > li > a,
+.site-header nav .sub-menu > li > a {
 	display: block;
 	clear: both;
 	padding: 3px 20px;
@@ -3405,7 +3492,9 @@ FortyTwo navigation.
 }
 
 .site-nav .sub-menu > li > a:hover,
-.site-nav .sub-menu > li > a:focus {
+.site-nav .sub-menu > li > a:focus,
+.site-header nav .sub-menu > li > a:hover,
+.site-header nav .sub-menu > li > a:focus {
 	color: #262626;
 	background-color: #f5f5f5;
 	text-decoration: none;
@@ -3413,7 +3502,10 @@ FortyTwo navigation.
 
 .site-nav .sub-menu > .active > a,
 .site-nav .sub-menu > .active > a:hover,
-.site-nav .sub-menu > .active > a:focus {
+.site-nav .sub-menu > .active > a:focus,
+.site-header nav .sub-menu > .active > a,
+.site-header nav .sub-menu > .active > a:hover,
+.site-header nav .sub-menu > .active > a:focus {
 	outline: 0;
 	color: #fff;
 	background-color: #428bca;
@@ -3422,12 +3514,17 @@ FortyTwo navigation.
 
 .site-nav .sub-menu > .disabled > a,
 .site-nav .sub-menu > .disabled > a:hover,
-.site-nav .sub-menu > .disabled > a:focus {
+.site-nav .sub-menu > .disabled > a:focus,
+.site-header nav .sub-menu > .disabled > a,
+.site-header nav .sub-menu > .disabled > a:hover,
+.site-header nav .sub-menu > .disabled > a:focus {
 	color: #999;
 }
 
 .site-nav .sub-menu > .disabled > a:hover,
-.site-nav .sub-menu > .disabled > a:focus {
+.site-nav .sub-menu > .disabled > a:focus,
+.site-header nav .sub-menu > .disabled > a:hover,
+.site-header nav .sub-menu > .disabled > a:focus {
 	background-color: transparent;
 	background-image: none;
 	text-decoration: none;
@@ -3436,24 +3533,29 @@ FortyTwo navigation.
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 
-.open > .site-nav .sub-menu {
+.open > .site-nav .sub-menu,
+.open > .site-header nav .sub-menu {
 	display: block;
 }
 
-.pull-right > .site-nav .sub-menu {
+.pull-right > .site-nav .sub-menu,
+.pull-right > .site-header nav .sub-menu {
 	right: 0;
 	left: auto;
 }
 
 .dropup .site-nav .sub-menu,
-.navbar-fixed-bottom .dropdown .site-nav .sub-menu {
+.navbar-fixed-bottom .dropdown .site-nav .sub-menu,
+.dropup .site-header nav .sub-menu,
+.navbar-fixed-bottom .dropdown .site-header nav .sub-menu {
 	top: auto;
 	bottom: 100%;
 	margin-bottom: 1px;
 }
 
 @media (min-width: 768px) {
-	.navbar-right .site-nav .sub-menu {
+	.navbar-right .site-nav .sub-menu,
+  .navbar-right .site-header nav .sub-menu {
 		right: 0;
 		left: auto;
 	}
@@ -3485,16 +3587,63 @@ FortyTwo navigation.
 	transition: height 0.35s ease;
 }
 
-.site-nav .nav-title {
+.site-nav .nav-title,
+.site-header nav .nav-title {
 	display: none !important;
 	visibility: hidden !important;
 }
 
-.site-nav .menu .dropdown-submenu {
+.site-nav .sub-menu,
+.site-header nav .sub-menu {
+	border-radius: 0;
+}
+
+.site-nav .sub-menu > li > a,
+.site-header nav .sub-menu > li > a {
+	line-height: 30px;
+}
+
+.site-nav .open > .sub-menu,
+.site-header nav .open > .sub-menu {
+	display: block;
+}
+
+.site-nav .open > a,
+.site-header nav .open > a {
+	outline: 0;
+}
+
+.site-nav.affix + *,
+.site-header nav.affix + * {
+	margin-top: 48px;
+}
+
+.admin-bar .site-nav.affix,
+.admin-bar .site-header nav.affix {
+	top: 28px;
+	border-top: 1px solid #080808;
+}
+
+.site-nav.affix .nav-text,
+.site-header nav.affix .nav-text {
+	display: block !important;
+}
+
+.site-nav.affix .menu > li,
+.site-header nav.affix .menu > li {
+	border-right: 1px solid #080808;
+}
+
+.site-nav.affix .menu > li:first-child,
+.site-header nav.affix .menu > li:first-child {
+	border-left: 1px solid #080808;
+}
+
+.genesis-nav-menu .dropdown-submenu {
 	position: relative;
 }
 
-.site-nav .menu .dropdown-submenu > .sub-menu {
+.genesis-nav-menu .dropdown-submenu > .sub-menu {
 	top: 0;
 	left: 100%;
 	margin-top: -6px;
@@ -3502,11 +3651,11 @@ FortyTwo navigation.
 	border-top-left-radius: 0;
 }
 
-.site-nav .menu .dropdown-submenu:hover > .sub-menu {
+.genesis-nav-menu .dropdown-submenu:hover > .sub-menu {
 	display: block;
 }
 
-.site-nav .menu .dropup .dropdown-submenu > .sub-menu {
+.genesis-nav-menu .dropup .dropdown-submenu > .sub-menu {
 	top: auto;
 	bottom: 0;
 	margin-top: 0;
@@ -3514,7 +3663,7 @@ FortyTwo navigation.
 	border-bottom-left-radius: 0;
 }
 
-.site-nav .menu .dropdown-submenu > a:after {
+.genesis-nav-menu .dropdown-submenu > a:after {
 	position: absolute;
 	top: 14px;
 	right: 12px;
@@ -3525,63 +3674,26 @@ FortyTwo navigation.
 	content: "";
 }
 
-.site-nav .menu .dropdown-submenu:hover > a:after {
+.genesis-nav-menu .dropdown-submenu:hover > a:after {
 	border-left-color: #262626;
 }
 
-.site-nav .menu .dropdown-submenu.pull-left {
+.genesis-nav-menu .dropdown-submenu.pull-left {
 	float: none;
 }
 
-.site-nav .menu .dropdown-submenu.pull-left > .sub-menu {
+.genesis-nav-menu .dropdown-submenu.pull-left > .sub-menu {
 	left: -100%;
 	margin-left: 10px;
 	border-top-right-radius: 0;
 }
 
-.site-nav .menu > li {
+.genesis-nav-menu > li {
 	border-right: 1px solid #eee;
 }
 
-.site-nav .menu > li:first-child {
+.genesis-nav-menu > li:first-child {
 	border-left: 1px solid #eee;
-}
-
-.site-nav .sub-menu {
-	border-radius: 0;
-}
-
-.site-nav .sub-menu > li > a {
-	line-height: 30px;
-}
-
-.site-nav .open > .sub-menu {
-	display: block;
-}
-
-.site-nav .open > a {
-	outline: 0;
-}
-
-.site-nav.affix + * {
-	margin-top: 48px;
-}
-
-.admin-bar .site-nav.affix {
-	top: 28px;
-	border-top: 1px solid #080808;
-}
-
-.site-nav.affix .nav-text {
-	display: block !important;
-}
-
-.site-nav.affix .menu > li {
-	border-right: 1px solid #080808;
-}
-
-.site-nav.affix .menu > li:first-child {
-	border-left: 1px solid #080808;
 }
 
 /* ## Header Widget Area Nav Styling */
