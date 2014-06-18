@@ -4345,6 +4345,12 @@ select[multiple].input-group-sm > .search-button > .btn {
 	margin-left: -1px;
 }
 
+.widget-ft-tabs-widget .tab-buttons > ul > li.active .btn {
+	border-color: #adadad;
+	color: #333;
+	background-color: #ebebeb;
+}
+
 .widget-ft-tabs-widget .tab-buttons > ul > li .btn {
 	border-color: #ccc;
 	border-radius: 0;
