@@ -22,15 +22,15 @@ if ( count( $instance['tabs'] ) > 0 ) {
 		$class = '';
 
 		if ( $count == 1 ) {
-			$class = ' first active';
+			$class = 'first active';
 		}
 		if ( $count == count( $instance['tabs'] ) ) {
-			$class = ' last';
+			$class = 'last';
 		}
 
 		$tab_id = uniqid( $tab . '-' );
 
-		$tab_links .= '<li class="' . sanitize_html_class( $class ) . '"><button type="button" class="btn tab-heading-' . sanitize_html_class( $tab ) . '" data-target="#tab-pane-' . esc_attr( $tab_id ) . '" data-toggle="tab">' . $tab . '</button></li>' . "\n";
+		$tab_links .= '<li class="' . genesis_sanitize_html_classes( $class ) . '"><button type="button" class="btn tab-heading-' . sanitize_html_class( $tab ) . '" data-target="#tab-pane-' . esc_attr( $tab_id ) . '" data-toggle="tab">' . $tab . '</button></li>' . "\n";
 
 		$tab_content .= '<div id="tab-pane-' . esc_attr( $tab_id ) . '" class="tab-pane tab-pane-' . esc_attr( $tab ) . $class . '">' . "\n";
 
