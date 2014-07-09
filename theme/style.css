@@ -3639,6 +3639,10 @@ FortyTwo navigation.
 	border-left: 1px solid #080808;
 }
 
+.site-header nav {
+	border: 0;
+}
+
 .genesis-nav-menu .dropdown-submenu {
 	position: relative;
 }
@@ -3688,12 +3692,17 @@ FortyTwo navigation.
 	border-top-right-radius: 0;
 }
 
-.genesis-nav-menu > li {
+.genesis-nav-menu.site-nav > li {
 	border-right: 1px solid #eee;
 }
 
-.genesis-nav-menu > li:first-child {
+.genesis-nav-menu.site-nav > li:first-child {
 	border-left: 1px solid #eee;
+}
+
+.genesis-nav-menu > .right {
+	float: right;
+	padding: 12px 0;
 }
 
 /* ## Header Widget Area Nav Styling */

@@ -126,6 +126,10 @@ FortyTwo navigation.
 	}
 }
 
+.site-header nav {
+	border: 0;
+}
+
 .genesis-nav-menu {
 
 	&:extend(.nav all, .navbar-nav all, .navbar-default .navbar-nav all);
@@ -188,12 +192,17 @@ FortyTwo navigation.
 		}
 	}
 
-	> li {
+	&.site-nav > li {
 		border-right: 1px solid @navbar-default-border;
 
 		&:first-child {
 			border-left: 1px solid @navbar-default-border;
 		}
+	}
+
+	> .right {
+		float: right;
+		padding: 12px 0;
 	}
 }
 
