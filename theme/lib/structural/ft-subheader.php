@@ -77,6 +77,9 @@ function fortytwo_insert_site_subheader() {
 		remove_action( 'genesis_before_loop', 'genesis_do_search_title' );
 	}
 
+	// Remove WooCommerce archive title
+	add_filter( 'woocommerce_show_page_title', '__return_false' );
+
 	$site_subheader_title = apply_filters( 'fortytwo_site_subheader_title', '' );
 	$site_subheader_widget = apply_filters( 'fortytwo_site_subheader_widget', false );
 	$site_subheader_breadcrumbs = apply_filters( 'fortytwo_site_subheader_breadcrumbs', true );
@@ -122,26 +125,24 @@ function fortytwo_do_site_subheader_title( $title ) {
 
 	$title = $label = '';
 
-	if ( is_home() ) { // Static blog page
+	if (
+		( function_exists( 'is_product' ) && is_product() ) ||
+		( function_exists( 'is_shop' ) && is_shop() )
+	) { // Special case for WooCommerce where label is preferred over title
+		$label = __( 'Shop', 'fortytwo' );
+	} elseif ( is_home() ) { // Static blog page
 		$label = get_the_title( get_option( 'page_for_posts', true ) );
 	} elseif ( is_singular() ) { // Post, Page, CPT entry or attachment
-		if (
-			( function_exists( 'is_product' ) && is_product() ) ||
-			( function_exists( 'is_shop' ) && is_shop() )
-		) { // Special case where label is preferred over title
-			$label = __( 'Shop', 'fortytwo' );
-		} else {
-			$title = get_the_title();
-			if ( empty( $title ) ) { // No title, so fallback
-				if ( is_attachment() ) {
-					$mime_type = get_post_mime_type();
-					$label = ucwords( substr( $mime_type, 0, strpos( $mime_type, '/' ) ) );
-				} elseif ( is_singular( 'post' ) && $format = get_post_format() ) { // Post with post format
-					$label = ucwords( $format );
-				} else { // Post (no post format), Page, CPT entry
-					$obj = get_post_type_object( get_post_type() );
-					$label = $obj->labels->singular_name;
-				}
+		$title = get_the_title();
+		if ( empty( $title ) ) { // No title, so fallback
+			if ( is_attachment() ) {
+				$mime_type = get_post_mime_type();
+				$label = ucwords( substr( $mime_type, 0, strpos( $mime_type, '/' ) ) );
+			} elseif ( is_singular( 'post' ) && $format = get_post_format() ) { // Post with post format
+				$label = ucwords( $format );
+			} else { // Post (no post format), Page, CPT entry
+				$obj = get_post_type_object( get_post_type() );
+				$label = $obj->labels->singular_name;
 			}
 		}
 	} elseif ( is_archive() ) {
