@@ -4789,23 +4789,11 @@ fieldset[disabled] .widget-ft-tabs-widget .tab-buttons > ul > li .btn.active {
 	width: 100%;
 }
 
-.sidebar .widget_pages > .widget-wrap ul.children,
-.sidebar .widget_categories > .widget-wrap ul.children,
-.sidebar .widget_archive > .widget-wrap ul.children,
-.sidebar .widget_meta > .widget-wrap ul.children,
-.sidebar .widget_recent_comments > .widget-wrap ul.children,
-.sidebar .widget_recent_entries > .widget-wrap ul.children,
-.sidebar .widget_nav_menu > .widget-wrap ul.children {
+.sidebar .widget > .widget-wrap ul.children {
 	margin-top: 10px;
 }
 
-.sidebar .widget_pages li,
-.sidebar .widget_categories li,
-.sidebar .widget_archive li,
-.sidebar .widget_meta li,
-.sidebar .widget_recent_comments li,
-.sidebar .widget_recent_entries li,
-.sidebar .widget_nav_menu li {
+.sidebar .widget li {
 	display: block;
 	overflow: hidden;
 	position: relative;
@@ -4814,13 +4802,7 @@ fieldset[disabled] .widget-ft-tabs-widget .tab-buttons > ul > li .btn.active {
 	text-overflow: ellipsis;
 }
 
-.sidebar .widget_pages li:before,
-.sidebar .widget_categories li:before,
-.sidebar .widget_archive li:before,
-.sidebar .widget_meta li:before,
-.sidebar .widget_recent_comments li:before,
-.sidebar .widget_recent_entries li:before,
-.sidebar .widget_nav_menu li:before {
+.sidebar .widget li:before {
 	position: absolute;
 	left: 0;
 	font-family: FontAwesome;
@@ -4828,13 +4810,7 @@ fieldset[disabled] .widget-ft-tabs-widget .tab-buttons > ul > li .btn.active {
 	content: "\f105";
 }
 
-.sidebar .widget_pages li:first-child,
-.sidebar .widget_categories li:first-child,
-.sidebar .widget_archive li:first-child,
-.sidebar .widget_meta li:first-child,
-.sidebar .widget_recent_comments li:first-child,
-.sidebar .widget_recent_entries li:first-child,
-.sidebar .widget_nav_menu li:first-child {
+.sidebar .widget li:first-child {
 	padding-top: 0;
 }
 
