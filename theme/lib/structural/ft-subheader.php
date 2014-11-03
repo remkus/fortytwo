@@ -152,6 +152,8 @@ function fortytwo_do_site_subheader_title( $title ) {
 			$label = __( 'Articles by Category: ', 'fortytwo' ) . single_term_title( '', false );
 		} elseif ( is_tag() ) {
 			$label = __( 'Articles by Tag: ', 'fortytwo' ) . single_term_title( '', false );
+		} elseif ( is_tax() ) {
+			$label = __( 'Articles by View: ', 'fortytwo' ) . single_term_title( '', false );
 		} elseif ( is_author() ) {
 			$label = __( 'Articles by Author: ', 'fortytwo' ) . get_the_author_meta( 'display_name', $post->post_author );
 		} elseif ( is_day() ) {
