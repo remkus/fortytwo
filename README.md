@@ -33,3 +33,11 @@ FortyTwo is built on top off of Genesis and Twitter Bootstrap. This marriage has
 * [Holder](https://github.com/imsky/holder/releases) (not currently used)
 * [Grunt](http://gruntjs.com/)
 
+## Contributors
+
+* Ryan Holder @ryanholder
+* Remkus de Vries @defries
+* David Laing @mrdavidlaing
+* Daan Kortenbach @daankortenbach
+* Gary Jones @garyjones
+
